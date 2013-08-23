@@ -1,0 +1,355 @@
+﻿body 
+{
+    margin-top:0;
+    margin-left:0;
+    margin-right:0;
+    margin-bottom:0;
+}
+
+.txtbox
+{
+    width:300;
+    height:20;
+    font-family:verdana;
+    font-size:11;
+}
+
+.txtbox1
+{
+    width:100;
+    height:20;
+    font-family:verdana;
+    font-size:11;
+}
+
+.txtbox2
+{
+    width:300;
+    height:50;
+    font-family:verdana;
+    font-size:11;
+}
+
+.txtbox3
+{
+    width:75;
+    height:20;
+    font-family:verdana;
+    font-size:11;
+}
+
+.txtbox4
+{
+    width:200;
+    font-family:verdana;
+    font-size:11;
+}
+.txtbox5
+{
+    width:40;
+    font-family:verdana;
+    font-size:11;
+}
+
+
+.text
+{
+    font-family:verdana;
+    font-size:11;
+   
+}
+
+.text1
+{
+    font-family:verdana;
+    font-size:9;
+   
+}
+
+.submitbtn
+{
+    height:20;
+    font-family:Verdana;
+    font-size:11px;
+    color:#FFFFFF;    
+    background:#C6012D;
+    width:120;
+}
+
+.submitbtn1
+{
+    height:20;
+    font-family:Verdana;
+    font-size:11px;
+    color:#FFFFFF;    
+    background:#C6012D;
+    width:175;
+	margin-left: 0px;
+}
+
+.submitbtn1-DISABLED
+{
+    height:20;
+    font-family:Verdana;
+    font-size:11px;
+    color:#FFFFFF;    
+    background:#E8E8E8;
+    width:150;
+}
+
+.headertext
+{
+    font-family:verdana;
+    font-size:12;
+    font-weight:bold;
+    text-align:left;
+    color:Maroon;
+}
+
+.headertext1
+{
+    font-family:Verdana;
+    font-size:11;
+    font-weight:bold;
+    text-align:left;
+    
+}
+
+.headertext2
+{
+    font-family:Verdana;
+    font-size:11;
+    font-weight:bold;
+    text-align:left;
+    BACKGROUND-COLOR: Black; 	
+    color:White
+}
+
+.headertext3
+{
+    font-family:Verdana;
+    font-size:15;
+    font-weight:bold;
+    text-align:left;
+    
+}
+
+.QuestionText
+{
+    font-family:verdana;
+    font-size:11px;
+ }
+
+/* 2013-08-18 Quick fix to align table cell in questions pages */
+.QuestionText td
+{
+    vertical-align:top;
+    padding:10px; 
+}
+ 
+ .InfoText
+{
+    font-family:verdana;
+    font-size:11px;
+    color:Red;
+    font-weight:bold;
+ }
+  .Warning2
+{
+    font-family:verdana;
+    font-size:16px;
+    color:Red;
+    font-weight:bold;
+ }
+ 
+ .dropdown
+{
+    font-family:verdana;
+    font-size:11;
+ }
+  .dropdown1
+{
+    font-family:verdana;
+    font-size:11;
+    width:250;
+ }
+ 
+ .infotext1
+ {
+	font-family:verdana;
+    font-size:11;
+    color:Navy;
+    font-style:italic;
+ }
+ 
+ .gridbtn
+{
+    height:18;
+    font-family:Verdana;
+    font-size:10px;   
+    width:60;
+}
+
+.lblPopup1
+{
+    font-family:verdana;
+    font-size:12px;
+    color:Red;
+    font-weight:bold;
+ }
+
+.lblPopup2
+{
+    font-family:verdana;
+    font-size:12px;
+ }
+.lblPopup3
+{
+    font-family:verdana;
+    font-size:11px;
+    color:Green;
+    font-weight:bold;
+ }
+ 
+
+.div-dtlist { OVERFLOW: auto; WIDTH: 450px; HEIGHT: 75px; text-align:center; padding-top:5px; } 
+.div-dtlist_noheight { OVERFLOW: auto; WIDTH: 450px; HEIGHT: 0px; text-align:center; padding-top:5px; } 
+.lockrow{ 	/*BORDER-RIGHT: silver 1px solid; 	*/
+    TOP: expression(document.getElementById("ctl00_Content_div_dtlist").scrollTop-2); 	
+    COLOR: white; 	
+    POSITION: relative; 	
+    BACKGROUND-COLOR: Black; 	
+    /*font-family:Verdana;
+    font-size:11;
+    font-weight:bold;
+    color:White;
+    text-align:left;*/
+    } 
+    
+.PnlAdmin
+{
+    padding-top:20px;
+}
+  
+
+.Grid
+{
+	font-family:verdana;
+    font-size:11;
+	table-layout:fixed;
+	width:40px;
+}
+
+.SummaryHeading
+{
+	font-family:Verdana;
+	font-size:12px;
+	color:Maroon;
+}
+
+.lnkBtn1
+{
+	font-family:Verdana;
+	font-size:12px;
+	font-weight:bold;
+}
+
+ .InfoText2
+{
+    font-family:verdana;
+    font-size:11;
+    color:Red;
+}
+
+.infotext3
+ {
+	font-family:verdana;
+    font-size:11;
+    /*font-style:italic;*/
+ }
+
+.infotext4
+ {
+	font-family:verdana;
+    font-size:11;
+    font-style:normal;
+ }
+  
+ .InfoBigText
+{
+    font-family:verdana;
+    font-size:18px;
+    color:Red;
+    font-weight:bold;
+ }
+ 
+ .InfoBigText1
+{
+    font-family:verdana;
+    font-size:18px;
+    color:Blue;
+    font-weight:bold;
+ }
+ 
+ .textPopUp
+{
+    font-family:verdana;
+    font-size:11px;
+    font-style:normal;
+   
+}
+.NewGrid
+{
+	font-family:verdana;    
+	font-size:11px;
+	width:100%;
+}
+ .mylist input {
+      width: 20px;
+      display: block;
+      float: left;
+     
+   }
+.mylist label {
+      width: 550px;      
+      display: block;
+      float: left;
+      font-family:verdana;
+      font-size :11;
+      
+   }
+   .mylist1 input {
+      width: 20px;
+      display: block;
+      float: left;
+     
+   }
+.mylist1 label {
+      width: 540px;
+      display: block;
+      float: left;
+      font-family:verdana;
+      font-size :11;
+      
+   }
+   .rbtest
+   {
+	width:4%;
+   }
+   .testspan
+   {
+	 width: 95%;
+      display: block;
+      float: left;
+      font-family:verdana;
+      font-size :11;
+   }
+   
+
+   .ddl_workaround {
+    width: 350px;
+    }
+
+	html>body .ddl_workaround {
+    width: 100%;
+    }

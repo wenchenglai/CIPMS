@@ -1,0 +1,133 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Common2.master.cs" Inherits="Common2" %>
+<%@ Register Src="CamperFooter.ascx" TagName="CamperFooter" TagPrefix="uc1" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>Foundation for Jewish Camp</title>
+
+    <link type="text/css" href="Style/jquery-ui-1.8.17.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+		<script type="text/javascript" language="javascript">
+		    debugger;
+		    $('#ctl00_Content_RadioBtnQ5_0').click(function() {
+		        debugger;
+		        alert('here');
+		        $('#dialog').dialog('open');
+		        return false;
+		    });
+		    $(function() {
+		        debugger;
+		        // Dialog			
+		        $('#dialog').dialog({
+		            autoOpen: false,
+		            width: 600,
+		            buttons: {
+		                "Ok": function() {
+		                    $(this).dialog("close");
+		                }
+		            }
+		        });
+		        debugger;
+		        // Dialog Link
+		        $('#ctl00_Content_RadioBtnQ5_0').click(function() {
+		            debugger;
+		            alert('here');
+		            $('#dialog').dialog('open');
+		            return false;
+		        });
+
+		    });
+		</script>
+    
+    <link rel="stylesheet" href="Style/CIPStyle.css" />
+
+    <script type="text/javascript" language="javascript">
+        javascript:window.history.forward(1);
+    </script>
+
+<%--    <script src='<%= this.ResolveClientUrl("~/CIPMS_JScript.js") %>' language="javascript"
+        type="text/javascript"></script>--%>
+
+    
+     <!-- Google Code for begin registration Conversion Page -->
+            <script type="text/javascript">
+                   var _gaq = _gaq || [];
+                  _gaq.push(['_setAccount', 'UA-6958336-1']);
+                  _gaq.push(['_setDomainName', '.onehappycamper.org']);
+                  _gaq.push(['_trackPageview']);
+                 
+                  (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                  })();
+           </script>
+</head>
+<body style="background-color: #F2F2F2">
+    <form id="form1" runat="server">
+    <table width="800px" cellpadding="0" cellspacing="0" border="0" style="height: 100%">
+        <tr>
+            <td colspan="2" align="right">
+                <img width="640px" src='<%= this.ResolveClientUrl("~/images/OHCHeader.png")%>' />
+            </td>
+        </tr>
+        <tr style="height: 100%">
+            <td style="width: 20%">
+                &nbsp;
+            </td>
+            <td style="width: 80%; background-color: #FFF" valign="top">
+                <table width="100%" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td>
+                            <p class="headertext">
+                                <asp:Label ID="lblHeading" runat="server"></asp:Label>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <asp:ContentPlaceHolder ID="Content" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 10px" valign="bottom">
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <uc1:CamperFooter ID="CamperFooter1" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 10px">
+            </td>
+        </tr>
+    </table>
+    
+    <input type="hidden" id="hdnCampSessionStartDate" runat="server" />
+    <input type="hidden" id="hdnCampSessionEndDate" runat="server" />
+    <input type="hidden" id="hdncampSeasonErrorMessage" runat="server" />
+
+    <script language="javascript" type="text/javascript">
+            var NoCampRegistrationRadioBtn = document.getElementById("ctl00_Content_RadioButtonQ7Option1");
+            if(NoCampRegistrationRadioBtn != null)
+            {
+                if('<%=Session["CampYear"]%>' != null)
+                {                
+                    if('<%=Session["CampYear"] %>' == "2011")
+                    {
+                        if(NoCampRegistrationRadioBtn.checked) 
+                        {
+                            document.getElementById("ctl00_Content_btnChkEligibility").disabled = true;   
+                        }
+                    }
+                }
+            }
+    </script>
+    
+    </form>
+    
+</body>
+</html>

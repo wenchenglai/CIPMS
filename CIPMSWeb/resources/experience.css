@@ -1,0 +1,567 @@
+/*----------------------------------------------------------------------------------------
+experience.css
+----------------------------------------------------------------------------------------*/
+
+/* typography
+----------------------------------------------------------------------------------------*/
+a { cursor: pointer; }
+
+#content.summer_of_fun .content_belly { padding-top: 2px; }
+#content.summer_of_fun .content_belly .column_a {
+	float: none;
+	border: 0;
+	height: auto;
+	min-height: none;
+	padding: 0;
+	width: auto;
+}
+
+/* map
+----------------------------------------------------------------------------------------*/
+#map {	
+	height: 457px; 
+	width: 756px;
+	z-index: 1;
+}
+	#map .map {
+		background: none;
+		height: 457px;
+		width: 756px;
+		z-index: 5;
+		margin: 0;
+		position: absolute;
+	}
+	#map .map .tooltip { 
+		position: absolute;
+	}	
+		#map .map .tooltip .tooltip_content {
+		}
+		#map .map .tooltip p {
+			text-indent: -9999px;
+		}
+	#map .map .tooltip a.close {
+		background: url(../img/map/map_nav/map_tooltip_close.png) no-repeat;
+		_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_nav/map_tooltip_close.png', sizingMethod='image');
+		_background: none;
+		display: block;
+		height: 18px;
+		width: 15px;
+		top: 0;
+		right: 0;
+		margin: 8px 12px 0 0;
+		position: relative;
+		text-indent: -9999px;
+		zoom: 1;
+	}
+	/* map nav */			
+	#map .map_toggle {
+		margin: 0 0 0 0;
+		right: 123px;
+		z-index: 10;
+		position: absolute;
+	}
+		#map .map_toggle a {
+			position: absolute;
+			text-indent: -9999px;
+		}
+			#map .map_toggle a.next {
+				background: url(../img/map/map_nav/map_next.jpg) no-repeat left center;
+				height: 39px;
+				width: 172px;
+				margin: 38px 0 0 0;
+				right: -66px;
+			}
+				#map .map_toggle a.next:hover { background-position: left bottom; }
+			#map .map_toggle a.back {
+				background: url(../img/map/map_nav/map_back.jpg) no-repeat left center;
+				height: 31px;
+				width: 172px;
+				margin: 77px 0 0 0;
+				right: -66px;
+			}
+				#map .map_toggle a.back:hover { background-position: left bottom; }
+				
+			#content #map .map_toggle a.inactive,
+			#content #map .map_toggle a.inactive:hover { background-position: left top; }
+			#map .map_signpost {
+				background: url(../img/map/map_nav/map_signpost.jpg) no-repeat;
+				height: 110px;
+				width: 26px;
+				margin: 108px 0 0 0;
+				padding: 0 0 0 0;
+			}
+	/* map 1 */
+	#map #map_1 {
+		background: url(../img/map/map_1/map_1_bg.jpg) no-repeat;
+		width: 756px;
+		height: 457px;
+		z-index: 10;
+	}
+		#map #map_1_points { }
+			#map #map_1_points a { 
+				position: absolute;
+				text-indent: -9999px;
+			}
+			#map #map_1_points #basketball { }
+				#map #map_1_points #basketball a.basketball {
+					background: url(../img/map/map_1/map_1_basketball.jpg) no-repeat left top;
+					height: 134px;
+					width: 156px;
+					margin: 52px 0 0 44px;
+					z-index: 15;
+				}
+					#map #map_1_points #basketball a.basketball.active,
+					#map #map_1_points #basketball a.basketball.active:hover,
+					#map #map_1_points #basketball a.basketball:hover {
+						background-position: left -134px;
+					}
+		
+				#map #map_1_points #basketball .tooltip {
+					margin: 170px 0 0 28px;
+				}
+					#map #map_1_points #basketball .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_basketball_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_basketball_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 97px;
+						width: 268px;
+					}
+					#map #map_1_points #basketball .tooltip .close { margin: 27px 12px 0 0; }
+
+			#map #map_1_points #medal { }
+				#map #map_1_points #medal a.medal {
+					background: url(../img/map/map_1/map_1_medal.jpg) no-repeat left top;
+					height: 113px;
+					width: 114px;
+					margin: 87px 0 0 213px;
+				}
+					#map #map_1_points #medal a.medal.active,
+					#map #map_1_points #medal a.medal.active:hover,
+					#map #map_1_points #medal a.medal:hover {
+						background-position: left -113px;
+					}
+				#map #map_1_points #medal .tooltip {
+					margin: 199px 0 0 186px;
+				}
+					#map #map_1_points #medal .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_medal_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_medal_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 120px;
+						width: 320px;
+					}
+					#map #map_1_points #medal .tooltip .close { margin: 26px 12px 0 0; }
+
+			#map #map_points #hebrew { }
+				#map #map_1_points #hebrew a.hebrew {
+					background: url(../img/map/map_1/map_1_hebrew.jpg) no-repeat left top;
+					height: 160px;
+					width: 167px;
+					margin: 188px 0 0 46px;
+				}
+					#map #map_1_points #hebrew a.hebrew.active,
+					#map #map_1_points #hebrew a.hebrew.active:hover,
+					#map #map_1_points #hebrew a.hebrew:hover {
+						background-position: left -160px;
+					}
+				#map #map_1_points #hebrew .tooltip {
+					margin: 78px 0 0 54px;
+				}
+					#map #map_1_points #hebrew .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_hebrew_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_hebrew_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 146px;
+						width: 324px;
+					}
+					#map #map_1_points #hebrew .tooltip .close { margin: 6px 12px 0 0; }
+
+			#map #map_1_points #rollercoaster { }
+				#map #map_1_points #rollercoaster a.rollercoaster {
+					background: url(../img/map/map_1/map_1_rollercoaster.jpg) no-repeat left top;
+					height: 170px;
+					width: 193px;
+					margin: 133px 0 0 349px;
+				}
+					#map #map_1_points #rollercoaster a.rollercoaster.active,
+					#map #map_1_points #rollercoaster a.rollercoaster.active:hover,
+					#map #map_1_points #rollercoaster a.rollercoaster:hover {
+						background-position: left -170px;
+					}
+				#map #map_1_points #rollercoaster .tooltip {
+					margin: 26px 0 0 257px;
+				}
+					#map #map_1_points #rollercoaster .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_rollercoaster_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_rollercoaster_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 144px;
+						width: 252px;
+					}
+					#map #map_1_points #rollercoaster .tooltip .close { margin: 7px 11px 0 0; }
+
+			#map #map_1_points #bonfire { }
+				#map #map_1_points #bonfire a.bonfire {
+					background: url(../img/map/map_1/map_1_bonfire.jpg) no-repeat left top;
+					height: 130px;
+					width: 123px;
+					margin: 301px 0 0 211px;
+				}
+					#map #map_1_points #bonfire a.bonfire.active,
+					#map #map_1_points #bonfire a.bonfire.active:hover,
+					#map #map_1_points #bonfire a.bonfire:hover {
+						background-position: left -130px;
+					}
+				#map #map_1_points #bonfire .tooltip {
+					margin: 188px 0 0 68px;
+				}
+					#map #map_1_points #bonfire .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_bonfire_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_bonfire_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 121px;
+						width: 344px;
+					}
+					#map #map_1_points #bonfire .tooltip .close { margin: 6px 11px 0 0; }
+
+			#map #map_1_points #banner { }
+				#map #map_1_points #banner a.banner {
+					background: url(../img/map/map_1/map_1_banner.jpg) no-repeat left top;
+					height: 138px;
+					width: 152px;
+					margin: 251px 0 0 529px;
+				}
+					#map #map_1_points #banner a.banner.active,
+					#map #map_1_points #banner a.banner.active:hover,
+					#map #map_1_points #banner a.banner:hover {
+						background-position: left -138px;
+					}
+				#map #map_1_points #banner .tooltip {
+					margin: 132px 0 0 348px;
+				}
+					#map #map_1_points #banner .tooltip .tooltip_content {
+						background: url(../img/map/map_1/map_1_banner_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_1/map_1_banner_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 152px;
+						width: 333px;
+					}
+					#map #map_1_points #banner .tooltip .close { margin: 7px 12px 0 0; }
+
+	/* map 2 */
+	#map #map_2 {
+		background: url(../img/map/map_2/map_2_bg.jpg) no-repeat;
+		width: 756px;
+		height: 457px;
+	}
+		#map #map_2_points { }
+			#map #map_2_points a { 
+				position: absolute;
+				text-indent: -9999px;
+			}
+			#map #map_2_points #letter { }		
+				#map #map_2_points #letter a.letter {
+					background: url(../img/map/map_2/map_2_letter.jpg) no-repeat left top;
+					height: 131px;
+					width: 138px;
+					margin: 25px 0 0 46px;
+				}
+					#map #map_2_points #letter a.letter.active,
+					#map #map_2_points #letter a.letter.active:hover,
+					#map #map_2_points #letter a.letter:hover {
+						background-position: left -131px;
+					}
+				#map #map_2_points #letter .tooltip {
+					margin: 142px 0 0 41px;
+				}
+					#map #map_2_points #letter .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_letter_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_letter_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 153px;
+						width: 306px;
+					}
+					#map #map_2_points #letter .tooltip .close { margin: 26px 12px 0 0; }
+
+			#map #map_2_points #window { }
+				#map #map_2_points #window a.window {
+					background: url(../img/map/map_2/map_2_window.jpg) no-repeat left top;
+					height: 136px;
+					width: 153px;
+					margin: 30px 0 0 321px;
+				}
+					#map #map_2_points #window a.window.active,
+					#map #map_2_points #window a.window.active:hover,
+					#map #map_2_points #window a.window:hover {
+						background-position: left -136px;
+					}
+				#map #map_2_points #window .tooltip {
+					margin: 157px 0 0 309px;
+				}
+					#map #map_2_points #window .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_window_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_window_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 126px;
+						width: 311px;
+					}
+					#map #map_2_points #window .tooltip .close { margin: 26px 12px 0 0; }
+
+			#map #map_2_points #candles { }
+				#map #map_2_points #candles a.candles {
+					background: url(../img/map/map_2/map_2_candles.jpg) no-repeat left top;
+					height: 135px;
+					width: 121px;
+					margin: 135px 0 0 180px;
+				}
+					#map #map_2_points #candles a.candles.active,
+					#map #map_2_points #candles a.candles.active:hover,
+					#map #map_2_points #candles a.candles:hover {
+						background-position: left -135px;
+					}
+				#map #map_2_points #candles .tooltip {
+					margin: 254px 0 0 151px;
+				}
+					#map #map_2_points #candles .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_candles_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_candles_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 152px;
+						width: 290px;
+					}
+					#map #map_2_points #candles .tooltip .close { margin: 27px 12px 0 0; }
+
+			#map #map_2_points #flag { }
+				#map #map_2_points #flag a.flag {
+					background: url(../img/map/map_2/map_2_flag.jpg) no-repeat left top;
+					height: 150px;
+					width: 121px;
+					margin: 208px 0 0 24px;
+				}
+					#map #map_2_points #flag a.flag.active,
+					#map #map_2_points #flag a.flag.active:hover,
+					#map #map_2_points #flag a.flag:hover {
+						background-position: left -150px;
+					}
+				#map #map_2_points #flag .tooltip {
+					margin: 75px 0 0 38px;
+				}
+					#map #map_2_points #flag .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_flag_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_flag_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 147px;
+						width: 292px;
+					}
+					#map #map_2_points #flag .tooltip .close { margin: 6px 12px 0 0; }
+
+
+			#map #map_2_points #soccer { }
+				#map #map_2_points #soccer a.soccer {
+					background: url(../img/map/map_2/map_2_soccer.jpg) no-repeat left top;
+					height: 149px;
+					width: 157px;
+					margin: 277px 0 0 254px;
+				}
+					#map #map_2_points #soccer a.soccer.active,
+					#map #map_2_points #soccer a.soccer.active:hover,
+					#map #map_2_points #soccer a.soccer:hover {
+						background-position: left -149px;
+					}
+				#map #map_2_points #soccer .tooltip {
+					margin: 165px 0 0 258px;
+				}
+					#map #map_2_points #soccer .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_soccer_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_soccer_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 115px;
+						width: 225px;
+					}
+					#map #map_2_points #soccer .tooltip .close { margin: 6px 12px 0 0; }
+
+			#map #map_2_points #beds { }
+				#map #map_2_points #beds a.beds {
+					background: url(../img/map/map_2/map_2_beds.jpg) no-repeat left top;
+					height: 181px;
+					width: 149px;
+					margin: 195px 0 0 460px;
+				}
+					#map #map_2_points #beds a.beds.active,
+					#map #map_2_points #beds a.beds.active:hover,
+					#map #map_2_points #beds a.beds:hover {
+						background-position: left -181px;
+					}
+				#map #map_2_points #beds .tooltip {
+					margin: 115px 0 0 282px;
+				}
+					#map #map_2_points #beds .tooltip .tooltip_content {
+						background: url(../img/map/map_2/map_2_beds_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_2/map_2_beds_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 120px;
+						width: 336px;
+					}
+					#map #map_2_points #beds .tooltip .close { margin: 6px 12px 0 0; }
+
+	/* map 3 */
+	#map #map_3 {
+		background: url(../img/map/map_3/map_3_bg.jpg) no-repeat;
+		width: 756px;
+		height: 457px;
+	}
+		#map #map_3_points { }
+			#map #map_3_points a { 
+				position: absolute;
+				text-indent: -9999px;
+			}
+			#map #map_3_points #guitar { }
+				#map #map_3_points #guitar a.guitar {
+					background: url(../img/map/map_3/map_3_guitar.jpg) no-repeat left top;
+					height: 137px;
+					width: 148px;
+					margin: 38px 0 0 45px;
+				}
+					#map #map_3_points #guitar a.guitar.active,
+					#map #map_3_points #guitar a.guitar.active:hover,
+					#map #map_3_points #guitar a.guitar:hover {
+						background-position: left -137px;
+					}
+				#map #map_3_points #guitar .tooltip {
+					margin: 177px 0 0 47px;
+				}
+					#map #map_3_points #guitar .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_guitar_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_guitar_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 127px;
+						width: 326px;
+					}
+					#map #map_3_points #guitar .tooltip .close { margin: 26px 13px 0 0; }
+
+			#map #map_3_points #goggles { }
+				#map #map_3_points #goggles a.goggles {
+					background: url(../img/map/map_3/map_3_goggles.jpg) no-repeat left top;
+					height: 106px;
+					width: 156px;
+					margin: 41px 0 0 247px;
+				}
+					#map #map_3_points #goggles a.goggles.active,
+					#map #map_3_points #goggles a.goggles.active:hover,
+					#map #map_3_points #goggles a.goggles:hover {
+						background-position: left -106px;
+					}
+				#map #map_3_points #goggles .tooltip {
+					margin: 137px 0 0 242px;
+				}
+					#map #map_3_points #goggles .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_goggles_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_goggles_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 95px;
+						width: 237px;
+					}
+					#map #map_3_points #goggles .tooltip .close { margin: 25px 12px 0 0; }
+					
+			#map #map_3_points #necklace { }
+				#map #map_3_points #necklace a.necklace {
+					background: url(../img/map/map_3/map_3_necklace.jpg) no-repeat left top;
+					height: 151px;
+					width: 122px;
+					margin: 149px 0 0 347px;
+				}
+					#map #map_3_points #necklace a.necklace.active,
+					#map #map_3_points #necklace a.necklace.active:hover,
+					#map #map_3_points #necklace a.necklace:hover {
+						background-position: left -151px;
+					}
+				#map #map_3_points #necklace .tooltip {
+					margin: 65px 0 0 220px;
+				}
+					#map #map_3_points #necklace .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_necklace_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_necklace_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 120px;
+						width: 275px;
+					}
+					#map #map_3_points #necklace .tooltip .close { margin: 7px 12px 0 0; }
+
+			#map #map_3_points #notes { }
+				#map #map_3_points #notes a.notes {
+					background: url(../img/map/map_3/map_3_notes.jpg) no-repeat left top;
+					height: 125px;
+					width: 133px;
+					margin: 160px 0 0 186px;
+				}
+					#map #map_3_points #notes a.notes.active,
+					#map #map_3_points #notes a.notes.active:hover,
+					#map #map_3_points #notes a.notes:hover {
+						background-position: left -125px;
+					}
+				#map #map_3_points #notes .tooltip {
+					margin: 48px 0 0 176px;
+				}
+					#map #map_3_points #notes .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_notes_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_notes_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 150px;
+						width: 304px;
+					}
+					#map #map_3_points #notes .tooltip .close { margin: 7px 12px 0 0; }
+
+			#map #map_3_points #boat { }
+				#map #map_3_points #boat a.boat {
+					background: url(../img/map/map_3/map_3_boat.jpg) no-repeat left top;
+					height: 127px;
+					width: 157px;
+					margin: 293px 0 0 119px;
+				}
+					#map #map_3_points #boat a.boat.active,
+					#map #map_3_points #boat a.boat.active:hover,
+					#map #map_3_points #boat a.boat:hover {
+						background-position: left -127px;
+					}
+				#map #map_3_points #boat .tooltip {
+					margin: 202px 0 0 73px;
+				}
+					#map #map_3_points #boat .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_boat_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_boat_tooltip.png', sizingMethod='image');
+						_background: none;
+						height: 93px;
+						width: 223px;
+					}
+					#map #map_3_points #boat .tooltip .close { margin: 7px 12px 0 0; }
+
+			#map #map_3_points #tower { }
+				#map #map_3_points #tower a.tower {
+					background: url(../img/map/map_3/map_3_tower.jpg) no-repeat left top;
+					height: 186px;
+					width: 121px;
+					margin: 248px 0 0 482px;
+				}
+					#map #map_3_points #tower a.tower.active,
+					#map #map_3_points #tower a.tower.active:hover,
+					#map #map_3_points #tower a.tower:hover {
+						background-position: left -186px;
+					}
+				#map #map_3_points #tower .tooltip {
+					margin: 146px 0 0 367px;
+				}
+					#map #map_3_points #tower .tooltip .tooltip_content {
+						background: url(../img/map/map_3/map_3_tower_tooltip.png) no-repeat;
+						_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/map/map_3/map_3_tower_tooltip.png', sizingMethod='image');
+						_background: none;	
+						height: 119px;
+						width: 257px;
+					}
+					#map #map_3_points #tower .tooltip .close { margin: 7px 12px 0 0; }
+		
+/* .specialty
+----------------------------------------------------------------------------------------*/
+.specialty img {
+	float: right;
+	margin: 0 0 0 20px;
+}

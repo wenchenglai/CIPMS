@@ -1,0 +1,715 @@
+/* one happy camper base & landing
+----------------------------------------------------------------------------------------*/
+body.ohc { 
+	background: #fff url(../img/bg/bg_body_ohc.png) repeat-x left top;
+	_background: #fff url(../img/bg/bg_body_ohc.gif) repeat-x left top;
+}
+
+body.ohc #content { padding: 0 0 70px 0; }
+
+body.ohc #nav_ohc a {
+	color: #fff;
+	height: 35px;
+	text-indent: -9999px;
+	display: block;
+	background-image: url(../img/nav/nav_ohc_ohc.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+
+body.ohc #nav_ohc a:hover { background-position: 0px -35px;}
+
+body.ohc #nav_utility ul li a {
+	color: #fff;
+	height: 36px;
+	text-indent: -9999px;
+	display: block;
+	background-image: url(../img/nav/nav_utility_ohc.gif);
+	background-repeat: no-repeat;
+}
+
+body.ohc #nav_social ul li a {
+	color: #fff;
+	height: 20px;
+	text-indent: -9999px;
+	display: block;
+	background-image: url(../img/nav/nav_social_icons_ohc.gif);
+	background-repeat: no-repeat;
+}
+
+body.ohc #nav_main ul li a {
+	color: #fff;
+	height: 43px;
+	display: block;
+	background-repeat: no-repeat;
+	background-image: url(../img/nav/nav_main_ohc.gif);
+}
+
+body.ohc #nav_main ul li .overlay .overlay_content {
+	padding: 4px 16px 25px 16px;
+	background: url(../img/bg/bg_subnav_ohc.png) no-repeat left bottom;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/static/website/img/bg/bg_subnav_ohc.png', sizingMethod='scale');
+	_background: none;
+	zoom: 1;
+}
+
+body.ohc #nav_main ul li .overlay li {
+	float: none;
+	color: #fff;
+	text-transform: none;
+	text-indent: 0;
+	font-size: .7em;
+	font-weight: bold;
+	border-bottom: 2px solid #61c250;
+}
+	body.ohc #container #nav_main ul li .overlay li a {
+		color: #fff;
+		width: auto;
+		display: block;
+		height: 1%;
+		background: none;
+		_background: #8cdc7a;
+		padding: 5px 0 6px 0;
+	}
+	body.ohc #nav_main ul li .overlay li.last { border: 0; }
+	body.ohc #container #wrapper #nav_main ul li .overlay li a:hover { color: #327823; }
+	
+.ohc_hero {
+	height: 431px;
+	margin: 0 -320px;
+	padding: 0 320px;
+	position: relative;
+}
+
+.ohc_hero .ohc_hero_image {
+	height: 431px;
+	left: 150px;
+	position: absolute;
+	top: 0;
+	width: 1300px;
+	}
+	
+.ohc_hero .ohc_hero_image .ohc_hero_btn {	
+	left: 692px;
+	top: 294px;
+	position: absolute;
+}
+		
+.ohc_hero .ohc_hero_image .ohc_hero_btn a.ohc_findouthow {
+	background: url(../img/ohc/ohc_hero_btn_findouthow.png) no-repeat;
+	_background: url(../img/ohc/ohc_hero_btn_findouthow8bit.png) no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 59px;
+	width: 183px;	
+}
+	
+.ohc_hero .ohc_hero_image .ohc_hero_btn a.ohc_findouthow { background-position: 0px 0px; }
+.ohc_hero .ohc_hero_image .ohc_hero_btn a.ohc_findouthow:hover { background-position: 0px -60px; }	
+	
+.ohc_touts {
+	margin: -40px 0 0 0;
+	position: relative;
+	z-index: 2;
+}
+
+.ohc_touts .ohc_tout {
+	height: 310px;	
+	float: left;
+}
+
+.ohc_touts .ohc_tout#ohc_tout_1 { width: 224px; padding-right: 19px; }
+.ohc_touts .ohc_tout#ohc_tout_2 { width: 225px; padding-right: 19px; }
+.ohc_touts .ohc_tout#ohc_tout_3 { width: 228px; padding-right: 19px; }
+.ohc_touts .ohc_tout#ohc_tout_4 { width: 225px; }
+
+.ohc_touts .ohc_tout h3 a {
+	display: block;
+	background: url(../img/tout/touts_home_ohc.png) no-repeat;
+	_background: url(../img/tout/touts_home_ohc_8bit.png) no-repeat;
+	height: 174px;	
+}
+
+.ohc_touts .ohc_tout#ohc_tout_1 h3 a { background-position: 0px 0px; }
+.ohc_touts .ohc_tout#ohc_tout_2 h3 a { background-position: -251px 0px; }
+.ohc_touts .ohc_tout#ohc_tout_3 h3 a { background-position: -494px 0px; }
+.ohc_touts .ohc_tout#ohc_tout_4 h3 a { background-position: -743px 0px; }
+
+.ohc_touts .ohc_tout#ohc_tout_1 h3 a:hover { background-position: 0px -174px; }
+.ohc_touts .ohc_tout#ohc_tout_2 h3 a:hover { background-position: -251px -174px; }
+.ohc_touts .ohc_tout#ohc_tout_3 h3 a:hover { background-position: -494px -174px; }
+.ohc_touts .ohc_tout#ohc_tout_4 h3 a:hover { background-position: -743px -174px; }
+
+.ohc_touts .ohc_tout h3 {
+	color: #FFFFFF;
+	font-size: 1.8em;
+	text-indent: -9999px;
+}
+
+.ohc_touts .ohc_tout p {
+	line-height: 1.3;
+	padding: 0px 10px 0px 10px;
+}
+
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link {
+	background: url(../img/ohc/ohc_tout_steps_btns.gif) no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 25px;
+	width: 125px;	
+}
+
+.ohc_touts .ohc_tout .ohc_tout_btn {
+	padding: 20px 0px 0px 10px;
+}
+
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.learn_more { background-position: 0px 0px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.find_out_more { background-position: 0px -25px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.find_a_camp { background-position: 0px -50px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.apply_today { background-position: 0px -75px; }
+
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.learn_more:hover { background-position: -125px 0px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.find_out_more:hover { background-position: -125px -25px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.find_a_camp:hover { background-position: -125px -50px; }
+.ohc_touts .ohc_tout .ohc_tout_btn .ohc_tout_btn_link.apply_today:hover { background-position: -125px -75px; }
+
+body.ohc .modules {
+	border-top: 3px solid #e5e5e5;
+	padding: 2px 0 0 0;
+}
+	body.ohc .modules .module_wrap { 
+		padding: 31px 0 0 10px;
+		border-top: 1px solid #e5e5e5;
+	}
+	
+body.ohc .modules .ohc_module_1 { float: left; width: 224px; padding-right: 19px; }
+body.ohc .modules .ohc_module_2 { float: left; width: 225px; padding-right: 19px; }
+body.ohc .modules .ohc_module_3 { float: left; width: 228px; padding-right: 19px; }
+body.ohc .modules .ohc_module_4 { float: left; width: 210px; }
+
+body.ohc .modules h2 {
+	color: #998774;
+	font-size: 1.9em;
+	overflow: hidden;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-indent: -9999px;
+	background: url(../img/hdr/hdr_module_home_ohc.gif) no-repeat;
+	height: 20px;
+	margin: 0 0 9px 0;
+}
+
+body.ohc .modules h2.ohc_hdr_questions { background-position: left 0px; }
+body.ohc .modules h2.ohc_hdr_findacamp { background-position: left -20px; }
+body.ohc .modules h2.ohc_hdr_fromtheblog { background-position: left -40px; }
+body.ohc .modules h2.ohc_hdr_donate { background-position: left -60px; }
+
+.ohc_module_btn {
+	padding-top: 10px;
+}
+
+.ohc_module_btn_link {
+	background: url(../img/ohc/ohc_module_btns.gif) no-repeat;
+	display: block;
+	overflow: hidden;
+	text-indent: -9999px;
+	height: 27px;
+}
+
+.ohc_module_btn .ohc_module_btn_link.benefitsofjewishcamp { background-position: 0px 0px; width: 171px; }
+.ohc_module_btn .ohc_module_btn_link.getstarted { background-position: 0px -27px; width: 92px; }
+.ohc_module_btn .ohc_module_btn_link.readnow { background-position: 0px -54px; width: 85px; }
+.ohc_module_btn .ohc_module_btn_link.donate { background-position: 0px -81px; width: 69px; }
+.ohc_module_btn .ohc_module_btn_link.questions { background-position: 0px -108px; width: 61px; }
+
+.ohc_module_btn .ohc_module_btn_link.benefitsofjewishcamp:hover { background-position: -200px 0px; }
+.ohc_module_btn .ohc_module_btn_link.getstarted:hover { background-position: -200px -27px; }
+.ohc_module_btn .ohc_module_btn_link.readnow:hover { background-position: -200px -54px; }
+.ohc_module_btn .ohc_module_btn_link.donate:hover { background-position: -200px -81px; }
+.ohc_module_btn .ohc_module_btn_link.questions:hover { background-position: -200px -108px; }
+
+/* one happy camper base interior
+----------------------------------------------------------------------------------------*/
+body.ohc #breadcrumbs li.active {
+	background: none;
+	color: #61c250;
+}
+
+body.ohc #content .content_head p {
+	color: #61c250;
+	font-weight: bold;
+	font-size: 1.5em;
+	line-height: 1.3;
+	padding: 0 0 10px;
+	width: 520px;
+}
+
+body.ohc #sidebar h2.ohc a {
+	background: url(../img/hdr/hdr_ohc.gif) no-repeat;
+	color: #61c250;
+	width: 124px;
+	height: 55px;
+	display: block;
+}
+
+body.ohc #sidebar h2.ohc a:hover {
+	background-position: 0px -56px;
+}
+
+body.ohc #sidebar li.active a,
+body.ohc #container #wrapper #sidebar li.active a:hover {
+	color: #61c250;
+}
+
+body.ohc .content_head#ohc_about {
+	background: url(../img/bg/bg_content_about_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 194px;
+}
+
+body.ohc .column_a .block {
+	background: none;
+}
+
+body.ohc .column_b .module_right {
+	background: url(../img/bg/bg_double_bars.gif) repeat-x left bottom;
+	display: block;
+	padding: 0 0 6px;
+	width: 229px;
+	margin: 0;
+}
+
+body.ohc .column_b .module_right.last {
+	background: none;
+}
+
+body.ohc .column_b .module_right p {
+	width: 180px;
+	padding: 5px 0 5px 0;
+}
+
+body.ohc .ohc_module_right {
+	background: url(../img/ohc/ohc_modules_bgs.gif) no-repeat;
+	width: 210px;
+	height: 220px;
+	display: block;
+}
+
+body.ohc .ohc_module_right#ohc_module_findacamp { background-position: 0px 0px; }
+body.ohc .ohc_module_right#ohc_module_applyforagrant { background-position: 0px -220px; }
+body.ohc .ohc_module_right#ohc_module_blog { background: none; }
+
+body.ohc .ohc_module_right h4.ohc_module_big_btn a {
+	background: url(../img/ohc/ohc_module_right_big_btns.png) no-repeat;
+	_background: url(../img/ohc/ohc_module_right_big_btns_8bit.png) no-repeat;	
+	width: 115px;
+	height: 135px;
+	display: block;
+	text-indent: -9999px;
+}
+
+body.ohc .ohc_module_right#ohc_module_findacamp h4.ohc_module_big_btn a { background-position: 0px 0px; }
+body.ohc .ohc_module_right#ohc_module_applyforagrant h4.ohc_module_big_btn a { background-position: -115px 0px; }
+body.ohc .ohc_module_right#ohc_module_blog h4.ohc_module_big_btn a { background-position: -230px 0px; }
+
+body.ohc .ohc_module_right#ohc_module_findacamp h4.ohc_module_big_btn a:hover { background-position: 0px -135px; }
+body.ohc .ohc_module_right#ohc_module_applyforagrant h4.ohc_module_big_btn a:hover { background-position: -115px -135px; }
+body.ohc .ohc_module_right#ohc_module_blog h4.ohc_module_big_btn a:hover { background-position: -230px -135px; }
+
+body.ohc .ohc_module_right a.ohc_module_right_btn {
+	background: url(../img/ohc/ohc_module_right_btns.png) no-repeat;
+	_background: url(../img/ohc/ohc_module_right_btns_8bit.png) no-repeat;	
+	width: 150px;
+	height: 26px;
+	display: block;
+	text-indent: -9999px;
+}
+
+body.ohc .ohc_module_right#ohc_module_findacamp a.ohc_module_right_btn { background-position: 0px 0px; }
+body.ohc .ohc_module_right#ohc_module_applyforagrant a.ohc_module_right_btn { background-position: 0px -26px; }
+body.ohc .ohc_module_right#ohc_module_blog a.ohc_module_right_btn { background-position: 0px -52px; }
+
+body.ohc .ohc_module_right#ohc_module_findacamp a.ohc_module_right_btn:hover { background-position: -150px 0px; }
+body.ohc .ohc_module_right#ohc_module_applyforagrant a.ohc_module_right_btn:hover { background-position: -150px -26px; }
+body.ohc .ohc_module_right#ohc_module_blog a.ohc_module_right_btn:hover { background-position: -150px -52px; }
+
+/* one happy camper apply form
+----------------------------------------------------------------------------------------*/
+body.ohc .content_head#ohc_apply {
+	background: url(../img/bg/bg_content_apply_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 287px;
+}
+
+body.ohc #container.container #wrapper #content.apply_ohc .content_belly {
+	background: none;
+}
+
+body.ohc .content_head#ohc_apply h1{
+	display: none;
+}
+
+body.ohc a.ohc_form_btn {
+	background: url(../img/ohc/ohc_apply_form_btns.gif) no-repeat;
+	display: block;
+	text-indent: -9999px;
+}
+
+body.ohc #ohc_apply_container {
+	width: 767px;
+	padding: 20px 0;
+} 
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box {
+	float: left;
+	width: 345px;
+	height: 380px;
+	background: url(../img/ohc/ohc_apply_tips_bg.gif) no-repeat;
+}
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy { padding: 105px 25px 0px 25px; }
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy ol { list-style-type: decimal; }
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy ol li { font-size: 1.5em; color: #FFFFFF; margin-left: 25px; }
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy ol li a { color: #98ed89; text-decoration: underline; }
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy ol li a:hover { color: #FFFFFF !important; text-decoration: underline; }
+
+body.ohc #ohc_apply_container .ohc_apply_tips_box .ohc_apply_tips_box_copy p { font-size: 1.5em; color: #FFFFFF; padding-top: 5px; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box { float: right; width: 400px; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user, body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user { width: 325px; border: 4px solid #61c250; padding: 20px; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user p { font-weight: bold; padding-bottom: 10px; font-size: 1.5em; }
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user p a.forgot { padding-top: 10px; float: right; color: #ec068d; clear: both; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user { width: 325px; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box a { color: #ea1589; }
+body.ohc #ohc_apply_container .ohc_apply_user_box a:hover { text-decoration: underline; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user a.ohc_form_btn.register { float: right; display: block; }
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user fieldset.ohc_user a.ohc_form_btn.signin { float: right; display: block; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user .field, body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user fieldset.ohc_user .field { width: 325px; clear: both; height: 35px; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user .field input,
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user fieldset.ohc_user .field input {
+	width: 181px;
+	float: left;
+	background: #FFFFFF;
+	border: 2px solid #D1D1D1;
+	color: #424242;
+	display: block;
+	font-size: 1.2em;
+	padding: 4px 5px;
+}
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user .field .label_container, body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user fieldset.ohc_user .field .label_container { width: 130px; float: left; }
+
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_new_user fieldset.ohc_user .field .label_container label,
+body.ohc #ohc_apply_container .ohc_apply_user_box .ohc_apply_existing_user fieldset.ohc_user .field .label_container label {
+ 	color: #5E5046;
+	display: block;
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-top: 5px;
+}
+
+body.ohc a.ohc_form_btn.register { background-position: 0px 0px; width: 102px; height: 30px; }
+body.ohc a.ohc_form_btn.register:hover { background-position: 0px -32px; }
+
+body.ohc a.ohc_form_btn.previous { background-position: -104px 0px; width: 96px; height: 32px; }
+body.ohc a.ohc_form_btn.previous:hover { background-position: -104px -32px; }
+
+body.ohc a.ohc_form_btn.next { background-position: -202px 0px; width: 79px; height: 32px; }
+body.ohc a.ohc_form_btn.next:hover { background-position: -202px -32px; }
+
+body.ohc a.ohc_form_btn.save_continue { background-position: -282px 0px; width: 167px; height: 32px; }
+body.ohc a.ohc_form_btn.save_continue:hover { background-position: -282px -32px; }
+
+body.ohc a.ohc_form_btn.signin { background-position: -449px 0px; width: 103px; height: 30px; }
+body.ohc a.ohc_form_btn.signin:hover { background-position: -449px -32px; }
+
+body.ohc .ohc_fieldset {
+	padding-top: 20px;
+	float: left;
+	width: 800px;	
+}
+
+body.ohc .ohc_fieldset .field {
+	clear: both;
+}
+
+body.ohc .ohc_fieldset .field label {
+	color: #5E5046;
+	display: block;
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-left: 5px;
+}
+
+body.ohc .ohc_fieldset fieldset.common .text input {
+	float: left;
+}
+
+body.ohc .ohc_fieldset fieldset.common .field,
+body.ohc .ohc_fieldset fieldset.common .optional_field {
+	padding: 10px 0 0 0;
+}
+
+body.ohc .ohc_fieldset .optional_field input {
+	background: none;
+	border: 2px solid #D1D1D1;
+	color: #424242;
+	display: static;
+	font-size: 1.2em;
+	padding: 4px 5px;
+}
+
+body.ohc .ohc_fieldset .field.needed {
+	background: url(../img/ohc/ohc_icon_form_required.gif) no-repeat scroll 0 15px;
+	height: 20px;
+}
+
+body.ohc .ohc_fieldset .radiobox {
+	color: #5E5046;
+	position: relative;
+	font-size: 1.4em;
+	font-weight: bold;	
+}
+
+body.ohc .ohc_fieldset .field .label_container {
+	float: left;
+	width: 200px;
+	padding: 0 0 0 10px;
+}
+
+body.ohc .ohc_fieldset .field .sidenote {
+	float: left;
+	width: 150px;
+	color: #5E5046;
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-left: 10px;	
+}
+
+body.ohc .ohc_fieldset .optional_field .sidenote {
+	width: 100px;
+	float: right;
+	padding-left: 10px;
+	margin-top: 5px;
+}
+
+body.ohc .ohc_fieldset .optional_field .sidenote a.whatisthis {
+	text-decoration: underline;
+	color: #ec068d;
+	font-size: 1.4em;
+	font-weight: bold;	
+}
+
+body.ohc .ohc_fieldset .optional_field {
+	float: left;
+}
+
+body.ohc .ohc_fieldset .optional_field .optional_field_label_container {
+	float: left;
+	width: 420px;
+}
+
+body.ohc .ohc_fieldset .optional_field .optional_field_label_container label {
+	color: #5E5046;
+	display: block;
+	font-size: 1.4em;
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+body.ohc .ohc_fieldset .buttons_container {
+	width: 558px;
+	display: block;
+	float: left;
+	padding: 40px 0 20px 15px;
+	height: 32px;
+}
+
+body.ohc .ohc_fieldset .buttons_container a.ohc_form_btn.save_continue { display: block; float: left; }
+body.ohc .ohc_fieldset .buttons_container a.ohc_form_btn.next { display: block; float: right; }
+
+body.ohc .content_belly #ohc_apply_2.block .program_description_container { width: 750px; padding-top: 30px; }
+
+body.ohc .content_belly #ohc_apply_2.block .program_description_container .program_image { width: 230px; float: left; }
+body.ohc .content_belly #ohc_apply_2.block .program_description_container .program_copy { width: 520px; float: left; }
+body.ohc .content_belly #ohc_apply_2.block .program_description_container .program_copy p, body.ohc .content_belly #ohc_apply_confirmation.block p { font-size: 1.2em; padding-bottom: 10px; }
+body.ohc .content_belly #ohc_apply_2.block .program_description_container .program_copy p.standout, body.ohc .content_belly #ohc_apply_confirmation.block p.standout { font-size: 1.2em; color: #01b0d9; font-weight: bold; }
+body.ohc .content_belly #ohc_apply_2.block .program_description_container p a, body.ohc .content_belly #ohc_apply_confirmation.block p a { color: #ef42a7; }
+
+body.ohc .content_belly #ohc_apply_2.block .buttons_container {
+	position: relative;
+	padding: 40px 0 20px 0;
+	width: 750px;
+	height: 32px;
+}
+
+body.ohc .content_belly #ohc_apply_2.block .buttons_container a.ohc_form_btn.previous { float: left;  display: block; }
+body.ohc .content_belly #ohc_apply_2.block .buttons_container a.ohc_form_btn.save_continue { left: 300px; display: block; position: absolute; }
+body.ohc .content_belly #ohc_apply_2.block .buttons_container a.ohc_form_btn.next { float: right; display: block; }
+
+body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container {
+	background: url(../img/bg/bg_double_bars.gif) repeat-x scroll left top;
+	float: left;
+	display: block;
+	font-size: 1.2em;
+	width: 750px;
+	color: #5E5046;	
+	padding: 20px 0 20px 0;	
+}
+
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container {
+	background: url(../img/bg/bg_double_bars.gif) repeat-x scroll left top;
+	float: left;
+	display: block;
+	font-size: 1.2em;
+	width: 750px;
+	color: #5E5046;	
+	padding: 20px 0 20px 0;
+}
+
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container .contact_container, body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container .contact_container { float: left; width: 300px; }
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container .phone_container, body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container .phone_container { float: left; width: 250px; }
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container .email_container, body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container .email_container { float: left; width: 200px; text-align: right; }
+
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container span.standout, body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container span.standout { color: #01b0d9;}
+body.ohc .content_belly #ohc_apply_2.block .program_contact_container a, body.ohc .content_belly #ohc_apply_confirmation.block .program_contact_container a { color: #ef42a7; }
+/* one happy camper eligibility
+----------------------------------------------------------------------------------------*/
+
+body.ohc .content_head#ohc_eligibility {
+	background: url(../img/bg/bg_content_eligibility_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 194px;
+}
+
+body.ohc .block#eligibility ul, body.ohc .block#about ul, body.ohc .block#contact ul {
+	list-style-type: disc;
+	margin-left: 30px;
+	font-size: 1.2em;
+	color: #5E5046;
+	padding-bottom: 10px;
+}
+
+body.ohc .block#eligibility ul li, body.ohc .block#eligibility ul li li,
+body.ohc .block#about ul li, body.ohc .block#about ul li li,
+body.ohc .block#contact ul li, body.ohc .block#contact ul li li {
+	padding: 5px;
+}
+
+body.ohc .block#eligibility ul li ul, body.ohc .block#about ul li ul, body.ohc .block#contact ul li ul {
+	list-style-type: disc;
+	margin-left: 30px;
+	font-size: 1.0em;
+	color: #5E5046;
+}
+
+body.ohc .block hr {
+	color: #E5E5E5;
+	background-color: #E5E5E5;
+	height: 1px;
+}
+
+body.ohc span.standout {
+	color: #01b0d9;
+	font-weight: bold;
+}
+
+body.ohc span.italic {
+	font-style: italic;
+}
+
+body.ohc #eligibility.block p a {
+	color: #ec068d;
+	text-decoration: underline;
+}
+
+body.ohc #eligibility.block p a:hover {
+	color: #61c250;
+	text-decoration: underline;
+}
+
+body.ohc #eligibility.block h3 {
+	color: #01b0d9;
+}
+
+/* one happy camper faqs
+----------------------------------------------------------------------------------------*/
+
+body.ohc .content_head#ohc_faq {
+	background: url(../img/bg/bg_content_faqs_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 174px;
+}
+
+body.ohc .faqs li h2 a.active, body.ohc .faqs li h2 a.active:hover {
+	color: #61C250;
+	text-decoration: none;
+}
+
+body.ohc #container #wrapper .faqs li h2 a:hover {
+	color: #61C250;
+	text-decoration: none;
+}
+
+body.ohc #container #wrapper .faqs li .content a {
+	color: #ec068d;
+	text-decoration: underline;
+}
+
+body.ohc #container #wrapper .faqs li .content a:hover {
+	color: #61C250;
+	text-decoration: underline;
+}
+
+/* one happy camper contact
+----------------------------------------------------------------------------------------*/
+
+body.ohc .content_head#ohc_contact {
+	background: url(../img/bg/bg_content_contact_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 194px;
+}
+
+
+body.ohc #contact.block p a, body.ohc #about.block p a, body.ohc #eligibility.block ul li a, body.ohc #about.block ul li a { color: #ec068d; text-decoration: underline; }
+
+body.ohc #contact.block p a.bigLink { color: #ec068d; text-decoration: underline; font-size: 1.2em; }
+
+body.ohc #contact.block p a:hover, body.ohc #about.block p a:hover, body.ohc #eligibility.block ul li a:hover, body.ohc #about.block ul li a:hover { color: #61c250; text-decoration: underline; }
+
+body.ohc #contact.block table {
+	border: 3px solid #61c250;
+	font-size: 1.2em;
+	color: #5E5046;
+	width: 483px;
+}
+
+body.ohc #contact.block table tr th {
+	color: #FFFFFF;
+	background: #61c250;
+	padding: 5px;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+body.ohc #contact.block table tr td a { color: #EC068D; text-decoration: underline; }
+
+body.ohc #contact.block table tr td { padding: 5px; border-bottom: 1px solid #98ed89; }
+body.ohc #contact.block table tr td.last { border-bottom: none; }
+
+body.ohc #contact.block table tr td.area {	border-right: 1px solid #98ed89; width: 158px; }
+body.ohc #contact.block table tr td.contact {	border-right: 1px solid #98ed89; width: 150px; }
+body.ohc #contact.block table tr td.email {	width: 175px;}
+
+/* one happy camper what makes a camp a Jewish camp
+----------------------------------------------------------------------------------------*/
+
+body.ohc .content_head#ohc_whatmakesacamp {
+	background: url(../img/bg/bg_content_whatmakesacamp_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 194px;
+}

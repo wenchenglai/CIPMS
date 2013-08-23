@@ -1,0 +1,266 @@
+﻿/*body {
+}*/
+.shadow {
+	}
+#bgsub {
+	width:798px;
+	height:18px;
+	padding:6px 0px 0px 7px;
+}
+
+#subcontent {
+	min-height:420px;
+    height:auto !important;
+    height:420px;
+	
+	padding:46px;
+	height:auto;
+}
+
+#formLogin {width: 705px;}
+.content #subcontent {padding-left:0px;}
+
+#application_col1 {
+	margin-top:24px;
+	width:230px;
+	height:280px;
+	padding:30px 34px;
+	float:left;
+	font-size:13px;
+	background-image:url(../images/application_greenbox.gif);
+	background-repeat:no-repeat;
+/*	border: 1px solid #F00;*/
+}
+
+#application_col1 ol {
+	margin: 20px 0px 20px 20px;	
+}
+/*#application_col1 tipsOl
+{
+	margin: 20px 0px 0px 50px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:20px;
+	color:Black;
+	
+}*/
+#application_col1 a:hover {
+	color:#FFF;	
+}
+
+#application_col2 {
+	margin:24px 0px 0px 30px;
+	padding:10px;
+	width:260px;
+	float:left;
+	font-weight:bold;
+}
+
+#formbg {
+	background-color:#ceeff8;
+	border: 3px solid #01b0db;
+	padding:2px 16px 16px 16px;
+	margin-top:20px;
+	height:120px;
+	width:320px;
+}
+#formbg1 {
+	background-color:#d3fdcb;
+	border: 3px solid #61c151;
+	padding:2px 16px 16px 16px;
+	margin-top:20px;
+	height:120px;
+	width:320px;
+}
+#formnames {
+	float:left;	
+	margin-top:0px;
+	
+	font-weight:bold;
+}
+
+#formfields {
+	float:left;	
+	margin:16px 0 0 10px;
+}
+#formnames1 {
+	float:left;	
+	/*margin-top:2px;*/
+	margin:2px 0 0 0px;	
+	font-weight:bold;
+}
+
+#formfields1 {
+	float:left;		
+	margin:2px 0 0 5px;
+}
+
+input {
+
+	color:#333;
+}
+
+input[type="text"], input[type="password"]{
+	width:150px;
+	height:15px;
+	margin-bottom:6px;
+}
+
+input[type="submit"], input[type="button"] {
+	float:right;
+	clear:both;
+	background-color:#CDE058;
+	/*font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:14px;*/
+	width:100px;
+	height:24px;
+	margin:4px 0;
+	padding:2px;
+	border:none;
+	font-weight:bold;
+}
+h2 {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:21px;
+	color:#66BB6B;
+	text-transform:uppercase;
+}
+
+h3 {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:18px;
+	color:#73C167;
+}
+
+
+h4 {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:22px;
+	color:#000;
+}
+div.vldsumErr {
+	font-family:"Trebuchet MS";
+    font-size:12px;
+    color:Red;
+}
+table {
+	/*border: 1px solid #E5E86C;*/
+}
+
+td {
+	font-family:"Trebuchet MS";
+	font-size:12px;
+	color: #231F20;
+}
+
+td.header {
+	font-family: "Trebuchet MS";
+	font-size:13px;
+	color:#00b5cc;
+	padding:2px 0px 2px 2px;
+}
+
+td.data {
+	font-family:"Trebuchet MS";
+	font-size:12px;
+	color: #231F20;
+	padding:1px 2px 1px 6px;
+}
+
+td.email {
+	font-family:"Trebuchet MS";
+	font-size:12px;
+}
+.txtbox1
+{
+    width:100;
+    height:20;
+    font-family:verdana;
+    font-size:11;
+}
+p.clear {
+	clear:both;
+	height:0;
+	margin:0;
+	padding:0;
+}
+.InfoText
+{
+    font-family:"Trebuchet MS";
+    font-size:12px;
+    color:Red;
+    font-weight:bold;
+ }
+ 
+.pTips {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#333;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.aColor
+{
+	color:#EC098D;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+.forgotButton
+{
+	color:#EC098D;
+	float:right;
+	clear:both;		
+	font-size:12px;
+	width:120px;
+	height:24px;
+	margin:4px 0;
+	padding:2px;
+	border:none;
+	font-weight:bold;
+}
+.olBullets
+{
+	list-style:disc;
+}
+
+body.ohc .content_head#ohc_apply {
+	background: url(../img/bg/bg_content_apply_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 287px;
+}
+
+body.ohc .content_head#ohc_apply h1{
+	display: none;
+}
+
+/*ul {
+	margin-left:24px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#333;
+}
+
+ol {
+	margin: 20px 0px 0px 50px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#333;
+}
+
+p {
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#333;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+a {
+	color:#EC098D;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+a:hover {
+	color:#ACD4F1;
+}*/
+

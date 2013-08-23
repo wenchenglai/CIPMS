@@ -1,0 +1,45 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="AdminMaster" %>
+<%@ Register Src="AdminMenu.ascx" TagName="AdminMenu" TagPrefix="uc1" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<%
+//Response.Buffer = true;
+//Response.Expires = 0;
+//Response.ExpiresAbsolute = DateTime.Now.AddDays(-1);
+//Response.CacheControl = "no-cache";
+%> 
+<head id="Head1" runat="server">
+    <title>Foundation for Jewish Camp</title>
+    <link rel="stylesheet" href="Style/CIPStyle.css" />
+    <script type="text/javascript" language="javascript">
+        javascript:window.history.forward(1);
+    </script>
+</head>
+<body id="objMasterBody" runat="server">
+    <form id="form1" runat="server">
+    <table width="800px" border="0" style="height:100%">
+        <tr>
+            <td colspan="2" align="right">
+                <img width="640px" src='<%= this.ResolveClientUrl("~/images/OHCHeader.png")%>' alt="" />
+            </td>
+        </tr>
+        <tr>
+            <td style="height:10px"></td>
+            <td>
+                &nbsp;<asp:Label ID="lblPageHeading" runat="server" CssClass="headertext" />
+            </td>
+        </tr>
+        <tr style="height:100%">
+            <td style="width:23%" valign="top" align="center">
+				<asp:Label ID="lblUAT" ForeColor="Red" Font-Bold="true" runat="server"></asp:Label>
+                &nbsp;<uc1:AdminMenu ID="AdminMenu1" runat="server" />
+            </td>
+            <td style="width:77%" valign="top">
+                <asp:contentplaceholder id="Content" runat="server">
+                </asp:contentplaceholder>
+            </td>
+        </tr>                    
+    </table>
+    </form>
+</body>
+</html>

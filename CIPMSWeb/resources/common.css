@@ -1,0 +1,63 @@
+/* first for IE 4–8 */
+@font-face {
+  font-family: MetaWebPro-Bold;
+  src: url("fonts/MetaWebPro-Bold.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+  font-family: MetaWebPro-Bold;
+  src: url("fonts/MetaWebPro-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: MetaWebPro-Bold;
+  src: url("fonts/MetaWebPro-Bold.woff") format("woff");
+  font-weight:bold;
+}
+
+
+
+/* first for IE 4–8 */
+@font-face {
+  font-family: MetaScWebPro-Bold;
+  src: url("fonts/MetaScWebPro-Bold.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+  font-family: MetaScWebPro-Bold;
+  src: url("fonts/MetaScWebPro-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: MetaScWebPro-Bold;
+  src: url("fonts/MetaScWebPro-Bold.woff") format("woff");
+  font-weight:bold;
+}
+
+
+/*----------font for buttons------------*/
+
+@font-face {
+    font-family: 'CharlieStdSemiBold';
+    src: url('fonts/CharlieStd-SemiBold.eot');
+    src: url('fonts/CharlieStd-SemiBold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/CharlieStd-SemiBold.woff') format('woff'),
+         url('fonts/CharlieStd-SemiBold.ttf') format('truetype'),
+         url('fonts/CharlieStd-SemiBold.svg#') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CharlieStdSemiBold';
+    src: url('fonts/CharlieStd-SemiBold.eot');
+    src: url('fonts/CharlieStd-SemiBold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/CharlieStd-SemiBold.woff') format('woff'),
+         url('fonts/CharlieStd-SemiBold.ttf') format('truetype'),
+         url('fonts/CharlieStd-SemiBold.svg#') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}

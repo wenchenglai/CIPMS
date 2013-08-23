@@ -1,0 +1,198 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Common.master.cs" Inherits="Common" %>
+
+<%@ Register Src="CamperFooter.ascx" TagName="CamperFooter" TagPrefix="uc1" %>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Foundation for Jewish Camp</title>
+        
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="Style/CIPStyle.css" />
+    <script type="text/javascript" lang="javascript">
+        javascript:window.history.forward(1);
+    </script>
+    <script src='<%= this.ResolveClientUrl("~/CIPMS_JScript.js") %>' lang="javascript" type="text/javascript"></script>
+    <%-- %><script type="text/javascript" src='<%= this.ResolveClientUrl("~/JQuery/popup.js?1") %>'></script>--%>    
+    <script type="text/javascript" src='../../JQuery/popup.js?1'></script>
+		
+    <style type="text/css">
+        #backgroundPopup
+        {
+            display: none;
+            position: fixed;
+            _position: absolute; /* hack for internet explorer 6*/
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #000000;
+            border: 1px solid #cecece;
+            z-index: 1;
+        }
+        #popupContact
+        {
+            display: none;
+            position: fixed;
+            _position: absolute; /* hack for internet explorer 6*/
+            height: 200px;
+            width: 380px;
+            background: #FFFFFF;
+            border: 2px solid #cecece;
+            z-index: 2;
+            padding: 6px;
+            font-size: 13px;
+        }
+        #popupContact h1
+        {
+            text-align: left;
+            color: #01B5CC;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 1px dotted #000000;
+            padding-bottom: 2px;
+            margin-bottom: 20px;
+        }
+        #popupContactClose
+        {
+            font-size: 14px;
+            line-height: 14px;
+            right: 0px;
+            top: 4px;
+            position: absolute;
+            _position: absolute; /* hack for internet explorer 6*/
+            color: #6fa5fd;
+            font-weight: 700;
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+           var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-6958336-1']);
+          _gaq.push(['_setDomainName', '.onehappycamper.org']);
+          _gaq.push(['_trackPageview']);
+         
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+   </script>
+</head>
+<body style="background-color: #F2F2F2">
+    <form id="form1" runat="server">
+        <table width="800px" border="0" style="height: 100%">
+            <tr>
+                <td colspan="2" align="right">
+                    <img width="640px" src='<%= this.ResolveClientUrl("~/images/OHCHeader.png")%>' />
+                </td>
+            </tr>
+            <tr style="height: 100%">
+                <td style="width: 20%">
+                    &nbsp;
+                </td>
+                <td style="width: 80%; background-color: #FFF" valign="top">
+                    <table width="100%" cellpadding="5" cellspacing="0">
+                        <tr>
+                            <td>
+                                <p class="headertext">
+                                    <asp:Label ID="lblHeading" runat="server"></asp:Label>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 10px" valign="bottom">
+                    <hr />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <uc1:CamperFooter ID="CamperFooter1" runat="server" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="height: 10px"></td>
+            </tr>
+        </table>
+        <div id="popupContact" style="overflow: auto;">
+            <a id="popupContactClose">
+                <img src='<%= this.ResolveClientUrl("~/images/cross.png") %>' alt="close" />
+            </a>
+            <h1>
+                <span id="hdrSpan">Message</span>
+            </h1>
+            <p id="contactArea">
+                <span id="PJMessage" style="text-align: justify">
+				    If your child is a member or an alum,
+                    or has a sibling who is a member or an alum of The PJ Library please enter the referral
+                    code you received from The PJ Library program.
+                    <br />
+                    <br />
+                    Don’t have one? No worries. You can still proceed with your application; however
+                    without this code One Happy Camper will not be able to check your eligibility against
+                    the PJ Goes to Camp program.
+                    <br />
+                    <br />
+                    Please note: only PJ Library members, alum or siblings of a member or alum who have
+                    been affiliated with The PJ Library as of September 1st, 2010 are eligible for PJ
+                    Goes to Camp.
+                    <br />
+                    <br />
+                    Questions? Contact Kirstin Gadiel, (413)-439-1968 or 
+                    <a href="mailto:kirstin@hgf.org" target="_blank">kirstin@hgf.org</a>. 
+			    </span>
+			    <span id="MiiPMessage" style="text-align: justify">
+				    If you believe you may be eligible for this program, please <b>contact your camp to obtain a referral code</b> 
+                    before completing this application. If you have questions about the program, please contact us at 
+                    <a href="mailto:campgrants@jewishcamp.org" target="_blank">campgrants@jewishcamp.org</a>
+                    for more information.
+                </span>
+                <span id="noCampRegistrationMsg" class="lblPopup2">
+				    You can save your work and continue later after you have registered for camp by logging
+                    back onto OneHappyCamper.org using the same log-in email you used to start this session. 
+                </span>
+                <span id="PJLJewishDaySchoolMessage" class="infotext3" style="font-weight:bold">
+				    <font color="red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</font> 
+				    Grants for Day School children are no longer available. Please email 
+				    <a href="mailto:kirstin@hgf.org" target="_blank">Kirstin@hgf.org</a> to learn about other options for Day School families 
+				    who wish to send their children to camp. 
+			    </span>
+                <span id="RamahDoromSecondTimerWarning" class="infotext3" visible="false" style="font-weight:bold">
+				    <font color="red">ATTENTION SECOND TIME GRANT APPLICANTS:</font>
+				    Grants for children applying for the second time are no longer available. 
+				    Please email <a href="mailto:hfortson@ramahdarom.org" target="_blank">hfortson@ramahdarom.org</a> to learn about other options. 
+			    </span>
+                <span id="JWestFirstTimerQuestionMessage" class="lblPopup2" style="font-weight:bold">
+				    If you’re unsure which grant the camper received previously, contact us at 
+				    <a href="mailto:campgrants@jewishcamp.org" target="_blank">campgrants@jewishcamp.org</a> and make sure 
+				    to include your camper’s full name. In the meantime, feel free to save your application now, you can 
+				    log back on and complete it later.
+			    </span>			
+            </p>
+        </div>
+
+        <input type="hidden" id="hdnCampSessionStartDate" runat="server" />
+        <input type="hidden" id="hdnCampSessionEndDate" runat="server" />
+        <input type="hidden" id="hdncampSeasonErrorMessage" runat="server" />
+
+        <script lang="javascript" type="text/javascript">
+                var NoCampRegistrationRadioBtn = document.getElementById("ctl00_Content_RadioButtonQ7Option1");
+                if(NoCampRegistrationRadioBtn != null)
+                {
+                    if('<%=Session["CampYear"]%>' != null)
+                    {                
+                        if('<%=Session["CampYear"] %>' == "2011")
+                        {
+                            if(NoCampRegistrationRadioBtn.checked) 
+                            {
+                                document.getElementById("ctl00_Content_btnChkEligibility").disabled = true;   
+                            }
+                        }
+                    }
+                }
+        </script>
+    </form>
+</body>
+</html>

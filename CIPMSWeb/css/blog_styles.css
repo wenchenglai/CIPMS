@@ -1,0 +1,61 @@
+.blog_html .body.interior .content_belly h2 {
+	
+	color: #998774;
+overflow: hidden;
+margin: 0 0 6px 0;
+font-family: MetaWebPro-Bold;
+font-size: 18px;
+font-weight: bold;
+line-height: 19px;
+}
+
+
+
+.blog_html .body.interior .content ul li {margin-left:0px;}
+
+
+.blog_html .body.interior .btn.search:hover {
+background-position:-317px -81px;
+}
+.blog_html .body.interior .btn.search {
+background-position:left -81px;
+float:right;
+width:69px;
+}
+
+.blog_html .body.interior #searchform input {
+border: 2px solid #D4D4D4;
+padding: 4px;
+float: left;
+width: 140px;
+}
+
+.blog_html .body.interior ul {padding:0px; margin:0px}
+.blog_html .body.interior .sidebar #searchform .screen-reader-text {display:none;}
+
+.blog_html .body.interior .sidebar #searchform {
+background: url("../img/bg/bg_double_bars.gif") repeat-x left bottom;
+height: 55px;
+margin-bottom: 20px;
+}
+.blog_html .body.interior .sidebar li { 
+
+padding: 0;
+margin: 0 0 8px 0;
+width: 229px;
+display: block;
+zoom: 1;
+}
+
+.blog_html .body.interior .sidebar li  li{ 
+background: none;
+padding: 0;
+margin: 0 0 0px 10px;
+width: 229px;
+display: block;
+zoom: 1;
+}
+
+.blog_html body.ohc.interior.blog h2.widgettitle {padding-top:15px;}
+.blog_html .body.interior  #content_main { }
+#blog_header {width:750px;min-height:174px; background-image: url(../img/bg/bg_content_head_blog.jpg); background-repeat:no-repeat;}

@@ -1,0 +1,414 @@
+/*----------------------------------------------------------------------------------------
+home.css
+----------------------------------------------------------------------------------------*/
+
+/* typography
+----------------------------------------------------------------------------------------
+h2{margin:0;}
+*/
+h2{margin:0;}
+h2.hdr_testimonials { background-position: left -60px; }
+h2.hdr_blog { background-position: left -40px; }
+h2.hdr_donate { background-position: left -20px; }
+h2.hdr_spotlight { background-position: left top; }
+h2.hdr_findus { background-position: left -80px; }
+h2.hdr_findspecialtycamps { background-position: left -100px; }
+
+/* #content
+----------------------------------------------------------------------------------------*/
+#content { padding: 0 0 70px 0; }
+
+/* .slideshow
+----------------------------------------------------------------------------------------*/
+.slideshow {
+	position: relative;
+	height: 431px;
+	margin: 0 -320px;
+	padding: 0 320px;
+	/* border-bottom: 3px solid #ebebeb; */
+}
+	.slideshow .slide {
+		/*position: absolute;*/
+		height: 431px;
+		width: 1300px;
+		top: 0;
+		/*left: 150px;*/
+	}
+		.slideshow .slide img {
+			position: absolute;
+		}
+		.slideshow .slide .btn {
+			position: relative;
+			top: 295px;
+			left: 560px;
+		}
+	.slideshow .controls {
+		position: absolute;
+		z-index: 100;
+		left: 1157px;
+		bottom: 18px;
+	}
+		.slideshow .controls ul { width: 265px; list-style-type:none;}
+			.slideshow .controls li { 
+				float: left;
+				padding: 0 10px 0 0; 
+			}
+				.slideshow .controls li.last { 
+					padding: 0; 
+				}
+			
+
+			#slideShow div.anythingSlider-metallic .anythingControls ul a {
+				-webkit-border-radius:0px;
+				border-radius:0px;
+				margin:0px 10px 0 0;
+				padding:0px;
+			
+				border:none;
+				float: left;
+				background: url(../img/btn/btn_slide_controls.png) no-repeat;
+				height: 25px;
+				text-indent: -9999px;
+				cursor: pointer;
+				display: block;
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel1  { 
+				width: 29px; 
+				background-position: left bottom;
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel1:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel1 { background-position: left top; }
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel2 { 
+				width: 29px; 
+				background-position: -29px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel2:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel2 { background-position: -29px top; }
+			
+			
+			
+			
+			
+			
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel3 { 
+				width: 29px; 
+				background-position: -58px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel3:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel3{ background-position: -58px top; }
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel4{ 
+				width: 29px; 
+				background-position: -87px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel4:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel4{ background-position: -87px top; }
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel5{ 
+				width: 29px; 
+				background-position: -116px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel5:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel5{ background-position: -116px top; }
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel6{ 
+				width: 29px; 
+				background-position: -145px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel6:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel6{ background-position: -145px top; }
+			
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel7{ 
+				width: 29px; 
+				background-position: -174px bottom; 
+			}
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.panel7:hover,
+			#slideShow div.anythingSlider.activeSlider .anythingControls ul a.cur.panel7 { background-position: -174px top; }
+
+.slideshow .btn_slide{
+position: relative;
+	left: 650px;
+	top: 100px;
+	overflow: hidden;}
+
+#HPslideShow .slideshow .txtL1_slide{
+ font-family: CharlieStdSemiBold;
+    font-size: 57px;
+	 color: #d74487;
+	 position: relative;
+	left: 175px;
+	top: 125px;
+	width:850px;
+  min-height: 20px;
+   line-height: 0.8;
+   text-shadow: 1px 1px 1px #646361;
+}
+#HPslideShow .slideshow .txtL2_slide{    font-family: MetaWebPro-Bold;
+    font-size: 85px;
+	 color: #FFFFFF;
+	 position: relative;
+	left: 175px;
+	top: 135px;
+  min-height: 20px;
+	width:920px;
+line-height: 1;
+text-shadow: 1px 1px 1px #646361;}
+
+#HPslideShow .slideshow .txtL3_slide{font-family: MetaWebPro-Bold;
+    font-size: 20px;
+	 color: #39c0c3;
+	 position: relative;
+	left: 175px;
+	top: 150px;
+	width:450px;
+  height: 40px;
+	font-weight:bold;
+text-shadow: 1px 1px 1px #646361;}
+	
+	
+	
+	
+	
+	
+	
+	
+/* .slide OHC
+----------------------------------------------------------------------------------------*/	
+#OHCslideShow .slideshow .txtL1_slide{
+ font-family:  MetaWebPro-Bold;
+    font-size: 66px;
+	 color: #39c0c3;
+	 position: relative;
+	left: 692px;
+	top: 190px;
+	width:425px;
+           line-height: 1;
+           text-shadow: 1px 1px 1px #646361;
+}
+#OHCslideShow .slideshow .txtL2_slide{    
+font-family: MetaWebPro-Bold;
+        font-size: 20px;
+	 color: #ffffff;
+	 font-weight:bold;
+	 position: relative;
+	left: 692px;
+	top: 205px;
+	width:390px;
+text-shadow: 1px 1px 1px #646361;}
+	#OHCslideShow .slideshow .btn_slide{
+position: relative;
+	left: 692px;
+	top: 225px;
+	overflow: hidden;}
+/* .touts OHC
+----------------------------------------------------------------------------------------*/		
+.toutohc{margin-right:35px; width:213px;}
+#ohctout_last{margin-right:0;}
+.ohctouttxt{    line-height: 1.3;
+    margin: 0 0 6px;
+    padding: 0px 10px 0px 0;}	
+.toutohc ul.common_listing{padding-left: 0;}	
+	
+	
+/* .touts
+----------------------------------------------------------------------------------------*/
+.touts {
+	position: relative;
+	margin: 15px 10px 0px;
+	z-index: 2;
+	width:960px;
+}
+	.touts .tout { float: left; }
+	.touts .tout .tout_bg{    background: url("../img/tout/tout-bg.png") no-repeat scroll left bottom transparent;
+    bottom: -121px;
+    height: 21px;
+    position: absolute;
+    width: 300px;}
+	.touts .tout div.img{float:left; margin-right:3px; width:105px; height:121px;}
+	.touts .tout div.txt{font-family:MetaWebPro-Bold; font-size:18px; color:white;     padding: 17px 11px 19px 7px;
+    width: 174px; height:85px;}
+        
+        .touts .tout .tout_strip_bg{position: absolute; top: 108px;}
+	.touts .tout#tout_left { width: 300px; margin-right:20px; height:121px;}
+        .touts .tout#tout_left .tout_strip_bg{left:0px;}
+	.touts .tout#tout_left div.txt{float:left; background-color:#39c0c3; }
+	.touts .tout#tout_center { width: 300px; margin-right:20px; height:121px; }
+        .touts .tout#tout_center .tout_strip_bg{left:320px;}
+	.touts .tout#tout_center div.txt{float:left; background-color:#6dc067; }
+	.touts .tout#tout_right div.txt{float:left; background-color:#998774; }
+        .touts .tout#tout_right .tout_strip_bg{left:640px;}
+		
+	.touts .tout div.txt a{color:#ffffff;
+text-decoration:none; 
+font-family:'CharlieStdSemiBold', arial;
+font-size:17px;
+background:url(../img/icon/tout-arrow.png) no-repeat center right;
+padding-right: 17px;}
+	.touts .tout div.txt a:hover{color:#ffffff;
+text-decoration:underline; 
+font-family:'CharlieStdSemiBold', arial;
+font-size:17px;}
+.touts .tout div.txt p{margin:8px 0 15px}
+        
+        
+/* .modules
+----------------------------------------------------------------------------------------*/
+.modules {
+	border-top: 3px solid #e5e5e5;
+	padding: 2px 0 0 0;
+	
+	margin-top:20px;
+}
+.hp_modules{width:960px;}
+	.modules .module_wrap { 
+		padding: 20px 0 0 10px;
+		border-top: 1px solid #e5e5e5;
+	}
+	
+	.modules .hf_camfire{width:396px; margin-right:33px; float:left;}
+	.hf_camfire h2.hdr_camfire{font-family:MetaWebPro-Bold; font-size:19px; color:#998774; }
+	.camfirm{margin-top:10px;}
+	.hf_camfire .sub_title{ color:#39c0c3; font-family:Arial, Helvetica, sans-serif; font-size:18px; font-weight:bold;}
+	.hf_camfire .sub_date{color:#afa393; text-transform:uppercase; font-weight:normal; font-size:12px;}
+	
+	h2.hdr_titles{font-family:MetaWebPro-Bold; font-size:17px; color:#998774; }
+	.modules .hp_campDonate{width:253px; margin-right:29px;}
+	.modules .hp_Donate{    margin-top: 20px;
+    padding-top: 2px; border-top: 3px solid #E5E5E5; }
+	
+	.modules .hp_Donate .module_wrap{    border-top: 1px solid #E5E5E5;
+    padding: 8px 0 0 0px;}
+	.modules .module {
+		float: left;
+		width: 236px;
+	}
+	.modules .module.last { margin: 0 -4px 0 0; }
+		
+		.modules .module h3 {
+			font-weight: bold;
+			font-size: 1.4em;
+			color: #39C0C3;
+			margin: 0 0 5px 0;
+		}
+		.modules .module p { 
+			line-height: 1.3; 
+			margin: 0 0 6px 0;
+			padding: 0 10px 10px 0;
+		}
+		.modules .module .col_a {
+			float: left;
+			width: 80px;
+		}
+		.modules .module .col_b {
+			float: left;
+			
+			width: 150px;
+		}
+	
+#findus_social { 
+	display: inline-block;
+	padding-bottom: 10px;
+}
+	#findus_social ul {
+		float: left;
+	}	
+	#findus_social ul li {
+		float: left;
+		font-size: 1.4em;
+	}
+		#findus_social ul li a {
+			color: #fff;
+			height: 49px;
+			text-indent: -9999px;
+			display: block;
+			background-image: url(../img/icon/findus_social.gif);
+			background-repeat: no-repeat;
+		}	
+		#findus_social ul li#findus_social_facebook, 
+		#findus_social ul li#findus_social_facebook  a {
+			width: 47px;
+			background-position: 0px 0px;
+		}
+
+		#findus_social ul li#findus_social_twitter, 
+		#findus_social ul li#findus_social_twitter  a {
+			width: 69px;
+			background-position: -47px 0px;
+		}
+
+.twitter_feed { 
+	background:url("../img/bg/bg_twitter.png") no-repeat scroll 0 0 transparent; 
+	width:223px;
+	height:177px;
+	overflow:hidden;
+	margin-top:-15px;
+}
+	.twitter_feed .twitter_feed_header_link {
+		height:30px;
+		display:block;
+		overflow:hidden;
+		text-indent:-9999px;
+	}
+	.twitter_feed p { 
+		font-size:1em;
+		font-family:arial,verdana,helvetica,georgia,'Lucida Grande','Lucida Sans Unicode','Trebuchet MS','Arial Black','Courier New','Times New Roman','Times',sans-serif;
+	}
+	.twitter_feed .twtr-hd, .twitter_feed  .twtr-ft {
+		display:none;
+	}
+	.twitter_feed .twtr-timeline, .twitter_feed  .twtr-doc {
+		-moz-border-radius:0 !important;
+		-webkit-border-radius:0 !important;
+		border-radius:0 !important;
+	}
+	.twitter_feed .twtr-bd {
+		padding: 0;
+	}
+	.twitter_feed .twtr-widget {
+		height: 129px;
+		overflow: hidden;
+		padding-left: 13px;}
+	.twitter_feed .twtr-tweet-text{
+		font-size:10px;
+	}
+	.twitter_feed  #twtr-widget-1 .twtr-tweet a.twtr-user{
+		color:#000 !important;
+		font-weight:bold;
+	}
+	.twitter_feed #twtr-widget-1 .twtr-doc, .twitter_feed #twtr-widget-1 .twtr-hd a, .twitter_feed #twtr-widget-1 h3, .twitter_feed #twtr-widget-1 h4, .twitter_feed #twtr-widget-1 .twtr-popular, .twitter_feed #twtr-widget-1 .twtr-new-results, .twitter_feed #twtr-widget-1 .twtr-results-inner, .twitter_feed #twtr-widget-1 .twtr-timeline {
+		background:none !important;
+	}
+	.twitter_feed .twtr-widget .twtr-tweet-wrap {
+		padding: 6px 0;
+	}
+	.twitter_feed .twtr-img{
+		display:block;
+		position:relative;
+		width:auto;
+		height:auto;
+	}
+	.twitter_feed .twtr-img img {
+		position:relative;
+		left:-7px;
+		height: auto;
+		width: 43px;
+	}
+	.twitter_feed .twtr-widget .twtr-tweet {
+		border-bottom: 1px solid #CDCDCE;
+	}
+	.twitter_feed  #twtr-widget-1 .twtr-tweet-text {
+		margin: 0 5px 0 41px;
+	}
+	.twitter_feed .twtr-avatar {
+		height: auto;
+		overflow: visible;
+		width: auto;
+	}
+
+	
+	div.anythingSlider .anythingWindow {position:relative;margin:0 -200px;/*padding:0 200px;*/}
+	body div.anythingSlider-metallic .anythingControls {right:30%}
+	
+	.OHC_logo_sidebar{padding-bottom:7px;padding-left: 10px;}

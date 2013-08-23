@@ -1,0 +1,93 @@
+<%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Boston_Summary" %>
+
+<asp:Content ID="MiddleSex_summary" ContentPlaceHolderID="Content" Runat="Server">
+    <table width="100%" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/boston.jpg" /></td>
+            <td>
+            <asp:Label ID="Label3" CssClass="infotext3" runat="server">
+                  <p style="text-align:justify"><b>Good news! You may be eligible for an incentive.</b></p></asp:Label>
+              
+                    <asp:Label ID="Label2" CssClass="infotext3" runat="server">
+                  <p style="text-align:justify">To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+                  please proceed by clicking the "next" button below.</p></asp:Label>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
+                
+                <p style="text-align:justify"><b>The Boston One Happy Camper program, sponsored by the Combined Jewish Philanthropies of Greater Boston and the 
+                Foundation for Jewish Camp, provides financial incentives of $1,000 to first-time campers to attend a nonprofit Jewish overnight summer camp for at least 
+                19 consecutive days. Eligible campers must be entering grades 2-11 (after camp) and attending a camp listed on the Foundation for Jewish Camp 
+                website <a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>.</b></p>  
+                              
+                <p style="text-align:justify">This program has two components, one of which is for participants that belong to a congregation and one for those who don’t.</p> 
+                
+                <p style="text-align:justify"> <b>1) If you are a member of any of the synagogues listed below, 
+                please contact your congregation liaison to inform them that you are applying for a One Happy Camper grant and continue to fill out the following application.</b>
+                </p> 
+                    
+                <p style="text-align:justify"><b>If you are not a member of any of the congregations, listed below please begin the application.</b> 
+                This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
+                As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program. If you do not think that you are eligible for this program, 
+                but are interested in learning about camp scholarship opportunities, please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp or Federation directly.</p> 
+                    
+                <p style="text-align:justify"><b>Participating Synagogues:</b></p>                  
+                <p style="text-align:justify">
+Temple Sinai (Sharon)<br />
+Temple Beth Shalom (Needham)<br />
+Temple Emanuel (Newton) <br />
+Temple Beth Elohim (Wellesley)<br />
+Temple Aliyah (Needham)<br />
+Temple Beth Elohim (Acton) <br />
+Temple Isaiah (Lexington)<br />
+Temple Shalom (Newton) <br />
+Temple Israel (Sharon)<br />
+Temple Israel (Natick)<br />
+Temple Israel (Boston)<br />
+Temple Emunah (Lexington)<br />
+Kehillath Israel (Brookline) <br />
+Temple Beth Avodah (Newton) <br />
+Temple Beth Am (Framingham)<br />
+Temple Beth Sholom (Framingham)<br />
+Temple Beth Torah (Holliston) <br />
+Temple Beth David (Westwood)<br />
+Temple Chayai Shalom (Easton)<br />
+Beth El Temple Center (Belmont)<br />
+EtzChaim (Franklin) <br />
+Temple Beth Emunah (Brockton)<br />
+Temple Sinai (Brookline)<br />
+
+
+                   </p>            
+            </asp:Label></td>
+        </tr>        
+     <tr>
+            <td colspan="2">
+                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
+                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
+                </asp:Label></td></tr>
+    </table>
+    <asp:Panel ID="Panel1" runat="server">
+        <table width="100%" cellpadding="1" cellspacing="0" border="0">            
+            <tr>
+                <td valign="top" style="width:5%"><asp:Label ID="Label12" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top" colspan="2"><br />
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td  align="left"><asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
+                            <td>
+                                <asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" /></td>
+                            <td align="center">
+                            <asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
+                                </td>
+                            <td align="right">
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn"  OnClick="btnNext_Click" /></td>                            
+                        </tr>
+                     </table>
+                </td>
+            </tr>
+        </table>        
+    </asp:Panel>
+</asp:Content>

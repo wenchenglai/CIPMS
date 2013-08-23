@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<siteMapNode title="Work Queue"  url="~/Administration/Search/WorkQueue.aspx"  description="Work Queue Page"/>
+	<siteMapNode title="Search"  url="~/Administration/Search/AdminSearch.aspx"  description="Search Page" />
+	<siteMapNode title="CIP Reporting System"  url="https://www.onehappycamper.org/CIPRS/Default.aspx"  description="CIP Reporting System" />
+	<siteMapNode title="Reports"  url=""  description="Reports Menu">
+		<siteMapNode title="Executive Summary"  url="~/Administration/Search/ExecSummary.aspx"  description="Go To Executive Summary"/>
+		<siteMapNode title="Summary By Camps"  url="~/Administration/Reports/Rpt_SummaryReport.aspx?rpt=camps"  description="Summary By Camps" />
+		<siteMapNode title="Summary By Status"  url="~/Administration/Reports/Rpt_SummaryReport.aspx?rpt=status"  description="Summary By Status"/>
+		<siteMapNode title="Audit Report"  url="~/Administration/Search/AuditReport.aspx"  description="Audit Report"/>
+		<siteMapNode title="Program Profile Information Report"  url="~/Administration/Upload.aspx"  description="Go To PPIR Page"/>
+	</siteMapNode>
+	<siteMapNode title="Payment processing"  url="~/Administration/Search/PaymentRequest.aspx"  description="Payment processing" />
+	<siteMapNode title="Award Notification Request"  url="~/Administration/AwardNotificationReqest.aspx"  description="Go To AN Report Page"/>
+	<siteMapNode title="Upload Data"  url="~/Administration/Upload.aspx"  description="Go To Upload Page"/>
+
+	<siteMapNode title="Data Extract"  url="~/ExcelExport.aspx?prior=0"  description="Go To Data Extract" />
+
+	<siteMapNode title="Administration" url=""  description="Go To Administration Page">
+		<siteMapNode title="Create User"  url="~/Administration/CreateUser.aspx"  description="Go To Create User Page"/>
+		<siteMapNode title="Manage User"  url="~/Administration/ManageUser.aspx"  description="Go To Manage user Page"/>
+		<siteMapNode title="Change Password" url="~/Administration/ChangePwd.aspx" description="Change your password"/>
+	</siteMapNode>
+	<siteMapNode title="Log Out" url="~/Administration/Logout.aspx" description="Log Out"/>
+
+
+
+</root>

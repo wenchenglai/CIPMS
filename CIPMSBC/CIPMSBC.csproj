@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E39DB499-40D1-4E04-9B96-CFD10BC8802C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CIPMSBC</RootNamespace>
+    <AssemblyName>CIPMSBC</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration.cs" />
+    <Compile Include="BLL\SynagogueManager.cs" />
+    <Compile Include="CamperApplication.cs" />
+    <Compile Include="CIPDataAccess.cs" />
+    <Compile Include="DAL\SynagogueDA.cs" />
+    <Compile Include="UserDetails.cs" />
+    <Compile Include="cService.cs" />
+    <Compile Include="Eligibility\EligibilityColorado.cs" />
+    <Compile Include="Eligibility\EligibilityElPaso.cs" />
+    <Compile Include="Eligibility\EligibilityHartford.cs" />
+    <Compile Include="Eligibility\EligibilityJCAShalom.cs" />
+    <Compile Include="Eligibility\EligibilityJRF.cs" />
+    <Compile Include="Eligibility\EligibilityLouisville.cs" />
+    <Compile Include="Eligibility\EligibilityCharles.cs" />
+    <Compile Include="Eligibility\EligibilityCNY.cs" />
+    <Compile Include="Eligibility\EligibilityMilwaukee.cs" />
+    <Compile Include="Eligibility\EligibilityMoshavaMalibu.cs" />
+    <Compile Include="Eligibility\EligibilityNageelaEast.cs" />
+    <Compile Include="Eligibility\EligibilityOmaha.cs" />
+    <Compile Include="Eligibility\EligibilityHatikvah.cs" />
+    <Compile Include="Eligibility\EligibilityCNJ.cs" />
+    <Compile Include="Eligibility\EligibilityMountainChai.cs" />
+    <Compile Include="Eligibility\EligibilityPalmSprings.cs" />
+    <Compile Include="Eligibility\EligibilityPassportNYC.cs" />
+    <Compile Include="Eligibility\EligibilityPoyntelle.cs" />
+    <Compile Include="Eligibility\EligibilitySanDiego.cs" />
+    <Compile Include="Eligibility\EligibilityLivingston.cs" />
+    <Compile Include="Eligibility\EligibilityAvoda.cs" />
+    <Compile Include="Eligibility\EligibilityBerkshire.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Eligibility\EligibilityBIMA.cs" />
+    <Compile Include="Eligibility\EligibilityCJA.cs" />
+    <Compile Include="Eligibility\EligibilityLaurelwood.cs" />
+    <Compile Include="Eligibility\EligibilityMontreal.cs" />
+    <Compile Include="Eligibility\EligibilityPJL.cs" />
+    <Compile Include="Eligibility\EligibilityEdenVillageCamp.cs" />
+    <Compile Include="Eligibility\EligibilityBarney.cs" />
+    <Compile Include="Eligibility\EligibilityArkansas.cs" />
+    <Compile Include="Eligibility\EligibilityBaltimore.cs" />
+    <Compile Include="Eligibility\EligibilityBBOttawa.cs" />
+    <Compile Include="Eligibility\EligibilityCalgary.cs" />
+    <Compile Include="Eligibility\EligibilityCleveland.cs" />
+    <Compile Include="Eligibility\EligibilityHabonim.cs" />
+    <Compile Include="Eligibility\EligibilityKansas.cs" />
+    <Compile Include="Eligibility\EligibilityLman.cs" />
+    <Compile Include="Eligibility\EligibilityLouemma.cs" />
+    <Compile Include="Eligibility\EligibilityNageela.cs" />
+    <Compile Include="Eligibility\EligibilityCMART.cs" />
+    <Compile Include="Eligibility\EligibilityAdamahAdventures.cs" />
+    <Compile Include="Eligibility\EligibilityMemphis.cs" />
+    <Compile Include="Eligibility\EligibilityNJY.cs" />
+    <Compile Include="Eligibility\EligibilityCapital.cs" />
+    <Compile Include="Eligibility\EligibilityChi.cs" />
+    <Compile Include="Eligibility\EligibilityNewHampshire.cs" />
+    <Compile Include="Eligibility\EligibilityNNJ.cs" />
+    <Compile Include="Eligibility\EligibilityPittsburgh.cs" />
+    <Compile Include="Eligibility\EligibilityRhodeIsland.cs" />
+    <Compile Include="Eligibility\EligibilitySabra.cs" />
+    <Compile Include="Eligibility\EligibilityCairyLouise.cs" />
+    <Compile Include="Eligibility\EligibilityJCCRanch.cs" />
+    <Compile Include="Eligibility\EligibilityMiami.cs" />
+    <Compile Include="Eligibility\EligibilityNorthShore.cs" />
+    <Compile Include="Eligibility\EligibilityPalmBeach.cs" />
+    <Compile Include="Eligibility\EligibilityPhiladelphia.cs" />
+    <Compile Include="Eligibility\EligibilityNY_Old.cs" />
+    <Compile Include="Eligibility\EligibiiltyBase.cs" />
+    <Compile Include="Eligibility\EligibilityBnai.cs" />
+    <Compile Include="Eligibility\EligibilityBoston.cs" />
+    <Compile Include="Eligibility\EligibilityChicago.cs" />
+    <Compile Include="Eligibility\EligibilityCincinatti.cs" />
+    <Compile Include="Eligibility\EligibilityColumbus.cs" />
+    <Compile Include="Eligibility\EligibilityDallas.cs" />
+    <Compile Include="Eligibility\EligibilityFactory.cs" />
+    <Compile Include="Eligibility\EligibilityGreensboro.cs" />
+    <Compile Include="Eligibility\EligibilityIndianapolis.cs" />
+    <Compile Include="Eligibility\EligibilityJudea.cs" />
+    <Compile Include="Eligibility\EligibilityJWest.cs" />
+    <Compile Include="Eligibility\EligibilityJWestLA.cs" />
+    <Compile Include="Eligibility\EligibilityLACIP.cs" />
+    <Compile Include="Eligibility\EligibilityMetroWest.cs" />
+    <Compile Include="Eligibility\EligibilityMiddlesex.cs" />
+    <Compile Include="Eligibility\EligibilityNY.cs" />
+    <Compile Include="Eligibility\EligibilityOrange.cs" />
+    <Compile Include="Eligibility\EligibilityRamah.cs" />
+    <Compile Include="Eligibility\EligibilitySanFrancisco.cs" />
+    <Compile Include="Eligibility\EligibilitySeattle.cs" />
+    <Compile Include="Eligibility\EligibilityShomria.cs" />
+    <Compile Include="Eligibility\EligibilitySolomonSchechter.cs" />
+    <Compile Include="Eligibility\EligibilitySpostsAcadamy.cs" />
+    <Compile Include="Eligibility\EligibilityStLouis.cs" />
+    <Compile Include="Eligibility\EligibilitySurpriseLake.cs" />
+    <Compile Include="Eligibility\EligibilityURJ.cs" />
+    <Compile Include="Eligibility\EligibilityWashingtonDC.cs" />
+    <Compile Include="FederationEnum.cs" />
+    <Compile Include="General.cs" />
+    <Compile Include="Global\CamperAppStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redirection_Logic.cs" />
+    <Compile Include="SpecialCodeManager.cs" />
+    <Compile Include="SQLDBAccess.cs" />
+    <Compile Include="SrchCamprDetails.cs" />
+    <Compile Include="StatusInfo.cs" />
+    <Compile Include="UserAdministration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CIPMSOfficeObjects\CIPMSOfficeObjects.csproj">
+      <Project>{C998FA1A-E17F-4F35-ADA1-3FB0A1639EF9}</Project>
+      <Name>CIPMSOfficeObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

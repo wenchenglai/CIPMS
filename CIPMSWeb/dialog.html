@@ -1,0 +1,479 @@
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>jQuery UI Example Page</title>
+		<link type="text/css" href="Style/jquery-ui-1.8.17.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function(){			
+				$('#dialog').dialog({
+					autoOpen: false,
+					width: 600,
+					buttons: {
+						"Ok": function() { 
+							$(this).dialog("close"); 
+						}
+					}
+				});
+				$('#ctl00_Content_RadioBtnQ5_0').click(function() {
+				    $('#dialog').dialog('open');
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input id="ctl00_Content_RadioBtnQ5_0" type="radio" name="ctl00$Content$RadioBtnQ5" value="1" />
+		<div id="dialog" title="Message">
+			<p><span style="color:red; font-weight: bold;">ATTENTION SECOND TIME GRANT APPLICANTS:</span> Grants for children applying for the second time are no longer available. Please email <a href="mailto:hfortson@ramahdarom.org">hfortson@ramahdarom.org</a> to learn about other options.</p>
+		</div>
+	</body>
+</html>-->
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head><title>
+	Camper Enrollment Step 2
+</title><link type="text/css" href="Style/jquery-ui-1.8.17.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.17.custom.min.js"></script>
+		<script type="text/javascript">
+		    $(function() {
+		        // Dialog			
+		        $('#dialog').dialog({
+		            autoOpen: false,
+		            width: 600,
+		            buttons: {
+		                "Ok": function() {
+		                    $(this).dialog("close");
+		                }
+		            }
+		        });
+
+		        // Dialog Link
+		        $('#ctl00_Content_RadioBtnQ5_0').click(function() {
+		            alert('here');
+		            $('#dialog').dialog('open');
+		            return false;
+		        });
+
+		    });
+		</script>
+    
+    <link rel="stylesheet" href="Style/CIPStyle.css" />
+
+    <script type="text/javascript" language="javascript">
+        javascript: window.history.forward(1);
+    </script>
+
+    <script src='CIPMS_JScript.js' language="javascript"
+        type="text/javascript"></script>
+
+    
+     <!-- Google Code for begin registration Conversion Page -->
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-6958336-1']);
+                _gaq.push(['_setDomainName', '.onehappycamper.org']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+           </script>
+</head>
+<body style="background-color: #F2F2F2">
+    <form name="aspnetForm" method="post" action="Step2_2.aspx" onsubmit="javascript:return WebForm_OnSubmit();" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_Content_btnNext')" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMjAyMzg5MTQ0MA9kFgJmD2QWAgIDD2QWBmYPDxYCHgRUZXh0BSo/U2VjdGlvbiBJSUk6ICBEZXRhaWxlZCBDYW1wZXIgSW5mb3JtYXRpb25kZAIBD2QWAgIBD2QWCgIODw8WAh8ABQIxOWRkAhIPEGRkFgBkAhQPZBYCAgQPZBYEAgMPDxYCHwAFAjE5ZGQCBw8QZGQWAQIBZAIZD2QWAgIDDxAPFgYeDURhdGFUZXh0RmllbGQFDUVsaWdpYmxlR3JhZGUeDkRhdGFWYWx1ZUZpZWxkBQ1FbGlnaWJsZUdyYWRlHgtfIURhdGFCb3VuZGdkEBUNDC0tIFNlbGVjdCAtLQExATIBMwE0ATUBNgE3ATgBOQIxMAIxMQIxMhUNATABMQEyATMBNAE1ATYBNwE4ATkCMTACMTECMTIUKwMNZ2dnZ2dnZ2dnZ2dnZ2RkAiAPEGRkFgBkAgIPZBYMAgMPDxYCHwAFEENhbXAgUmFtYWggRGFyb21kZAIHDw8WAh8ABQ1Ib2xseSBGb3J0c29uZGQCCw8PFgIfAAUMNDA0LTUwMy0yMTMzZGQCDw8PFgIfAAUXaGZvcnRzb25AcmFtYWhkYXJvbS5vcmdkZAIRDw8WAh8ABR9+L0Vucm9sbG1lbnQvUmFtYWgvU3VtbWFyeS5hc3B4ZGQCEw8PFgIfAAUffi9FbnJvbGxtZW50L1JhbWFoL1N0ZXAyXzMuYXNweGRkZOGnH1IfxfaIpCmBBgVUudQdGn+k" />
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var theForm = document.forms['aspnetForm'];
+    if (!theForm) {
+        theForm = document.aspnetForm;
+    }
+    function __doPostBack(eventTarget, eventArgument) {
+        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+            theForm.__EVENTTARGET.value = eventTarget;
+            theForm.__EVENTARGUMENT.value = eventArgument;
+            theForm.submit();
+        }
+    }
+    //]]>
+</script>
+
+
+<script src="/CIPMS/WebResource.axd?d=Sups-3aXVkteZbuJnmLrmIfF1yiKdsotbSV4N4c1L0fY4a0VkBk6-00nHrhWmka57fiyjqe4jNbpE3le0&amp;t=634605055982615616" type="text/javascript"></script>
+
+
+<script src="/CIPMS/WebResource.axd?d=n4BE5FamWt6Mqm2Lb19otl1hOvXD2dpP3vEx3N2EJmK2nP6QovwJAkRnWqidqcQeTJFa4O5E_bdWUuCanA3UVFhJvJ81&amp;t=634605055982615616" type="text/javascript"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    function WebForm_OnSubmit() {
+        if (typeof (ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+        return true;
+    }
+    //]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWLQKGo72FBQK9+8bnCQK8+8bnCQKylOyJBQK9+/JAArz78kACspTYrgwCvfvuvQ8CvPvuvQ8CspTE0wMCveL40QMCouL40QMCo+L40QMCoOL40QMCoeL40QMCpuL40QMCp+L40QMCpOL40QMCteL40QMCuuL40QMCouK40gMCouK00gMCouKw0gMCvfuedwK8+553Ar/7nncCvvuedwKylLSZDAKvwsFeAr+DxYwJAtKc4cIBArCl8/oMAq6CtdIPAvDu+pUOAtWF3YAEArqcv+sJAp+zodYPAoTKg8EFApn0wv8NAv6KpeoDApKM27oKAve76aACAtaNqLUHAqS0t6cIAoKhw+QE/qM+y5sZvUOFT3h+jmXHDwMYHkw=" />
+</div>
+    <table width="800px" cellpadding="0" cellspacing="0" border="0" style="height: 100%">
+        <tr>
+            <td colspan="2" align="right">
+                <img width="640px" src='images/OHCHeader.png' />
+            </td>
+        </tr>
+
+        <tr style="height: 100%">
+            <td style="width: 20%">
+                &nbsp;
+            </td>
+            <td style="width: 80%; background-color: #FFF" valign="top">
+                <table width="100%" cellpadding="5" cellspacing="0">
+                    <tr>
+                        <td>
+                            <p class="headertext">
+
+                                <span id="ctl00_lblHeading">?Section III:  Detailed Camper Information</span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                
+    
+    
+		
+    <!--Panel 2 - Questions displayed on page 2 of Step 2-->
+    <div id="ctl00_Content_Panel2">
+	
+        <!--to display the validation summary (error messages)-->
+
+        <table width="50%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+                <td>
+                    <span id="ctl00_Content_CusVal" class="InfoText" style="color:Red;display:none;"></span>
+                    <!--to vaidate the comments text box for admin user-->
+                    
+                    <div id="ctl00_Content_valSummary" class="InfoText" style="color:Red;display:none;">
+
+	</div>
+                    <!--this summary will be used only for Comments field (only for Admin user)-->
+
+                    <div id="ctl00_Content_valSummary1" class="InfoText" style="color:Red;display:none;">
+
+	</div>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" cellpadding="5" cellspacing="0" border="0">
+            <tr>
+                <td valign="top"><span id="ctl00_Content_Label25" class="InfoText">*</span><span id="ctl00_Content_Label4" class="QuestionText">1</span></td>
+
+                <td valign="top">
+                    <span id="ctl00_Content_Label5" class="QuestionText">Will this be the camper’s first time attending a nonprofit Jewish overnight summer camp for </span> <span id="ctl00_Content_lblMinimunDays1" class="QuestionText">19</span> <span id="ctl00_Content_lblLabledays" class="QuestionText">  days or longer?</span>  <br />
+                    <table id="ctl00_Content_RadioBtnQ3" class="QuestionText" border="0">
+		<tr>
+			<td><input id="ctl00_Content_RadioBtnQ3_0" type="radio" name="ctl00$Content$RadioBtnQ3" value="1" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ3$0\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ3_0">Yes</label></td><td><input id="ctl00_Content_RadioBtnQ3_1" type="radio" name="ctl00$Content$RadioBtnQ3" value="2" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ3$1\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ3_1">No</label></td>
+
+		</tr>
+	</table>
+                </td>
+            </tr>
+            <div id="ctl00_Content_pnlSecondTimer">
+		
+            <tr>
+                <td valign="top"><span id="ctl00_Content_Label2" class="InfoText">*</span><span id="ctl00_Content_Label6" class="QuestionText">2</span></td>
+                <td valign="top">
+
+                    <div id="ctl00_Content_PnlQ4">
+			
+                        <span id="ctl00_Content_lblQ4" class="QuestionText">Will this be the camper’s second time attending a nonprofit Jewish overnight summer camp for </span> <span id="ctl00_Content_lblMinimunDays2" class="QuestionText">19</span> <span id="ctl00_Content_Label26" class="QuestionText">  days or longer?</span><br />
+                        <table id="ctl00_Content_RadioBtnQ4" class="QuestionText" border="0">
+				<tr>
+					<td><input id="ctl00_Content_RadioBtnQ4_0" type="radio" name="ctl00$Content$RadioBtnQ4" value="1" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ4$0\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ4_0">Yes</label></td><td><input id="ctl00_Content_RadioBtnQ4_1" type="radio" name="ctl00$Content$RadioBtnQ4" value="2" checked="checked" /><label for="ctl00_Content_RadioBtnQ4_1">No</label></td>
+
+				</tr>
+			</table>
+                    
+		</div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span id="ctl00_Content_Label3" class="InfoText">*</span><span id="ctl00_Content_Label35" class="QuestionText">3</span></td>
+                <td valign="top">
+
+                    <div id="ctl00_Content_PnlQ5">
+			
+                        <span id="ctl00_Content_Label1" class="QuestionText">Did the camper receive an incentive grant through the Ramah's Rishon Program last summer?</span><br />
+                        <table id="ctl00_Content_RadioBtnQ5" class="QuestionText" border="0">
+				<tr>
+					<td><input id="ctl00_Content_RadioBtnQ5_0" type="radio" name="ctl00$Content$RadioBtnQ5" value="1" /><label for="ctl00_Content_RadioBtnQ5_0">Yes</label></td><td><input id="ctl00_Content_RadioBtnQ5_1" type="radio" name="ctl00$Content$RadioBtnQ5" value="2" checked="checked" /><label for="ctl00_Content_RadioBtnQ5_1">No</label></td>
+				</tr>
+			</table>
+
+                    
+		</div>
+                </td>
+            </tr>
+            
+	</div>
+            <tr>
+                <td valign="top"><span id="ctl00_Content_Label7" class="InfoText">*</span><span id="ctl00_Content_Label8" class="QuestionText">4</span></td>
+                <td valign="top">
+                    <div id="ctl00_Content_PnlQ6">
+
+		
+                        <span id="ctl00_Content_Label9" class="QuestionText">What grade will the camper enter AFTER camp?</span><br />
+                        <select name="ctl00$Content$ddlGrade" id="ctl00_Content_ddlGrade" class="dropdown">
+			<option selected="selected" value="0">-- Select --</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+
+		</select>
+                        <span id="ctl00_Content_reqvalgrade" style="color:Red;display:none;"></span>
+                        <span id="ctl00_Content_rangeValGrade" style="color:Red;display:none;"></span>
+                    
+	</div>
+
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span id="ctl00_Content_Label12" class="InfoText">*</span><span id="ctl00_Content_Label10" class="QuestionText">5</span></td>
+                <td valign="top">
+                    <span id="ctl00_Content_Label11" class="QuestionText">What kind of school does the camper <u><b>CURRENTLY</b></u> attend?</span><br />
+
+                    <table id="ctl00_Content_RadioBtnQ9" class="QuestionText" border="0">
+		<tr>
+			<td><input id="ctl00_Content_RadioBtnQ9_0" type="radio" name="ctl00$Content$RadioBtnQ9" value="1" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ9$0\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ9_0">Private (secular) school</label></td><td><input id="ctl00_Content_RadioBtnQ9_1" type="radio" name="ctl00$Content$RadioBtnQ9" value="2" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ9$1\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ9_1">Public</label></td><td><input id="ctl00_Content_RadioBtnQ9_2" type="radio" name="ctl00$Content$RadioBtnQ9" value="3" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ9$2\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ9_2">Home school</label></td><td><input id="ctl00_Content_RadioBtnQ9_3" type="radio" name="ctl00$Content$RadioBtnQ9" value="4" onclick="javascript:setTimeout('__doPostBack(\'ctl00$Content$RadioBtnQ9$3\',\'\')', 0)" /><label for="ctl00_Content_RadioBtnQ9_3">Jewish day school</label></td>
+		</tr>
+	</table>
+                    <span id="ctl00_Content_reqval" style="color:Red;display:none;"></span>
+                </td>
+
+            </tr>
+                         
+            <div id="ctl00_Content_pnlCamperSchool">
+		
+            <tr>
+                <td width="5%"><span id="ctl00_Content_Label23" class="InfoText">*</span><span id="ctl00_Content_Label14" class="QuestionText">6</span></td>
+                <td valign="top" colspan="2">
+                    <span id="ctl00_Content_Label15" class="QuestionText">Name of the school camper attends:</span>
+                    <input name="ctl00$Content$txtCamperSchool" type="text" maxlength="200" id="ctl00_Content_txtCamperSchool" class="txtbox" />
+
+                    <span id="ctl00_Content_reqvalSchool" style="color:Red;display:none;"></span>
+                </td>
+            </tr>
+            
+	</div>
+            <!-- Admin Panel-->
+            <tr>
+                <td colspan="2" align="center">
+                    
+                    
+                    
+                </td>
+            </tr>
+
+            <!--end of admin panel-->
+            <tr >
+                <td valign="top"><span id="ctl00_Content_Label16" class="QuestionText"></span></td>
+                <td valign="top"  colspan="2">
+                    <table width="100%" cellspacing="0" cellpadding="5" border="0">
+                        <tr>
+                            <td  align="left"></td>
+                            <td >
+                                <input type="submit" name="ctl00$Content$btnPrevious" value=" &lt;&lt; Previous" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$Content$btnPrevious&quot;, &quot;&quot;, true, &quot;CommentsGroup&quot;, &quot;&quot;, false, false))" id="ctl00_Content_btnPrevious" class="submitbtn" />
+
+                            </td>
+                            <td align="right">
+                                <input type="submit" name="ctl00$Content$btnSaveandExit" value="Save &amp; Continue Later" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$Content$btnSaveandExit&quot;, &quot;&quot;, true, &quot;CommentsGroup&quot;, &quot;&quot;, false, false))" id="ctl00_Content_btnSaveandExit" class="submitbtn1" />
+                            </td>
+                            <td align="left">
+                                <input type="submit" name="ctl00$Content$btnNext" value="Next >>" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$Content$btnNext&quot;, &quot;&quot;, true, &quot;OtherValidation&quot;, &quot;&quot;, false, false))" id="ctl00_Content_btnNext" class="submitbtn" />
+                            </td>
+                        </tr>
+                     </table>
+
+                </td>
+            </tr>
+        </table>
+        <div id="dialog" title="Message">
+			<p><span style="color: red; font-weight: bold;">ATTENTION SECOND TIME GRANT APPLICANTS:</span> Grants for children applying for the second time are no longer available. Please email <a href="mailto:hfortson@ramahdarom.org">hfortson@ramahdarom.org</a> to learn about other options.</p>
+		</div>
+
+        
+    
+</div>
+    <!--End of Panel 2 -->
+    <div id="ctl00_Content_PnlHidden">
+	
+        <input type="hidden" name="ctl00$Content$hdnFJCID" id="ctl00_Content_hdnFJCID" value="201201140000" />
+        <input type="hidden" name="ctl00$Content$hdnQ3Id" id="ctl00_Content_hdnQ3Id" value="3" />
+        <input type="hidden" name="ctl00$Content$hdnQ4Id" id="ctl00_Content_hdnQ4Id" value="13" />
+        <input type="hidden" name="ctl00$Content$hdnQ5Id" id="ctl00_Content_hdnQ5Id" value="33" />
+        <input type="hidden" name="ctl00$Content$hdnQ6Id" id="ctl00_Content_hdnQ6Id" value="6" />
+        <input type="hidden" name="ctl00$Content$hdnQ7Id" id="ctl00_Content_hdnQ7Id" value="7" />
+
+        <input type="hidden" name="ctl00$Content$hdnQ8Id" id="ctl00_Content_hdnQ8Id" value="17" />
+        <input type="hidden" name="ctl00$Content$hdnQ9Id" id="ctl00_Content_hdnQ9Id" value="8" />
+        <input type="hidden" name="ctl00$Content$hdnQNoIncrement" id="ctl00_Content_hdnQNoIncrement" value="0" />
+        <input type="hidden" name="ctl00$Content$hdnCampId" id="ctl00_Content_hdnCampId" value="3078" />
+    
+</div>
+ 
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 10px" valign="bottom">
+
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                
+<table class="text" width="100%">
+<tr align="right">
+<td>
+    <span id="ctl00_CamperFooter1_Label1"></span>
+    <span id="ctl00_CamperFooter1_lblFederationName" class="headertext1">Camp Ramah Darom</span></td>
+
+<td>
+    <span id="ctl00_CamperFooter1_lblContactText" class="headertext">Contact: </span>
+    <span id="ctl00_CamperFooter1_lblContact" class="headertext1">Holly Fortson</span></td>
+<td>
+    <span id="ctl00_CamperFooter1_Label3" class="headertext">Phone: </span>
+    <span id="ctl00_CamperFooter1_lblPhone" class="headertext1">404-503-2133</span></td>
+<td>
+    <span id="ctl00_CamperFooter1_Label4" class="headertext">Email: </span>
+
+    <span id="ctl00_CamperFooter1_lblEmail" class="headertext1">hfortson@ramahdarom.org</span></td>
+</tr>
+</table>
+
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 10px">
+            </td>
+
+        </tr>
+    </table>
+    
+    <input name="ctl00$hdnCampSessionStartDate" type="hidden" id="ctl00_hdnCampSessionStartDate" value="5/31/2012" />
+    <input name="ctl00$hdnCampSessionEndDate" type="hidden" id="ctl00_hdnCampSessionEndDate" value="10/1/2012" />
+    <input name="ctl00$hdncampSeasonErrorMessage" type="hidden" id="ctl00_hdncampSeasonErrorMessage" value="Choose camp session between 6/1/2012 and 9/30/2012" />
+
+    <script language="javascript" type="text/javascript">
+        var NoCampRegistrationRadioBtn = document.getElementById("ctl00_Content_RadioButtonQ7Option1");
+        if (NoCampRegistrationRadioBtn != null) {
+            if ('2012' != null) {
+                if ('2012' == "2011") {
+                    if (NoCampRegistrationRadioBtn.checked) {
+                        document.getElementById("ctl00_Content_btnChkEligibility").disabled = true;
+                    }
+                }
+            }
+        }
+    </script>
+    
+    
+<script type="text/javascript">
+    //<![CDATA[
+    var Page_ValidationSummaries = new Array(document.getElementById("ctl00_Content_valSummary"), document.getElementById("ctl00_Content_valSummary1"));
+    var Page_Validators = new Array(document.getElementById("ctl00_Content_CusVal"), document.getElementById("ctl00_Content_reqvalgrade"), document.getElementById("ctl00_Content_rangeValGrade"), document.getElementById("ctl00_Content_reqval"), document.getElementById("ctl00_Content_reqvalSchool"));
+    //]]>
+</script>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var ctl00_Content_CusVal = document.all ? document.all["ctl00_Content_CusVal"] : document.getElementById("ctl00_Content_CusVal");
+    ctl00_Content_CusVal.display = "Dynamic";
+    ctl00_Content_CusVal.validationGroup = "OtherValidation";
+    ctl00_Content_CusVal.evaluationfunction = "CustomValidatorEvaluateIsValid";
+    ctl00_Content_CusVal.clientvalidationfunction = "ValidatePage2Step2_Ramah";
+    var ctl00_Content_valSummary = document.all ? document.all["ctl00_Content_valSummary"] : document.getElementById("ctl00_Content_valSummary");
+    ctl00_Content_valSummary.validationGroup = "GroupAddMore";
+    var ctl00_Content_valSummary1 = document.all ? document.all["ctl00_Content_valSummary1"] : document.getElementById("ctl00_Content_valSummary1");
+    ctl00_Content_valSummary1.validationGroup = "CommentsGroup";
+    var ctl00_Content_reqvalgrade = document.all ? document.all["ctl00_Content_reqvalgrade"] : document.getElementById("ctl00_Content_reqvalgrade");
+    ctl00_Content_reqvalgrade.controltovalidate = "ctl00_Content_ddlGrade";
+    ctl00_Content_reqvalgrade.errormessage = "Please enter the Grade";
+    ctl00_Content_reqvalgrade.display = "None";
+    ctl00_Content_reqvalgrade.enabled = "False";
+    ctl00_Content_reqvalgrade.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_Content_reqvalgrade.initialvalue = "";
+    var ctl00_Content_rangeValGrade = document.all ? document.all["ctl00_Content_rangeValGrade"] : document.getElementById("ctl00_Content_rangeValGrade");
+    ctl00_Content_rangeValGrade.controltovalidate = "ctl00_Content_ddlGrade";
+    ctl00_Content_rangeValGrade.errormessage = "Please enter a valid Grade";
+    ctl00_Content_rangeValGrade.display = "None";
+    ctl00_Content_rangeValGrade.enabled = "False";
+    ctl00_Content_rangeValGrade.type = "Integer";
+    ctl00_Content_rangeValGrade.evaluationfunction = "RangeValidatorEvaluateIsValid";
+    ctl00_Content_rangeValGrade.maximumvalue = "100";
+    ctl00_Content_rangeValGrade.minimumvalue = "0";
+    var ctl00_Content_reqval = document.all ? document.all["ctl00_Content_reqval"] : document.getElementById("ctl00_Content_reqval");
+    ctl00_Content_reqval.controltovalidate = "ctl00_Content_RadioBtnQ9";
+    ctl00_Content_reqval.errormessage = "Please select the type of School";
+    ctl00_Content_reqval.display = "None";
+    ctl00_Content_reqval.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_Content_reqval.initialvalue = "";
+    var ctl00_Content_reqvalSchool = document.all ? document.all["ctl00_Content_reqvalSchool"] : document.getElementById("ctl00_Content_reqvalSchool");
+    ctl00_Content_reqvalSchool.controltovalidate = "ctl00_Content_txtCamperSchool";
+    ctl00_Content_reqvalSchool.errormessage = "Please enter the Name of the School";
+    ctl00_Content_reqvalSchool.display = "None";
+    ctl00_Content_reqvalSchool.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_Content_reqvalSchool.initialvalue = "";
+    //]]>
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    var Page_ValidationActive = false;
+    if (typeof (ValidatorOnLoad) == "function") {
+        ValidatorOnLoad();
+    }
+
+    function ValidatorOnSubmit() {
+        if (Page_ValidationActive) {
+            return ValidatorCommonOnSubmit();
+        }
+        else {
+            return true;
+        }
+    }
+    //]]>
+</script>
+</form>
+    
+</body>
+</html>
