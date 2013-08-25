@@ -4,7 +4,7 @@
     <script type="text/javascript" src="Validate.js"></script>
     <!--to display the validation summary (error messages)-->
     <div>
-        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="ValidatePage2Step2_SanFrancisco_Seattle"></asp:CustomValidator>
+        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="Validator.OnSubmitClick"></asp:CustomValidator>
         <!--to vaidate the comments text box for admin user-->
         <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
         <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
@@ -33,39 +33,39 @@
             <td><span class="InfoText">*</span>3</td>
             <td>
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
-                <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal">
+                <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" onclick="Validator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
                     <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:RequiredFieldValidator ID="reqval" ControlToValidate="RadioButtionQ5" runat="server"  Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator ID="reqval" ControlToValidate="rdoSchoolType" runat="server"  Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
             <td><span class="InfoText">*</span>4</td>
             <td>
                 Please enter the name of the school that the camper <em><u>CURRENTLY</u></em> attends:<br />
-                <asp:TextBox ID="txtCamperSchool" runat="server" CssClass="txtbox" MaxLength="200" />
-                <asp:RequiredFieldValidator ID="reqvalSchool"  Display="none" ControlToValidate="txtCamperSchool" runat="server" ErrorMessage="Please enter the Name of the School" />
+                <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
+                <asp:RequiredFieldValidator ID="reqvalSchool"  Display="none" ControlToValidate="txtSchoolName" runat="server" ErrorMessage="Please enter the Name of the School" />
             </td>
         </tr>
         <tr>
             <td><span class="InfoText">*</span>5</td>
             <td>
                 Are you a member of any of the following? Membership not required for this grant. (Check all that apply)
-                <asp:Panel ID="Pnl9a" runat="server" Width="100%">
+                <asp:Panel ID="pnlSynagogue" runat="server" Width="100%">
                     <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="Validator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
                     <br />
                     <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" onChange="Validator.OnSynagogueDropDownChange(this);" />
                     If "Other":
                     <asp:TextBox ID="txtOtherSynagogue" runat="server" CssClass="txtbox" Enabled="false" MaxLength="200" Width="160px" />
                     
-                    <div id="divReferBy" style="display:none">
+                    <div id="divReferBy" style="display:none" runat="server">
                         Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?<br />
                         <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
                         <asp:RadioButton ID="rdoNoOne" runat="server" Text="No one from my synagogue" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
-                        <div id="divWhoInSynagogue" style="display:none">
+                        <div id="divWhoInSynagogue" style="display:none" runat="server">
                             <asp:DropDownList ID="ddlWho" DataTextField="Name" DataValueField="ID" runat="server" onChange="Validator.OnWhoInSynagogueDropDownChange(this);" />
                             If "Other":
                             <asp:TextBox ID="txtWhoInSynagogue" disabled="true" runat="server" />
@@ -74,7 +74,7 @@
                     </div>
 
                 </asp:Panel>
-                <asp:Panel ID="Pnl10a" runat="server" Width="100%">
+                <asp:Panel ID="pnlJCC" runat="server" Width="100%">
                     <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="Validator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
                     <br />
 
@@ -83,9 +83,9 @@
                     If "Other":
                     <asp:TextBox ID="txtJCC" runat="server" CssClass="txtbox" Enabled="false" MaxLength="200" Width="160px" />
                 </asp:Panel>
-                <asp:Panel ID="pnl11Q" runat="server" Width="100%">
+                <div>
                     <input type="checkbox" value="2" runat="server" id="chkNoneOfAboveSynJcc" onclick="Validator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
-                </asp:Panel>
+                </div>
             </td>
         </tr>
         <tr>
@@ -147,9 +147,7 @@
                 <asp:Panel ID="PnlAdmin" runat="server" Visible="false">
                     <table border="0">
                         <tr>
-                            <td>
-                                <asp:Label ID="Label21" CssClass="InfoText" runat="server" Text="*"></asp:Label>
-                                <asp:Label ID="Label20" CssClass="text" runat="server" Text="Comments"></asp:Label></td>
+                            <td><span class="InfoText">*</span>Comments</td>
                             <td><asp:TextBox ID="txtComments" runat="server" CssClass="txtbox2" TextMode="MultiLine"></asp:TextBox></td>
                         </tr>
                     </table>
@@ -159,11 +157,12 @@
         </tr>
         <!--end of admin panel-->
         <tr >
-            <td><asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
             <td colspan="2">
                 <table border="0">
                     <tr>
-                        <td><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                        <td>
+                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" />
+                        </td>
                         <td >
                             <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
                         </td>
@@ -174,7 +173,7 @@
                             <asp:Button ID="btnNext" ValidationGroup="OtherValidation" Text="Next >>" CssClass="submitbtn" runat="server" />
                         </td>
                     </tr>
-                    </table>
+                </table>
             </td>
         </tr>
     </table>
