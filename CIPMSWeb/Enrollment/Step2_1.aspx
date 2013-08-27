@@ -6,7 +6,7 @@
     <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <asp:Label ID="Label4" CssClass="headertext" runat="server">•	Section V:  How Did You Hear About One Happy Camper & Jewish Camp</asp:Label><br />
+                <asp:Label ID="Label4" CssClass="headertext" runat="server">?Section V:  How Did You Hear About One Happy Camper & Jewish Camp</asp:Label><br />
                 <br />
             </td>
         </tr>
@@ -193,9 +193,9 @@
 							<asp:ListItem Text="Before this past summer (prior to June 2012)" Value="1"></asp:ListItem>
 							<asp:ListItem Text="Last Summer (Jun - Aug of 2012)" Value="2"></asp:ListItem>
 							<asp:ListItem Text="This past Fall (Sep - Dec 2012)" Value="3"></asp:ListItem>
-							<asp:ListItem Text="This past Winter (Jan – Mar 2013)" Value="4"></asp:ListItem>
+							<asp:ListItem Text="This past Winter (Jan ?Mar 2013)" Value="4"></asp:ListItem>
 							<asp:ListItem Text="This Spring (Apr - May 2013)" Value="5"></asp:ListItem>
-							<asp:ListItem Text="This Summer (Jun – Aug 2013)" Value="6"></asp:ListItem>
+							<asp:ListItem Text="This Summer (Jun ?Aug 2013)" Value="6"></asp:ListItem>
 							<asp:ListItem Text="Don't know/Not sure" Value="7"></asp:ListItem>																																										
 						</asp:DropDownList>
 					</div>
@@ -311,7 +311,7 @@
                     <asp:Label ID="Label14" runat="server" Text="<span style='color:red;'>*</span>3b" CssClass="QuestionText"></asp:Label>				
 				</td>
 				<td>
-					<span class="QuestionText">What kind of ‘ad’? Check all that apply.</span>
+					<span class="QuestionText">What kind of ‘ad? Check all that apply.</span>
 					<div>
 						<ul style="list-style-type: none;" class="QuestionText">
 							<li>

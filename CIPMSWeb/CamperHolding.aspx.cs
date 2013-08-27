@@ -25,6 +25,7 @@ public partial class CamperHolding : System.Web.UI.Page
             ddlCamp.DataTextField = "Camp";
             ddlCamp.DataValueField = "ID";
             ddlCamp.DataBind();
+            ddlCamp.Items.Insert(0, new ListItem("Don't Know Yet", "-1"));
             ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
 
             DataSet schoolTypes = objGeneral.GetSchoolType();

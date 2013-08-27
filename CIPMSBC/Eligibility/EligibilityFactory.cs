@@ -162,7 +162,6 @@ namespace CIPMSBC.Eligibility
                 case FederationEnum.Habonim:
                     elig = new EligibilityHabonim(fed);
                     break;
-
                 case FederationEnum.NNJ:
                     elig = new EligibilityNNJ(fed);
                     break;
@@ -262,10 +261,12 @@ namespace CIPMSBC.Eligibility
 				case FederationEnum.JCAShalom:
 					elig = new EligibilityJCAShalom(fed);
 					break;
-
 				case FederationEnum.MoshavaMalibu:
 					elig = new EligibilityMoshavaMalibu(fed);
 					break;
+                case FederationEnum.Toronto:
+                    elig = new EligibilityToronto(fed);
+                    break;
             }
             return elig;
         }

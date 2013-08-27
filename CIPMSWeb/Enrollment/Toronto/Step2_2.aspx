@@ -2,7 +2,6 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     <script type="text/javascript" src="Validate.js"></script>
-    <!--to display the validation summary (error messages)-->
     <div>
         <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="Validator.OnSubmitClick"></asp:CustomValidator>
         <!--to vaidate the comments text box for admin user-->
@@ -17,8 +16,13 @@
             <td><span class="InfoText">*</span>1</td>
             <td>
                 Will this be the camper's first time attending a Jewish overnight camp for 3 weeks or longer?<br />
-                <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" />
-                <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" />
+                <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="Validator.OnFirstTimerChange(this);" />
+                <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" onclick="Validator.OnFirstTimerChange(this);" />
+                <div id="divTaste" runat="server">
+                    Is the first-time camper attending a ¡°Taste of Camp¡± session?
+                    <asp:RadioButton ID="rdoTasteOfCampYes" value="1" runat="server" GroupName="TasteGroup" Text="Yes" />
+                    <asp:RadioButton ID="rdoTasteOfCampNo" value="2" GroupName="TasteGroup" runat="server" Text="No" />
+                </div>        
             </td>
         </tr>
         <tr>
@@ -54,36 +58,40 @@
             <td><span class="InfoText">*</span>5</td>
             <td>
                 Are you a member of any of the following? Membership not required for this grant. (Check all that apply)
-                <asp:Panel ID="pnlSynagogue" runat="server" Width="100%">
-                    <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="Validator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
-                    <br />
-                    <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" onChange="Validator.OnSynagogueDropDownChange(this);" />
-                    If "Other":
-                    <asp:TextBox ID="txtOtherSynagogue" runat="server" CssClass="txtbox" Enabled="false" MaxLength="200" Width="160px" />
-                    
-                    <div id="divReferBy" style="display:none" runat="server">
-                        Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?<br />
-                        <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
-                        <asp:RadioButton ID="rdoNoOne" runat="server" Text="No one from my synagogue" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
-                        <div id="divWhoInSynagogue" style="display:none" runat="server">
-                            <asp:DropDownList ID="ddlWho" DataTextField="Name" DataValueField="ID" runat="server" onChange="Validator.OnWhoInSynagogueDropDownChange(this);" />
-                            If "Other":
-                            <asp:TextBox ID="txtWhoInSynagogue" disabled="true" runat="server" />
-                        </div>
 
+                <div ID="pnlSynagogue" runat="server" class="questionrows">
+                    <div style="padding-left:0px;">
+                        <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="Validator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
                     </div>
-
-                </asp:Panel>
-                <asp:Panel ID="pnlJCC" runat="server" Width="100%">
-                    <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="Validator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
-                    <br />
-
-                    <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="240px" onChange="Validator.OnJCCDropDownChange(this);" />
-
-                    If "Other":
-                    <asp:TextBox ID="txtJCC" runat="server" CssClass="txtbox" Enabled="false" MaxLength="200" Width="160px" />
-                </asp:Panel>
-                <div>
+                    <div>
+                        <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" onChange="Validator.OnSynagogueDropDownChange(this);" />
+                        If "Other":
+                        <asp:TextBox ID="txtOtherSynagogue" runat="server" CssClass="txtbox" MaxLength="200" Width="160px" />
+                    </div>
+                    <div>
+                        <div id="divReferBy" disabled="true" runat="server">
+                            Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?<br />
+                            <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
+                            <asp:RadioButton ID="rdoNoOne" runat="server" Text="No one from my synagogue" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
+                            <div id="divWhoInSynagogue" disabled="true" runat="server">
+                                <asp:DropDownList ID="ddlWho" DataTextField="Name" DataValueField="ID" runat="server" onChange="Validator.OnWhoInSynagogueDropDownChange(this);" />
+                                If "Other":
+                                <asp:TextBox ID="txtWhoInSynagogue" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pnlJCC" runat="server" Width="100%" class="questionrows">
+                    <div style="padding-left:0px;">
+                        <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="Validator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
+                    </div>
+                    <div>
+                        <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="240px" onChange="Validator.OnJCCDropDownChange(this);" />
+                        If "Other":
+                        <asp:TextBox ID="txtJCC" runat="server" CssClass="txtbox" Enabled="false" MaxLength="200" Width="160px" />
+                    </div>
+                </div>
+                <div style="padding-top:10px;">
                     <input type="checkbox" value="2" runat="server" id="chkNoneOfAboveSynJcc" onclick="Validator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
                 </div>
             </td>
@@ -192,6 +200,7 @@
     <asp:HiddenField ID="hdnQ1042ParticipateTaglit" runat="server" Value="1042" /> 
     <asp:HiddenField ID="hdnQ1043BeenToIsrael" runat="server" Value="1043" />   
     <asp:HiddenField ID="hdnQ1044ReferByType" runat="server" Value="1044" />   
-    <asp:HiddenField ID="hdnQ1045ReferBy" runat="server" Value="1045" />                         
+    <asp:HiddenField ID="hdnQ1045ReferBy" runat="server" Value="1045" />   
+    <asp:HiddenField ID="hdnQ1046TasteOfCamp" runat="server" Value="1046" />                             
 </asp:Content>
 

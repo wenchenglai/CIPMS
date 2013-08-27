@@ -1,4 +1,5 @@
 ﻿var Validator = {
+    OtherOption: "Other (please specify)",
 
     OnSynagogueCheckboxChange: function (chkboxObject) {
         if ($(chkboxObject).is(':checked')) {
@@ -9,11 +10,11 @@
             }
 
             // Who is in Sysnagogue that refer this camper?
-            $('#ctl00_Content_divReferBy').show();
+            $('#ctl00_Content_divReferBy :input').removeAttr('disabled');
         } else {
             $('#ctl00_Content_ddlSynagogue').attr('disabled', true);
             $('#ctl00_Content_txtOtherSynagogue').attr('disabled', true);
-            $('#ctl00_Content_divReferBy').hide();
+            $('#ctl00_Content_divReferBy :input').attr('disabled', true);
         }
         $('#ctl00_Content_chkNo').attr('disabled', true);
     },
@@ -60,15 +61,23 @@
 
     OnWhoRadioChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoCongregant').is(':checked')) {
-            $('#ctl00_Content_divWhoInSynagogue').show();
+            $('#ctl00_Content_divWhoInSynagogue :input').removeAttr('disabled');
+            Validator.OnWhoInSynagogueDropDownChange(null);
         } else {
-            $('#ctl00_Content_divWhoInSynagogue').hide();
+            $('#ctl00_Content_divWhoInSynagogue :input').attr('disabled', true);
+        }
+    },
+
+    OnFirstTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            $('#ctl00_Content_divTaste :input').removeAttr('disabled');
+        } else {
+            $('#ctl00_Content_divTaste :input').attr('disabled', true);
         }
     },
 
     OnWhoInSynagogueDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_ddlWho>option:selected').text() === "Other") {
-            $('#ctl00_Content_txtWhoInSynagogue').show();
+        if ($('#ctl00_Content_ddlWho>option:selected').text() === "Other (please specify)") {
             $('#ctl00_Content_txtWhoInSynagogue').removeAttr('disabled');
         } else {
             $('#ctl00_Content_txtWhoInSynagogue').attr('disabled', true);

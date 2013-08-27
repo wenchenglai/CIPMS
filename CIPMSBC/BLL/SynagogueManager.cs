@@ -15,22 +15,20 @@ namespace CIPMSBC.BLL
         {
             DataTable dt = SynagogueDA.GetWhoIsInSynagogue(fed);
 
-            var a = new Dictionary<int, string>();
+            //var row = dt.NewRow();
+            //row["ID"] = "-1";
+            //row["Name"] = "I don’t remember";
+            //dt.Rows.Add(row);
 
-            var row = dt.NewRow();
-            row["ID"] = "-1";
-            row["Name"] = "I don’t remember";
-            dt.Rows.Add(row);
-
-            row = dt.NewRow();
-            row["ID"] = "-2";
-            row["Name"] = "Other";
-            dt.Rows.Add(row);
+            //row = dt.NewRow();
+            //row["ID"] = "-2";
+            //row["Name"] = "Other";
+            //dt.Rows.Add(row);
             
-            row = dt.NewRow();
-            row["ID"] = "0";
-            row["Name"] = "Rabbi or Cantor";
-            dt.Rows.InsertAt(row, 0);
+            //row = dt.NewRow();
+            //row["ID"] = "0";
+            //row["Name"] = "Rabbi or Cantor";
+            //dt.Rows.InsertAt(row, 0);
 
             return dt;
         }

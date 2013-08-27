@@ -62,7 +62,7 @@ namespace CIPMSBC.Eligibility
                         {
                             if (PendingSchool)
                             {
-                                iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoSchoolNoCamp);
+                                iStatusValue = Convert.ToInt32(StatusInfo.PendingSchoolAndCamp);
                             }
                             else
                             {
@@ -73,7 +73,7 @@ namespace CIPMSBC.Eligibility
                         {
                             if (PendingSchool)
                             {
-                                iStatusValue = (int)StatusInfo.PendingSchoolEligibility;
+                                iStatusValue = (int)StatusInfo.EligiblePendingSchool;
                             }
                             else
                             {
@@ -116,7 +116,7 @@ namespace CIPMSBC.Eligibility
                     {
                         if (JewishSchool == 2)
                         {
-                            iStatusValue = (int)StatusInfo.PendingSchoolEligibility;
+                            iStatusValue = (int)StatusInfo.EligiblePendingSchool;
                             PendingSchool = true;
                         }
                         else if (JewishSchool == 1)
@@ -379,7 +379,7 @@ namespace CIPMSBC.Eligibility
             //        {
             //            if (JewishSchool == 2)
             //            {
-            //                StatusValue = (int)StatusInfo.PendingSchoolEligibility;
+            //                StatusValue = (int)StatusInfo.EligiblePendingSchool;
             //                PendingSchool = true;
             //            }
             //            else if (JewishSchool == 1)
@@ -420,7 +420,7 @@ namespace CIPMSBC.Eligibility
             //            {
             //                if (PendingSchool)
             //                {
-            //                    StatusValue = Convert.ToInt32(StatusInfo.EligibleNoSchoolNoCamp);
+            //                    StatusValue = Convert.ToInt32(StatusInfo.PendingSchoolAndCamp);
             //                }
             //                else
             //                {
@@ -432,7 +432,7 @@ namespace CIPMSBC.Eligibility
             //            {
             //                if (PendingSchool)
             //                {
-            //                    StatusValue = (int)StatusInfo.PendingSchoolEligibility;
+            //                    StatusValue = (int)StatusInfo.EligiblePendingSchool;
             //                    return true;
             //                }
             //                else

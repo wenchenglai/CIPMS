@@ -25,7 +25,7 @@
                 // alert(ddl.value);
                     if(ddl.value == 15)
                     {
-                     var resp = window.confirm ('Are you sure you want to put this applicant into the status of 2nd Approval…');
+                     var resp = window.confirm ('Are you sure you want to put this applicant into the status of 2nd Approval?);
                      if (resp == true)
                      {
                         ddl.value=15

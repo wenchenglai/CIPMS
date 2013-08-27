@@ -17,21 +17,12 @@ public partial class Calendar : System.Web.UI.Page
         {
             int iDisplayYear = 0;
             int iDisplayMonth = 1;
-            /*int iDisplayMonth = 6;//June
-            //pnlCalStartDt.Style.Add("position", "absolute");
-            //pnlCalStartDt.Style.Add("top", "420px");
-            //pnlCalStartDt.Style.Add("left", "400px");
-            //pnlCalStartDt.Visible = true;
 
-            if (DateTime.Now.Month > iDisplayMonth) //if it is July
-                iDisplayYear = DateTime.Now.Year + 1;
-            else
-                iDisplayYear = DateTime.Now.Year;*/
             string campSessionStartMonth = ConfigurationManager.AppSettings["CampSessionStartMonth"];
             string campSessionEndMonth = ConfigurationManager.AppSettings["CampSessionEndMonth"];
+            string campSessionStartYear = Application["CampYear"].ToString();
+            string campSessionEndYear = Application["CampYear"].ToString();
 
-            string campSessionStartYear = ConfigurationManager.AppSettings["CampSessionStartYear"];
-            string campSessionEndYear = ConfigurationManager.AppSettings["CampSessionEndYear"];
             int startYear, endYear, startMonth, endMonth = 0;
 
             int.TryParse(campSessionStartYear, out startYear);
@@ -70,8 +61,8 @@ public partial class Calendar : System.Web.UI.Page
         string campSessionStartMonth = ConfigurationManager.AppSettings["CampSessionStartMonth"];
         string campSessionEndMonth = ConfigurationManager.AppSettings["CampSessionEndMonth"];
 
-        string campSessionStartYear = ConfigurationManager.AppSettings["CampSessionStartYear"];
-        string campSessionEndYear = ConfigurationManager.AppSettings["CampSessionEndYear"];
+        string campSessionStartYear = Application["CampYear"].ToString();
+        string campSessionEndYear = Application["CampYear"].ToString();
         int startYear, endYear, startMonth, endMonth = 0;
 
         int.TryParse(campSessionStartYear, out startYear);

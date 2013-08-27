@@ -383,7 +383,7 @@ namespace CIPMSBC.Eligibility
             //            {
             //                if (PendingSchool)
             //                {
-            //                    StatusValue = Convert.ToInt32(StatusInfo.EligibleNoSchoolNoCamp);
+            //                    StatusValue = Convert.ToInt32(StatusInfo.PendingSchoolAndCamp);
             //                }
             //                else
             //                {

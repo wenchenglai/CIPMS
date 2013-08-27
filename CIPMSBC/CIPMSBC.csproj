@@ -73,6 +73,7 @@
     <Compile Include="CamperApplication.cs" />
     <Compile Include="CIPDataAccess.cs" />
     <Compile Include="DAL\SynagogueDA.cs" />
+    <Compile Include="Eligibility\EligibilityToronto.cs" />
     <Compile Include="UserDetails.cs" />
     <Compile Include="cService.cs" />
     <Compile Include="Eligibility\EligibilityColorado.cs" />

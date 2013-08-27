@@ -22,13 +22,12 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-		string strStatus;
         string Amt = Convert.ToString(Session["Amount"]);
 		if (Amt == "")
 			Amt = "0";
 
         strAmt = " in the amount of $" + Amt ;
-        strStatus = Convert.ToString(Session["STATUS"]);
+        StatusInfo strStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
         strFedId = Convert.ToString(Session["FedId"]);
 
         if (Session["CampID"] != null)
@@ -66,14 +65,19 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             //_objRedirectionLogic.FJCID = Session["FJCID"].ToString();
             _objRedirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
         }
-        if (strStatus == "1" || strStatus == "2" || strStatus == "6" || strStatus=="20" || strStatus == "7")  //20- eligiblenoschoolnocamp
+
+        if (strStatus == StatusInfo.SystemEligible || 
+            strStatus == StatusInfo.EligibleNoCamp || 
+            strStatus == StatusInfo.EligiblePendingSchool || 
+            strStatus == StatusInfo.PendingSchoolAndCamp || 
+            strStatus == StatusInfo.EligibleByStaff)  //20- eligiblenoschoolnocamp
         {
             pnlEligible.Visible = true;
                    
             pnlCommon.Visible = true;
             pnlInEligible.Visible = false;
             pnlRamah.Visible = false;
-            if (strStatus == "1") //Status 1A (Appears to be eligible and indicated a camp)
+            if (strStatus == StatusInfo.SystemEligible) //Status 1A (Appears to be eligible and indicated a camp)
             {
                 if (strFedId != "3")
                 {
@@ -82,20 +86,20 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 pnlStatus1B.Visible = false;
                 pnlStatus1F.Visible = false;
             }
-            if (strStatus == "2") //Status 1B (Appears to be eligible, but "No Camp" selected)
+            if (strStatus == StatusInfo.EligibleNoCamp) //Status 1B (Appears to be eligible, but "No Camp" selected)
             {
                 pnlStatus1A.Visible = false;
                 pnlStatus1B.Visible = true;
                 pnlStatus1F.Visible = false;
             }
-            if (strStatus == "6") //Status 1F (Appears to be eligible, but pending - School Eligibility)
+            if (strStatus == StatusInfo.EligiblePendingSchool) //Status 1F (Appears to be eligible, but pending - School Eligibility)
             {
                 pnlStatus1A.Visible = false;
                 pnlStatus1B.Visible = false;
                 pnlStatus1F.Visible = true;
             }
 
-            if (strStatus == "20") //Status 1G (Appears to be eligible, but No School, No Camp)
+            if (strStatus == StatusInfo.PendingSchoolAndCamp) //Status 1G (Appears to be eligible, but No School, No Camp)
             {
                 //pnlStatus1A.Visible = false;
                 //pnlStatus1B.Visible = false;
@@ -161,7 +165,8 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 }
             }
         }
-        else if (((strStatus == "3" || strStatus == "17")) && !_objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString() != "PJL")) //Status 1C (InEligible) OR Status 4D (Camper declined to go to camp)
+        else if (((strStatus == StatusInfo.SystemInEligible || strStatus == StatusInfo.CamperDeclinedToGoToCamp)) 
+            && !_objRedirectionLogic.BeenToPJL)
         {
             pnlEligible.Visible = false;
             pnlInEligible.Visible = true;
@@ -216,22 +221,16 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                     Email2.HRef = "mailto:" + lblEmail2.Text;
                     if (!string.IsNullOrEmpty(strDesignation))
                         lblDesignation2.Text = ", " + strDesignation;
-                    //lblDesignation2.Text = strDesignation;
-                    //lblFed2.Visible = false;
-                    //lblDesignation2.Visible = false;
-                    //lblEmail2.Visible = false;
-                    //lblPhone2.Visible = false;
-                    //lblContactPerson2.Visible = false;
                 }
             }
         }
-        else if (strStatus == "3nonjewish")
+        else if (strStatus == StatusInfo.NonJewish)
         {
             pnlEligible.Visible = false;
             pnlInEligible.Visible = false;
             pnlInEligibleNonJewish.Visible = true;
         }
-        else if ((strStatus == "3") && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString() == "PJL"))
+        else if ((strStatus == StatusInfo.SystemInEligible) && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString() == "PJL"))
         {
             pnlEligible.Visible = false;
             pnlInEligible.Visible = false;
@@ -243,18 +242,8 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             Label10.Text = drContact["Contact"].ToString();
             Label11.Text = drContact["Phone"].ToString();
             Label12.Text = drContact["Email"].ToString();
-            //Email2.HRef = "mailto:" + Label12.Text;
-
-            //Label9.Text = "Rachel Kaplan";
-            //strDesignation = "UJA Federation of New York, Campership Coordinator";
-            //if (!string.IsNullOrEmpty(strDesignation))
-            //    Label10.Text =strDesignation;
-            //else
-            //    Label10.Text = strDesignation;
-            //Label11.Text = "212-836-1291";
-            //Label12.Text = "campership@ujafedny.org";
         }
-        else if ((strStatus == "36") && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString().Contains("PJL")))
+        else if ((strStatus == StatusInfo.PendingValidation) && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString().Contains("PJL")))
         {
             pnlStatus1A.Visible = false;
             pnlStatus1B.Visible = false;
@@ -263,12 +252,10 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             PnlPJL.Visible = true;
             pnlEligible.Visible = true;
             pnlCommon.Visible = false;
-
-            //Label15.Text = "Kirstin Gadiel";
-            //Label16.Text = "(413)-439-1968";
-            //Label17.Text = "kirstin@hgf.org";
-            strStatus = "36";
-
+        }
+        else if (strStatus == StatusInfo.EligiblePendingNumberOfDays)
+        {
+            pnlEligiblePendingNumberOfDays.Visible = true;
         }
     }
 

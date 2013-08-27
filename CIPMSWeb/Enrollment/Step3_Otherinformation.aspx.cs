@@ -10,6 +10,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.IO;
 using CIPMSBC;
+using System.Net;
 
 public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 {
@@ -32,7 +33,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
-
 
     void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
     {
@@ -428,17 +428,21 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 			//Send Email to Parent one of the camper.
 			//SendEmailNotification();
 			//ProcessPJLFile();
-			string strFolder;
-			strFolder = ConfigurationManager.AppSettings["EmailNotificationFolderPath"];
-			if (Directory.Exists(strFolder))
-			{
-				ProcessFile(strFolder);
-			}
-			else
-			{
-				Directory.CreateDirectory(strFolder);
-				ProcessFile(strFolder);
-			}
+
+            if ((Request.Url.Host != "localhost") && (Dns.GetHostAddresses(Request.Url.Host)[0].ToString() == ConfigurationManager.AppSettings["UATIP"]))
+            {
+			    string strFolder;
+			    strFolder = ConfigurationManager.AppSettings["EmailNotificationFolderPath"];
+			    if (Directory.Exists(strFolder))
+			    {
+				    ProcessFile(strFolder);
+			    }
+			    else
+			    {
+				    Directory.CreateDirectory(strFolder);
+				    ProcessFile(strFolder);
+			    }
+            }
 		}
 
 		string strRedirURL;
@@ -1181,7 +1185,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         }
     }
 
-    //public enum StatusInfo { Incomplete = 1, SystemEligible, SystemInEligible, EligibleNoCamp, PendingSchoolEligibility, CamperDeclined }
+    //public enum StatusInfo { Incomplete = 1, SystemEligible, SystemInEligible, EligibleNoCamp, EligiblePendingSchool, CamperDeclined }
 
     //private void SendEmailNotification()
     //{

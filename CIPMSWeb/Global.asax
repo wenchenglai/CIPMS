@@ -8,8 +8,8 @@
 	void Application_Start(object sender, EventArgs e) 
 	{
 		// Code that runs on application startup
-		Application["CampYearID"] = 5;
-		Application["CampYear"] = 2013;
+		Application["CampYearID"] = 6;
+		Application["CampYear"] = 2014;
 	}
 	
 	void Application_End(object sender, EventArgs e) 

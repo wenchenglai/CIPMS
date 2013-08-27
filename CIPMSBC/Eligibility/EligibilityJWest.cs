@@ -246,11 +246,11 @@ namespace CIPMSBC.Eligibility
                 {
                     if (EligibleNoCamp)
                     {
-                        StatusValue = (int)StatusInfo.EligibleNoSchoolNoCamp;
+                        StatusValue = (int)StatusInfo.PendingSchoolAndCamp;
                     }
                     else
                     {
-                        StatusValue = (int)StatusInfo.PendingSchoolEligibility;
+                        StatusValue = (int)StatusInfo.EligiblePendingSchool;
                     }
                 }
                 else

@@ -62,7 +62,7 @@ namespace CIPMSBC.Eligibility
                         {
                             if (PendingSchool)
                             {
-                                iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoSchoolNoCamp);
+                                iStatusValue = Convert.ToInt32(StatusInfo.PendingSchoolAndCamp);
                             }
                             else
                             {
@@ -109,7 +109,7 @@ namespace CIPMSBC.Eligibility
                     {
                         if (JewishSchool == 3)
                         {
-                            iStatusValue = (int)StatusInfo.PendingSchoolEligibility;
+                            iStatusValue = (int)StatusInfo.EligiblePendingSchool;
                             PendingSchool = true;
                         }
                         else
@@ -207,7 +207,7 @@ namespace CIPMSBC.Eligibility
             {
                 Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
                 if (PendingSchool)
-                    StatusValue = (int)StatusInfo.PendingSchoolEligibility;
+                    StatusValue = (int)StatusInfo.EligiblePendingSchool;
             }
             else
             {
@@ -372,7 +372,7 @@ namespace CIPMSBC.Eligibility
             //        {
             //            if (JewishSchool == 3)
             //            {
-            //                StatusValue = (int)StatusInfo.PendingSchoolEligibility;
+            //                StatusValue = (int)StatusInfo.EligiblePendingSchool;
             //                PendingSchool = true;
             //            }
             //            else
@@ -413,7 +413,7 @@ namespace CIPMSBC.Eligibility
             //            {
             //                if (PendingSchool)
             //                {
-            //                    StatusValue = Convert.ToInt32(StatusInfo.EligibleNoSchoolNoCamp);
+            //                    StatusValue = Convert.ToInt32(StatusInfo.PendingSchoolAndCamp);
             //                }
             //                else
             //                {

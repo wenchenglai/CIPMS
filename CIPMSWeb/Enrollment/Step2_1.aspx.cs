@@ -99,6 +99,25 @@ public partial class Step2_1 : System.Web.UI.Page
 				}
 
 			}
+
+            // 2013-08-25 Synagogue refer by person - the answer from previous question can affect the selection of question on this page
+            DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_1.Value, "", "", "1044");
+            foreach (DataRow dr in dsAnswers.Tables[0].Rows)
+            {
+                int qID = Convert.ToInt32(dr["QuestionId"]);
+                if (qID == 1044) // Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
+                {
+                    if (dr["OptionID"].Equals(DBNull.Value))
+                        continue;
+
+                    var optionID = dr["OptionID"].ToString();
+                    if (optionID == "1")
+                    {
+                        chk16.Checked = true;
+                        chk16.Enabled = false;
+                    }
+                }
+            }
 		}
 	}
 

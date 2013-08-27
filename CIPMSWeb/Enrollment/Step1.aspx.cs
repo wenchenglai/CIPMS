@@ -462,7 +462,7 @@ public partial class Step1 : System.Web.UI.Page
 
 			if (UserInfo.IsJewish == "2")
 			{
-				Session["STATUS"] = "3nonjewish";
+				Session["STATUS"] = StatusInfo.NonJewish;
 				strNextURL = "ThankYou.aspx";
 			}
 
@@ -999,7 +999,7 @@ public partial class Step1 : System.Web.UI.Page
             InsertCamperAnswers();
         if (UserInfo.IsJewish == "2")
         {
-            Session["STATUS"] = "3nonjewish";
+            Session["STATUS"] = StatusInfo.NonJewish;
             strNextURL = "ThankYou.aspx";
         }
         if (strNextURL == "" && strFedId == "" && strSplURL != "")
@@ -1827,7 +1827,7 @@ public partial class Step1 : System.Web.UI.Page
         //AG: 10/15/2009
         if (Info.IsJewish == "2")
         {
-            Session["STATUS"] = "3nonjewish";
+            Session["STATUS"] = StatusInfo.NonJewish;
             Response.Redirect(ConfigurationManager.AppSettings["AdminRedirURL"].ToString());
         }
         string strURL = drFedDetails["NavigationURL"].ToString();

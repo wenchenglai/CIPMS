@@ -41,9 +41,9 @@ public partial class Common : System.Web.UI.MasterPage
             form1.DefaultButton = btnDefault.UniqueID;
 
         //Added by Ram
-        CampStartDate = ConfigurationManager.AppSettings["CampSessionStartMonth"] + "/01/" + ConfigurationManager.AppSettings["CampSessionStartYear"];
+        CampStartDate = ConfigurationManager.AppSettings["CampSessionStartMonth"] + "/01/" + Application["CampYear"].ToString();
         hdnCampSessionStartDate.Value = DateTime.Parse(CampStartDate).AddDays(-1.0).ToShortDateString();
-        CampEndDate = ConfigurationManager.AppSettings["CampSessionEndMonth"] + "/01/" + ConfigurationManager.AppSettings["CampSessionEndYear"];
+        CampEndDate = ConfigurationManager.AppSettings["CampSessionEndMonth"] + "/01/" + Application["CampYear"].ToString();
         hdnCampSessionEndDate.Value = DateTime.Parse(CampEndDate).AddMonths(1).ToShortDateString();
         hdncampSeasonErrorMessage.Value = "Choose camp session between " + DateTime.Parse(CampStartDate).ToShortDateString() + " and " + DateTime.Parse(CampEndDate).AddMonths(1).AddDays(-1.0).ToShortDateString();
     }

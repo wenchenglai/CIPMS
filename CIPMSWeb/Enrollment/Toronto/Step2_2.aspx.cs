@@ -170,6 +170,37 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     #region "Controls Events"
 
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                //to check whether the camper is eligible
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Toronto);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+            Session["STATUS"] = iStatus;
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+        Response.Redirect("Step2_3.aspx");
+    }
+
 	void btnReturnAdmin_Click(object sender, EventArgs e)
 	{
 		string strRedirURL;
@@ -215,39 +246,6 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		Response.Redirect("Summary.aspx");
 	}
 
-	void btnNext_Click(object sender, EventArgs e)
-	{
-		int iStatus;
-		string strModifiedBy, strFJCID;
-		EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.SanFrancisco);
-
-		if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-		{
-			ProcessCamperAnswers();
-		}
-
-		bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-		//Modified by id taken from the Master Id
-		strModifiedBy = Master.UserId;
-		strFJCID = hdnFJCIDStep2_2.Value;
-		if (strFJCID != "" && strModifiedBy != "")
-		{
-			if (isReadOnly)
-			{
-				DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-				iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-			}
-			else
-			{
-				//to check whether the camper is eligible 
-				objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-			}
-			Session["STATUS"] = iStatus.ToString();
-		}
-		Session["FJCID"] = hdnFJCIDStep2_2.Value;
-		Response.Redirect("Step2_3.aspx");
-	}
-
     void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
     {
         string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
@@ -277,7 +275,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		}
 	}
 
-	protected void InsertCamperAnswersIntoDB()
+	private void InsertCamperAnswersIntoDB()
 	{
 		string strFJCID, strComments;
 		int RowsAffected;
@@ -300,9 +298,9 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		CamperAppl.UpdateTimeInCampInApplication(strFJCID);
 	}
 
-    void getCamperAnswersFromDB()
+    private void getCamperAnswersFromDB()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1040,1041,1042,1043,1044,1045");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1040,1041,1042,1043,1044,1045,1046");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
 		{
@@ -314,9 +312,15 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                     continue;
 
                 if (dr["OptionID"].ToString() == "1")
+                {
                     rdoFirstTimerYes.Checked = true;
+                    rdoTasteOfCampNo.Enabled = false;
+                    rdoTasteOfCampYes.Enabled = false;
+                }
                 else
+                {
                     rdoFirstTimerNo.Checked = true;
+                }
             }
             else if (qID == 6) // Grade (Mention the grade of the camper after he/she attends the camp session):
             {
@@ -351,17 +355,19 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 				{
 					case SynagogueJCCOther.Other:
 						chkNoneOfAboveSynJcc.Checked = true;
-                        pnlSynagogue.Enabled = pnlJCC.Enabled = false;
+                        pnlSynagogue.Style["display"] = "none";
+                        pnlJCC.Style["display"] = "none";
 						break;
 
 					case SynagogueJCCOther.Synagogue:
 						chkSynagogue.Checked = true;
-                        pnlSynagogue.Enabled = true;
-                        divReferBy.Style["display"] = "block";
+                        pnlSynagogue.Style["display"] = "block";
+                        divReferBy.Style.Remove("disabled");
 						break;
 
 					case SynagogueJCCOther.JCC:
-                        chkJCC.Checked = pnlJCC.Enabled = true;
+                        chkJCC.Checked = true;
+                        pnlJCC.Style["display"] = "block";
 						break;
 
 					default: 
@@ -377,6 +383,8 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 				if (dr["OptionID"].ToString() == "1")
 				{
 				    ddlSynagogue.SelectedValue = dr["Answer"].ToString();
+                    if (ddlSynagogue.SelectedItem.Text != "Other (please specify)")
+                        txtOtherSynagogue.Enabled = false;
 				}
 				else if (dr["OptionID"].ToString() == "2")
 				{
@@ -443,7 +451,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 if (optionID == "1")
                 {
                     rdoCongregant.Checked = true;
-                    divWhoInSynagogue.Style["display"] = "block";
+                    divWhoInSynagogue.Style.Remove("disabled");
                 }
                 else
                     rdoNoOne.Checked = true;
@@ -458,6 +466,22 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 if (Int32.Parse(optionID) == (int)SynagogueMemberDropdown.Other)
                 {
                     txtWhoInSynagogue.Text = dr["Answer"].ToString();
+                }
+                else
+                    txtWhoInSynagogue.Enabled = false;
+            }
+            else if (qID == 1046) // Is the first-time camper attending a ¡°Taste of Camp¡± session?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                {
+                    rdoTasteOfCampYes.Checked = true;
+                }
+                else
+                {
+                    rdoTasteOfCampNo.Checked = true;
                 }
             }
 		}
@@ -477,7 +501,11 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
 		//for question FirstTimerOrNot
 		strQID = hdnQ3IdIsFirtTimer.Value;
-		strTablevalues += strQID + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        // Q1046 Taste of Camp
+        strQID = hdnQ1046TasteOfCamp.Value;
+        strTablevalues += strQID + strFSeparator + (rdoTasteOfCampYes.Checked ? "1" : rdoTasteOfCampNo.Checked ? "2" : "") + strFSeparator + (rdoTasteOfCampYes.Checked ? "Attended Taste of Camp" : rdoTasteOfCampNo.Checked ? "Did not attend Taste of Camp" : "") + strQSeparator;        
 
 		//for question Grade
 		strQID = hdnQ6IdGrade.Value;

@@ -35,7 +35,6 @@ public partial class Administration_CancellationOrChangeForm : System.Web.UI.Pag
         objCamperApplication = new CamperApplication();
         structChangeDetails changeDetails = new structChangeDetails();
         string campYearId = null;
-        string campyear = null;
         valobj.InnerHtml = string.Empty;
         pnlUpdateStatus.Visible = pnlNewRequest.Visible = false;
         bool error= false;
@@ -94,11 +93,11 @@ public partial class Administration_CancellationOrChangeForm : System.Web.UI.Pag
                 rfvComments.Enabled = false;
                 //added by sreevani to display calender according to session year.
                 campYearId = objCamperApplication.getCampYearId(strFJCID);
-				campyear = (2008 + Int32.Parse(campYearId)).ToString();
+                string campyear = Application["CampYear"].ToString();
 
-                CampStartDate = ConfigurationManager.AppSettings["CampSessionStartMonth"] + "/01/" + campyear;//ConfigurationManager.AppSettings["CampSessionStartYear"];
+                CampStartDate = ConfigurationManager.AppSettings["CampSessionStartMonth"] + "/01/" + campyear;
                 hdnCampSessionStartDate.Value = DateTime.Parse(CampStartDate).AddDays(-1.0).ToShortDateString();
-                CampEndDate = ConfigurationManager.AppSettings["CampSessionEndMonth"] + "/01/" + campyear;//ConfigurationManager.AppSettings["CampSessionEndYear"];
+                CampEndDate = ConfigurationManager.AppSettings["CampSessionEndMonth"] + "/01/" + campyear;
                 hdnCampSessionEndDate.Value = DateTime.Parse(CampEndDate).AddMonths(1).ToShortDateString();
                 hdncampSeasonErrorMessage.Value = "Choose camp session between " + DateTime.Parse(CampStartDate).ToShortDateString() + " and " + DateTime.Parse(CampEndDate).AddMonths(1).AddDays(-1.0).ToShortDateString();
             }

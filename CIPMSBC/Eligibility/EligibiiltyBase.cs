@@ -412,10 +412,17 @@ namespace CIPMSBC.Eligibility
         {
             double grant = 0;
             CamperApplication oCA = new CamperApplication();
+
+            // 2013-08-26 Now getCamperGrantForDays will also check if this toronto camper has attended Taste of Camp
             grant = (double)oCA.getCamperGrantForDays(FJCID, days);
 
             if (grant > 0)
                 StatusValue = (int)StatusInfo.SystemEligible;
+            else if (grant == -1)
+            {
+                StatusValue = (int)StatusInfo.EligiblePendingNumberOfDays;
+                grant = 0;
+            }
             else
                 StatusValue = (int)StatusInfo.SystemInEligible;
 
@@ -485,36 +492,24 @@ namespace CIPMSBC.Eligibility
         protected void StatusBasedOnCamperTimeInCampWithOutCamp(string FJCID, out int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
-            DataSet dsCamperTimeInCampWithOutCamp;
-            dsCamperTimeInCampWithOutCamp = oCA.GetCamperTimeInCampWithOutCamp(FJCID);
-            DataRow drCamperTimeInCampWithOutCamp;
-            int Grade = 0;
+            DataSet ds = oCA.GetCamperTimeInCampWithOutCamp(FJCID);
+            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
 
-            if (dsCamperTimeInCampWithOutCamp.Tables[0].Rows.Count > 0)
+            if (ds.Tables[0].Rows.Count > 0)
             {
-                drCamperTimeInCampWithOutCamp = dsCamperTimeInCampWithOutCamp.Tables[0].Rows[0];
-                if (DBNull.Value.Equals(drCamperTimeInCampWithOutCamp["TimeInCampEligible"]))
+                DataRow dr = ds.Tables[0].Rows[0];
+                if (!DBNull.Value.Equals(dr["TimeInCampEligible"]))
                 {
-                    StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                }
-                else
-                {
-                    if (drCamperTimeInCampWithOutCamp["TimeInCampEligible"].ToString() == "1")
+                    if (dr["TimeInCampEligible"].ToString() == "1")
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        StatusValue = (int)StatusInfo.SystemEligible;
                     }
-                    else
+                    else if (dr["TimeInCampEligible"].ToString() == "43")
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                        StatusValue = (int)StatusInfo.EligiblePendingNumberOfDays;
                     }
                 }
             }
-            else
-            {
-                StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-            }
-            return;
         }
-
     }
 }

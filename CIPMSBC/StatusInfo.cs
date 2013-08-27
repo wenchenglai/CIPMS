@@ -11,7 +11,7 @@ namespace CIPMSBC
 		SystemInEligible,
         NationalProgramNotAssigned, 
 		Incomplete, 
-		PendingSchoolEligibility,
+		EligiblePendingSchool,
         EligibleByStaff, 
 		IneligibleByStaff, 
 		BeingResearched,
@@ -22,12 +22,14 @@ namespace CIPMSBC
 		PaymentPending, 
 		SecondApproval,
         Paid, 
-		CamperDeclined, 
+		CamperDeclinedToGoToCamp, 
 		SecondApprovalRejected, 
 		Refunded, 
-		EligibleNoSchoolNoCamp, 
+		PendingSchoolAndCamp, 
 		Eligibledayschool = 23,
 		PendingValidation = 36,
-		EligibleContactParentsAagain = 42
+		EligibleContactParentsAagain = 42,
+        EligiblePendingNumberOfDays = 43,
+        NonJewish = 9999
     }
 }

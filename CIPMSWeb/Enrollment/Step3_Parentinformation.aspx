@@ -6,7 +6,7 @@
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>
-                <td colspan="2"><asp:Label ID="Label10" CssClass="headertext" runat="server" Text="•	Section VI:  Parent Contact Information"></asp:Label><br /><br /></td>
+                <td colspan="2"><asp:Label ID="Label10" CssClass="headertext" runat="server" Text="?Section VI:  Parent Contact Information"></asp:Label><br /><br /></td>
                 
             </tr>
             <tr>
