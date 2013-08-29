@@ -27,7 +27,8 @@
         <tr>
           <td colspan="2"><asp:Label ID="Label2" CssClass="infotext3" runat="server">
                 <p style="text-align:justify">
-                 Camp Livingston has been serving campers from all over for over 90 years. Campers enjoy sports, arts, aquatics, ropes course, rock climbing, nature, Judaics and much more. Campers can choose 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.</p>
+                 Camp Livingston has been serving campers from all over for over 90 years. Campers enjoy sports, arts, aquatics, ropes course, rock climbing, nature, 
+                    Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.</p>
             </asp:Label></td>
         </tr> 
          <tr>
@@ -46,7 +47,7 @@
         <tr>
             <td colspan="2">
                 <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call the camp professional listed at the bottom of this page.</p>
+                    <p style="text-align:justify">If you need additional assistance, please call the camp office at 513-793-5554.</p>
                 </asp:Label></td></tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">

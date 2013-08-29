@@ -83,7 +83,7 @@
         <tr>
             <td>
                 <p class="headertext">
-                    ?Section I:  Basic Camper Information</p>
+                    Section I:  Basic Camper Information</p>
             </td>
         </tr>
         <tr>

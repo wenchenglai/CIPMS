@@ -50,7 +50,7 @@
 						Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
 						As such, children who attend Jewish day school or Yeshiva are not eligible for the program. If your child is not eligible and/or are interested 
 						in learning about financial need-based grants or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> contact your camp, 
-						or the contact Joshua Sofian at joshuas@milwaukeejewish.org.
+						or the contact Jen Vettrus at jenv@milwaukeejewish.org.
 					</p>
 				</asp:Label>
 			</td>
@@ -65,7 +65,8 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Milwaukee Jewish Federation is now closed for the summer of 2013.  For more information, please contact the professional listed at the bottom of the screen.
+						The Milwaukee Jewish Federation is now closed for the summer of 2013.  
+                        For more information, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

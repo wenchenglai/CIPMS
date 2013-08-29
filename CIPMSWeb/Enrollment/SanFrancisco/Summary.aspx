@@ -54,7 +54,7 @@
 						you are interested in learning about <u>financial needs- based grants</u> or other camper funding opportunities please 
 						visit 
 						<a href="http://www.jewishfed.org/see-how-we-help/scholarships-jewish-overnight-camps" target="_blank">www.jewishfed.org/see-how-we-help/scholarships-jewish-overnight-camps</a>, contact your camp directly, 
-						or contact your community professional: Megan Kennedy, Manager of JCF Scholarship Programs, <a href="mailto:megank@sfjcf.org">megank@sfjcf.org</a>.
+						or contact your community professional listed at the bottom of this page.
 					</p>
 				</asp:Label>
 			</td>

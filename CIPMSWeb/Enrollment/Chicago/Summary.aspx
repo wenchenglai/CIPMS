@@ -35,8 +35,9 @@
                 <asp:Label ID="Label1" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 					Campers must also attend a Jewish overnight camp listed on the Foundation for Jewish Camp’s website 
-					(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>). This program is an outreach initiative for children 
-					who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Orthodox Jewish day school are generally 
+					(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>). 
+                        This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. 
+                        As such, children who attend Orthodox Jewish day school are generally 
 					not eligible for this incentive program, although exceptions do exist.
 					</p>
                 </asp:Label>
@@ -47,7 +48,7 @@
                 <asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are ineligible for a OHC grant may be 
-						eligible to receive a Camp Coupon grant through JUF/JF. Please email <a href="mailto:EdwardSimon@juf.org">EdwardSimon@juf.org</a> to find out more.
+						eligible to receive a Camp Coupon grant through JUF/JF. Please email <a href="mailto:JewishCamp@juf.org">JewishCamp@juf.org</a> to find out more.
 					</p>
                 </asp:Label>
             </td>

@@ -192,7 +192,7 @@ public partial class Step2_Adamah_3 : Page
 
             // 2013-08-26 Make sure we keep the EligiblePendingNumberOfDays alive here, so the final Thank you page will show the right info
             if ((StatusInfo)Session["STATUS"] != StatusInfo.EligiblePendingNumberOfDays)
-                Session["STATUS"] = iStatus.ToString();
+                Session["STATUS"] = iStatus;
 
             if (iStatus == (int)StatusInfo.SystemInEligible)
             {
@@ -347,10 +347,8 @@ public partial class Step2_Adamah_3 : Page
         DataSet dsCamps = objGeneral.GetFedCamps((int)FederationEnum.Toronto, Application["CampYear"].ToString());
 
         ddlCamp.DataSource = dsCamps;
-        ddlCamp.DataTextField = "Camp";
-        ddlCamp.DataValueField = "ID";
         ddlCamp.DataBind();
-        ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
+        //ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
 
     private string ConstructCamperAnswers()

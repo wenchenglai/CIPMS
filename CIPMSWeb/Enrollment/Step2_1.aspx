@@ -6,7 +6,7 @@
     <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <asp:Label ID="Label4" CssClass="headertext" runat="server">?Section V:  How Did You Hear About One Happy Camper & Jewish Camp</asp:Label><br />
+                <asp:Label ID="Label4" CssClass="headertext" runat="server">Section V:  How Did You Hear About One Happy Camper & Jewish Camp</asp:Label><br />
                 <br />
             </td>
         </tr>

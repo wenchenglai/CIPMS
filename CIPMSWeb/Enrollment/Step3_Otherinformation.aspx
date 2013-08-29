@@ -10,7 +10,7 @@
             <tr>
                 <td>
                     <p class="headertext">
-                        ?Section VII: Demographics</p>
+                        Section VII: Demographics</p>
                 </td>
             </tr>
         </table>

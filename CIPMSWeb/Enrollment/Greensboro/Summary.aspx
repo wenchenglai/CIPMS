@@ -21,8 +21,7 @@
 					<p style="text-align:justify">
 						<b>The Greensboro One Happy Camper Program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, Temple Emanuel, and 
 						the Foundation for Jewish Camp, provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp 
-						for at least 19 days. The program also offers $750 to returning campers who attend camp for the second time for at least 19 days. $700 is offered 
-						to first-time campers attending URJ Six Points Sports Academy and $250 to second-time URJ Six Points Sports Academy.</b>
+						for at least 19 days. $700 is offered to first-time campers attending URJ Six Points Sports Academy.</b>
 					</p>                
 					<p style="text-align:justify">
 						Eligible campers must be entering grades 3-12 (after camp), live in Greensboro or its environs, and be attending a camp listed on the Foundation for 
@@ -33,8 +32,8 @@
 					</p>
 					<p style="text-align:justify">
 						If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 
-						please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp, 
-						Jewish Family Services (336-852-4829), or your synagogue directly.
+						please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, your camp, or
+                        visit <a href='http://www.shalomgreensboro.org/camp'>www.shalomgreensboro.org/camp</a> to learn about local scholarships available. 
 					</p>
 				</asp:Label>
 			</td>

@@ -20,7 +20,7 @@
         <tr>
           <td colspan="2"><asp:Label ID="Label2" CssClass="infotext3" runat="server">
           <p style="text-align:justify">It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000 off their camp fee to try a Jewish one.</p>
-                  <p style="text-align:justify">Omaha One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must be entering grades 3-11 (after camp) and be attending one of the 150+ non-profit, Jewish, overnight summer camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.jewishcamp.org/camps" target= "_blank">www.jewishcamp.org/camps</a>). </b></p>            
+                  <p style="text-align:justify">One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must be entering grades 3-11 (after camp) and be attending one of the 150+ non-profit, Jewish, overnight summer camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.jewishcamp.org/camps" target= "_blank">www.jewishcamp.org/camps</a>). </b></p>            
             </asp:Label></td>
         </tr>  
         <tr>

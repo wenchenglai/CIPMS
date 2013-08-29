@@ -6,7 +6,7 @@
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>
-                <td colspan="2"><asp:Label ID="Label10" CssClass="headertext" runat="server" Text="?Section VI:  Parent Contact Information"></asp:Label><br /><br /></td>
+                <td colspan="2"><asp:Label ID="Label10" CssClass="headertext" runat="server" Text="Section VI:  Parent Contact Information"></asp:Label><br /><br /></td>
                 
             </tr>
             <tr>
@@ -86,7 +86,7 @@
                 </td>
             </tr>
             <tr>
-            <td colspan="2">
+            <td colspan="2" style="padding-top:20px">
             <asp:Label ID="Label3" CssClass="InfoText3" runat="server"><b>Please enter a valid email address - we will use this information to contact you about your grant.</b></asp:Label>
             </td>
             </tr>
@@ -117,7 +117,7 @@
                 </td>
             </tr>
               <tr>
-                <td colspan="2"><asp:Label ID="Label13" CssClass="headertext1" runat="server" Text="Secondary Parent/Guardian Information:"></asp:Label></td>
+                <td colspan="2" style="padding-top:20px"><asp:Label ID="Label13" CssClass="headertext1" runat="server" Text="Secondary Parent/Guardian Information:"></asp:Label></td>
             </tr>
             <tr>
                 <td>&nbsp;&nbsp;<asp:Label ID="Label14" CssClass="text" runat="server" Text="First Name"></asp:Label></td>

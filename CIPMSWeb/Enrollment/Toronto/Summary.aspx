@@ -19,7 +19,7 @@
 				<p class="infotext3" style="text-align:justify">
 					Thank you for choosing Jewish overnight camp and helping us to be one camper closer to achieving our goal.  
 					The Silber Family Centre for Jewish Camping has committed to doubling the number of campers attending Jewish overnight camp by 2015.  
-					One of the ways that we are spreading the ¡®I LOVE Jewish Camp¡¯ philosophy is through our partnership with Foundation for Jewish Camp.  
+					One of the ways that we are spreading the 'I LOVE Jewish Camp' philosophy is through our partnership with Foundation for Jewish Camp.  
 				</p>
 			</td>
 		</tr>
@@ -40,9 +40,9 @@
 			<td colspan="2">
 				<p class="infotext3" style="text-align:justify">
 					We know that camp can be a new adventure and that you may want to dip your toes before jumping in so we offer a shorter session option.  
-					Eligible campers registered for a ¡®taste of¡¯ session at camp, will have a grant reserved in their name.  Just in case your camper loves camp 
+					Eligible campers registered for a 'taste of' session at camp, will have a grant reserved in their name.  Just in case your camper loves camp 
 					and chooses to extend their 10 day or 2 week session to an eligible program, most camps will offer the option to extend to a full session, 
-					at which time, we will activate the reserved grant for your camper.   If they prefer just to have a ¡®taste of¡¯ camp, he/she would still be 
+					at which time, we will activate the reserved grant for your camper.   If they prefer just to have a 'taste of' camp, he/she would still be 
 					considered a first-time camper next summer and is welcome to apply again.
 				</p>
 			</td>

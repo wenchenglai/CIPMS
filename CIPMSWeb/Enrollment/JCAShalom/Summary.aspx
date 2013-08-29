@@ -91,7 +91,7 @@
                 <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">
 						If you are interested in learning more about our camps and other available grants, please visit us at:  
-						<a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. Or call our registrar at (818) 889-5500 ext. 106.						
+						<a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. Or call our registrar at (818) 889-5500 ext. 102.						
 					</p>
                 </asp:Label>
             </td>

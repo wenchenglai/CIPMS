@@ -12,7 +12,7 @@
 						The Jewish Federation of Greater Seattle (JFGS) in partnership with the Foundation for Jewish Camp is now offering the One Happy Camper first-time 
 						camper incentive program for all Washington State residents. This program will offer substantial funding to campers in our community looking to 
 						attend Jewish overnight camp for the first time. This is not a scholarship, but a grant program to encourage families to consider Jewish 
-						overnight camp offering a $700 reduction in the camp fee.
+						overnight camp offering a $700 reduction in the camp fee for a 12-18 day session and a $1,000 reduction in the camp fee for a 19+ day session.
 					</p>
 				</asp:Label>
 				<asp:Label ID="Label4" CssClass="infotext3" runat="server">

@@ -22,10 +22,11 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
     {
         //Set Page Heading
         Label lbl = (Label)this.Master.FindControl("lblPageHeading");
-        //lbl.Text = "Work Queue";
+
         lbl.Text = "";
         gvWrkQ.Visible = true;
         lblWrkQueueMsg.Visible = false;
+
         //commented by sreevani to remove attention message
         //if (Session["RoleID"] != null)
         //{
@@ -118,7 +119,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         else if (strRole == ConfigurationManager.AppSettings["FEDADMIN"])
         {
             _objCamperDet.FederationID = (string)Session["FedID"];
-            _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42";
+            _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43";
         }
 
         //If logged in role is FJC Admin, show records for his federation with status - 
@@ -126,7 +127,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         else if (strRole == ConfigurationManager.AppSettings["FJCADMIN"])
         {
             _objCamperDet.FederationID = (string)ConfigurationManager.AppSettings["JWest"] + "," + (string)ConfigurationManager.AppSettings["JWestLA"];
-            _objCamperDet.Status = "1,2,6,9,12,14,20,21,27";
+            _objCamperDet.Status = "1,2,6,9,12,14,20,21,27,43";
         }
 
         //if logged in role is Approver, show records with status - Second Approval

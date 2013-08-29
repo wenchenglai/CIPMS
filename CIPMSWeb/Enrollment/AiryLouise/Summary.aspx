@@ -50,10 +50,10 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						Funding and support for this program has been provided by the Aaron & Lillie Straus Foundation, private donors, and the Foundation for Jewish Camp. 
-						All monies are refundable up to April 1, 2013. After April 1, there will be a $200 cancellation fee. 
+						All monies are refundable up to April 1, 2014. After April 1, there will be a $200 cancellation fee. 
 						Check out our website for further information about Camps Airy and Louise and available grants 
 						at <a href="http://www.airylouise.org" target="_blank">www.airylouise.org</a>. 
-						Have a few questions or concerns? Email us at <a href="mailto:Airlou@airylouise.org" target= "_blank" >Airlou@airylouise.org</a> for more information.
+						Have any questions or concerns? Email us at <a href="mailto:airlou@airylouise.org" target= "_blank" >airlou@airylouise.org</a> for more information.
 					</p>
 				</asp:Label>
 			</td>
