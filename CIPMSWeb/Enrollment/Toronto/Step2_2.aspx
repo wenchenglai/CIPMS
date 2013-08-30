@@ -14,8 +14,8 @@
     <table>
         <tbody class="QuestionText">
         <tr>
-            <td><span class="InfoText">*</span>1</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>1</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Will this be the camper's first time attending a Jewish overnight camp for 3 weeks or longer?
                 <div>
                     <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="Validator.OnFirstTimerChange(this);" />
@@ -24,8 +24,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>1a</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>1a</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Is the first-time camper attending a "Taste of Camp" session?
                 <div id="divTaste" runat="server">
                     <asp:RadioButton ID="rdoTasteOfCampYes" value="1" runat="server" GroupName="TasteGroup" Text="Yes" />
@@ -34,8 +34,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>2</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>2</td>
+            <td valign="top" style="padding-bottom:20px;">
                 What grade will the camper enter AFTER camp?
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />
@@ -44,8 +44,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>3</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>3</td>
+            <td valign="top" style="padding-bottom:20px;">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList ID="rdoSchoolType" onclick="Validator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
@@ -57,8 +57,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>4</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>4</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
@@ -67,8 +67,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>5</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>5</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Are you a member of any of the following? Membership not required for this grant. (Check all that apply)
                 <div ID="pnlSynagogue" class="questionrows" runat="server">
                     <div class="column1" style="float:left; width: 100px;">
@@ -98,12 +98,12 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>5a</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>5a</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <div>Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?</div>
                 <div>
                     <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
-                    <span id="divWhoInSynagogue" disabled="true" runat="server">
+                    <span id="divWhoInSynagogue" runat="server">
                         <asp:DropDownList ID="ddlWho" DataTextField="Name" CssClass="dropdown" DataValueField="ID" Width="140px" runat="server" onChange="Validator.OnWhoInSynagogueDropDownChange(this);" />
                         If "Other":
                         <asp:TextBox ID="txtWhoInSynagogue" Width="130px" CssClass="txtbox" runat="server" />
@@ -115,10 +115,8 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <span class="InfoText">*</span>6
-            </td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>6</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <div>Are any members of your family members or alumni of a youth movement? If Yes, which one?</div>
                 <div>
                     <asp:RadioButton ID="rdoMemberOfYouthYes" value="1" GroupName="MemberOfYouth" runat="server" Text="Yes" onclick="Validator.OnYouthMovementRadioChange(this);" />
@@ -128,38 +126,32 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <span class="InfoText">*</span>7
-            </td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>7</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in March of the Living?"
                 <asp:CheckBoxList ID="rdolistParticipateMarchLiving" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
-                    <asp:ListItem Text="One of the camper's parents/guardians" Value="1" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);"></asp:ListItem>
-                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);"></asp:ListItem>
-                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);"></asp:ListItem>
-                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);"></asp:ListItem>
+                    <asp:ListItem Text="One of the camper's parents/guardians" Value="1" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
                 </asp:CheckBoxList>
             </td>
         </tr>
         <tr>
-            <td>
-                <span class="InfoText">*</span>8
-            </td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>8</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in Taglit-Birthright Israel?
                 <asp:CheckBoxList ID="rdolistParticipateTaglit" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
-                    <asp:ListItem Text="One of the camper's parents/guardians" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateTaglitCheckboxChange(this);"></asp:ListItem>
-                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateTaglitCheckboxChange(this);"></asp:ListItem>
-                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateTaglitCheckboxChange(this);"></asp:ListItem>
+                    <asp:ListItem Text="One of the camper's parents/guardians" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" Value="1" ></asp:ListItem>
+                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
                 </asp:CheckBoxList>
             </td>
         </tr>
         <tr>
-            <td>
-                <span class="InfoText">*</span>9
-            </td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>9</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <div>
                     Has anyone in your family been to Israel? If yes, how many times?
                 </div>

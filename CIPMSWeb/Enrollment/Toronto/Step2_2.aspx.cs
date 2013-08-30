@@ -426,14 +426,18 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
 
-                rdolistParticipateMarchLiving.SelectedValue = dr["OptionID"].ToString();
+                var control = rdolistParticipateMarchLiving.Items.FindByValue(dr["OptionID"].ToString());
+                control.Selected = true;
+                //control.Attributes.Remove("disabled");
             }
             else if (qID == 1042) // Has anyone in your family participated in Taglit-Birthright Israel?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
 
-                rdolistParticipateTaglit.SelectedValue = dr["OptionID"].ToString();
+                var control = rdolistParticipateTaglit.Items.FindByValue(dr["OptionID"].ToString());
+                control.Selected = true;
+                //control.Attributes.Remove("disabled");
             }
             else if (qID == 1043) // Has anyone in your family been to Israel? If yes, how many time?
             {
@@ -642,14 +646,26 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
         if (rdolistParticipateMarchLiving.SelectedValue != "")
         {
             strQID = hdnQ1041ParticipateMarchLiving.Value;
-            strTablevalues += strQID + strFSeparator + rdolistParticipateMarchLiving.SelectedValue + strFSeparator + rdolistParticipateMarchLiving.SelectedItem.Text + strQSeparator;
+            for (int i = 0; i < 4; i++)
+            {
+                int k = i + 1;
+                if (rdolistParticipateMarchLiving.Items[i].Selected == true)
+                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateMarchLiving.Items[i].Value + strQSeparator;
+
+            }
         }
 
 		// Has anyone in your family participated in Taglit-Birthright Israel? 
         if (rdolistParticipateTaglit.SelectedValue != "")
         {
             strQID = hdnQ1042ParticipateTaglit.Value;
-            strTablevalues += strQID + strFSeparator + rdolistParticipateTaglit.SelectedValue + strFSeparator + rdolistParticipateTaglit.SelectedItem.Text + strQSeparator;
+            for (int i = 0; i < 4; i++)
+            {
+                int k = i + 1;
+                if (rdolistParticipateTaglit.Items[i].Selected == true)
+                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateTaglit.Items[i].Value + strQSeparator;
+
+            }
         }
 		// Has anyone in your family been to Israel? If yes, how many time?
         if (rdoBeenToIsraelYes.Checked || rdoBeenToIsraelNo.Checked)

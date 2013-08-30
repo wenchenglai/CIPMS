@@ -329,4 +329,21 @@ $(function () {
     Validator.OnFirstTimerChange(null);
     Validator.OnYouthMovementRadioChange(null);
     Validator.OnBeenToIsraelRadioChange(null);
+
+    if ($('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
+        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_3')[0]);
+    } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_0').is(':checked')) {
+        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_0')[0]);
+    } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_1').is(':checked')) {
+        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_1')[0]);
+    }
+
+    if ($('#ctl00_Content_rdolistParticipateTaglit_3').is(':checked')) {
+        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_3')[0]);
+    } else if ($('#ctl00_Content_rdolistParticipateTaglit_0').is(':checked')) {
+        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_0')[0]);
+    } else if ($('#ctl00_Content_rdolistParticipateTaglit_1').is(':checked')) {
+        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_1')[0]);
+    }
+
 })

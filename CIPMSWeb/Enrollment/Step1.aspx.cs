@@ -1870,7 +1870,7 @@ public partial class Step1 : System.Web.UI.Page
 
     private bool doStep1questions(string strFedId)
     {
-        string[] FedIds = new string[] { strJWestFedId, strOrangeFedId, strLACIPId, strJWestLAId };
+        string[] FedIds = new string[] { strJWestFedId, strOrangeFedId, strJWestLAId };
         if (Array.IndexOf(FedIds, strFedId) >= 0)
         {
             return true;

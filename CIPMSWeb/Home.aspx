@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Home" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="blog_html js" lang="en">
@@ -296,12 +296,14 @@
                         <asp:Panel runat="server" DefaultButton="btnSubmit1" ID="pnlRegistration">
                          <div id="formbg">
                             <div id="formnames">
-                                <br />  <p style="margin:0 0 10px 0;">
+                                <br />  <p style="margin:0 0 6px 0;">
                                   Enter  Email:</p> 
-                                  <p style="margin:0 0 10px 0;">
+                                  <p style="margin:0 0 6px 0;">
                                   Confirm  Email:</p>
-                                <p style="margin:0 0 0 0;">
+                                <p style="margin:0 0 8px 0;">
                                   Create Password:</p>
+                                <p style="margin:0 0 0 0;">
+                                  Confirm Password:</p>                                
                             </div>
                             <div id="formfields">
                             
@@ -322,6 +324,12 @@
                                     MaxLength="50" />
                                 <asp:RequiredFieldValidator ID="rfvPwd1" runat="server" ControlToValidate="txtPwd1"
                                     Display="None" ErrorMessage="Please enter Password" />
+                                <br />
+                                <asp:TextBox ID="txtPwd2" runat="server" TextMode="Password" CssClass="txtPwd" Width="150px"
+                                    MaxLength="50" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPwd2"
+                                    Display="None" ErrorMessage="Please confirm password" />
+                                <asp:CompareValidator ID="adf" runat="server" ControlToCompare="txtPwd1" ControlToValidate="txtPwd2" Display="None" ErrorMessage="Passwords don't match"></asp:CompareValidator>
                                 <br />
                              <b>  <asp:Button ID="btnSubmit1" runat="server" Text="Register>>" Width="100px" OnClick="btnSubmit1_Click" /></b> 
                                 

@@ -18,7 +18,7 @@
         <tbody class="QuestionText">
         <tr>
             <td></td>
-            <td>
+            <td style="padding-bottom:20px;">
                 <div ID="lblEligibility" runat="server" class="InfoText">
                     Based on your responses thus far, you appear to be eligible for this program's grant! 
                     All we need now is the camp and session information to confirm the camper is attending a camp that is eligible for this program.
@@ -26,8 +26,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>10</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>10</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <p>Have you registered for camp yet?</p>
                 <p>
                     The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  
@@ -39,8 +39,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>11</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>11</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Select the camp that the camper wishes to attend this summer:
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:DropDownList ID="ddlCamp" DataTextField="Camp" DataValueField="CampID" AppendDataBoundItems="true" Enabled="true" runat="server" CssClass="dropdown">
@@ -50,8 +50,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>12</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>12</td>
+            <td valign="top" style="padding-bottom:20px;">
                 Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown".
                 <asp:Panel ID="PnlQ9" runat="server" width="100%" CssClass="QuestionsLeaveSomeUpperSpace">
                     <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox1" />
@@ -59,8 +59,8 @@
             </td>
         </tr>
         <tr>
-            <td><span class="InfoText">*</span>13</td>
-            <td>
+            <td valign="top"><span class="InfoText">*</span>13</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                     <p class="InfoText">
 					    In order to be eligible for the Toronto OHC incentive grant, the camper must attend camp for at least 19 consecutive days 
