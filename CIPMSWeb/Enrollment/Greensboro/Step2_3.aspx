@@ -37,7 +37,7 @@
         </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Have you registered for camp yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
@@ -53,7 +53,7 @@
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Panel ID="PnlQ8" runat="server" width="100%">
                         <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Please select the camp that the camper wishes to attend this summer.</asp:Label><br />
@@ -88,7 +88,7 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="11" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
                         <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
@@ -98,7 +98,7 @@
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="12" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                         <asp:Label ID="lbl" runat="server" CssClass="QuestionText"><font color="red"><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days (*except for URJ Six Points Sports Academy).</b></font></asp:Label><br />

@@ -30,10 +30,8 @@ public partial class Home : System.Web.UI.Page
                 lblUAT.Visible = true;
                 lblUAT.Text = "This is developer's local machine";
 
-                txtPwd.TextMode = TextBoxMode.SingleLine;
-
-                txtEmail.Text = "wenchenglai@gmail.com";
-                txtPwd.Text = "wayne";
+                Email.Text = "wenchenglai@gmail.com";
+                Password.Text = "wayne";
 
                 //txtEmail.Text = "scharfn@gmail.com";
                 //txtPwd.Text = "fufu4u";
@@ -64,7 +62,7 @@ public partial class Home : System.Web.UI.Page
 
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-		string strEmail = txtEmail.Text.Trim();
+		string strEmail = Email.Text.Trim();
 		string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
 		if (isTestMode == "Yes")
 		{
@@ -77,7 +75,7 @@ public partial class Home : System.Web.UI.Page
 
         Administration objAdmin = new Administration();
 
-        string strPwd = txtPwd.Text.Trim();
+        string strPwd = Password.Text.Trim();
         DataSet ds;
         bool blnIsUsrAuthorized = objAdmin.ValidateCamper(strEmail, strPwd, out ds);
         if (blnIsUsrAuthorized == true)
@@ -104,7 +102,7 @@ public partial class Home : System.Web.UI.Page
     protected void btnForgot_Click(object sender, EventArgs e)
     {
         Administration objAdmin = new Administration();
-        string strToEmail = txtEmail.Text.Trim();
+        string strToEmail = Email.Text.Trim();
         string FromEmail = ConfigurationManager.AppSettings["EmailFrom"].ToString();
         string ReplyAddress = ConfigurationManager.AppSettings["ReplyTo"].ToString();
         string FromName = ConfigurationManager.AppSettings["FromName"].ToString();

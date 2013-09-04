@@ -27,44 +27,31 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         RadioBtnQ3.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        RadioBtnQ4.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        RadioBtnQ5.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        //RadioBtnQ7.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        //chklistQ8.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         RadioBtnQ9.SelectedIndexChanged += new EventHandler(RadioBtn9_SelectedIndexChanged);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
 
-    
-
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        CamperAppl = new CamperApplication();
+        objGeneral = new General();
+        if (!Page.IsPostBack)
         {
-            CamperAppl = new CamperApplication();
-            objGeneral = new General();
-            if (!Page.IsPostBack)
+            //to fill the grades in the dropdown
+            getGrades();
+            getSynagogues();
+            getJCCList(Master.CampYear);
+            //to get the FJCID which is stored in session
+            if (Session["FJCID"] != null)
             {
-                //to fill the grades in the dropdown
-                getGrades();
-                getSynagogues();
-                getJCCList(Master.CampYear);
-                //to get the FJCID which is stored in session
-                if (Session["FJCID"] != null)
-                {
-                    hdnFJCID.Value = (string)Session["FJCID"]; ;
-                    getCamperAnswers();
-                }
+                hdnFJCID.Value = (string)Session["FJCID"]; ;
+                getCamperAnswers();
             }
-            if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
-            if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtJCC.Enabled = false;
-            if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");          
         }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
+        if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtJCC.Enabled = false;
+        if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");          
     }
 
     //page unload
@@ -432,30 +419,9 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
         //for Question 3 & 4
         if (RadioBtnQ3.SelectedIndex.Equals(0))   //yes is selected
         {
-            PnlQ4.Enabled = false;
-            RadioBtnQ4.SelectedIndex = -1;
-            PnlQ5.Enabled = false;
-            RadioBtnQ5.SelectedIndex = -1;
             SetSynagogueJCCControls(true);
         }
-        else if (RadioBtnQ3.SelectedIndex.Equals(1)) //No is selected
-        {
-            if (RadioBtnQ4.SelectedIndex.Equals(0))  //Yes is selected
-            {
-                PnlQ5.Enabled = true;
-                SetSynagogueJCCControls(true);
-            }
-            else if (RadioBtnQ4.SelectedIndex.Equals(1)) //No is selected
-            {
-                PnlQ5.Enabled = false;
-                RadioBtnQ5.SelectedIndex = -1;
-                SetSynagogueJCCControls(true);
-            }
-            else //nothing is selected for Q4
-            {                
-                PnlQ4.Enabled = true;
-            }
-        }
+
         ddlSynagogue.Enabled = chkSynagogue.Checked;
         if (chkJCC.Checked)
         {
@@ -559,14 +525,6 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
         //for question 3
         strQuestionId = hdnQ3Id.Value;
         strTablevalues += strQuestionId + strFSeparator + RadioBtnQ3.SelectedValue + strFSeparator + strQSeparator;
-
-        //for question 4
-        strQuestionId = hdnQ4Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + RadioBtnQ4.SelectedValue + strFSeparator + strQSeparator;
-
-        //for question 5
-        strQuestionId = hdnQ5Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + RadioBtnQ5.SelectedValue + strFSeparator + strQSeparator;
 
         //for question 6
         strQuestionId = hdnQ6Id.Value;
@@ -759,18 +717,6 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
     protected void ddlQ10_SelectedIndexChanged(object sender, EventArgs e)
     {
         setPanelStatus(true);
-    }
-
-    protected void RadioBtnQ5_SelectedIndexChanged(object sender, EventArgs e)
-    {        
-        if (RadioBtnQ5.SelectedIndex.Equals(1))
-        {
-            SetSynagogueJCCControls(false);
-        }
-        else
-        {
-            SetSynagogueJCCControls(true);
-        }
     }
 
     void getSynagogueAnswers()

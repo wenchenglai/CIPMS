@@ -10,10 +10,11 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using CIPMSBC.Eligibility;
 using CIPMSBC.BLL;
+using CIPMSBC.Eligibility;
+using CIPMSBC.ApplicationQuestions;
 
-public partial class Step2_URJ_2 : System.Web.UI.Page
+public partial class TorontoPage2 : System.Web.UI.Page
 {
 	private CamperApplication CamperAppl;
 	private General objGeneral;
@@ -24,13 +25,6 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
     {
         IDoNotRember = 2,
         Other = 3
-    }
-
-    enum SynagogueJCCOther
-    {
-        Synagogue = 1,
-        Other = 2,
-        JCC = 3
     }
     #endregion
 
@@ -507,65 +501,62 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
 	private string ConstructCamperAnswersString()
 	{
-		string strQID = "", strTablevalues = "", strFSeparator, strQSeparator, strGrade, strSchool;
+		string strQID = "", strTablevalues = "";
 
 		//to get the Question separator from Web.config
-		strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
+		string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
 		//to get the Field separator from Web.config
-		strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-		
-		strGrade = ddlGrade.SelectedValue;
-        strSchool = txtSchoolName.Text.Trim();
+		string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
 
 		//for question FirstTimerOrNot
-		strQID = hdnQ3IdIsFirtTimer.Value;
+        strQID = ((int)Questions.Q0003IsFirtTimer).ToString();
 		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         // Q1046 Taste of Camp
-        strQID = hdnQ1046TasteOfCamp.Value;
+        strQID = ((int)Questions.Q1046TasteOfCamp).ToString();
         strTablevalues += strQID + strFSeparator + (rdoTasteOfCampYes.Checked ? "1" : rdoTasteOfCampNo.Checked ? "2" : "") + strFSeparator + (rdoTasteOfCampYes.Checked ? "Attended Taste of Camp" : rdoTasteOfCampNo.Checked ? "Did not attend Taste of Camp" : "") + strQSeparator;        
 
 		//for question Grade
-		strQID = hdnQ6IdGrade.Value;
-		strTablevalues += strQID + strFSeparator + strFSeparator + strGrade + strQSeparator;
+        strQID = ((int)Questions.Q0006Grade).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + ddlGrade.SelectedValue +strQSeparator;
 
 		//for question School Type
         if (rdoSchoolType.SelectedValue != "")
         {
-            strQID = hdnQ7IdKindofSchool.Value;
+            strQID = ((int)Questions.Q0007KindofSchool).ToString();
             strTablevalues += strQID + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
         }
 
 		//for question School Name
-		strQID = hdnQ8IdSchoolName.Value;
-		strTablevalues += strQID + strFSeparator + strFSeparator + strSchool + strQSeparator;
+        strQID = ((int)Questions.Q0008SchoolName).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
 
 		// 2012-09-13 Synagogue/JCC question
 		if (chkNoneOfAboveSynJcc.Checked)
 		{
 			// Non of Above is selected, so no JCC nor Synagogue
-            strQID = hdnQ30IdWereYouReferredBySynOrJcc.Value;
+            strQID = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
             strTablevalues += strQID + strFSeparator + chkNoneOfAboveSynJcc.Value + strFSeparator + chkNoneOfAboveSynJcc.Value + strQSeparator;
 
-			strQID = hdnQ31SelectSynaJccId.Value;
+            strQID = ((int)Questions.Q0031SelectSynaJcc).ToString();
 			strTablevalues += strQID + strFSeparator + "5" + strFSeparator + "NonOfAbove" + strQSeparator;
 		}
 		else
 		{
             if (chkSynagogue.Checked)
             {
-                strQID = hdnQ30IdWereYouReferredBySynOrJcc.Value;
+                strQID = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
                 strTablevalues += strQID + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
             }
 
             if (chkJCC.Checked)
             {
-                strQID = hdnQ30IdWereYouReferredBySynOrJcc.Value;
+                strQID = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
                 strTablevalues += strQID + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
             }
 
 			//Insert Syna and JCC dropdowns and text boxes (if others is specified)
-			strQID = hdnQ31SelectSynaJccId.Value;
+            strQID = ((int)Questions.Q0031SelectSynaJcc).ToString();
 			if (chkSynagogue.Checked)
 			{
 				if (ddlSynagogue.SelectedValue != "0")
@@ -576,11 +567,11 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 					
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
 					{
-						strTablevalues += hdnQ1002SynagogueName.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+                        strTablevalues += ((int)Questions.Q1002SynagogueName).ToString() + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
 					}
 					else
 					{
-						strTablevalues += hdnQ1002SynagogueName.Value + strFSeparator + strFSeparator + ddlSynagogue.SelectedItem.Text + strQSeparator;
+						strTablevalues += ((int)Questions.Q1002SynagogueName).ToString() + strFSeparator + strFSeparator + ddlSynagogue.SelectedItem.Text + strQSeparator;
 					}
 
 					// 2013-08-23 New Synagogue questions
@@ -589,21 +580,21 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 					if (rdoCongregant.Checked)
 					{
 						// A professional or fellow congregant radio button is checked
-						strTablevalues += hdnQ1044ReferByType.Value + strFSeparator + "1" + strFSeparator + rdoCongregant.Text + strQSeparator;
+						strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "1" + strFSeparator + rdoCongregant.Text + strQSeparator;
 					}
 					else
 					{
 						// No one from my synagogue radio button is checked
-						strTablevalues += hdnQ1044ReferByType.Value + strFSeparator + "2" + strFSeparator + rdoNoOne.Text + strQSeparator;
+                        strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "2" + strFSeparator + rdoNoOne.Text + strQSeparator;
 					}
 
 					if (txtWhoInSynagogue.Text.Trim() != String.Empty)
 					{
-						strTablevalues += hdnQ1045ReferBy.Value + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + txtWhoInSynagogue.Text.Trim() + strQSeparator;
+						strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + txtWhoInSynagogue.Text.Trim() + strQSeparator;
 					}
 					else
 					{
-						strTablevalues += hdnQ1045ReferBy.Value + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + ddlWho.SelectedItem.Text + strQSeparator;
+                        strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + ddlWho.SelectedItem.Text + strQSeparator;
 					}
 				}
 			}
@@ -638,14 +629,14 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		// Q1040 Are any members of your family members or alumni of a youth movement? If Yes, which one?
         if (rdoMemberOfYouthYes.Checked || rdoMemberOfYouthNo.Checked)
         {
-            strQID = hdnQ1040MemberOfYouth.Value;
+            strQID = ((int)Questions.Q1040MemberOfYouth).ToString();
             strTablevalues += strQID + strFSeparator + (rdoMemberOfYouthYes.Checked ? "1" : rdoMemberOfYouthNo.Checked ? "2" : "") + strFSeparator + txtMemberOfYouth.Text + strQSeparator;
         }
 		
         // Has anyone in your family participated in March of the Living? 
         if (rdolistParticipateMarchLiving.SelectedValue != "")
         {
-            strQID = hdnQ1041ParticipateMarchLiving.Value;
+            strQID = ((int)Questions.Q1041ParticipateMarchLiving).ToString();
             for (int i = 0; i < 4; i++)
             {
                 int k = i + 1;
@@ -658,7 +649,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		// Has anyone in your family participated in Taglit-Birthright Israel? 
         if (rdolistParticipateTaglit.SelectedValue != "")
         {
-            strQID = hdnQ1042ParticipateTaglit.Value;
+            strQID = ((int)Questions.Q1042ParticipateTaglit).ToString();
             for (int i = 0; i < 4; i++)
             {
                 int k = i + 1;
@@ -670,7 +661,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		// Has anyone in your family been to Israel? If yes, how many time?
         if (rdoBeenToIsraelYes.Checked || rdoBeenToIsraelNo.Checked)
         {
-            strQID = hdnQ1043BeenToIsrael.Value;
+            strQID = ((int)Questions.Q1043BeenToIsrael).ToString();
             strTablevalues += strQID + strFSeparator + (rdoBeenToIsraelYes.Checked ? "1" : rdoBeenToIsraelNo.Checked ? "2" : "") + strFSeparator + txtBeenToIsrael.Text + strQSeparator;
         }
 		//to remove the extra character at the end of the string, if any

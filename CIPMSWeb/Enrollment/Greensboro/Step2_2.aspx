@@ -36,33 +36,9 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label6" runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="PnlQ4" runat="server">
-                        <asp:Label ID="lblQ4" runat="server" CssClass="QuestionText">Will this be the camper’s second time attending a nonprofit Jewish overnight summer camp for 19 days or longer?</asp:Label><br />
-                        <asp:RadioButtonList AutoPostBack="true" ID="RadioBtnQ4" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal">
-                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top"><asp:Label ID="Label35" runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="PnlQ5" runat="server">
-                        <asp:Label ID="Label1" runat="server" CssClass="QuestionText">Did the camper receive an incentive grant through the Greensboro Jewish Community Summer Camper Incentive program last summer? </asp:Label><br />
-                        <asp:RadioButtonList AutoPostBack="true" ID="RadioBtnQ5" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioBtnQ5_SelectedIndexChanged">
-                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
                 <td valign="top">
                     <asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" /><asp:Label
-                        ID="Label23" runat="server" Text="4" CssClass="QuestionText"></asp:Label></td>
+                        ID="Label23" runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Label ID="lblSynagogueQuestionText" runat="server" CssClass="QuestionText">Are you a member of any of the following? Membership not required for this grant. (Check all that apply)</asp:Label>
                 </td>
@@ -170,7 +146,7 @@
                 </td>
             </tr>--%>
             <tr>
-                <td valign="top"><asp:Label ID="Label8" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label8" runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Panel id="PnlQ6" runat="server">
                         <asp:Label ID="Label9" runat="server" CssClass="QuestionText">What grade will the camper enter AFTER camp?</asp:Label><br />
@@ -181,7 +157,7 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label10" runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label10" runat="server" Text="4" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <u><b>CURRENTLY</b></u> attend?</asp:Label><br />
                     <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="RadioBtnQ9" runat="server" RepeatDirection="Horizontal">
@@ -194,7 +170,7 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label13" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label13" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Panel ID="PnlQ10" runat="server">
                         <asp:Label ID="Label22" runat="server" CssClass="QuestionText">Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u> attends: </asp:Label><br />
@@ -220,7 +196,7 @@
              
             <asp:Panel ID="pnlCamperSchool" runat="server">
             <tr>
-                <td width="5%"><asp:Label ID="Label14" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
+                <td width="5%"><asp:Label ID="Label14" runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Name of the school camper attends:</asp:Label>
                     <asp:TextBox ID="txtCamperSchool" runat="server" CssClass="txtbox" MaxLength="200"></asp:TextBox>

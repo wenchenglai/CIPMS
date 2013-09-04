@@ -35,10 +35,10 @@ public partial class AdminMenu : System.Web.UI.UserControl
         if (!IsPostBack)
         {
 			string localIP = Dns.GetHostAddresses(Request.Url.Host)[0].ToString();
-			string prodIP = ConfigurationManager.AppSettings["ServerIP"];
+            string prodIP = ConfigurationManager.AppSettings["ProductionServerIP"];
 			if ( localIP != prodIP )
 			{
-				hylCIPRS.NavigateUrl = string.Format("http://{0}/CIPRS/Default.aspx", localIP);
+                hylCIPRS.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/Default.aspx", localIP);
 			}
 			else
 			{

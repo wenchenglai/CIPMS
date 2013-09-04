@@ -1,4 +1,4 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="Step2_URJ_2" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="TorontoPage2" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     <script type="text/javascript" src="Validate.js"></script>
@@ -199,21 +199,6 @@
         </tbody>
     </table>
 
-    <asp:HiddenField ID="hdnFJCIDStep2_2" runat="server" />
-    <asp:HiddenField ID="hdnAddMoreYearCount" runat="server" />
-    <asp:HiddenField ID="hdnQ3IdIsFirtTimer" runat="server" Value="3" />
-    <asp:HiddenField ID="hdnQ6IdGrade" runat="server" Value="6" />
-    <asp:HiddenField ID="hdnQ7IdKindofSchool" runat="server" Value="7" />
-    <asp:HiddenField ID="hdnQ8IdSchoolName" runat="server" Value="8" />
-    <asp:HiddenField ID="hdnQ30IdWereYouReferredBySynOrJcc" runat="server" Value="30" />
-    <asp:HiddenField ID="hdnQ31SelectSynaJccId" runat="server" Value="31" /> 
-    <asp:HiddenField ID="hdnQ1002SynagogueName" runat="server" Value="1002" /> 
-    <asp:HiddenField ID="hdnQ1040MemberOfYouth" runat="server" Value="1040" /> 
-    <asp:HiddenField ID="hdnQ1041ParticipateMarchLiving" runat="server" Value="1041" />
-    <asp:HiddenField ID="hdnQ1042ParticipateTaglit" runat="server" Value="1042" /> 
-    <asp:HiddenField ID="hdnQ1043BeenToIsrael" runat="server" Value="1043" />   
-    <asp:HiddenField ID="hdnQ1044ReferByType" runat="server" Value="1044" />   
-    <asp:HiddenField ID="hdnQ1045ReferBy" runat="server" Value="1045" />   
-    <asp:HiddenField ID="hdnQ1046TasteOfCamp" runat="server" Value="1046" />                             
+    <asp:HiddenField ID="hdnFJCIDStep2_2" runat="server" />                         
 </asp:Content>
 

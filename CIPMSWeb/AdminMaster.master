@@ -31,7 +31,7 @@
         </tr>
         <tr style="height:100%">
             <td style="width:23%" valign="top" align="center">
-				<asp:Label ID="lblUAT" ForeColor="Red" Font-Bold="true" runat="server"></asp:Label>
+				<asp:Label ID="lblUAT" ForeColor="Red" Font-Bold="true" Text="This is UAT" runat="server"></asp:Label>
                 &nbsp;<uc1:AdminMenu ID="AdminMenu1" runat="server" />
             </td>
             <td style="width:77%" valign="top">

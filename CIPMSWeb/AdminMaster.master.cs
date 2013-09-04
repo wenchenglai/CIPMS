@@ -54,27 +54,15 @@ public partial class AdminMaster : System.Web.UI.MasterPage
             Server.Transfer("~/Error.aspx?app=admin", false);
         }
 
-		// show UAT warning message is viewing from UAT server
-		string runtimeIP = Dns.GetHostAddresses(Request.Url.Host)[0].ToString();
-		if (runtimeIP == ConfigurationManager.AppSettings["OldUATIP"])
-		{
-			lblUAT.Visible = true;
-			lblUAT.Text = "This is Old UAT";
-			if (Request.UserHostAddress == "127.0.0.1")
-			{
-				//txtEmail.Text = "wenchenglai@gmail.com";
-				//txtPwd.TextMode = TextBoxMode.SingleLine;
-				//txtPwd.Text = "wayne";
-			}
-		}
-		else if (runtimeIP == ConfigurationManager.AppSettings["NewUATIP"])
-		{
-			lblUAT.Visible = true;
-			lblUAT.Text = "This is New UAT";
-		}
-		else
-		{
-			lblUAT.Visible = false;
-		}
+        string localIP = Dns.GetHostAddresses(Request.Url.Host)[0].ToString();
+        string prodIP = ConfigurationManager.AppSettings["ProductionServerIP"];
+        if (localIP != prodIP)
+        {
+            lblUAT.Visible = true;
+        }
+        else
+        {
+            lblUAT.Visible = false;
+        }
     }
 }

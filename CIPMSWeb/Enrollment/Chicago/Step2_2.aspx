@@ -105,11 +105,11 @@
                         <asp:Label ID="Label22" runat="server" CssClass="QuestionText">Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u>attends: </asp:Label><br />
                         <asp:DropDownList AutoPostBack="true" ID="ddlQ10" runat="server" CssClass="dropdown" OnSelectedIndexChanged="ddlQ10_SelectedIndexChanged">
                             <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>                            
-                            <asp:ListItem Text="Anshe Emet" Value="4"></asp:ListItem>
-                            <asp:ListItem Text="Akiba Schechter" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="Chicago Jewish Day" Value="9"></asp:ListItem>
+                            <asp:ListItem Text="Bernard Zell Anshe Emet Day School" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="Akiba Schechter Jewish Day School" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="Chicago Jewish Day School" Value="9"></asp:ListItem>
                             <asp:ListItem Text="Chicagoland Jewish High School" Value="6"></asp:ListItem>                            
-                            <asp:ListItem Text="Solomon Schechter" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Solomon Schechter Jewish Day School" Value="1"></asp:ListItem>
                             <asp:ListItem Text="Other" Value="3"></asp:ListItem>
                         </asp:DropDownList>
                     </asp:Panel>
@@ -271,7 +271,6 @@
         <asp:HiddenField ID="hdnFJCID" runat="server" />
         <asp:HiddenField ID="hdnQ3Id" runat="server" Value="3" />
         <asp:HiddenField ID="hdnQ4Id" runat="server" Value="13" />
-        <asp:HiddenField ID="hdnQ5Id" runat="server" Value="33" />
         <asp:HiddenField ID="hdnQ6Id" runat="server" Value="6" />
         <asp:HiddenField ID="hdnQ7Id" runat="server" Value="7" />
         <asp:HiddenField ID="hdnQ8Id" runat="server" Value="17" />

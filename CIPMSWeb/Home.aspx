@@ -310,7 +310,7 @@
                                 <asp:TextBox ID="txtEmail1" runat="server" CssClass="txtEmail1" Width="150px" MaxLength="150" />
                                 <asp:RequiredFieldValidator ID="rfvEmailNew" runat="server" ControlToValidate="txtEmail1"
                                     Display="None" ErrorMessage="Please enter Email ID" />
-                                <asp:RegularExpressionValidator ID="revEmailNew" runat="server" ControlToValidate="txtEmail"
+                                <asp:RegularExpressionValidator ID="revEmailNew" runat="server" ControlToValidate="txtEmail1"
                                     Display="None" ErrorMessage="Please enter a valid e-mail ID" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
                                 <br />
                                 <asp:TextBox ID="txtCfrmEmail" runat="server" CssClass="txtbox1" Width="150px" MaxLength="150" />
@@ -350,17 +350,17 @@
                                 <p style="margin:0 0 0 0;">
                                     Email:</p><br />
                                 
-                                 <asp:TextBox MaxLength="150" ID="txtEmail" runat="server" CssClass="txtbox1">
+                                 <asp:TextBox MaxLength="150" ID="Email" runat="server" CssClass="txtbox1">
                                 </asp:TextBox>
                                 <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvEmail" runat="server"
-                                    ControlToValidate="txtEmail" Display="None" ErrorMessage="Please enter Email ID" />
+                                    ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
                                 <asp:RegularExpressionValidator ValidationGroup="Submit" ID="revEmail" runat="server"
-                                    ControlToValidate="txtEmail" Display="None" ErrorMessage="Please enter a valid e-mail ID"
+                                    ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
                                     ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
                                 <asp:RequiredFieldValidator ValidationGroup="forgot" ID="rfvEmail1" runat="server"
-                                    ControlToValidate="txtEmail" Display="None" ErrorMessage="Please enter Email ID" />
+                                    ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
                                 <asp:RegularExpressionValidator ValidationGroup="forgot" ID="revEmail1" runat="server"
-                                    ControlToValidate="txtEmail" Display="None" ErrorMessage="Please enter a valid e-mail ID"
+                                    ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
                                     ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
                                
                                   
@@ -368,9 +368,9 @@
                             <div id="formfields1">
                              <p style="margin:0 0 0 0;">Password:</p>
                                 <br />
-                                <asp:TextBox TextMode="Password" MaxLength="50" ID="txtPwd" runat="server" CssClass="txtbox1">
+                                <asp:TextBox TextMode="Password" MaxLength="50" ID="Password" runat="server" CssClass="txtbox1">
                                 </asp:TextBox>
-                                <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvPwd" runat="server" ControlToValidate="txtPwd"
+                                <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvPwd" runat="server" ControlToValidate="Password"
                                     Display="None" ErrorMessage="Please enter Password" />
                                 <br />
                                 <asp:Button Text="Login >>" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click"
