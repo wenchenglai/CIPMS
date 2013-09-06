@@ -301,7 +301,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
                 for (int i = 3; i <= 11; i++)
                 {
                     //to get the QuestionId for the Questions
-                    hdnval = (HiddenField)PnlHidden.FindControl("hdnQ" + i.ToString() + "Id");
+                    hdnval = (HiddenField)this.Master.FindControl("Content").FindControl("hdnQ" + i.ToString() + "Id");
                     strFilter = "QuestionId = '" + hdnval.Value + "'";
                     tb = null;
                     ddl = null;
@@ -310,7 +310,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
                     switch (i)
                     {
                         case 3:  //assigning the answer for question 3
-                            rb = (RadioButtonList)Panel2.FindControl("RadioBtnQ" + i.ToString());
+                            rb = (RadioButtonList)this.Master.FindControl("Content").FindControl("RadioBtnQ" + i.ToString());
                             goto default;
                         case 4:// assigning the answer for question 4
                           
@@ -324,7 +324,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
                            
                             goto default;
                         case 10: // assigning the answer for question 9
-                            rb = (RadioButtonList)Panel2.FindControl("RadioBtnQ9");
+                            rb = (RadioButtonList)this.Master.FindControl("Content").FindControl("RadioBtnQ9");
                             goto default;
                         case 11: // assigning the answer for question 11
                             tb = txtCamperSchool;
@@ -408,13 +408,11 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
         if (RadioBtnQ9.SelectedIndex == 2)
         {
             PnlCamperSchool.Enabled = false;
-            Label15.Enabled = false;
             txtCamperSchool.Text = "";
         }
         else
         {
             PnlCamperSchool.Enabled = true;
-            Label15.Enabled = true;
         }
 
         //if (RadioBtnQ3.SelectedIndex.Equals(0)) //Yes is selected

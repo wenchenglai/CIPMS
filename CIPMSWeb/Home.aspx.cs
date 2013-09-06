@@ -30,8 +30,10 @@ public partial class Home : System.Web.UI.Page
                 lblUAT.Visible = true;
                 lblUAT.Text = "This is developer's local machine";
 
+
                 Email.Text = "wenchenglai@gmail.com";
                 Password.Text = "wayne";
+                Password.TextMode = TextBoxMode.SingleLine;
 
                 //txtEmail.Text = "scharfn@gmail.com";
                 //txtPwd.Text = "fufu4u";
@@ -75,7 +77,7 @@ public partial class Home : System.Web.UI.Page
 
         Administration objAdmin = new Administration();
 
-        string strPwd = Password.Text.Trim();
+        string strPwd = Password.Text;
         DataSet ds;
         bool blnIsUsrAuthorized = objAdmin.ValidateCamper(strEmail, strPwd, out ds);
         if (blnIsUsrAuthorized == true)

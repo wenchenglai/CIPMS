@@ -26,9 +26,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
-        RadioBtnQ3.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-		RadioBtnQ4.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-       
+        rdolistSiblingAttended.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         RadioBtnQ9.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
@@ -337,13 +335,9 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                     continue;
 
                 if (dr["OptionID"].ToString() == "1")
-                {
-                    RadioBtnQ3.SelectedValue = "1";
-                }
+                    rdoFirstTimerYes.Checked = true;
                 else
-                {
-                    RadioBtnQ3.SelectedValue = "2";
-                }
+                    rdoFirstTimerNo.Checked = true;                
             }
             else if (qID == 6) // Grade
             {
@@ -366,24 +360,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
                     txtCamperSchool.Text = dr["Answer"].ToString();
-                }
-            }
-            else if (qID == 13) // Is this your second time?
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                {
-                    RadioBtnQ4.SelectedValue = "1";
-                }
-                else if (dr["OptionID"].ToString() == "2")
-                {
-                    RadioBtnQ4.SelectedValue = "2";
-                }
-                else
-                {
-                    RadioBtnQ4.SelectedValue = "3";
                 }
             }
             else if (qID == 17) // Select the Jewish day school
@@ -458,7 +434,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
             else if (qID == 1032) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
             {
                 if (!dr["OptionID"].Equals(DBNull.Value))
-                    RadioBtnQ4.SelectedValue = dr["OptionID"].ToString();
+                    rdolistSiblingAttended.SelectedValue = dr["OptionID"].ToString();
             }
             else if (qID == 1033) // First Name of Sibling
             {
@@ -491,11 +467,11 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
     //to set the panels and controls to be disabled based on the radio button selected
     void setPanelStatus()
     {
-		if (RadioBtnQ4.SelectedIndex.Equals(0))  //Yes is selected
+        if (rdolistSiblingAttended.SelectedIndex.Equals(0))  //Yes is selected
 		{
 			PnlQ5.Enabled = true;
 		}
-		else if (RadioBtnQ4.SelectedIndex.Equals(1) || RadioBtnQ4.SelectedIndex.Equals(2)) //No is selected
+        else if (rdolistSiblingAttended.SelectedIndex.Equals(1) || rdolistSiblingAttended.SelectedIndex.Equals(2)) //No is selected
 		{
 			PnlQ5.Enabled = false;
 		}
@@ -507,10 +483,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			PnlQ10.Enabled = true;
 			pnlJewishSchool.Enabled = true;
 			pnlCamperSchool.Enabled = false;
-			Label23.Enabled = false;
-			Label14.Enabled = false;
 			txtCamperSchool.Text = "";
-			Label15.Enabled = false;
 
 			lblJewishDaySchool.Text = "If your Jewish day school is not listed in the drop down below, please contact Hallie Shapiro Devir at JewishCamp@juf.org or 312-357-4995 to learn more about grants and scholarships opportunities.";
 		}
@@ -520,19 +493,12 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
             pnlJewishSchool.Enabled = false;
             if (RadioBtnQ9.SelectedIndex == 2)
             {
-                pnlCamperSchool.Enabled = false;
-                Label23.Enabled = false;
-                Label14.Enabled = false;
-                Label23.Enabled = false;                
-                Label15.Enabled = false;
+                pnlCamperSchool.Enabled = false;               
                 txtCamperSchool.Text = "";
             }
             else
             {
                 pnlCamperSchool.Enabled = true;
-                Label23.Enabled = true;
-                Label14.Enabled = true;
-                Label15.Enabled = true;
             }
             
             ddlQ10.SelectedIndex = 0;
@@ -548,7 +514,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
             pnlJewishSchool.Enabled = false;
         }
 
-		if (RadioBtnQ4.SelectedValue == "3")
+        if (rdolistSiblingAttended.SelectedValue == "3")
 		{
 			lblNotSureSibling.Text = "Please contact Hallie Shapiro Devir at <a href='mailto:JewishCamp@juf.org'>JewishCamp@juf.org</a> or 312-357-4995. <br />Siblings of first-time campers who previously received a $1,000 grant are eligible <br />to receive $500 when they attend camp for the first time for at least 19 consecutive days.";
 		}
@@ -577,91 +543,89 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 
     private string ConstructCamperAnswers()
     {
-        string strQuestionId = "";
+        string strQID = "";
         string strTablevalues = "";
-        string strFSeparator;
-        string strQSeparator;
         string strQ4Value = string.Empty;
         string strGrade, strSchool, strJewishSchool;
         
         //to get the Question separator from Web.config
-        strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
+        string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
         //to get the Field separator from Web.config
-        strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
+        string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
 
-        //for question 3
-        strQuestionId = hdnQ3Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + RadioBtnQ3.SelectedValue + strFSeparator + strQSeparator;
+        //for question FirstTimerOrNot
+        strQID = ((int)Questions.Q0003IsFirtTimer).ToString();
+        strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-		//for question 4
-		strQuestionId = hdnQ1032Id.Value;
-		strTablevalues += strQuestionId + strFSeparator + RadioBtnQ4.SelectedValue + strFSeparator + strQSeparator;
-
-		//for question 5
-		strQuestionId = hdnQFirstNameOfSibling.Value;
-		strTablevalues += strQuestionId + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
+		//Did sibling attend before?
+		strQID = hdnQ1032Id.Value;
+        strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
 
 		//for question 5
-		strQuestionId = hdnQLastNameOfSibling.Value;
-		strTablevalues += strQuestionId + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
+		strQID = hdnQFirstNameOfSibling.Value;
+		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
+
+		//for question 5
+		strQID = hdnQLastNameOfSibling.Value;
+		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
 
         //for question 6
-        strQuestionId = hdnQ6Id.Value;
+        strQID = hdnQ6Id.Value;
         strGrade = ddlGrade.SelectedValue;
-        strTablevalues += strQuestionId + strFSeparator + strFSeparator + strGrade + strQSeparator;
+        strTablevalues += strQID + strFSeparator + strFSeparator + strGrade + strQSeparator;
 
         //for question 9
-        strQuestionId = hdnQ7Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + RadioBtnQ9.SelectedValue + strFSeparator + strQSeparator;
+        strQID = hdnQ7Id.Value;
+        strTablevalues += strQID + strFSeparator + RadioBtnQ9.SelectedValue + strFSeparator + strQSeparator;
 
         // Jewish Day School
-        strQuestionId = hdnQ8Id.Value;
+        strQID = hdnQ8Id.Value;
         strJewishSchool = txtJewishSchool.Text.Trim();
         if (ddlQ10.SelectedValue != "3")
             strJewishSchool = ddlQ10.SelectedItem.Text;
-        strTablevalues += strQuestionId + strFSeparator + ddlQ10.SelectedValue + strFSeparator + strJewishSchool + strQSeparator;
+        strTablevalues += strQID + strFSeparator + ddlQ10.SelectedValue + strFSeparator + strJewishSchool + strQSeparator;
 
         // Regular school name
-        strQuestionId = hdnQ9Id.Value;
+        strQID = hdnQ9Id.Value;
         strSchool = txtCamperSchool.Text.Trim();
-        strTablevalues += strQuestionId + strFSeparator + strFSeparator + strSchool + strQSeparator;
+        strTablevalues += strQID + strFSeparator + strFSeparator + strSchool + strQSeparator;
 
 		// 2012-09-25 Synagogue/JCC question
 		if (chkNoneOfAboveSynJcc.Checked)
 		{
 			// Non of Above is selected, so no JCC nor Synagogue
-			strQuestionId = hdnQ30WereYouReferredBySynOrJccId.Value;
-			strTablevalues += strQuestionId + strFSeparator + chkNoneOfAboveSynJcc.Value + strFSeparator + chkNoneOfAboveSynJcc.Value + strQSeparator;
+			strQID = hdnQ30WereYouReferredBySynOrJccId.Value;
+			strTablevalues += strQID + strFSeparator + chkNoneOfAboveSynJcc.Value + strFSeparator + chkNoneOfAboveSynJcc.Value + strQSeparator;
 
-			strQuestionId = hdnQ31SelectSynaJccId.Value;
-			strTablevalues += strQuestionId + strFSeparator + "" + strFSeparator + "" + strQSeparator;
+			strQID = hdnQ31SelectSynaJccId.Value;
+			strTablevalues += strQID + strFSeparator + "" + strFSeparator + "" + strQSeparator;
 		}
 		else
 		{
 			// at least Synagogue or JCC is selected
 			if (chkSynagogue.Checked)
 			{
-				strQuestionId = hdnQ30WereYouReferredBySynOrJccId.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
+				strQID = hdnQ30WereYouReferredBySynOrJccId.Value;
+				strTablevalues += strQID + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
 			}
 
 
 			if (chkJCC.Checked)
 			{
-				strQuestionId = hdnQ30WereYouReferredBySynOrJccId.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
+				strQID = hdnQ30WereYouReferredBySynOrJccId.Value;
+				strTablevalues += strQID + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
 			}
 
 
 			//Insert Syna and JCC dropdowns and text boxes (if others is specified)
-			strQuestionId = hdnQ31SelectSynaJccId.Value;
+			strQID = hdnQ31SelectSynaJccId.Value;
 			if (chkSynagogue.Checked)
 			{
 				if (ddlSynagogue.SelectedValue != "0")
 				{
-					strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
+					strTablevalues += strQID + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
-						strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+						strTablevalues += strQID + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
 					{
 						strTablevalues += hdnQ1002NameOfSynagogueId.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
@@ -674,8 +638,8 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			}
 			else
 			{
-				strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
 			}
 
 			if (chkJCC.Checked)
@@ -684,18 +648,18 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 				{
 					if (ddlJCC.SelectedValue != "0")
 					{
-						strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
+						strTablevalues += strQID + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
 						if (txtJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+							strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
 					}
 				}
 				else
-					strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+					strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
 			}
 			else
 			{
-				strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
 			}
 		}
 
@@ -832,16 +796,10 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
             if (RadioBtnQ9.SelectedIndex == 4)
             {
                 pnlCamperSchool.Enabled = true;
-                Label23.Enabled = true;
-                Label14.Enabled = true;
-                Label15.Enabled = true;
             }
             else
             {
                 //pnlCamperSchool.Enabled = false;
-                Label23.Enabled = false;
-                Label14.Enabled = false;
-                Label15.Enabled = false;
                 //txtCamperSchool.Text = "";
             }
 
