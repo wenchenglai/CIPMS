@@ -89,11 +89,11 @@
                         <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="180px" onChange="Validator.OnJCCDropDownChange(this);" />
                     </div>
                     <div class="column1" style="float:left; width: 250px;">
-                        If "Other": <asp:TextBox ID="txtJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
+                        If "Other": <asp:TextBox ID="txtOtherJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
                     </div>
                 </div>
                 <div class="questionrows">
-                    <input type="checkbox" value="2" runat="server" id="chkNoneOfAboveSynJcc" onclick="Validator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
+                    <input type="checkbox" value="2" runat="server" id="chkNo" onclick="Validator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
                 </div>
             </td>
         </tr>

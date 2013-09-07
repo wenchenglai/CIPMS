@@ -1298,7 +1298,6 @@ function VaildatePage3Step2_Midsex(sender,args)
     args.IsValid = bValid;
     return;
 }
-
 //*****************************END OF VALIDATION FOR MIDDLESEX**********************************
 
 //******************************* START VALIDATION FOR Rhode island **********************************
@@ -1317,117 +1316,61 @@ function ValidatePage2Step2_RhodeIsland(sender,args)
     {
         //for Q3_1
         if (inputobjs[i].id.indexOf("RadioBtnQ31")>=0)
-
             Q3_1 = inputobjs[i];
 
         //for Q3_2
         if (inputobjs[i].id.indexOf("RadioBtnQ32")>=0)
-
             Q3_2 = inputobjs[i];
-
-
         //for Q5
-        if (inputobjs[i].id.indexOf("RadioButtionQ5")>=0)
-        {
+        if (inputobjs[i].id.indexOf("RadioButtionQ5")>=0) {
             Q5[j] = inputobjs[i];
             j=j+1;
         }
         //for Q6
         if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
             Q6 = inputobjs[i];
-            
-//        if (inputobjs[i].id.indexOf("RadiobuttonQ4_0")>=0)
-//            Synagogue_0 = inputobjs[i];         
-//         
-//        if (inputobjs[i].id.indexOf("RadiobuttonQ4_1")>=0)
-//            Synagogue_1 = inputobjs[i];
-//         
-//        if(inputobjs[i].id.indexOf("txtOtherSynagogue") >=0)
-//            SynagogueOther = inputobjs[i]; 
     }  //end of for loop
     
     //to get the select objects (ddlgrade) for Q4
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlGrade")>=0)
-        {
+    for (var k=0; k<= selectobjs.length-1; k++) {
+        if (selectobjs[k].id.indexOf("ddlGrade")>=0) {
             Q4 = selectobjs[k];
             break;
         }
-    }
-
-    //to get the select objects (ddlSynagogue) for Q4
-//    for (var k=0; k<= selectobjs.length-1; k++)
-//    {
-//        if (selectobjs[k].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            SynagogueComboValue = selectobjs[k];
-//            break;
-//        }
-//    }
-    
+    }   
     //validate Q3
     if (Q3_1.checked==false && Q3_2.checked==false)
     {
         valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
         bValid = false;
     }
-
-
-//    else if (Synagogue_0.checked==true && (SynagogueComboValue.selectedIndex==0||( SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text != "Other")|| (trim(SynagogueOther.value)=="") && SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text == "Other") )
-//    {
-//        if (SynagogueComboValue.selectedIndex==0)
-//        {
-//            valobj.innerHTML = "<ul><li>Please select a Synagogue</li></ul>";
-//            bValid = false;
-//        }
-//        //added by Ram    
-//        else if(SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text == "Other")
-//        {
-//            if(trim(SynagogueOther.value)=="")
-//            {
-//                valobj.innerHTML = "<ul><li>Please enter Name of the Synagogue</li></ul>";
-//                bValid = false; 
-//            }
-//        }
-//                
-//    }
     //validate Q4
-    else if (Q4.selectedIndex==0)
-    {
+    else if (Q4.selectedIndex==0) {
         valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
         bValid = false;
-    }
-    else
-    {
+    } else {
         //validate Q5
         var bChecked=false;
          
-        for (var k=0; k<=Q5.length-1; k++)
-        {
-            if (Q5[k].checked==true)
-            {
+        for (var k=0; k<=Q5.length-1; k++) {
+            if (Q5[k].checked==true) {
                 Q5CheckedValue = Q5[k].value;
                 bChecked = true;
                 break;
             }
         }
-        if (!bChecked)
-        {
+        if (!bChecked) {
             valobj.innerHTML = "<ul><li>Please answer Question No. 3</li></ul>";
             bValid = false;
         }
-        else if (Q5CheckedValue!="3" && trim(Q6.value)=="")//validate Q6 (if it is not home school)
-        {
+        else if (Q5CheckedValue!="3" && trim(Q6.value)=="")//validate Q6 (if it is not home school) {
             valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
             bValid = false;
-        }
-    }  
-    if(bValid)
-    {
+    }
+
+    if(bValid) {
         var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-        if(returnVal == false)
-        {
+        if(returnVal == false){
             bValid = false;
         }
     }
@@ -1619,169 +1562,6 @@ function ValidatePage2Step2_Memphis(sender,args)
 }
 //********************************* END OF VALIDATION FOR MEMPHIS ********************************
 
-//**************************VALIDATION FOR BOSTON QUESTIONNAIRE****************************
-
-////////////////to validate the Step2 (Page 2) for Middlesex/////////////////////////
-function ValidatePage2Step2_Boston(sender,args)
-{
-    var inputobjs = document.getElementsByTagName("input");
-    var selectobjs = document.getElementsByTagName("select");
-    var Q3_1, Q3_2, Q4, Q5, Q6, bValid = true, Q5CheckedValue;
-    var Q5 = new Array();
-    var j=0;
-    var valobj = document.getElementById(sender.id);
-    var Synagogue_0,Synagogue_1,SynagogueOther;
-    var SynagogueComboValue;
-    var SynRefCode;
-    
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ31")>=0)
-            Q3_1 = inputobjs[i];
-        //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ32")>=0)
-            Q3_2 = inputobjs[i];
-        //for Q5
-        if (inputobjs[i].id.indexOf("RadioButtionQ5")>=0)
-        {
-            Q5[j] = inputobjs[i];
-            j=j+1;
-        }
-        //for Q6
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
-            Q6 = inputobjs[i];
-            
-//        if (inputobjs[i].id.indexOf("txtSynagogueReferral")>=0)
-//            SynRefCode= inputobjs[i];   
-        
-//        if (inputobjs[i].id.indexOf("RadiobuttonQ4_0")>=0)
-//            Synagogue_0 = inputobjs[i];         
-//         
-//        if (inputobjs[i].id.indexOf("RadiobuttonQ4_1")>=0)
-//            Synagogue_1 = inputobjs[i];
-//         
-//        if(inputobjs[i].id.indexOf("txtOtherSynagogue") >=0)
-//            SynagogueOther = inputobjs[i]; 
-    }  //end of for loop   
-
-    
-    //to get the select objects (ddlgrade) for Q4
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlGrade")>=0)
-        {
-            Q4 = selectobjs[k];
-            break;
-        }
-    }
-    
-    //to get the select objects (ddlSynagogue) for Q4
-//    for (var k=0; k<= selectobjs.length-1; k++)
-//    {
-//        if (selectobjs[k].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            SynagogueComboValue = selectobjs[k];
-//            break;
-//        }
-//    }
-     
-    //validate Q3
-    
-    if (Q3_1.checked==false && Q3_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-        args.IsValid = false;
-        return;
-    }
-    if(Q3_1.checked==true || Q3_2.checked==true)
-    {
-        var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-        if(returnVal == false)
-        {
-            args.IsValid = false;
-            return;
-        }
-    }
-//    else if (Synagogue_0.checked==false && Synagogue_1.checked==false)
-//    {
-//        valobj.innerHTML = "<ul><li>Please answer Question No. 3</li></ul>";
-//        bValid = false;
-//    }
-//    else if (Synagogue_0.checked==true && (SynagogueComboValue.selectedIndex==0||(trim(SynRefCode.value)=="" && SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text != "Other")|| (trim(SynagogueOther.value)=="") && SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text == "Other") )
-//    {
-//        if (SynagogueComboValue.selectedIndex==0)
-//        {
-//            valobj.innerHTML = "<ul><li>Please select a Synagogue</li></ul>";
-//            bValid = false;
-//        }
-//        //added by Ram    
-//        else if(SynagogueComboValue.options[SynagogueComboValue.selectedIndex].text == "Other")
-//        {
-//            if(trim(SynagogueOther.value)=="")
-//            {
-//                valobj.innerHTML = "<ul><li>Please enter Name of the Synagogue</li></ul>";
-//                bValid = false; 
-//            }
-//        }
-//        else if (trim(SynRefCode.value)=="")             
-//        {            
-//                valobj.innerHTML = "<ul><li>Please enter Synagogue referal code </li></ul>";
-//                bValid = false;             
-//        }
-//        
-//    } 
-//    else if (Synagogue_0.checked==true && !(trim(SynRefCode.value)==""))
-//    {
-//        if (!IsNumeric(trim(SynRefCode.value)))
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter valid referal code </li></ul>";
-//            bValid = false;   
-//        }   
-//    }
-//    
-
-    //validate Q4
-    if (bValid && Q4.selectedIndex==0)
-    {
-        valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
-        args.IsValid = false;
-        return;
-    }
-    else
-    {
-        
-        //validate Q5
-        var bChecked=false;
-         
-        for (var k=0; k<=Q5.length-1; k++)
-        {
-            if (Q5[k].checked==true)
-            {
-                Q5CheckedValue = Q5[k].value;
-                bChecked = true;
-                break;
-            }
-        }
-        
-        if (!bChecked)
-        {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
-            args.IsValid = false;
-            return;
-        }
-        else if (Q5CheckedValue!="3" && trim(Q6.value)=="")//validate Q6 (if it is not home school)
-        {
-            valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
-            args.IsValid = false;
-            return;
-        }
-    }
-    
-}
-
-//*****************************END OF VALIDATION FOR BOSTON**********************************
-
 //**************************VALIDATION FOR Pittsburgh QUESTIONNAIRE****************************
 
 ////////////////to validate the Step2 (Page 2) for Middlesex/////////////////////////
@@ -1883,117 +1663,9 @@ function ValidatePage2Step2_Pittsburgh(sender,args)
             args.IsValid = false;
             return;
         }
-    }
-    
+    }   
 }
-
 //*****************************END OF VALIDATION FOR Pittsburgh**********************************
-
-
-//**************************VALIDATION FOR COLUMBUS QUESTIONNAIRE****************************
-
-////////////////to validate the Step2 (Page 2) for COLUMBUS/////////////////////////
-function ValidatePage2Step2_Columbus(sender,args)
-{
-    var inputobjs = document.getElementsByTagName("input");
-    var selectobjs = document.getElementsByTagName("select");
-    var Q3_1, Q3_2, Q4, Q5, Q6, bValid = true, Q5CheckedValue;
-    var Q5 = new Array();
-    var j=0;
-    var valobj = document.getElementById(sender.id);
-    var Synagogue_0,Synagogue_1,SynagogueOther;
-    var SynagogueComboValue;
-    var SynRefCode;
-    
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ31")>=0)
-            Q3_1 = inputobjs[i];
-        //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ32")>=0)
-            Q3_2 = inputobjs[i];
-        //for Q5
-        if (inputobjs[i].id.indexOf("RadioButtionQ5")>=0)
-        {
-            Q5[j] = inputobjs[i];
-            j=j+1;
-        }
-        //for Q6
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
-            Q6 = inputobjs[i];
-            
-
-    }  //end of for loop   
-
-    
-    //to get the select objects (ddlgrade) for Q4
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlGrade")>=0)
-        {
-            Q4 = selectobjs[k];
-            break;
-        }
-    }
-
-    
-    if (Q3_1.checked==false && Q3_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-        args.IsValid = false;
-        return;
-    }
-    if(Q3_1.checked==true || Q3_2.checked==true)
-    {
-        var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-        if(returnVal == false)
-        {
-            args.IsValid = false;
-            return;
-        }
-    }
-
-    //validate Q4
-    if (bValid && Q4.selectedIndex==0)
-    {
-        valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
-        args.IsValid = false;
-        return;
-    }
-    else
-    {
-        
-        //validate Q5
-        var bChecked=false;
-         
-        for (var k=0; k<=Q5.length-1; k++)
-        {
-            if (Q5[k].checked==true)
-            {
-                Q5CheckedValue = Q5[k].value;
-                bChecked = true;
-                break;
-            }
-        }
-        
-        if (!bChecked)
-        {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
-            args.IsValid = false;
-            return;
-        }
-        else if (Q5CheckedValue!="3" && trim(Q6.value)=="")//validate Q6 (if it is not home school)
-        {
-            valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
-            args.IsValid = false;
-            return;
-        }
-    }
-    
-}
-
-//*****************************END OF VALIDATION FOR Louisville**********************************
 
 //**************************VALIDATION FOR Louisville QUESTIONNAIRE****************************
 
@@ -2148,19 +1820,7 @@ function ValidatePage2Step2_GreensBoro(sender,args)
         {
             Q5_2 = inputobjs[i];
         }
-        
-        //for Q7_1
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_0")>=0)
-//        {
-//            Q7_1 = inputobjs[i];
-//        }
-//        
-//        //for Q7_2
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_1")>=0)
-//        {
-//            Q7_2 = inputobjs[i];
-//        }        
-//       
+          
         //for Q9
         if (inputobjs[i].id.indexOf("RadioBtnQ9")>=0)
         {
@@ -2190,13 +1850,7 @@ function ValidatePage2Step2_GreensBoro(sender,args)
         {
             Q6 = selectobjs[i];
         } 
-        
-        //for Q8
-//        if (selectobjs[i].id.indexOf("ddlQ8")>=0)
-//        {
-//            Q8_1 = selectobjs[i];
-//        } 
-        
+
         //for Q10
         if (selectobjs[i].id.indexOf("ddlQ10")>=0)
         {
@@ -3669,11 +3323,6 @@ function VaildatePage3Step2_AiryLouise(sender,args)
             strErrorMsg="<li>"+campSeasonErrorMessage.value+"</li>";
             bValid = false;
         }
-//        else if (!CompareDates(currentDt,Q10_StartDate.value))
-//        {
-//            strErrorMsg="<li>Start date can not be less than today's date</li>";
-//            bValid = false;
-//        }
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -3714,10 +3363,6 @@ function VaildatePage3Step2_SportsAcadamy(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -3789,11 +3434,6 @@ function VaildatePage3Step2_SportsAcadamy(sender,args)
             strErrorMsg="<li>"+campSeasonErrorMessage.value+"</li>";
             bValid = false;
         }
-//        else if (!CompareDates(currentDt,Q10_StartDate.value))
-//        {
-//            strErrorMsg="<li>Start date can not be less than today's date</li>";
-//            bValid = false;
-//        }
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -3922,10 +3562,6 @@ function VaildatePage3Step2_Bnai(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         //else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -3997,11 +3633,6 @@ function VaildatePage3Step2_Bnai(sender,args)
             strErrorMsg="<li>"+campSeasonErrorMessage.value+"</li>";
             bValid = false;
         }
-//        else if (!CompareDates(currentDt,Q10_StartDate.value))
-//        {
-//            strErrorMsg="<li>Start date can not be less than today's date</li>";
-//            bValid = false;
-//        }
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -4105,287 +3736,7 @@ function windowBnaiopen()
         }
     }        
 }
-
 //*****************************END OF VALIDATION FOR BNai Brith**********************************
-
-//*****************************BEGIN OF VALIDATION FOR Philedalphia**********************************
-//to validate the Step2 (Page 2) for NY /////////////////////////
-function ValidatePage2Step2_Philadelphia(sender,args)
-{
-    var inputobjs = document.getElementsByTagName("input");
-    var selectobjs = document.getElementsByTagName("select");
-    var Q3_1, Q3_2, Q4_1, Q4_2, Q5_1, Q5_2, Q6, Q7_1, Q7_2, Q8_1, Q8_2, Q9, Q10;
-    Q9 = new Array();
-    var j=0;
-    var valobj = document.getElementById(sender.id);
-    var hdnYearCount;
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_0")>=0)
-        {
-            Q3_1 = inputobjs[i];
-        }
-        //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_1")>=0)
-        {
-            Q3_2 = inputobjs[i];
-        }
-        
-        //for Q4_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ4_0")>=0)
-        {
-            Q4_1 = inputobjs[i];
-        }
-        
-        //for Q4_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ4_1")>=0)
-        {
-            Q4_2 = inputobjs[i];
-        }
-        
-        //for Q5_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ5_0")>=0)
-        {
-            Q5_1 = inputobjs[i];
-        }
-        
-        //for Q5_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ5_1")>=0)
-        {
-            Q5_2 = inputobjs[i];
-        }
-        
-         //for Q7_1
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_0")>=0)
-//        {
-//            Q7_1 = inputobjs[i];
-//        }
-//        
-//        //for Q7_2
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_1")>=0)
-//        {
-//            Q7_2 = inputobjs[i];
-//        }  
-        
-        // for txtSynagogueReferral 
-        
-//        if (inputobjs[i].id.indexOf("txtOtherSynagogue")>=0)
-//        {
-//            Q8_2 = inputobjs[i];
-//        }      
-
-        //for Q9
-        if (inputobjs[i].id.indexOf("RadioBtnQ9")>=0)
-        {
-            Q9[j] = inputobjs[i];
-            j=j+1;
-        }      
-
-        //for Q10
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
-        {
-            Q10 = inputobjs[i];
-        }
-        
-    }  //end of for loop
-    
-    //to get the <select> objects for Q8 and Q10
-    for (var i = 0; i<= selectobjs.length-1; i++)
-    {
-        //for Q6
-         if (selectobjs[i].id.indexOf("ddlGrade")>=0)
-        {
-            Q6 = selectobjs[i];
-        } 
-        
-        //for Q8
-//        if (selectobjs[i].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            Q8_1 = selectobjs[i];
-//        }         
-
-    }
-
-    //validate Q3
-    if (Q3_1.checked==false && Q3_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-        args.IsValid=false;
-        return;
-    }
-    else if (Q3_1.checked) // if yes is checked
-    {
-    var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-            if(returnVal == false)
-            {
-                args.IsValid = false;
-                return;
-            }
-         //for Question 7
-//        if (Q7_1.checked==false && Q7_2.checked==false)
-//        {
-//             valobj.innerHTML = "<li>Please answer Question No. 5</li>";
-//             args.IsValid=false;
-//             return;
-//        }
-//        if(Q7_1.checked==true)
-//        {
-//           //validate synagogue
-//            if (Q8_1.selectedIndex==0)
-//            {
-//                valobj.innerHTML = "<li>Please select the Synagogue</li>";
-//                args.IsValid=false;
-//                return;
-//            }  
-//            else if(Q8_1.options[Q8_1.selectedIndex].text == "OTHER")
-//            {
-//                //referral code
-//                if (trim(Q8_2.value)=="")
-//                {
-//                    valobj.innerHTML = "<li>Please enter the Synagogue name.</li>";
-//                    args.IsValid=false;
-//                    return;
-//                }
-//            }
-//        }
-    }
-    else if (Q3_2.checked)  //if "no" is checked
-    {
-        //to validate for Q4 and Q5
-        if (Q4_1.checked==false && Q4_2.checked==false)
-        {
-             valobj.innerHTML = "<li>Please answer Question No. 2</li>";
-             args.IsValid=false;
-             return;
-        }
-        else if (Q4_1.checked)
-        {
-            if (Q5_1.checked==false && Q5_2.checked==false)
-            {
-                 valobj.innerHTML = "<li>Please answer Question No. 3</li>";
-                 args.IsValid=false;
-                 return;
-            }
-            else if (Q5_1.checked)
-            {
-                //for Question 7
-//                if (Q7_1.checked==false && Q7_2.checked==false)
-//                {
-//                     valobj.innerHTML = "<li>Please answer Question No. 5</li>";
-//                     args.IsValid=false;
-//                     return;
-//                }
-                var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-                if(returnVal == false)
-                {
-                    args.IsValid = false;
-                    return;
-                }
-                //validate synagogue
-                
-//                if (Q8_1.selectedIndex==0 && Q7_1.checked)
-//                {
-//                    valobj.innerHTML = "<li>Please select the Synagogue</li>";
-//                    args.IsValid=false;
-//                    return;
-//                }  
-//                //referral code
-//                if (trim(Q8_2.value)=="" && Q8_1.options[Q8_1.selectedIndex].text == "OTHER")
-//                {
-//                    valobj.innerHTML = "<li>Please enter the Synagogue name.</li>";
-//                    args.IsValid=false;
-//                    return;
-//                }
-            }
-            else if(Q5_2.checked)
-            {
-                var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-                if(returnVal == false)
-                {
-                    args.IsValid = false;
-                    return;
-                }
-            }
-        }
-        else if(Q4_2.checked)
-        {
-            var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-            if(returnVal == false)
-            {
-                args.IsValid = false;
-                return;
-            }
-        }
-        
-
-    }
-    
-    //validate Q6
-    if (Q6.selectedIndex==0)
-    {
-        valobj.innerHTML = "<li>Please select the Grade</li>";
-        args.IsValid=false;
-        return;
-    }   
-    
-    //for Question 9
-    var bQ9Checked = false;
-    for (var j =0 ; j<= Q9.length-1; j++)
-    {
-        if (Q9[j].checked) //Q9 has been answered
-        {
-            bQ9Checked=true;
-            //for Question 11
-            if (trim(Q10.value)=="" && Q9[j].value!=3)
-            {
-                valobj.innerHTML = "<li>Please enter Name of the School</li>";
-                args.IsValid=false;
-                return;
-            }   
-        }
-    }
-    
-    // Referral code must be 4 digits
-   /*  if (!(trim(Q8_2.value)==""))
-    {
-        if (!IsNumeric(trim(Q8_2.value)))
-        {
-            valobj.innerHTML = "<ul><li>Please enter valid referal code </li></ul>";
-            args.IsValid=false;
-            return;
- 
-        }   
-    }
-    
-    // Referral code must be 4 digits
-   if (!(trim(Q8_2.value)==""))
-    {
-        var refcode;
-        refcode=trim(Q8_2.value);
-        if (refcode.length<4)
-        {
-            valobj.innerHTML = "<ul><li>Please enter valid 4 digit referal code </li></ul>";
-            args.IsValid=false;
-            return;
- 
-        }   
-    }
-*/
-
-    
-    //if Q9 is not answered
-    if (!bQ9Checked)
-    {
-         valobj.innerHTML = "<li>Please answer Question No. 6</li>";
-         args.IsValid=false;
-         return;
-    }  
-  
-    args.IsValid = true;
-    return;
-}
-//*****************************END OF VALIDATION FOR Philedalphia**********************************
 
 //********************************* BEGIN OF VALIDATION FOR Washington DC **************************
 function ValidatePage2Step2_Washington(sender,args)
@@ -4409,25 +3760,6 @@ function ValidatePage2Step2_Washington(sender,args)
         {
             Q3_2 = inputobjs[i];
         }
-        
-        //for Q7_1
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_0")>=0)
-//        {
-//            Q7_1 = inputobjs[i];
-//        }
-//        
-//        //for Q7_2
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_1")>=0)
-//        {
-//            Q7_2 = inputobjs[i];
-//        }  
-        
-        // for txtSynagogueReferral 
-        
-//        if (inputobjs[i].id.indexOf("txtSynagogueReferral")>=0)
-//        {
-//            Q8_2 = inputobjs[i];
-//        }      
 
         //for Q9
         if (inputobjs[i].id.indexOf("RadioBtnQ9")>=0)
@@ -4467,13 +3799,6 @@ function ValidatePage2Step2_Washington(sender,args)
         {
             Q6 = selectobjs[i];
         } 
-        
-        //for Q8
-//        if (selectobjs[i].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            Q8_1 = selectobjs[i];
-//        }         
-
     }
 
     //validate Q3
@@ -4483,32 +3808,7 @@ function ValidatePage2Step2_Washington(sender,args)
         args.IsValid=false;
         return;
     }
-//    else if (Q3_1.checked) // if yes is checked
-//    {
-//         //for Question 7
-//        if (Q7_1.checked==false && Q7_2.checked==false)
-//        {
-//             valobj.innerHTML = "<li>Please answer Question No. 3</li>";
-//             args.IsValid=false;
-//             return;
-//        }
-//           //validate synagogue
-//        if (Q7_1.checked==true && Q8_1.selectedIndex==0)
-//        {
-//            valobj.innerHTML = "<li>Please select the Synagogue</li>";
-//            args.IsValid=false;
-//            return;
-//        }  
-//        //referral code
-////        if (trim(Q8_2.value)=="")
-////        {
-////            valobj.innerHTML = "<li>Please enter the referral code </li>";
-////            args.IsValid=false;
-////            return;
-////        }  
 
-//        
-//    }
        var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
     if(returnVal == false)
     {
@@ -4538,36 +3838,7 @@ function ValidatePage2Step2_Washington(sender,args)
                 return;
             }   
         }
-    }
-    
-//    // Referral code must be 4 digits
-//    if (!(trim(Q8_2.value)==""))
-//    {
-//        if (!IsNumeric(trim(Q8_2.value)))
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter valid referal code </li></ul>";
-//            args.IsValid=false;
-//            return;
-// 
-//        }   
-//    }
-//    
-//    // Referral code must be 4 digits
-//    if (!(trim(Q8_2.value)==""))
-//    {
-//        var refcode;
-//        refcode=trim(Q8_2.value);
-//        if (refcode.length<4)
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter valid 4 digit referal code </li></ul>";
-//            args.IsValid=false;
-//            return;
-// 
-//        }   
-//    }
-
-
-    
+    }   
     //if Q9 is not answered
     if (!bQ9Checked)
     {
@@ -4614,10 +3885,6 @@ function VaildatePage3Step2_Washington(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -4674,11 +3941,6 @@ function VaildatePage3Step2_Washington(sender,args)
             strErrorMsg="<li>Please enter a Valid End Date in the mm/dd/yyyy format, or select the date by clicking the calendar icon</li>";
             bValid = false;
         }
-        //else if (!CompareDates(currentDt,Q10_StartDate.value))
-        //{
-        //    strErrorMsg="<li>Start date can not be less than today's date</li>";
-        //    bValid = false;
-        //}
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -4744,49 +4006,6 @@ function ValidatePage2Step2_NY(sender,args)
         {
             Q3_2 = inputobjs[i];
         }
-        
-      /*  //for Q4_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ4_0")>=0)
-        {
-            Q4_1 = inputobjs[i];
-        }
-        
-        //for Q4_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ4_1")>=0)
-        {
-            Q4_2 = inputobjs[i];
-        }
-        
-        //for Q5_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ5_0")>=0)
-        {
-            Q5_1 = inputobjs[i];
-        }
-        
-        //for Q5_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ5_1")>=0)
-        {
-            Q5_2 = inputobjs[i];
-        }
-        */
-         //for Q7_1
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_0")>=0)
-//        {
-//            Q7_1 = inputobjs[i];
-//        }
-//        
-//        //for Q7_2
-//        if (inputobjs[i].id.indexOf("RadioBtnQ7_1")>=0)
-//        {
-//            Q7_2 = inputobjs[i];
-//        }  
-        
-        // for txtSynagogueReferral 
-        
-//        if (inputobjs[i].id.indexOf("txtSynagogueReferral")>=0)
-//        {
-//            Q8_2 = inputobjs[i];
-//        }      
 
         //for Q9
         if (inputobjs[i].id.indexOf("RadioBtnQ9")>=0)
@@ -4810,14 +4029,7 @@ function ValidatePage2Step2_NY(sender,args)
          if (selectobjs[i].id.indexOf("ddlGrade")>=0)
         {
             Q6 = selectobjs[i];
-        } 
-        
-        //for Q8
-//        if (selectobjs[i].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            Q8_1 = selectobjs[i];
-//        }         
-
+        }       
     }
 
     //validate Q3
@@ -4833,77 +4045,7 @@ function ValidatePage2Step2_NY(sender,args)
         args.IsValid = false;
         return;
     }
-//    else if (Q3_1.checked) // if yes is checked
-//    {
-//         //for Question 7
-//        if (Q7_1.checked==false && Q7_2.checked==false)
-//        {
-//             valobj.innerHTML = "<li>Please answer Question No. 5</li>";
-//             args.IsValid=false;
-//             return;
-//        }
-           //validate synagogue
-//        if (Q8_1.selectedIndex==0)
-//        {
-//            valobj.innerHTML = "<li>Please select the Synagogue</li>";
-//            args.IsValid=false;
-//            return;
-//        }  
-        //referral code
-//        if (trim(Q8_2.value)=="")
-//        {
-//            valobj.innerHTML = "<li>Please enter the referral code </li>";
-//            args.IsValid=false;
-//            return;
-//        }  
-
-        
-//    }
-   /* else if (Q3_2.checked)  //if "no" is checked
-    {
-        //to validate for Q4 and Q5
-        if (Q4_1.checked==false && Q4_2.checked==false)
-        {
-             valobj.innerHTML = "<li>Please answer Question No. 3</li>";
-             args.IsValid=false;
-             return;
-        }
-        else if (Q4_1.checked)
-        {
-            if (Q5_1.checked==false && Q5_2.checked==false)
-            {
-                 valobj.innerHTML = "<li>Please answer Question No. 4</li>";
-                 args.IsValid=false;
-                 return;
-            }
-            else if (Q5_1.checked)
-            {
-                //for Question 7
-                if (Q7_1.checked==false && Q7_2.checked==false)
-                {
-                     valobj.innerHTML = "<li>Please answer Question No. 5</li>";
-                     args.IsValid=false;
-                     return;
-                }
-                //validate synagogue
-                if (Q8_1.selectedIndex==0)
-                {
-                    valobj.innerHTML = "<li>Please select the Synagogue</li>";
-                    args.IsValid=false;
-                    return;
-                }  
-                //referral code
-                if (trim(Q8_2.value)=="")
-                {
-                    valobj.innerHTML = "<li>Please enter the referral code </li>";
-                    args.IsValid=false;
-                    return;
-                }
-            }
-        }
-
-    }*/
-    
+           
     //validate Q6
     if (Q6.selectedIndex==0)
     {
@@ -4928,35 +4070,7 @@ function ValidatePage2Step2_NY(sender,args)
             }   
         }
     }
-    
-    // Referral code must be 4 digits
-//    if (!(trim(Q8_2.value)==""))
-//    {
-//        if (!IsNumeric(trim(Q8_2.value)))
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter valid referal code </li></ul>";
-//            args.IsValid=false;
-//            return;
-// 
-//        }   
-//    }
-    
-    // Referral code must be 4 digits
-//    if (!(trim(Q8_2.value)==""))
-//    {
-//        var refcode;
-//        refcode=trim(Q8_2.value);
-//        if (refcode.length<4)
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter valid 4 digit referal code </li></ul>";
-//            args.IsValid=false;
-//            return;
-// 
-//        }   
-//    }
-
-
-    
+       
     //if Q9 is not answered
     if (!bQ9Checked)
     {
@@ -5247,13 +4361,7 @@ function ValidatePage2Step2_Ramah(sender,args)
             Q9[j] = inputobjs[i];
             j=j+1;
         }
-        
-        //for Q10_2
-      /*  if (inputobjs[i].id.indexOf("txtJewishSchool")>=0)
-        {
-            Q10_2 = inputobjs[i];
-        }
-        */
+
         //for Q11
         if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
         {
@@ -5270,12 +4378,6 @@ function ValidatePage2Step2_Ramah(sender,args)
         {
             Q6 = selectobjs[i];
         }         
-      
-        //for Q10
-       /* if (selectobjs[i].id.indexOf("ddlQ10")>=0)
-        {
-            Q10_1 = selectobjs[i];
-        }*/
     }
 
     //validate Q3
@@ -5323,32 +4425,6 @@ function ValidatePage2Step2_Ramah(sender,args)
     var bQ9Checked = false;
     for (var j =0 ; j<= Q9.length-1; j++)
     {
-        /*if (Q9[j].checked && Q9[j].value==4)
-        {
-            bQ9Checked = true;
-            if (trim(Q10_2.value)=="" && Q10_1.selectedIndex==0)
-            {
-                 valobj.innerHTML = "<li>Please answer Question No. 7</li>";
-                 args.IsValid=false;
-                 return;
-            }
-            else if (trim(Q10_2.value)=="" && Q10_1.options[Q10_1.selectedIndex].text=="Other")  //others is selected
-            {
-                 valobj.innerHTML = "<li>Please type in the Jewsish Day School</li>";
-                 Q10_2.focus();
-                 args.IsValid=false;
-                 return;
-            }
-            else if (trim(Q10_2.value)!="")
-            {
-                for(i=0;i<Q10_1.length;i++)
-                {
-                    if(Q10_1.options[Q10_1.selectedIndex].text=="Other")
-                        Q10_1.selectedIndex=Q10_1.selectedIndex;
-                }
-            }
-        }
-        else */
         if (Q9[j].checked) //Q9 has been answered
         {
             bQ9Checked=true;
@@ -5400,10 +4476,6 @@ function VaildatePage3Step2_Ramah(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -5417,11 +4489,6 @@ function VaildatePage3Step2_Ramah(sender,args)
     //to select the dropdown objs
     for (var j=0; j<=selectobjs.length-1; j++)
     {
-//        if (selectobjs[j].id.indexOf("ddlState")>=0)
-//            Q8_State = selectobjs[j];
-//        else if (selectobjs[j].id.indexOf("ddlCampSession")>=0)
-//            Q9_CampSession = selectobjs[j];
-//        else 
         if (selectobjs[j].id.indexOf("ddlCamp")>=0)
             Q8_Camp = selectobjs[j];
     }
@@ -5510,112 +4577,6 @@ function VaildatePage3Step2_Ramah(sender,args)
 
 //*****************************END OF VALIDATION FOR RAMAH**********************************
 
-//*****************************END OF VALIDATION FOR MetroWest**********************************
-function ValidatePage2Step2_MetroWest(sender,args)
-{
-    var inputobjs = document.getElementsByTagName("input");
-    var selectobjs = document.getElementsByTagName("select");
-    var Q3_1, Q3_2, Q5, Q6, Q7, Q8, bValid = true, Q7CheckedValue;
-    var Q7 = new Array();
-    var j=0;
-    var valobj = document.getElementById(sender.id);
-   
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_0")>=0)
-        {
-            Q3_1 = inputobjs[i];
-        }
-        //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_1")>=0)
-        {
-            Q3_2 = inputobjs[i];
-        }
-        
-        //for school type
-        if (inputobjs[i].id.indexOf("RadioBtnQ7")>=0)
-        {
-            Q7[j] = inputobjs[i];
-            j=j+1;
-        }     
-            
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
-            Q8 = inputobjs[i];          
-        
-
-    }  //end of for loop   
-
-//    
-    //to get the select objects (ddlgrade) for Q6
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlGrade")>=0)
-        {
-            Q6 = selectobjs[k];
-            break;
-        }        
-    }
-
-    //validate Q3
-    if (Q3_1.checked==false && Q3_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-        args.IsValid=false;
-        return;
-        //bValid = false;
-    }    
-    //For Synagogue and JCC Question
-    if (Q3_1.checked==true || Q3_2.checked==true){
-        var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-        if(returnVal == false)
-        {
-            args.IsValid = false;
-            return;
-        }
-    }
-    
-    //validate Q6
-    if (Q6.selectedIndex==0)
-    {
-        valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
-        args.IsValid=false;
-        return;
-    }
-    else
-    {        
-        //validate Q7
-        var bChecked=false;
-         
-        for (var k=0; k<=Q7.length-1; k++)
-        {
-            if (Q7[k].checked==true)
-            {
-                Q7CheckedValue = Q7[k].value;
-                bChecked = true;
-                break;
-            }
-        }
-        
-        if (!bChecked)
-        {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
-            args.IsValid=false;
-            return;
-        }
-        else if (Q7CheckedValue!="3" && trim(Q8.value)=="") //validate Q8 (if it is not home school)
-        {
-            valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
-            args.IsValid=false;
-            return;
-        }
-    }   
-    args.IsValid = true;
-    return;
-}
-//*****************************END OF VALIDATION FOR MetroWest**********************************
-
-
 //*****************************START OF VALIDATION FOR DALLAS**********************************
 
 function ValidatePage2Step2_Dallas(sender,args)
@@ -5697,26 +4658,7 @@ function ValidatePage2Step2_Dallas(sender,args)
         args.IsValid=false;
         return;
     }
-    /*else if (Q3_2.checked)  //if "no" is checked
-    {
-        //to validate for Q4 and Q5
-        if (Q4_1.checked==false && Q4_2.checked==false)
-        {
-             valobj.innerHTML = "<li>Please answer Question No. 3</li>";
-             args.IsValid=false;
-             return;
-        }
-        else if (Q4_1.checked)
-        {
-            if (Q5_1.checked==false && Q5_2.checked==false)
-            {
-                 valobj.innerHTML = "<li>Please answer Question No. 4</li>";
-                 args.IsValid=false;
-                 return;
-            }
-        }
-
-    }*/   
+ 
     //validate Q6
     if (Q6.selectedIndex==0)
     {
@@ -6032,10 +4974,6 @@ function VaildatePage3Step2_Dallas(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -6091,11 +5029,6 @@ function VaildatePage3Step2_Dallas(sender,args)
             strErrorMsg="<li>Please enter a Valid End Date in the mm/dd/yyyy format, or select the date by clicking the calendar icon</li>";
             bValid = false;
         }
-//        else if (!CompareDates(currentDt,Q10_StartDate.value))
-//        {
-//            strErrorMsg="<li>Start date can not be less than today's date</li>";
-//            bValid = false;
-//        }
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -6162,11 +5095,7 @@ function ValidatePage2Step2_MountainChai(sender,args)
         if (inputobjs[i].id.indexOf("RadioBtnQ2")>=0)
         {    Q2[j] = inputobjs[i]; j=j+1;}
         //for Q3
-//        if (inputobjs[i].id.indexOf("RadioBtnQ3")>=0)
-//            {Q3[k] = inputobjs[i]; k=k+1;}
-//        //for Q4
-//        if (inputobjs[i].id.indexOf("RadioBtnQ4")>=0)
-//            {Q4[l] = inputobjs[i]; l=l+1;}
+
         //for Q6
         if (inputobjs[i].id.indexOf("RadioButtionQ6")>=0)
         {
@@ -6202,25 +5131,7 @@ function ValidatePage2Step2_MountainChai(sender,args)
             break;
         }
     }    
-//    for (var k=0; k<=Q3.length-1; k++)
-//    {
-//        if (Q3[k].checked==true)
-//        {
-//            Q3CheckedValue = Q3[k].value;
-//            bQ3Checked = true;
-//            break;
-//        }
-//    }
-//    for (var k=0; k<=Q4.length-1; k++)
-//    {
-//        if (Q4[k].checked==true)
-//        {
-//            Q4CheckedValue = Q4[k].value;
-//            bQ4Checked = true;
-//            break;
-//        }
-//    }  
-//             
+          
     for (var k=0; k<=Q6.length-1; k++)
     {
         if (Q6[k].checked==true)
@@ -6235,24 +5146,7 @@ function ValidatePage2Step2_MountainChai(sender,args)
         valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
         bValid = false;
     }
-//    else if(Q2CheckedValue == "2")
-//    {
-//        //validate Q3        
-//        if (!bQ3Checked)
-//        {
-//            valobj.innerHTML = "<ul><li>Please answer Question No. 2</li></ul>";
-//            bValid = false;
-//        }
-//        else if(Q3CheckedValue == "1")
-//        {
-//            //validate Q4            
-//            if (!bQ4Checked)
-//            {
-//                valobj.innerHTML = "<ul><li>Please answer Question No. 3</li></ul>";
-//                bValid = false;
-//            }            
-//        }        
-//    }
+
     //validate Q5
     if (Q5.selectedIndex==0 && bValid)
     {
@@ -6372,27 +5266,7 @@ function ValidatePage2Step2_JCCRanch(sender,args)
         valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
         bValid = false;
     }
-    else if(Q2CheckedValue == "2")
-    {
-        // 2012-09-16 JCC Ranch Camp no longer allows second time camper, so original question #2 and #3 is no longer valid.
-        // The code below could be removed.
-        
-        //validate Q3        
-//        if (!bQ3Checked)
-//        {
-//            valobj.innerHTML = "<ul><li>Please answer Question No. 2</li></ul>";
-//            bValid = false;
-//        }
-//        else if(Q3CheckedValue == "1")
-//        {
-//            //validate Q4            
-//            if (!bQ4Checked)
-//            {
-//                valobj.innerHTML = "<ul><li>Please answer Question No. 3</li></ul>";
-//                bValid = false;
-//            }            
-//        }        
-    }
+
     //validate Q5
     if (Q5.selectedIndex==0 && bValid)
     {
@@ -6432,10 +5306,6 @@ function VaildatePage3Step2_JCCRanch(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];        
     } //end of for loop    
@@ -6490,10 +5360,6 @@ function VaildatePage3Step2_CampChi(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];        
     } //end of for loop    
@@ -6703,16 +5569,7 @@ function ValidatePage2Step2_Nageela(sender,args)
             Q2[j] = inputobjs[i];
             j=j+1;
         }
-//        if (inputobjs[i].id.indexOf("RadioBtnListQ3")>=0)
-//        {
-//            Q3[k] = inputobjs[i];
-//            k=k+1;
-//        }
-//        if (inputobjs[i].id.indexOf("RadioBtnListQ4")>=0)
-//        {
-//            Q4[l] = inputobjs[i];
-//            l=l+1;
-//        }
+
         //for Q5
         if (inputobjs[i].id.indexOf("RadioButtionQ6")>=0)
         {
@@ -6750,44 +5607,7 @@ function ValidatePage2Step2_Nageela(sender,args)
         valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
         bValid = false;
     }
-    //validate Q3
-//    if(Q2CheckedValue == "2" && bValid)
-//    {
-//        var bChecked=false;         
-//        for (var n=0; n<=Q3.length-1; n++)
-//        {
-//            if (Q3[n].checked==true)
-//            {
-//                Q3CheckedValue = Q3[n].value;
-//                bChecked = true;
-//                break;
-//            }
-//        }    
-//        if (!bChecked)
-//        {
-//            valobj.innerHTML = "<ul><li>Please answer Question No. 2</li></ul>";
-//            bValid = false;
-//        }
-//    }
-//    //validate Q4
-//    if(Q3CheckedValue == "1" && bValid)
-//    {
-//        var bChecked=false;         
-//        for (var n=0; n<=Q4.length-1; n++)
-//        {
-//            if (Q4[n].checked==true)
-//            {
-//                Q4CheckedValue = Q4[n].value;
-//                bChecked = true;
-//                break;
-//            }
-//        }    
-//        if (!bChecked)
-//        {
-//            valobj.innerHTML = "<ul><li>Please answer Question No. 3</li></ul>";
-//            bValid = false;
-//        }
-//    }
+
     if (bValid && Q5.selectedIndex==0)
     {
         valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
@@ -6845,10 +5665,6 @@ function VaildatePage3Step2_Nageela(sender,args)
             Q7_1 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-//            Q7_3 = inputobjs[i];
-//        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-//            Q7_4 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
@@ -6904,11 +5720,6 @@ function VaildatePage3Step2_Nageela(sender,args)
             strErrorMsg="<li>Please enter a Valid End Date in the mm/dd/yyyy format, or select the date by clicking the calendar icon</li>";
             bValid = false;
         }
-        //else if (!CompareDates(currentDt,Q10_StartDate.value))
-        //{
-        //    strErrorMsg="<li>Start date can not be less than today's date</li>";
-        //    bValid = false;
-        //}
         else if (!CompareDates(Q10_StartDate.value,Q10_EndDate.value))
         {
             strErrorMsg="<li>Start Date should be less than the End Date</li>";
@@ -6975,15 +5786,6 @@ function ValidatePage2Step2_Kansas(sender,args)
         if (inputobjs[i].id.indexOf("RadioBtnQ32")>=0)
             Q2_2 = inputobjs[i];
         
-        //for Q4
-//        if (inputobjs[i].id.indexOf("RadioBtnQ4")>=0)
-//        {
-//            Q4[j] = inputobjs[i];
-//            j=j+1;
-//        }
-        //for Q5_2 (Synagogue TextBox)
-//        if (inputobjs[i].id.indexOf("txtOtherSynagogue")>=0)
-//            Q5_2 = inputobjs[i];
         //for Q6
         if (inputobjs[i].id.indexOf("RadioButtionQ6")>=0)
         {
@@ -7004,28 +5806,6 @@ function ValidatePage2Step2_Kansas(sender,args)
             break;
         }
     }
-    //to get the select objects (ddlSynagogue) for Q3
-//    for (var k=0; k<= selectobjs.length-1; k++)
-//    {
-//        if (selectobjs[k].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            Q5_1 = selectobjs[k];
-//            break;
-//        }
-//    }
-
-    //validate Q4
-//    var bChecked=false;
-//         
-//    for (var k=0; k<=Q4.length-1; k++)
-//    {
-//        if (Q4[k].checked==true)
-//        {
-//            Q4CheckedValue = Q4[k].value;
-//            bChecked = true;
-//            break;
-//        }
-//    }
 
     //validate Q2
     if (Q2_1.checked==false && Q2_2.checked==false)
@@ -7038,27 +5818,7 @@ function ValidatePage2Step2_Kansas(sender,args)
     {
         valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
         bValid = false;
-    }
-    //validate Q4
-//    else if(!bChecked)
-//    {
-//        valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
-//        bValid = false;
-//    }
-    //validate Q5_1
-//    else if (Q4CheckedValue == "1" && Q5_1.selectedIndex==0)
-//    {
-//        valobj.innerHTML = "<ul><li>Please select a Synagogue.</li></ul>";
-//        bValid = false;
-//    }
-//    //validate Q5_2
-//    else if (Q4CheckedValue == "1" && Q5_1.options[Q5_1.selectedIndex].text =="Other" && trim(Q5_2.value)=="")//validate Q5 (if other is selected from synagogue list)
-//        {
-//            valobj.innerHTML = "<ul><li>Please enter Name of the Synagogue</li></ul>";
-//            bValid = false;
-//        }
-    else
-    {
+    } else {
      var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
     if(returnVal == false)
     {
@@ -7145,13 +5905,6 @@ function ValidatePage2Step2_Baltimore(sender,args)
             Q7 = inputobjs[i];
         }
         
-        //for Q8
-//        else if (inputobjs[i].id.indexOf("RadioBtnQ8")>=0)
-//        {
-//            Q8[n] = inputobjs[i];
-//            n=n+1;
-//        } 
-        
         //for Q10
         else if (inputobjs[i].id.indexOf("RadioBtnQ10")>=0)
         {
@@ -7164,12 +5917,6 @@ function ValidatePage2Step2_Baltimore(sender,args)
         {
             Q11_b = inputobjs[i];
         }
-        
-        //for Q9
-//        else if (inputobjs[i].id.indexOf("txtOtherSynagogue")>=0)
-//        {
-//            Q9_b = inputobjs[i];
-//        }
         
     }  //end of for loop
     
@@ -7185,11 +5932,6 @@ function ValidatePage2Step2_Baltimore(sender,args)
         {
             Q11_a = selectobjs[i];
         }         
-        //for Q9_a
-//        else if (selectobjs[i].id.indexOf("ddlSynagogue")>=0)
-//        {
-//            Q9_a = selectobjs[i];
-//        } 
     }
 
     var b2Checked=false;
@@ -7295,38 +6037,6 @@ function ValidatePage2Step2_Baltimore(sender,args)
         args.IsValid = false;
         return;
     }
-//    bChecked=false;
-//    var Q8CheckedValue;
-//    
-//    for (var k=0; k<=Q8.length-1; k++)
-//    {
-//        if (Q8[k].checked==true)
-//        {
-//            Q8CheckedValue = Q8[k].value;
-//            bChecked = true;
-//            break;
-//        }
-//    }
-    //alert(Q9_a.selectedIndex + "," + Q8CheckedValue +", "+ Q9_a.options[Q9_a.selectedIndex].text.indexOf("Other") + ", "  + Q9_b.value);
-    
-//    if (args.IsValid && !bChecked)
-//    {
-//        valobj.innerHTML = "<ul><li>Please answer Question No. 8</li></ul>";
-//        args.IsValid=false;
-//        return;
-//    }
-//    else if (args.IsValid && Q8CheckedValue=="1" && Q9_a.selectedIndex==0)//validate Q8 (if synagogue affliated)
-//    {
-//        valobj.innerHTML = "<ul><li>Please select the Synagogue name.</li></ul>";
-//        args.IsValid=false;
-//        return;
-//    }
-//    else if (args.IsValid && Q8CheckedValue=="1" && Q9_a.selectedIndex!=0 && Q9_a.options[Q9_a.selectedIndex].text.indexOf("Other")!= -1 && trim(Q9_b.value)=="")//validate Q8 (if synagogue affliated)
-//    {
-//        valobj.innerHTML = "<ul><li>Please enter the Synagogue name.</li></ul>";
-//        args.IsValid=false;
-//        return;
-//    }
     
     //validate Q10
     bChecked=false;
@@ -7525,94 +6235,79 @@ function ValidatePage2Step2_PJLibrary(sender,args)
 {
     var inputobjs = document.getElementsByTagName("input");
     var selectobjs = document.getElementsByTagName("select");
-    var Q2_1,Q2_2,Q3_1, Q3_2, Q4, Q5, Q6, bValid = true, Q5CheckedValue;
+    var Q2_1, Q2_2, Q3_1, Q3_2, Q4, Q5, Q6, bValid = true, Q5CheckedValue;
     var Q5 = new Array();
-    var j=0;
+    var j = 0;
     var valobj = document.getElementById(sender.id);
-    
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
+
+    for (var i = 0; i < inputobjs.length - 1; i++) {
         //for Q2_1
-        if(inputobjs[i].id.indexOf("txtFirstName1")>=0)
+        if (inputobjs[i].id.indexOf("txtFirstName1") >= 0)
             Q2_1 = inputobjs[i];
-            //for Q2_1
-        if(inputobjs[i].id.indexOf("txtLastName1")>=0)
+        //for Q2_1
+        if (inputobjs[i].id.indexOf("txtLastName1") >= 0)
             Q2_2 = inputobjs[i];
         //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ31")>=0)
+        if (inputobjs[i].id.indexOf("RadioBtnQ31") >= 0)
             Q3_1 = inputobjs[i];
         //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ32")>=0)
+        if (inputobjs[i].id.indexOf("RadioBtnQ32") >= 0)
             Q3_2 = inputobjs[i];
         //for Q5
-        if (inputobjs[i].id.indexOf("RadioButtionQ5")>=0)
-        {
+        if (inputobjs[i].id.indexOf("RadioButtionQ5") >= 0) {
             Q5[j] = inputobjs[i];
-            j=j+1;
+            j = j + 1;
         }
         //for Q6
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
+        if (inputobjs[i].id.indexOf("txtCamperSchool") >= 0)
             Q6 = inputobjs[i];
     }  //end of for loop
-    
+
     //to get the select objects (ddlgrade) for Q4
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlGrade")>=0)
-        {
+    for (var k = 0; k <= selectobjs.length - 1; k++) {
+        if (selectobjs[k].id.indexOf("ddlGrade") >= 0) {
             Q4 = selectobjs[k];
             break;
         }
     }
 
-    if(trim(Q2_1.value) == "")
-    {
+    if (trim(Q2_1.value) == "") {
         valobj.innerHTML = "<ul><li>Please enter PJL member first name.</li></ul>";
         bValid = false;
-    }
-    else if(trim(Q2_2.value) == "")
-    {
+    } else if (trim(Q2_2.value) == "") {
         valobj.innerHTML = "<ul><li>Please enter PJL member last name.</li></ul>";
         bValid = false;
     }
-    //validate Q3
-    else if (Q3_1.checked==false && Q3_2.checked==false)
-    {
+        //validate Q3
+    else if (Q3_1.checked == false && Q3_2.checked == false) {
         valobj.innerHTML = "<ul><li>Please answer Question No. 2</li></ul>";
         bValid = false;
     }
-    //validate Q4
-    else if (Q4.selectedIndex==0)
-    {
+        //validate Q4
+    else if (Q4.selectedIndex == 0) {
         valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
         bValid = false;
-    }
-    else
-    {
+    } else {
         //validate Q5
-        var bChecked=false;
-         
-        for (var k=0; k<=Q5.length-1; k++)
-        {
-            if (Q5[k].checked==true)
-            {
+        var bChecked = false;
+
+        for (var k = 0; k <= Q5.length - 1; k++) {
+            if (Q5[k].checked == true) {
                 Q5CheckedValue = Q5[k].value;
                 bChecked = true;
                 break;
             }
         }
-        
-        if (!bChecked)
-        {
+
+        if (!bChecked) {
             valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
             bValid = false;
-        }
-        else if (Q5CheckedValue!="3" && trim(Q6.value)=="")//validate Q6 (if it is not home school)
+        } else if (Q5CheckedValue != "3" && trim(Q6.value) == "")//validate Q6 (if it is not home school)
         {
             valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
             bValid = false;
         }
-    }  
+    }
 
     args.IsValid = bValid;
     return;
@@ -7631,18 +6326,17 @@ function VaildatePage3Step2_CampAvoda(sender,args)
     var endDate = document.getElementById("ctl00_hdnCampSessionEndDate");
     var campSeasonErrorMessage = document.getElementById("ctl00_hdncampSeasonErrorMessage");
     
-    for (var i = 0; i<inputobjs.length-1; i++)
-    {
-        if (inputobjs[i].id.indexOf("RadioButtonQ7Option1")>=0)
+    for (var i = 0; i < inputobjs.length - 1; i++) {
+        if (inputobjs[i].id.indexOf("RadioButtonQ7Option1") >= 0)
             Q6_1 = inputobjs[i];
-        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2")>=0)
+        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2") >= 0)
             Q6_2 = inputobjs[i];
-        else if (inputobjs[i].id.indexOf("txtCampSession")>=0)
-            Q8_CampSession = inputobjs[i];     
-        else if (inputobjs[i].id.indexOf("txtStartDate")>=0)
+        else if (inputobjs[i].id.indexOf("txtCampSession") >= 0)
+            Q8_CampSession = inputobjs[i];
+        else if (inputobjs[i].id.indexOf("txtStartDate") >= 0)
             Q9_StartDate = inputobjs[i];
-        else if (inputobjs[i].id.indexOf("txtEndDate")>=0)
-            Q9_EndDate = inputobjs[i];  
+        else if (inputobjs[i].id.indexOf("txtEndDate") >= 0)
+            Q9_EndDate = inputobjs[i];
     } //end of for loop    
     
     Q7_Camp = selectobjs[0];
@@ -7723,8 +6417,7 @@ function VaildatePage3Step2_CampAvoda(sender,args)
     return;
 }
 
-function ValidateForm(isSubmit)
-{
+function ValidateForm(isSubmit) {
     var inputobjs = document.getElementsByTagName("input");
     var spanobjs = document.getElementsByTagName("span");
     var selectobjs = document.getElementsByTagName("select");
@@ -7732,7 +6425,6 @@ function ValidateForm(isSubmit)
     var QReqType, QtxtCancelComments, QtxtCampSession, QtxtManualStartDate, QtxtManualEndDate, QddlCampSession,QlblSysStartDate, QlblSysEndDate, QlblNewNoOfDays, QlblNewGrant;
     QReqType = new Array();
     var j=0;
-    //var valobj = document.getElementById(sender.id);
     var startDate = document.getElementById("hdnCampSessionStartDate");
     var endDate = document.getElementById("hdnCampSessionEndDate");
     var campSeasonErrorMessage = document.getElementById("hdncampSeasonErrorMessage");  
@@ -7741,11 +6433,9 @@ function ValidateForm(isSubmit)
     var lblAdjustmentType;
    
     var bValid = true;
-    for (var i = 0; i<= inputobjs.length-1; i++)
-    {
+    for (var i = 0; i<= inputobjs.length-1; i++) {
         //for request/adjustment type
-        if (inputobjs[i].id.indexOf("rdBtnLstAdjustmentType")>=0)
-        {
+        if (inputobjs[i].id.indexOf("rdBtnLstAdjustmentType")>=0) {
             QReqType[j] = inputobjs[i];
             j=j+1;
         }
@@ -7759,8 +6449,7 @@ function ValidateForm(isSubmit)
             QtxtManualEndDate = inputobjs[i];                
     }  //end of for loop
     
-    for (var i = 0; i<= spanobjs.length-1; i++)
-    {
+    for (var i = 0; i<= spanobjs.length-1; i++) {
         //for SysSessionStartDate
         if (spanobjs[i].id.indexOf("lblSysNewStartDate")>=0)
             QlblSysStartDate = spanobjs[i];
@@ -7777,21 +6466,17 @@ function ValidateForm(isSubmit)
             lblAdjustmentType = spanobjs[i];                
     }  //end of for loop
     
-    for (var i = 0; i<= textareaobjs.length-1; i++)
-    {
+    for (var i = 0; i<= textareaobjs.length-1; i++) {
         //for CancelComments
-        if (textareaobjs[i].id.indexOf("txtCancelComments")>=0)
-        {
+        if (textareaobjs[i].id.indexOf("txtCancelComments")>=0) {
             QtxtCancelComments = textareaobjs[i];
             break;  
         }              
     }  //end of for loop
     
     //to get the select objects (ddlgrade) for Q5
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if (selectobjs[k].id.indexOf("ddlCampSession")>=0)
-        {
+    for (var k=0; k<= selectobjs.length-1; k++) {
+        if (selectobjs[k].id.indexOf("ddlCampSession")>=0) {
             QddlCampSession = selectobjs[k];
             break;
         }
@@ -7803,20 +6488,15 @@ function ValidateForm(isSubmit)
     var QReqTypeCheckedValue,bReqTypeChecked;
     bReqTypeChecked = false;
     
-    if(QReqType.length > 0)
-    {
-        for (var k=0; k<=QReqType.length-1; k++)
-        {
-            if (QReqType[k].checked==true)
-            {
+    if(QReqType.length > 0) {
+        for (var k=0; k<=QReqType.length-1; k++) {
+            if (QReqType[k].checked==true) {
                 QReqTypeCheckedValue = QReqType[k].value;
                 bReqTypeChecked = true;
                 break;
             }
         }
-    }    
-    else if(lblAdjustmentType.innerText != "")
-    {
+    } else if(lblAdjustmentType.innerText != "") {
         if(trim(lblAdjustmentType.innerText) == "Cancellation")
             QReqTypeCheckedValue = "1";
         if(trim(lblAdjustmentType.innerText) == "Session Change")
@@ -7824,108 +6504,72 @@ function ValidateForm(isSubmit)
         bReqTypeChecked = true;
     }    
     
-    if(bValid && !bReqTypeChecked)
-    {
+    if(bValid && !bReqTypeChecked) {
         valobj.innerHTML = "<ul><li>Please select adjustment type.</li></ul>";  
         self.scrollTo(0,0);
-        //args.IsValid=false;
         bValid = false;
         return false;     
-    }
-    else
-    {
-        if(bValid && QReqTypeCheckedValue == "1")
-        {
-            if(trim(QtxtCancelComments.value) == "")
-            {
+    } else {
+        if(bValid && QReqTypeCheckedValue == "1"){
+            if(trim(QtxtCancelComments.value) == ""){
                 valobj.innerHTML = "<ul><li>Please enter cancellation reasons.</li></ul>";
                 self.scrollTo(0,0);
-                //args.IsValid=false;
                 bValid = false;
                 return false;  
             }
-        }
-        else if(bValid && QReqTypeCheckedValue == "2")
-        {
-            if(QddlCampSession != null && QddlCampSession != undefined)
-            {
-                if(bValid && QddlCampSession.selectedIndex==0)
-                {
+        } else if(bValid && QReqTypeCheckedValue == "2"){
+            if(QddlCampSession != null && QddlCampSession != undefined) {
+                if (bValid && QddlCampSession.selectedIndex == 0) {
                     valobj.innerHTML = "<ul><li>Please select a camp session.</li></ul>";
-                    self.scrollTo(0,0);
-                    //args.IsValid=false;
+                    self.scrollTo(0, 0);
                     bValid = false;
-                    return false;  
-                }
-                else if(bValid && trim(QlblSysStartDate.innerText) == "")
-                {
+                    return false;
+                } else if (bValid && trim(QlblSysStartDate.innerText) == "") {
                     valobj.innerHTML = "<ul><li>Please select a camp session with start date.</li></ul>";
-                    self.scrollTo(0,0);
-                    //args.IsValid=false;
+                    self.scrollTo(0, 0);
                     bValid = false;
-                    return false; 
-                }
-                else if(bValid && trim(QlblSysEndDate.innerText) == "")
-                {
+                    return false;
+                } else if (bValid && trim(QlblSysEndDate.innerText) == "") {
                     valobj.innerHTML = "<ul><li>Please select a camp session with start date.</li></ul>";
-                    self.scrollTo(0,0);
-                    //args.IsValid=false;
+                    self.scrollTo(0, 0);
                     bValid = false;
-                    return false; 
+                    return false;
                 }
-            }
-            else
-            {
-                if(bValid && trim(QtxtCampSession.value) == "")
-                {
+            } else {
+                if (bValid && trim(QtxtCampSession.value) == "") {
                     valobj.innerHTML = "<ul><li>Please enter camp session name.</li></ul>";
-                    self.scrollTo(0,0);
-                    //args.IsValid=false;
+                    self.scrollTo(0, 0);
                     bValid = false;
-                    return false; 
-                }                
-                else if(bValid && dateValidationMessage != "")              
-                {
-                    valobj.innerHTML = "<ul>"+dateValidationMessage+"</ul>";
-                    self.scrollTo(0,0);
-                    //args.IsValid=false;
+                    return false;
+                } else if (bValid && dateValidationMessage != "") {
+                    valobj.innerHTML = "<ul>" + dateValidationMessage + "</ul>";
+                    self.scrollTo(0, 0);
                     bValid = false;
-                    return false; 
+                    return false;
                 }
              }             
-            if(bValid && trim(QlblNewNoOfDays.innerText) == "")
-            {
+            if (bValid && trim(QlblNewNoOfDays.innerText) == "") {
                 valobj.innerHTML = "<ul><li>Please click calculate button for number of days in the new camp session.</li></ul>";
-                self.scrollTo(0,0);
-                //args.IsValid=false;
-                    bValid = false;
-                    return false; 
+                self.scrollTo(0, 0);
+                bValid = false;
+                return false;
             }
-            if(bValid && trim(QlblNewGrant.innerText) == "")
-            {
+            if (bValid && trim(QlblNewGrant.innerText) == "") {
                 valobj.innerHTML = "<ul><li>Please click calculate button for new grant amount.</li></ul>";
-                self.scrollTo(0,0);
-                //args.IsValid=false;
-                    bValid = false;
-                    return false; 
+                self.scrollTo(0, 0);
+                bValid = false;
+                return false;
             }
-        }        
-        else 
-        {
+        } else {
             valobj.innerHTML = "<ul><li>Please select adjustment type.</li></ul>";  
             self.scrollTo(0,0);
-            //args.IsValid=false;
             bValid = false;
             return false; 
             
         }
     }
-//    if(bValid && isSubmit == 1 && isSubmitted == 0)
-//    {
-//        return confirm('Do you wish to continue with the change/cancellation request?');
-//    } 
-    if(bValid && isSubmit == 1)
-    {
+
+    if(bValid && isSubmit == 1) {
         return confirm('Do you wish to continue with the change/cancellation request?');
     }  
 }
@@ -7935,58 +6579,37 @@ function jumpScroll() {
 }
 
 
-function DateFunctions(startDate, endDate, actualStartDate, actualEndDate,campSeasonErrorMessage)
-{
-    if (actualStartDate=="" || actualEndDate=="") //for Question 12
-    {
+function DateFunctions(startDate, endDate, actualStartDate, actualEndDate,campSeasonErrorMessage) {
+    if (actualStartDate=="" || actualEndDate=="") {
         return strErrorMsg="<li>Please enter dates in the mm/dd/yyyy format, or select the dates by clicking the calendar icons</li>";        
-    }
-    else if (!ValidateDate(actualStartDate))
-    {
+    } else if (!ValidateDate(actualStartDate)) {
         return "<li>Please enter a Valid Start Date in the mm/dd/yyyy format, or select the date by clicking the calendar icon</li>";        
-    }
-    else if (!ValidateDate(actualEndDate))
-    {
+    } else if (!ValidateDate(actualEndDate)) {
         return "<li>Please enter a Valid End Date in the mm/dd/yyyy format, or select the date by clicking the calendar icon</li>";
-    }
-    else if (!CompareDates(actualStartDate,actualEndDate))
-    {
+    } else if (!CompareDates(actualStartDate,actualEndDate)) {
         return "<li>Start Date should be less than the End Date</li>";
-    }
-    //Added by Ram (10/15/2009) related to allow "May, Jun, Jul, Aug, Sep" as session months
-    else if (!CompareDates(startDate,actualStartDate))
-    {            
+    } else if (!CompareDates(startDate,actualStartDate)) {            
         return "<li>"+campSeasonErrorMessage.value+"</li>";
-    }
-    else if (!CompareDates(actualStartDate,endDate))
-    {   
+    } else if (!CompareDates(actualStartDate,endDate)) {   
         return "<li>"+campSeasonErrorMessage.value+"</li>";
-    }
-    else if (!CompareDates(startDate,actualEndDate))
-    {   
+    } else if (!CompareDates(startDate,actualEndDate)) {   
         return "<li>"+campSeasonErrorMessage.value+"</li>";
-    }
-    else if (!CompareDates(actualEndDate,endDate))
-    {   
+    } else if (!CompareDates(actualEndDate,endDate)) {   
         return "<li>"+campSeasonErrorMessage.value+"</li>";
-    }
-    else
+    } else
         return "";
 }
 
-function setCookie(c_name,value,expireminutes)
-{
+function setCookie(c_name,value,expireminutes) {
     var exdate=new Date();
     exdate.setDate(exdate.getMinutes()+expireminutes);
     document.cookie=c_name+ "=" +escape(value)+ ((expireminutes==null) ? "" : ";expires="+exdate.toGMTString());
 }
-function getCookie(c_name)
-{
-    if (document.cookie.length>0)
-    {
+
+function getCookie(c_name) {
+    if (document.cookie.length>0) {
         c_start=document.cookie.indexOf(c_name + "=");
-        if (c_start!=-1)
-        {
+        if (c_start!=-1) {
             c_start=c_start + c_name.length+1;
             c_end=document.cookie.indexOf(";",c_start);
             if (c_end==-1) c_end=document.cookie.length;
@@ -7995,15 +6618,13 @@ function getCookie(c_name)
     }
     return "";
 }
-function ValidatePJL(sender,args)
-{
+
+function ValidatePJL(sender,args) {
     var inputobjs = document.getElementsByTagName("input");
     var Q6,strPJL;
     var valobj = document.getElementById(sender.id);
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        if (inputobjs[i].id.indexOf("txtPJL")>=0)
-        { 
+    for (var i = 0; i< inputobjs.length-1; i++) {
+        if (inputobjs[i].id.indexOf("txtPJL")>=0) { 
             Q6 = inputobjs[i];
             break;
         }         
@@ -8011,8 +6632,7 @@ function ValidatePJL(sender,args)
     strPJL=Q6.value;
     if(Q6!="undefined" && ((trim(strPJL.toUpperCase())=="PJGTC20111A")||(trim(strPJL.toUpperCase())=="PJGTC20111B") ||(trim(strPJL.toUpperCase())=="PJGTC20111C") ||(trim(strPJL.toUpperCase())=="PJGTC20111D") || (trim(strPJL.toUpperCase())=="PJGTC20111E") ||(trim(strPJL.toUpperCase()) == "PJGTC20111R") ||(trim(Q6.value) == "")))
     {
-        args.IsValid=true;
-        //valobj.innerHTML="<li>Please enter valid PJL Code.</li>";        
+        args.IsValid=true;        
     }
     else    
     args.IsValid = false;
@@ -8026,22 +6646,16 @@ function ValidateSynagogueAndJCCQuestionForBoston(inputobjs,selectobjs,valobj,re
 {
     var Q4_0, Q4_1, Q4_2, Q4_ddlSynagogue, Q4_txtOtherSynagogue, Q4_SynagogueReferral_TextBox, Q4_ddlJCC, Q4_txtJCC;
     var pnlQ8 = document.getElementById("ctl00_Content_pnl8Q");
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue")
-        {
+    for (var k=0; k<= selectobjs.length-1; k++) {
+        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue") {
             Q4_ddlSynagogue= selectobjs[k];
-            //break;
         }
-        if(selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >=0)
-        {
+        if(selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >=0) {
             Q4_ddlJCC= selectobjs[k];
-            //break;
         }
     }
     
-    for (var i=0; i<= inputobjs.length-1; i++)
-    {
+    for (var i=0; i<= inputobjs.length-1; i++) {
         if(inputobjs[i].type == "checkbox"){
             //for Q4_1
             if (inputobjs[i].id.indexOf("chkNo")>=0)
@@ -8065,105 +6679,73 @@ function ValidateSynagogueAndJCCQuestionForBoston(inputobjs,selectobjs,valobj,re
             Q4_txtJCC = inputobjs[i]; 
     }
     
-    //if(pnlQ8.disabled == false)
-    //{
-        if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false)
-        {
-            valobj.innerHTML = "<ul><li>Please select synagogue/JCC membership.</li></ul>";
-            return false;
-        }  
+    if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false) {
+        valobj.innerHTML = "<ul><li>Please select synagogue/JCC membership.</li></ul>";
+        return false;
+    }  
         
-        if(Q4_0.checked == false)
-        {
-            if(Q4_1.checked)
-            {
-                if(Q4_ddlSynagogue != null)
-                {
-                    if(Q4_ddlSynagogue.selectedIndex == 0)
-                    {
-                        valobj.innerHTML = "<ul><li>Please select synagogue.</li></ul>";
-                        return false;
-                    }
-                    else if(Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1)
-                    {
-                        if(trim(Q4_Synagogue_TextBox.value)=="")
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
-                            return false;
-                        }
-                    }
-                    else if(refferalCodeRequired)
-                    {
-                        if(trim(Q4_SynagogueReferral_TextBox.value)=="")
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter Synagogue referal code.</li></ul>";
-                            return false;
-                        }
-                        else if(trim(Q4_SynagogueReferral_TextBox.value)!="" && !IsNumeric(trim(Q4_SynagogueReferral_TextBox.value)) && refferalCodeRequired)
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter valid referal code.</li></ul>";
-                            return false;
-                        }  
-                    }
-                    
-                }
-                else
-                {
-                    if(trim(Q4_Synagogue_TextBox.value)=="")
-                    {
+    if(Q4_0.checked == false) {
+        if(Q4_1.checked) {
+            if(Q4_ddlSynagogue != null) {
+                if(Q4_ddlSynagogue.selectedIndex == 0) {
+                    valobj.innerHTML = "<ul><li>Please select synagogue.</li></ul>";
+                    return false;
+                } else if(Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1) {
+                    if(trim(Q4_Synagogue_TextBox.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
                         return false;
                     }
+                } else if(refferalCodeRequired) {
+                    if(trim(Q4_SynagogueReferral_TextBox.value)=="") {
+                        valobj.innerHTML = "<ul><li>Please enter Synagogue referal code.</li></ul>";
+                        return false;
+                    } else if(trim(Q4_SynagogueReferral_TextBox.value)!="" && !IsNumeric(trim(Q4_SynagogueReferral_TextBox.value)) && refferalCodeRequired) {
+                        valobj.innerHTML = "<ul><li>Please enter valid referal code.</li></ul>";
+                        return false;
+                    }  
                 }
-            }
-            if(Q4_2.checked)
-            {
-                if(Q4_ddlJCC != null)
-                {
-                    if(Q4_ddlJCC.selectedIndex == 0)
-                    {
-                        valobj.innerHTML = "<ul><li>Please select JCC.</li></ul>";
-                        return false;
-                    }
-                    else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)=="")
-                    {
-                        valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
-                        return false;
-                    }
-                }
-                else
-                {
-                    if(trim(Q4_txtJCC.value)=="")
-                    {
-                        valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
-                        return false;
-                    }
+            } else {
+                if(trim(Q4_Synagogue_TextBox.value)=="") {
+                    valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
+                    return false;
                 }
             }
         }
-    //}
+        if(Q4_2.checked) {
+            if(Q4_ddlJCC != null) {
+                if(Q4_ddlJCC.selectedIndex == 0) {
+                    valobj.innerHTML = "<ul><li>Please select JCC.</li></ul>";
+                    return false;
+                } else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)==""){
+                    valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
+                    return false;
+                }
+            } else {
+                if(trim(Q4_txtJCC.value)=="") {
+                    valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
+                    return false;
+                }
+            }
+        }
+    }
 }
 
 function ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,refferalCodeRequired)
 {
     var Q4_0, Q4_1, Q4_2, Q4_ddlSynagogue, Q4_txtOtherSynagogue, Q4_SynagogueReferral_TextBox, Q4_ddlJCC, Q4_txtJCC;
     var pnlQ8 = document.getElementById("ctl00_Content_pnl8Q");
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue")
-        {
+    for (var k=0; k<= selectobjs.length-1; k++) {
+        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue") {
             Q4_ddlSynagogue= selectobjs[k];
             //break;
         }
-        if(selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >=0)
-        {
+        if(selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >=0) {
             Q4_ddlJCC= selectobjs[k];
             //break;
         }
     }
     
-    for (var i=0; i<= inputobjs.length-1; i++)
-    {
+    for (var i=0; i<= inputobjs.length-1; i++) {
         if(inputobjs[i].type == "checkbox"){
             //for Q4_1
             if (inputobjs[i].id.indexOf("chkNo")>=0)
@@ -8187,105 +6769,72 @@ function ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,refferalCod
             Q4_txtJCC = inputobjs[i]; 
     }
     
-    //if(pnlQ8.disabled == false)
-    //{
-        if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false)
-        {
-            valobj.innerHTML = "<ul><li>Please select synagogue/JCC membership.</li></ul>";
-            return false;
-        }  
+    if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false) {
+        valobj.innerHTML = "<ul><li>Please select synagogue/JCC membership.</li></ul>";
+        return false;
+    }  
         
-        if(Q4_0.checked == false)
-        {
-            if(Q4_1.checked)
-            {
-                if(Q4_ddlSynagogue != null)
-                {
-                    if(Q4_ddlSynagogue.selectedIndex == 0)
-                    {
-                        valobj.innerHTML = "<ul><li>Please select synagogue.</li></ul>";
-                        return false;
-                    }
-                    else if(Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1)
-                    {
-                        if(trim(Q4_Synagogue_TextBox.value)=="")
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
-                            return false;
-                        }
-                    }
-                    else if(refferalCodeRequired)
-                    {
-                        if(trim(Q4_SynagogueReferral_TextBox.value)=="")
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter Synagogue referal code.</li></ul>";
-                            return false;
-                        }
-                        else if(trim(Q4_SynagogueReferral_TextBox.value)!="" && !IsNumeric(trim(Q4_SynagogueReferral_TextBox.value)) && refferalCodeRequired)
-                        {
-                            valobj.innerHTML = "<ul><li>Please enter valid referal code.</li></ul>";
-                            return false;
-                        }  
-                    }
-                    
-                }
-                else
-                {
-                    if(trim(Q4_Synagogue_TextBox.value)=="")
-                    {
+    if (Q4_0.checked == false) {
+        if(Q4_1.checked) {
+            if(Q4_ddlSynagogue != null) {
+                if(Q4_ddlSynagogue.selectedIndex == 0) {
+                    valobj.innerHTML = "<ul><li>Please select synagogue.</li></ul>";
+                    return false;
+                } else if(Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1) {
+                    if(trim(Q4_Synagogue_TextBox.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
                         return false;
                     }
+                } else if(refferalCodeRequired) {
+                    if (trim(Q4_SynagogueReferral_TextBox.value)=="") {
+                        valobj.innerHTML = "<ul><li>Please enter Synagogue referal code.</li></ul>";
+                        return false;
+                    } else if (trim(Q4_SynagogueReferral_TextBox.value)!="" && !IsNumeric(trim(Q4_SynagogueReferral_TextBox.value)) && refferalCodeRequired) {
+                        valobj.innerHTML = "<ul><li>Please enter valid referal code.</li></ul>";
+                        return false;
+                    }  
                 }
-            }
-            if(Q4_2.checked)
-            {
-                if(Q4_ddlJCC != null)
-                {
-                    if(Q4_ddlJCC.selectedIndex == 0)
-                    {
-                        valobj.innerHTML = "<ul><li>Please select JCC.</li></ul>";
-                        return false;
-                    }
-                    else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)=="")
-                    {
-                        valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
-                        return false;
-                    }
-                }
-                else
-                {
-                    if(trim(Q4_txtJCC.value)=="")
-                    {
-                        valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
-                        return false;
-                    }
+            } else {
+                if(trim(Q4_Synagogue_TextBox.value)=="") {
+                    valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
+                    return false;
                 }
             }
         }
-    //}
+        if(Q4_2.checked) {
+            if(Q4_ddlJCC != null) {
+                if(Q4_ddlJCC.selectedIndex == 0) {
+                    valobj.innerHTML = "<ul><li>Please select JCC.</li></ul>";
+                    return false;
+                } else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)=="") {
+                    valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
+                    return false;
+                }
+            } else {
+                if(trim(Q4_txtJCC.value)=="") {
+                    valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
+                    return false;
+                }
+            }
+        }
+    }
 }
 
 function ValidateSynagogueAndJCCAndReferralCodeQuestion(inputobjs,selectobjs,valobj)
 {    
     var Q4_0, Q4_1, Q4_2, Q4_ddlSynagogue, Q4_txtOtherSynagogue, Q4_ddlJCC, Q4_txtJCC,Q4_SynagogueReferral;
     var pnlQ8 = document.getElementById("ctl00_Content_pnl8Q");
-    for (var k=0; k<= selectobjs.length-1; k++)
-    {
-        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue")
-        {
+    for (var k=0; k<= selectobjs.length-1; k++) {
+        if(selectobjs[k].id=="ctl00_Content_ddlSynagogue") {
             Q4_ddlSynagogue= selectobjs[k];
-            //break;
         }
-        if(selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >=0)
-        {
+
+        if (selectobjs[k].id.indexOf("ctl00_Content_ddlJCC") >= 0) {
             Q4_ddlJCC= selectobjs[k];
-            //break;
         }
     }
     
-    for (var i=0; i<= inputobjs.length-1; i++)
-    {
+    for (var i=0; i<= inputobjs.length-1; i++) {
         //for Q4_1
         if (inputobjs[i].id.indexOf("chklistQ8_0")>=0)
             Q4_0 = inputobjs[i];
@@ -8306,76 +6855,53 @@ function ValidateSynagogueAndJCCAndReferralCodeQuestion(inputobjs,selectobjs,val
             Q4_txtJCC = inputobjs[i]; 
     }
  
-    if(pnlQ8.disabled == false)
-    {
-        if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false)
-        {
+    if(pnlQ8.disabled == false) {
+        if(Q4_0.checked == false && Q4_1.checked == false && Q4_2.checked== false) {
             valobj.innerHTML = "<ul><li>Please select synagogue/JCC membership.</li></ul>";
             return false;
         }  
         
-        if(Q4_0.checked == false)
-        {
-            if(Q4_1.checked)
-            {
-                if(Q4_ddlSynagogue != null)
-                {
-                    if(Q4_ddlSynagogue.selectedIndex == 0)
-                    {
+        if(Q4_0.checked == false) {
+            if(Q4_1.checked) {
+                if(Q4_ddlSynagogue != null) {
+                    if(Q4_ddlSynagogue.selectedIndex == 0) {
                         valobj.innerHTML = "<ul><li>Please select synagogue.</li></ul>";
                         return false;
-                    }
-                    else if(Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1 )
-                    {
-                        if(trim(Q4_Synagogue_TextBox.value)=="")
-                        {
+                    } else if (Q4_ddlSynagogue.options[Q4_ddlSynagogue.selectedIndex].text.indexOf("Other") > -1 ) {
+                        if(trim(Q4_Synagogue_TextBox.value)=="") {
                             valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
                             return false;
                         }
-                    }
-                    else if(trim(Q4_SynagogueReferral_TextBox.value)=="")
-                    {
+                    } else if(trim(Q4_SynagogueReferral_TextBox.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter Synagogue referal code </li></ul>";
                         return false;
                     }
-                }
-                else
-                {
-                    if(trim(Q4_Synagogue_TextBox.value)=="")
-                    {
+                } else {
+                    if(trim(Q4_Synagogue_TextBox.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter name of the synagogue.</li></ul>";
                         return false;
                     }
                 }
             }
-            if(Q4_1.checked && !(trim(Q4_SynagogueReferral_TextBox.value)==""))
-            {
-            
-                if (!IsNumeric(trim(Q4_SynagogueReferral_TextBox.value)))
-                {
+
+            if(Q4_1.checked && !(trim(Q4_SynagogueReferral_TextBox.value)=="")) {
+                if (!IsNumeric(trim(Q4_SynagogueReferral_TextBox.value))) {
                     valobj.innerHTML = "<ul><li>Please enter valid referal code </li></ul>";
                     return false;
                 }  
             }
-            if(Q4_2.checked)
-            {
-                if(Q4_ddlJCC != null)
-                {
-                    if(Q4_ddlJCC.selectedIndex == 0)
-                    {
+
+            if(Q4_2.checked) {
+                if(Q4_ddlJCC != null) {
+                    if(Q4_ddlJCC.selectedIndex == 0) {
                         valobj.innerHTML = "<ul><li>Please select JCC.</li></ul>";
                         return false;
-                    }
-                    else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)=="")
-                    {
+                    } else if(Q4_ddlJCC.options[Q4_ddlJCC.selectedIndex].text.indexOf("Other") > -1 && trim(Q4_txtJCC.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
                         return false;
                     }
-                }
-                else
-                {
-                    if(trim(Q4_txtJCC.value)=="")
-                    {
+                } else {
+                    if(trim(Q4_txtJCC.value)=="") {
                         valobj.innerHTML = "<ul><li>Please enter name of the JCC.</li></ul>";
                         return false;
                     }
@@ -8403,42 +6929,29 @@ function CheckSynagogue(chkboxObject)
     var lblRefCode = document.getElementById("ctl00_Content_LblRefCode");
     var txtSynagogueReferral = document.getElementById("ctl00_Content_txtSynagogueReferral");
     debugger;
-    if(chkboxObject.id.indexOf("chkSynagogue") != -1)
-    {
-        if(chkboxObject.checked)
-        {
+    if(chkboxObject.id.indexOf("chkSynagogue") != -1) {
+        if(chkboxObject.checked) {
             ddlSynagogue.disabled = false;    
-            if(ddlSynagogue.options[ddlSynagogue.selectedIndex].text.indexOf("Other") > -1)
-            {
+            if(ddlSynagogue.options[ddlSynagogue.selectedIndex].text.indexOf("Other") > -1) {
                 txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = false;
-            }  
-            else if(ddlSynagogue.selectedIndex > 0)
-            {                
+            } else if(ddlSynagogue.selectedIndex > 0) {                
                 if(txtSynagogueReferral != null) {txtSynagogueReferral.disabled = lblRefCode.disabled = false;}
-            } 
-            else
-            {
+            } else {
                 txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = true;
                 if(txtSynagogueReferral != null){txtSynagogueReferral.disabled = lblRefCode.disabled = true;}
             }     
-        }
-        else
-        {
+        } else {
             ddlSynagogue.disabled = txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = true;   
             if(txtSynagogueReferral != null){txtSynagogueReferral.disabled = lblRefCode.disabled = true; txtSynagogueReferral.value = ""; }
             if(ddlSynagogue != null) {ddlSynagogue.selectedIndex = 0;}
             txtOtherSynagogue.value = "";             
         }
         chkNo.checked = false;        
-    }
-    else if(chkboxObject.id.indexOf("chkJCC") != -1){
-        if(chkboxObject.checked)
-        {
+    } else if(chkboxObject.id.indexOf("chkJCC") != -1){
+        if(chkboxObject.checked) {
             if(ddlJCC != null)  ddlJCC.disabled = false;
             if(lblJCC == null) {txtJCC.disabled  = false;}
-        }
-        else
-        {
+        } else {
             txtJCC.disabled = true;
             if(ddlJCC != null)  ddlJCC.disabled = true;
             if(lblJCC != null) lblJCC.disabled  = true;
@@ -8446,8 +6959,7 @@ function CheckSynagogue(chkboxObject)
             txtJCC.value = "";
         }
         chkNo.checked = false;
-    }
-    else if(chkboxObject.id.indexOf("chkNo") != -1){  
+    } else if(chkboxObject.id.indexOf("chkNo") != -1){  
         chkSynagogue.checked = chkJCC.checked = false;   
         if(ddlSynagogue != null) {ddlSynagogue.selectedIndex = 0;}
         txtOtherSynagogue.value = "";      
@@ -8456,8 +6968,7 @@ function CheckSynagogue(chkboxObject)
         txtJCC.value = "";  
         var disable = chkboxObject.checked; 
             
-        if(chkboxObject.checked)      
-        {
+        if(chkboxObject.checked) {
             ddlSynagogue.disabled = txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = disable;              
             if(txtSynagogueReferral != null) {txtSynagogueReferral.disabled = lblRefCode.disabled;}
             txtJCC.disabled  = disable;
@@ -8466,9 +6977,7 @@ function CheckSynagogue(chkboxObject)
             Pnl9a.disabled = disable;
             Pnl10a.disabled = disable;   
             chkSynagogue.disabled = chkJCC.disabled = disable; 
-        }  
-        else
-        {
+        } else {
             Pnl9a.disabled = disable;
             Pnl10a.disabled = disable;
             chkSynagogue.disabled = chkJCC.disabled = disable; 
@@ -8486,39 +6995,27 @@ function SynagogueJCCDDLChange(ddlObject){
     var lblRefCode = document.getElementById("ctl00_Content_LblRefCode");
     var txtSynagogueReferral = document.getElementById("ctl00_Content_txtSynagogueReferral");
     
-    if(ddlObject.id.indexOf("ddlSynagogue") != -1)    
-    {
-        if(ddlObject.selectedIndex > 1 && ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") == -1)
-        {
+    if(ddlObject.id.indexOf("ddlSynagogue") != -1) {
+        if(ddlObject.selectedIndex > 1 && ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") == -1) {
             if(txtSynagogueReferral != null) {
                 txtSynagogueReferral.disabled = lblRefCode.disabled = false;
             }
-        }
-        else
-        {
+        } else {
             if(txtSynagogueReferral != null) {
                 txtSynagogueReferral.disabled = lblRefCode.disabled = true;
                 txtSynagogueReferral.value = "";
             }
         }
-        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1)
-        {
+        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1) {
             txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = false;
-        }
-        else
-        {
+        } else {
             txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = true;
             txtOtherSynagogue.value = "";            
         }
-    }
-    else if(ddlObject.id.indexOf("ddlJCC") != -1)
-    {
-        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1)
-        {
+    } else if(ddlObject.id.indexOf("ddlJCC") != -1) {
+        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1) {
             txtJCC.disabled = lblJCC.disabled = false;
-        }
-        else
-        {
+        } else {
             txtJCC.disabled = lblJCC.disabled = true;
             txtJCC.value = "";
         }
@@ -8534,31 +7031,22 @@ function SynagogueReferralJCCDDLChange(ddlObject){
     var lblJCC = document.getElementById("ctl00_Content_lblJCC");
     var txtSynagogueReferral=document.getElementById("ctl00_Content_txtSynagogueReferral");
     var LblRefCode = document.getElementById("ctl00_Content_LblRefCode");
-    if(ddlObject.id.indexOf("ddlSynagogue") != -1)    
-    {
-        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1)
-        {
+    if(ddlObject.id.indexOf("ddlSynagogue") != -1) {
+        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1) {
             txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = false;
             txtSynagogueReferral.disabled = true;
             txtSynagogueReferral.value = "";
             LblRefCode.disabled = true;
-        }
-        else
-        {
+        } else {
             txtOtherSynagogue.disabled = lblOtherSynogogueQues.disabled = true;
             txtOtherSynagogue.value = "";
             LblRefCode.disabled = false;
             txtSynagogueReferral.disabled = false;
         }
-    }
-    else if(ddlObject.id.indexOf("ddlJCC") != -1)
-    {
-        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1)
-        {
+    } else if(ddlObject.id.indexOf("ddlJCC") != -1) {
+        if(ddlObject.options[ddlObject.selectedIndex].text.indexOf("Other") > -1) {
             txtJCC.disabled = lblJCC.disabled = false;
-        }
-        else
-        {
+        } else {
             txtJCC.disabled = lblJCC.disabled = true;
             txtJCC.value = "";
         }

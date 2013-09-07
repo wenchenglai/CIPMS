@@ -18,73 +18,106 @@
     },
 
     OnSynagogueCheckboxChange: function (chkboxObject) {
-        if ($(chkboxObject).is(':checked')) {
-            $('#ctl00_Content_ddlSynagogue').removeAttr('disabled');
-            // The other textbox can only be enabled if the synagogue selected item is Other
-            Validator.OnSynagogueDropDownChange(null);
+        var $ddlSynagogue = $('#ctl00_Content_ddlSynagogue');
 
+        if ($(chkboxObject).is(':checked')) {
+            $ddlSynagogue.removeAttr('disabled');
+            Validator.OnSynagogueDropDownChange(null);
             Validator.ToggleTypeWhoInSynagogue(true);
         } else {
-            $('#ctl00_Content_ddlSynagogue').attr('disabled', true);
+            $ddlSynagogue.attr('disabled', true);
             $('#ctl00_Content_txtOtherSynagogue').attr('disabled', true);
-
             Validator.ToggleTypeWhoInSynagogue(false)
         }
-        $('#ctl00_Content_chkNo').attr('disabled', true);
     },
 
     ToggleTypeWhoInSynagogue: function (isEnable) {
+        var $rdoCongregant = $('#ctl00_Content_rdoCongregant'),
+            $rdoNoOne = $('#ctl00_Content_rdoNoOne');
+
         if (isEnable) {
-            $('#ctl00_Content_rdoCongregant').removeAttr('disabled');
-            $('#ctl00_Content_rdoNoOne').removeAttr('disabled');
+            $rdoCongregant.removeAttr('disabled');
+            $rdoNoOne.removeAttr('disabled');
         } else {
-            $('#ctl00_Content_rdoCongregant').attr('disabled', true);
-            $('#ctl00_Content_rdoNoOne').attr('disabled', true);
+            $rdoCongregant.attr('disabled', true);
+            $rdoNoOne.attr('disabled', true);
         }
         Validator.ToggleWhoInSyangogue(isEnable);
     },
 
+    ToggleWhoInSyangogue: function (isEnable) {
+        var $ddlWho = $('#ctl00_Content_ddlWho'),
+            $txtWhoInSynagogue = $('#ctl00_Content_txtWhoInSynagogue');
+
+        if (isEnable) {
+            $ddlWho.removeAttr('disabled');
+            Validator.OnWhoInSynagogueDropDownChange(null);
+        } else {
+            $ddlWho.attr('disabled', true);
+            $txtWhoInSynagogue.attr('disabled', true);
+        }
+    },
+
+    OnWhoInSynagogueDropDownChange: function (ddlObject) {
+        var $txtWhoInSynagogue = $('#ctl00_Content_txtWhoInSynagogue');
+
+        if ($('#ctl00_Content_ddlWho>option:selected').text() === Validator.OtherOption) {
+            $txtWhoInSynagogue.removeAttr('disabled');
+        } else {
+            $txtWhoInSynagogue.attr('disabled', true);
+        }
+    },
+
     OnJCCChekboxChange: function (chkboxObject) {
+        var $ddlJCC = $('#ctl00_Content_ddlJCC'),
+            $txtOtherJCC = $('#ctl00_Content_txtOtherJCC')
+
         if ($(chkboxObject).is(':checked')) {
-            $('#ctl00_Content_ddlJCC').removeAttr('disabled');
-            // The other textbox can only be enabled if the JCC selected item is Other
+            $ddlJCC.removeAttr('disabled');
             Validator.OnJCCDropDownChange(null);
         } else {
-            $('#ctl00_Content_ddlJCC').attr('disabled', true);
-            $('#ctl00_Content_txtJCC').attr('disabled', true);
+            $ddlJCC.attr('disabled', true);
+            $txtOtherJCC.attr('disabled', true);
         }
-        $('#ctl00_Content_chkNo').attr('disabled', true);
     },
 
     OnOtherChekboxChange: function (chkboxObject) {
+        var $chkSynagogue = $('#ctl00_Content_chkSynagogue'),
+            $chkJCC = $('#ctl00_Content_chkJCC');
+
         if ($(chkboxObject).is(':checked')) {
-            $('#ctl00_Content_chkSynagogue').attr('disabled', true);
-            $('#ctl00_Content_chkSynagogue').attr('checked', false);
+            $chkSynagogue.attr('disabled', true);
+            $chkSynagogue.attr('checked', false);
 
-            $('#ctl00_Content_chkJCC').attr('disabled', true);
-            $('#ctl00_Content_chkJCC').attr('checked', false);
-
+            $chkJCC.attr('disabled', true);
+            $chkJCC.attr('checked', false);
         } else {
-            $('#ctl00_Content_pnlSynagogue :input').removeAttr('disabled');
-            $('#ctl00_Content_pnlJCC :input').removeAttr('disabled');
+            // Uncheck the None of Above box
+            $chkSynagogue.removeAttr('disabled');
+            $chkJCC.removeAttr('disabled');
         }
-        Validator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
-        Validator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
+
+        Validator.OnSynagogueCheckboxChange($chkSynagogue);
+        Validator.OnJCCChekboxChange($chkJCC);
     },
 
     OnSynagogueDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Other (please specify)") {
-            $('#ctl00_Content_txtOtherSynagogue').removeAttr('disabled');
+        var $txtOtherSynagogue = $('#ctl00_Content_txtOtherSynagogue');
+
+        if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === Validator.OtherOption) {
+            $txtOtherSynagogue.removeAttr('disabled');
         } else {
-            $('#ctl00_Content_txtOtherSynagogue').attr('disabled', true);
+            $txtOtherSynagogue.attr('disabled', true);
         }
     },
 
     OnJCCDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_ddlJCC>option:selected').text() === "Other (please specify)") {
-            $('#ctl00_Content_txtJCC').removeAttr('disabled');
+        var $txtOtherJCC = $('#ctl00_Content_txtOtherJCC');
+
+        if ($('#ctl00_Content_ddlJCC>option:selected').text() === Validator.OtherOption) {
+            $txtOtherJCC.removeAttr('disabled');
         } else {
-            $('#ctl00_Content_txtJCC').attr('disabled', true);
+            $txtOtherJCC.attr('disabled', true);
         }
     },
 
@@ -93,24 +126,6 @@
             Validator.ToggleWhoInSyangogue(true);
         } else {
             Validator.ToggleWhoInSyangogue(false);
-        }
-    },
-
-    ToggleWhoInSyangogue: function (isEnable) {
-        if (isEnable) {
-            $('#ctl00_Content_ddlWho').removeAttr('disabled');
-            Validator.OnWhoInSynagogueDropDownChange(null);
-        } else {
-            $('#ctl00_Content_ddlWho').attr('disabled', true);
-            $('#ctl00_Content_txtWhoInSynagogue').attr('disabled', true);
-        }
-    },
-
-    OnWhoInSynagogueDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_ddlWho>option:selected').text() === "Other (please specify)") {
-            $('#ctl00_Content_txtWhoInSynagogue').removeAttr('disabled');
-        } else {
-            $('#ctl00_Content_txtWhoInSynagogue').attr('disabled', true);
         }
     },
 
@@ -194,8 +209,6 @@
         }
     },
 
-
-
     OnSubmitClick: function (sender, args) {
         // Make sure everything must be selected
         var errorMsg = $(sender)[0];
@@ -231,45 +244,50 @@
         }
 
         // Synagogue/JCC
-        if (!$('#ctl00_Content_chkSynagogue').is(':checked') && !$('#ctl00_Content_chkJCC').is(':checked') && !$('#ctl00_Content_chkNoneOfAboveSynJcc').is(':checked')) {
+        var $chkSynagogue = $('#ctl00_Content_chkSynagogue'),
+            $chkJCC = $('#ctl00_Content_chkJCC'),
+            $chkNo = $('#ctl00_Content_chkNo'),
+            $rdoCongregant = $('#ctl00_Content_rdoCongregant');
+
+        if (!$chkSynagogue.is(':checked') && !$chkJCC.is(':checked') && !$chkNo.is(':checked')) {
             errorMsg.innerHTML += "<ul><li>Please answer Question No. 5 - at least check one of three options</li></ul>";
         }
 
         // Synagogue - when it's checked, some error checking
-        if ($('#ctl00_Content_chkSynagogue').is(':checked') && !$('#ctl00_Content_chkSynagogue').is(':disabled')) {
+        if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
             if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one synagogue.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Other (please specify)") {
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === Validator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the synagogue name.</li></ul>";
                 }
             }
 
-            if (!$('#ctl00_Content_rdoCongregant').is(':checked') && !$('#ctl00_Content_rdoNoOne').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select who did you speak to in your synagogue.</li></ul>";
+            if (!$rdoCongregant.is(':checked') && !$('#ctl00_Content_rdoNoOne').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select who did you speak to in your synagogue.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlWho>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one person from your synagogue.</li></ul>";
+            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').val() === "0") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select one person from your synagogue.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlWho>option:selected').text() === "Other (please specify)") {
+            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text() === Validator.OtherOption) {
                 if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the person's name from your synagogue.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae enter the person's name from your synagogue.</li></ul>";
                 }
             }
         }
 
         // JCC - when it's checked, some error checking
-        if ($('#ctl00_Content_chkJCC').is(':checked') && !$('#ctl00_Content_chkJCC').is(':disabled')) {
+        if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
             if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one JCC.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlJCC>option:selected').text() === "Other (please specify)") {
-                if ($('#ctl00_Content_txtJCC').val() === "") {
+            if ($('#ctl00_Content_ddlJCC>option:selected').text() === Validator.OtherOption) {
+                if ($('#ctl00_Content_txtOtherJCC').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
                 }
             }
@@ -325,7 +343,7 @@
 $(function () {
     Validator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     Validator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
-    Validator.OnOtherChekboxChange($('#ctl00_Content_chkNoneOfAboveSynJcc'));
+    Validator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
     Validator.OnFirstTimerChange(null);
     Validator.OnYouthMovementRadioChange(null);
     Validator.OnBeenToIsraelRadioChange(null);

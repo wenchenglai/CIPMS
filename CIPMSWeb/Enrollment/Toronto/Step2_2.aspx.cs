@@ -20,14 +20,6 @@ public partial class TorontoPage2 : System.Web.UI.Page
 	private General objGeneral;
 	private Boolean bPerformUpdate;
 
-    #region "The enums represent question options used in this page ONLY"
-    enum SynagogueMemberDropdown
-    {
-        IDoNotRember = 2,
-        Other = 3
-    }
-    #endregion
-
     #region "Page events"
     protected void Page_Init(object sender, EventArgs e)
 	{
@@ -149,16 +141,14 @@ public partial class TorontoPage2 : System.Web.UI.Page
 				ddlJCC.Items.Remove(otherListItem);
 				ddlJCC.Items.Insert(ddlJCC.Items.Count, otherListItem);
 			}
-			//tdDDLJCC.Visible = true;
-			txtJCC.Width = Unit.Pixel(160);
-			txtJCC.Enabled = true;
+
+			txtOtherJCC.Width = Unit.Pixel(160);
+            txtOtherJCC.Enabled = true;
 		}
 		else
 		{
-			//tdDDLJCC.Visible = false;
-			txtJCC.Width = Unit.Pixel(240); ;
-			txtJCC.Enabled = true;
-			//tdJCCOther.Attributes.Remove("align");
+            txtOtherJCC.Width = Unit.Pixel(240); ;
+            txtOtherJCC.Enabled = true;
 		}
 	}
     #endregion
@@ -357,11 +347,11 @@ public partial class TorontoPage2 : System.Web.UI.Page
 						break;
 
                     case SynagogueJCCOther.Other:
-                        chkNoneOfAboveSynJcc.Checked = true;
+                        chkNo.Checked = true;
                         break;
 
-					default: 
-						chkNoneOfAboveSynJcc.Checked = false; 
+					default:
+                        chkNo.Checked = false; 
 						break;
 				}
 			}
@@ -390,12 +380,8 @@ public partial class TorontoPage2 : System.Web.UI.Page
 				}
 				else if (dr["OptionID"].ToString().Equals("4"))
 				{
-					txtJCC.Text = dr["Answer"].ToString();
+                    txtOtherJCC.Text = dr["Answer"].ToString();
 				}
-                //else if (dr["OptionID"].ToString().Equals("5"))
-                //{
-                //    chkNoneOfAboveSynJcc.Checked = true;
-                //}
 			}
             else if (qID == 1040) // Are any members of your family members or alumni of a youth movement? If Yes, which one?
             {
@@ -482,7 +468,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
                 else
                     txtWhoInSynagogue.Enabled = false;
             }
-            else if (qID == 1046) // Is the first-time camper attending a ¡°Taste of Camp¡± session?
+            else if (qID == 1046) // Is the first-time camper attending a Taste of Camp session?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
@@ -532,11 +518,11 @@ public partial class TorontoPage2 : System.Web.UI.Page
         strTablevalues += strQID + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
 
 		// 2012-09-13 Synagogue/JCC question
-		if (chkNoneOfAboveSynJcc.Checked)
+        if (chkNo.Checked)
 		{
 			// Non of Above is selected, so no JCC nor Synagogue
             strQID = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
-            strTablevalues += strQID + strFSeparator + chkNoneOfAboveSynJcc.Value + strFSeparator + chkNoneOfAboveSynJcc.Value + strQSeparator;
+            strTablevalues += strQID + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
 
             strQID = ((int)Questions.Q0031SelectSynaJcc).ToString();
 			strTablevalues += strQID + strFSeparator + "5" + strFSeparator + "NonOfAbove" + strQSeparator;
@@ -611,12 +597,12 @@ public partial class TorontoPage2 : System.Web.UI.Page
 					if (ddlJCC.SelectedValue != "0")
 					{
 						strTablevalues += strQID + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
-						if (txtJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+                        if (txtOtherJCC.Text != String.Empty)
+                            strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text + strQSeparator;
 					}
 				}
 				else
-					strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+                    strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text + strQSeparator;
 			}
 			else
 			{

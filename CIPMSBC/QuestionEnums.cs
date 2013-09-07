@@ -29,5 +29,12 @@ namespace CIPMSBC.ApplicationQuestions
         Synagogue = 1,
         Other = 2,
         JCC = 3
-    }    
+    }
+
+    public enum SynagogueMemberDropdown
+    {
+        RabbiCantor = 1,
+        IDoNotRember,
+        Other
+    }
 }
