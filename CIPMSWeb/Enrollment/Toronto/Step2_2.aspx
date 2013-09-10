@@ -1,9 +1,10 @@
 <%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="TorontoPage2" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
+    <script type="text/javascript" src="../CommonValidate.js"></script>
     <script type="text/javascript" src="Validate.js"></script>
     <div>
-        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="Validator.OnSubmitClick"></asp:CustomValidator>
+        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="PageValidator.OnSubmitClick"></asp:CustomValidator>
         <!--to vaidate the comments text box for admin user-->
         <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
         <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
@@ -39,7 +40,6 @@
                 What grade will the camper enter AFTER camp?
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />
-                    <asp:RequiredFieldValidator Enabled="false" ID="reqvalgrade" ControlToValidate="ddlGrade" runat="server" ErrorMessage="Please enter the Grade" Display="none" />
                 </div>
             </td>
         </tr>
@@ -72,10 +72,10 @@
                 Are you a member of any of the following? Membership not required for this grant. (Check all that apply)
                 <div ID="pnlSynagogue" class="questionrows" runat="server">
                     <div class="column1" style="float:left; width: 100px;">
-                        <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="Validator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
+                        <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="SJValidator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
                     </div> 
                     <div class="column1" style="float:left; width: 200px;">
-                        <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" Width="180px" onChange="Validator.OnSynagogueDropDownChange(this);" />
+                        <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnSynagogueDropDownChange(this);" />
                     </div> 
                     <div class="column1" style="float:left; width: 250px;">
                         If "Other": <asp:TextBox ID="txtOtherSynagogue" runat="server" MaxLength="200" Width="160px" CssClass="txtbox" />
@@ -83,17 +83,17 @@
                 </div>
                 <div id="pnlJCC" class="questionrows" runat="server" Width="100%">
                     <div class="column1" style="float:left; width: 100px;">
-                        <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="Validator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
+                        <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="SJValidator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
                     </div>
                     <div class="column1" style="float:left; width: 200px;">
-                        <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="180px" onChange="Validator.OnJCCDropDownChange(this);" />
+                        <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnJCCDropDownChange(this);" />
                     </div>
                     <div class="column1" style="float:left; width: 250px;">
                         If "Other": <asp:TextBox ID="txtOtherJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
                     </div>
                 </div>
                 <div class="questionrows">
-                    <input type="checkbox" value="2" runat="server" id="chkNo" onclick="Validator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
+                    <input type="checkbox" value="2" runat="server" id="chkNo" onclick="SJValidator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
                 </div>
             </td>
         </tr>
@@ -102,9 +102,9 @@
             <td valign="top" style="padding-bottom:20px;">
                 <div>Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?</div>
                 <div>
-                    <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
+                    <asp:RadioButton ID="rdoCongregant" runat="server" Text="A professional or fellow congregant" GroupName="WhoType" onclick="SJValidator.OnWhoRadioChange(this);" />
                     <span id="divWhoInSynagogue" runat="server">
-                        <asp:DropDownList ID="ddlWho" DataTextField="Name" CssClass="dropdown" DataValueField="ID" Width="140px" runat="server" onChange="Validator.OnWhoInSynagogueDropDownChange(this);" />
+                        <asp:DropDownList ID="ddlWho" DataTextField="Name" CssClass="dropdown" DataValueField="ID" Width="140px" runat="server" onChange="SJValidator.OnWhoInSynagogueDropDownChange(this);" />
                         If "Other":
                         <asp:TextBox ID="txtWhoInSynagogue" Width="130px" CssClass="txtbox" runat="server" />
                     </span>   

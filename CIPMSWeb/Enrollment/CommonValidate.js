@@ -56,7 +56,7 @@
         var $ddlJCC = $('#ctl00_Content_ddlJCC'),
             $txtOtherJCC = $('#ctl00_Content_txtOtherJCC')
 
-        if ($ddlJCC == null) {
+        if ($ddlJCC.length === 0) {
             // some programs don't have pre-defined list of JCC
             if ($(chkboxObject).is(':checked')) {
                 $txtOtherJCC.removeAttr('disabled');
@@ -66,7 +66,7 @@
         } else {
             if ($(chkboxObject).is(':checked')) {
                 $ddlJCC.removeAttr('disabled');
-                Validator.OnJCCDropDownChange(null);
+                SJValidator.OnJCCDropDownChange(null);
             } else {
                 $ddlJCC.attr('disabled', true);
                 $txtOtherJCC.attr('disabled', true);
@@ -107,7 +107,7 @@
     OnJCCDropDownChange: function (ddlObject) {
         var $txtOtherJCC = $('#ctl00_Content_txtOtherJCC');
 
-        if ($('#ctl00_Content_ddlJCC>option:selected').text() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
             $txtOtherJCC.removeAttr('disabled');
         } else {
             $txtOtherJCC.attr('disabled', true);
@@ -119,6 +119,16 @@
             SJValidator.ToggleWhoInSyangogue(true);
         } else {
             SJValidator.ToggleWhoInSyangogue(false);
+        }
+    },
+};
+
+var SchoolValidator = {
+    OnSchoolDropDownChange: function (ddlObject) {
+        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
+            $('#ctl00_Content_txtSchoolName').attr('disabled', true);
+        } else {
+            $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
         }
     },
 };

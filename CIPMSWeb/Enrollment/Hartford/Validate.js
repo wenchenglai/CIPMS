@@ -3,50 +3,27 @@
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        var inputobjs = document.getElementsByTagName("input"),
-            selectobjs = document.getElementsByTagName("select"),
-            valobj = document.getElementById(sender.id),
-            QFirstTimerYes, QFirstTimerNo, QGrade, QSchoolName, QHomeSchoolRadio;
-
-        for (var i = 0; i < inputobjs.length - 1; i++) {
-            if (inputobjs[i].id.indexOf("RadioBtnQ31") >= 0) {
-                QFirstTimerYes = inputobjs[i];
-            } else if (inputobjs[i].id.indexOf("RadioBtnQ32") >= 0) {
-                QFirstTimerNo = inputobjs[i];
-            } else if (inputobjs[i].id.indexOf("RadioButtionQ5_2") >= 0) {
-                QHomeSchoolRadio = inputobjs[i];
-            } else if (inputobjs[i].id.indexOf("txtCamperSchool") >= 0) {
-                QSchoolName = inputobjs[i];
-            }
+        // First Timer camper or not
+        if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
         }
 
-        for (var i = 0; i <= selectobjs.length - 1; i++) {
-            if (selectobjs[i].id.indexOf("ddlGrade") >= 0) {
-                QGrade = selectobjs[i];
-            }
+        // Grade
+        if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2</li></ul>";
         }
 
-        //validate QFirstTime
-        if (QFirstTimerYes.checked == false && QFirstTimerNo.checked == false) {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-            args.IsValid = false;
-            return;
+        // School Type
+        if (!$('#ctl00_Content_rdoSchoolType_0').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 3</li></ul>";
         }
 
-        //validate Grade
-        if (QGrade.selectedIndex == 0) {
-            valobj.innerHTML = "<li>Please select the Grade</li>";
-            args.IsValid = false;
-            return;
-        }
-
-        //for Question School Name
-        if (trim(QSchoolName.value) == "") {
-            if (QHomeSchoolRadio.checked == false) {
-                valobj.innerHTML = "<li>Please enter Name of the School</li>";
-                args.IsValid = false;
-                return;
-            }
+        // School Name
+        if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
         }
 
         // Synagogue/JCC

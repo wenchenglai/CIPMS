@@ -1,5 +1,5 @@
-﻿var Validator = {
-    OtherOption: "Other (please specify)",
+﻿var PageValidator = {
+    OtherOption: "other (please specify)",
 
     OnFirstTimerChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
@@ -61,7 +61,7 @@
     OnWhoInSynagogueDropDownChange: function (ddlObject) {
         var $txtWhoInSynagogue = $('#ctl00_Content_txtWhoInSynagogue');
 
-        if ($('#ctl00_Content_ddlWho>option:selected').text() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === Validator.OtherOption) {
             $txtWhoInSynagogue.removeAttr('disabled');
         } else {
             $txtWhoInSynagogue.attr('disabled', true);
@@ -104,7 +104,7 @@
     OnSynagogueDropDownChange: function (ddlObject) {
         var $txtOtherSynagogue = $('#ctl00_Content_txtOtherSynagogue');
 
-        if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === Validator.OtherOption) {
             $txtOtherSynagogue.removeAttr('disabled');
         } else {
             $txtOtherSynagogue.attr('disabled', true);
@@ -114,7 +114,7 @@
     OnJCCDropDownChange: function (ddlObject) {
         var $txtOtherJCC = $('#ctl00_Content_txtOtherJCC');
 
-        if ($('#ctl00_Content_ddlJCC>option:selected').text() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === Validator.OtherOption) {
             $txtOtherJCC.removeAttr('disabled');
         } else {
             $txtOtherJCC.attr('disabled', true);
@@ -259,7 +259,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one synagogue.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === Validator.OtherOption) {
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === Validator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the synagogue name.</li></ul>";
                 }
@@ -273,7 +273,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select one person from your synagogue.</li></ul>";
             }
 
-            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text() === Validator.OtherOption) {
+            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === Validator.OtherOption) {
                 if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae enter the person's name from your synagogue.</li></ul>";
                 }
@@ -286,7 +286,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one JCC.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlJCC>option:selected').text() === Validator.OtherOption) {
+            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === Validator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherJCC').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
                 }

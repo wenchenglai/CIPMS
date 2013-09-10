@@ -147,23 +147,24 @@
             </tr>
             <!--end of admin panel-->
             <tr >
-                <td valign="top"><asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top"  colspan="2">
-                    <table width="100%" cellspacing="0" cellpadding="5" border="0">
-                        <tr>
-                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
-                            <td >
-                                <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
-                            </td>
-                            <td align="right">
-                                <asp:Button ID="btnSaveandExit"  ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
-                            </td>
-                            <td align="left">
-                                <asp:Button ID="btnNext" ValidationGroup="OtherValidation" Text="Next >>" CssClass="submitbtn" runat="server" />
-                            </td>
-                        </tr>
-                     </table>
-                </td>
+            <td colspan="2">
+                <table width="100%">
+                    <tr>
+                        <td align="left">
+                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" />
+                        </td>
+                        <td >
+                            <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
+                        </td>
+                        <td align="center">
+                            <asp:Button ID="btnSaveandExit"  ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
+                        </td>
+                        <td align="right">
+                            <asp:Button ID="btnNext" ValidationGroup="OtherValidation" Text="Next >>" CssClass="submitbtn" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
             </tr>
         </table>
         

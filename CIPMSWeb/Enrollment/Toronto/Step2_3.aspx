@@ -3,7 +3,6 @@
 <%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
 
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
-    <!--to display the validation summary (error messages)-->
     <div>
         <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_AiryLouise"></asp:CustomValidator>
         <!--this summary will be used only for Comments field (only for Admin user)-->
@@ -11,8 +10,6 @@
         <!--to vaidate the comments text box for admin user-->
         <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
     </div>
-
-
 
     <table>
         <tbody class="QuestionText">
@@ -144,7 +141,6 @@
         </tr>
         </tbody>
     </table>
-
 
     <!--End of Panel 2 -->
     <asp:HiddenField ID="hdnFJCIDStep2_3" runat="server" />

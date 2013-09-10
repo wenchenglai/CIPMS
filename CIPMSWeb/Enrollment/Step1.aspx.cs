@@ -209,7 +209,7 @@ public partial class Step1 : System.Web.UI.Page
 		}
 
 		// if disabledFeds is empty, then we go to CamperHolding page directly
-		string[] DisabledFeds = ConfigurationManager.AppSettings["DisabledFederations"].Split(',');
+		string[] DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
 		if (Session["CamperLoginID"] != null) // 2012-08-16 Admin users should not see the camper holding page
 		{
 			if (DisabledFeds[0] == "")
@@ -426,7 +426,7 @@ public partial class Step1 : System.Web.UI.Page
 		{
 			strFedId = string.Empty;
 
-			DisabledFeds = ConfigurationManager.AppSettings["DisabledFederations"].Split(',');
+			DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
 			if (DisabledFeds[0] == "")
 				Response.Redirect("~/CamperHolding.aspx");
 			else
@@ -493,7 +493,7 @@ public partial class Step1 : System.Web.UI.Page
 
     void txtZipCode_TextChanged(object sender, EventArgs e)
     {
-        string Feds = ConfigurationManager.AppSettings["DisabledFederations"];
+        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
         txtZipCode.Text = txtZipCode.Text.ToUpper();
 
         //change by siva to truncate the zip code to first five digits.
@@ -1033,7 +1033,7 @@ public partial class Step1 : System.Web.UI.Page
 				//}
 				//else
 				//{
-				//    string DisabledFed = ConfigurationManager.AppSettings["DisabledFederations"];
+				//    string DisabledFed = ConfigurationManager.AppSettings["OpenFederations"];
 				//    string[] DisabledFeds = DisabledFed.Split(',');
 				//    for (int i = 0; i < DisabledFeds.Length; i++)
 				//    {
@@ -1061,7 +1061,7 @@ public partial class Step1 : System.Web.UI.Page
 
 				// 2012-08-09 Moved here so I can delete the code above
 				// If commenting out above code cause no issue in new camp year in fall 2012, then we should remove it.
-				string[] DisabledFeds = ConfigurationManager.AppSettings["DisabledFederations"].Split(',');
+				string[] DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
 				for (int i = 0; i < DisabledFeds.Length; i++)
 				{
 					if (DisabledFeds[i] == strFedId)

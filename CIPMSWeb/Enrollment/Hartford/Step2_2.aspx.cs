@@ -13,12 +13,13 @@ using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
 using CIPMSBC.Eligibility;
 
-public partial class Step2_URJ_2 : System.Web.UI.Page
+public partial class HartfordPage2 : System.Web.UI.Page
 {
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
 
+    #region "Page events"
     protected void Page_Init(object sender, EventArgs e)
     {
         btnNext.Click += new EventHandler(btnNext_Click);
@@ -27,7 +28,6 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-        RadioButtionQ5.SelectedIndexChanged += new EventHandler(RadioButtionQ5_SelectedIndexChanged);
     }
 
 	protected void Page_Load(object sender, EventArgs e)
@@ -47,13 +47,26 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 			if (Session["FJCID"] != null)
 			{
 				hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-				getCamperAnswers();
+				//getCamperAnswers();
+                getSynagogueAnswers();
 			}
 		}
-		if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
-		if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = false;
-		if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");
+		if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = txtOtherSynagogue.Enabled = false;
+		if (chkJCC.Checked == false) ddlJCC.Enabled  = txtOtherJCC.Enabled = false;
 	}
+    #endregion
+
+    #region "Data Bindings"
+    private void getGrades()
+    {
+        DataTable dtGrade;
+        dtGrade = objGeneral.getGrades(Session["FedId"].ToString(), Master.CampYear);
+        ddlGrade.DataSource = dtGrade;
+        ddlGrade.DataTextField = "EligibleGrade";
+        ddlGrade.DataValueField = "EligibleGrade";
+        ddlGrade.DataBind();
+        ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
+    }
 
     private void PopulateWhoIsInSynagogue()
     {
@@ -121,242 +134,126 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 				ddlJCC.Items.Remove(otherListItem);
 				ddlJCC.Items.Insert(ddlJCC.Items.Count, otherListItem);
 			}
-			tdDDLJCC.Visible = true;
-			lblJCC.Visible = true;
 			txtOtherJCC.Width = Unit.Pixel(160);
 			txtOtherJCC.Enabled = true;
 		}
 		else
 		{
-			tdDDLJCC.Visible = false;
-			lblJCC.Visible = false;
+            divOtherJCC.Style["width"] = "450px";
+            divDDLJCC.Visible = false;
 			txtOtherJCC.Width = Unit.Pixel(240); ;
 			txtOtherJCC.Enabled = true;
-			tdJCCOther.Attributes.Remove("align");
 		}
 	}
+    #endregion
 
-    void RadioButtionQ5_SelectedIndexChanged(object sender, EventArgs e)
+    #region "Controls Events"
+    void btnNext_Click(object sender, EventArgs e)
     {
-        try
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(strFJCID, Master.CamperUserId);
+        if (!isReadOnly)
         {
-            setTextBoxStatus();
+            ProcessCamperAnswers();
         }
-        catch (Exception ex)
+
+        int iStatus;
+        if (strFJCID != "" && Master.UserId != "")
         {
-            Response.Write(ex.Message);
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+            Session["STATUS"] = iStatus.ToString();
+            Session["FJCID"] = strFJCID;
         }
+        Response.Redirect("Step2_3.aspx");
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                ProcessCamperAnswers();
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-   
-    //page unload
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
+        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+        ProcessCamperAnswers();
+        Response.Redirect(strRedirURL);
     }
 
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
-        string strRedirURL;
-        try
+        string strRedirURL = Master.SaveandExitURL;
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
         {
-            if (Page.IsValid)
+            ProcessCamperAnswers();
+        }
+              
+        if (Master.CheckCamperUser == "Yes")
+        {
+            string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
+            if (!ClientScript.IsStartupScriptRegistered("clientScript"))
             {
-                strRedirURL = Master.SaveandExitURL;
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-              
-                if (Master.CheckCamperUser == "Yes")
-                {
-
-                    string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
-                    if (!ClientScript.IsStartupScriptRegistered("clientScript"))
-                    {
-                        ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
-                    }
-                }
-                else
-                {
-                    Response.Redirect(strRedirURL);
-                }
-              
+                ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
             }
         }
-        catch (Exception ex)
+        else
         {
-            Response.Write(ex.Message);
+            Response.Redirect(strRedirURL);
         }
     }
 
     void btnPrevious_Click(object sender, EventArgs e)
     {
-        try
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
         {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
+            ProcessCamperAnswers();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
                 
-                Response.Redirect("Summary.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        Response.Redirect("Summary.aspx");
     }
+    #endregion
 
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
-
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCIDStep2_2.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-                        
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                   
-
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-                Response.Redirect("Step2_3.aspx");
-
-
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-       
-    }
-
+    #region "Private functions"
     private void ProcessCamperAnswers()
     {
-        string strFJCID;
-        string strComments;
-        int iGrade, iResult;
-        int iRowsAffected;
-        string strModifiedBy, strGrade;
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        string strComments = txtComments.Text.Trim();
 
-        //Modified by id taken from the common.master
-        strModifiedBy = Master.UserId;
+        InsertCamperAnswers(strFJCID, strModifiedBy, strComments);
 
-        InsertCamperAnswers();
-
-        //to update the grade to the database - to be used by the search
-        strFJCID = hdnFJCIDStep2_2.Value;
-        //used only by the Admin user
-        strComments = txtComments.Text.Trim();
         if (strFJCID != "" && strModifiedBy!="" && bPerformUpdate)
         {
-            strGrade = ddlGrade.SelectedValue;
-            int.TryParse(strGrade,out iResult);
+            int iGrade, iResult;
+            string strGrade = ddlGrade.SelectedValue;
+            int.TryParse(strGrade, out iResult);
+
             if (iResult==0 || strGrade.Equals(string.Empty))
                 iGrade=0;
             else
                 iGrade = iResult;
 
-            iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
+            int iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
         }
     }
 
-    protected void InsertCamperAnswers()
-    {
-        string strFJCID, strComments;
-        int RowsAffected;
-        string strModifiedBy, strCamperAnswers; //-1 for Camper (User id will be passed for Admin user)
-        
-        strFJCID = hdnFJCIDStep2_2.Value;
-        
-        //to get the comments text (used only by the Admin user)
-        strComments = txtComments.Text.Trim();
-
-        //Modified by id taken from the common.master
-        strModifiedBy = Master.UserId;
-
-        strCamperAnswers = ConstructCamperAnswers();
+    protected void InsertCamperAnswers(string strFJCID, string strModifiedBy, string strComments)
+    {        
+        string strCamperAnswers = ConstructCamperAnswers();
 
         if (strFJCID != "" && strCamperAnswers != "" && strModifiedBy != "" && bPerformUpdate)
-            RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
+        {
+            int RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
+        }
+        
         CamperAppl = new CamperApplication();
         CamperAppl.UpdateTimeInCampInApplication(strFJCID);
     }
 
-    //to fill the grade values to the grade dropdown
-    private void getGrades()
-    {
-        DataTable dtGrade;
-        dtGrade = objGeneral.getGrades(Session["FedId"].ToString(),Master.CampYear);
-        ddlGrade.DataSource = dtGrade;
-        ddlGrade.DataTextField = "EligibleGrade";
-        ddlGrade.DataValueField = "EligibleGrade";
-        ddlGrade.DataBind();
-        ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
-    }
-
-    //to set the school text box status to enable / disable based on the school type selected
-    private void setTextBoxStatus()
-    {
-        if (RadioButtionQ5.SelectedValue == "3")   //Home school is selected
-        {
-            PnlQ6.Enabled = false;
-            txtCamperSchool.Text = "";
-        }
-        else
-        {
-            PnlQ6.Enabled = true;
-        }
-    }
-
-    //to get the camper answers from the database
     void getCamperAnswers()
     {
         string strFJCID;
@@ -406,7 +303,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                             {
                                 if (!dr["OptionID"].Equals(DBNull.Value))
                                 {
-                                    RadioButtionQ5.SelectedValue = dr["OptionID"].ToString();
+                                    rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
                                 }
                             }
                             break;
@@ -424,11 +321,11 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                                         if (intSchool > 0)
                                         {
                                             dsSchool = CamperAppl.GetSchool(intSchool);
-                                            txtCamperSchool.Text = dsSchool.Tables[0].Rows[0]["Answer"].ToString();
+                                            txtSchoolName.Text = dsSchool.Tables[0].Rows[0]["Answer"].ToString();
                                         }
                                         else
                                         {
-                                            txtCamperSchool.Text = dr["Answer"].ToString();
+                                            txtSchoolName.Text = dr["Answer"].ToString();
                                         }
                                     }
                                 }
@@ -436,7 +333,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                                 {
                                     if (!dr["Answer"].Equals(DBNull.Value))
                                     {
-                                        txtCamperSchool.Text = dr["Answer"].ToString();
+                                        txtSchoolName.Text = dr["Answer"].ToString();
                                     }
                                 }
                             }
@@ -447,19 +344,54 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                     }
                 }
             }
-            //to set the school text box to enable / disable based on the school type selected
-            setTextBoxStatus();
         } //end if for null check of fjcid
     }
 
     void getSynagogueAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
             int qID = Convert.ToInt32(dr["QuestionId"]);
 
+            if (qID == 3) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                {
+                    rdoFirstTimerYes.Checked = true;
+                }
+                else
+                {
+                    rdoFirstTimerNo.Checked = true;
+                }
+            }
+            else if (qID == 6) // Grade (Mention the grade of the camper after he/she attends the camp session):
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    ddlGrade.SelectedValue = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 7) // What kind of the school the camper go to
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
+                if (dr["OptionID"].ToString() == "3")
+                    txtSchoolName.Enabled = false;
+            }
+            else if (qID == 8) // Name of the school Camper attends:
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    txtSchoolName.Text = dr["Answer"].ToString();
+                }
+            }
             if (qID == 30) //Were you referred to this application through a synagogue or JCC liaison?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
@@ -550,69 +482,59 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     private string ConstructCamperAnswers()
     {
-        string strQuestionId = "";
+        string strQID = "";
         string strTablevalues = "";
-        string strFSeparator;
-        string strQSeparator;
-        string strGrade, strSchool;
 
-        //to get the Question separator from Web.config
-        strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
-        //to get the Field separator from Web.config
-        strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-        
-        strGrade = ddlGrade.SelectedValue;
-        strSchool = txtCamperSchool.Text.Trim();
+        string strQSeparator = QuestionsDelimiters.QuestionSeparator; 
+        string strFSeparator = QuestionsDelimiters.FieldSeparator;
 
         //for question 3
-        strQuestionId = hdnQ3Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + Convert.ToString(RadioBtnQ31.Checked ? "1" : RadioBtnQ32.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        strQID = hdnQ3Id.Value;
+        strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question 4
-        strQuestionId = hdnQ4Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + strFSeparator + strGrade + strQSeparator;
+        strQID = hdnQ4Id.Value;
+        strTablevalues += strQID + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
 
         //for question 5
-        strQuestionId = hdnQ5Id.Value;
-        strTablevalues += strQuestionId + strFSeparator + RadioButtionQ5.SelectedValue + strFSeparator + strQSeparator;
+        strQID = hdnQ5Id.Value;
+        strTablevalues += strQID + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + strQSeparator;
 
         //for question 6
-        strQuestionId = hdnQ6Id.Value;
-		strTablevalues += strQuestionId + strFSeparator + strFSeparator + strSchool + strQSeparator;
+        strQID = hdnQ6Id.Value;
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSchoolName.Text.Trim() + strQSeparator;
 
 		// 2012-09-13 Synagogue/JCC question
 		if (chkNo.Checked)
 		{
-			strQuestionId = hdnQ25Id.Value;
-			strTablevalues += strQuestionId + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
-			strQuestionId = hdnQ26Id.Value;
-			strTablevalues += strQuestionId + strFSeparator + "" + strFSeparator + "" + strQSeparator;
+			strQID = hdnQ25Id.Value;
+			strTablevalues += strQID + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
+			strQID = hdnQ26Id.Value;
+			strTablevalues += strQID + strFSeparator + "" + strFSeparator + "" + strQSeparator;
 		}
 		else
 		{
 			if (chkSynagogue.Checked)
 			{
-				strQuestionId = hdnQ25Id.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
+				strQID = hdnQ25Id.Value;
+				strTablevalues += strQID + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
 			}
-
 
 			if (chkJCC.Checked)
 			{
-				strQuestionId = hdnQ25Id.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
+				strQID = hdnQ25Id.Value;
+				strTablevalues += strQID + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
 			}
 
-
 			//This redundant condition is used to insert records in questionid sequence
-			strQuestionId = hdnQ26Id.Value;
+			strQID = hdnQ26Id.Value;
 			if (chkSynagogue.Checked)
 			{
 				if (ddlSynagogue.SelectedValue != "0")
 				{
-					strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
+					strTablevalues += strQID + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
-						strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+						strTablevalues += strQID + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
 					{
 						strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
@@ -648,8 +570,8 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 			}
 			else
 			{
-				strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
 			}
 
 			if (chkJCC.Checked)
@@ -658,18 +580,18 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 				{
 					if (ddlJCC.SelectedValue != "0")
 					{
-						strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
+						strTablevalues += strQID + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
 						if (txtOtherJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+							strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 					}
 				}
 				else
-					strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+					strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 			}
 			else
 			{
-				strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQID + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
 			}
 		}
 
@@ -682,24 +604,16 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
     {
-        try
-        {
-            string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
-            Boolean bArgsValid, bPerform;
-            strUserId = Master.UserId;
-            strCamperUserId = Master.CamperUserId;
-            strComments = txtComments.Text.Trim();
-            strFJCID = hdnFJCIDStep2_2.Value;
-            strCamperAnswers = ConstructCamperAnswers();
-            CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
-            args.IsValid = bArgsValid;
-            bPerformUpdate = bPerform;
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
+        Boolean bArgsValid, bPerform;
+        strUserId = Master.UserId;
+        strCamperUserId = Master.CamperUserId;
+        strComments = txtComments.Text.Trim();
+        strFJCID = hdnFJCIDStep2_2.Value;
+        strCamperAnswers = ConstructCamperAnswers();
+        CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
+        args.IsValid = bArgsValid;
+        bPerformUpdate = bPerform;
     }
-
-
+    #endregion 
 }

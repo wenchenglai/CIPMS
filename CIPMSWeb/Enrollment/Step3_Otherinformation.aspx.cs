@@ -220,9 +220,14 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         valueToRemove = "173";
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry1.Items.Insert(5, new ListItem("Russia", "173"));
+
+        valueToRemove = "193";
+        this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
+        ddlCountry1.Items.Insert(6, new ListItem("South Africa", "193"));        
+
         valueToRemove = "220";
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
-        ddlCountry1.Items.Insert(6, new ListItem("Ukraine", "220"));
+        ddlCountry1.Items.Insert(7, new ListItem("Ukraine", "220"));
 
 
             ddlCountry1.Items.Insert(7, new ListItem("--------------", "-1"));
@@ -243,9 +248,14 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         valueToRemove = "173";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry2.Items.Insert(5, new ListItem("Russia", "173"));
+
+        valueToRemove = "193";
+        this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
+        ddlCountry1.Items.Insert(6, new ListItem("South Africa", "193")); 
+        
         valueToRemove = "220";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
-        ddlCountry2.Items.Insert(6, new ListItem("Ukraine", "220"));
+        ddlCountry2.Items.Insert(7, new ListItem("Ukraine", "220"));
 
 
         ddlCountry2.Items.Insert(7, new ListItem("--------------", "-1"));

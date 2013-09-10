@@ -37,4 +37,10 @@ namespace CIPMSBC.ApplicationQuestions
         IDoNotRember,
         Other
     }
+
+    public struct QuestionsDelimiters
+    {
+        public const string QuestionSeparator = "|";
+        public const string FieldSeparator = "~";
+    }
 }

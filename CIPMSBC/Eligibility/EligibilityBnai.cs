@@ -77,39 +77,41 @@ namespace CIPMSBC.Eligibility
 
         private void StatusBasedOnSchool(string FJCID, out int StatusValue)
         {
-            CamperApplication oCA = new CamperApplication();
-            DataSet dsJewishSchool;
-            dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
-            DataRow drJewishSchool;
-            int JewishSchoolOption = 0;
+            StatusValue = (int)StatusInfo.SystemEligible;
 
-            if (dsJewishSchool.Tables[0].Rows.Count > 0)
-            {
-                drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
-                if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
-                {
-                    JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
+            //CamperApplication oCA = new CamperApplication();
+            //DataSet dsJewishSchool;
+            //dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
+            //DataRow drJewishSchool;
+            //int JewishSchoolOption = 0;
 
-                    if (JewishSchoolOption == 4)
-                    {
-                        //StatusValue = (int)StatusInfo.SystemInEligible;
-						//2012-12-17 Make it eligible
-						StatusValue = (int)StatusInfo.SystemEligible;
-                    }
-                    else
-                    {
-                        StatusValue = (int)StatusInfo.SystemEligible;
-                    }
-                }
-                else
-                {
-                    StatusValue = (int)StatusInfo.SystemInEligible;
-                }
-            }
-            else
-            {
-                StatusValue = (int)StatusInfo.SystemInEligible;
-            }
+            //if (dsJewishSchool.Tables[0].Rows.Count > 0)
+            //{
+            //    drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
+            //    if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
+            //    {
+            //        JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
+
+            //        if (JewishSchoolOption == 4)
+            //        {
+            //            //StatusValue = (int)StatusInfo.SystemInEligible;
+            //            //2012-12-17 Make it eligible
+            //            StatusValue = (int)StatusInfo.SystemEligible;
+            //        }
+            //        else
+            //        {
+            //            StatusValue = (int)StatusInfo.SystemEligible;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        StatusValue = (int)StatusInfo.SystemInEligible;
+            //    }
+            //}
+            //else
+            //{
+            //    StatusValue = (int)StatusInfo.SystemInEligible;
+            //}
         }
 
         private void StatusBasedOnGrade(string FJCID, out int StatusValue)

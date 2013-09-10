@@ -45,7 +45,8 @@
                 <asp:Label ID="Label2" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
 						<ul>
-							<li>URJ Six Points Sports Academy (Greensboro, NC) - <a href=" http://www.6pointsacademy.org" target="_blank">www.6pointsacademy.org</a></li>
+							<li>URJ 6 Points Sports Academy (Greensboro, NC) - <a href=" http://www.sports.urjcamps.ortg" target="_blank">www.sports.urjcamps.ortg</a></li>
+							<li>URJ 6 Points Sci-Tech Academy (Boston, MA) - <a href=" http://www.scitech.urjcamps.org" target="_blank">www.scitech.urjcamps.org</a></li>
 							<li>URJ Camp Coleman (Cleveland, GA) - <a href=" http://coleman.urjcamps.org/" target="_blank">www.coleman.urjcamps.org</a></li>
 							<li>URJ Camp George (Parry Sound, Ontario) - <a href="http://george.urjcamps.org/" target="_blank">www.george.urjcamps.org</a></li>
 							<li>URJ Camp Harlam (Kunkletown, PA) - <a href="http://harlam.urjcamps.org" target="_blank">www.harlam.urjcamps.org</a></li>

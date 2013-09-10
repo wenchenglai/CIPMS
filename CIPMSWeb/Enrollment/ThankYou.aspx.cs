@@ -23,8 +23,23 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         string Amt = Convert.ToString(Session["Amount"]);
-		if (Amt == "")
-			Amt = "0";
+
+        if (Amt == "")
+        {
+            Amt = "0";
+            if (Session["FJCID"] != null)
+            {
+                string strFJCID = Session["FJCID"].ToString();
+                var CamperAppl = new CamperApplication();
+                DataSet dsTerms = CamperAppl.getCamperApplication(strFJCID);
+                if (dsTerms.Tables[0].Rows.Count > 0)
+                {
+                    DataRow dr1 = dsTerms.Tables[0].Rows[0];
+                    if (dr1["Amount"] != null)
+                        Amt = dr1["Amount"].ToString();
+                }
+            }
+        }
 
         strAmt = " in the amount of $" + Amt ;
         StatusInfo strStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
@@ -36,7 +51,8 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         }
         else if (Session["FJCID"] != null)
         {
-            DataSet dsCamper = new CamperApplication().getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
+            string strFJCID = Session["FJCID"].ToString();
+            DataSet dsCamper = new CamperApplication().getCamperAnswers(strFJCID, "10", "10", "N");
             if (dsCamper.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow drRow in dsCamper.Tables[0].Rows)
@@ -157,11 +173,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                     Email1Selected.HRef = "mailto:" + lblEmail1Selected.Text;
                     if (!string.IsNullOrEmpty(strDesignation))
                     lblDesignationSelected.Text = ", " + strDesignation;
-                    //lblFedSelected.Visible = false;
-                    //lblContacrPersionSelected.Visible = false;
-                    //lblPhoneSelected.Visible = false;
-                    //lblEmail1Selected.Visible = false;
-                    //lblDesignationSelected.Visible = false;
                 }
             }
         }
@@ -173,18 +184,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             if (iCount > 0)
             {
                 dr = ds.Tables[0].Rows[0];
-                //if (strFedId == "7")
-                //{
-                //    lblContactPerson2.Text = "Lisa David";
-                //    lblFed2.Text = dr["Name"].ToString();
-                //    strDesignation = "Associate Director of Camping";
-                //    if (!string.IsNullOrEmpty(strDesignation))
-                //        lblDesignation2.Text = ", " + strDesignation;
-                //    else
-                //        lblDesignation2.Text = strDesignation;
-                //    lblPhone2.Text = "212-650-4078";
-                //    lblEmail2.Text = "Ldavid@urj.org";
-                //}
+
                 if (strFedId == "60" || strFedId == "7" || strFedId == "26" || strFedId == "62" || strFedId =="66")
                 {
                     dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
@@ -264,8 +264,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         CamperApplication CamperAppl = new CamperApplication();
         string newFJCID;
         int nextFederationId;
-        int retVal;
-        char ch = ',';
         string[] UrlData = new string[3];
         string nxtUrlVal = string.Empty;
 
@@ -273,7 +271,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         if (Session["FJCID"] != null)
         {
             Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
-            //_objRedirectionLogic.FJCID = Session["FJCID"].ToString();
             
             //usp_DeleteCamperAnswerUsingFJCID
             CamperAppl.CopyCamperApplication(Session["FJCID"].ToString(), out newFJCID);
@@ -297,39 +294,5 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
 
             Response.Redirect(_objRedirectionLogic.NextFederationURL);
         }
-        
-
-        //Existing redirection logic
-        //if (Session["LastFed"] != null && Session["LastFed"].ToString() == "JWest")           
-        //    retVal = CamperAppl.CopyCamperApplicationWithoutCamperAnswers(Session["FJCID"].ToString(), out newFJCID);
-        //else
-        //    retVal = CamperAppl.CopyCamperApplication(Session["FJCID"].ToString(), out newFJCID);
-
-        //nxtUrlVal = CamperAppl.CheckEligibility(newFJCID, Session["LastFed"].ToString(),Session["CampYear"].ToString());
-        //// reset the session values -- new values will set again in national landing page
-        //UrlData = nxtUrlVal.Split(ch);
-        //if (UrlData[1].ToString() == "")
-        //    Session["FEDID"] = null;
-        //else
-        //    Session["FEDID"] = UrlData[1].ToString();
-
-        //if (Session["FEDID"] != null)
-        //    strFedId = Session["FEDID"].ToString();
-        //else
-        //    strFedId = null;
-        
-        //Session["FJCID"] = newFJCID;
-        //Session["STATUS"] = 5;
-
-        //Session["Amount"] = null;
-        
-        //if(UrlData[0].ToString().Contains("MIIP"))  Session["LastFed"]=Session["LastFed"]+"MidWest";
-        //if (UrlData[0].ToString().Contains("PJL")) Session["LastFed"] = Session["LastFed"] + "PJL";
-
-        //CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), strFedId);
-
-        //// Redirect to nation landing page
-        //Response.Redirect(UrlData[0].ToString());
-
     }
 }

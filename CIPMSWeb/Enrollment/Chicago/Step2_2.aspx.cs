@@ -27,7 +27,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         rdolistSiblingAttended.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        RadioBtnQ9.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
+        rdoSchoolType.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
@@ -49,12 +49,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                 hdnFJCID.Value = (string)Session["FJCID"]; ;
                 getCamperAnswers();
             }
-
-			//foreach (ListItem li in RadioBtnQ4.Items)
-			//{
-			//    li.Attributes.Add("OnClick", "JavaScript:popupCall(this,'ChicagoSiblingNotSure','Message',false,'step1');");
-			//}
-
 			ddlQ10_SelectedIndexChanged(null, null);
         }
 		SetSyangogueJCCEnableDisable();
@@ -64,43 +58,32 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 	{
 		int iStatus;
 		string strModifiedBy, strFJCID;
-		EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Chicago);
 
-		try
+		if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
 		{
-			if (Page.IsValid)
+			ProcessCamperAnswers();
+		}
+		bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+		//Modified by id taken from the Master Id
+		strModifiedBy = Master.UserId;
+		strFJCID = hdnFJCID.Value;
+		if (strFJCID != "" && strModifiedBy != "")
+		{
+			if (isReadOnly)
 			{
-				if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
-				{
-					ProcessCamperAnswers();
-				}
-				bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-				//Modified by id taken from the Master Id
-				strModifiedBy = Master.UserId;
-				strFJCID = hdnFJCID.Value;
-				if (strFJCID != "" && strModifiedBy != "")
-				{
-					if (isReadOnly)
-					{
-						DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-						iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-					}
-					else
-					{
-						//to check whether the camper is eligible 
-						objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-					}
-
-					Session["STATUS"] = iStatus.ToString();
-				}
-				Session["FJCID"] = hdnFJCID.Value;
-				Response.Redirect("Step2_3.aspx");
+				DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+				iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
 			}
+			else
+			{
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Chicago);
+				objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+			}
+
+			Session["STATUS"] = iStatus.ToString();
 		}
-		catch (Exception ex)
-		{
-			Response.Write(ex.Message);
-		}
+		Session["FJCID"] = hdnFJCID.Value;
+		Response.Redirect("Step2_3.aspx");
 	}
 
     void Page_Unload(object sender, EventArgs e)
@@ -250,15 +233,15 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			}
 			tdDDLJCC.Visible = true;
 			lblJCC.Visible = true;
-			txtJCC.Width = Unit.Pixel(160);
-			txtJCC.Enabled = true;
+            txtOtherJCC.Width = Unit.Pixel(160);
+            txtOtherJCC.Enabled = true;
 		}
 		else
 		{
 			tdDDLJCC.Visible = false;
 			lblJCC.Visible = false;
-			txtJCC.Width = Unit.Pixel(240); ;
-			txtJCC.Enabled = true;
+            txtOtherJCC.Width = Unit.Pixel(240); ;
+            txtOtherJCC.Enabled = true;
 			tdJCCOther.Attributes.Remove("align");
 		}
 	}
@@ -271,8 +254,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         string strGrade;
 
         InsertCamperAnswers();
-
-        ////to update the grade to the database - to be used by the search
         
         strComments = "";
         strFJCID = hdnFJCID.Value;
@@ -351,23 +332,23 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
 
-                RadioBtnQ9.SelectedValue = dr["OptionID"].ToString();
+                rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
                 if (dr["OptionID"].ToString() == "3")
-                    txtCamperSchool.Enabled = false;
+                    txtSchoolName.Enabled = false;
             }
             else if (qID == 8) // Name of the school Camper attends:
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
-                    txtCamperSchool.Text = dr["Answer"].ToString();
+                    txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
             else if (qID == 17) // Select the Jewish day school
             {
                 if (!dr["OptionID"].Equals(DBNull.Value))
                 {
-                    ddlQ10.SelectedValue = dr["OptionID"].ToString();
-                    if (ddlQ10.SelectedValue == "3" && !dr["Answer"].Equals(DBNull.Value))
+                    ddlJewishDaySchool.SelectedValue = dr["OptionID"].ToString();
+                    if (ddlJewishDaySchool.SelectedValue == "3" && !dr["Answer"].Equals(DBNull.Value))
                         txtJewishSchool.Text = dr["Answer"].ToString();
                 }
             }
@@ -390,12 +371,12 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                         break;
 
                     case SynagogueJCCOther.Other:
-                        chkNoneOfAboveSynJcc.Checked = true;
+                        chkNo.Checked = true;
                         Pnl9a.Enabled = Pnl10a.Enabled = false;
                         break;
 
                     default:
-                        chkNoneOfAboveSynJcc.Checked = false;
+                        chkNo.Checked = false;
                         break;
                 }
             }
@@ -424,12 +405,8 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                 }
                 else if (dr["OptionID"].ToString().Equals("4"))
                 {
-                    txtJCC.Text = dr["Answer"].ToString();
+                    txtOtherJCC.Text = dr["Answer"].ToString();
                 }
-                //else if (dr["OptionID"].ToString().Equals("5"))
-                //{
-                //    chkNoneOfAboveSynJcc.Checked = true;
-                //}
             }
             else if (qID == 1032) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
             {
@@ -454,58 +431,42 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 
     protected void RadioBtn_CheckedChanged(object sender, EventArgs e)
     {
-        try
-        {
-            setPanelStatus();
-        }
-        catch (Exception ex) 
-        {
-            Response.Write(ex.Message);
-        }
+        setPanelStatus();
     }
 
     //to set the panels and controls to be disabled based on the radio button selected
     void setPanelStatus()
     {
-        if (rdolistSiblingAttended.SelectedIndex.Equals(0))  //Yes is selected
-		{
-			PnlQ5.Enabled = true;
-		}
-        else if (rdolistSiblingAttended.SelectedIndex.Equals(1) || rdolistSiblingAttended.SelectedIndex.Equals(2)) //No is selected
-		{
-			PnlQ5.Enabled = false;
-		}
-
         //for Question 9
 		lblJewishDaySchool.Text = "";
-        if (RadioBtnQ9.SelectedIndex == 3) //Jewish school is selected
+        if (rdoSchoolType.SelectedIndex == 3) //Jewish school is selected
         {
 			PnlQ10.Enabled = true;
 			pnlJewishSchool.Enabled = true;
 			pnlCamperSchool.Enabled = false;
-			txtCamperSchool.Text = "";
+            txtSchoolName.Text = "";
 
 			lblJewishDaySchool.Text = "If your Jewish day school is not listed in the drop down below, please contact Hallie Shapiro Devir at JewishCamp@juf.org or 312-357-4995 to learn more about grants and scholarships opportunities.";
 		}
-        else if (RadioBtnQ9.SelectedIndex != -1)  //for the rest of the options disable it
+        else if (rdoSchoolType.SelectedIndex != -1)  //for the rest of the options disable it
         {
             PnlQ10.Enabled = false;
             pnlJewishSchool.Enabled = false;
-            if (RadioBtnQ9.SelectedIndex == 2)
+            if (rdoSchoolType.SelectedIndex == 2)
             {
-                pnlCamperSchool.Enabled = false;               
-                txtCamperSchool.Text = "";
+                pnlCamperSchool.Enabled = false;
+                txtSchoolName.Text = "";
             }
             else
             {
                 pnlCamperSchool.Enabled = true;
             }
-            
-            ddlQ10.SelectedIndex = 0;
+
+            ddlJewishDaySchool.SelectedIndex = 0;
             txtJewishSchool.Text = "";
         }
 
-        if (ddlQ10.SelectedValue == "3")
+        if (ddlJewishDaySchool.SelectedValue == "3")
         {
             pnlJewishSchool.Enabled = true;
         }
@@ -513,15 +474,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         {
             pnlJewishSchool.Enabled = false;
         }
-
-        if (rdolistSiblingAttended.SelectedValue == "3")
-		{
-			lblNotSureSibling.Text = "Please contact Hallie Shapiro Devir at <a href='mailto:JewishCamp@juf.org'>JewishCamp@juf.org</a> or 312-357-4995. <br />Siblings of first-time campers who previously received a $1,000 grant are eligible <br />to receive $500 when they attend camp for the first time for at least 19 consecutive days.";
-		}
-		else
-		{
-			lblNotSureSibling.Text = "";
-		}
 
 		SetSyangogueJCCEnableDisable();
 	}
@@ -532,10 +484,10 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
 		else
 			ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = true;
-		if (chkJCC.Checked == false) 
-			ddlJCC.Enabled = lblJCC.Enabled = txtJCC.Enabled = false;
+		if (chkJCC.Checked == false)
+            ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = false;
 		else
-			ddlJCC.Enabled = lblJCC.Enabled = txtJCC.Enabled = true;
+            ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = true;
 		
 		if (ddlJCC.Visible == false) 
 			tdJCCOther.Attributes.Remove("align");
@@ -574,28 +526,28 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         strGrade = ddlGrade.SelectedValue;
         strTablevalues += strQID + strFSeparator + strFSeparator + strGrade + strQSeparator;
 
-        //for question 9
+        //School Type
         strQID = hdnQ7Id.Value;
-        strTablevalues += strQID + strFSeparator + RadioBtnQ9.SelectedValue + strFSeparator + strQSeparator;
+        strTablevalues += strQID + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + strQSeparator;
 
         // Jewish Day School
         strQID = hdnQ8Id.Value;
         strJewishSchool = txtJewishSchool.Text.Trim();
-        if (ddlQ10.SelectedValue != "3")
-            strJewishSchool = ddlQ10.SelectedItem.Text;
-        strTablevalues += strQID + strFSeparator + ddlQ10.SelectedValue + strFSeparator + strJewishSchool + strQSeparator;
+        if (ddlJewishDaySchool.SelectedValue != "3")
+            strJewishSchool = ddlJewishDaySchool.SelectedItem.Text;
+        strTablevalues += strQID + strFSeparator + ddlJewishDaySchool.SelectedValue + strFSeparator + strJewishSchool + strQSeparator;
 
         // Regular school name
         strQID = hdnQ9Id.Value;
-        strSchool = txtCamperSchool.Text.Trim();
+        strSchool = txtSchoolName.Text.Trim();
         strTablevalues += strQID + strFSeparator + strFSeparator + strSchool + strQSeparator;
 
 		// 2012-09-25 Synagogue/JCC question
-		if (chkNoneOfAboveSynJcc.Checked)
+        if (chkNo.Checked)
 		{
 			// Non of Above is selected, so no JCC nor Synagogue
 			strQID = hdnQ30WereYouReferredBySynOrJccId.Value;
-			strTablevalues += strQID + strFSeparator + chkNoneOfAboveSynJcc.Value + strFSeparator + chkNoneOfAboveSynJcc.Value + strQSeparator;
+            strTablevalues += strQID + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
 
 			strQID = hdnQ31SelectSynaJccId.Value;
 			strTablevalues += strQID + strFSeparator + "" + strFSeparator + "" + strQSeparator;
@@ -649,12 +601,12 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 					if (ddlJCC.SelectedValue != "0")
 					{
 						strTablevalues += strQID + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
-						if (txtJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+                        if (txtOtherJCC.Text.Trim() != String.Empty)
+                            strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 					}
 				}
 				else
-					strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtJCC.Text.Trim() + strQSeparator;
+                    strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 			}
 			else
 			{
@@ -673,23 +625,16 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
     //to validate the comments field for Admin
     void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
     {
-        try
-        {
-            string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
-            Boolean bArgsValid, bPerform;
-            strUserId = Master.UserId;
-            strCamperUserId = Master.CamperUserId;
-            strComments = txtComments.Text.Trim();
-            strFJCID = hdnFJCID.Value;
-            strCamperAnswers = ConstructCamperAnswers();
-            CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
-            args.IsValid = bArgsValid;
-            bPerformUpdate = bPerform;
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
+        Boolean bArgsValid, bPerform;
+        strUserId = Master.UserId;
+        strCamperUserId = Master.CamperUserId;
+        strComments = txtComments.Text.Trim();
+        strFJCID = hdnFJCID.Value;
+        strCamperAnswers = ConstructCamperAnswers();
+        CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
+        args.IsValid = bArgsValid;
+        bPerformUpdate = bPerform;
     }
 
 	private bool hasValidCode()
@@ -776,7 +721,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 
     protected void ddlQ10_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlQ10.SelectedValue == "3")
+        if (ddlJewishDaySchool.SelectedValue == "3")
         {
             pnlJewishSchool.Enabled = true;
 
@@ -793,7 +738,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         else
         {
 			btnNext.Visible = true;
-            if (RadioBtnQ9.SelectedIndex == 4)
+            if (rdoSchoolType.SelectedIndex == 4)
             {
                 pnlCamperSchool.Enabled = true;
             }

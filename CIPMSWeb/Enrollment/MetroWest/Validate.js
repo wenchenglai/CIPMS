@@ -62,34 +62,40 @@
         // Synagogue - when it's checked, some error checking
         if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
             if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 2 - pleae select one synagogue.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the synagogue name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 2 - pleae enter the synagogue name.</li></ul>";
                 }
             }
 
             if (!$rdoCongregant.is(':checked') && !$('#ctl00_Content_rdoNoOne').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select who did you speak to in your synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - pleae select who did you speak to in your synagogue.</li></ul>";
             }
 
             if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select one person from your synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - pleae select one person from your synagogue.</li></ul>";
             }
 
             if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae enter the person's name from your synagogue.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - pleae enter the person's name from your synagogue.</li></ul>";
                 }
             }
         }
 
         // JCC - when it's checked, some error checking
         if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
-            if ($('#ctl00_Content_txtOtherJCC').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
+            if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 2 - pleae select one JCC.</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
+                if ($('#ctl00_Content_txtOtherJCC').val() === "") {
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 2 - pleae enter the JCC name.</li></ul>";
+                }
             }
         }
 

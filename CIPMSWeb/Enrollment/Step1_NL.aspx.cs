@@ -32,58 +32,6 @@ public partial class Step1_NL : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
-			//if (Session["FJCID"] != null)
-			//{
-			//    Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
-			//    _objRedirectionLogic.PageName = (int)Redirection_Logic.PageNames.ThankYou;// Added this flag to avoid confusion of setting federation id if new app is created and set the newfederationid =0
-			//    _objRedirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
-			//    int nextFederationId = _objRedirectionLogic.NextFederationId;
-			//    string newFJCID = Session["FJCID"].ToString();
-
-			//    if ((nextFederationId == 72 || nextFederationId == 93) && !String.IsNullOrEmpty(newFJCID))
-			//        CamperAppl.DeleteCamperAnswerUsingFJCID(newFJCID);
-
-			//    if (nextFederationId == 0)
-			//        Session["FEDID"] = null;
-			//    else
-			//        Session["FEDID"] = nextFederationId.ToString();
-
-			//    Session["FJCID"] = newFJCID;
-			//    Session["STATUS"] = 5;
-
-			//    Session["Amount"] = null;
-			//    CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
-
-			//    Response.Redirect(_objRedirectionLogic.NextFederationURL);
-			//}
-			//if (Session["codeValue"] != null)
-			//{
-			//    if (Session["codeValue"].ToString() == "1")
-			//    {
-			//        General objGeneral = new General();
-			//        DataSet dsPJLCodes = new DataSet();
-			//        dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
-
-			//        bool flag = false;
-
-			//        for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-			//        {
-			//            if (dsPJLCodes.Tables[0].Rows[i][0].ToString() == Session["UsedCode"].ToString())
-			//            {
-			//                flag = true;
-			//                break;
-			//            }
-			//        }
-
-			//        if (flag)
-			//        {
-			//            Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
-			//            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
-			//            Response.Redirect("PJL/Summary.aspx");
-			//        }
-			//    }
-			//}
-
 			if (Session["codeValue"] != null)
 			{
 				if (Session["codeValue"].ToString() == "1")
@@ -269,7 +217,7 @@ public partial class Step1_NL : System.Web.UI.Page
                 if (dsForCodeEntered.Tables[0].Rows.Count > 0)
                     codeEntered = dsForCodeEntered.Tables[0].Rows[0]["Answer"].ToString();
                 InsertCamperAnswers();
-                string DisabledFed = ConfigurationManager.AppSettings["DisabledFederations"];
+                string DisabledFed = ConfigurationManager.AppSettings["OpenFederations"];
                 if (DisabledFed != "")
                 {
                     bool navToCamperHolding = true;

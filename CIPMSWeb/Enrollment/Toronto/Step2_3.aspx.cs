@@ -30,20 +30,9 @@ public partial class Step2_Adamah_3 : Page
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                InsertCamperAnswers();
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+        InsertCamperAnswers();
+        Response.Redirect(strRedirURL);
     }
 
     protected void Page_Load(object sender, EventArgs e)
