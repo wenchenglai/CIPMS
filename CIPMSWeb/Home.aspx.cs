@@ -15,7 +15,6 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //txtEmail.Focus();
         if (ConfigurationManager.AppSettings["OpenFederations"] == "All")
         {
             Response.Redirect("~/CamperHolding.aspx");        
@@ -142,8 +141,6 @@ public partial class Home : System.Web.UI.Page
 		}
 
         Administration objAdmin = new Administration();
-
-        //string strCfrmEmail = txtCfrmEmail.Text.Trim();
         string strPwd = txtPwd1.Text.Trim();
         string CamperLoginID;
         int retValue;

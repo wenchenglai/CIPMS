@@ -97,7 +97,6 @@ public partial class Step2_1 : System.Web.UI.Page
 				{
 					pnlHanukkah.Visible = false;
 				}
-
 			}
 
             // 2013-08-25 Synagogue refer by person - the answer from previous question can affect the selection of question on this page
@@ -123,26 +122,20 @@ public partial class Step2_1 : System.Web.UI.Page
 
 	protected void btnNext_Click(object sender, EventArgs e)
 	{
-		try
+		if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_1.Value, Master.CamperUserId))
 		{
-			if (Page.IsValid)
-			{
-				if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_1.Value, Master.CamperUserId))
-				{
-					InsertCamperAnswers();
-				}
-				Session["FJCID"] = hdnFJCIDStep2_1.Value;
-				if (federationFolderURL != string.Empty)
-					//Response.Redirect(federationFolderURL + "Step2_2.aspx");
-					Response.Redirect("Step3_Parentinformation.aspx");
-				else
-					Response.Redirect("~/Error.aspx?app=camper");
-			}
+			InsertCamperAnswers();
 		}
-		catch (Exception ex)
-		{
-			Response.Write(ex.Message);
-		}
+		Session["FJCID"] = hdnFJCIDStep2_1.Value;
+        if (federationFolderURL != string.Empty)
+        {
+            if (Request.QueryString["camp"] == "tavor")
+                Response.Redirect("Step3_Parentinformation.aspx?camp=tavor");
+            else
+                Response.Redirect("Step3_Parentinformation.aspx");
+        }
+        else
+            Response.Redirect("~/Error.aspx?app=camper");
 	}
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -161,12 +154,6 @@ public partial class Step2_1 : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
-    }
-
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
     }
 
     void btnSaveandExit_Click(object sender, EventArgs e)
@@ -225,8 +212,12 @@ public partial class Step2_1 : System.Web.UI.Page
                 }
                 Session["FJCID"] = hdnFJCIDStep2_1.Value;
                 if (federationFolderURL != string.Empty)
-                   //Response.Redirect(federationFolderURL + "Summary.aspx");
-                    Response.Redirect(federationFolderURL + "Step2_3.aspx");
+                {
+                    if (Request.QueryString["camp"] == "tavor")
+                        Response.Redirect(federationFolderURL + "Step2_3.aspx?camp=tavor");
+                    else
+                        Response.Redirect(federationFolderURL + "Step2_3.aspx");
+                }
                 else
                     Response.Redirect("~/Error.aspx?app=camper");
             }

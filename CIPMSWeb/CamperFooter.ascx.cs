@@ -129,12 +129,17 @@ public partial class CamperFooter : System.Web.UI.UserControl
                         {
                             lblContactText.Visible = false;
                             lblContact.Visible = false;
-                            Label1.Visible = false;
                             Label3.Visible = false;
                             Label4.Visible = false;
                             lblPhone.Visible = false;
                             lblEmail.Visible = false;
                             lblFederationName.Visible = false;
+                        }
+                        // 2013-09-10 MetroWest name is too long
+                        if (strFedId == "10")
+                        {
+                            // The Partnership for Jewish Learning and Life (Greater MetroWest NJ)
+                            lblFederationName.Text = "The Partnership for Jewish Learning <br /> and Life (Greater MetroWest NJ)";
                         }
                     }
                     else

@@ -208,14 +208,6 @@ public partial class Step1 : System.Web.UI.Page
 			return;
 		}
 
-		// if disabledFeds is empty, then we go to CamperHolding page directly
-		string[] DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
-		if (Session["CamperLoginID"] != null) // 2012-08-16 Admin users should not see the camper holding page
-		{
-			if (DisabledFeds[0] == "")
-				Response.Redirect("~/CamperHolding.aspx");
-		}
-
 		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = string.Empty;
 		UserDetails Info;
 		DataSet dsFed = new DataSet();
@@ -424,14 +416,7 @@ public partial class Step1 : System.Web.UI.Page
 		}
 		else if (strNextURL.Trim() == "")
 		{
-			strFedId = string.Empty;
-
-			DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
-			if (DisabledFeds[0] == "")
-				Response.Redirect("~/CamperHolding.aspx");
-			else
-				strNextURL = strNationalURL;  //to be redirected to National Landing page
-
+			strNextURL = strNationalURL;
 		}
 
 		if (Info.ModifiedBy == strCamperUserId && Session["FJCID"] != null && String.IsNullOrEmpty(strNextURL.Trim()))
@@ -493,11 +478,10 @@ public partial class Step1 : System.Web.UI.Page
 
     void txtZipCode_TextChanged(object sender, EventArgs e)
     {
-        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
         txtZipCode.Text = txtZipCode.Text.ToUpper();
-
-        //change by siva to truncate the zip code to first five digits.
         string strZip = txtZipCode.Text.Trim();
+        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
+
         if (Feds != "")
         {
             if (objGeneral.ValidateZipCode(strZip, Feds))
@@ -1021,68 +1005,7 @@ public partial class Step1 : System.Web.UI.Page
                 Response.Redirect(strNationalURL);
             else
             {
-				////added by sreevani for closed federations redirection
-				////commented  by sandhya 2011/08/25
-				//if (strFedId == "39" || strFedId == "49")//|| strFedId == "40")//strFedId == "24" || || strFedId == "12"
-				//{
-				//    //2012-01-16 I hate to add garbage code into garbage code, but at this moment, I have no choice
-				//    if (IsCodeInWashingtonCodes(txtSplCode.Text.Trim().ToUpper()))
-				//        Response.Redirect(strNextURL);
-				//    else
-				//        Response.Redirect("ClosedFedRedirection.aspx");
-				//}
-				//else
-				//{
-				//    string DisabledFed = ConfigurationManager.AppSettings["OpenFederations"];
-				//    string[] DisabledFeds = DisabledFed.Split(',');
-				//    for (int i = 0; i < DisabledFeds.Length; i++)
-				//    {
-				//        if (DisabledFeds[i] == strFedId)
-				//        {
-				//            // 2012-05-02 Temporary code, removed it once it's used
-				//            // Basically a camper lives in NNJ zip code need to register on Metrowest, so if we found the camper is from NNJ 
-				//            // and has special code, we make it into Metro West
-				//            if (Session["UsedCode"] != null)
-				//            {
-				//                if (strFedId == "61" && Session["UsedCode"].ToString() == "MWNNJ")
-				//                {
-				//                    Session["FEDID"] = 10;
-				//                    CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "10");
-				//                    strNextURL = "~/Enrollment/MetroWest/Summary.aspx";
-				//                }
-				//            }
-
-				//            Response.Redirect(strNextURL);
-				//        }
-				//    }
-
-				//    Response.Redirect("~/CamperHolding.aspx");
-				//}
-
-				// 2012-08-09 Moved here so I can delete the code above
-				// If commenting out above code cause no issue in new camp year in fall 2012, then we should remove it.
-				string[] DisabledFeds = ConfigurationManager.AppSettings["OpenFederations"].Split(',');
-				for (int i = 0; i < DisabledFeds.Length; i++)
-				{
-					if (DisabledFeds[i] == strFedId)
-					{
-						// 2012-05-02 Temporary code, removed it once it's used
-						// Basically a camper lives in NNJ zip code need to register on Metrowest, so if we found the camper is from NNJ 
-						// and has special code, we make it into Metro West
-						//if (Session["UsedCode"] != null)
-						//{
-						//    if (strFedId == "61" && Session["UsedCode"].ToString() == "MWNNJ")
-						//    {
-						//        Session["FEDID"] = 10;
-						//        CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "10");
-						//        strNextURL = "~/Enrollment/MetroWest/Summary.aspx";
-						//    }
-						//}
-						Response.Redirect(strNextURL);
-					}
-				}
-
-				Response.Redirect("~/CamperHolding.aspx");
+				Response.Redirect(strNextURL);
             }
 
         }

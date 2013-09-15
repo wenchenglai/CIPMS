@@ -171,42 +171,32 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
         string strPreviousURL, strFedId;
         DataSet ds = new DataSet();
         General objGeneral = new General();
-        try
+
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCID_ParentInfo.Value, Master.CamperUserId))
         {
-            if (Page.IsValid)
+            ProcessParentInfoValues();
+        }
+        Session["FJCID"] = hdnFJCID_ParentInfo.Value;
+        Session["FEDNAME"] = null;
+
+        if (Session["FEDID"] != null)
+        {
+            strFedId = Session["FEDID"].ToString();
+            //to get the navigation url for the federation based on the federation id
+
+            ds = objGeneral.GetFederationDetails(strFedId);
+            if (ds.Tables[0].Rows.Count > 0)
+                strPreviousURL = ds.Tables[0].Rows[0]["ParentInfoPreviousClickURL"].ToString();
+            else
+                strPreviousURL = "";
+
+            if (strPreviousURL != "")
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCID_ParentInfo.Value, Master.CamperUserId))
-                {
-                    ProcessParentInfoValues();
-                }
-                Session["FJCID"] = hdnFJCID_ParentInfo.Value;
-                Session["FEDNAME"] = null;
-
-                if (Session["FEDID"] != null)
-                {
-                    strFedId = Session["FEDID"].ToString();
-                    //to get the navigation url for the federation based on the federation id
-
-                    ds = objGeneral.GetFederationDetails(strFedId);
-                    if (ds.Tables[0].Rows.Count > 0)
-                        strPreviousURL = ds.Tables[0].Rows[0]["ParentInfoPreviousClickURL"].ToString();
-                    else
-                        strPreviousURL = "";
-
-                    if (strPreviousURL != "")
-                        //Response.Redirect(strPreviousURL, false);
-                        Response.Redirect("Step2_1.aspx");
-                }
+                if (Request.QueryString["camp"] == "tavor")
+                    Response.Redirect("Step2_1.aspx?camp=tavor");
+                else
+                    Response.Redirect("Step2_1.aspx");
             }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-        finally
-        {
-            ds = null;
-            objGeneral = null;
         }
     }
 
@@ -221,7 +211,11 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
                     ProcessParentInfoValues();
                 }
                 Session["FJCID"] = hdnFJCID_ParentInfo.Value;
-                Response.Redirect("Step3_Otherinformation.aspx", false);
+
+                if (Request.QueryString["camp"] == "tavor")
+                    Response.Redirect("Step3_Otherinformation.aspx?camp=tavor");
+                else
+                    Response.Redirect("Step3_Otherinformation.aspx");
             }
         }
         catch (Exception ex)

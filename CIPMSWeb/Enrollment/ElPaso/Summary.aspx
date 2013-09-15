@@ -48,11 +48,11 @@
 			<td colspan="2">
 				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify; color:Red;">
-						Note: The mission of the OHC program is exclusively an outreach initiative for children who are not currently receiving an immersive, 
+						<b>Note:</b> The mission of the OHC program is exclusively an outreach initiative for children who are not currently receiving an immersive, 
 						daily Jewish experience. As such, children who attend Jewish day school not eligible for the OHC matching program, but they are 
 						eligible for funds made directly available by the El Paso Jewish Federation.  Campers in this category should not apply through 
 						the FJC website, but rather contact the El Paso Jewish Federation directly. 
-						<span style="color:Black">For questions please contact Edana Appel at 915-204-3383.</span>
+						<span style="color:Black">For questions please contact the professional listed at the bottom of this page.</span>
 					</p>
 				</asp:Label>
 			</td>

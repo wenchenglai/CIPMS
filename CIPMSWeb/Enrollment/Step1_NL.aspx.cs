@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -69,11 +70,6 @@ public partial class Step1_NL : System.Web.UI.Page
 			Response.Write(ex.Message);
 		}
 	}
-
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-    }
 
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
@@ -168,121 +164,53 @@ public partial class Step1_NL : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        try
+        if (Session["FJCID"] != null)
         {
-            if (Page.IsValid)
+            General oGen = new General();
+            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
             {
-
-                string strURL;
-                string strFJCID;
-                string strFEDID;
-
-                if (Session["FJCID"] != null)
-                {
-                    General oGen = new General();
-                    if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
-                    {
-                        SubmittedApplicationRedirection();
-                    }
-
-                }
-
-                strURL = GetNationalProgramForCamp();
-
-                //Added By Ram
-                Session["CampID"] = ddlCamp.SelectedValue;
-                //fed id will be set to hidden variable in CheckFederation() method
-                strFEDID = hdnFEDID.Value;
-                strFJCID = hdnFJCIDStep1_NL.Value;
-
-                //to update the Federation Id for the particular FJCID
-                //this will take care of federation changes for a particular application
-                //(Fed Id which were not be identified in step1.aspx will be identified here and updated
-                if (strFEDID != string.Empty)
-                    CamperAppl.UpdateFederationId(strFJCID, strFEDID);
-
-                //added by sreevani for checking if code is entered for specific camps
-                DataSet dsForCodeEntered = new DataSet();
-                String codeEntered = "";
-                string questionID = "";
-                if (ddlCamp.SelectedValue == "3079")
-                    questionID = "1028";
-                else if (ddlCamp.SelectedValue == "3037")
-                    questionID = "1027";
-                else if (ddlCamp.SelectedValue == "3078")
-                    questionID = "1029";
-                else if (ddlCamp.SelectedValue == "3009")
-                    questionID = "1030";
-                dsForCodeEntered = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), questionID, questionID, "N");
-                if (dsForCodeEntered.Tables[0].Rows.Count > 0)
-                    codeEntered = dsForCodeEntered.Tables[0].Rows[0]["Answer"].ToString();
-                InsertCamperAnswers();
-                string DisabledFed = ConfigurationManager.AppSettings["OpenFederations"];
-                if (DisabledFed != "")
-                {
-                    bool navToCamperHolding = true;
-                    string[] DisabledFeds = DisabledFed.Split(',');
-                    for (int i = 0; i < DisabledFeds.Length; i++)
-                    {
-                        if (DisabledFeds[i] == strFEDID)
-                        {
-                            navToCamperHolding = false;
-                        }
-                    }
-
-                    if (navToCamperHolding)
-                    {
-                        Response.Redirect("~/NLIntermediate.aspx");
-                    }
-                }
-
-                Session["FJCID"] = strFJCID;
-                if (ddlCamp.SelectedValue == "1146" || ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
-                {
-                    if (strURL.ToUpper().Contains("URJ/"))
-                        strURL = strURL.Replace("URJ/", "URJ/Acadamy");
-                }
-
-                if (strFEDID != "37")
-                {
-                    if (Session["PJCode"] != null)
-                    {
-                        if (Session["PJCode"].ToString() == "PJGTC20111R")
-                        {
-                            int iStatus = 3;
-                            Session["STATUS"] = iStatus.ToString();
-                            Response.Redirect("Thankyou.aspx");
-                        }
-                    }
-                }
-                
-                if((ddlCamp.SelectedValue == "3013"))//|| (ddlCamp.SelectedValue == "3082"))
-                    Response.Redirect("~/NYCampRedirect.aspx");
-
-                if (strFEDID == "46")
-                {
-
-                    if ((ddlCamp.SelectedValue == "3072") || (ddlCamp.SelectedValue == "3152") || (ddlCamp.SelectedValue == "3069") || (ddlCamp.SelectedValue == "3110") || (ddlCamp.SelectedValue == "3123") || (ddlCamp.SelectedValue == "3159"))
-                    {
-                        Response.Redirect("~/NYCampRedirect.aspx");
-                    }
-                    else
-                    {
-                        Response.Redirect(strURL, false);
-                    }
-
-                }
-                else
-                {
-                    Response.Redirect(strURL, false);               
-                }
+                SubmittedApplicationRedirection();
             }
+        }
 
-        }
-        catch (Exception ex)
+        string strURL = GetNationalProgramForCamp(); //2013-09-14 this crazy function will set the hdnFEDID and Session["FedID"] as well, bad programming
+
+        string strFEDID = hdnFEDID.Value;
+        string strFJCID = hdnFJCIDStep1_NL.Value;
+
+        //to update the Federation Id for the particular FJCID
+        //this will take care of federation changes for a particular application
+        //(Fed Id which were not be identified in step1.aspx will be identified here and updated
+        if (strFEDID != string.Empty)
+            CamperAppl.UpdateFederationId(strFJCID, strFEDID);
+
+        InsertCamperAnswers();
+
+        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
+                      where id == strFEDID
+                      select id).Count() < 1;
+
+        if (isClosed)
         {
-            Response.Write(ex.Message);
+            Response.Redirect("~/NLIntermediate.aspx");
         }
+
+
+        string campID = ddlCamp.SelectedValue;
+        Session["CampID"] = campID;
+        Session["FJCID"] = strFJCID;
+
+        if (ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
+        {
+            if (strURL.ToUpper().Contains("URJ/"))
+                strURL = strURL.Replace("URJ/", "URJ/Acadamy");
+        }
+
+        // 2013-09-12 For Habonim Dror Camp Tavor, we need speical summary page and questions
+        if (campID.Substring(campID.Length - 3) == "095") // Habonim Dror Camp Tavor
+            Response.Redirect("~/Enrollment/Habonim/SummaryTavor.aspx");
+
+        Response.Redirect(strURL, false);
     }
 
     protected void InsertCamperAnswers()
@@ -400,20 +328,20 @@ public partial class Step1_NL : System.Web.UI.Page
     
     private string GetNationalProgramForCamp()
     {
-        DataSet dsNationalProgram;
-        string strURL="";
-        DataRow drNationalProgram;
+        string strURL = "";
         General objGeneral= new General() ;
-        dsNationalProgram = objGeneral.GetNationalProgram(Convert.ToInt32(ddlCamp.SelectedValue));
+        DataSet dsNationalProgram = objGeneral.GetNationalProgram(Convert.ToInt32(ddlCamp.SelectedValue));
+        
         if (dsNationalProgram.Tables[0].Rows.Count > 0)
         {
-            drNationalProgram = dsNationalProgram.Tables[0].Rows[0];
+            DataRow drNationalProgram = dsNationalProgram.Tables[0].Rows[0];
             strURL = drNationalProgram["NavigationURL"].ToString();
             hdnFEDID.Value = drNationalProgram["Federation"].ToString();
             Session["FEDID"] = drNationalProgram["Federation"].ToString();
         }
         else
             strURL = "";
+
         return strURL;
     }
 

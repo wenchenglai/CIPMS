@@ -41,7 +41,7 @@
 						tomorrow’s community leaders. We strive to teach the values and ethics of Jewish living by example, experience, and creative expression. 
 						B’nai B’rith Camp has consistently proven to be a great place for youth to learn about themselves, their Jewish identity, their environment, 
 						and how to relate to others. B’nai B’rith Camp offers a wide range of activities, including: arts & crafts, Jewish enrichment, athletics, 
-						water skiing, sailing, canoeing, hydro tubing, swimming in our outdoor heated pool, dancing, nature, singing, high-ropes challenge course, 
+						water skiing, kayaking, stand-up paddle boarding, canoeing, hydro tubing, swimming in our outdoor heated pool, dancing, nature, singing, high-ropes challenge course, 
 						leadership, community service, drama, creative writing, Shabbat celebrations, overnights, and trips. 
 					</p>
 				</asp:Label>

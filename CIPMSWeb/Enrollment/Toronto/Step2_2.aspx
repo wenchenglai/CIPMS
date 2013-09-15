@@ -19,8 +19,8 @@
             <td valign="top" style="padding-bottom:20px;">
                 Will this be the camper's first time attending a Jewish overnight camp for 3 weeks or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="Validator.OnFirstTimerChange(this);" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" onclick="Validator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
                 </div>
             </td>
         </tr>
@@ -47,13 +47,12 @@
             <td valign="top"><span class="InfoText">*</span>3</td>
             <td valign="top" style="padding-bottom:20px;">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
-                <asp:RadioButtonList ID="rdoSchoolType" onclick="Validator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
                     <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:RequiredFieldValidator ID="reqval" ControlToValidate="rdoSchoolType" runat="server"  Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -62,7 +61,6 @@
                 Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
-                    <asp:RequiredFieldValidator ID="reqvalSchool"  Display="none" ControlToValidate="txtSchoolName" runat="server" ErrorMessage="Please enter the Name of the School" />
                 </div> 
             </td>
         </tr>
@@ -110,7 +108,7 @@
                     </span>   
                 </div>
                 <div>
-                    <asp:RadioButton ID="rdoNoOne" runat="server" Text="No one from my synagogue" GroupName="WhoType" onclick="Validator.OnWhoRadioChange(this);" />
+                    <asp:RadioButton ID="rdoNoOne" runat="server" Text="No one from my synagogue" GroupName="WhoType" onclick="PageValidator.OnWhoRadioChange(this);" />
                 </div>
             </td>
         </tr>
@@ -119,8 +117,8 @@
             <td valign="top" style="padding-bottom:20px;">
                 <div>Are any members of your family members or alumni of a youth movement? If Yes, which one?</div>
                 <div>
-                    <asp:RadioButton ID="rdoMemberOfYouthYes" value="1" GroupName="MemberOfYouth" runat="server" Text="Yes" onclick="Validator.OnYouthMovementRadioChange(this);" />
-                    <asp:RadioButton ID="rdoMemberOfYouthNo" value="2" GroupName="MemberOfYouth" runat="server" Text="No" onclick="Validator.OnYouthMovementRadioChange(this);" />
+                    <asp:RadioButton ID="rdoMemberOfYouthYes" value="1" GroupName="MemberOfYouth" runat="server" Text="Yes" onclick="PageValidator.OnYouthMovementRadioChange(this);" />
+                    <asp:RadioButton ID="rdoMemberOfYouthNo" value="2" GroupName="MemberOfYouth" runat="server" Text="No" onclick="PageValidator.OnYouthMovementRadioChange(this);" />
                     &nbsp;&nbsp;If Yes ->  <asp:TextBox ID="txtMemberOfYouth" CssClass="txtbox" runat="server" MaxLength="200" />
                 </div>
             </td>
@@ -130,10 +128,10 @@
             <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in March of the Living?"
                 <asp:CheckBoxList ID="rdolistParticipateMarchLiving" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
-                    <asp:ListItem Text="One of the camper's parents/guardians" Value="1" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
-                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
-                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
-                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="One of the camper's parents/guardians" Value="1" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Nobody" Value="4" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
                 </asp:CheckBoxList>
             </td>
         </tr>
@@ -142,10 +140,10 @@
             <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in Taglit-Birthright Israel?
                 <asp:CheckBoxList ID="rdolistParticipateTaglit" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
-                    <asp:ListItem Text="One of the camper's parents/guardians" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" Value="1" ></asp:ListItem>
-                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
-                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
-                    <asp:ListItem Text="Nobody" Value="4" onclick="Validator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="One of the camper's parents/guardians" onclick="PageValidator.OnParticipateTaglitCheckboxChange(this);" Value="1" ></asp:ListItem>
+                    <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="PageValidator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Camper's Sibling(s)" Value="3" onclick="PageValidator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
+                    <asp:ListItem Text="Nobody" Value="4" onclick="PageValidator.OnParticipateTaglitCheckboxChange(this);" ></asp:ListItem>
                 </asp:CheckBoxList>
             </td>
         </tr>
@@ -156,8 +154,8 @@
                     Has anyone in your family been to Israel? If yes, how many times?
                 </div>
                 <div>
-                    <asp:RadioButton ID="rdoBeenToIsraelYes" value="1" GroupName="BeenToIsrael" runat="server" Text="Yes" onclick="Validator.OnBeenToIsraelRadioChange(this);" />
-                    <asp:RadioButton ID="rdoBeenToIsraelNo" value="2" GroupName="BeenToIsrael" runat="server" Text="No" onclick="Validator.OnBeenToIsraelRadioChange(this);" />
+                    <asp:RadioButton ID="rdoBeenToIsraelYes" value="1" GroupName="BeenToIsrael" runat="server" Text="Yes" onclick="PageValidator.OnBeenToIsraelRadioChange(this);" />
+                    <asp:RadioButton ID="rdoBeenToIsraelNo" value="2" GroupName="BeenToIsrael" runat="server" Text="No" onclick="PageValidator.OnBeenToIsraelRadioChange(this);" />
                     &nbsp;&nbsp;If Yes -> <asp:TextBox ID="txtBeenToIsrael" runat="server" CssClass="txtbox" MaxLength="200" />
                 </div>
 

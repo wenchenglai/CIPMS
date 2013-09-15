@@ -513,15 +513,15 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		strQID = hdnQ1032Id.Value;
         strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
 
-		//for question 5
+		//Sibling First Name
 		strQID = hdnQFirstNameOfSibling.Value;
 		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
 
-		//for question 5
+		//Sibling Last Name
 		strQID = hdnQLastNameOfSibling.Value;
 		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
 
-        //for question 6
+        //Grade
         strQID = hdnQ6Id.Value;
         strGrade = ddlGrade.SelectedValue;
         strTablevalues += strQID + strFSeparator + strFSeparator + strGrade + strQSeparator;

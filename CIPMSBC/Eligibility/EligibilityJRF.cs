@@ -93,7 +93,7 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        StatusValue = (int)StatusInfo.SystemEligible;
+                        StatusValue = (int)StatusInfo.SystemInEligible;
                     }
                     else
                     {

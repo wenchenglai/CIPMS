@@ -11,13 +11,14 @@ using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
-public partial class Step2_Habonim_3 : Page
+public partial class Step2_Nageela_3 : Page
 {
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
-    private RadioButton RadioButtonQ7Option1;
+    private RadioButton RadioButtonQ7Option1; // Rajesh
     private RadioButton RadioButtonQ7Option2;
+
     protected void Page_Init(object sender, EventArgs e)
     {
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
@@ -50,57 +51,53 @@ public partial class Step2_Habonim_3 : Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1");
-        RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2"); 
-        CamperAppl = new CamperApplication();
-        objGeneral = new General();
-        imgbtnCalStartDt.Attributes.Add("onclick","return ShowCalendar('" + txtStartDate.ClientID + "');");
-        imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
-        if (Session["STATUS"] != null)
+        try
         {
-            if (Convert.ToInt16(Session["STATUS"].ToString()) == Convert.ToInt16(StatusInfo.SystemInEligible))
-            {
-                lblEligibility.Visible = false;
-            }
-            else
-            {
-                lblEligibility.Visible = true;
-            }
+            CamperAppl = new CamperApplication();
+            objGeneral = new General();
 
-        }
-        if (!(Page.IsPostBack))
-        {
-            //Added by Ram
-            if (Session["FEDID"] != null)
+            RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1"); // <!-- Rajesh -->
+            RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
+
+
+            imgbtnCalStartDt.Attributes.Add("onclick","return ShowCalendar('" + txtStartDate.ClientID + "');");
+            imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
+            if (Session["STATUS"] != null)
             {
-                getCamps((string)Session["FEDID"], Master.CampYear);//to get all camps for this federation                
+                if (Convert.ToInt16(Session["STATUS"].ToString()) == Convert.ToInt16(StatusInfo.SystemInEligible))
+                {
+                    lblEligibility.Visible = false;
+                }
+                else
+                {
+                    lblEligibility.Visible = true;
+                }
+
             }
-            else
+            if (!(Page.IsPostBack))
             {
                 getCamps("0", Master.CampYear); //to get all the camps and fill in
+                //to get the FJCID which is stored in session
+                if (Session["FJCID"] != null)
+                {
+                    hdnFJCIDStep2_3.Value = (string)Session["FJCID"];
+                    getCamperAnswers();
+                    //Session["FJCID"] = null;
+                   
+
+                }
             }
-
-            //getCamps("0"); //to get all the camps and fill in
-            //to get the FJCID which is stored in session
-            if (Session["FJCID"] != null)
-            {
-                hdnFJCIDStep2_3.Value = (string)Session["FJCID"];
-                getCamperAnswers();
-                //Session["FJCID"] = null;  
-               
-
-            }                
+            RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
+            RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
+            //RadioButtonQ7Option3.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
+            //RadioButtonQ7Option4.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
+            //to enable / disable the panel states based on the radio button selected
+            SetPanelStates();
         }
-        RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
-        RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
-        //RadioButtonQ7Option3.Attributes.Add("onclick", "windowURJopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-        //RadioButtonQ7Option4.Attributes.Add("onclick", "windowURJopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-        //to enable / disable the panel states based on the radio button selected
-        SetPanelStates();
-
-		string strCampID = Session["CampID"].ToString();
-		if (strCampID == "4037" || strCampID == "4057")
-			lblSessionDays.Text = "In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.";
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
     }
 
     //page unload
@@ -127,7 +124,7 @@ public partial class Step2_Habonim_3 : Page
                 //Session["ZIPCODE"] = null;
                 //Session["STATUS"] = null;
                 //Session.Abandon();
-               // Response.Redirect(strRedirURL);
+              //  Response.Redirect(strRedirURL);
                 if (Master.CheckCamperUser == "Yes")
                 {
 
@@ -160,26 +157,30 @@ public partial class Step2_Habonim_3 : Page
 
     void btnPrevious_Click(object sender, EventArgs e)
     {
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+        try
         {
-            InsertCamperAnswers();
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+                {
+                    InsertCamperAnswers();
+                }
+                Session["FJCID"] = hdnFJCIDStep2_3.Value;
+                Session["STATUS"] = null;
+                Response.Redirect("Step2_2.aspx");
+            }
         }
-        Session["FJCID"] = hdnFJCIDStep2_3.Value;
-        Session["STATUS"] = null;
-        if(ddlCamp.SelectedIndex > 0)
-            Session["CampID"] = ddlCamp.SelectedValue;
-        if (Request.QueryString["camp"] == "tavor")
-            Response.Redirect("Step2_2.aspx?camp=tavor");
-        else
-            Response.Redirect("Step2_2.aspx");
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
     }
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        General objGeneral = new General();
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Zeke);
         try
         {
             if (Page.IsValid)
@@ -192,7 +193,6 @@ public partial class Step2_Habonim_3 : Page
                     InsertCamperAnswers();
                 }
                 iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
-                Session["CampID"] = iCampId;
                 strFJCID = hdnFJCIDStep2_3.Value;
                 //comments used only by the Admin user
                 strComments = txtComments.Text.Trim();
@@ -223,7 +223,7 @@ public partial class Step2_Habonim_3 : Page
                             strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
                         else //the user is Camper
                             strRedirURL = "../ThankYou.aspx";
-                        //to update the status to the database   
+                        //to update the status to the database
                         if (!isReadOnly)
                         {
                             CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
@@ -233,11 +233,7 @@ public partial class Step2_Habonim_3 : Page
                     else //if he/she is eligible
                     {
                         Session["FJCID"] = hdnFJCIDStep2_3.Value;
-
-                        if (Request.QueryString["camp"] == "tavor")
-                            Response.Redirect("../Step2_1.aspx?camp=tavor");
-                        else
-                            Response.Redirect("../Step2_1.aspx");
+                        Response.Redirect("../Step2_1.aspx");
                     }
                 }
                 //Session["ZIPCODE"] = null;
@@ -250,7 +246,6 @@ public partial class Step2_Habonim_3 : Page
         finally
         {
             objEligibility = null;
-            objGeneral = null;
         }
     }
 
@@ -322,9 +317,6 @@ public partial class Step2_Habonim_3 : Page
                                     {
                                             case "2": //for camp
                                             ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
-                                            if (ddlCamp.SelectedItem != null)
-												if (ddlCamp.SelectedItem.Value == "1037" || ddlCamp.SelectedItem.Value == "1057" || ddlCamp.SelectedItem.Value == "4037" || ddlCamp.SelectedItem.Value == "4057")
-                                                    lblSessionDays.Text = "<font color='red'><b>In order to be eligible for the incentive grant, the camper must attend camp for at least 12 days.</b></font>";
                                             break;
                                     }
                                 }
@@ -335,7 +327,7 @@ public partial class Step2_Habonim_3 : Page
                             {
                                 if (!dr["Answer"].Equals(DBNull.Value))
                                 {
-                                    txtCampSession.Text = dr["Answer"].ToString();
+                                    txtCampSession.Text= dr["Answer"].ToString();
                                 } 
                             }
                             break;
@@ -374,7 +366,8 @@ public partial class Step2_Habonim_3 : Page
             //PnlQ8_2_2.Enabled = false;
             //ddlCamp.SelectedIndex = 0;
             PnlQ9.Enabled = false;
-            txtCampSession.Text = "";
+            txtCampSession.Text = string.Empty;
+            //txtCampSession.Text = "";
             PnlQ10.Enabled = false;
             txtStartDate.Text = "";
             txtEndDate.Text = "";
@@ -389,21 +382,20 @@ public partial class Step2_Habonim_3 : Page
         }
     }
 
-    /*Commented by Ram to change the logic from state to federation
     //to get the camps based on the state selected
     //if state is not selected then all the camps are populated
-    private void getCamps(string StateId)
+    private void getCamps(string StateId,string CampYear)
     {
        DataSet dsCamps;
 
-       if (StateId == "0")
-        {
-            dsCamps = objGeneral.get_AllCamps();
-        }
-        else
-        {
-            dsCamps = objGeneral.get_CampsForState(StateId);
-        }
+       //if (StateId == "0")
+       // {
+        dsCamps = objGeneral.get_AllCamps(CampYear);
+        //}
+        //else
+        //{
+        //    dsCamps = objGeneral.get_CampsForState(StateId);
+        //}
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
@@ -411,29 +403,6 @@ public partial class Step2_Habonim_3 : Page
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
        
-    }*/
-
-    //to get the camps based on the Federation selected
-    //if federation is not availble then all the camps are populated
-    private void getCamps(string fedId,string CampYear)
-    {
-        DataSet dsCamps;
-
-        if (fedId == "0")
-        {
-            dsCamps = objGeneral.get_AllCamps(CampYear);
-        }
-        else
-        {
-            dsCamps = objGeneral.GetFedCamps(fedId,CampYear);
-        }
-
-        ddlCamp.DataSource = dsCamps;
-        ddlCamp.DataTextField = "Camp";
-        ddlCamp.DataValueField = "CampID";
-        ddlCamp.DataBind();
-        ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-
     }
 
     private string ConstructCamperAnswers()
@@ -451,9 +420,9 @@ public partial class Step2_Habonim_3 : Page
         strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
         
         //for question 7
-        strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" :  "");
+        strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" : "");
         strCamp = ddlCamp.SelectedValue;
-        strCampSession = txtCampSession.Text.Trim();
+        strCampSession = txtCampSession.Text;
         strStartDate = txtStartDate.Text.Trim();
         strEndDate = txtEndDate.Text.Trim();
 

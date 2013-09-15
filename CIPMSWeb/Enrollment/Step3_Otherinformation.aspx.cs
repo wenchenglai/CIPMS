@@ -9,7 +9,9 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using System.IO;
+using System.Linq;
 using CIPMSBC;
+using CIPMSBC.ApplicationQuestions;
 using System.Net;
 
 public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
@@ -32,6 +34,58 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         RadioBtnQ4.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CamperAppl = new CamperApplication();
+        objGeneral = new General();
+        chkAgreement.Items[0].Attributes.Add("style", "display:none");
+        if (!Page.IsPostBack)
+        {
+            PopulateDropdowns();
+            Panel1.Visible = true;
+            Panel2.Visible = false;
+            // pnlJcc.Enabled = false;   
+            div_dtlist.Visible = false;
+            if (Session["FJCID"] != null)
+            {
+                hdnFJCID_OtherInfo.Value = (string)Session["FJCID"];
+                getCamperAnswers();
+            }
+            div_dtlist.Attributes.Add("class", "div-dtlist_noheight");
+
+            //if (Session["FedId"] != null)
+            //{
+            //    string SynagogueFedIds = ConfigurationManager.AppSettings["SynagogueFedId"];
+            //    string FedId = Session["FedId"].ToString();
+            //    string[] synagogueList = SynagogueFedIds.Split(',');
+
+            //    string sin = (from fid in synagogueList
+            //             where fid == FedId
+            //             select fid).First();
+
+            //    if (sin != "")
+            //    {
+            //        RequiredFieldValidator3.Enabled = false;
+            //        reqvalJCC.Enabled = false;
+            //        PnlQ2.Enabled = false;
+            //        pnlJcc.Enabled = false;
+            //        PnlQ1.Enabled = false;
+            //        RadioBtnQ4.Enabled = false;
+            //        Label7.Enabled = false;
+            //    }
+            //}
+
+            foreach (ListItem li in chkQ9.Items)
+            {
+                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
+            }
+            foreach (ListItem li in chkQ10.Items)
+            {
+                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
+            }
+        }
     }
 
     void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,7 +127,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
             pnlJcc.Enabled = true;
             reqvalJCC.Enabled = true;
         }
-       
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -94,58 +147,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         }
     }
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        CamperAppl = new CamperApplication();
-        objGeneral = new General();
-        chkAgreement.Items[0].Attributes.Add("style", "display:none");
-        if (!Page.IsPostBack)
-        {
-            PopulateDropdowns();
-            Panel1.Visible = true;
-            Panel2.Visible = false;
-            // pnlJcc.Enabled = false;   
-            div_dtlist.Visible = false;
-            if (Session["FJCID"] != null)
-            {
-                hdnFJCID_OtherInfo.Value = (string)Session["FJCID"];
-                getCamperAnswers();                   
-            }
-            div_dtlist.Attributes.Add("class", "div-dtlist_noheight");
-
-            if (Session["FedId"] != null)
-            {
-                string[] SynagogueList;
-                string SynagogueFedIds = ConfigurationManager.AppSettings["SynagogueFedId"];
-                string FedId = Session["FedId"].ToString();
-                SynagogueList = SynagogueFedIds.Split(',');
-                for (int i = 0; i < SynagogueList.Length; i++)
-                {
-                    if (SynagogueList[i].ToString() == FedId)
-                    {
-                        RequiredFieldValidator3.Enabled = false;
-                        reqvalJCC.Enabled = false;
-                        PnlQ2.Enabled = false;
-                        pnlJcc.Enabled = false;
-                        PnlQ1.Enabled = false;
-                        RadioBtnQ4.Enabled = false;
-                        Label7.Enabled = false;
-                        break;
-                    }
-                }
-            }
-
-            foreach (ListItem li in chkQ9.Items)
-            {
-                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
-            }
-            foreach (ListItem li in chkQ10.Items)
-            {
-                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
-            }
-        }          
-    }
-
     //*********************************************************************************************
     // Name:            OnPreRender
     // Description:     MS Page event that fires just before page rendering. Will address
@@ -158,8 +159,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
     //*********************************************************************************************
     protected override void OnPreRender(EventArgs e)
     {
-        //Master.setUserId();... not needed since this OnPreRender event fires after the Master Page_Load event
-
         //if camper
         if (Master.UserId == Master.CamperUserId)
         {
@@ -167,10 +166,10 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
             //(the code in the Master page that disables the other controls unfortunately also enables the Button controls, so this code
             //needs disable the btnInviteMoreFriends control separately)
             General oGen = new General();
-            string sFJCID = "";
+
             if (Session["FJCID"] != null)
             {
-                sFJCID = (string)Session["FJCID"];
+                string sFJCID = (string)Session["FJCID"];
                 if (oGen.IsApplicationReadOnly(sFJCID, Master.CamperUserId) == true)
                 {
                     btnInviteMoreFriends.Enabled = false;
@@ -190,13 +189,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         }
     }
 
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-        //objEligibility = null;
-    }
-    //To bind the countries data to dropdown lists
     private void PopulateDropdowns()
     {
         DataSet dsCountries;
@@ -207,16 +199,18 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         ddlCountry1.DataTextField = "Country_Name";
         ddlCountry1.DataValueField = "Country_ID";      
         ddlCountry1.DataBind(); 
+        
         if ((ddlCountry1.Items.Count != 0))
-
             ddlCountry1.Items.Insert(0, new ListItem("-- Select --", "0"));
-        string valueToRemove = "132"; 
+        
+        string valueToRemove = "132";
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
-
         ddlCountry1.Items.Insert(3, new ListItem("Mexico", "132"));
+        
         valueToRemove = "99";
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry1.Items.Insert(4, new ListItem("Israel", "99"));
+        
         valueToRemove = "173";
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry1.Items.Insert(5, new ListItem("Russia", "173"));
@@ -229,37 +223,38 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry1.Items.Insert(7, new ListItem("Ukraine", "220"));
 
+        ddlCountry1.Items.Insert(8, new ListItem("--------------", "-1"));
 
-            ddlCountry1.Items.Insert(7, new ListItem("--------------", "-1"));
+        // 
         ddlCountry2.DataSource = dsCountries;
         ddlCountry2.DataTextField = "Country_Name";
         ddlCountry2.DataValueField = "Country_ID";      
         ddlCountry2.DataBind();
+
         if ((ddlCountry2.Items.Count != 0))
-            //ddlCountry2.Items.Insert(0, new ListItem("-- Select --", "0"));
             ddlCountry2.Items.Insert(0, new ListItem("-- Select --", "0"));
+
         valueToRemove = "132";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
-
         ddlCountry2.Items.Insert(3, new ListItem("Mexico", "132"));
+
         valueToRemove = "99";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry2.Items.Insert(4, new ListItem("Israel", "99"));
+        
         valueToRemove = "173";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry2.Items.Insert(5, new ListItem("Russia", "173"));
 
         valueToRemove = "193";
-        this.ddlCountry1.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
-        ddlCountry1.Items.Insert(6, new ListItem("South Africa", "193")); 
+        this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
+        ddlCountry2.Items.Insert(6, new ListItem("South Africa", "193")); 
         
         valueToRemove = "220";
         this.ddlCountry2.Items.Remove(this.ddlCountry1.Items.FindByValue(valueToRemove));
         ddlCountry2.Items.Insert(7, new ListItem("Ukraine", "220"));
 
-
-        ddlCountry2.Items.Insert(7, new ListItem("--------------", "-1"));
-
+        ddlCountry2.Items.Insert(8, new ListItem("--------------", "-1"));
     }
 
     void btnPrevious_Click(object sender, EventArgs e)
@@ -273,7 +268,11 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                     InsertStep4Answers();
                 }
                 Session["FJCID"] = hdnFJCID_OtherInfo.Value;
-                Response.Redirect("Step3_Parentinformation.aspx", false);
+
+                if (Request.QueryString["camp"] == "tavor")
+                    Response.Redirect("Step3_Parentinformation.aspx?camp=tavor");
+                else
+                    Response.Redirect("Step3_Parentinformation.aspx");
             }
         }
         catch (Exception ex)
@@ -776,7 +775,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                     }
 
                 }
-                if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && (dsAnswers.Tables[0].Rows[i][2].ToString() == "2"))
+                if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && ((SynagogueJCCOther)Convert.ToInt32(dsAnswers.Tables[0].Rows[i][2]) == SynagogueJCCOther.Other))
                 {
                     RadioBtnQ1.SelectedValue = "2";
                     RadioBtnQ4.SelectedValue = "2";
@@ -788,13 +787,13 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                     txtJCC.Text = "";
                     break;
                 }
-                else if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && (dsAnswers.Tables[0].Rows[i][2].ToString() == "1"))
+                else if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && ((SynagogueJCCOther)Convert.ToInt32(dsAnswers.Tables[0].Rows[i][2]) == SynagogueJCCOther.Synagogue))
                 {
                     RadioBtnQ1.SelectedValue = "1";
                     RadioBtnQ1.Enabled = false;
                     txtJCC.Enabled = false;
                 }
-                else if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && (dsAnswers.Tables[0].Rows[i][2].ToString() == "3"))
+                else if ((dsAnswers.Tables[0].Rows[i][1].ToString() == "30") && ((SynagogueJCCOther)Convert.ToInt32(dsAnswers.Tables[0].Rows[i][2]) == SynagogueJCCOther.JCC))
                 {
                     RadioBtnQ4.SelectedValue = "1";
                     RadioBtnQ4.Enabled = false;
@@ -866,7 +865,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                 Session["Amount"] = dr["Amount"];
         }
     }
-
 
     void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
     {
@@ -1070,57 +1068,4 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
             throw new Exception("Error detected while trying send the " + EMAIL_NAME + ".\n" + ex.Message);
         }
     }
-
-    //public enum StatusInfo { Incomplete = 1, SystemEligible, SystemInEligible, EligibleNoCamp, EligiblePendingSchool, CamperDeclined }
-
-    //private void SendEmailNotification()
-    //{
-    //    try
-    //    {
-    //        string strFJCID = string.Empty;
-    //        string strFederationID = string.Empty;
-    //        string strCampID = string.Empty;
-    //        strFJCID = (string)Session["FJCID"];
-    //        strFederationID = (string)Session["FederationID"];
-    //        strCampID= (string)Session["CampID"];
-    //        DataSet dsEmailNotification = new DataSet();
-    //        if (!string.IsNullOrEmpty(strFJCID))
-    //            dsEmailNotification = objGeneral.GetEmailNotification(strFJCID, strFederationID, strCampID);
-    //        if (dsEmailNotification.Tables.Count > 0)
-    //        {
-    //            //get email configuration settings   
-    //            string sFromEmail = ConfigurationManager.AppSettings["EmailFrom"].ToString();
-    //            string sFromName = ConfigurationManager.AppSettings["FromName"].ToString();
-    //            string sSubject = ConfigurationManager.AppSettings["EmailNotificationSubject"].ToString();
-    //            string sEmailInviteFilename = ConfigurationManager.AppSettings["EmailNotificationFile"].ToString();
-    //            string sBody = "";
-
-    //            //get actual physical path to file on the server
-    //            string sEmailInviteFilenameMapped = Server.MapPath(sEmailInviteFilename);
-    //            if (File.Exists(sEmailInviteFilenameMapped) == true)
-    //            {
-    //                //get file contents for usage as the email "body"
-    //                sBody = File.ReadAllText(sEmailInviteFilenameMapped);
-    //                if (sBody.Length > 0)
-    //                {
-    //                    if(dsEmailNotification.Tables[0].Rows.Count>0)
-    //                    {
-    //                        if(dsEmailNotification.Tables[0].Rows[0]["FederationName"].ToString().Contains("JWest Campership Program"))
-    //                        {
-    //                            sBody = string.Format(sBody,dsEmailNotification.Tables[0].Rows[0]["FirstName"] + " " + dsEmailNotification.Tables[0].Rows[0]["LastName"],"the",dsEmailNotification.Tables[0].Rows[0]["FederationName"].ToString(),"The JWest Campership Program is an initiative of the Foundation for Jewish Camp",string.Empty,"Jwest@jewishcamp.org");
-    //                        }
-    //                        else
-    //                            sBody = string.Format(sBody,dsEmailNotification.Tables[0].Rows[0]["FirstName"] + " " + dsEmailNotification.Tables[0].Rows[0]["LastName"],string.Empty,dsEmailNotification.Tables[0].Rows[0]["FederationName"].ToString(),"The Campership Incentive Program is a program of the Foundation for Jewish Camp in partnership with " + dsEmailNotification.Tables[0].Rows[0]["FederationName"].ToString() );
-    //                    }
-
-    //                }
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        throw new Exception("Error detected while trying send the " + EMAIL_NAME + ".\n" + ex.Message);
-    //    }
-    //}
-
 }

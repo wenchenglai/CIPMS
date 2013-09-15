@@ -229,6 +229,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             pnlEligible.Visible = false;
             pnlInEligible.Visible = false;
             pnlInEligibleNonJewish.Visible = true;
+            pnlEligiblePendingNumberOfDays.Visible = false;
         }
         else if ((strStatus == StatusInfo.SystemInEligible) && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString() == "PJL"))
         {

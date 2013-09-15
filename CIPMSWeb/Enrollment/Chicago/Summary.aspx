@@ -47,7 +47,7 @@
             <td colspan="2">
                 <asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are ineligible for a OHC grant may be 
+						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are ineligible for a One Happy Camper grant may be 
 						eligible to receive a Camp Coupon grant through JUF/JF. Please email <a href="mailto:JewishCamp@juf.org">JewishCamp@juf.org</a> to find out more.
 					</p>
                 </asp:Label>

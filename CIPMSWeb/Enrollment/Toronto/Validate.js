@@ -22,12 +22,12 @@
 
         if ($(chkboxObject).is(':checked')) {
             $ddlSynagogue.removeAttr('disabled');
-            Validator.OnSynagogueDropDownChange(null);
-            Validator.ToggleTypeWhoInSynagogue(true);
+            PageValidator.OnSynagogueDropDownChange(null);
+            PageValidator.ToggleTypeWhoInSynagogue(true);
         } else {
             $ddlSynagogue.attr('disabled', true);
             $('#ctl00_Content_txtOtherSynagogue').attr('disabled', true);
-            Validator.ToggleTypeWhoInSynagogue(false)
+            PageValidator.ToggleTypeWhoInSynagogue(false)
         }
     },
 
@@ -42,7 +42,7 @@
             $rdoCongregant.attr('disabled', true);
             $rdoNoOne.attr('disabled', true);
         }
-        Validator.ToggleWhoInSyangogue(isEnable);
+        PageValidator.ToggleWhoInSyangogue(isEnable);
     },
 
     ToggleWhoInSyangogue: function (isEnable) {
@@ -51,7 +51,7 @@
 
         if (isEnable) {
             $ddlWho.removeAttr('disabled');
-            Validator.OnWhoInSynagogueDropDownChange(null);
+            PageValidator.OnWhoInSynagogueDropDownChange(null);
         } else {
             $ddlWho.attr('disabled', true);
             $txtWhoInSynagogue.attr('disabled', true);
@@ -61,7 +61,7 @@
     OnWhoInSynagogueDropDownChange: function (ddlObject) {
         var $txtWhoInSynagogue = $('#ctl00_Content_txtWhoInSynagogue');
 
-        if ($('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
             $txtWhoInSynagogue.removeAttr('disabled');
         } else {
             $txtWhoInSynagogue.attr('disabled', true);
@@ -74,7 +74,7 @@
 
         if ($(chkboxObject).is(':checked')) {
             $ddlJCC.removeAttr('disabled');
-            Validator.OnJCCDropDownChange(null);
+            PageValidator.OnJCCDropDownChange(null);
         } else {
             $ddlJCC.attr('disabled', true);
             $txtOtherJCC.attr('disabled', true);
@@ -97,14 +97,14 @@
             $chkJCC.removeAttr('disabled');
         }
 
-        Validator.OnSynagogueCheckboxChange($chkSynagogue);
-        Validator.OnJCCChekboxChange($chkJCC);
+        PageValidator.OnSynagogueCheckboxChange($chkSynagogue);
+        PageValidator.OnJCCChekboxChange($chkJCC);
     },
 
     OnSynagogueDropDownChange: function (ddlObject) {
         var $txtOtherSynagogue = $('#ctl00_Content_txtOtherSynagogue');
 
-        if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
             $txtOtherSynagogue.removeAttr('disabled');
         } else {
             $txtOtherSynagogue.attr('disabled', true);
@@ -114,7 +114,7 @@
     OnJCCDropDownChange: function (ddlObject) {
         var $txtOtherJCC = $('#ctl00_Content_txtOtherJCC');
 
-        if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === Validator.OtherOption) {
+        if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
             $txtOtherJCC.removeAttr('disabled');
         } else {
             $txtOtherJCC.attr('disabled', true);
@@ -123,9 +123,9 @@
 
     OnWhoRadioChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoCongregant').is(':checked')) {
-            Validator.ToggleWhoInSyangogue(true);
+            PageValidator.ToggleWhoInSyangogue(true);
         } else {
-            Validator.ToggleWhoInSyangogue(false);
+            PageValidator.ToggleWhoInSyangogue(false);
         }
     },
 
@@ -259,7 +259,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one synagogue.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === Validator.OtherOption) {
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the synagogue name.</li></ul>";
                 }
@@ -273,7 +273,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae select one person from your synagogue.</li></ul>";
             }
 
-            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === Validator.OtherOption) {
+            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - pleae enter the person's name from your synagogue.</li></ul>";
                 }
@@ -286,7 +286,7 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one JCC.</li></ul>";
             }
 
-            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === Validator.OtherOption) {
+            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherJCC').val() === "") {
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
                 }
@@ -341,27 +341,27 @@
 };
 
 $(function () {
-    Validator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
-    Validator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
-    Validator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
-    Validator.OnFirstTimerChange(null);
-    Validator.OnYouthMovementRadioChange(null);
-    Validator.OnBeenToIsraelRadioChange(null);
+    PageValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
+    PageValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
+    PageValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
+    PageValidator.OnFirstTimerChange(null);
+    PageValidator.OnYouthMovementRadioChange(null);
+    PageValidator.OnBeenToIsraelRadioChange(null);
 
     if ($('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
-        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_3')[0]);
+        PageValidator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_3')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_0').is(':checked')) {
-        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_0')[0]);
+        PageValidator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_0')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_1').is(':checked')) {
-        Validator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_1')[0]);
+        PageValidator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_1')[0]);
     }
 
     if ($('#ctl00_Content_rdolistParticipateTaglit_3').is(':checked')) {
-        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_3')[0]);
+        PageValidator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_3')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateTaglit_0').is(':checked')) {
-        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_0')[0]);
+        PageValidator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_0')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateTaglit_1').is(':checked')) {
-        Validator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_1')[0]);
+        PageValidator.OnParticipateTaglitCheckboxChange($('#ctl00_Content_rdolistParticipateTaglit_1')[0]);
     }
 
 })
