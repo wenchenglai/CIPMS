@@ -232,7 +232,6 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         ddlGrade.DataTextField = "EligibleGrade";
         ddlGrade.DataValueField = "EligibleGrade";
         ddlGrade.DataBind();
-        ddlGrade.Items.Add(new ListItem("13","13"));
         ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
 

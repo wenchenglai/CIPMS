@@ -26,16 +26,16 @@
 						We offer two, four and seven and a half week sessions to fit every families’ summer schedule.
 					</p>
 					<p style="text-align:justify">
-						At Berkshire Hills, we use the lens of Jewish teaching and the experience of group living to build a strong community that 
-						reflects traditional Jewish values.  While we use Jewish language to talk about these values, we believe strongly that 
-						every child – regardless of their religion or background – benefits from learning about Integrity (Yosher), Respect (Kavod), 
-						Repairing the World (TikunOlam), Joy (Simcha), Acts of Loving Kindness (GemiluteChasadim), Nature (Teva), Spirit (Ruach), 
-						and Connection to Friends (Divikute Chaverim). Therefore, we welcome all children – Jewish and non-Jewish with open arms.
+                        At Berkshire Hills, we use the lens of Jewish teaching and the experience of group living to build a strong community that 
+                        reflects traditional Jewish values. While we use Jewish language to talk about these values, we believe strongly that every 
+                        child - regardless of their religion or background - benefits from learning about Integrity (Yosher), Respect (Kavod), 
+                        Repairing the World (TikunOlam), Joy (Simcha), Acts of Loving Kindness (GemiluteChasadim), Nature (Teva), Spirit (Ruach), 
+                        and Connection to Friends (Divikute Chaverim). Therefore, we welcome all children - Jewish and non-Jewish with open arms. 
 					</p>
 					<p style="text-align:justify">
-						Like all learning at camp, these values are not taught in a classroom - but on the ball field, in a dance class, 
-						and around campfires. In this way, campers not only learn about these values – but they live them. Our top priority is to create a safe, 
-						supportive and loving environment for every child and our Berkshire Hills campers thrive as a result.
+                        Like all learning at camp, these values are not taught in a classroom - but on the ball field, in a dance class, and around 
+                        campfires. In this way, campers not only learn about these values but they live them. Our top priority is to create a safe, 
+                        supportive and loving environment for every child and our Berkshire Hills campers thrive as a result. 
 					</p>					
 				</asp:Label>
              </td>

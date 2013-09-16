@@ -13,7 +13,8 @@
                 </asp:Label>
                 <asp:Label ID="Label4" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+                        please proceed by clicking the "next" button below.
 					</p> 
                 </asp:Label>    
             </td>
@@ -34,12 +35,13 @@
 			<td colspan="2">
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						At Camp Poyntelle Lewis Village (CPLV), we pride ourselves on providing a warm, friendly, fun and safe Jewish environment for your child. 
-						Children leave for camp looking to have a good time, and return home from camp with a sense of independence, a greater respect towards others, 
-						a healthy attitude towards competition, and a lifetime full of memories and friendships. Located in Wayne County, 
-						PA we are less than 150 miles from New York City. The camp features a 70 acre private lake that separates the camp into two sections; 
-						Poyntelle for boys and girls entering second grade through seventh grade, and Lewis Village for teens entering eighth grade through eleventh grade. 
-						Our motto is to smile, laugh, and most importantly, have FUN! 
+                        At Camp Poyntelle Lewis Village (CPLV), we pride ourselves on providing a warm, welcoming, fun and safe Jewish environment for 
+                        your child. Children leave for camp looking to have fun, and return home from camp with a sense of independence, a greater 
+                        understanding of kindness towards others, advanced skills in their favorite activities, a healthy attitude towards competition, 
+                        and a lifetime full of memories and friendships. Located in Wayne County, PA, we are less than 150 miles from New York City. 
+                        The camp features a 70 acre private lake that separates the camp into two sections; Poyntelle for boys and girls entering 
+                        second grade through seventh grade, and Lewis Village for teens entering eighth grade through eleventh grade – perfect for 
+                        appropriate programing and staffing. Our campers and staff love to say "we wait 10 months for 2!"
 					</p>
 				</asp:Label>
 			</td>

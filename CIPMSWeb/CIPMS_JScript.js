@@ -837,7 +837,6 @@ function VaildatePage3Step2(sender,args)
 //***************************END OF VALIDATION FOR CINCINNATI*********************************
 
 //**************************VALIDATION FOR MIDDLESEX QUESTIONNAIRE****************************
-
 ////////////////to validate the Step2 (Page 2) for Middlesex/////////////////////////
 function ValidatePage2Step2_MidSex(sender,args)
 {
@@ -914,10 +913,60 @@ function ValidatePage2Step2_MidSex(sender,args)
             valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
             bValid = false;
         }
-    }  
+    }
+
+    var errorMsg = $(sender)[0];
+    bValid = ValidateSynagogueJCC(errorMsg);
 
     args.IsValid = bValid;
     return;
+}
+
+function ValidateSynagogueJCC(errorMsg) {
+    errorMsg.innerHTML = "";
+    var $chkSynagogue = $('#ctl00_Content_chkSynagogue');
+    if ($chkSynagogue.length) {
+        // Synagogue/JCC
+        var $chkJCC = $('#ctl00_Content_chkJCC'),
+            $chkNo = $('#ctl00_Content_chkNo'),
+            $rdoCongregant = $('#ctl00_Content_rdoCongregant');
+
+        if (!$chkSynagogue.is(':checked') && !$chkJCC.is(':checked') && !$chkNo.is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question for Synagogue/JCC - at least check one of three options</li></ul>";
+        }
+
+        // Synagogue - when it's checked, some error checking
+        if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
+                errorMsg.innerHTML += "<ul><li>Error - pleae select one synagogue.</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === "other (please specify)") {
+                if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
+                    errorMsg.innerHTML += "<ul><li>Error - pleae enter the synagogue name.</li></ul>";
+                }
+            }
+        }
+
+        // JCC - when it's checked, some error checking
+        if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
+            if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
+                errorMsg.innerHTML += "<ul><li>Error - pleae select one JCC.</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === "other (please specify)") {
+                if ($('#ctl00_Content_txtJCC').val() === "") {
+                    errorMsg.innerHTML += "<ul><li>Error - pleae enter the JCC name.</li></ul>";
+                }
+            }
+        }
+    }
+
+    if (errorMsg.innerHTML !== "") {
+        return false;
+    } else {
+        return true;
+    }
 }
 ////////////////to validate the Step2 (Page 2) for Central New Jersey/////////////////////////
 function ValidatePage2Step2_CNJ(sender,args)
@@ -3862,6 +3911,9 @@ function ValidatePage2Step2_Washington(sender,args)
             return;
         }
     }
+
+
+
     args.IsValid = true;
     return;
 }
