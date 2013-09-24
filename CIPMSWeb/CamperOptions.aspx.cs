@@ -134,7 +134,6 @@ public partial class CamperOptions : System.Web.UI.Page
 
             // reset the session values 
             Session["FEDNAME"] = null;
-            Session["Amount"] = null;
 
             Server.Transfer(strRedirURL);
         }

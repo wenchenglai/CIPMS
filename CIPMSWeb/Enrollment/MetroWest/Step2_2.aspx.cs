@@ -135,7 +135,7 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
 
     private void PopulateWhoIsInSynagogue()
     {
-        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
+        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.MetroWest);
         ddlWho.DataBind();
         ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
     }

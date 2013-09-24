@@ -22,7 +22,8 @@
 			<td colspan="2">
 				<asp:Label ID="Label1" CssClass="infotext3" runat="server">              
 					<p style="text-align:justify"> 
-						<b>The MetroWest One Happy Camper Program, sponsored by the Jewish Federation of Greater MetroWest NJ and the Foundation for Jewish Camp, offers grants of $1,000 to first-time campers. 
+						<b>The Greater MetroWest One Happy Camper Grant Program, sponsored by the Jewish Federation of Greater MetroWest NJ and the Foundation for Jewish Camp, 
+                            offers incentive grants of $1,000 to first-time campers. 
 						The child must be enrolled for a minimum of 19 consecutive days at one of the 150+ non-profit, Jewish camps listed on the Foundation for Jewish Camp’s 
 						website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>)</b>.
 					</p> 

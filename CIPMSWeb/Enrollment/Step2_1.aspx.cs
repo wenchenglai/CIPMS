@@ -72,32 +72,6 @@ public partial class Step2_1 : System.Web.UI.Page
 				hdnFJCIDStep2_1.Value = (string)Session["FJCID"];
 				getCamperAnswers();
 			}
-			//to validate the option for Question 1 on Step 2- Page 1
-			int i;
-			TextBox tb;
-
-			//TV: 10/2009 - increased size of loop by 1 (from 5 to 6)
-			//Ram: 3/2010 - increased size of loop by 1 (from 6 to 7)
-			for (i = 0; i <= 8; i++)
-			{
-				tb = (TextBox)Panel1.FindControl("txt" + Convert.ToString(i + 1));
-				if (tb != null)
-				{
-					tb.Attributes.Add("onBlur", "javascript:SetHelpText('" + i.ToString() + "', this);");
-					tb.Attributes.Add("onFocus", "javascript:ClearHelpText('" + i.ToString() + "', this);");
-				}
-			}
-			if (Session["FedID"] != null)
-			{
-				if (Session["FedID"].ToString() == "5" || Session["FedID"].ToString() == "72")
-				{
-					pnlHanukkah.Visible = true;
-				}
-				else
-				{
-					pnlHanukkah.Visible = false;
-				}
-			}
 
             // 2013-08-25 Synagogue refer by person - the answer from previous question can affect the selection of question on this page
             DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_1.Value, "", "", "1044");
@@ -243,33 +217,6 @@ public partial class Step2_1 : System.Web.UI.Page
         strComments = txtComments.Text.Trim();
 
         strCamperAnswers = ConstructCamperAnswers();
-        //to check if Campers/Admin have changed the options in marketing section -- Ram
-		//#region
-		//string strFSeparator;
-		//string strQSeparator;
-		//string strTablevalues = "";
-		//DataSet dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "1", "2", "N");
-
-		////to get the Question separator from Web.config
-		//strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
-		////to get the Field separator from Web.config
-		//strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-		//for (int i = 0; i < dsAnswers.Tables[0].Rows.Count; i++)
-		//{
-		//    DataRow dtRow = dsAnswers.Tables[0].Rows[i];
-		//    strTablevalues += hdnQ1Id.Value + strFSeparator + dtRow["OptionId"].ToString() + strFSeparator + dtRow["Answer"].ToString() + strQSeparator;
-		//}
-		////to remove the extra character at the end of the string, if any
-		//char[] chartoRemove = { Convert.ToChar(strQSeparator) };
-		//strTablevalues = strTablevalues.TrimEnd(chartoRemove);
-
-		//bool bOptionsUpdated = CamperAppl.VerifyCamperAnswersSelectionHasChanged(strCamperAnswers, strTablevalues);
-		//#endregion
-
-		//if (strCamperAnswers != "" && strFJCID != "" && strModifiedBy != "" && (bPerformUpdate || bOptionsUpdated))
-		//{
-		//    RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
-		//}
 
         if (strFJCID != "" && strCamperAnswers != "" && strModifiedBy != "" )
             RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
@@ -280,9 +227,6 @@ public partial class Step2_1 : System.Web.UI.Page
         string strFJCID;
         DataSet dsAnswers;
         DataView dv;
-        CheckBox cb;
-        TextBox tb;
-        string strFilter;
 
         strFJCID = hdnFJCIDStep2_1.Value;
         if (strFJCID.Equals(string.Empty))
@@ -536,13 +480,5 @@ public partial class Step2_1 : System.Web.UI.Page
 		{
 			trAds.Visible = false;
 		}
-	}
-
-	protected void ddlStaffNames_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		if (ddlStaffNames.SelectedItem.Text == "Other")
-			txtOtherName.Visible = true;
-		else
-			txtOtherName.Visible = false;
 	}
 }

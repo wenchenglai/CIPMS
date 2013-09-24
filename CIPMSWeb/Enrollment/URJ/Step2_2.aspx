@@ -1,34 +1,24 @@
 <%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="Step2_URJ_2" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
-<asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
-    <%--<table width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td>
-                <asp:Label CssClass="headertext" runat="server">Basic Camper Information: Section II continued..</asp:Label><br /><br />
-            </td>
-        </tr>
-    </table>--%>
-    
+<asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">   
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server">
-        <!--to display the validation summary (error messages)-->
-        <table width="50%" cellpadding="0" cellspacing="0" align="center" border="0">
-            <tr>
-                <td>
-                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="ValidatePage2Step2_MidSex"></asp:CustomValidator>
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                    <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-                </td>
-            </tr>
-        </table>
+    <div>
+        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="ValidatePage2Step2_MidSex"></asp:CustomValidator>
+        <!--to vaidate the comments text box for admin user-->
+        <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
+        <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
+        <!--this summary will be used only for Comments field (only for Admin user)-->
+        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+    </div>
+
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
+        <tbody class="QuestionText">
             <tr>
-                <td valign="top"><asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4" runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><span class="InfoText">*</span>1</td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 19 days or longer?</asp:Label><br />
+                    Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for <asp:Label id="lblMinimumDays" runat="server" /> days or longer?
+                    <br />
                     &nbsp;<asp:RadioButton ID="RadioBtnQ31" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" />
                     <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" />
                 </td>
@@ -102,6 +92,7 @@
                 </table>
             </td>
             </tr>
+            </tbody>
         </table>
         
         

@@ -3,14 +3,6 @@
 
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">
-    <%--<table width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td>
-                <asp:Label CssClass="headertext" runat="server">Basic Camper Information: Section II continued..</asp:Label><br />
-                <br />
-            </td>
-        </tr>
-    </table>--%>
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server">
         <!--to display the validation summary (error messages)-->
@@ -37,7 +29,7 @@
                     <asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4"
                         runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 19 consecutive days or longer?</asp:Label><br />
+                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 12 consecutive days or longer?</asp:Label><br />
                     <asp:RadioButtonList ID="RadioBtnListQ2" CssClass="QuestionText" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
                         <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                         <asp:ListItem Text="No" Value="2"></asp:ListItem>

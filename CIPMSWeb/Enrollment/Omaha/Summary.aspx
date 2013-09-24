@@ -13,9 +13,16 @@
                     </p><%--<p style="text-align:justify"><b>The Greater Rhode Island One Happy Camper Program provides grants to encourage children to attend overnight Jewish camp for the first time.  It is not a scholarship fund and is not needs-based.  Our goal is to promote a Jewish camping experience with a grant of $1,000.00.</b></p>--%></asp:Label></td>
         </tr>
        <tr>
-          <td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                  <p style="text-align:justify">The Omaha One Happy Camper Program, sponsored by the Jewish Federation of Omaha and the Foundation for Jewish Camp, provides grants to encourage children to attend overnight Jewish camp for the first-time.</p>            
-            </asp:Label></td>
+          <td colspan="2">
+              <asp:Label ID="Label1" CssClass="infotext3" runat="server">
+                  <p style="text-align:justify">
+                      The Omaha One Happy Camper Program, sponsored by the Jewish Federation of Omaha, the Jewish Federation of Lincoln and the Foundation for Jewish Camp, 
+                      provides grants to encourage children to attend overnight Jewish camp for the first-time.
+
+                  </p>            
+              </asp:Label>
+
+          </td>
         </tr>
         <tr>
           <td colspan="2"><asp:Label ID="Label2" CssClass="infotext3" runat="server">

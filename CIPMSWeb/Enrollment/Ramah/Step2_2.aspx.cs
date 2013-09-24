@@ -120,7 +120,9 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     Int32.TryParse(dr["Answer"].ToString(), out resultCampId);
                 }
             }
-			if (resultCampId == 2150 || resultCampId == 2079 || resultCampId == 3150 || resultCampId == 4079 || resultCampId == 4150)
+
+            string campIDLast3Digits = resultCampId.ToString().Substring(resultCampId.ToString().Length - 3);
+            if (campIDLast3Digits == "150" || campIDLast3Digits == "079")
             {
                 lblMinimunDays1.Text = "12";
                 lblMinimunDays2.Text = "12";

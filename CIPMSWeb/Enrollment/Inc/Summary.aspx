@@ -21,12 +21,23 @@
         </tr>
         <tr>
 			<td colspan="2">
+				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
+					<p style="text-align:justify">
+                        Camp Inc. is a Jewish overnight camp in Boulder, CO where 7th-12th graders from around the world join together to explore what it 
+                        means to be an entrepreneur. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on 
+                        experience in entrepreneurship and business. Under the direction of Camp Inc.'s program specialists, campers work in small teams 
+                        to turn an idea into a reality and receive the skills to become leaders and innovators in business, philanthropy, and the Jewish community.
+					</p>
+				</asp:Label>
+			</td>
+        </tr>
+        <tr>
+			<td colspan="2">
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-                        Camp Inc. is a Jewish overnight camp where 7th-12th graders from around the world join together to explore what it means to 
-                        be an entrepreneur. Located in beautiful Boulder, CO, Camp Inc. is a unique Jewish overnight summer camp where campers 
-                        develop community, confidence, leadership, and Jewish identity through hands-on experience in entrepreneurship and business. 
-                        Camp Inc. campers receive the skills to become leaders and innovators in business, philanthropy, and the Jewish community.
+                        Camp Inc. offers a two-week program for entering 7th and 8th grade campers that is housed at the University of Colorado in Boulder. 
+                        In our three-week program, our 9th-12th grade campers spend one week at our mountain facility, living in cabins and enjoying the 
+                        benefits of a traditional camp experience. They spend their second and third weeks living in the dorms at the University of Colorado.
 					</p>
 				</asp:Label>
 			</td>
@@ -35,9 +46,8 @@
 			<td colspan="2">
 				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-                        Camp Inc. offers a two-week program for entering 7th and 8th grade campers that is housed at the University of Colorado in Boulder. 
-                        In our three-week program, our 9th-12th grade campers spend one week at our mountain facility, living in cabins and enjoying 
-                        the benefits of a traditional camp experience. They spend their second and third weeks living in the dorms at the University of Colorado.
+                        The Camp Inc. One Happy Camper program provides financial incentives to first time campers. To be eligible, this must be the first 
+                        time the camper has attended a Jewish overnight camp for 12 or more days.
 					</p>
 				</asp:Label>
 			</td>
@@ -46,10 +56,8 @@
 			<td colspan="2">
 				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-                        The Camp Inc. One Happy Camper program provides financial incentives to first time campers.  Incentive amounts are based 
-                        on session length.  Therefore, 7th-8th grader campers are eligible for a $700 grant, and 9th-12th grader campers are eligible 
-                        for a $1000 grant.  To be eligible, this must be the first time the camper has attended a Jewish overnight camp for 12 or 
-                        more days (7th-8th) or 19 or more days (9th-12th).
+                        Incentive amounts are based on session length. Therefore, 7th-8th grade campers are eligible for a $700 grant, and 9th-12th grade 
+                        campers are eligible for a $1,000 grant. 
 					</p>
 				</asp:Label>
 			</td>

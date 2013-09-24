@@ -76,15 +76,14 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
             //        Label7.Enabled = false;
             //    }
             //}
-
-            foreach (ListItem li in chkQ9.Items)
-            {
-                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
-            }
-            foreach (ListItem li in chkQ10.Items)
-            {
-                li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
-            }
+        }
+        foreach (ListItem li in chkQ9.Items)
+        {
+            li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
+        }
+        foreach (ListItem li in chkQ10.Items)
+        {
+            li.Attributes.Add("onclick", "JavaScript:Q8AndQ9CheckBoxSelection(this,\"" + li.Text + "\",\"" + li.Value + "\");");
         }
     }
 
@@ -858,12 +857,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 
         //to set the panel status based on the radio button selected
         setPanelStatus();
-        if (dsTerms.Tables[0].Rows.Count > 0)
-        {
-            dr = dsTerms.Tables[0].Rows[0];
-            if (dr["Amount"] != null)
-                Session["Amount"] = dr["Amount"];
-        }
     }
 
     void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)

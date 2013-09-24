@@ -47,7 +47,7 @@
             <td colspan="2">
 				<asp:Label ID="lblJdaySchool" runat="server" CssClass="infotext3" ForeColor="Red">
 					<p style="text-align:justify">
-						If the camper currently attends Jewish day school, please do not proceed with this application and instead, please call Carolyn Leeds at 317-715-9274. 
+						If the camper currently attends Jewish day school, please do not proceed with this application and instead, please call Inna Kolesnikova-Shmukler at 317-715-9264. 
 					</p>
 				</asp:Label>
 			</td>

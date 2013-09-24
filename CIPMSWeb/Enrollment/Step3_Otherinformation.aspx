@@ -3,8 +3,6 @@
 
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep3_Others" ContentPlaceHolderID="Content" runat="Server">   
-
-    <!--Panel 1 - Questions displayed on page 1 of Step 2-->
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="5" cellspacing="0">
             <tr>
@@ -148,7 +146,7 @@
                 <td valign="top">
                     <asp:Panel ID="PnlQ6" runat="server">
                         <asp:Label ID="lblParentCountry" runat="server" CssClass="QuestionText">Please indicate the country of origin of the camper’s parents/guardians:</asp:Label><br />
-                        <asp:Label ID="lblParentG1" runat="server" CssClass="QuestionText">Parent/guardian 1</asp:Label>&nbsp;<%--<asp:TextBox ID="txtCountry1" runat="server" CssClass = "txtbox" MaxLength="50"></asp:TextBox>--%>
+                        <asp:Label ID="lblParentG1" runat="server" CssClass="QuestionText">Parent/guardian 1</asp:Label>&nbsp;
                         <asp:DropDownList ID="ddlCountry1" runat="server" CssClass="QuestionText">
                         </asp:DropDownList><br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="OtherValidation"
@@ -157,11 +155,9 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="OtherValidation"
                             runat="server" ControlToValidate="ddlCountry1" Display="None" ErrorMessage="Please select Parent/guardian 1 Country"
                             InitialValue="-1"></asp:RequiredFieldValidator>
-                        <asp:Label ID="lblParentG2" runat="server" CssClass="QuestionText">Parent/guardian 2</asp:Label>&nbsp;<%--<asp:TextBox ID="txtCountry2" runat="server" CssClass = "txtbox" MaxLength="50"></asp:TextBox>--%>
-                        <asp:DropDownList ID="ddlCountry2" runat="server" CssClass="QuestionText">
-                        </asp:DropDownList>
-                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator4" ValidationGroup="OtherValidation" runat="server" ControlToValidate="ddlCountry2" Display="None" ErrorMessage="Please select Parent/guardian 2 Country" InitialValue="0"></asp:RequiredFieldValidator>
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="OtherValidation" runat="server" ControlToValidate="ddlCountry2" Display="None" ErrorMessage="Please select Parent/guardian 2 Country" InitialValue="-1"></asp:RequiredFieldValidator>--%></asp:Panel>
+                        <asp:Label ID="lblParentG2" runat="server" CssClass="QuestionText">Parent/guardian 2</asp:Label>&nbsp;
+                        <asp:DropDownList ID="ddlCountry2" runat="server" CssClass="QuestionText" />
+                    </asp:Panel>
                 </td>
             </tr>
             <tr>
@@ -180,16 +176,6 @@
                         runat="server" ControlToValidate="ddlQ8" Display="None" ErrorMessage="Please answer Question No. 9"></asp:RequiredFieldValidator>
                 </td>
             </tr>
-            <%--<tr>
-                <td valign="top"><asp:Label ID="Label38" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label9" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label13" runat="server" CssClass="QuestionText">Were you aware of Jewish overnight summer camp prior to hearing about this incentive program?</asp:Label><br />
-                    <asp:RadioButtonList CssClass="QuestionText" ID="RadioBtnQ7" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-            </tr>  --%>
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label39" Text="*" runat="server" CssClass="InfoText" /><asp:Label
@@ -202,20 +188,16 @@
                             Jewish content (e.g. programming and services), in addition to regular camp 
                             programming, and where the bunk counselors are Jewish. (Check all that apply.)</p>
                     </asp:Label>
-                    <%-- <asp:DropDownList ID="ddlQ9" runat="server" CssClass="QuestionText">--%>
+
                     <asp:CheckBoxList CellPadding="0" ID="chkQ9" runat="server" CssClass="QuestionText"
                         RepeatDirection="Vertical">
-                        <%-- <asp:ListItem Text = "-- Select --" Value="0"></asp:ListItem>--%>
                         <asp:ListItem Text="One of the camper's parents/guardians" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Both of the camper's parents/guardians" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Camper's Sibling(s)" Value="3"></asp:ListItem>
                         <asp:ListItem Text="Nobody" Value="4"></asp:ListItem>
                     </asp:CheckBoxList>
-                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo1" CssClass="InfoText"
-                        runat="server" Display="None" ErrorMessage="Please answer Question No. 10" ClientValidationFunction="CheckCertify_ParentInfo1"></asp:CustomValidator>
-                    <%-- </asp:DropDownList>--%>
-                    <%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ValidationGroup="OtherValidation" runat="server" ControlToValidate="chkQ9" Display="None" ErrorMessage="Please answer Question No. 7"></asp:RequiredFieldValidator>
---%>
+<%--                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo1" CssClass="InfoText"
+                        runat="server" Display="None" ErrorMessage="Please answer Question No. 10" ClientValidationFunction="CheckCertify_ParentInfo1"></asp:CustomValidator>--%>
                 </td>
             </tr>
             <tr>
@@ -230,43 +212,16 @@
                             specifically Jewish content,  and where counselors do not adhere to any 
                             specific religious affiliation. (Check all that apply.)</p>
                     </asp:Label>
-                    <%-- <asp:DropDownList ID="ddlQ10" runat="server" CssClass="QuestionText">--%>
-                    <asp:CheckBoxList CellPadding="0" ID="chkQ10" runat="server" CssClass="QuestionText"
-                        RepeatDirection="Vertical">
-                        <%-- <asp:ListItem Text = "-- Select --" Value="0"></asp:ListItem>--%>
+                    <asp:CheckBoxList CellPadding="0" ID="chkQ10" runat="server" CssClass="QuestionText" RepeatDirection="Vertical">
                         <asp:ListItem Text="One of the camper's parents/guardians" Value="1"></asp:ListItem>
                         <asp:ListItem Text="Both of the camper's parents/guardians" Value="2"></asp:ListItem>
                         <asp:ListItem Text="Camper's Sibling(s)" Value="3"></asp:ListItem>
                         <asp:ListItem Text="Nobody" Value="4"></asp:ListItem>
                     </asp:CheckBoxList>
-                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo2" CssClass="InfoText"
-                        runat="server" Display="None" ErrorMessage="Please answer Question No. 11" ClientValidationFunction="CheckCertify_ParentInfo2"></asp:CustomValidator>
-                    <%--</asp:DropDownList>--%>
-                    <%--                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" ValidationGroup="OtherValidation" runat="server" ControlToValidate="chkQ10" Display="None" ErrorMessage="Please answer Question No. 8"></asp:RequiredFieldValidator>
---%>
+<%--                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo2" CssClass="InfoText"
+                        runat="server" Display="None" ErrorMessage="Please answer Question No. 11" ClientValidationFunction="CheckCertify_ParentInfo2"></asp:CustomValidator>--%>
                 </td>
             </tr>
-            <%--<tr>
-                <td valign="top"><asp:Label ID="Label41" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="11" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Did you consider sending the camper to an overnight summer camp of <u>any kind</u> prior to completing this application?</asp:Label><br />
-                    <asp:RadioButtonList CssClass="QuestionText" ID="RadioBtnQ11" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-            </tr>
-            
-            <tr>
-                <td valign="top"><asp:Label ID="Label42" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label27" runat="server" Text="12" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label28" runat="server" CssClass="QuestionText">Did you consider sending your child to <u>Jewish</u> overnight summer camp prior to completing this application?</asp:Label><br />
-                    <asp:RadioButtonList CssClass="QuestionText" ID="RadioBtnQ12" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </td>
-            </tr>  --%>
             <tr>
                 <td valign="top" height="50">
                 </td>
@@ -287,8 +242,7 @@
                                 <asp:Label ID="Label36" CssClass="InfoText" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:CheckBoxList CellPadding="0" ID="chkAgreement" runat="server" CssClass="QuestionText"
-                                    RepeatDirection="Vertical">
+                                <asp:CheckBoxList CellPadding="0" ID="chkAgreement" runat="server" CssClass="QuestionText" RepeatDirection="Vertical">
                                     <asp:ListItem Text="I understand that I will be contacted in the future by the Foundation for Jewish Camp and/or my local incentive partner to participate in a survey related to my child’s summer camp experience."
                                         Value="2" Selected="False"></asp:ListItem>
                                     <asp:ListItem Text="Yes, please feel free to send me additional information from the Foundation for Jewish Camp, my local incentive partner and other Jewish agencies. "
@@ -396,8 +350,6 @@
                             <td>
                                 <asp:Button ID="btnPrevious" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous"
                                    CssClass="submitbtn" />
-                                    <%-- <asp:Button ID="Button1" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous"
-                                    PostBackUrl="~/Enrollment/Step3_ParentInformation.aspx" CssClass="submitbtn" />--%>
                             </td>
                             <td>
                                 <asp:Button ID="btnSaveandExit" ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later"
@@ -412,7 +364,7 @@
                 </td>
             </tr>
         </table>
-    </asp:Panel>
+    </asp:Panel>    
     <asp:Panel ID="Panel2" runat="server">
         <table width="100%" cellpadding="0" cellspacing="0" border="0">
             <tr>
@@ -464,6 +416,7 @@
         }
         function CheckCertify_ParentInfo2(sender, args)
         {
+            debugger;
             var inputobjs = document.getElementsByTagName("input");
             var chk1, chk2;
             for (var i = 0; i <= inputobjs.length-1; i++)
@@ -482,6 +435,7 @@
         }
         function CheckCertify_ParentInfo1(sender, args)
         {
+            debugger;
             var inputobjs = document.getElementsByTagName("input");
             var chk1, chk2;
             for (var i = 0; i <= inputobjs.length-1; i++)
@@ -498,30 +452,6 @@
             args.IsValid = false;
             return;
         }
-        //to make only one check box checked
-//        function chkAgreement(chkobj)
-//        {
-//            var inputobjs = document.getElementsByTagName("input");
-//            var chk1, chk2;
-//            for (var i = 0; i <= inputobjs.length-1; i++)
-//            {
-//                if (inputobjs[i].type=="checkbox")
-//                {
-//                    if (inputobjs[i].id.indexOf("chkAgreement_0")>=0)
-//                        chk1 = inputobjs[i];
-//                    else if (inputobjs[i].id.indexOf("chkAgreement_1")>=0)
-//                        chk2 = inputobjs[i];
-//                }
-//            }
-//            
-//            if (chk1!=null && chk2!=null && chkobj.checked)
-//            {
-//                if (chkobj.id == chk1.id)
-//                    chk2.checked =false;
-//                else if (chkobj.id = chk2.id)
-//                    chk1.checked = false;
-//            }
-//        }
         
         function chkAgreement(chkobj)
         {
@@ -593,6 +523,7 @@
     
         function EnableQ8AndQ9CheckBoxed()
         {
+            debugger;
             var chkQ9_0 = document.getElementById("ctl00_Content_chkQ9_0");
             var chkQ9_1 = document.getElementById("ctl00_Content_chkQ9_1");
             var chkQ9_2 = document.getElementById("ctl00_Content_chkQ9_2");

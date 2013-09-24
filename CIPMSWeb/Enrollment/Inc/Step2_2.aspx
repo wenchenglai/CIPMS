@@ -28,41 +28,13 @@
                     <asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4"
                         runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 19 consecutive days or longer?</asp:Label><br />
+                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 12 consecutive days or longer?</asp:Label><br />
                     <asp:RadioButtonList ID="RadioBtnListQ2" CssClass="QuestionText" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
                         <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                         <asp:ListItem Text="No" Value="2"></asp:ListItem>
                     </asp:RadioButtonList>
                 </td>
             </tr>
-            <%--<tr>
-                <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label12"
-                        runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                <asp:Panel ID="pnlQ3" runat="server">
-                    <asp:Label ID="lblQ4" runat="server" CssClass="QuestionText">Will this be the camper’s second time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?</asp:Label><br />
-                    <asp:RadioButtonList ID="RadioBtnListQ3" CssClass="QuestionText" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
-            <%--<tr>
-                <td valign="top">
-                    <asp:Label ID="Label17" Text="*" runat="server" CssClass="InfoText" /><asp:Label
-                        ID="Label18" runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="pnlQ4" runat="server">
-                    <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Did the camper receive an incentive grant from Camp Nageela Midwest last summer for the first time?</asp:Label><br />
-                    <asp:RadioButtonList ID="RadioBtnListQ4" CssClass="QuestionText" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label8"

@@ -39,7 +39,7 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
                         Atlanta One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days 
-                        (exceptions apply for URJ 6 Points and Adamah Adventures. Eligible campers must be entering grades 1-12 (after camp) and be 
+                        (exceptions apply for URJ 6 Points and Adamah Adventures). Eligible campers must be entering grades 1-12 (after camp) and be 
                         attending one of the 150+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (www.jewishcamp.org).   
 					</p>
 				</asp:Label>
@@ -50,7 +50,7 @@
 				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						<b>Note:</b> This program is an outreach initiative for children who are not currently receiving an immersive, 
-                        daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for program. 
+                        daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for the program. 
                         If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper 
                         funding opportunities please visit <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>, contact your camp, or the contact person listed at the bottom of this page.
 					</p>

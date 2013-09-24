@@ -38,7 +38,7 @@
                 <td valign="top">
                     <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for JCC Maccabi Sports Camp yet?</asp:Label><br />
+                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for Camp Inc. yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
                            The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                     
@@ -87,7 +87,7 @@
                     <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                        <asp:Label ID="lbl" runat="server" CssClass="QuestionText"><font color="red"><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days.</b></font></asp:Label><br />
+                        <asp:Label ID="lbl" runat="server" CssClass="QuestionText"><font color="red"><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days.</b></font></asp:Label><br />
                         <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />

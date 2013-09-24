@@ -120,7 +120,7 @@
         } else {
             SJValidator.ToggleWhoInSyangogue(false);
         }
-    },
+    }
 };
 
 var SchoolValidator = {
@@ -130,7 +130,7 @@ var SchoolValidator = {
         } else {
             $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
         }
-    },
+    }
 };
 
 var CommonValidator = {

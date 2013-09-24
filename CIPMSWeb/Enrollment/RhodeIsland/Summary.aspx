@@ -4,7 +4,7 @@
     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <img id="logo" src="../../images/RI_logo.jpg" alt="" width="270" /></td>
+                <img id="logo" src="logo.jpg" alt="" width="270" /></td>
             <td>
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
                     <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
@@ -21,7 +21,8 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						The Rhode Island One Happy Camper Program, sponsored by the Jewish Alliance of Greater Rhode Island and the Foundation for Jewish Camp, 
-						is offering funding to non-day school, first-time campers who attend a non-profit Jewish overnight summer camp for at least 19 consecutive days.</p>            
+						is offering funding to non-day school, first-time campers who attend a non-profit Jewish overnight summer camp for at least 19 consecutive days 
+                        to qualify for a $1,000 incentive grant.  A participant in two-week specialty camp may qualify for a $700 incentive grant.</p>            
 				</asp:Label>
 				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">

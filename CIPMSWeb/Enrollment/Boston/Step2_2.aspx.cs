@@ -88,7 +88,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
 
     private void PopulateWhoIsInSynagogue()
     {
-        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
+        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Boston);
         ddlWho.DataBind();
         ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
     }

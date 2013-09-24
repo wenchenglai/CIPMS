@@ -77,7 +77,7 @@
             <tr>
 				<td>
 					<asp:Label ID="Label124" runat="server" CssClass="QuestionText">
-						To access the Foundation for Jewish Camp’s online directory of <font color="red"><b><i>financially needs-based scholarship</i></b></font> 
+						To access the Foundation for Jewish Camp’s online directory of <font color="red"><b><i>financial needs-based scholarship</i></b></font> 
 						please visit <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
 					</asp:Label>
                 </td>

@@ -22,22 +22,18 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        string Amt = Convert.ToString(Session["Amount"]);
+        string Amt = "0";
 
-        if (Amt == "")
+        if (Session["FJCID"] != null)
         {
-            Amt = "0";
-            if (Session["FJCID"] != null)
+            string strFJCID = Session["FJCID"].ToString();
+            var CamperAppl = new CamperApplication();
+            DataSet dsTerms = CamperAppl.getCamperApplication(strFJCID);
+            if (dsTerms.Tables[0].Rows.Count > 0)
             {
-                string strFJCID = Session["FJCID"].ToString();
-                var CamperAppl = new CamperApplication();
-                DataSet dsTerms = CamperAppl.getCamperApplication(strFJCID);
-                if (dsTerms.Tables[0].Rows.Count > 0)
-                {
-                    DataRow dr1 = dsTerms.Tables[0].Rows[0];
-                    if (dr1["Amount"] != null)
-                        Amt = dr1["Amount"].ToString();
-                }
+                DataRow dr1 = dsTerms.Tables[0].Rows[0];
+                if (dr1["Amount"] != null)
+                    Amt = dr1["Amount"].ToString();
             }
         }
 
@@ -290,7 +286,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             Session["FJCID"] = newFJCID;
             Session["STATUS"] = 5;
 
-            Session["Amount"] = null;
             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
 
             Response.Redirect(_objRedirectionLogic.NextFederationURL);

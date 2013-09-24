@@ -70,7 +70,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
 
     private void PopulateWhoIsInSynagogue()
     {
-        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
+        ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Hartford);
         ddlWho.DataBind();
         ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
     }

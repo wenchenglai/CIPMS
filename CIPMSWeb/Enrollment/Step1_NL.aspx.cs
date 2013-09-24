@@ -319,11 +319,6 @@ public partial class Step1_NL : System.Web.UI.Page
         ddlCamp.DataValueField = "ID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-        int ZipCodeCount = new General().ValidateNYZipCode(Session["ZIPCODE"].ToString());
-        if (ZipCodeCount == 0)
-        {
-            ddlCamp.Items.Remove(ddlCamp.Items.FindByText("Camp Poyntelle-Lewis Village"));
-        }
     }
     
     private string GetNationalProgramForCamp()

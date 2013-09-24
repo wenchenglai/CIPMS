@@ -332,16 +332,17 @@ public partial class Step2_URJ_3 : Page
                                 {
                                     switch (dr["OptionID"].ToString())
                                     {
-                                            case "2": //for camp
-                                            ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
-                                            if (ddlCamp.SelectedItem != null)
+                                        case "2": //for camp
+                                        ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
+                                        if (ddlCamp.SelectedItem != null)
+                                        {
+                                            string campIDLast3Digits = ddlCamp.SelectedItem.Value.Substring(ddlCamp.SelectedItem.Value.Length - 3);
+                                            if (campIDLast3Digits == "132" || campIDLast3Digits == "133" || campIDLast3Digits == "190")
                                             {
-                                                if (ddlCamp.SelectedItem.Value == "1132" || ddlCamp.SelectedItem.Value == "1133")
-													lblSessionDays.Text = "<font color='red'><b>If the camper attends a session that is 19 days or more, he/she is eligible for a $1,000 grant. If the camper attends a session that is 12-18 days, he/she is eligible for a pro-rated grant of $700.</b></font>";
-												if (ddlCamp.SelectedItem.Value == "3132" || ddlCamp.SelectedItem.Value == "3133" || ddlCamp.SelectedItem.Value == "4132" || ddlCamp.SelectedItem.Value == "4133")
-													lblSessionDays.Text = "<font color='red'><b>In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.</b></font>";
+												lblSessionDays.Text = "<font color='red'><b>In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.</b></font>";
                                             }
-                                            break;
+                                        }
+                                        break;
                                     }
                                 }
                             }

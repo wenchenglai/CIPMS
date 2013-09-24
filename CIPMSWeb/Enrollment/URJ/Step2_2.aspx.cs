@@ -28,6 +28,51 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
         RadioButtionQ5.SelectedIndexChanged += new EventHandler(RadioButtionQ5_SelectedIndexChanged);
     }
 
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CamperAppl = new CamperApplication();
+        objGeneral = new General();
+
+        if (!Page.IsPostBack)
+        {
+            //to fill the grades in the dropdown
+            getGrades();
+            //to get the FJCID which is stored in session
+            if (Session["FJCID"] != null)
+            {
+                hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
+                getCamperAnswers();
+            }
+
+            string strCampID = "";
+            if (Session["CampID"] != null)
+            {
+                strCampID = Session["CampID"].ToString();
+            }
+            else if (Session["FJCID"] != null)
+            {
+                DataSet ds = new CamperApplication().getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
+                int resultCampId = 0;
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DataRow drRow = ds.Tables[0].Rows[0];
+                    Int32.TryParse(drRow["Answer"].ToString(), out resultCampId);
+                }
+                strCampID = resultCampId.ToString();
+            }
+
+            string campIDLast3Digits = strCampID.Substring(strCampID.Length - 3);
+            if (campIDLast3Digits == "132" || campIDLast3Digits == "133" || campIDLast3Digits == "190")
+            {
+                lblMinimumDays.Text = "12";
+            }
+            else
+            {
+                lblMinimumDays.Text = "19";
+            }
+        }
+    }
+
     void RadioButtionQ5_SelectedIndexChanged(object sender, EventArgs e)
     {
         setTextBoxStatus();
@@ -39,41 +84,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
         ProcessCamperAnswers();
         Response.Redirect(strRedirURL);
     }
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        CamperAppl = new CamperApplication();
-        objGeneral = new General();
-        string strCampID= string.Empty;
-        if (!Page.IsPostBack)
-        {
-            //to fill the grades in the dropdown
-            getGrades();
-            //to get the FJCID which is stored in session
-            if (Session["FJCID"] != null)
-            {
-                hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-                getCamperAnswers();
-            }
-        }
-
-        if (Session["CampID"] != null)
-            strCampID = Session["CampID"].ToString();
-        else if (Session["FJCID"] != null)
-        {
-            DataSet ds = new CamperApplication().getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
-            int resultCampId = 0;
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow drRow = ds.Tables[0].Rows[0];
-                Int32.TryParse(drRow["Answer"].ToString(), out resultCampId);
-            }
-            strCampID = resultCampId.ToString();
-        }
-		if (strCampID == "3132" || strCampID == "3133" || strCampID == "4132" || strCampID == "4133")
-            Label5.Text = "Will this be the camper’s first time attending a nonprofit Jewish overnight summer camp for 12 days or longer?";
-    }
-    
+   
     //page unload
     void Page_Unload(object sender, EventArgs e)
     {

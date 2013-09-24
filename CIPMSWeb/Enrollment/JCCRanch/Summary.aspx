@@ -21,8 +21,9 @@
 			<td colspan="2">
 				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<b>The JCC Ranch Camp One Happy Camper Program sponsored by JCC Ranch Camp and the Foundation for Jewish Camp awards incentive grants to first time 
-						campers for up to $1000. Campers entering grades 2-10, who will be attending JCC Ranch Camp for at least 12 consecutive days are eligible. 
+						<b>The JCC Ranch Camp One Happy Camper Program Sponsored by JCC Ranch Camp and the Foundation for Jewish Camp awards incentive grants to 
+                        first time campers for up to $700 for 12-14 days and $1000 for 19 days or more.  Campers entering grades 2-10, who will be attending 
+                        JCC Ranch Camp for at least 12 consecutive days are eligible. 
 						As this program is an outreach initiative, campers who are currently receiving an immersive daily Jewish experience (i.e. Jewish Day School) 
 						are not eligible for the incentive grant.</b>
 					</p>
