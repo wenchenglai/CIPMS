@@ -38,7 +38,7 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"><b>
 						The Camp JRF One Happy Camper program provides financial incentives of $1,000 to first-time campers who attend our camp for at least 
-						19 consecutive days.  Eligible campers must be entering grades 4-12 (after camp). </b>						
+						19 consecutive days.  Eligible campers must be entering grades 3-12 (after camp). </b>						
 					</p>
 				</asp:Label>
 			</td>

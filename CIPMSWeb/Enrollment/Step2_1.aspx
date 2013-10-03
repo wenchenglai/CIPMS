@@ -32,7 +32,7 @@
 						<asp:ListItem Text="Before this past summer (prior to June 2013)" Value="1"></asp:ListItem>
 						<asp:ListItem Text="Last Summer (Jun - Aug of 2013)" Value="2"></asp:ListItem>
 						<asp:ListItem Text="This past Fall (Sep - Dec 2013)" Value="3"></asp:ListItem>
-						<asp:ListItem Text="This past Winter (Jan Mar 2014)" Value="4"></asp:ListItem>
+						<asp:ListItem Text="This past Winter (Jan - Mar 2014)" Value="4"></asp:ListItem>
 						<asp:ListItem Text="This Spring (Apr - May 2014)" Value="5"></asp:ListItem>
 						<asp:ListItem Text="This Summer (Jun Aug 2014)" Value="6"></asp:ListItem>
 						<asp:ListItem Text="Don't know/Not sure" Value="7"></asp:ListItem>																																										
@@ -129,15 +129,16 @@
 						<asp:ListItem Text="Tracy Levine" Value="10"></asp:ListItem>
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>	
 						<asp:ListItem Text="Nina Patchak" Value="12"></asp:ListItem>	
-						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>																			
-						<asp:ListItem Text="Alyssa Russell" Value="14"></asp:ListItem>
-						<asp:ListItem Text="Judy Shapiro" Value="15"></asp:ListItem>							
-						<asp:ListItem Text="Brenda Silvers" Value="16"></asp:ListItem>													
-						<asp:ListItem Text="Sally Stein" Value="17"></asp:ListItem>
-						<asp:ListItem Text="Sara Klein Wagner" Value="18"></asp:ListItem>	
-						<asp:ListItem Text="Rachel White" Value="19"></asp:ListItem>
-						<asp:ListItem Text="Helen Wolf" Value="20"></asp:ListItem>	
-						<asp:ListItem Text="Rachel Wolf" Value="21"></asp:ListItem>								
+						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>	
+						<asp:ListItem Text="Nancy Perlman" Value="14"></asp:ListItem>	                        																		
+						<asp:ListItem Text="Alyssa Russell" Value="15"></asp:ListItem>
+						<asp:ListItem Text="Judy Shapiro" Value="16"></asp:ListItem>							
+						<asp:ListItem Text="Brenda Silvers" Value="17"></asp:ListItem>													
+						<asp:ListItem Text="Sally Stein" Value="18"></asp:ListItem>
+						<asp:ListItem Text="Sara Klein Wagner" Value="19"></asp:ListItem>	
+						<asp:ListItem Text="Rachel White" Value="20"></asp:ListItem>
+						<asp:ListItem Text="Helen Wolf" Value="21"></asp:ListItem>	
+						<asp:ListItem Text="Rachel Wolf" Value="22"></asp:ListItem>								
 						<asp:ListItem Text="Don't know/Not sure" Value="2"></asp:ListItem>																																										
 						<asp:ListItem Text="Other" Value="1"></asp:ListItem>							
 					</asp:DropDownList>

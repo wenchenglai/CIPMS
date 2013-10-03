@@ -203,10 +203,10 @@ public partial class Step1 : System.Web.UI.Page
 
 	void btnNext_Click(object sender, EventArgs e)
 	{
-		if (!bPerformUpdate)
-		{
-			return;
-		}
+        //if (!bPerformUpdate)
+        //{
+        //    return;
+        //}
 
 		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = string.Empty;
 		UserDetails Info;

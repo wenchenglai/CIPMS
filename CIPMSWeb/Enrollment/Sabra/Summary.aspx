@@ -49,7 +49,7 @@
 			<asp:Label ID="Label3" CssClass="infotext3" runat="server">
 				<p style="text-align:justify">
 					If you are interesting in learning more about Camp Sabra, visit our website at <a href="http://www.campsabra.com" target="_blank">www.campsabra.com</a> 
-					or call us at 314-442-3151. 
+					or call us at 314-442-3225. 
 				</p>
             </asp:Label>
         </td>

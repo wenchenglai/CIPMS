@@ -9,13 +9,7 @@
     </tr>
     <tr>
       <td>
-		Updated: <span style="color:Red">February 15, 2013</span><br /><br />
-		The One Happy Camper payment process will begin in late March. Please make sure that  each application is moved to the appropriate status in a timely fashion.<br />
-		<ul>
-			<li>Only applications that are in the status of <strong>Campership Approved; Payment Pending</strong> will be included in each payment round (parents should get a confirmation email once application is approved).</li>
-			<li>If an applicant is no longer attending camp this summer, please make sure the application is cancelled properly in the registration system.</li>
-			<li>For further information regarding status flow, payment or cancellations, please refer to the One Happy Camper Basic User Guide.</li>
-		</ul>	
+
       </td>
     </tr>
     <tr>

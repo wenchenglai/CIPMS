@@ -38,9 +38,9 @@
 			<td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
 				<p style="text-align:justify">
 					<b>The Camps Airy & Louise One Happy Camper program is for first-time campers enrolled in a FULL session (19 days or more) at Camps Airy & Louise. 
-					These $1,000 grants will be given to campers for summer 2013 tuition who have never before attended Airy or Louise or any other non-profit Jewish overnight 
+					These $1,000 grants will be given to campers for summer 2014 tuition who have never before attended Airy or Louise or any other non-profit Jewish overnight 
 					camp for 19 days or more. The incentive grants are non-need-based and the program cannot be combined with any other camper incentive program, 
-					however it can be combined with our Early Bird rates, which are open until the end of this year. Campers that currently attend a Jewish Day School 
+                        however it can be combined with our Early Bird rates. Campers that currently attend a Jewish Day School 
 					are not eligible for this grant. Campers must consider themselves to be Jewish to be eligible. Funding is limited.</b>           
                  </p>
             </asp:Label></td>

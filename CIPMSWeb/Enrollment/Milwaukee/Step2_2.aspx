@@ -13,7 +13,6 @@
         <!--this summary will be used only for Comments field (only for Admin user)-->
         <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
     </div>
-        </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
             <tr>
                 <td valign="top"><asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4" runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>

@@ -5,7 +5,7 @@
         <tr>
             <td>
                 <table><tr><td>
-                <img id="Img1" src="../../images/MontrealGenJ.jpg" alt=""/>
+                <img id="Img1" src="logo.jpg" alt=""/>
                 <a href="http://www.federationcja.org/jewishcamp" target="_blank"><img id="Img2" src="../../images/MontrealGenJeButton.jpg" alt=""/></a>
                 </td></tr>
                 </table>
@@ -25,9 +25,9 @@
 			<td colspan="2">
 				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<b>The GEN J Camping Initiative, One Happy Camper Program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, 
-						is offering a one-time grant of $1,000 to eligible Montreal children between the ages of 7 and 16. The grants are intended for first-time 
-						Jewish campers who do not attend a Jewish day school and who attend camp for a minimum stay of 19 days.</b>
+						<b>The GEN J Camp Initiative, One Happy Camper Program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, 
+                            is offering a one-time grant of $1,000 to eligible Montreal children between the ages of 7 and 16. The grants are intended for first-time 
+                            Jewish campers who do not attend a Jewish day school and who attend camp for a minimum session of 19 days.</b>
 					</p>
 				</asp:Label>
 			</td>
@@ -36,8 +36,10 @@
 			<td colspan="2">
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<b>Grants will be awarded on a first-come first-serve basis. If you are not eligible for this program, 
-                            but are interested in learning about other scholarship opportunities, please contact your camp directly.</b>
+						<b>
+                            Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program, but are interested in 
+                            learning about other scholarship opportunities, please contact your camp directly.
+						</b>
 					</p>
 				</asp:Label>
 			</td>

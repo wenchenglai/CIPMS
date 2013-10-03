@@ -38,7 +38,7 @@
 						and lifelong Jewish identity. Young Judaea camps provide an environment of informal Jewish education where both learning and having 
 						fun are high on the agenda. In addition to engaging in Israeli song and dance, pluralistic prayer, conversational Hebrew and delicious 
 						kosher meals, Young Judaeans enjoy activities such as swimming, basketball, hiking, climbing and ropes course. 
-						Campers begin their experience in second or third grade at one of Young Judaea’s five regional camps. Teens attending high school 
+						Campers begin their experience in second or third grade at one of Young Judaea’s four regional camps. Teens attending high school 
 						are eligible to attend Camp Tel Yehudah, Young Judaea’s National Senior Leadership camp in Barryville, NY, where generations of 
 						Jewish activists, educators and leaders got their start while making friendships that last a lifetime. Young Judaea is the oldest
 						Zionist Youth Movement in the United States and has been running quality Jewish camping programs since 1948.</p>

@@ -67,7 +67,7 @@
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label8"
-                        runat="server" Text="4" CssClass="QuestionText"></asp:Label></td>
+                        runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Panel ID="pnlQ5" runat="server">
                         <asp:Label ID="Label9" runat="server" CssClass="QuestionText">What grade will the camper enter AFTER camp?</asp:Label><br />
@@ -84,7 +84,7 @@
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label3" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label10"
-                        runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
+                        runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
                     <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?</asp:Label><br />
                     <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="RadioButtionQ6"
@@ -101,7 +101,7 @@
             <tr>
                 <td valign="top" width="5%">
                     <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14"
-                        runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
+                        runat="server" Text="4" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Panel ID="PnlQ7" runat="server">
                         <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:</asp:Label><br />

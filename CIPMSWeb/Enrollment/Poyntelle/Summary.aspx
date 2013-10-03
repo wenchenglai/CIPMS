@@ -4,8 +4,7 @@
      <table width="100%" cellpadding="5" cellspacing="0">
             <tr>
             <td style="width: 147px">
-                <img src="../../images/CPLV LOGO BLACK .jpg" />
-                <img src="../../images/UJA_NYLogo1.JPG" />
+                <img src="logo.jpg" />
                 </td>
             <td>
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">

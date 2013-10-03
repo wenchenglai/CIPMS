@@ -24,7 +24,7 @@
 					<p style="text-align:justify">
 						The JUF Chicago One Happy Camper program, sponsored by the Foundation for Jewish Camp and JUF Chicago, offers financial incentives of up to 
 						$1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must 
-						be entering grades 3-9 (after camp) and live in the six-county Illinois area served by JUF. Siblings of first-time campers who previously received a 
+						be entering grades 3-9 (after camp) and live in the six-county Illinois area served by JUF. Siblings of campers who previously received a 
 						$1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.
 					</p>
                 </asp:Label>

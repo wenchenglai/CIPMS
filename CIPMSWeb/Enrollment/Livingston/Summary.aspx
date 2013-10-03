@@ -21,7 +21,7 @@
                 <asp:Label ID="Label1" CssClass="infotext3" runat="server">
                 <p style="text-align:justify">
                  <b>The Camp Livingston One Happy Camper Program, sponsored by Camp Livingston and the Foundation for Jewish Camp provides financial incentives of $1,000 
-                     to campers who attend camp for at least 19 consecutive days for the first time. Eligible campers must be entering grades 3-11 (after camp) and already signed up for Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs (mini-sessions are not eligible). 
+                     to campers who attend camp for at least 19 consecutive days for the first time. Eligible campers must be entering grades 3-12 (after camp) and already signed up for Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs (mini-sessions are not eligible). 
                 </b> </p>
                 </asp:Label></td>
         </tr>
