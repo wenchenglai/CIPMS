@@ -15,7 +15,7 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["OpenFederations"] == "All")
+        if (ConfigurationManager.AppSettings["OpenFederations"] == "None")
         {
             Response.Redirect("~/CamperHolding.aspx");        
         }

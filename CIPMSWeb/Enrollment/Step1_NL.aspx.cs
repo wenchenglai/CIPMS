@@ -186,6 +186,11 @@ public partial class Step1_NL : System.Web.UI.Page
 
         InsertCamperAnswers();
 
+        // 2013-10-08 CampID session must be set here, if we have to redirect to holding page in the next part of code
+        string campID = ddlCamp.SelectedValue;
+        Session["CampID"] = campID;
+        Session["FJCID"] = strFJCID;
+
         bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
                       where id == strFEDID
                       select id).Count() < 1;
@@ -194,11 +199,6 @@ public partial class Step1_NL : System.Web.UI.Page
         {
             Response.Redirect("~/NLIntermediate.aspx");
         }
-
-
-        string campID = ddlCamp.SelectedValue;
-        Session["CampID"] = campID;
-        Session["FJCID"] = strFJCID;
 
         if (ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
         {

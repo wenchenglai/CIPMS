@@ -9,7 +9,16 @@
     </tr>
     <tr>
       <td>
-
+        <div style="font-weight:bold;">
+            <br />
+            Welcome to the 2014 One Happy Camper admin portal!
+            <br /><br />
+            This “Work Queue” message will be updated periodically, so stay tuned!
+            <br /><br />
+            Please log in at least a few times a week to check if there have been “eligible” applications submitted and begin the approval 
+            process – Refer to the OHC Basic User Guide to review the status flow. Parents should receive an email confirmation once their 
+            grant has been approved (<span style="color:red">and</span> attendance at camp has been confirmed).
+        </div>
       </td>
     </tr>
     <tr>

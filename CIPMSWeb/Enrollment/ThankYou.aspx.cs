@@ -113,9 +113,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
 
             if (strStatus == StatusInfo.PendingSchoolAndCamp) //Status 1G (Appears to be eligible, but No School, No Camp)
             {
-                //pnlStatus1A.Visible = false;
-                //pnlStatus1B.Visible = false;
-                //pnlStatus1F.Visible = true;
                 pnlStatus1G.Visible = true;
             }
                       
@@ -123,7 +120,11 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             {               
                 dr = ds.Tables[0].Rows[0];
               
-                if (strFedId == "60" || strFedId == "7" || strFedId == "26" || strFedId == "62" || strFedId =="66")
+                if (strFedId == "60" || 
+                    strFedId == "7" || 
+                    strFedId == "26" || 
+                    strFedId == "62" || 
+                    strFedId =="66")
                 {
                     dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
                     drContact = dsContactDetails.Tables[0].Rows[0];
@@ -137,7 +138,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 }
                 else
                 {
-                      lblContactPerson1.Text = dr["Contact"].ToString();
+                     lblContactPerson1.Text = dr["Contact"].ToString();
                     //lblFed1.Text = dr["Name"].ToString();
                     strOrganisation = dr["Name"].ToString();
                     strOrganisation = strOrganisation.Trim();
@@ -225,7 +226,6 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             pnlEligible.Visible = false;
             pnlInEligible.Visible = false;
             pnlInEligibleNonJewish.Visible = true;
-            pnlEligiblePendingNumberOfDays.Visible = false;
         }
         else if ((strStatus == StatusInfo.SystemInEligible) && _objRedirectionLogic.BeenToPJL)//(Session["LastFed"].ToString() == "PJL"))
         {
@@ -253,6 +253,39 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         else if (strStatus == StatusInfo.EligiblePendingNumberOfDays)
         {
             pnlEligiblePendingNumberOfDays.Visible = true;
+
+            if (iCount > 0)
+            {
+                dr = ds.Tables[0].Rows[0];
+
+                if (strFedId == "60" ||
+                    strFedId == "7" ||
+                    strFedId == "26" ||
+                    strFedId == "62" ||
+                    strFedId == "66")
+                {
+                    dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
+                    drContact = dsContactDetails.Tables[0].Rows[0];
+                    strOrganisation = drContact["Name"].ToString();
+                    strOrganisation = strOrganisation.Trim();
+                    lblFed3.Text = drContact["Name"].ToString();
+                    lblContactPerson3.Text = drContact["Contact"].ToString();
+                    lblPhone3.Text = drContact["Phone"].ToString();
+                    lblEmail3.Text = drContact["Email"].ToString();
+                    Email3.HRef = "mailto:" + lblEmail1.Text;
+                }
+                else
+                {
+                    lblContactPerson3.Text = dr["Contact"].ToString();
+                    strOrganisation = dr["Name"].ToString();
+                    strOrganisation = strOrganisation.Trim();
+                    lblFed3.Text = strOrganisation.Trim();
+                    lblPhone3.Text = dr["Phone"].ToString();
+                    lblEmail3.Text = dr["Email"].ToString();
+                    Email3.HRef = "mailto:" + lblEmail1.Text;
+                }
+
+            }
         }
     }
 

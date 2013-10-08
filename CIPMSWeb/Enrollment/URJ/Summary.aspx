@@ -45,7 +45,7 @@
                 <asp:Label ID="Label2" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
 						<ul>
-							<li>URJ 6 Points Sports Academy (Greensboro, NC) - <a href=" http://www.sports.urjcamps.ortg" target="_blank">www.sports.urjcamps.ortg</a></li>
+							<li>URJ 6 Points Sports Academy (Greensboro, NC) - <a href=" http://www.sports.urjcamps.ortg" target="_blank">www.sports.urjcamps.org</a></li>
 							<li>URJ 6 Points Sci-Tech Academy (Boston, MA) - <a href=" http://www.scitech.urjcamps.org" target="_blank">www.scitech.urjcamps.org</a></li>
 							<li>URJ Camp Coleman (Cleveland, GA) - <a href=" http://coleman.urjcamps.org/" target="_blank">www.coleman.urjcamps.org</a></li>
 							<li>URJ Camp George (Parry Sound, Ontario) - <a href="http://george.urjcamps.org/" target="_blank">www.george.urjcamps.org</a></li>
@@ -84,7 +84,7 @@
                 <td valign="top" ><br />
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
-                            <td  align="left"><asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
+                            <td  align="left"><asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" /></td>
                             <td align="center">

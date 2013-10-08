@@ -13,7 +13,7 @@ namespace CIPMSBC.Eligibility
         /// Factory method returning a class based on the federation parameter
         /// </summary>
         /// <returns>An Eligibility Business Logic class</returns>
-        public static EligibilityBase GetEligibility(FederationEnum fed)
+        public static EligibilityBase GetEligibility(FederationEnum fed, int CampID = -1)
         {
             EligibilityBase elig = null;
             switch (fed)
@@ -160,7 +160,7 @@ namespace CIPMSBC.Eligibility
                     elig = new EligibilityCalgary(fed);
                     break;
                 case FederationEnum.Habonim:
-                    elig = new EligibilityHabonim(fed);
+                    elig = new EligibilityHabonim(fed, CampID);
                     break;
                 case FederationEnum.NNJ:
                     elig = new EligibilityNNJ(fed);

@@ -3,57 +3,30 @@
 
 <%@ MasterType VirtualPath="~/AdminMaster.master" %>
 <asp:Content ID="CamperSummary" ContentPlaceHolderID="Content" runat="Server">
-
     <script type="text/javascript" language="javascript">
         function ValidateDays(UsrRole,ddlselectedvalue){
             var ddl = document.getElementById('<%=ddlStatus.ClientID %>'); 
-
-            
-            //to fix the task A-034
-            //we need to preserve the value if exists
-            //txt.value = "";
-           
-//            txt.disabled = true;
-//            rfv.enabled = false;
-//            
-//            if (UsrRole == 3 && ddl.value == 11){
-//                txt.disabled = false;
-//                rfv.enabled = true;
-//            }
-                 if (UsrRole == 1)
-                 {
-                // alert(ddl.value);
-                    if(ddl.value == 15)
-                    {
-                     var resp = window.confirm ('Are you sure you want to put this applicant into the status of 2nd Approval?);
-                     if (resp == true)
-                     {
+            if (UsrRole == 1) {
+                if(ddl.value == 15) {
+                    var resp = window.confirm ('Are you sure you want to put this applicant into the status of 2nd Approval?');
+                    if (resp == true) {
                         ddl.value=15
-                     }
-                     else
-                     {
+                    } else {
                        ddl.value=ddlselectedvalue
-                     }
                     }
-                    //added by sreevani for change of campership approved status to deleted status
-                  }
-                if(UsrRole == 1 || UsrRole == 2 || UsrRole == 5)
-                {
-                    if(ddl.value == 24)
-                    {
-                         var resp = window.confirm ('Are you sure you want to put this applicant in the status of Deleted?');
-                         if (resp == true)
-                         {
-                            ddl.value=24
-                         }
-                         else
-                         {
-                           ddl.value=ddlselectedvalue
-                         }
-                    }
-                    //end of addition
                 }
-           
+            }
+
+            if(UsrRole == 1 || UsrRole == 2 || UsrRole == 5) {
+                if (ddl.value == 24) {
+                    var resp = window.confirm ('Are you sure you want to put this applicant in the status of Deleted?');
+                    if (resp == true) {
+                        ddl.value=24
+                    } else {
+                        ddl.value=ddlselectedvalue
+                    }
+                }
+            }
         }
         
         function windowopener(){
@@ -157,8 +130,6 @@
 						if (responce == true)
 						{
 							hdnConfirm.value=true
-	                        
-	//                        return true;
 						}
 						else
 						{
@@ -169,45 +140,29 @@
 									ddl.selectedIndex=i
 								}
 							}
-						   //ddl.value=hdnCampYr.value
 							txt.value=hdn.value
-							hdnConfirm.value=false
-	//                        return false;
+							hdnConfirm.value = false
 						}
 					}
 					else if(ddl.value != hdnCampYr.value || txt.value != hdn.value)
 					{   
 						var responce= window.confirm ('Are you sure to change this applicant\'s grant amount. (if you change the Year of grant it will update the grant amount)');                
-						if (responce == true)
-						{
+						if (responce == true) {
 							hdnConfirm.value=true
-	//                        return true;
-						}
-						else
-						{
-							for(i=0;i<ddl.length;i++)
-							{
-								if(ddl.options[i].value==hdnCampYr.value)
-								{
+						} else {
+							for(i=0;i<ddl.length;i++) {
+								if(ddl.options[i].value==hdnCampYr.value) {
 									ddl.selectedIndex=i
 								}
 							}
-							//ddl.value=hdnCampYr.value
 							txt.value=hdn.value
 							hdnConfirm.value=false
-	//                        return false;
 						}
-					}
-					else
-					{
+					} else {
 						hdnConfirm.value=true
-	//                   return true;
 					}
-				}
-				else
-				{
+				} else {
 					hdnConfirm.value=true
-	//                return true;
 				}
             } else {
 				return false;
@@ -216,8 +171,7 @@
         
     </script>
 
-    <table class="text" border="1" cellpadding="0" cellspacing="0" style="border-color: Red"
-        width="100%">
+    <table class="text" border="1" cellpadding="0" cellspacing="0" style="border-color: Red" width="100%">
         <tr>
             <td>
                 <table class="text" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -579,9 +533,8 @@
         </tr>
         <tr>
             <td style="width: 35%">
-                <asp:LinkButton ID="lnkFedQuestionnaire" runat="server" Text="View Application" OnClick="lnkFedQuestionnaire_Click" /></td>
-           <!-- <td>
-                <a href="javascript:windowopener()">Questionnaire Report</a></td> -->
+                <asp:LinkButton ID="lnkFedQuestionnaire" runat="server" Text="View Application" OnClick="lnkFedQuestionnaire_Click" />
+            </td>
         </tr>
     </table>
     <br />
@@ -608,6 +561,7 @@
             </td>
         </tr>
     </table>
+
     <asp:HiddenField ID="hdnCampYear" runat="server" />
     <asp:HiddenField ID="hdnConfirm" runat="server" />
     <asp:HiddenField ID="hdnCamp" runat="server" />

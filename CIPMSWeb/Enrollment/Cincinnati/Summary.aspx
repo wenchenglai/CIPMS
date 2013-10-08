@@ -28,7 +28,7 @@
         <tr>
             <td colspan="2">
                 <asp:Label ID="Label4" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">For more information on this program please contact Prof. Getzel Cohen at <a href="mailto:getzel.cohen@uc.edu" target="_blank">getzel.cohen@uc.edu</a>, (513) 556-1951. </p>
+                    <p style="text-align:justify">For more information on this program please contact Prof. Karyn Zimerman at <a href="mailto:kzimerman@jfedcin.org" target="_blank">kzimerman@jfedcin.org</a>, 513-985-1534. </p>
                 </asp:Label></td>
         </tr>
     </table>
@@ -42,7 +42,7 @@
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
                             <td align="left">
-                                <asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary"
+                                <asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary"
                                     CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous"

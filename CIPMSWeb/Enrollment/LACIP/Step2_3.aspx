@@ -116,25 +116,12 @@
                     <asp:Panel ID="PnlNote" runat="server">
                         <asp:Label ID="lblNote" runat="server" CssClass="QuestionText">
                             <p style="text-align: justify" id="pNote" runat="server">
-                                <font color="red"><b>In order to be eligible</b></font> for the incentive grant,
-                                the camper must attend camp for at least 12 consecutive days.</p>
+                                <font color="red"><b>In order to be eligible for the incentive grant,
+                                the camper must attend camp for at least 12 consecutive days.</b></font></p>
                         </asp:Label>
                     </asp:Panel>
                 </td>
             </tr>
-            <%--<tr>
-                <td valign="top">
-                    &nbsp;&nbsp;<asp:Label ID="Label25" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" colspan="2">
-                    <asp:Panel ID="PnlQ9" runat="server">
-                        <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Dates of the Camp session</asp:Label><br />
-                        <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblStartDate" runat="server" CssClass="QuestionText"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label28" runat="server" CssClass="QuestionText">End Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblEndDate" runat="server" CssClass="QuestionText"></asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
@@ -192,10 +179,10 @@
                 <td colspan="2">
 					<asp:Label ID="lblChkText" CssClass="headertext1" runat="server">
 						<p style="text-align:justify">
-                            I have read the Jewish Federation of Greater Los Angeles’ release form for the One Happy Camper Program 2013. 
+                            I have read the Jewish Federation of Greater Los Angeles’ release form for the One Happy Camper Program 2014. 
                             By filling in this box, I acknowledge agreement with the aforementioned release form. 
                             Furthermore, the box I fill in represents my signature on all signature lines in the 
-                            One Happy Camper Program 2013 release.
+                            One Happy Camper Program 2014 release.
                         </p>
                     </asp:Label>
 					<asp:CustomValidator Enabled="false" ID="CusVal2" ErrorMessage="testing" CssClass="InfoText"
@@ -229,7 +216,7 @@
                         <tr>
                             <td align="left">
                                 <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server"
-                                    Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                                    Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous"
                                     CssClass="submitbtn" />

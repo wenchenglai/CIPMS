@@ -40,7 +40,7 @@
 					<p style="text-align:justify">
                         Atlanta One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days 
                         (exceptions apply for URJ 6 Points and Adamah Adventures). Eligible campers must be entering grades 1-12 (after camp) and be 
-                        attending one of the 150+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (www.jewishcamp.org).   
+                        attending one of the 150+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).   
 					</p>
 				</asp:Label>
 			</td>
@@ -93,7 +93,7 @@
 					<table width="100%" cellspacing="0" cellpadding="0" border="0">
 						<tr>
 							<td  align="left">
-								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
+								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
 							</td>
 							<td>
 								<asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" />

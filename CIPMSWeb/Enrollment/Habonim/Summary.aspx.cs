@@ -40,33 +40,40 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
             string last3digits = campID.Substring(campID.Length - 3);
             switch (last3digits)
             {
-                case "029": imgLogo.Src = "../../images/Camp Galil.jpg";
-                    //tdtext1.Visible = false;
-                    //tdtext2.Visible = true;
+                case "029": 
+                    imgLogo.Src = "../../images/Camp Galil.jpg";
+                    lblGrade.Text = "3 - 8";
+                    liTriState.Visible = false;
+                    liDelaware.Visible = true;
                     break;
-                case "036": imgLogo.Src = "../../images/Camp Gesher.jpg";
-                    //tdtext1.Visible = true;
-                    //tdtext2.Visible = false;
+
+                case "036": 
+                    imgLogo.Src = "../../images/Camp Gesher.jpg";
                     break;
-                case "037": imgLogo.Src = "../../images/Camp Gilboa.jpg";
-                    //tdtext1.Visible = false;
-                    //tdtext2.Visible = true;
+
+                case "037": 
+                    imgLogo.Src = "../../images/Camp Gilboa.jpg";
                     break;
-                case "057": imgLogo.Src = "../../images/Camp Miriam.JPG";
-                    //tdtext1.Visible = true;
-                    //tdtext2.Visible = false;
+
+                case "057": 
+                    imgLogo.Src = "../../images/Camp Miriam.JPG";
+                    lblGrade.Text = "4 - 9";
+                    lblDaysEnd.Text = "14";
+                    lblOrgName.Text = "Hanoar Haoved Youth";
                     break;
-                case "060": imgLogo.Src = "../../images/Camp Moshava.jpg";
-                    //tdtext1.Visible = true;
-                    //tdtext2.Visible = false;
+
+                case "060": 
+                    imgLogo.Src = "../../images/Camp Moshava.jpg";
+                    liTriState.Visible = false;
+                    liDelaware.Visible = true;
                     break;
-                case "066": imgLogo.Src = "../../images/Camp Na'aleh.jpg";
-                    //tdtext1.Visible = false;
-                    //tdtext2.Visible = true;
+
+                case "066": 
+                    imgLogo.Src = "../../images/Camp Na'aleh.jpg";
                     break;
-                case "095": imgLogo.Src = "../../images/Camp Tavor.jpg";
-                    //tdtext1.Visible = false;
-                    //tdtext2.Visible = true;
+
+                case "095": 
+                    imgLogo.Src = "../../images/Camp Tavor.jpg";
                     break;
             }
 
@@ -91,14 +98,7 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
-        //if (Session["CampID"].ToString() == "2037")
-        //{
-        //    Response.Redirect("~/NYCampRedirect.aspx");
-        //}
-        //else
-        //{
-            Response.Redirect("../Step1_NL.aspx");
-        //}
+        Response.Redirect("../Step1_NL.aspx");
     }
 
     protected void btnNext_Click(object sender, EventArgs e)

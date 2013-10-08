@@ -48,15 +48,6 @@ function logo_onclick() {
 					</asp:Label>
 				</td>
 			</tr> 
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify; color:Red">
-						<b><u>If the camper currently attends Jewish day school</u>, please do not proceed with this application and instead, call Sally Stein 412-992-5243.</b>
-					</p>  
-				</asp:Label>
-			</td>
-        </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
@@ -65,7 +56,7 @@ function logo_onclick() {
                 <td valign="top" colspan="2"><br />
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
-                            <td  align="left"><asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
+                            <td  align="left"><asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" /></td>
                             <td align="center">

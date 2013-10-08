@@ -2757,7 +2757,7 @@ function VaildatePage3Step2_LACIP(sender,args)
     //to validate whether the release form has been acknowledged
     if (bValid && chkAcknowledge.checked==false)
     {
-        strErrorMsg="<li>Please review the release form and Acknowledge</li>";
+        strErrorMsg="<li>Please review the release form and acknowledge</li>";
         bValid = false;
     } 
 

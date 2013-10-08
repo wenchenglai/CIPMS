@@ -88,8 +88,8 @@
         <!-- Admin Panel-->
         <tr>
             <td colspan="2" align="center">
-                <asp:Panel ID="PnlAdmin" runat="server" Visible="false">
-                    <table width="90%" cellpadding="0" cellspacing="0" border="0">
+                <asp:Panel ID="PnlAdmin" runat="server" Visible="false" CssClass="QuestionText">
+                    <table width="90%" cellpadding="0" cellspacing="0" border="0" class="QuestionText">
                         <tr>
                             <td><span class="InfoText">*</span>Comments</td>
                             <td><asp:TextBox ID="txtComments" runat="server" CssClass="txtbox2" TextMode="MultiLine" /></td>
@@ -105,7 +105,7 @@
                 <table width="100%" cellspacing="0" cellpadding="5" border="0">
                     <tr>
                         <td align="left">
-                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" />
+                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" />
                         </td>
                         <td >
                             <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />

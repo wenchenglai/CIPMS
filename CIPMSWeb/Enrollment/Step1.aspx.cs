@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -207,6 +208,9 @@ public partial class Step1 : System.Web.UI.Page
         //{
         //    return;
         //}
+
+        if (ZipCodeHasClosedProgram())
+            Response.Redirect("~/CamperHolding.aspx");
 
 		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = string.Empty;
 		UserDetails Info;
@@ -476,6 +480,21 @@ public partial class Step1 : System.Web.UI.Page
 		}
 	}
 
+    bool ZipCodeHasClosedProgram()
+    {
+        string strZip = txtZipCode.Text.Trim();
+        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
+
+        if (Feds != "" && Feds != "None")
+        {
+            if (objGeneral.ValidateZipCode(strZip, Feds))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     void txtZipCode_TextChanged(object sender, EventArgs e)
     {
         txtZipCode.Text = txtZipCode.Text.ToUpper();
@@ -506,7 +525,6 @@ public partial class Step1 : System.Web.UI.Page
                 Response.Redirect("~/CamperHolding.aspx");
             }
         }
-        // end change.
 
         ddlState.SelectedIndex = -1;
 

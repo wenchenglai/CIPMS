@@ -315,7 +315,6 @@ public partial class Step2_Adamah_3 : Page
         ddlCamp.DataTextField = "Camp";
         ddlCamp.DataValueField = "ID";
         ddlCamp.DataBind();
-        ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
 
     private string ConstructCamperAnswers()

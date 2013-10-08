@@ -4,7 +4,8 @@
 	<table id="tblRegular" runat="server" >
 		<tr>
 			<td colspan="2">
-				<img src="Toronto OHC Logo.jpg" height="130" width="600" />             
+				<img src="Toronto OHC Logo.jpg" height="81" width="371" /> 
+				<img src="logo2.jpg" height="144" width="240" />                             
 			</td>
 		</tr>
 		<tr>
@@ -18,7 +19,7 @@
 			<td colspan="2">
 				<p class="infotext3" style="text-align:justify">
 					Thank you for choosing Jewish overnight camp and helping us to be one camper closer to achieving our goal.  
-					The Silber Family Centre for Jewish Camping has committed to doubling the number of campers attending Jewish overnight camp by 2015.  
+					The Silber Family Centre for Jewish Camping has committed to doubling the number of campers attending Jewish overnight camp by 2016.  
 					One of the ways that we are spreading the 'I LOVE Jewish Camp' philosophy is through our partnership with Foundation for Jewish Camp.  
 				</p>
 			</td>
@@ -31,7 +32,6 @@
 						<li>A first-time camper (has never attended a Jewish overnight camp for more than two consecutive weeks)</li>
 						<li>Currently residing in the Greater Toronto Area (GTA)</li>            
 						<li>Applying for camp sessions that are a minimum of three weeks</li>
-						<li>Applying BOTH for a TopBunk - One Happy Camper grant (on this site) AND to a camp program (directly with the camp) before the camper departs for camp</li>
 					</ul>
 				</div>
 			</td>
@@ -39,7 +39,7 @@
 		<tr>
 			<td colspan="2">
 				<p class="infotext3" style="text-align:justify">
-					We know that camp can be a new adventure and that you may want to dip your toes before jumping in so we offer a shorter session option.  
+					We know that camp can be a new adventure and that you may want to dip your toes before jumping in, so we offer a shorter session option:  
 					Eligible campers registered for a 'taste of' session at camp, will have a grant reserved in their name.  Just in case your camper loves camp 
 					and chooses to extend their 10 day or 2 week session to an eligible program, most camps will offer the option to extend to a full session, 
 					at which time, we will activate the reserved grant for your camper.   If they prefer just to have a 'taste of' camp, he/she would still be 
@@ -89,7 +89,7 @@
 					<table width="100%" cellspacing="0" cellpadding="0" border="0">
 						<tr>
 							<td  align="left">
-								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
+								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
 							</td>
 							<td>
 								<asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" />

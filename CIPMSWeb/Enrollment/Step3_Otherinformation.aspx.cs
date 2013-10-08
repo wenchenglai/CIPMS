@@ -40,7 +40,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
     {
         CamperAppl = new CamperApplication();
         objGeneral = new General();
-        chkAgreement.Items[0].Attributes.Add("style", "display:none");
+
         if (!Page.IsPostBack)
         {
             PopulateDropdowns();
@@ -371,9 +371,12 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 
     void btnSubmitApplication_Click(object sender, EventArgs e)
     {
-        if (!chkAgreement.Items[2].Selected)
+        try
         {
-			lblErrorMsg.Text = "Please Select Agreement Checkbox before submitting the application";
+            if (Page.IsValid)
+            {
+        if (!chkAgreement.Checked)
+        {
 			lblErrorMsg.Visible = true;
 			return;
         }
@@ -408,7 +411,12 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 			strRedirURL = "ThankYou.aspx";
 
 		Response.Redirect(strRedirURL, false);
-
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
     }
 
     private void ProcessPJLFile()
@@ -549,7 +557,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
     {
         string strTablevalues = "";
         string strComments, strModifiedBy, strFJCID;
-        Boolean bAcceptOption1 = false, bAcceptOption2 = false, bAcceptOption3 = false;
         int RowsAffected, iStatus = 0;
 
         strTablevalues = ConstructCamperAnswers();
@@ -561,34 +568,11 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         if (Session["STATUS"] != null)
             iStatus = Convert.ToInt16(Session["STATUS"]);
 
-        foreach (ListItem li in chkAgreement.Items)
-        {
-            if (li.Selected)
-            {
-                switch (li.Value)
-                {
-                    case "1":
-                        bAcceptOption1 = true;
-                        break;
-                    case "2":
-                        bAcceptOption2 = true;
-                        break;
-                    case "3":
-                        bAcceptOption3 = true;
-                        break;
-                }
-            }
-        }
-
-        //if the user has declined the status to be set to decline
-		//if (!bAcceptOption1)
-		//    Session["STATUS"] = ((int)StatusInfo.CamperDeclined).ToString();
-
         if (strFJCID != "" && strTablevalues != "" && strModifiedBy != "" && bPerformUpdate)
             RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strTablevalues, strModifiedBy, strComments);
-        //to set whether the user has accpeted/decline the terms and conditions
+        
         if (strFJCID != "")
-            CamperAppl.SetTermsandConditionsAcceptance(strFJCID, bAcceptOption1, bAcceptOption2, bAcceptOption3);
+            CamperAppl.SetTermsandConditionsAcceptance(strFJCID, chkAgreement.Checked, false, false);
     }
 
     //to get the camper answers from the database
@@ -848,11 +832,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         {
             dr = dsTerms.Tables[0].Rows[0];
             if (!dr["ConfirmAcceptance"].Equals(DBNull.Value))
-                chkAgreement.Items[0].Selected = (Boolean)dr["confirm2"] ? true : false;
-            if (!dr["confirm2"].Equals(DBNull.Value))
-                chkAgreement.Items[1].Selected = (Boolean)dr["confirm3"] ? true : false;
-            if (!dr["confirm3"].Equals(DBNull.Value))
-                chkAgreement.Items[2].Selected = (Boolean)dr["ConfirmAcceptance"] ? true : false;
+                chkAgreement.Checked = (Boolean)dr["ConfirmAcceptance"];
         }
 
         //to set the panel status based on the radio button selected

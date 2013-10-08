@@ -102,13 +102,87 @@
     },
 
     OnSynagogueDropDownChange: function (ddlObject) {
-        var $txtOtherSynagogue = $('#ctl00_Content_txtOtherSynagogue');
+        var $txtOtherSynagogue = $('#ctl00_Content_txtOtherSynagogue'),
+            $ddlWho = $('#ctl00_Content_ddlWho');
 
         if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
             $txtOtherSynagogue.removeAttr('disabled');
         } else {
             $txtOtherSynagogue.attr('disabled', true);
+
+            // 2013-10-07 Toronto has special rule depends on selecte Synagogue
+            if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Beth Tzedec Congregation") {
+                PageValidator.ToggleddlWhoNames("26");
+            } else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "City Shul") {
+                PageValidator.ToggleddlWhoNames("27");
+            } else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Holy Blossom Temple") {
+                PageValidator.ToggleddlWhoNames("28");
+            } else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Shaarei Shomayim Congregation") {
+                PageValidator.ToggleddlWhoNames("29");
+            } else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Shaarei Tefillah Congregation") {
+                PageValidator.ToggleddlWhoNames("30");
+            } else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Temple Sinai Congregation") {
+                PageValidator.ToggleddlWhoNames("31");
+            } else {
+                PageValidator.ToggleddlWhoNames("-1");
+            }
+
+            //if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Beth Tzedec Congregation") {
+            //    PageValidator.ToggleddlWhoNames("14");
+            //} else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "City Shul") {
+            //    PageValidator.ToggleddlWhoNames("15");
+            //} else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Holy Blossom Temple") {
+            //    PageValidator.ToggleddlWhoNames("16");
+            //} else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Shaarei Shomayim Congregation") {
+            //    PageValidator.ToggleddlWhoNames("17");
+            //} else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Shaarei Tefillah Congregation") {
+            //    PageValidator.ToggleddlWhoNames("18");
+            //} else if ($('#ctl00_Content_ddlSynagogue>option:selected').text() === "Temple Sinai Congregation") {
+            //    PageValidator.ToggleddlWhoNames("19");
+            //} else {
+            //    PageValidator.ToggleddlWhoNames("-1");
+            //}
         }
+    },
+
+    ToggleddlWhoNames: function(idtoShow) {
+        for (var i = 14; i < 20; i++) {
+            // 2013-10-08 IE cannot understand option selector, so I have to comment out the single line below, and use the complex logic
+            //$("#ctl00_Content_ddlWho option[value='" + i.toString() + "']").hide();
+
+            //To hide elements
+            $("#ctl00_Content_ddlWho option").each(function (index, val) {
+                if ($(this).is('option') && (!$(this).parent().is('span'))) {
+
+                    if ($(this).val() == i.toString())
+                        $(this).wrap((navigator.appName == 'Microsoft Internet Explorer') ? '<span>' : null).hide();
+                    //else
+                    //    $(this).wrap((navigator.appName == 'Microsoft Internet Explorer') ? '<span>' : null);
+                }
+
+            });
+        }
+        // 2013-10-08 IE cannot understand option selector, so I have to comment out the single line below, and use the complex logic
+        //$("#ctl00_Content_ddlWho option[value='" + idtoShow + "']").show();
+
+        //To show elements
+        $("#ctl00_Content_ddlWho option").each(function (index, val) {
+            if ($(this).val() == idtoShow.toString()) {
+                if (navigator.appName == 'Microsoft Internet Explorer') {
+                    if (this.nodeName.toUpperCase() === 'OPTION') {
+                        var span = $(this).parent();
+                        var opt = this;
+                        if ($(this).parent().is('span')) {
+
+                            $(opt).show();
+                            $(span).replaceWith(opt);
+                        }
+                    }
+                } else {
+                    $(this).show(); //all other browsers use standard .show()
+                }
+            }
+        });
     },
 
     OnJCCDropDownChange: function (ddlObject) {
@@ -347,7 +421,7 @@ $(function () {
     PageValidator.OnFirstTimerChange(null);
     PageValidator.OnYouthMovementRadioChange(null);
     PageValidator.OnBeenToIsraelRadioChange(null);
-
+    PageValidator.OnSynagogueDropDownChange(null);
     if ($('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
         PageValidator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_3')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_0').is(':checked')) {

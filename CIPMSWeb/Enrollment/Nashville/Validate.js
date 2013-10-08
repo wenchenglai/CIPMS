@@ -51,8 +51,14 @@
 
         // JCC - when it's checked, some error checking
         if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
-            if ($('#ctl00_Content_txtOtherJCC').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
+            if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae select one JCC.</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
+                if ($('#ctl00_Content_txtOtherJCC').val() === "") {
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - pleae enter the JCC name.</li></ul>";
+                }
             }
         }
 

@@ -60,8 +60,7 @@
             <td valign="top" style="padding-bottom:20px;">
                 <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                     <p class="InfoText">
-					    In order to be eligible for the Toronto OHC incentive grant, the camper must attend camp for at least 19 consecutive days 
-						(unless attending camp in the west; s/he must attend for at least 12 consecutive days).
+					    In order to be eligible for the Toronto OHC incentive grant, the camper must attend camp for at least 19 consecutive days.
                     </p>
                     <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                     <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
@@ -125,7 +124,7 @@
                 <table width="100%" cellspacing="0" cellpadding="5" border="0">
                     <tr>
                         <td align="left">
-                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                         <td>
                             <asp:Button ID="btnPrevious" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
                         </td>

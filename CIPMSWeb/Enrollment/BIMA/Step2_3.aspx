@@ -33,7 +33,7 @@
                 <td valign="top">
                     <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for BIMA - Berkshire Institute for Music and Arts yet?</asp:Label><br />
+                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Have you registered for camp yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
                           The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                                       
@@ -133,7 +133,7 @@
                 <td valign="top"  colspan="2">
                     <table width="100%" cellspacing="0" cellpadding="5" border="0">
                         <tr>
-                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td >
                                 <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
                             </td>

@@ -68,7 +68,7 @@
     
     <div id="popupContact" class="text" style="overflow: auto; height:130px;">
 		Code may apply to:<br /><br />
-		<strong>PJ Library Goes to Camp</strong> Incentive Program ?Please click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.<br /><br />
+		<strong>PJ Library Goes to Camp</strong> Incentive Program. <br /> Please click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.<br /><br />
 		<br /> 
 		<a href="Javascript:disablePopup();" style="float:right">Close</a>
     </div>
@@ -329,7 +329,7 @@
                             </td>
                             <td align="left">
                                 <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server"
-                                    Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                                    Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td align="left">
                                 <asp:Button CausesValidation="false" ValidationGroup="CommentsGroup" ID="btnSaveandExit"
                                     runat="server" Text="Save & Continue Later" CssClass="submitbtn1"/></td>

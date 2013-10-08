@@ -7,35 +7,35 @@ namespace CIPMSBC.Eligibility
 {
     class EligibilityHabonim : EligibilityBase
     {
-        public EligibilityHabonim(FederationEnum fed)
+        int CampID;
+        public EligibilityHabonim(FederationEnum fed, int CampID_in)
             : base(fed)
         {
+            CampID = CampID_in;
         }
+
         public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
         {
             if (checkEligibilityCommon(FJCID, out StatusValue))
             {
                 return true;
             }
+
             StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             } 
-            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
+
             StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
             return true;
-           
         }
-        private int StatusBasedOnCamp(string FJCID, int StatusValue, out int outCampID)
+
+        private int StatusBasedOnCamp(string FJCID, int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
             DataSet dsCamp;
@@ -44,11 +44,9 @@ namespace CIPMSBC.Eligibility
             int CampID = 0;
             int CampOption = 0;
             int iStatusValue = -1;
-            outCampID = 0;
 
             if (dsCamp.Tables[0].Rows.Count > 0)
             {
-
                 int i;
                 for (i = 0; i < dsCamp.Tables[0].Rows.Count; i++)
                 {
@@ -60,7 +58,6 @@ namespace CIPMSBC.Eligibility
                     if (CampOption == 2)
                     {
                         CampID = Convert.ToInt32(drCamp["Answer"]);
-                        outCampID = CampID;
                         if (CampID == 0)
                         {
                             iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoCamp);
@@ -117,15 +114,12 @@ namespace CIPMSBC.Eligibility
         private int StatusBasedOnGrade(string FJCID, int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
-            DataSet dsGrade;
-            dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
-            DataRow drGrade;
+            DataSet dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
             int iStatusValue = -1;
-            int Grade;
 
             if (dsGrade.Tables[0].Rows.Count > 0)
             {
-                drGrade = dsGrade.Tables[0].Rows[0];
+                DataRow drGrade = dsGrade.Tables[0].Rows[0];
                 if (DBNull.Value.Equals(drGrade["Answer"]))
                 {
                     iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
@@ -133,14 +127,43 @@ namespace CIPMSBC.Eligibility
                 else
                 {
                     General objGeneral = new General();
-                    Grade = Convert.ToInt32(drGrade["Answer"]);
-                    if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
+                    int Grade = Convert.ToInt32(drGrade["Answer"]);
+
+                    // 2013-10-06 Camp Miriam, Galil, Moshava have different grade eligibility
+                    string strCampID = CampID.ToString();
+                    string campID3digits = strCampID.Substring(strCampID.Length - 3);
+                    if (campID3digits == "057") // Miriam
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        if (Grade > 3 && Grade < 10)
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        else
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                    }
+                    else if (campID3digits == "029") // Galil
+                    {
+                        if (Grade > 2 && Grade < 9)
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        else
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                    }
+                    else if (campID3digits == "060") // Moshava
+                    {
+                        if (Grade > 2 && Grade < 11)
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        else
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
                     }
                     else
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                        // all other camps that still uses the tblFedGrants table
+                        if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
+                        {
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        }
+                        else
+                        {
+                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                        }
                     }
                 }
             }
@@ -178,8 +201,7 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            int CampID;
-            StatusValue = StatusBasedOnCamp(FJCID, StatusValue, out CampID);
+            StatusValue = StatusBasedOnCamp(FJCID, StatusValue);
             if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
             {
                 oCA.UpdateAmount(FJCID, 0.00, 0, "");
@@ -198,7 +220,8 @@ namespace CIPMSBC.Eligibility
             }
 
             string strCampID = CampID.ToString();
-            if (Amount > 0 && strCampID.Substring(strCampID.Length - 3) == "095")
+            string last3digits = strCampID.Substring(strCampID.Length - 3);
+            if (Amount > 0 && (last3digits == "095" || last3digits == "029"))
             {
                 double OriginalAmount = Amount;
                 // 2013-07-23 Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days

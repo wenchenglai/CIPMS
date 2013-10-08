@@ -165,7 +165,7 @@
                         <table width="85%" cellpadding="0" cellspacing="0" border="0">
                             <tr>
                                 <td></td>
-                                <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                                <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                                 <td  align="left"><asp:Button CausesValidation="false" ValidationGroup="CommentsGroup" ID="btnSaveandExit" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" /></td>
                                 <td ><asp:Button ID="btnNext" runat="server" Text="Next >>"  CssClass="submitbtn"  /></td>
                             </tr>

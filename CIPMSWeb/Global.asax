@@ -3,13 +3,27 @@
 
 <script runat="server">
 
+
 	CIPMSBC.SrchCamperDetails _objCamperDet = new CIPMSBC.SrchCamperDetails();
 		
 	void Application_Start(object sender, EventArgs e) 
 	{
 		// Code that runs on application startup
-		Application["CampYearID"] = 6;
-		Application["CampYear"] = 2014;
+        int year = 0;
+        CIPMSBC.General _objGen = new CIPMSBC.General();        
+        System.Data.DataSet dsCampYear = _objGen.GetCurrentYear();
+        if (dsCampYear.Tables[0].Rows.Count > 0)
+        {
+            year = Convert.ToInt32(dsCampYear.Tables[0].Rows[0]["CampYear"]);
+        }
+        else
+        {
+            // Error
+            year = DateTime.Now.Year;
+        }
+                
+		Application["CampYearID"] = year - 2008;
+		Application["CampYear"] = year;
 	}
 	
 	void Application_End(object sender, EventArgs e) 

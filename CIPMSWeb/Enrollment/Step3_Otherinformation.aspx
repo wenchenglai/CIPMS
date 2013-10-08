@@ -8,7 +8,8 @@
             <tr>
                 <td>
                     <p class="headertext">
-                        Section VII: Demographics</p>
+                        Section VII: Demographics
+                    </p>
                 </td>
             </tr>
         </table>
@@ -25,7 +26,7 @@
                         ShowSummary="true" CssClass="InfoText" />
                     <asp:CustomValidator ID="CusValComments" ValidationGroup="OtherValidation" runat="server"
                         Display="None" CssClass="InfoText" ErrorMessage="Please enter the Comments" EnableClientScript="false"></asp:CustomValidator>
-                    <asp:Label runat="server" ID="lblErrorMsg" Visible="false" CssClass="QuestionText" forecolor='red'></asp:Label>
+                    <asp:Label runat="server" ID="lblErrorMsg" Text="Please select the Verification checkbox before submitting the application" Visible="false" CssClass="QuestionText" forecolor='red'></asp:Label>
                 </td>
             </tr>
         </table>
@@ -196,8 +197,6 @@
                         <asp:ListItem Text="Camper's Sibling(s)" Value="3"></asp:ListItem>
                         <asp:ListItem Text="Nobody" Value="4"></asp:ListItem>
                     </asp:CheckBoxList>
-<%--                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo1" CssClass="InfoText"
-                        runat="server" Display="None" ErrorMessage="Please answer Question No. 10" ClientValidationFunction="CheckCertify_ParentInfo1"></asp:CustomValidator>--%>
                 </td>
             </tr>
             <tr>
@@ -218,8 +217,6 @@
                         <asp:ListItem Text="Camper's Sibling(s)" Value="3"></asp:ListItem>
                         <asp:ListItem Text="Nobody" Value="4"></asp:ListItem>
                     </asp:CheckBoxList>
-<%--                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="cusvalParentInfo2" CssClass="InfoText"
-                        runat="server" Display="None" ErrorMessage="Please answer Question No. 11" ClientValidationFunction="CheckCertify_ParentInfo2"></asp:CustomValidator>--%>
                 </td>
             </tr>
             <tr>
@@ -227,29 +224,14 @@
                 </td>
                 <td valign="top">
                     <asp:Label ID="Label35" runat="server" CssClass="headertext1">Terms and Conditions:</asp:Label>
-                    <ol visible="false" runat="server">
-                        <li class="QuestionText">I hereby certify that all of the information I have provided
-                            as part of this application is correct and accurate to the best of my knowledge.</li>
-                        <li class="QuestionText">I grant permission to FJC to share information related to my
-                            application with Jewish organizations in my area.</li>
-                        <li class="QuestionText">I understand that I may be contacted by FJC and/or an independent
-                            evaluator regarding my application and I agree to participate in the evaluation
-                            to the best of my ability.</li>
-                    </ol>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                         <tr>
                             <td valign="top">
                                 <asp:Label ID="Label36" CssClass="InfoText" runat="server" Text=""></asp:Label>
                             </td>
                             <td>
-                                <asp:CheckBoxList CellPadding="0" ID="chkAgreement" runat="server" CssClass="QuestionText" RepeatDirection="Vertical">
-                                    <asp:ListItem Text="I understand that I will be contacted in the future by the Foundation for Jewish Camp and/or my local incentive partner to participate in a survey related to my child’s summer camp experience."
-                                        Value="2" Selected="False"></asp:ListItem>
-                                    <asp:ListItem Text="Yes, please feel free to send me additional information from the Foundation for Jewish Camp, my local incentive partner and other Jewish agencies. "
-                                        Value="3" Selected="True"></asp:ListItem>
-                                    <asp:ListItem Text="<font color='red'><b>VERIFICATION STATEMENT:</b></font> I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp). By accepting this grant, I acknowledge that relevant information may be shared with other entities in the normal course of FJC’s business. I also acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor to participate in a voluntary survey about my experience with this program and/or my child’s summer camp experience.<font color='red'><b>(REQUIRED TO CHECK)<b></font>"
-                                        Value="1" Selected="False"></asp:ListItem>
-                                </asp:CheckBoxList>
+                                <asp:CheckBox ID="chkAgreement" runat="server" CssClass="QuestionText"
+                                    Text="<font color='red'><b>VERIFICATION STATEMENT: </b></font>I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp). By accepting this grant, I acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor.<font color='red'><b>(REQUIRED TO CHECK)<b></font>" />
                             </td>
                         </tr>
                     </table>
@@ -265,16 +247,15 @@
                     <asp:Label ID="Label10" runat="server" CssClass="QuestionText">Invite a friend to this site: </asp:Label><br />
                     <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Type in your friends email address</asp:Label>
                     <asp:TextBox ID="txtFriendsEmail" runat="server" CssClass="txtbox"></asp:TextBox>
-                    <asp:Button ID="btnInviteMoreFriends" ValidationGroup="FriendInvite" Text="Invite another friend"
-                        runat="server" CssClass="submitbtn1" /><br />
+                    <asp:Button ID="btnInviteMoreFriends" ValidationGroup="FriendInvite" Text="Invite another friend" runat="server" CssClass="submitbtn1" /><br />
                     <asp:RequiredFieldValidator ID="reqvalZipCode" ValidationGroup="FriendInvite" runat="server"
                         ControlToValidate="txtFriendsEmail" Display="None" ErrorMessage="Please type in your Friend's email address"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ValidationGroup="FriendInvite" ID="regExpEmail" runat="server"
                         ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
-                        Display="None" ErrorMessage="Please enter a valid Email ID"></asp:RegularExpressionValidator>
+                        Display="None" ErrorMessage="Please enter a valid Email"></asp:RegularExpressionValidator>
                     <asp:RegularExpressionValidator ValidationGroup="OtherValidation" ID="regEmail" runat="server"
                         ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
-                        Display="None" ErrorMessage="Please enter a valid Email ID" />
+                        Display="None" ErrorMessage="Please enter a valid Email" />
                 </td>
             </tr>
             <tr>
@@ -346,7 +327,7 @@
                         <tr>
                             <td align="left">
                                 <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server"
-                                    Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                                    Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous"
                                    CssClass="submitbtn" />
@@ -398,21 +379,29 @@
     <script language="javascript" type="text/javascript">
         function CheckCertify_OtherInfo(sender, args)
         {
-            var inputobjs = document.getElementsByTagName("input");
-            var chk1, chk2;
-            for (var i = 0; i <= inputobjs.length-1; i++)
-            {
-                if (inputobjs[i].type=="checkbox")
-                {
-                    if (inputobjs[i].id.indexOf("chkAgreement_2")>=0 && inputobjs[i].checked)
-                    {
-                        args.IsValid=true;
-                        return;
-                    }
-                }
+            var $chk = $('#ctl00_Content_chkAgreement');
+            if (!$(chkboxObject).is(':checked')) {
+                args.IsValid = false;
+                return;
             }
+
             args.IsValid = false;
             return;
+            //var inputobjs = document.getElementsByTagName("input");
+            //var chk1, chk2;
+            //for (var i = 0; i <= inputobjs.length-1; i++)
+            //{
+            //    if (inputobjs[i].type=="checkbox")
+            //    {
+            //        if (inputobjs[i].id.indexOf("chkAgreement_2")>=0 && inputobjs[i].checked)
+            //        {
+            //            args.IsValid=true;
+            //            return;
+            //        }
+            //    }
+            //}
+            //args.IsValid = false;
+            //return;
         }
         function CheckCertify_ParentInfo2(sender, args)
         {

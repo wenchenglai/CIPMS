@@ -29,7 +29,7 @@
                         The Jewish Federation of Nashville and Middle Tennessee One Happy Camper Program provides 
                         grants to encourage children to attend overnight Jewish camp for the first-time. It is not 
                         a scholarship fund and is not needs-based. Our goal is to engage families who are considering 
-                        sending their children to camp, and in effect, giving them $1.000 off their camp fee to try a Jewish one.
+                        sending their children to camp, and in effect, giving them $1,000 off their camp fee to try a Jewish one.
 					</b>
 					</p>
 				</asp:Label>
@@ -42,7 +42,7 @@
                         Middle Tennessee One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight 
                         summer camp for at least 19 consecutive days. Eligible campers must be entering 1-12 grades (after camp) 
                         and be attending one of the 150+ nonprofit, Jewish, overnight summer camps listed on the Foundation for 
-                        Jewish Camp’s website (www.jewishcamp.org) .   
+                        Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>) .   
 					</p>
 				</asp:Label>
 			</td>
@@ -55,7 +55,7 @@
                         daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for the program. 
                         If your child is not eligible and/or you are interested in learning about financial-needs based grants or other 
                         needs based funding options please visit <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a> contact your camp, and contact 
-                        Kristi Pearson, Jewish Federation of Nashville and Middle Tennessee, Controller, <a href="mailto:Kristi@jewishnashville.org">Kristi@jewishnashville.org</a>.
+                        Kristi Pearson, Jewish Federation of Nashville and Middle Tennessee, Controller, <a href="mailto:Michelle@jewishnashville.org">Michelle@jewishnashville.org</a>.
 					</p>
 				</asp:Label>
 			</td>
@@ -87,7 +87,7 @@
 					<table width="100%" cellspacing="0" cellpadding="0" border="0">
 						<tr>
 							<td  align="left">
-								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
+								<asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" />
 							</td>
 							<td>
 								<asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous" CssClass="submitbtn" OnClick="btnPrevious_Click" />

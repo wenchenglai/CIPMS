@@ -176,84 +176,65 @@ public partial class Step2_Habonim_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
-        int iStatus, iCampId;
-        string strModifiedBy, strFJCID, strComments;
         General objGeneral = new General();
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
-        try
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        if (!isReadOnly)
         {
-            if (Page.IsValid)
+            InsertCamperAnswers();
+        }
+        int iCampId = Int32.Parse(ddlCamp.SelectedValue);
+        Session["CampID"] = iCampId;
+        string strFJCID = hdnFJCIDStep2_3.Value;
+        //comments used only by the Admin user
+        string strComments = txtComments.Text.Trim();
+
+        int iStatus;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
             {
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                //to update the camp value to the database (to be used for search functionality)
+                CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
+
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim, iCampId);
+                objEligibility.checkEligibility(strFJCID, out iStatus);
+            }
+
+            //to update the status to the database
+            //CamperAppl.updateStatus(strFJCID, iStatus, strComments, Convert.ToInt16(strModifiedBy));
+            Session["STATUS"] = iStatus.ToString();
+            if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
+            {
+                string strRedirURL;
+                if (Master.UserId != Master.CamperUserId) //then the user is admin
+                    strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
+                else //the user is Camper
+                    strRedirURL = "../ThankYou.aspx";
+                //to update the status to the database   
                 if (!isReadOnly)
                 {
-                    InsertCamperAnswers();
+                    CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
                 }
-                iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
-                Session["CampID"] = iCampId;
-                strFJCID = hdnFJCIDStep2_3.Value;
-                //comments used only by the Admin user
-                strComments = txtComments.Text.Trim();
+                Response.Redirect(strRedirURL, false);
+            }
+            else //if he/she is eligible
+            {
+                Session["FJCID"] = hdnFJCIDStep2_3.Value;
 
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-                        //to update the camp value to the database (to be used for search functionality)
-                        CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibility(strFJCID, out iStatus);
-                    }
-
-                    //to update the status to the database
-                    //CamperAppl.updateStatus(strFJCID, iStatus, strComments, Convert.ToInt16(strModifiedBy));
-                    Session["STATUS"] = iStatus.ToString();
-                    if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
-                    {
-                        string strRedirURL;
-                        if (Master.UserId != Master.CamperUserId) //then the user is admin
-                            strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
-                        else //the user is Camper
-                            strRedirURL = "../ThankYou.aspx";
-                        //to update the status to the database   
-                        if (!isReadOnly)
-                        {
-                            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
-                        }
-                        Response.Redirect(strRedirURL, false);
-                    }
-                    else //if he/she is eligible
-                    {
-                        Session["FJCID"] = hdnFJCIDStep2_3.Value;
-
-                        if (Request.QueryString["camp"] == "tavor")
-                            Response.Redirect("../Step2_1.aspx?camp=tavor");
-                        else
-                            Response.Redirect("../Step2_1.aspx");
-                    }
-                }
-                //Session["ZIPCODE"] = null;
+                if (Request.QueryString["camp"] == "tavor")
+                    Response.Redirect("../Step2_1.aspx?camp=tavor");
+                else
+                    Response.Redirect("../Step2_1.aspx");
             }
         }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-        finally
-        {
-            objEligibility = null;
-            objGeneral = null;
-        }
     }
-
 
     //to insert the Camper Answers
     protected void InsertCamperAnswers()

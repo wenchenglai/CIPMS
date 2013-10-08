@@ -73,7 +73,7 @@
                         <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="SJValidator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
                     </div> 
                     <div class="column1" style="float:left; width: 200px;">
-                        <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnSynagogueDropDownChange(this);" />
+                        <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" Width="180px" onChange="PageValidator.OnSynagogueDropDownChange(this);" />
                     </div> 
                     <div class="column1" style="float:left; width: 250px;">
                         If "Other": <asp:TextBox ID="txtOtherSynagogue" runat="server" MaxLength="200" Width="160px" CssClass="txtbox" />
@@ -151,7 +151,7 @@
             <td valign="top"><span class="InfoText">*</span>9</td>
             <td valign="top" style="padding-bottom:20px;">
                 <div>
-                    Has anyone in your family been to Israel? If yes, how many times?
+                    Has anyone in your family been to Israel? If yes, how many times collectively?
                 </div>
                 <div>
                     <asp:RadioButton ID="rdoBeenToIsraelYes" value="1" GroupName="BeenToIsrael" runat="server" Text="Yes" onclick="PageValidator.OnBeenToIsraelRadioChange(this);" />
@@ -163,12 +163,12 @@
         </tr>
         <!-- Admin Panel-->
         <tr>
-            <td colspan="2">
-                <asp:Panel ID="PnlAdmin" runat="server" Visible="false">
-                    <table border="0">
+            <td colspan="2" align="center">
+                <asp:Panel ID="PnlAdmin" runat="server" Visible="false" CssClass="QuestionText">
+                    <table width="90%" cellpadding="0" cellspacing="0" border="0" class="QuestionText">
                         <tr>
                             <td><span class="InfoText">*</span>Comments</td>
-                            <td><asp:TextBox ID="txtComments" runat="server" CssClass="txtbox" TextMode="MultiLine"></asp:TextBox></td>
+                            <td><asp:TextBox ID="txtComments" runat="server" CssClass="txtbox2" TextMode="MultiLine" /></td>
                         </tr>
                     </table>
                 </asp:Panel>
@@ -180,7 +180,7 @@
                 <td valign="top"  colspan="2">
                     <table width="100%" cellspacing="0" cellpadding="5" border="0">
                         <tr>
-                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td >
                                 <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
                             </td>

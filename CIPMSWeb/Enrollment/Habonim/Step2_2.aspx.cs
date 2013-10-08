@@ -32,7 +32,7 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
     {
         CamperAppl = new CamperApplication();
         objGeneral = new General();
-        if (!Page.IsPostBack)
+        if (!IsPostBack)
         {
             //to fill the grades in the dropdown
             getGrades();
@@ -43,7 +43,15 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
                 getCamperAnswers();
             }
 
-            if (Request.QueryString["camp"] == "tavor")
+            int resultCampId = 0; //long resultFedID;
+            if (Session["CampID"] != null)
+            {
+                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
+            }
+            string campID = resultCampId.ToString();
+            string last3digits = campID.Substring(campID.Length - 3);
+
+            if (Request.QueryString["camp"] == "tavor" || last3digits == "029")
             {
                 trSibling2.Visible = true;
                 trSibling3.Visible = true;
@@ -133,7 +141,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
         int iStatus;
         string strModifiedBy, strFJCID;
 
-        
         if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
         {
             ProcessCamperAnswers();

@@ -34,7 +34,7 @@
 						<asp:ListItem Text="This past Fall (Sep - Dec 2013)" Value="3"></asp:ListItem>
 						<asp:ListItem Text="This past Winter (Jan - Mar 2014)" Value="4"></asp:ListItem>
 						<asp:ListItem Text="This Spring (Apr - May 2014)" Value="5"></asp:ListItem>
-						<asp:ListItem Text="This Summer (Jun Aug 2014)" Value="6"></asp:ListItem>
+						<asp:ListItem Text="This Summer (Jun - Aug 2014)" Value="6"></asp:ListItem>
 						<asp:ListItem Text="Don't know/Not sure" Value="7"></asp:ListItem>																																										
 					</asp:DropDownList>
 				</div>
@@ -130,7 +130,8 @@
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>	
 						<asp:ListItem Text="Nina Patchak" Value="12"></asp:ListItem>	
 						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>	
-						<asp:ListItem Text="Nancy Perlman" Value="14"></asp:ListItem>	                        																		
+						<asp:ListItem Text="Nancy Perlman" Value="14"></asp:ListItem>	
+						<asp:ListItem Text="Ricci Postan" Value="23"></asp:ListItem>                                                																		
 						<asp:ListItem Text="Alyssa Russell" Value="15"></asp:ListItem>
 						<asp:ListItem Text="Judy Shapiro" Value="16"></asp:ListItem>							
 						<asp:ListItem Text="Brenda Silvers" Value="17"></asp:ListItem>													
@@ -208,7 +209,7 @@
                     <tr>
                         <td align="left">
                             <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server"
-                                Text="<<Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                                Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                         <td>
                             <asp:Button ID="btnPrevious" ValidationGroup="CommentsGroup" runat="server" Text=" << Previous"
                                 CssClass="submitbtn" />

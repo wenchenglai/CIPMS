@@ -15,7 +15,7 @@
 						Thank you for visiting One Happy Camper.
 						<br />
 						<br />
-						Because you live in the Western Massachusetts area, you might be eligible for a grant sponsored by the Harold Grinspoon Foundation!.</p>
+						Because you live in the Western Massachusetts area, you may be eligible for a $1500 first-time incentive grant sponsored by the Harold Grinspoon Foundation!</p>
 						<br />
 						Jewish Overnight Summer Camping grants are available for first-time campers who are current residents of 
 						<br />Western Massachusetts, Southern Vermont or Northern Connecticut who are attending a qualifying 
@@ -23,13 +23,13 @@
 						<br />
                 </asp:Label>
 				<p class="infotext3" style="text-align:center"> 
-					<font color="red">
+					<span style="color:red">
 						To learn more and apply for this grant, 
-						<asp:LinkButton ID="hgflink" runat="server" OnClick="hgflink_Click" Text="CLICK HERE" ></asp:LinkButton>
-					</font>.  
+						<asp:LinkButton ID="hgflink" runat="server" OnClick="hgflink_Click" Text="CLICK HERE" />
+					</span>.
 					(You will leave this website)</p>
                 <p class="infotext3" style="text-align:center">
-					You may only receive one first-time incentive grant from one of these programs
+					Campers may not receive an incentive grant from both One Happy Camper and the Harold Grinspoon Foundation.
 					<br />
 					For more information about the Harold Grinspoon Foundation incentive program 
 					<br />
@@ -49,7 +49,7 @@
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
                             <td align="left">
-                                <asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="<<Exit To Camper Summary"
+                                <asp:Button Visible="false" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary"
                                     CssClass="submitbtn1" OnClick="btnReturnAdmin_Click" /></td>
                             <td>
                                 <asp:Button ID="btnPrevious" CausesValidation="false" runat="server" Text=" << Previous"

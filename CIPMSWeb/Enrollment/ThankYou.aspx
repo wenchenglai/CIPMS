@@ -5,53 +5,63 @@
 			<table width="100%">
 				<tr class="QuestionText">
 					<td>
-						<asp:Panel ID="pnlCommon" runat="server" Visible="false" Width="100%">
-							
-						<asp:Label ID="lblThankYou" runat="server" CssClass="QuestionText">
-							<p style="text-align:justify">
-								<b>Congratulations! Based on your answers, and pending review by your One Happy Camper administrator, your camper appears to be eligible 
-								for an incentive grant <%=strAmt %>.</b> To track the status of your grant, 
-								you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link. 
-							</p> 
-							<p runat="server" id="pTempleIsrael" class="text-align:justify;" visible="false">
-							<!--Temple Israel is awarding an additional $250 to their members! Therefore, the camper appears to be eligible for a $1250 grant!-->
-							</p>                                                                     
-							<asp:Label ID="Label2" runat="server" CssClass="lblPopup1">
-								<p style="text-align:justify">
-									Your application has now been submitted and any changes or edits can only be made by your One Happy Camper administrator.
-								</p>
-							</asp:Label>
-						<p style="text-align:justify;">
-							<u>Your One Happy Camper administrator is:</u>
-						</p>
-						</asp:Label>
-						<asp:Label ID="lblContactPerson1" runat="server" CssClass="QuestionText" /><br />
-						<asp:Label ID="lblFed1" runat="server" CssClass="QuestionText" />
-						<asp:Label ID="lblPhone1" runat="server" CssClass="QuestionText" /><br />
-						<a id="Email" runat="server" target="_blank">
-						<asp:Label ID="lblEmail1" runat="server" CssClass="QuestionText"></asp:Label></a>
-						<br /><br /></asp:Panel>
+						<asp:Panel ID="pnlCommon" runat="server" CssClass="QuestionText" Visible="false" Width="100%">
+						    <asp:Label ID="lblThankYou" runat="server" CssClass="QuestionText">
+							    <p style="text-align:justify">
+								    <b>Congratulations! Based on your answers, and pending review by your One Happy Camper administrator, your camper appears to be eligible 
+								    for an incentive grant <%=strAmt %>.</b> To track the status of your grant, 
+								    you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link. 
+							    </p> 
+							    <p runat="server" id="pTempleIsrael" class="text-align:justify;" visible="false">
+							    <!--Temple Israel is awarding an additional $250 to their members! Therefore, the camper appears to be eligible for a $1250 grant!-->
+							    </p>                                                                     
+							    <asp:Label ID="Label2" runat="server" CssClass="lblPopup1">
+								    <p style="text-align:justify">
+									    Your application has now been submitted and any changes or edits can only be made by your One Happy Camper administrator.
+								    </p>
+							    </asp:Label>
+						        <p style="text-align:justify;">
+							        <u>Your One Happy Camper administrator is:</u>
+						        </p>
+						    </asp:Label>
+						    <asp:Label ID="lblContactPerson1" runat="server" CssClass="QuestionText" /><br />
+						    <asp:Label ID="lblFed1" runat="server" CssClass="QuestionText" /><br />
+						    <asp:Label ID="lblPhone1" runat="server" CssClass="QuestionText" /><br />
+						    <a id="Email" runat="server" target="_blank">
+						        <asp:Label ID="lblEmail1" runat="server" CssClass="QuestionText"></asp:Label>
+						    </a>
+						    <br /><br />
+						</asp:Panel>
 								
 						<asp:Panel ID="pnlRamah" runat="server" Visible="false" Width="100%">
-						<asp:Label ID="lblThankYouRamah" runat="server" CssClass="QuestionText">
-							<p style="text-align:justify">
-								<b>Congratulations! Based on your answers, the camper appears to be eligible 
-								for an incentive grant <%=strAmt %>.</b> To track the status of your grant, 
-								you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link. </p>
-								<asp:Label ID="Label6" runat="server" CssClass="lblPopup1">
-								<p style="text-align:justify">
-									Please note that your application has now been submitted and any changes or edits can only be made 
-								by a staff person from <%=strRenameOrganisation%> that you have selected.</p></asp:Label>
-							<p style="text-align:justify">
-								If you have any questions or need to edit your application in any way, please contact the camp professional listed below.</p></asp:Label>
+						    <asp:Label ID="lblThankYouRamah" runat="server" CssClass="QuestionText">
+							    <p style="text-align:justify">
+								    <b>Congratulations! Based on your answers, the camper appears to be eligible 
+								    for an incentive grant <%=strAmt %>.</b> To track the status of your grant, 
+								    you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link. 
+							    </p>
+
+							    <asp:Label ID="Label6" runat="server" CssClass="lblPopup1">
+							        <p style="text-align:justify">
+								        Please note that your application has now been submitted and any changes or edits can only be made 
+							            by a staff person from <%=strRenameOrganisation%> that you have selected.
+							        </p>
+							    </asp:Label>
+             
+							    <p style="text-align:justify">
+								    If you have any questions or need to edit your application in any way, please contact the camp professional listed below.
+							    </p>
+						    </asp:Label>
 							<asp:Label ID="lblContacrPersionSelected" runat="server" CssClass="QuestionText" /><br />
-							<asp:Label ID="lblFedSelected" runat="server" CssClass="QuestionText" /><asp:Label ID="lblDesignationSelected" runat="server" CssClass="QuestionText" /><br />
+							<asp:Label ID="lblFedSelected" runat="server" CssClass="QuestionText" />
+                            <asp:Label ID="lblDesignationSelected" runat="server" CssClass="QuestionText" /><br />
 							<asp:Label ID="lblPhoneSelected" runat="server" CssClass="QuestionText" /><br />
-								<a id="Email1Selected" runat="server" target="_blank">
-							<asp:Label ID="lblEmail1Selected" runat="server" CssClass="QuestionText" /></a><br /><br />
+							<a id="Email1Selected" runat="server" target="_blank">
+							    <asp:Label ID="lblEmail1Selected" runat="server" CssClass="QuestionText" />
+							</a>
+                            <br /><br />
 						</asp:Panel>
-						</td>
-							 
+					</td>	 
 				</tr>                     
 				<tr>
 					<td>
@@ -149,16 +159,20 @@
 							
 					</p>
 				<p style="text-align:justify; font-weight:bold">
-					<asp:LinkButton ID="lnkCopyApp" runat="server" CssClass="QuestionText" OnClick="lnkCopyApp_Click" Font-Size="12px">Click Here</asp:LinkButton> to continue as we check your eligibility against various other One Happy Camper programs such as:</p>
-					<p style="text-align:justify">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					PJ Library One Happy Camper (PJ Goes to Camp)
-					<br /><br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					Or a camp co-sponsored program <br /><br />
-					<br /><br />
-													 
-					</p>
-					</asp:Label>
+					<asp:LinkButton ID="lnkCopyApp" runat="server" CssClass="QuestionText" OnClick="lnkCopyApp_Click" Font-Size="12px">
+                        Click Here</asp:LinkButton> to continue as we check your eligibility against various other One Happy Camper programs such as:
+
+				</p>
+                <ul style="list-style-type: none;">
+                    <li>
+                        PJ Library One Happy Camper (PJ Goes to Camp)
+                        <br />
+                        <span style="color:red">Please note: the PJ Library One Happy Camper application is scheduled to launch in mid-November. <a href="http://www.pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">Click here</a> for more information</span>
+                        <br /><br />
+                    </li>
+                    <li>Or a camp co-sponsored program</li>
+                </ul>
+			</asp:Label>
 			<asp:Label ID="lblContactinfo" runat="server" CssClass="QuestionText">
 				<p style="text-align:justify">
 				If you think you received this message in error please contact your local partner - information below – or contact your camp directly.</p>
@@ -194,16 +208,36 @@
 					<asp:Label ID="Label13" runat="server" CssClass="QuestionText" />
 		</asp:Panel>
     
-        <asp:Panel ID="pnlEligiblePendingNumberOfDays" Visible="true" runat="server">
+        <asp:Panel ID="pnlEligiblePendingNumberOfDays" CssClass="QuestionText" Visible="false" runat="server">
+            <p style="text-align:justify">
+                <b>Based on your answers, and pending further review by your One Happy Camper administrator, your camper may be eligible for an incentive grant.</b>
+            </p>
             <p class="QuestionText" style="text-align:justify">
-                Based on your answers, and pending further review by your One Happy Camper administrator, your camper may be eligible for an incentive grant.
+                Please note that if your camper meets all the eligibility requirements EXCEPT for the minimum session requirement, we will RESERVE a One Happy Camper incentive grant for your camper.  Should your camper choose to extended his/her camp session to meet the 3+ week requirement, the camp will notify us of this extension.  At that time, we will activate the grant towards your camper’s first-time Jewish overnight camp experience.
+                If at a later date we find evidence of falsified information, we reserve the right to rescind this award.
+            </p>
+			<p style="text-align:justify;">
+				<span style="color:red; font-weight:bold;">Your application has now been submitted and any changes or edits can only be made by your One Happy Camper administrator.</span>
+                <br />
+                <br />
+                <u>Your One Happy Camper administrator is:</u><br />
+				<asp:Label ID="lblContactPerson3" runat="server" /><br />
+				<asp:Label ID="lblFed3" runat="server" /><br />
+				<asp:Label ID="lblPhone3" runat="server" /><br />
+				<a id="Email3" runat="server" target="_blank">
+					<asp:Label ID="lblEmail3" runat="server"></asp:Label>
+				</a>
+			</p>
+            <p style="color:red; font-weight:bold;">
+                PLEASE NOTE: If the camper’s acceptance at camp has not yet been confirmed, be in touch with your camp directly to make certain that the camper has a spot at camp this summer. Incentive grants will only be disbursed (to the camp) after the camper’s attendance at camp has been confirmed.
             </p>
         </asp:Panel>
     </div>
+
     <div class="QuestionText">
+        <br />
         <a href="../CamperOptions.aspx">Click here</a> to create another application
     </div>
-
 	
     <!-- Google Code for complete registration Conversion Page -->
     <script type="text/javascript">
@@ -218,9 +252,9 @@
     </script>
     <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js"></script>
     <noscript>
-    <div style="display:inline;">
-    <img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/1033664268/?label=eKd3CJymqgEQjO7x7AM&amp;guid=ON&amp;script=0"/>
-    </div>
+        <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/1033664268/?label=eKd3CJymqgEQjO7x7AM&amp;guid=ON&amp;script=0"/>
+        </div>
     </noscript>
 </asp:Content>
 
