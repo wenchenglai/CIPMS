@@ -80,11 +80,7 @@ function Img1_onclick() {
 			<td colspan="2">
                 <asp:Label ID="Label2" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						The Greater Washington DC area One Happy Camper Program has closed for the Summer of 2013. 
-						Please contact Steffanie Jackson for more information at  301-230-7254 or Steffanie.Jackson@ShalomDC.org.
-						<br />
-						If you are interested in learning about financial-needs based grants or other camper funding opportunities 
-						please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp.
+                        The Jewish Federation of Greater Washington One Happy Camper program has reached its capacity for summer 2014. To be put on the waitlist, please contact Steffanie Jackson at <a href="mailto:onehappycamper@shalomdc.org">onehappycamper@shalomdc.org</a>.
 						<br /><br />
 						Click ‘NEXT’ to see if your camp is sponsoring its own One Happy Camper program.						
 					</p>

@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -23,7 +24,9 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			const string FED_ID = "49";
+            int FedID = Convert.ToInt32(FederationEnum.WashingtonDC);
+            string FED_ID = FedID.ToString();
+
 			bool isDisabled = false;
 			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
 			for (int i = 0; i < FedIDs.Length; i++)
@@ -41,31 +44,29 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 				tblRegular.Visible = false;
 				btnSaveandExit.Visible = false;
 
-				if (Session["UsedCode"] != null)
-				{
-					string special_code = Session["UsedCode"].ToString();
-					if (special_code == "CO6842")
-					{
-						tblDisable.Visible = false;
-						tblRegular.Visible = true;
-						btnSaveandExit.Visible = true;
-					}
-				}
+                if (Session["UsedCode"] != null)
+                {
+                    // 2013-03-15 Now Adamah use tblSpecialCodes table
+                    string currentCode = Session["UsedCode"].ToString();
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+                    List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
+
+                    // when moved to .NET 3.5 or above, remember to use lamda expression
+                    foreach (string code in specialCodes)
+                    {
+                        if (code == currentCode)
+                        {
+                            tblDisable.Visible = false;
+                            tblRegular.Visible = true;
+                            btnNext.Visible = true;
+                            SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
+                            break;
+                        }
+                    }
+                }
 			}
 			else
 			{
-				tblDisable.Visible = false;
-				tblRegular.Visible = true;
-				btnSaveandExit.Visible = true;
-			}
-
-			if (Int32.Parse(Session["codeValue"].ToString()) == 5)
-			{
-				string code = Session["UsedCode"].ToString();
-				string FJCID = Session["FJCID"].ToString();
-
-				SpecialCodeManager.UseCode(5, 49, code, FJCID);
-
 				tblDisable.Visible = false;
 				tblRegular.Visible = true;
 				btnSaveandExit.Visible = true;

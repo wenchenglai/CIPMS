@@ -17,7 +17,7 @@
                 <asp:Label ID="Label2" CssClass="infotext3" runat="server">
                 <p style="text-align:justify">
                 <br />
-                 If you live in Cincinnati and your child is attending camp for the first time this coming summer, s/he may be eligible to receive a grant of up to $1000 through the Cincinnati Jewish Overnight Camping Program.</p>
+                 If you live in Cincinnati and your child is attending camp for the first time this coming summer, s/he may be eligible to receive a grant of up to $1800 through the Cincinnati Jewish Overnight Camping Program.</p>
                  
                 </asp:Label>
                 <p class="infotext3">To learn more about the program and to obtain an application please <asp:LinkButton ID="goldringlink" runat="server" OnClick="cincinnatilink_Click" Text="[CLICK HERE]" ></asp:LinkButton>.
@@ -28,7 +28,7 @@
         <tr>
             <td colspan="2">
                 <asp:Label ID="Label4" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">For more information on this program please contact Prof. Karyn Zimerman at <a href="mailto:kzimerman@jfedcin.org" target="_blank">kzimerman@jfedcin.org</a>, 513-985-1534. </p>
+                    <p style="text-align:justify">For more information on this program please contact Karyn Zimerman at <a href="mailto:kzimerman@jfedcin.org" target="_blank">kzimerman@jfedcin.org</a>, 513-985-1534. </p>
                 </asp:Label></td>
         </tr>
     </table>
