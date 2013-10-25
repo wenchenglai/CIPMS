@@ -51,12 +51,12 @@
         // Jewish Day School 
         if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
             if ($('#ctl00_Content_ddlJewishDaySchool>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 6 - pleae select one Jewish day school.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 6 - please select one Jewish day school.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlJewishDaySchool>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtJewishSchool').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 6 - pleae enter the Jewish day school name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 6 - please enter the Jewish day school name.</li></ul>";
                 }
             }
         }
@@ -80,12 +80,12 @@
         // Synagogue - when it's checked, some error checking
         if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
             if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - pleae select one synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - please select one synagogue.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - pleae enter the synagogue name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - please enter the synagogue name.</li></ul>";
                 }
             }
         }
@@ -93,7 +93,7 @@
         // JCC - when it's checked, some error checking
         if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
             if ($('#ctl00_Content_txtOtherJCC').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - pleae enter the JCC name.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 8 - please enter the JCC name.</li></ul>";
             }
         }
 

@@ -8,6 +8,15 @@
                 <img id="Img1" src="../../images/JECCBLKS.jpg" alt="" height="85" width="90" />
             </td>
             <td>
+
+				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
+					<p style="text-align:justify" >
+                        <span style="color:red; font-weight:bold">ATTENTION</span> <span style="font-weight:bold">
+                            Jewish Day School families: If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click    
+                            here:</span> <br /><a href="http://www.jecc.org/YouthOpportunities/CampFundingl.htm" target="_blank">www.jecc.org/YouthOpportunities/CampFundingl.htm</a> 
+					</p>
+				</asp:Label>
+
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
                     <p style="text-align:justify" class="lblPopup1"><b>Good news! You may be eligible for an incentive.</b> </p>
                 </asp:Label>
@@ -32,16 +41,6 @@
 					</p>
 				</asp:Label>
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify" >
-						If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click here: 
-						<a href="http://www.jecc.org/YouthOpportunities/CampFundingl.htm" target="_blank">http://www.jecc.org/YouthOpportunities/CampFundingl.htm</a>  
-					</p>
-				</asp:Label>
-			</td>
         </tr>
         <tr>
             <td colspan="2">

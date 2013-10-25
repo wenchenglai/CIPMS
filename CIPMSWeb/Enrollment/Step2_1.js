@@ -15,7 +15,7 @@
         if ($('#ctl00_Content_ddlStaffNames').length) {
             if ($('#ctl00_Content_ddlStaffNames>option:selected').text().toLowerCase() === "other") {
                 if ($('#ctl00_Content_txtOtherName').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 3a - pleae select staff member/recruiter.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 3a - please select staff member/recruiter.</li></ul>";
                 }
             }
         }

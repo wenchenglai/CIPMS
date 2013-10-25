@@ -814,12 +814,12 @@ function ValidateSynagogueJCC(errorMsg) {
         // Synagogue - when it's checked, some error checking
         if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
             if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error - pleae select one synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error - please select one synagogue.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === "other (please specify)") {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error - pleae enter the synagogue name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error - please enter the synagogue name.</li></ul>";
                 }
             }
         }
@@ -827,12 +827,12 @@ function ValidateSynagogueJCC(errorMsg) {
         // JCC - when it's checked, some error checking
         if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
             if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error - pleae select one JCC.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error - please select one JCC.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === "other (please specify)") {
                 if ($('#ctl00_Content_txtJCC').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error - pleae enter the JCC name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error - please enter the JCC name.</li></ul>";
                 }
             }
         }
