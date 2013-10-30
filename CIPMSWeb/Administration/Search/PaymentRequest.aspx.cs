@@ -83,8 +83,13 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 		if (lstYear.Items.Count != 0)
 			lstYear.Items.Insert(0, new ListItem("--Select--", "-1"));
 
+		//if(Session["CampYear"] != null)
+		//    if (lstYear.Items.FindByText(Session["CampYear"].ToString()) != null)
+		//    {
 		lstYear.ClearSelection();
 		lstYear.Items.FindByText(Session["CampYear"].ToString()).Selected = true;
+		lstYear.Enabled = false;
+		//    }
     }
 
     private void SetFinalAlert()

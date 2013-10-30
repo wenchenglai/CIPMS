@@ -323,7 +323,7 @@ namespace CIPMSBC
                         if (dr["FederationID"].ToString() == "93") BeenToColorado = true;
                         if (dr["FederationID"].ToString() == "23") BeenToLACIP = true;
                         if (dr["FederationID"].ToString() == "48") BeenToMiiP = true;
-                        if (dr["FederationID"].ToString() == "63") BeenToPJL = true;
+                        if (dr["FederationID"].ToString() == "63" || pjlCode.ToLower() == ConfigurationManager.AppSettings["SpecialPJLCode"].ToLower()) BeenToPJL = true;
                     }
                 }
             }
