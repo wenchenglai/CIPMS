@@ -6,7 +6,7 @@
             <td>
                 <table><tr><td>
                 <img id="Img1" src="logo.jpg" alt=""/>
-                <a href="http://www.federationcja.org/jewishcamp" target="_blank"><img id="Img2" src="../../images/MontrealGenJeButton.jpg" alt=""/></a>
+                <<%--a href="http://www.federationcja.org/jewishcamp" target="_blank"><img id="Img2" src="../../images/MontrealGenJeButton.jpg" alt=""/></a>--%>
                 </td></tr>
                 </table>
             </td>

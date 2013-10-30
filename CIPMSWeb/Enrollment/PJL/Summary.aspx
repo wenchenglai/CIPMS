@@ -36,24 +36,88 @@ function Img1_onclick() {
 					for PJ Library participants, siblings, and alumni.
 				</p>
                 <p style="text-align:justify">
-					A total of 500 GRANTS are available on a first-come, first-serve basis through PJ Goes to Camp. These grants of up to $1,000 will help subscribing 
+					A total of 350 GRANTS are available on a first-come, first-serve basis through PJ Goes to Camp. These grants of up to $1,000 will help subscribing 
 					families of <a href="http://www.pjlibrary.org" target="_blank">The PJ Library</a> to pay for summer camp tuition for first-time campers at 
 					nonprofit Jewish overnight camps.
 				</p>
 				</asp:Label>
             </td>
         </tr>  
-         <tr>
+        <tr>
             <td colspan="2">
                 <asp:Label ID="Label9" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-						<b><font color="red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</font></b> Incentives for day school children are limited.  
-						If the day school student incentives appear to be no longer available, e-mail <a href="mailto:Maddie@hgf.org">Maddie@hgf.org</a> 
-						to put your name on the waiting list for additional day school student incentives that may be released later in the program year.  
+						<b><span color="red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span></b> 
+                        Because there are a very limited number of incentive grants for campers who attend Jewish day schools, 
+                        these incentive grants will be awarded by lottery.  Day school students who wish to receive an incentive 
+                        award should sign up for the day school student PJ Goes to Camp lottery no later than the end of the day on November 8, 2013.  
 					</p>
                 </asp:Label>
             </td>
-        </tr>              
+        </tr>
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    To sign up for the lottery that will award incentive grants to students who attend Jewish day schools, 
+                    you must submit the following required information in an e-mail to <a href="mailto:pjgtc@hgf.org">pjgtc@hgf.org</a> 
+                    <b>prior to the end of the day on November 8, 2013</b>.  
+				</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+				    <ul>
+				        <li>a)	Parent’s name</li>
+				        <li>b)	Parent’s mailing address</li>
+				        <li>c)	Parent’s e-mail address</li>
+				        <li>d)	Parent’s day-time phone number</li>
+				        <li>e)	Camper’s name (as they will enroll)</li>
+				        <li>f)	Camper’s age (as of November 10, 2013)</li>
+				        <li>g)	Camper’s school (name, city, state)</li>
+				        <li>h)	Camp information (name, city, state)</li>
+				        <li>i)	Camp enrollment information (dates to be enrolled)</li>
+				    </ul>
+				</p>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    Applicants who are granted incentive awards as a result of the lottery will be sent their unique PJ Goes to Camp registration referral 
+                    code by return e-mail no later than November 15, 2013.  
+				</p>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    Families who are not awarded PJ Goes to Camp incentives will be notified and be placed on a waiting list should additional incentives become available.  
+				</p>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    <u>Each child must be entered separately</u> for the lottery and once awarded, incentives are not transferable.  
+				</p>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    If the day school student incentives appear to be no longer available, e-mail <a href="mailto:Maddie@hgf.org">Maddie@hgf.org</a>
+                    to put your name on the waiting list for additional day school student incentives that may be released later in the program year.
+				</p>
+            </td>
+        </tr>   
+        <tr>
+            <td colspan="2">
+				<p style="text-align:justify" class="infotext3">
+                    In case of dispute, the Harold Grinspoon Foundation reserves the right to resolve issues about PJ Goes to Camp incentive awards and the day school camper lottery.
+				</p>
+            </td>
+        </tr>                                                                      
         <tr>
             <td colspan="2">
                 <asp:Label ID="Label15" runat="server" CssClass="infotext3">
@@ -63,10 +127,10 @@ function Img1_onclick() {
                 
                 <ul style="padding:0;margin-top:0;" type="disc">
                     <li>
-                       	Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2012)                
+                       	Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2013)                
                     </li>
                     <li>
-                       	Siblings of currently eligible PJ Library subscribers (enrolled in the program on or before Sept. 1, 2012) 
+                       	Siblings of currently eligible PJ Library subscribers (enrolled in the program on or before Sept. 1, 2013) 
                     </li>
                     <li>
                         PJ Library alumni                    
@@ -81,7 +145,7 @@ function Img1_onclick() {
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                 <p style="text-align:justify" >
                     <b>FOR WHAT TIME PERIOD?</b> <br />
-                    These opportunities apply only to Summer 2013 experiences. 
+                    These opportunities apply only to Summer 2014 experiences. 
                 </p>
                 
                 </asp:Label>
@@ -112,7 +176,8 @@ function Img1_onclick() {
                 <asp:Label ID="Label5" runat="server" CssClass="infotext3">
                 <p style="text-align:justify" >
                     <b>WHICH CAMPS ARE INCLUDED?</b> <br />
-                    All 155+ nonprofit overnight Jewish camps in North America <a href="http://www.jewishcamp.org/camps" target="_blank">listed on the Foundation for Jewish Camp</a>  are included.
+                    All 155+ nonprofit overnight Jewish camps in North America <a href="http://www.jewishcamp.org/camps" target="_blank">listed on the Foundation 
+                        for Jewish Camp</a>  are included.
                 </p>                
                 </asp:Label>
             </td>
@@ -121,7 +186,9 @@ function Img1_onclick() {
             <td colspan="2">
                 <asp:Label ID="Label6" runat="server" CssClass="infotext3">
             <p style="text-align:justify"><b>ADDITIONAL NOTES</b><br />
-            If you have already received (or plan to receive) a grant through another One Happy Camper program (such as your community’s own camp incentive) or any other incentive program via this website or the Harold Grinspoon Foundation, you cannot combine that grant with PJ Goes to Camp funds. 
+                If you have already received (or plan to receive) a grant through another One Happy Camper program 
+                (such as your community’s own camp incentive) or any other incentive program via this website or the Harold Grinspoon Foundation, 
+                you cannot combine that grant with PJ Goes to Camp funds. 
             </p>
             </asp:Label>
             </td>

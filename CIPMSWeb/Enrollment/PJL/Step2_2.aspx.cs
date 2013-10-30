@@ -90,7 +90,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 		// if user has no special day school code, then we have to see total day school camper is over threshold
 		if (RadioButtionQ5.SelectedValue == "4")
 		{
-			CamperApplication oCA = new CamperApplication();
+			var oCA = new CamperApplication();
 			int validate = oCA.validateIsUsedPJLDSCode(Session["FJCID"].ToString());
 			if (validate == 1)
 			{
@@ -99,7 +99,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 			}
 			else
 			{
-				SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+				var db = new SQLDBAccess("CIPConnectionString");
 				DataTable dt = db.FillDataTable("usp_GetPJDaySchoolCount");
 				int count = Int32.Parse(dt.Rows[0]["Count"].ToString());
 				bool isTriggered = dt.Rows[0]["isTrigger"].ToString() == "Yes" ? true : false;
