@@ -23,7 +23,7 @@ public partial class Enrollment_Summary : System.Web.UI.Page
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
-        Response.Redirect("../Step1_Questions.aspx");
+        Response.Redirect("../Step1.aspx");
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
