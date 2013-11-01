@@ -1,14 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -20,11 +14,11 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                         where id == ((int)FederationEnum.PJL).ToString()
-                         select id).Count() < 1;
+        bool isOpen =
+            ConfigurationManager.AppSettings["OpenFederations"].Split(',')
+                .Any(id => id == ((int) FederationEnum.PJL).ToString());
 
-        if (isClosed)
+        if (!isOpen)
         {
             Response.Redirect("~/NLIntermediate.aspx");
         }
@@ -91,7 +85,8 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 		if (RadioButtionQ5.SelectedValue == "4")
 		{
 			CamperApplication oCA = new CamperApplication();
-			int validate = oCA.validateIsUsedPJLDSCode(Session["FJCID"].ToString());
+		    string FJCID = Session["FJCID"].ToString();
+            int validate = oCA.validateIsUsedPJLDSCode(FJCID);
 			if (validate == 1)
 			{
 				btnNext.Enabled = true;

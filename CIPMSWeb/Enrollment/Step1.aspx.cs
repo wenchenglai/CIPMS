@@ -1,16 +1,9 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Step1 : System.Web.UI.Page
@@ -26,8 +19,6 @@ public partial class Step1 : System.Web.UI.Page
 
     private string strJWestFedId = ConfigurationManager.AppSettings["JWest"];
     private string strOrangeFedId = ConfigurationManager.AppSettings["Orange"];
-    private string strNationalFedId = ConfigurationManager.AppSettings["NationalLanding"];
-    private string strLACIPId = ConfigurationManager.AppSettings["LACIP"];
     private string strJWestLAId = ConfigurationManager.AppSettings["JWestLA"];
     private string strSanDiegoFedId = ConfigurationManager.AppSettings["SanDiego"];
     private string strPJLFedId = ConfigurationManager.AppSettings["PJL"];
@@ -60,7 +51,7 @@ public partial class Step1 : System.Web.UI.Page
 
 		if (Session["CampYear"] == null)
 		{
-			General _objGen = new General();
+			var _objGen = new General();
 			DataSet dsCampYear = _objGen.GetCurrentYear();
 			if (dsCampYear.Tables[0].Rows.Count > 0)
 			{
@@ -72,7 +63,7 @@ public partial class Step1 : System.Web.UI.Page
 			}
 		}
 
-		string strPrevPage = Request.QueryString["check"];
+		var strPrevPage = Request.QueryString["check"];
 
 		if (!Page.IsPostBack)
 		{
@@ -91,10 +82,10 @@ public partial class Step1 : System.Web.UI.Page
 				getUserInfo();
 
 				//added by sreevani to get if any special code is given by camper
-				DataSet dsSplCode = new DataSet();
-				DataSet dsForCampIDandURL = new DataSet();
-				DataSet dsForFedIDandURL = new DataSet();
-				String CampID = "", fedID = "";
+				var dsSplCode = new DataSet();
+				var dsForCampIDandURL = new DataSet();
+				var dsForFedIDandURL = new DataSet();
+				string CampID = "", fedID = "";
 
 				dsForCampIDandURL = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
 
@@ -204,17 +195,18 @@ public partial class Step1 : System.Web.UI.Page
 
 	void btnNext_Click(object sender, EventArgs e)
 	{
-        //if (!bPerformUpdate)
-        //{
-        //    return;
-        //}
-
+        // There are currently two places that could route to Camper Holding Page.  
+        // 1. When the CIPM is shut-down, typically from July to September
+        // 2. When CIPMS is open for registration, typically in mid-October
+        // The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
         if (ZipCodeHasClosedProgram())
             Response.Redirect("~/CamperHolding.aspx");
 
-		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = string.Empty;
-		UserDetails Info;
-		DataSet dsFed = new DataSet();
+        if (!bPerformUpdate)
+            return;
+
+		string strNextURL = string.Empty, strCheckUpdate, strFedId = string.Empty;
+		var dsFed = new DataSet();
 		int iCount = 0;
 		int check = 0;
 		int fedCheck = 0;
@@ -227,11 +219,6 @@ public partial class Step1 : System.Web.UI.Page
 		}
 
 		string strFJCID = hdnFJCID.Value;
-
-		if (txtSplCode.Text != "" && Convert.ToInt32(Session["codeValue"]) == 1)
-		{
-			Session["PJCode"] = txtSplCode.Text.Trim().ToUpper();
-		}
 
 		// What is this?
 		if ((Session["CamperLoginID"] != null) && (string.IsNullOrEmpty(strFJCID)))
@@ -249,33 +236,31 @@ public partial class Step1 : System.Web.UI.Page
 		// Siva - 12/03/2008 - end change
 
 		//to get the user input values as struct object
-		Info = getUserInfoStructwithValues();
-		strAction = hdnPerformAction.Value;
-		strCamperUserId = Master.CamperUserId;
+        UserDetails Info = getUserInfoStructwithValues();
+		string strAction = hdnPerformAction.Value;
+		string strCamperUserId = Master.CamperUserId;
 
 		Session["ZIPCODE"] = Info.ZipCode;
 
 		if (Session["FJCID"] != null)
 		{
-			General oGen = new General();
+			var oGen = new General();
 			if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
 			{
 				SubmittedApplicationRedirection();
 			}
-
 		}
 
 		int codeValue = Convert.ToInt32(Session["codeValue"]);
 		
-		//added by sreevani for PJL Day School code verification.
-		if (codeValue == 1)// PJL Day School codes validation
-			validatePJLDaySchoolCodeRedirection();
+		//PJL Day School code verification.
+        if (codeValue == 1)
+            validatePJLDaySchoolCodeRedirection();
 
 		// NLP code redirection
 		if (codeValue == CodeWashinngton || codeValue == CodeNLP)
 			validateNLCodeRedirection();
 
-		
 		if (ddlCountry.SelectedItem.Text.ToLower() == "canada"
 			&& (txtZipCode.Text.StartsWith("A") 
 				|| txtZipCode.Text.StartsWith("B") 
@@ -308,8 +293,8 @@ public partial class Step1 : System.Web.UI.Page
 			}
 		}
 
-		Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
-		_objRedirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
+		var redirectionLogic = new Redirection_Logic();
+		redirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
 
 		// to know whether the zipcode relates to JWEST federation or not
 		if (iCount > 0)
@@ -341,8 +326,7 @@ public partial class Step1 : System.Web.UI.Page
 				}
 			}
 
-			DataSet dsCamper = new DataSet();
-			dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
+			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 
 			if (txtSplCode.Text != "")
 			{
@@ -398,12 +382,11 @@ public partial class Step1 : System.Web.UI.Page
 		else if (txtSplCode.Text != string.Empty && Convert.ToInt32(Session["codeValue"]) == 1)
 		{
 			//added by sreevani to check redirection to pjl based on day school codes.
-			if (!_objRedirectionLogic.BeenToPJL)
+			if (!redirectionLogic.BeenToPJL)
 			{
 				dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
 				for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
 				{
-					Session["PJCode"] = txtSplCode.Text.Trim().ToUpper();
 					if (txtSplCode.Text.Trim().ToUpper() == dsPJLCodes.Tables[0].Rows[i][0].ToString())
 					{
 						strNextURL = "~/Enrollment/PJL/Summary.aspx";
@@ -483,16 +466,11 @@ public partial class Step1 : System.Web.UI.Page
     bool ZipCodeHasClosedProgram()
     {
         string strZip = txtZipCode.Text.Trim();
-        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
+        string feds = ConfigurationManager.AppSettings["OpenFederations"];
 
-        if (Feds != "" && Feds != "None")
-        {
-            if (objGeneral.ValidateZipCode(strZip, Feds))
-            {
-                return false;
-            }
-        }
-        return true;
+        if (feds == "" || feds == "None") return true;
+        if (!objGeneral.ValidateZipCode(strZip, feds)) return true;
+        return false;
     }
 
     void txtZipCode_TextChanged(object sender, EventArgs e)
@@ -1478,21 +1456,18 @@ public partial class Step1 : System.Web.UI.Page
         Info = getUserInfoStructwithValues();
         Session["ZIPCODE"] = Info.ZipCode;
 
-        if (txtSplCode.Text != "")
-        {
-            CamperApplication oCA = new CamperApplication();
-            int validate = oCA.validatePJLDSCode(txtSplCode.Text);
-			if (validate == 0 || validate == 2)
-			{
-				ProcessCamperInfo(Info);
-				//InsertCamperAnswers();
-				oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
-				Session["FJCID"] = hdnFJCID.Value;
-				Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
-				CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
-				Response.Redirect("~/Enrollment/PJL/Summary.aspx");
-			}
-        }
+        var oCA = new CamperApplication();
+        int validate = oCA.validatePJLDSCode(txtSplCode.Text);
+		if (validate == 0 || validate == 2)
+		{
+			//ProcessCamperInfo(Info);
+			//InsertCamperAnswers();
+			oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
+			Session["FJCID"] = hdnFJCID.Value;
+			//Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+			//CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
+			//Response.Redirect("~/Enrollment/PJL/Summary.aspx");
+		}
     }
 
     public void CusValSplCode_ServerValidate(object source, ServerValidateEventArgs args)

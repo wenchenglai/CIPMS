@@ -47,7 +47,7 @@
             <td colspan="2">
                 <asp:Label ID="Label9" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-						<b><span color="red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span></b> 
+						<b><span style="color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span></b> 
                         Because there are a very limited number of incentive grants for campers who attend Jewish day schools, 
                         these incentive grants will be awarded by lottery.  Day school students who wish to receive an incentive 
                         award should sign up for the day school student PJ Goes to Camp lottery no later than the end of the day on November 8, 2013.  
@@ -124,8 +124,8 @@
                 <p style="text-align:justify" >
                     <b>WHO IS ELIGIBLE?</b> <br />
                     First-time campers at nonprofit Jewish overnight camps are those that are: 
-                
-                <ul style="padding:0;margin-top:0;" type="disc">
+                </p>                
+                <ul>
                     <li>
                        	Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2013)                
                     </li>
@@ -136,7 +136,7 @@
                         PJ Library alumni                    
                     </li>
                 </ul>
-                </p>
+
                 </asp:Label>
             </td>
         </tr>
@@ -157,8 +157,8 @@
                 <p style="text-align:justify" >
                     <b>FOR WHAT AMOUNTS?</b> <br />
                     The PJ Goes to Camp grants will be awarded as follows: 
-                
-                <ul  style="padding:0;margin-top:0;" type="disc">
+                </p>                
+                <ul>
                     <li>
                        	$1,000 for a session of at least 19 consecutive days (for all included camps)
                     </li>
@@ -167,7 +167,6 @@
                         (this applies ONLY to camps in Western States, which include AK, AZ, CA, CO, HI, ID, MT, NM, NV, OR, UT, WA, and WY) 
                     </li>                    
                 </ul>
-                </p>
                 </asp:Label>
             </td>
         </tr>

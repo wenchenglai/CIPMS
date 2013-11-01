@@ -1,13 +1,5 @@
 using System;
 using System.Data;
-using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Enrollment_ThankYou : System.Web.UI.Page
@@ -61,15 +53,13 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         }
         strCampId = resultCampId.ToString();
 
-        int iCount;
         DataRow dr;
-        DataSet ds = new DataSet();
         DataSet dsSelectedCamp = new DataSet();
         DataSet dsContactDetails = new DataSet();
         DataRow drContact;
         string strDesignation = string.Empty;
-        ds = objGeneral.GetFederationDetails(strFedId);
-        iCount = ds.Tables[0].Rows.Count;
+        DataSet ds = objGeneral.GetFederationDetails(strFedId);
+        int iCount = ds.Tables[0].Rows.Count;
         pnlInEligibleNonJewish.Visible = false;
         Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
         if (Session["FJCID"] != null)
@@ -155,7 +145,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
 
             }
 
-            if (lblFed1.Text.ToString().Trim().ToLower() == "national ramah commission")
+            if (lblFed1.Text.Trim().ToLower() == "national ramah commission")
             {
                 pnlCommon.Visible = false;
                 pnlRamah.Visible = true;
@@ -173,8 +163,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 }
             }
         }
-        else if (((strStatus == StatusInfo.SystemInEligible || strStatus == StatusInfo.CamperDeclinedToGoToCamp)) 
-            && !_objRedirectionLogic.BeenToPJL)
+        else if (((strStatus == StatusInfo.SystemInEligible || strStatus == StatusInfo.CamperDeclinedToGoToCamp)) && !_objRedirectionLogic.BeenToPJL)
         {
             pnlEligible.Visible = false;
             pnlInEligible.Visible = true;
@@ -206,7 +195,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                     Email2.HRef = "mailto:" + lblEmail2.Text;
                 }
             }
-            if (lblFed2.Text.ToString().Trim().ToLower() == "national ramah commission")
+            if (lblFed2.Text.Trim().ToLower() == "national ramah commission")
             {
                 dsSelectedCamp = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
                 if (dsSelectedCamp.Tables[0].Rows.Count > 0)
@@ -254,74 +243,68 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         {
             pnlEligiblePendingNumberOfDays.Visible = true;
 
-            if (iCount > 0)
+            if (iCount <= 0) return;
+
+            dr = ds.Tables[0].Rows[0];
+
+            if (strFedId == "60" ||
+                strFedId == "7" ||
+                strFedId == "26" ||
+                strFedId == "62" ||
+                strFedId == "66")
             {
-                dr = ds.Tables[0].Rows[0];
-
-                if (strFedId == "60" ||
-                    strFedId == "7" ||
-                    strFedId == "26" ||
-                    strFedId == "62" ||
-                    strFedId == "66")
-                {
-                    dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
-                    drContact = dsContactDetails.Tables[0].Rows[0];
-                    strOrganisation = drContact["Name"].ToString();
-                    strOrganisation = strOrganisation.Trim();
-                    lblFed3.Text = drContact["Name"].ToString();
-                    lblContactPerson3.Text = drContact["Contact"].ToString();
-                    lblPhone3.Text = drContact["Phone"].ToString();
-                    lblEmail3.Text = drContact["Email"].ToString();
-                    Email3.HRef = "mailto:" + lblEmail1.Text;
-                }
-                else
-                {
-                    lblContactPerson3.Text = dr["Contact"].ToString();
-                    strOrganisation = dr["Name"].ToString();
-                    strOrganisation = strOrganisation.Trim();
-                    lblFed3.Text = strOrganisation.Trim();
-                    lblPhone3.Text = dr["Phone"].ToString();
-                    lblEmail3.Text = dr["Email"].ToString();
-                    Email3.HRef = "mailto:" + lblEmail1.Text;
-                }
-
+                dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
+                drContact = dsContactDetails.Tables[0].Rows[0];
+                strOrganisation = drContact["Name"].ToString();
+                strOrganisation = strOrganisation.Trim();
+                lblFed3.Text = drContact["Name"].ToString();
+                lblContactPerson3.Text = drContact["Contact"].ToString();
+                lblPhone3.Text = drContact["Phone"].ToString();
+                lblEmail3.Text = drContact["Email"].ToString();
+                Email3.HRef = "mailto:" + lblEmail1.Text;
+            }
+            else
+            {
+                lblContactPerson3.Text = dr["Contact"].ToString();
+                strOrganisation = dr["Name"].ToString();
+                strOrganisation = strOrganisation.Trim();
+                lblFed3.Text = strOrganisation.Trim();
+                lblPhone3.Text = dr["Phone"].ToString();
+                lblEmail3.Text = dr["Email"].ToString();
+                Email3.HRef = "mailto:" + lblEmail1.Text;
             }
         }
     }
 
     protected void lnkCopyApp_Click(object sender, EventArgs e)
     {
-        CamperApplication CamperAppl = new CamperApplication();
+        var camperAppl = new CamperApplication();
+        
+        var redirectionLogic = new Redirection_Logic();
+
         string newFJCID;
-        int nextFederationId;
-        string[] UrlData = new string[3];
-        string nxtUrlVal = string.Empty;
+        camperAppl.CopyCamperApplication(Session["FJCID"].ToString(), out newFJCID);
+        redirectionLogic.PageName = (int)Redirection_Logic.PageNames.ThankYou;// Added this flag to avoid confusion of setting federation id if new app is created and set the newfederationid =0
+        redirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
+        int nextFederationId = redirectionLogic.NextFederationId;
 
-        //Ram -- New redirection logic
-        if (Session["FJCID"] != null)
-        {
-            Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
+        if ((nextFederationId == 72 || nextFederationId == 93) && !String.IsNullOrEmpty(newFJCID))
+            camperAppl.DeleteCamperAnswerUsingFJCID(newFJCID);
+
+        if (nextFederationId == 0)
+            Session["FEDID"] = null;
+        else
+            Session["FEDID"] = nextFederationId.ToString();
             
-            //usp_DeleteCamperAnswerUsingFJCID
-            CamperAppl.CopyCamperApplication(Session["FJCID"].ToString(), out newFJCID);
-            _objRedirectionLogic.PageName = (int)Redirection_Logic.PageNames.ThankYou;// Added this flag to avoid confusion of setting federation id if new app is created and set the newfederationid =0
-            _objRedirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
-            nextFederationId = _objRedirectionLogic.NextFederationId;
+        Session["FJCID"] = newFJCID;
+        Session["STATUS"] = 5;
 
-            if ((nextFederationId == 72 || nextFederationId == 93) && !String.IsNullOrEmpty(newFJCID))
-                CamperAppl.DeleteCamperAnswerUsingFJCID(newFJCID);
+        camperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
 
-            if (nextFederationId == 0)
-                Session["FEDID"] = null;
-            else
-                Session["FEDID"] = nextFederationId.ToString();
-            
-            Session["FJCID"] = newFJCID;
-            Session["STATUS"] = 5;
+        // 2013-10-31 we must delete the codeValue Session variable 
+        if (redirectionLogic.BeenToPJL)
+            Session["codeValue"] = null;
 
-            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
-
-            Response.Redirect(_objRedirectionLogic.NextFederationURL);
-        }
+        Response.Redirect(redirectionLogic.NextFederationURL);
     }
 }
