@@ -253,10 +253,6 @@ public partial class Step1 : System.Web.UI.Page
 
 		int codeValue = Convert.ToInt32(Session["codeValue"]);
 		
-		//PJL Day School code verification.
-        if (codeValue == 1)
-            validatePJLDaySchoolCodeRedirection();
-
 		// NLP code redirection
 		if (codeValue == CodeWashinngton || codeValue == CodeNLP)
 			validateNLCodeRedirection();
@@ -296,7 +292,7 @@ public partial class Step1 : System.Web.UI.Page
 		var redirectionLogic = new Redirection_Logic();
 		redirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
 
-		// to know whether the zipcode relates to JWEST federation or not
+		// if iCount == 0, it means the zip code has no federation associated
 		if (iCount > 0)
 		{
 			//added by sandhya 
@@ -426,6 +422,10 @@ public partial class Step1 : System.Web.UI.Page
 				if ((Info.ModifiedBy == strCamperUserId) && (strCheckUpdate == "0")) //some modification done and user is not admin
 					ProcessCamperInfo(Info);
 			}
+
+            //PJL Day School code verification.
+            if (codeValue == 1)
+                validatePJLDaySchoolCodeRedirection();
 
 			//to update the Federation Id for the particular FJCID
 			//this will take care of federation changes for a particular application
@@ -956,10 +956,12 @@ public partial class Step1 : System.Web.UI.Page
 
 
         }
+
+        int codeValue = Convert.ToInt32(Session["codeValue"]);
         if (strAction == "INSERT")
         {
             ProcessCamperInfo(Info);
-            if (Convert.ToInt32(Session["codeValue"]) == 6)
+            if (codeValue == 6)
                 InsertCamperAnswers();
             hdnPerformAction.Value = "UPDATE";
         }
@@ -969,6 +971,10 @@ public partial class Step1 : System.Web.UI.Page
             if ((Info.ModifiedBy == strCamperUserId) && (strCheckUpdate == "0")) //some modification done and user is not admin
                 ProcessCamperInfo(Info);
         }
+
+        //PJL Day School code verification.
+        if (codeValue == 1)
+            validatePJLDaySchoolCodeRedirection();
 
         //to update the Federation Id for the particular FJCID
         //this will take care of federation changes for a particular application

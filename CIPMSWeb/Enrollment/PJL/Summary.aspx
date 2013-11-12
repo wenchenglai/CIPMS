@@ -67,7 +67,7 @@
         <tr>
             <td colspan="2">
 				<p style="text-align:justify" class="infotext3">
-				    <ul>
+				    <ul style="text-align:justify; list-style-type: none;" class="infotext3">
 				        <li>a)	Parent’s name</li>
 				        <li>b)	Parent’s mailing address</li>
 				        <li>c)	Parent’s e-mail address</li>

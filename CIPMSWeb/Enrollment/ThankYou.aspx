@@ -167,7 +167,7 @@
                     <li>
                         PJ Library One Happy Camper (PJ Goes to Camp)
                         <br />
-                        <span style="color:red">Please note: the PJ Library One Happy Camper application is scheduled to launch in mid-November. <a href="http://www.pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">Click here</a> for more information</span>
+                        <span style="color:red; display:none;">Please note: the PJ Library One Happy Camper application is scheduled to launch in mid-November. <a href="http://www.pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">Click here</a> for more information</span>
                         <br /><br />
                     </li>
                     <li>Or a camp co-sponsored program</li>

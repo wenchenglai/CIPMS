@@ -1,14 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -22,14 +17,8 @@ public partial class Step2_PJL_3 : Page
     
 	protected void Page_Init(object sender, EventArgs e)
     {
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                         where id == ((int)FederationEnum.PJL).ToString()
-                         select id).Count() < 1;
-
-        if (isClosed)
-        {
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.PJL).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-        }
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -130,21 +119,25 @@ public partial class Step2_PJL_3 : Page
 					objEligibility.checkEligibility(strFJCID, out iStatus);
 				}
 
-				//to update the status to the database
-				//CamperAppl.updateStatus(strFJCID, iStatus, strComments, Convert.ToInt16(strModifiedBy));
-				Session["STATUS"] = iStatus.ToString();
-				if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
+                var checkStatus = Convert.ToInt32(Session["STATUS"]);
+                if (checkStatus == (int)StatusInfo.SystemInEligible)
+                    iStatus = checkStatus;
+                else
+                    Session["STATUS"] = iStatus;
+
+                if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible))
 				{
 					string strRedirURL;
+
 					if (Master.UserId != Master.CamperUserId) //then the user is admin
 						strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
 					else //the user is Camper
 						strRedirURL = "../ThankYou.aspx";
-					//to update the status to the database                  
+					
+                    //to update the status to the database                  
 					if (!isReadOnly)
-					{
 						CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
-					}
+					
 					Response.Redirect(strRedirURL, false);
 				}
 				else //if he/she is eligible

@@ -1,14 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
+using System.Linq;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 using CIPMSBC.ApplicationQuestions;
@@ -22,6 +17,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
     
     protected void Page_Init(object sender, EventArgs e)
     {
+
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);

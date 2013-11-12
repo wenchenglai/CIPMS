@@ -1,13 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -201,9 +197,12 @@ public partial class Step2_Adamah_3 : Page
                         objEligibility.checkEligibility(strFJCID, out iStatus);
                     }
 
-                    //to update the status to the database
-                   
-                    Session["STATUS"] = iStatus.ToString();
+                    var checkStatus = Convert.ToInt32(Session["STATUS"]);
+                    if (checkStatus == (int)StatusInfo.SystemInEligible)
+                        iStatus = checkStatus;
+                    else
+                        Session["STATUS"] = iStatus;
+
                     if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
                     {
                         string strRedirURL;

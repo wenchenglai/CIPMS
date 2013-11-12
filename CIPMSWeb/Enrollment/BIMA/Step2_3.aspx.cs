@@ -207,9 +207,12 @@ public partial class Step2_Chi_3 : Page
                         objEligibility.checkEligibility(strFJCID, out iStatus);
                     }
 
-                    //to update the status to the database
-                   
-                    Session["STATUS"] = iStatus.ToString();
+                    var checkStatus = Convert.ToInt32(Session["STATUS"]);
+                    if (checkStatus == (int)StatusInfo.SystemInEligible)
+                        iStatus = checkStatus;
+                    else
+                        Session["STATUS"] = iStatus;
+
                     if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
                     {
                         string strRedirURL;

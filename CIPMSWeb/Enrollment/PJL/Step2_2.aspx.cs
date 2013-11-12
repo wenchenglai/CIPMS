@@ -14,14 +14,8 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        bool isOpen =
-            ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                .Any(id => id == ((int) FederationEnum.PJL).ToString());
-
-        if (!isOpen)
-        {
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int) FederationEnum.PJL).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -46,7 +40,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 				hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
 				getCamperAnswers();
 
-				CheckDaySchoolTrigger();
+				//CheckDaySchoolTrigger();
 			}
 		}
 
@@ -248,9 +242,21 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                     }
                     else
                     {
-
                         //to check whether the camper is eligible 
                         objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+
+                        // when user is from day school, if they have the special day school code, we let them pass
+                        // if user has no special day school code, then we have to see total day school camper is over threshold
+                        if (RadioButtionQ5.SelectedValue == "4")
+                        {
+                            var oCA = new CamperApplication();
+                            string FJCID = Session["FJCID"].ToString();
+                            int validate = oCA.validateIsUsedPJLDSCode(FJCID);
+                            if (validate != 1)
+                            {
+                                iStatus = (int)StatusInfo.SystemInEligible;
+                            }
+                        }
                     }
 
                     Session["STATUS"] = iStatus.ToString();
