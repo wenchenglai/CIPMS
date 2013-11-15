@@ -627,7 +627,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
             {
                 int k = i + 1;
                 if (rdolistParticipateMarchLiving.Items[i].Selected == true)
-                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateMarchLiving.Items[i].Value + strQSeparator;
+                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateMarchLiving.Items[i].Text + strQSeparator;
 
             }
         }
@@ -640,7 +640,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
             {
                 int k = i + 1;
                 if (rdolistParticipateTaglit.Items[i].Selected == true)
-                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateTaglit.Items[i].Value + strQSeparator;
+                    strTablevalues += strQID + strFSeparator + k.ToString() + strFSeparator + rdolistParticipateTaglit.Items[i].Text + strQSeparator;
 
             }
         }

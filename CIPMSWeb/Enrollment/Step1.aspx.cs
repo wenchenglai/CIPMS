@@ -1468,7 +1468,7 @@ public partial class Step1 : System.Web.UI.Page
 		{
 			//ProcessCamperInfo(Info);
 			//InsertCamperAnswers();
-			oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
+			//oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
 			Session["FJCID"] = hdnFJCID.Value;
 			//Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
 			//CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");

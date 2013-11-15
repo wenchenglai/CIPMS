@@ -399,6 +399,7 @@
 							<strong>Contact Permission:</strong> 
 							<asp:Label ID="lblPermissionMsgYes" runat="server" Text="Yes, OK to send additional non OHC info." Visible="false" />
 							<asp:Label ID="lblPermissionMsgNo" runat="server" Text="<span style='color:Red;'>No</span> - if not related to OHC" Visible="false" />
+                            <asp:Label ID="lblPermissionNA" runat="server" Text="N/A" Visible="false" />
                         </td>             
                     </tr>
                      

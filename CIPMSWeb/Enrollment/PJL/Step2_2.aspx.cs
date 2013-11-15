@@ -250,9 +250,20 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                         if (RadioButtionQ5.SelectedValue == "4")
                         {
                             var oCA = new CamperApplication();
-                            string FJCID = Session["FJCID"].ToString();
-                            int validate = oCA.validateIsUsedPJLDSCode(FJCID);
-                            if (validate != 1)
+                            var FJCID = Session["FJCID"].ToString();
+                            //int validate = oCA.validateIsUsedPJLDSCode(FJCID);
+                            //if (validate != 1)
+                            //{
+                                
+                            //}
+
+                            string currentCode = Session["UsedCode"].ToString();
+                            int validate = oCA.validatePJLDSCode(currentCode);
+                            if (validate == 0 || validate == 2)
+                            {
+                                oCA.updatePJLDSCode(currentCode, FJCID);
+                            }
+                            else
                             {
                                 iStatus = (int)StatusInfo.SystemInEligible;
                             }

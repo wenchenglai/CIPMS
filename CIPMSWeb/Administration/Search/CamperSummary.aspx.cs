@@ -87,16 +87,24 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             dsCamprDetails = GetValues();
 
-			lblPermissionMsgNo.Visible = true;
-			lblPermissionMsgYes.Visible = false;
-			if (dsCamprDetails.Tables[0].Rows[0]["PermissionToContact"] != DBNull.Value)
-			{
-				if (Convert.ToBoolean(dsCamprDetails.Tables[0].Rows[0]["PermissionToContact"]))
-				{
-					lblPermissionMsgNo.Visible = false;
-					lblPermissionMsgYes.Visible = true;
-				}
-			}
+            // 2013-11-12 After 2013, Camps can contact campers directly 
+            if (Convert.ToInt32(Application["CampYear"]) >= 2014)
+            {
+                lblPermissionNA.Visible = true;
+            }
+            else
+            {
+                lblPermissionMsgNo.Visible = true;
+                lblPermissionMsgYes.Visible = false;
+                if (dsCamprDetails.Tables[0].Rows[0]["PermissionToContact"] != DBNull.Value)
+                {
+                    if (Convert.ToBoolean(dsCamprDetails.Tables[0].Rows[0]["PermissionToContact"]))
+                    {
+                        lblPermissionMsgNo.Visible = false;
+                        lblPermissionMsgYes.Visible = true;
+                    }
+                }                
+            }
 
             iCurrentStatus = Convert.ToInt16(dsCamprDetails.Tables[0].Rows[0]["StatusID"]);
             
