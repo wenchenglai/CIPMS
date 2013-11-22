@@ -157,6 +157,9 @@ public partial class TorontoPage2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
+        if (!Page.IsValid)
+            return;
+
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
         if (!isReadOnly)
         {

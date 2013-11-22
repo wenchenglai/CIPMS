@@ -47,14 +47,7 @@ public partial class Step2_Adamah_3 : Page
         if (Session["STATUS"] != null)
         {
             //if (Convert.ToInt16(Session["STATUS"].ToString()) == Convert.ToInt16(StatusInfo.SystemInEligible))
-            if ((StatusInfo)Session["STATUS"] == StatusInfo.SystemInEligible)
-            {
-                lblEligibility.Visible = false;
-            }
-            else
-            {
-                lblEligibility.Visible = true;
-            }
+            lblEligibility.Visible = (StatusInfo)Session["STATUS"] != StatusInfo.SystemInEligible;
 
         }
         
@@ -147,6 +140,9 @@ public partial class Step2_Adamah_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        if (!Page.IsValid)
+            return;
+
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
 

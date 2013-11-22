@@ -1,14 +1,6 @@
 using System;
-using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
+using System.Linq;
 using CIPMSBC;
 
 public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
@@ -17,117 +9,136 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
     {
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
     }
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack)
+        if (IsPostBack) return;
+
+        var strCampID = Session["CampID"].ToString();
+        var last3Digits = strCampID.Substring(strCampID.Length - 3);
+
+        if (ConfigurationManager.AppSettings["ClosedRamah"].Split(',').Any(id => id == last3Digits))
+            Response.Redirect("~/NLIntermediate.aspx");
+
+        // Berkshires
+        if (last3Digits == "082")
         {
-            int CampID = Convert.ToInt32(Session["CampID"]);
-            
-            // Camp Ramah Darom, for 2013 calendar year ONLY
-            if (CampID == 4078)
-            {
-                DisableRegistration(CampID);
-                if (Session["UsedCode"] != null)
-                {
-                    // 2013-02-21 Now Camp Ramah Doram use tblSpecialCodes table
-                    string currentCode = Session["UsedCode"].ToString();
-                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-                    int FedID = Convert.ToInt32(FederationEnum.Ramah);
-                    List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4078);
-
-                    // when moved to .NET 3.5 or above, remember to use lamda expression
-                    foreach (string code in specialCodes)
-                    {
-                        if (code == currentCode)
-                        {
-                            EnableRegistration();
-                            SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-                            break;
-                        }
-                    }
-                }
-            }
-			else if (CampID == 4079) //2013-03-21 For Ramah Califonia 
-			{
-				DisableRegistration(CampID);
-				if (Session["UsedCode"] != null)
-				{
-					string currentCode = Session["UsedCode"].ToString();
-					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-					int FedID = Convert.ToInt32(FederationEnum.Ramah);
-					List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4079);
-
-					// when moved to .NET 3.5 or above, remember to use lamda expression
-					foreach (string code in specialCodes)
-					{
-						if (code == currentCode)
-						{
-							EnableRegistration();
-							SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-							break;
-						}
-					}
-				}
-			}
-			//else if (CampID == 4079)
-			//{
-			//    // Camp Ramah Califonia
-			//    if (Session["UsedCode"] != null)
-			//    {
-			//        if (Session["UsedCode"].ToString() == ConfigurationManager.AppSettings["2012CRC6481"])
-			//        {
-			//            EnableRegistration();
-			//        }
-			//        else
-			//        {
-			//            DisableRegistration(CampID);
-			//        }
-			//    }
-			//    else
-			//        DisableRegistration(CampID);
-			//}
-			else if (CampID == 3082) //2012-03-28
-			{
-				// Camp Ramah in the Berkshires
-				if (Session["UsedCode"] != null)
-				{
-					if (Session["UsedCode"].ToString() == "CRB421")
-					{
-						EnableRegistration();
-					}
-					else
-					{
-						Response.Redirect("~/NYCampRedirect.aspx");
-					}
-				}
-				else
-					Response.Redirect("~/NYCampRedirect.aspx");
-			}
-			else if (CampID == 4082) //2013-02-26 Close The camp Ramah in the Berkshire ONLY
-			{
-				DisableRegistration(CampID);
-			}
-			else
-			{
-				// All other Ramah camps
-				EnableRegistration();
-			}
+            trBerkshires.Visible = true;
         }
+        else if (last3Digits == "079") // California
+        {
+            trCalifornia1.Visible = true;
+            trCalifornia2.Visible = true;
+        }
+        else if (last3Digits == "080") // Canada
+        {
+            trCanada.Visible = true;
+        }
+        else if (last3Digits == "083") // Poconos
+        {
+            trPoconos.Visible = true;
+        }
+        else if (last3Digits == "084") // Wisconsin
+        {
+            trWisconsin.Visible = true;
+        }
+        else if (last3Digits == "150") // OUtdoor Adventure
+        {
+            trOutdoor.Visible = true;
+        }
+        else
+        {
+            trDefault1.Visible = true;
+            trDefault2.Visible = true;
+        }
+            
+        //// Camp Ramah Darom, for 2013 calendar year ONLY
+        //if (CampID == 4078)
+        //{
+        //    DisableRegistration(CampID);
+        //    if (Session["UsedCode"] != null)
+        //    {
+        //        // 2013-02-21 Now Camp Ramah Doram use tblSpecialCodes table
+        //        string currentCode = Session["UsedCode"].ToString();
+        //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+        //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
+        //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4078);
+
+        //        // when moved to .NET 3.5 or above, remember to use lamda expression
+        //        foreach (string code in specialCodes)
+        //        {
+        //            if (code == currentCode)
+        //            {
+        //                EnableRegistration();
+        //                SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+        //else if (CampID == 4079) //2013-03-21 For Ramah Califonia 
+        //{
+        //    DisableRegistration(CampID);
+        //    if (Session["UsedCode"] != null)
+        //    {
+        //        string currentCode = Session["UsedCode"].ToString();
+        //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+        //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
+        //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4079);
+
+        //        // when moved to .NET 3.5 or above, remember to use lamda expression
+        //        foreach (string code in specialCodes)
+        //        {
+        //            if (code == currentCode)
+        //            {
+        //                EnableRegistration();
+        //                SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+        //else if (CampID == 3082) //2012-03-28
+        //{
+        //    // Camp Ramah in the Berkshires
+        //    if (Session["UsedCode"] != null)
+        //    {
+        //        if (Session["UsedCode"].ToString() == "CRB421")
+        //        {
+        //            EnableRegistration();
+        //        }
+        //        else
+        //        {
+        //            Response.Redirect("~/NYCampRedirect.aspx");
+        //        }
+        //    }
+        //    else
+        //        Response.Redirect("~/NYCampRedirect.aspx");
+        //}
+        //else if (CampID == 4082) //2013-02-26 Close The camp Ramah in the Berkshire ONLY
+        //{
+        //    DisableRegistration(CampID);
+        //}
+        //else
+        //{
+        //    // All other Ramah camps
+        //    EnableRegistration();
+        //}
     }
 
     private void EnableRegistration()
     {
-        tblNoRegister.Visible = false;
-        tblRegister.Visible = true;
+        tblDisable.Visible = false;
+        tblRegular.Visible = true;
         btnNext.Visible = true;
     }
 
     private void DisableRegistration(int CampID)
     {
-		tblRegister.Visible = false;
+        tblRegular.Visible = false;
 		btnNext.Visible = false;
 
-        tblNoRegister.Visible = true;
+        tblDisable.Visible = true;
         if (CampID == 4078)
         {
             lblRamahDarom.Visible = true;
@@ -158,31 +169,12 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
-        //if (Session["CampID"] != null)
-        //{
-        //    if (Session["CampID"].ToString() == "2079" || Session["CampID"].ToString() == "2078")
-        //    {
-        //        Response.Redirect("~/NYCampRedirect.aspx");
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect("../Step1_NL.aspx");
-        //    }
-        //}
-        //else
-        //{
-            Response.Redirect("../Step1_NL.aspx");
-        //}
+        Response.Redirect("../Step1_NL.aspx");
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-		int CampID = Convert.ToInt32(Session["CampID"]);
-		if (CampID == 4082)
-		{
-			Response.Redirect("../Step1_NL.aspx");
-		}
-		else
-			Response.Redirect("Step2_2.aspx");
+        var CampID = Convert.ToInt32(Session["CampID"]);
+        Response.Redirect(CampID == 4082 ? "../Step1_NL.aspx" : "Step2_2.aspx");
     }
 }

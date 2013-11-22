@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -17,23 +18,14 @@ using CIPMSBC.Eligibility;
 
 public partial class Step2_Ramah_2 : System.Web.UI.Page
 {
-
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
-    private int Qincrement = 0;
-    private string campID = string.Empty;
     
     protected void Page_Init(object sender, EventArgs e)
     {
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                         where id == ((int)FederationEnum.Ramah).ToString()
-                         select id).Count() < 1;
-
-        if (isClosed)
-        {
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Ramah).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -41,7 +33,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         RadioBtnQ3.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         RadioBtnQ4.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-        //RadioBtnQ7.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         RadioBtnQ9.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
@@ -51,45 +42,42 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
     {
         CamperAppl = new CamperApplication();
         objGeneral = new General();
-        if (Session["CampID"] != null)
-        {
-            campID = Session["CampID"].ToString();
-        }
-        else if (Session["FJCID"] != null)
-        {
-            DataSet dsCamperDetails = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
-            if (dsCamperDetails.Tables[0].Rows.Count > 0)
-                foreach (DataRow dr in dsCamperDetails.Tables[0].Rows)
-                {
-                    if (!dr["QuestionID"].Equals(DBNull.Value) && dr["QuestionID"].ToString() == "10")
-                        if (!dr["OptionID"].Equals(DBNull.Value) && dr["OptionID"].ToString() == "2")
-                            if (!dr["Answer"].Equals(DBNull.Value))
-                                campID = dr["Answer"].ToString();
-                }
-        }
-
-		// 2012-11-20 Temporary message to show the campers.  This should be deleted after it's not used.
-		if (campID == "4082")
-		{
-			trMsg.Visible = true;
-		}
-		else
-		{
-			trMsg.Visible = false;
-		}
 
         if (!Page.IsPostBack)
         {
-            DataSet dsCamps = objGeneral.GetCampByCampID(campID);            
-            if (dsCamps.Tables[0].Rows.Count > 0)
-                for (int i = 0; i < dsCamps.Tables[0].Rows.Count; i++)
-                {
-                    if (dsCamps.Tables[0].Rows[i]["Camp"].ToString().IndexOf("California") != -1)
-                    {
-                        Qincrement = 1;
-                        hdnQNoIncrement.Value = Qincrement.ToString();
-                    }
-                }
+            //string campID;
+            //if (Session["CampID"] != null)
+            //{
+            //    campID = Session["CampID"].ToString();
+            //}
+            //else if (Session["FJCID"] != null)
+            //{
+            //    DataSet dsCamperDetails = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
+            //    if (dsCamperDetails.Tables[0].Rows.Count > 0)
+            //        foreach (DataRow dr in dsCamperDetails.Tables[0].Rows)
+            //        {
+            //            if (!dr["QuestionID"].Equals(DBNull.Value) && dr["QuestionID"].ToString() == "10")
+            //                if (!dr["OptionID"].Equals(DBNull.Value) && dr["OptionID"].ToString() == "2")
+            //                    if (!dr["Answer"].Equals(DBNull.Value))
+            //                        campID = dr["Answer"].ToString();
+            //        }
+            //}
+
+            var strCampId = Session["CampID"].ToString();
+            var last3Digits = strCampId.Substring(strCampId.Length - 3);
+            // Only three camps have additional questions, California, Poconos, Outdoor Adventure
+            var list = new List<string>
+            {
+                "079", "083", "150"
+            };
+
+            if (!list.Contains(last3Digits))
+            {
+                pnlSecondTimer.Visible = false;
+                lblGrade.Text = "2";
+                lblSchoolType.Text = "3";
+                lblSchoolName.Text = "4";
+            }
 
             //2012-01-12 Add popup box warning that second time grant is no longer available
             //foreach (ListItem li in RadioBtnQ5.Items)
@@ -97,40 +85,14 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             //    li.Attributes.Add("OnClick", "JavaScript:popupCall(this,'RamahDoromSecondTimerWarning','Message',false,'step1');");
             //}
 
-            //increment question nos by 1 if the camp selected is california
-			Qincrement = 0;
-            if (Qincrement != 0)
-            {
-                Label4.Text = Convert.ToString(Int32.Parse(Label4.Text) + Qincrement);
-                Label6.Text = Convert.ToString(Int32.Parse(Label6.Text) + Qincrement);
-                Label35.Text = Convert.ToString(Int32.Parse(Label35.Text) + Qincrement);
-                Label8.Text = Convert.ToString(Int32.Parse(Label8.Text) + Qincrement);
-                Label10.Text = Convert.ToString(Int32.Parse(Label10.Text) + Qincrement);
-                Label14.Text = Convert.ToString(Int32.Parse(Label14.Text) + Qincrement);
-            }
-            //to fill the grades in the dropdown
             getGrades();
-            //to get the FJCID which is stored in session
-            int resultCampId = 0; //long resultFedID;
-            if (Session["FJCID"] != null)
-            {
-                hdnFJCID.Value = (string)Session["FJCID"]; 
-                getCamperAnswers();
-            }
-            if (Session["CampID"] != null)
-            {
-                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
-            }
-            else if (Session["FJCID"] != null)
-            {
-                DataSet ds = new CamperApplication().getCamperAnswers(Session["FJCID"].ToString(), "10", "10", "N");
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    DataRow dr = ds.Tables[0].Rows[0];
-                    Int32.TryParse(dr["Answer"].ToString(), out resultCampId);
-                }
-            }
 
+
+
+            hdnFJCID.Value = (string)Session["FJCID"]; 
+            getCamperAnswers();
+
+            int resultCampId = Int32.Parse(strCampId); 
             string campIDLast3Digits = resultCampId.ToString().Substring(resultCampId.ToString().Length - 3);
             if (campIDLast3Digits == "150" || campIDLast3Digits == "079")
             {
@@ -145,14 +107,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             hdnCampId.Value = resultCampId.ToString();
         }
     }
-
-    //page unload
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-    
+  
     void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
     {
         try
@@ -249,45 +204,37 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
-        
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCID.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
+        if (!Page.IsValid)
+            return;
 
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCID.Value;
-                Response.Redirect("Step2_3.aspx");
-            }
-        }
-        catch (Exception ex)
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+
+        if (!isReadOnly)
         {
-            Response.Write(ex.Message);
+            ProcessCamperAnswers();
         }
+
+        var strModifiedBy = Master.UserId;
+        var strFJCID = hdnFJCID.Value;
+
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCID.Value;
+        Response.Redirect("Step2_3.aspx");
     }
 
     private void ProcessCamperAnswers()
@@ -316,7 +263,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
         }
     }
-
 
     protected void InsertCamperAnswers()
     {
@@ -461,19 +407,11 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             //to set the status of the panel based on the radio button selected
             setPanelStatus();
         } //end if for null check of fjcid
-       
     }
 
     protected void RadioBtn_CheckedChanged(object sender, EventArgs e)
     {
-        try
-        {
-            setPanelStatus();
-        }
-        catch (Exception ex) 
-        {
-            Response.Write(ex.Message);
-        }
+        setPanelStatus();
     }
 
 
@@ -504,52 +442,26 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                 PnlQ4.Enabled = true;
             }
         }        
-        //for Question 9
-        //if (RadioBtnQ9.SelectedIndex == 3) //Jewish school is selected
-        //{
-        //    PnlQ10.Enabled = true;
-        //    pnlJewishSchool.Enabled = true;
-        //    pnlCamperSchool.Enabled = false;
-        //    Label23.Enabled = false;
-        //    Label14.Enabled = false;
-        //    txtCamperSchool.Text = "";
-        //    Label15.Enabled = false;
-        //}
+
         if (RadioBtnQ9.SelectedIndex != -1)  //for the rest of the options disable it
         {
             //PnlQ10.Enabled = false;
             //pnlJewishSchool.Enabled = false;
             if (RadioBtnQ9.SelectedIndex == 2)
             {
-                pnlCamperSchool.Enabled = false;
-                Label23.Enabled = false;
-                Label14.Enabled = false;
-                Label23.Enabled = false;                
+                txtCamperSchool.Enabled = false;
+                lblSchoolName.Enabled = false;
                 Label15.Enabled = false;
                 txtCamperSchool.Text = "";
             }
             else
             {
-                pnlCamperSchool.Enabled = true;
-                Label23.Enabled = true;
-                Label14.Enabled = true;
+                txtCamperSchool.Enabled = true;
+                lblSchoolName.Enabled = true;
                 Label15.Enabled = true;
             }
-            
-            //ddlQ10.SelectedIndex = 0;
-           //txtJewishSchool.Text = "";
         }
-
-        //if (ddlQ10.SelectedValue == "3")
-        //{
-        //    pnlJewishSchool.Enabled = true;
-        //}
-        //else
-        //{
-        //    pnlJewishSchool.Enabled = false;
-        //}
-
-}
+    }
 
     private string ConstructCamperAnswers()
     {

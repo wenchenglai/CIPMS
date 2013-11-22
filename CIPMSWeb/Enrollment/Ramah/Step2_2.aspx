@@ -1,16 +1,6 @@
 <%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="Step2_Ramah_2" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_Chicago_1" ContentPlaceHolderID="Content" Runat="Server">
-    <%--<table width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td>
-                <asp:Label CssClass="headertext" runat="server">Basic Camper Section - II continued..</asp:Label><br /><br />
-            </td>
-        </tr>
-    </table>--%>
-    
-		
-    <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server">
         <!--to display the validation summary (error messages)-->
         <table width="50%" cellpadding="0" cellspacing="0" align="center">
@@ -25,20 +15,12 @@
                 </td>
             </tr>
         </table>
-        <table width="100%" cellpadding="5" cellspacing="0" border="0">
-			<tr id="trMsg" runat="server">
-				<td></td>
-				<td>
-					<span class="QuestionText" style="color:Red;">
-					Thank you for applying for a One Happy Camper Grant. Please be aware that grants are awarded on a first come, first served basis. 
-					The deadline for submission is November 30, 2012. There will be no second year grants awarded for summer 2013.
-					</span>
-				</td>
-			</tr>        
+        <table>
+            <tbody class="QuestionText">      
             <tr>
                 <td valign="top">
-					<asp:Label ID="Label25" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label4" runat="server" Text="1" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="Label4" runat="server" Text="1" />
 				</td>
                 <td valign="top">
                     <asp:Label ID="Label5" runat="server" CssClass="QuestionText">
@@ -56,8 +38,8 @@
             <asp:panel id="pnlSecondTimer" runat="server" Visible="true">
             <tr>
                 <td valign="top">
-					<asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label6" runat="server" Text="2" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="Label6" runat="server" Text="2" />
 				</td>
                 <td valign="top">
                     <asp:Panel ID="PnlQ4" runat="server">
@@ -71,8 +53,8 @@
             </tr>
             <tr>
                 <td valign="top">
-					<asp:Label ID="Label3" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label35" runat="server" Text="3" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="Label35" runat="server" Text="3" />
 				</td>
                 <td valign="top">
                     <asp:Panel ID="PnlQ5" runat="server">
@@ -87,8 +69,8 @@
             </asp:panel>
             <tr>
                 <td valign="top">
-					<asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label8" runat="server" Text="4" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="lblGrade" runat="server" Text="4" />
 				</td>
                 <td valign="top">
                     <asp:Panel id="PnlQ6" runat="server">
@@ -102,8 +84,8 @@
             </tr>
             <tr>
                 <td valign="top">
-					<asp:Label ID="Label12" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label10" runat="server" Text="5" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="lblSchoolType" runat="server" Text="5" />
 				</td>
                 <td valign="top">
                     <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <u><b>CURRENTLY</b></u> attend?</asp:Label><br />
@@ -120,8 +102,8 @@
             <asp:Panel ID="pnlCamperSchool" runat="server">
             <tr>
                 <td width="5%">
-					<asp:Label ID="Label23" Text="*" runat="server" CssClass="InfoText" />
-					<asp:Label ID="Label14" runat="server" Text="6" CssClass="QuestionText" />
+					<span class="InfoText">*</span>
+					<asp:Label ID="lblSchoolName" runat="server" Text="6" />
 				</td>
                 <td valign="top" colspan="2">
                     <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Name of the school camper attends:</asp:Label>
@@ -147,25 +129,26 @@
             </tr>
             <!--end of admin panel-->
             <tr >
-            <td colspan="2">
-                <table width="100%">
-                    <tr>
-                        <td align="left">
-                            <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" />
-                        </td>
-                        <td >
-                            <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
-                        </td>
-                        <td align="center">
-                            <asp:Button ID="btnSaveandExit"  ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
-                        </td>
-                        <td align="right">
-                            <asp:Button ID="btnNext" ValidationGroup="OtherValidation" Text="Next >>" CssClass="submitbtn" runat="server" />
-                        </td>
-                    </tr>
-                </table>
-            </td>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr>
+                            <td align="left">
+                                <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" />
+                            </td>
+                            <td >
+                                <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
+                            </td>
+                            <td align="center">
+                                <asp:Button ID="btnSaveandExit"  ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
+                            </td>
+                            <td align="right">
+                                <asp:Button ID="btnNext" ValidationGroup="OtherValidation" Text="Next >>" CssClass="submitbtn" runat="server" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
             </tr>
+        </tbody>
         </table>
         
     </asp:Panel>

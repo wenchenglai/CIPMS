@@ -17,26 +17,71 @@ namespace CIPMSBC.Eligibility
             {
                 return true;
             }
-            StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+
+            //StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    return true;
+            //}
+            StatusValue = CheckOnTimeInCamp(FJCID);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
-            } 
+            }
+
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
+
             StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
+
             return true;
         }
+
+        private int CheckOnTimeInCamp(string FJCID)
+        {
+            int iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+            var oCA = new CamperApplication();
+            var dsAnswers = oCA.getCamperAnswers(FJCID, "1", "1", "3,10,13,33");
+            var timeInCamp = Convert.ToInt32(dsAnswers.Tables[0].Select("QuestionID = 3")[0]["OptionID"]);
+            var campId = dsAnswers.Tables[0].Select("QuestionID = 10")[0]["Answer"].ToString();
+            var last3Digits = campId.Substring(campId.Length - 3);
+
+            var list = new List<string>
+            {
+                "079", "083", "150"
+            };
+
+            if (timeInCamp == 1)
+                iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+            else if (list.Contains(last3Digits))
+            {
+                var isSecondTime = Convert.ToInt32(dsAnswers.Tables[0].Select("QuestionID = 13")[0]["OptionID"]);
+                var drs = dsAnswers.Tables[0].Select("QuestionID = 33");
+                if (drs.Length > 0)
+                {
+                    if (!DBNull.Value.Equals(drs[0]["OptionID"]))
+                    {
+                        var lastSummer = Convert.ToInt32(drs[0]["OptionID"]);
+                        // allow second time camper if both are true
+                        if (isSecondTime == 1 && lastSummer == 1)
+                            iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);                        
+                    }
+                }
+            }
+
+            return iStatusValue;
+        }
+
         private int StatusBasedOnCamp(string FJCID, int StatusValue, bool PendingSchool)
         {
-            CamperApplication oCA = new CamperApplication();
+            var oCA = new CamperApplication();
             DataSet dsCamp;
             dsCamp = oCA.getCamperAnswers(FJCID, "10", "10", "N");
             DataRow drCamp;
@@ -91,100 +136,65 @@ namespace CIPMSBC.Eligibility
 
         private int StatusBasedOnGrade(string FJCID, int StatusValue)
         {
-            CamperApplication oCA = new CamperApplication();
-            DataSet dsGrade;
-            dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
-            DataRow drGrade;
-            int iStatusValue = -1;
-            int Grade;
-            if (dsGrade.Tables[0].Rows.Count > 0)
-            {
-                drGrade = dsGrade.Tables[0].Rows[0];
-                if (DBNull.Value.Equals(drGrade["Answer"]))
-                {
-                    iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                }
-                else
-                {
-                    General objGeneral = new General();
-                    Grade = Convert.ToInt32(drGrade["Answer"]);
-                    if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
-                    {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                    }
-                    else
-                    {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                    }
-                }
-            }
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
+            var oCA = new CamperApplication();
+            var dsAnswers = oCA.getCamperAnswers(FJCID, "1", "1", "6,10");
+            var campId = dsAnswers.Tables[0].Select("QuestionID = 10")[0]["Answer"].ToString();
+            int grade = Convert.ToInt32(dsAnswers.Tables[0].Select("QuestionID = 6")[0]["Answer"]);
+            string last3Digits = campId.Substring(campId.Length - 3);
 
+            int iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible); ;
+
+            if (last3Digits == "079") // California
+            {
+                if (grade > 2 && grade < 11)
+                    iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+            }
+            else
+            {
+                var objGeneral = new General();
+                if (objGeneral.GetEligiblityForGrades(FJCID, grade.ToString()) == "1")
+                {
+                    iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                }                
+            }
+ 
             return iStatusValue;
         }
 
         private int StatusBasedOnSchool(string FJCID, int StatusValue, out bool PendingSchool)
         {
-            CamperApplication oCA = new CamperApplication();
-            int iStatusValue = -1;
-            int JewishSchool;
-            int SchoolOption = 0;
-            DataSet dsSchoolOption;
-            dsSchoolOption = oCA.getCamperAnswers(FJCID, "1", "1", "7,17");
-            DataRow drSchoolOption;
-            DataRow drJewishSchool;
             PendingSchool = false;
+            return (int)StatusInfo.SystemEligible;
+            //var oCA = new CamperApplication();
+            //var dsSchoolOption = oCA.getCamperAnswers(FJCID, "1", "1", "7,10");
+            //int iStatusValue = (int)StatusInfo.SystemInEligible;
+            //PendingSchool = false;
 
-            if (dsSchoolOption.Tables[0].Rows.Count > 0)
-            {
-                drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
-                if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
-                {
-                    SchoolOption = Convert.ToInt32(drSchoolOption["OptionID"]);
-                    //drJewishSchool = dsSchoolOption.Tables[0].Rows[1];
-                    //JewishSchool = Convert.ToInt32(drJewishSchool["OptionID"]);
-                    //if (SchoolOption == 4)
-                    //{
-                    //    if (JewishSchool == 3)
-                    //    {
-                    //        iStatusValue = (int)StatusInfo.EligiblePendingSchool;
-                    //        PendingSchool = true;
-                    //    }
-                    //    else if ((JewishSchool == 1) || (JewishSchool == 4) || (JewishSchool == 5) || (JewishSchool == 6))
-                    //    {
-                    //        iStatusValue = (int)StatusInfo.SystemEligible;
-                    //    }
-                    //    else if (JewishSchool == 7)
-                    //    {
-                    //        iStatusValue = (int)StatusInfo.SystemInEligible;
-                    //    }
-                    //    else
-                    //    {
-                    //        iStatusValue = (int)StatusInfo.SystemInEligible;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    iStatusValue = (int)StatusInfo.SystemEligible;
-                    //}
-                    iStatusValue = (int)StatusInfo.SystemEligible;
-                }
-            }
+            //if (dsSchoolOption.Tables[0].Rows.Count > 0)
+            //{
+            //    var schoolTypeId = dsSchoolOption.Tables[0].Select("QuestionID = 7")[0]["OptionID"].ToString();
+            //    var campId = dsSchoolOption.Tables[0].Select("QuestionID = 10")[0]["Answer"].ToString();
+            //    string last3digits = campId.Substring(campId.Length - 3);
 
+            //    if (schoolTypeId == "4")
+            //    {
+            //        if (last3digits == "082")
+            //        {
+            //            iStatusValue = (int)StatusInfo.SystemEligible;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        iStatusValue = (int)StatusInfo.SystemEligible;
+            //    }
+            //}
 
-
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
-
-            return iStatusValue;
+            //return iStatusValue;
         }
 
         public override bool checkEligibility(string FJCID, out int StatusValue)
         {
             StatusValue = 0;
-            int daysInCamp;
-            double Amount = 0.00;
             bool PendingSchool = false;
 
             if (checkEligibilityCommon(FJCID, out StatusValue))
@@ -192,7 +202,7 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            CamperApplication oCA = new CamperApplication();
+            var oCA = new CamperApplication();
 
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
@@ -215,18 +225,71 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            daysInCamp = DaysInCamp(FJCID);
+            int daysInCamp = DaysInCamp(FJCID);
+            double Amount = 0;
             if (daysInCamp > 0)
             {
-                Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
+                var dsSchoolOption = oCA.getCamperAnswers(FJCID, "1", "1", "3,7,10");
+
+                var timeInCamp = dsSchoolOption.Tables[0].Select("QuestionID = 3")[0]["OptionID"].ToString();
+                var schoolTypeId = dsSchoolOption.Tables[0].Select("QuestionID = 7")[0]["OptionID"].ToString();
+                var campId = dsSchoolOption.Tables[0].Select("QuestionID = 10")[0]["Answer"].ToString();
+                string last3Digits = campId.Substring(campId.Length - 3);
+
+                if (last3Digits == "082") // Berkshires
+                {
+                    if (daysInCamp >= 19 && schoolTypeId == "4")
+                        Amount = 500;
+                    else if (daysInCamp >= 19)
+                        Amount = 1000;
+                }
+                else if (last3Digits == "079") // California
+                {
+                    if (timeInCamp == "1" && daysInCamp >= 19)
+                        Amount = 1000;
+                    else if (timeInCamp == "1" && daysInCamp >= 12)
+                        Amount = 700;
+                    else if (timeInCamp == "2" && daysInCamp >= 19)
+                        Amount = 750;
+                    else if (timeInCamp == "2" && daysInCamp >= 12)
+                        Amount = 500;
+                }
+                else if (last3Digits == "080" || last3Digits == "084") // Canada, Wisconsin
+                {
+                    if (daysInCamp >= 19)
+                        Amount = 1000;
+                }
+                else if (last3Digits == "083") // Poconos
+                {
+                    if (timeInCamp == "1" && daysInCamp >= 19)
+                        Amount = 1000;
+                    else if (timeInCamp == "2" && daysInCamp >= 19)
+                        Amount = 750;
+                }
+                else if (last3Digits == "150") // Outdoor Adventure
+                {
+                    if (timeInCamp == "1" && daysInCamp >= 19)
+                        Amount = 1000;
+                    else if (timeInCamp == "1" && daysInCamp >= 12)
+                        Amount = 700;
+                    else if (timeInCamp == "2" && daysInCamp >= 19)
+                        Amount = 750;
+                    else if (timeInCamp == "2" && daysInCamp >= 12)
+                        Amount = 350;
+                }
+                else // all other camps
+                    Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
             }
             else
             {
                 StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                Amount = 0;
             }
 
             oCA.UpdateAmount(FJCID, Amount, 0, "");
+
+            if (Amount == 0.00)
+                StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+
             return true;
 
             

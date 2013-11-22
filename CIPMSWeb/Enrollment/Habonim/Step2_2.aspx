@@ -26,7 +26,7 @@
         <tr id="trSibling2" runat="server" visible="false">
             <td valign="top"><span class="InfoText">*</span>2</td>
             <td valign="top">
-    			Did the camper’s sibling previously receive an incentive grant through the Chicago One Happy Camper Program?
+    			Did the camper’s sibling previously receive an incentive grant through the Habonim Dror Camp Tavor’s One Happy Camper Program?
                 <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                     <asp:ListItem Text="No" Value="2"></asp:ListItem>

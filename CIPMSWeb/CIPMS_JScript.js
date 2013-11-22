@@ -6198,7 +6198,16 @@ function ValidateForm(isSubmit) {
             break;
         }
     }
-    
+
+    // 2013-11-20 We need to change the startDate and endDate (both are hard coded from web.config file) if admin is changing for last calendar year's data
+    var appDate = $('#lblStartDate').text();
+    var appYear = appDate.substring(appDate.length - 4);
+    var currentYear = startDate.value.substring(startDate.value.length - 4);
+    if (appYear != currentYear) {
+        startDate.value = startDate.value.substring(0, startDate.value.length - 4) + appYear;
+        endDate.value = endDate.value.substring(0, endDate.value.length - 4) + appYear;
+    }
+        
     if(QtxtManualStartDate != null)
         dateValidationMessage = DateFunctions(trim(startDate.value), trim(endDate.value), trim(QtxtManualStartDate.value), trim(QtxtManualEndDate.value),campSeasonErrorMessage);
     
@@ -6296,7 +6305,7 @@ function jumpScroll() {
 }
 
 
-function DateFunctions(startDate, endDate, actualStartDate, actualEndDate,campSeasonErrorMessage) {
+function DateFunctions(startDate, endDate, actualStartDate, actualEndDate, campSeasonErrorMessage) {
     if (actualStartDate=="" || actualEndDate=="") {
         return strErrorMsg="<li>Please enter dates in the mm/dd/yyyy format, or select the dates by clicking the calendar icons</li>";        
     } else if (!ValidateDate(actualStartDate)) {

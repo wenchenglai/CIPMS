@@ -48,69 +48,15 @@
                 <asp:Label ID="Label9" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
 						<b><span style="color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span></b> 
-                        Because there are a very limited number of incentive grants for campers who attend Jewish day schools, 
-                        these incentive grants will be awarded by lottery.  Day school students who wish to receive an incentive 
-                        award should sign up for the day school student PJ Goes to Camp lottery no later than the end of the day on November 8, 2013.  
+                        All PJ Goes To Camp Incentive Grants for day school students for the summer of 2014 have been distributed through a lottery that was 
+                        completed on November 8, 2013.  Due to overwhelming demand we are unable to place additional names on the 2014 waiting list.  
+                        If you do not send your child to camp in 2014 and would like to be informed about the 
+                        day-school student lottery for first-time campers for the summer of 2015, please e-mail your name and camper information 
+                        AFTER August 15, 2014 to <a href="mailto:PJGTC@hgf.org">PJGTC@hgf.org</a>.  
 					</p>
                 </asp:Label>
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-                    To sign up for the lottery that will award incentive grants to students who attend Jewish day schools, 
-                    you must submit the following required information in an e-mail to <a href="mailto:pjgtc@hgf.org">pjgtc@hgf.org</a> 
-                    <b>prior to the end of the day on November 8, 2013</b>.  
-				</p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-				    <ul style="text-align:justify; list-style-type: none;" class="infotext3">
-				        <li>a)	Parent’s name</li>
-				        <li>b)	Parent’s mailing address</li>
-				        <li>c)	Parent’s e-mail address</li>
-				        <li>d)	Parent’s day-time phone number</li>
-				        <li>e)	Camper’s name (as they will enroll)</li>
-				        <li>f)	Camper’s age (as of November 10, 2013)</li>
-				        <li>g)	Camper’s school (name, city, state)</li>
-				        <li>h)	Camp information (name, city, state)</li>
-				        <li>i)	Camp enrollment information (dates to be enrolled)</li>
-				    </ul>
-				</p>
-            </td>
-        </tr>   
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-                    Applicants who are granted incentive awards as a result of the lottery will be sent their unique PJ Goes to Camp registration referral 
-                    code by return e-mail no later than November 15, 2013.  
-				</p>
-            </td>
-        </tr>   
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-                    Families who are not awarded PJ Goes to Camp incentives will be notified and be placed on a waiting list should additional incentives become available.  
-				</p>
-            </td>
-        </tr>   
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-                    <u>Each child must be entered separately</u> for the lottery and once awarded, incentives are not transferable.  
-				</p>
-            </td>
-        </tr>   
-        <tr>
-            <td colspan="2">
-				<p style="text-align:justify" class="infotext3">
-                    If the day school student incentives appear to be no longer available, e-mail <a href="mailto:Maddie@hgf.org">Maddie@hgf.org</a>
-                    to put your name on the waiting list for additional day school student incentives that may be released later in the program year.
-				</p>
-            </td>
-        </tr>   
         <tr>
             <td colspan="2">
 				<p style="text-align:justify" class="infotext3">

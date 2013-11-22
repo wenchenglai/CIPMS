@@ -11,6 +11,7 @@
 <head id="Head1" runat="server">
     <title>Foundation for Jewish Camp</title>
     <link rel="stylesheet" href="Style/CIPStyle.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" language="javascript">
         javascript:window.history.forward(1);
     </script>
