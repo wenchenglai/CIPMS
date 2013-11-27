@@ -88,7 +88,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
             dsCamprDetails = GetValues();
 
             // 2013-11-12 After 2013, Camps can contact campers directly 
-            if (Convert.ToInt32(Application["CampYear"]) >= 2014)
+            if (Convert.ToInt32(dsCamprDetails.Tables[0].Rows[0]["CampYearID"]) >= 6)
             {
                 lblPermissionNA.Visible = true;
             }

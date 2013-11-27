@@ -276,6 +276,9 @@ namespace CIPMSBC.Eligibility
                 case FederationEnum.Nashville:
                     elig = new EligibilityHartford(fed);
                     break;
+                case FederationEnum.Portland:
+                    elig = new EligibilityPortland(fed);
+                    break;
             }
             return elig;
         }
