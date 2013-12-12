@@ -100,7 +100,7 @@ public partial class Step2_Ramah_3 : Page
             var strCampId = Session["CampID"].ToString();
             var last3Digits = strCampId.Substring(strCampId.Length - 3);
 
-			if (last3Digits == "079") // California
+			if (last3Digits == "079" || last3Digits == "150") // California
             {
                 lblMinimunDays.Text = "12";
                    

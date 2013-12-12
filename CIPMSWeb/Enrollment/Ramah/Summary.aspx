@@ -123,7 +123,7 @@
                 <p style="text-align:justify;" class="infotext3">
                     <b>The Ramah One Happy Camper Program, sponsored by the National Ramah Commission and Ramah Outdoor Adventure provides financial incentives of $1,000 to 
                         first-time campers who attend Ramah Outdoor Adventure for at least 19 consecutive days (or $700 for 12-18 day sessions) and $750 for eligible
-                         campers returning for a second year ($350 for 12-18 day sessions). Eligible campers must be entering grades 3-11 (after camp) and attend Ramah Outdoor Adventure.  
+                         campers returning for a second year ($350 for 12-18 day sessions). Eligible campers must be entering grades 3-12 (after camp) and attend Ramah Outdoor Adventure.  
                         To receive a second year grant for summer 2014, campers MUST have received a grant through the Ramah One Happy Camper program for summer 2013. </b>
                         Eligibility and program details may vary by camp. Please contact your camp for details after completing the application. 
                 </p>                 
