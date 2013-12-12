@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -20,9 +21,11 @@ public partial class Step2_Columbus_3 : Page
     private RadioButton RadioButtonQ7Option2;
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Columbus).ToString()))
+            Response.Redirect("~/NLIntermediate.aspx");
+
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
-     
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);

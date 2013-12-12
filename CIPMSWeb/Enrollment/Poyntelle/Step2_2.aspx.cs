@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -20,6 +21,13 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        string FedId = ((int)FederationEnum.Poyntelle).ToString();
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == FedId ))
+            Response.Redirect("~/NLIntermediate.aspx");
+
+        //if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id== FedId))
+        //    Response.Redirect("Summary.aspx");
+
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);

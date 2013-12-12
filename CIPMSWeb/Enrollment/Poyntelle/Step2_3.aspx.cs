@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -22,13 +23,19 @@ public partial class Step2_Chi_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        string FedId = ((int)FederationEnum.Poyntelle).ToString();
+        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Poyntelle).ToString()))
+            Response.Redirect("~/NLIntermediate.aspx");
+
+        //if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == FedId))
+        //    Response.Redirect("Summary.aspx");
+
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-        //ddlCampSession.SelectedIndexChanged += new EventHandler(ddlCampSession_SelectedIndexChanged);
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)

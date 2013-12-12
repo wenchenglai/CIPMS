@@ -77,7 +77,7 @@
                         <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnJCCDropDownChange(this);" />
                     </div>
                     <div ID="divOtherJCC" class="column1" style="float:left; width: 250px;" runat="server">
-                        If "Other": <asp:TextBox ID="txtOtherJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
+                       <asp:TextBox ID="txtOtherJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
                     </div>
                 </div>
                 <div class="questionrows">

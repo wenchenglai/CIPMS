@@ -96,12 +96,11 @@ public partial class Step2_Ramah_3 : Page
                 Label22.Text = Convert.ToString(Int32.Parse(Label22.Text) + Qincrement);
                 Label25.Text = Convert.ToString(Int32.Parse(Label25.Text) + Qincrement);
             }
-            int resultCampId = 0;
-            if (Session["CampID"] != null)
-            {
-                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
-            }
-			if (resultCampId == 2150 || resultCampId == 2079 || resultCampId == 3150 || resultCampId == 4079 || resultCampId == 4150)
+
+            var strCampId = Session["CampID"].ToString();
+            var last3Digits = strCampId.Substring(strCampId.Length - 3);
+
+			if (last3Digits == "079") // California
             {
                 lblMinimunDays.Text = "12";
                    

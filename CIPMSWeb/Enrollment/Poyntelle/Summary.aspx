@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-     <table width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
             <tr>
             <td style="width: 147px">
                 <img src="logo.jpg" />
@@ -52,6 +52,23 @@
                 <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">If you need additional assistance, please call the camp professional listed at the bottom of this page.</p>
                 </asp:Label></td></tr>
+    </table>
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
+            <tr>
+            <td style="width: 147px">
+                <img src="logo.jpg" />
+                </td>
+            <td>
+                <asp:Label ID="Label3" CssClass="SummaryHeading" runat="server" ForeColor="Black">
+                    <p style="text-align:justify"></p>   
+                </asp:Label>
+                <asp:Label ID="Label5" CssClass="infotext3" runat="server">
+					<p style="text-align:justify"> 
+                        For further information on how to apply for the Camp Poyntelle Lewis Village One Happy Camper Program, please contact the professional listed at the bottom of the screen.
+					</p> 
+                </asp:Label>    
+            </td>
+        </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
