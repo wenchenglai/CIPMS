@@ -61,10 +61,12 @@
         <tr id="trBerkshires" runat="server" visible="false">
             <td colspan="2">
                 <p style="text-align: justify;" class="infotext3">
-                    <b>The Ramah One Happy Camper Program, sponsored by the National Ramah Commission and Camp Ramah in the Berkshires, 
-                  provides financial incentives to first-time campers who attend one of our nonprofit Jewish overnight summer camps 
-                  for at least 19 consecutive days. Eligible campers must be entering grades 3-11 (after camp) and attend Camp Ramah 
-                  in the Berkshires.</b> Eligibility and program details may vary by camp. Please contact your camp for details after completing the application. 
+                    <b>The Ramah One Happy Camper Program, sponsored by the National Ramah Commission and Camp Ramah in the Berkshires, provides financial incentives to 
+                        first-time campers who attend one of our nonprofit Jewish overnight summer camps for at least 19 consecutive days.  
+                        Eligible campers must be entering grades 3-11 (after camp) and attend Camp Ramah in the Berkshires. Campers who 
+                        attend Jewish Day School are eligible for a grant of $500. Campers who attend public school, 
+                        private secular school, or are home schooled are eligible for a grant of $1000.</b> 
+                    Eligibility and program details may vary by camp. Please contact your camp for details after completing the application. 
                 </p>
             </td>
         </tr>

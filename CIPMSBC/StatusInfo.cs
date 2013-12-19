@@ -27,9 +27,12 @@ namespace CIPMSBC
 		Refunded, 
 		PendingSchoolAndCamp, 
 		Eligibledayschool = 23,
+        PaymentRequested = 25,
+        CamperAttendedCamp = 28,
 		PendingValidation = 36,
 		EligibleContactParentsAagain = 42,
         EligiblePendingNumberOfDays = 43,
+        EligibleCampCoupon = 45,
         NonJewish = 9999
     }
 }

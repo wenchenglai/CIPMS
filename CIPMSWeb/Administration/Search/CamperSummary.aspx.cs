@@ -864,8 +864,14 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
 
                 if (ChangeDetails.RequestType == 1) //Cancellation request
                 {
-                    ChangeDetails.Current_Status = Convert.ToInt32(ConfigurationManager.AppSettings["Payment Cancellation Pending FJC approval"]);
-                    ChangeDetails.Original_Status = Int32.Parse(ddlStatus.SelectedValue);
+                    int oldStatus = Int32.Parse(ddlStatus.SelectedValue);
+                    int newStatus = Convert.ToInt32(ConfigurationManager.AppSettings["Camper Declined to go Camp"]);
+
+                    if (oldStatus == StatusInfo.PaymentRequested || oldStatus == StatusInfo.CamperAttendedCamp)
+                        newStatus = Convert.ToInt32(ConfigurationManager.AppSettings["Payment Cancellation Pending FJC approval"]);
+
+                    ChangeDetails.Current_Status = newStatus;
+                    ChangeDetails.Original_Status = oldStatus;
                     ChangeDetails.CampYearID = (int)Application["CampYear"] - 2008;
                     ChangeDetails.Cancellation_Reason = txtReason.Text.Trim() != string.Empty ? txtReason.Text.Trim() : "";
 
