@@ -72,7 +72,8 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             strStatus == StatusInfo.EligibleNoCamp || 
             strStatus == StatusInfo.EligiblePendingSchool || 
             strStatus == StatusInfo.PendingSchoolAndCamp || 
-            strStatus == StatusInfo.EligibleByStaff)  //20- eligiblenoschoolnocamp
+            strStatus == StatusInfo.EligibleByStaff ||
+            strStatus == StatusInfo.EligibleCampCoupon)  //20- eligiblenoschoolnocamp
         {
             pnlEligible.Visible = true;
                    

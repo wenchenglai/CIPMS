@@ -106,6 +106,59 @@
         }
 
         return;
+    },
+
+    OnSubmitChicagoCouponPageClick: function (sender, args) {
+        var errorMsg = $(sender)[0];
+        errorMsg.innerHTML = "";
+
+        // First question
+        if (!$('#ctl00_Content_rdoYes1').is(':checked') && !$('#ctl00_Content_rdoNo1').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
+        }
+
+        if ($('#ctl00_Content_rdoYes1').is(':checked')) {
+            if ($('#ctl00_Content_txtCampName1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Camp Name</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtAddress1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Address</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtYearAttended1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Year Attended</li></ul>";
+            }
+        }
+
+        // second question
+        if (!$('#ctl00_Content_rdoYes2').is(':checked') && !$('#ctl00_Content_rdoNo2').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2</li></ul>";
+        }
+
+        if ($('#ctl00_Content_rdoYes2').is(':checked')) {
+            if ($('#ctl00_Content_txtCampName2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Camp Name</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtAddress2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Address</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtYearAttended2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Year Attended</li></ul>";
+            }
+        }
+
+        args.IsValid = true;
+
+        if (errorMsg.innerHTML === "") {
+            args.IsValid = true;
+        } else {
+            args.IsValid = false;
+        }
+
+        return;
     }
 };
 

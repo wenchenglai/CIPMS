@@ -45,26 +45,25 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
                 hdnFJCID.Value = (string)Session["FJCID"]; ;
                 getCamperAnswers();
             }
-			ddlQ10_SelectedIndexChanged(null, null);
+            ddlJewishDaySchool_SelectedIndexChanged(null, null);
         }
 		SetSyangogueJCCEnableDisable();
     }
 
 	void btnNext_Click(object sender, EventArgs e)
 	{
-		int iStatus;
-		string strModifiedBy, strFJCID;
-
-		if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+		if (!isReadOnly)
 		{
 			ProcessCamperAnswers();
 		}
-		bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+
 		//Modified by id taken from the Master Id
-		strModifiedBy = Master.UserId;
-		strFJCID = hdnFJCID.Value;
+		string strModifiedBy = Master.UserId;
+		string strFJCID = hdnFJCID.Value;
 		if (strFJCID != "" && strModifiedBy != "")
 		{
+            int iStatus;
 			if (isReadOnly)
 			{
 				DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
@@ -79,7 +78,14 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			Session["STATUS"] = iStatus.ToString();
 		}
 		Session["FJCID"] = hdnFJCID.Value;
-		Response.Redirect("Step2_3.aspx");
+
+        // Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
+        if (ddlJewishDaySchool.SelectedValue == "3")
+        {
+            Response.Redirect("Step2_coupon.aspx");
+        }
+        else
+		    Response.Redirect("Step2_3.aspx");
 	}
 
     void Page_Unload(object sender, EventArgs e)
@@ -460,6 +466,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 
             ddlJewishDaySchool.SelectedIndex = 0;
             txtJewishSchool.Text = "";
+            btnNext.Visible = true;
         }
 
         if (ddlJewishDaySchool.SelectedValue == "3")
@@ -715,21 +722,21 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		return false;
 	}
 
-    protected void ddlQ10_SelectedIndexChanged(object sender, EventArgs e)
+    protected void ddlJewishDaySchool_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlJewishDaySchool.SelectedValue == "3")
+        if (ddlJewishDaySchool.SelectedValue == "3") // Other
         {
             pnlJewishSchool.Enabled = true;
 
-			if (!hasValidCode())
-			{
-				btnNext.Visible = false;
-			}
-			else
-			{
-				lblJewishDaySchool.Text = "";
-				btnNext.Visible = true;
-			}
+            //if (!hasValidCode())
+            //{
+            //    btnNext.Visible = false;
+            //}
+            //else
+            //{
+            //    lblJewishDaySchool.Text = "";
+            //    btnNext.Visible = true;
+            //}
         }
         else
         {

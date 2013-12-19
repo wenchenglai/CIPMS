@@ -78,14 +78,14 @@
             <td valign="top">
                 <asp:Panel ID="PnlQ10" runat="server">
                     Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u>attends:<br />
-                    <asp:DropDownList AutoPostBack="true" ID="ddlJewishDaySchool" runat="server" CssClass="dropdown" OnSelectedIndexChanged="ddlQ10_SelectedIndexChanged">
+                    <asp:DropDownList AutoPostBack="true" ID="ddlJewishDaySchool" runat="server" CssClass="dropdown" OnSelectedIndexChanged="ddlJewishDaySchool_SelectedIndexChanged">
                         <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>                            
                         <asp:ListItem Text="Bernard Zell Anshe Emet Day School" Value="4"></asp:ListItem>
                         <asp:ListItem Text="Akiba Schechter Jewish Day School" Value="5"></asp:ListItem>
                         <asp:ListItem Text="Chicago Jewish Day School" Value="9"></asp:ListItem>
                         <asp:ListItem Text="Chicagoland Jewish High School" Value="6"></asp:ListItem>                            
                         <asp:ListItem Text="Solomon Schechter Jewish Day School" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Other" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="other (please specify)" Value="3"></asp:ListItem>
                     </asp:DropDownList>
                 </asp:Panel>
             </td>

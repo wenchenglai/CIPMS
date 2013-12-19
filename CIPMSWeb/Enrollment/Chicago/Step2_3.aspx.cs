@@ -147,12 +147,6 @@ public partial class Step2_Chicago_3 : Page
         }
     }
 
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
         try
@@ -198,22 +192,29 @@ public partial class Step2_Chicago_3 : Page
 
     void btnPrevious_Click(object sender, EventArgs e)
     {
-        try
+        if (Page.IsValid)
         {
-            if (Page.IsValid)
+            if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-                {
-                    InsertCamperAnswers();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_3.Value;
-                Session["STATUS"] = null;
-                Response.Redirect("Step2_2.aspx");
+                InsertCamperAnswers();
             }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
+            Session["FJCID"] = hdnFJCIDStep2_3.Value;
+            Session["STATUS"] = null;
+
+            // 2013-12-12 Chicago Coupon page check
+            DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_3.Value, "17", "17", "N");
+            if (dsAnswers.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = dsAnswers.Tables[0].Rows[0];
+
+                if (!dr["OptionID"].Equals(DBNull.Value))
+                {
+                     if (dr["OptionID"].ToString() == "3")
+                         Response.Redirect("Step2_coupon.aspx");
+                }
+            }
+
+            Response.Redirect("Step2_2.aspx");
         }
     }
 
