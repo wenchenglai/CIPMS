@@ -867,7 +867,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                     int oldStatus = Int32.Parse(ddlStatus.SelectedValue);
                     int newStatus = Convert.ToInt32(ConfigurationManager.AppSettings["Camper Declined to go Camp"]);
 
-                    if (oldStatus == StatusInfo.PaymentRequested || oldStatus == StatusInfo.CamperAttendedCamp)
+                    if (oldStatus == (int)StatusInfo.PaymentRequested || oldStatus == (int)StatusInfo.CamperAttendedCamp)
                         newStatus = Convert.ToInt32(ConfigurationManager.AppSettings["Payment Cancellation Pending FJC approval"]);
 
                     ChangeDetails.Current_Status = newStatus;
