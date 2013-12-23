@@ -440,15 +440,12 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
     void setPanelStatus()
     {
         //for Question 9
-		lblJewishDaySchool.Text = "";
         if (rdoSchoolType.SelectedIndex == 3) //Jewish school is selected
         {
 			PnlQ10.Enabled = true;
 			pnlJewishSchool.Enabled = true;
 			pnlCamperSchool.Enabled = false;
             txtSchoolName.Text = "";
-
-			lblJewishDaySchool.Text = "If your Jewish day school is not listed in the drop down below, please contact Hallie Shapiro Devir at JewishCamp@juf.org or 312-357-4995 to learn more about grants and scholarships opportunities.";
 		}
         else if (rdoSchoolType.SelectedIndex != -1)  //for the rest of the options disable it
         {
@@ -727,16 +724,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         if (ddlJewishDaySchool.SelectedValue == "3") // Other
         {
             pnlJewishSchool.Enabled = true;
-
-            //if (!hasValidCode())
-            //{
-            //    btnNext.Visible = false;
-            //}
-            //else
-            //{
-            //    lblJewishDaySchool.Text = "";
-            //    btnNext.Visible = true;
-            //}
         }
         else
         {

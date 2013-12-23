@@ -254,33 +254,36 @@ namespace CIPMSBC.Eligibility
                 }
             }
 
-            // 2013-12-12 Chicago Coupon for other Day School campers: either $120, $240, $360
-            DataSet dsAnswers = oCA.getCamperAnswers(FJCID, "", "", "17, 1047, 1051");
-            if (dsAnswers.Tables[0].Rows.Count > 0)
+            if (StatusValue == Convert.ToInt32(StatusInfo.SystemEligible))
             {
-                DataRow[] drs = dsAnswers.Tables[0].Select("QuestionId = 17");
-                if (drs.Length == 1)
+                // 2013-12-12 Chicago Coupon for other Day School campers: either $120, $240, $360
+                DataSet dsAnswers = oCA.getCamperAnswers(FJCID, "", "", "17, 1047, 1051");
+                if (dsAnswers.Tables[0].Rows.Count > 0)
                 {
-                    if (drs[0]["OptionID"].ToString() == "3")
+                    DataRow[] drs = dsAnswers.Tables[0].Select("QuestionId = 17");
+                    if (drs.Length == 1)
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.EligibleCampCoupon);
-                        Amount = 120;  // Minimally, other day school campers can get $120 coupon
-
-                        foreach (DataRow dr in dsAnswers.Tables[0].Rows)
+                        if (drs[0]["OptionID"].ToString() == "3")
                         {
-                            int qID = Convert.ToInt32(dr["QuestionId"]);
+                            StatusValue = Convert.ToInt32(StatusInfo.EligibleCampCoupon);
+                            Amount = 120;  // Minimally, other day school campers can get $120 coupon
 
-                            if (qID == 1047) // Did the camper attend a Jewish preschool?
+                            foreach (DataRow dr in dsAnswers.Tables[0].Rows)
                             {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                    if (dr["OptionID"].ToString() == "1")
-                                        Amount += 120;
-                            }
-                            else if (qID == 1051) // Did the camper attend a Jewish day camp?
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                    if (dr["OptionID"].ToString() == "1")
-                                        Amount += 120;
+                                int qID = Convert.ToInt32(dr["QuestionId"]);
+
+                                if (qID == 1047) // Did the camper attend a Jewish preschool?
+                                {
+                                    if (!dr["OptionID"].Equals(DBNull.Value))
+                                        if (dr["OptionID"].ToString() == "1")
+                                            Amount += 120;
+                                }
+                                else if (qID == 1051) // Did the camper attend a Jewish day camp?
+                                {
+                                    if (!dr["OptionID"].Equals(DBNull.Value))
+                                        if (dr["OptionID"].ToString() == "1")
+                                            Amount += 120;
+                                }
                             }
                         }
                     }

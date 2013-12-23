@@ -15,25 +15,48 @@
     <table>
         <tbody class="QuestionText">
         <tr>
+            <td colspan="2">
+                <span style="color:red">Camp Coupons is a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system</span>
+            </td>
+        </tr>
+        <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-    			Did the camper attend a Jewish preschool?
+    			Did the camper attend a Jewish pre-school?
                 <div>
                     <asp:RadioButton ID="rdoYes1" Text="Yes" runat="server" GroupName="one" />
                     <asp:RadioButton ID="rdoNo1" Text="No" runat="server" GroupName="one" />
                 </div>
                 <div style="margin-top:30px">
-                    <div style="width:300px; height:30px">
-                        <span style="margin-top:20px;">Name of Camp</span>
+                    <div style="width:400px; height:30px">
+                        <span style="margin-top:20px;">Name of Pre-School</span>
                         <span style="float:right"><asp:TextBox ID="txtCampName1" runat="server" /></span>
                     </div>
-                    <div style="width:300px; height:30px">
-                        <span>Address</span>
+                    <div style="width:400px; height:30px">
+                        <span>Address (street/city/state/zip)</span>
                         <span style="float:right"><asp:TextBox ID="txtAddress1" runat="server" /></span>
                     </div>
-                    <div style="width:300px; height:30px">
-                        <span style="float:left">Year Attended</span>
-                        <span style="float:right"><asp:TextBox ID="txtYearAttended1" runat="server" /></span>
+                    <div style="width:400px; height:30px">
+                        <span style="float:left">Last Year Attended</span>
+                        <span style="float:left; margin-left:125px">
+                            <asp:DropDownList ID="ddlYearAttended1" runat="server">
+                                <asp:ListItem Text="2014" Value="2014"></asp:ListItem>
+                                <asp:ListItem Text="2013" Value="2013"></asp:ListItem>
+                                <asp:ListItem Text="2012" Value="2012"></asp:ListItem>
+                                <asp:ListItem Text="2011" Value="2011"></asp:ListItem>
+                                <asp:ListItem Text="2010" Value="2010"></asp:ListItem>
+                                <asp:ListItem Text="2009" Value="2009"></asp:ListItem>
+                                <asp:ListItem Text="2008" Value="2008"></asp:ListItem>
+                                <asp:ListItem Text="2007" Value="2007"></asp:ListItem>
+                                <asp:ListItem Text="2006" Value="2006"></asp:ListItem>
+                                <asp:ListItem Text="2005" Value="2005"></asp:ListItem>
+                                <asp:ListItem Text="2004" Value="2004"></asp:ListItem>
+                                <asp:ListItem Text="2003" Value="2003"></asp:ListItem>
+                                <asp:ListItem Text="2002" Value="2002"></asp:ListItem>
+                                <asp:ListItem Text="2001" Value="2001"></asp:ListItem>
+                                <asp:ListItem Text="2000" Value="2000"></asp:ListItem>
+                            </asp:DropDownList>
+                        </span>
                     </div>
                 </div>
             </td>
@@ -47,17 +70,35 @@
                     <asp:RadioButton ID="rdoNo2" Text="No" runat="server" GroupName="two" />
                 </div>
                 <div style="margin-top:30px">
-                    <div style="width:300px; height:30px">
-                        <span style="margin-top:20px;">Name of Camp</span>
+                    <div style="width:400px; height:30px">
+                        <span style="margin-top:20px;">Name of Day Camp</span>
                         <span style="float:right"><asp:TextBox ID="txtCampName2" runat="server" /></span>
                     </div>
-                    <div style="width:300px; height:30px">
-                        <span>Address</span>
+                    <div style="width:400px; height:30px">
+                        <span>Address (street/city/state/zip)</span>
                         <span style="float:right"><asp:TextBox ID="txtAddress2" runat="server" /></span>
                     </div>
-                    <div style="width:300px; height:30px">
-                        <span style="float:left">Year Attended</span>
-                        <span style="float:right"><asp:TextBox ID="txtYearAttended2" runat="server" /></span>
+                    <div style="width:400px; height:30px">
+                        <span style="float:left">Last Year Attended</span>
+                        <span style="float:left; margin-left:125px">
+                            <asp:DropDownList ID="ddlYearAttended2" runat="server">
+                                <asp:ListItem Text="2014" Value="2014"></asp:ListItem>
+                                <asp:ListItem Text="2013" Value="2013"></asp:ListItem>
+                                <asp:ListItem Text="2012" Value="2012"></asp:ListItem>
+                                <asp:ListItem Text="2011" Value="2011"></asp:ListItem>
+                                <asp:ListItem Text="2010" Value="2010"></asp:ListItem>
+                                <asp:ListItem Text="2009" Value="2009"></asp:ListItem>
+                                <asp:ListItem Text="2008" Value="2008"></asp:ListItem>
+                                <asp:ListItem Text="2007" Value="2007"></asp:ListItem>
+                                <asp:ListItem Text="2006" Value="2006"></asp:ListItem>
+                                <asp:ListItem Text="2005" Value="2005"></asp:ListItem>
+                                <asp:ListItem Text="2004" Value="2004"></asp:ListItem>
+                                <asp:ListItem Text="2003" Value="2003"></asp:ListItem>
+                                <asp:ListItem Text="2002" Value="2002"></asp:ListItem>
+                                <asp:ListItem Text="2001" Value="2001"></asp:ListItem>
+                                <asp:ListItem Text="2000" Value="2000"></asp:ListItem>
+                            </asp:DropDownList>
+                        </span>
                     </div>
                 </div>
             </td>

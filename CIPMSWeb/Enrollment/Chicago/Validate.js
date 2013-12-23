@@ -119,7 +119,7 @@
 
         if ($('#ctl00_Content_rdoYes1').is(':checked')) {
             if ($('#ctl00_Content_txtCampName1').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Camp Name</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Name of Pre-School </li></ul>";
             }
 
             if ($('#ctl00_Content_txtAddress1').val() === "") {
@@ -127,7 +127,7 @@
             }
 
             if ($('#ctl00_Content_txtYearAttended1').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Year Attended</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Last Year Attended</li></ul>";
             }
         }
 
@@ -138,7 +138,7 @@
 
         if ($('#ctl00_Content_rdoYes2').is(':checked')) {
             if ($('#ctl00_Content_txtCampName2').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Camp Name</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Day Camp Name</li></ul>";
             }
 
             if ($('#ctl00_Content_txtAddress2').val() === "") {
@@ -146,7 +146,7 @@
             }
 
             if ($('#ctl00_Content_txtYearAttended2').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Year Attended</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Last Year Attended</li></ul>";
             }
         }
 
@@ -164,4 +164,36 @@
 
 $(function () {
     PageValidator.OnSiblingRadioChanged(null);
+
+    $('#ctl00_Content_rdoNo1').bind('click', function() {
+        $('#ctl00_Content_txtCampName1').attr("disabled", true);
+        $('#ctl00_Content_txtAddress1').attr("disabled", true);
+        $('#ctl00_Content_ddlYearAttended1').attr("disabled", true);
+    });
+
+    $('#ctl00_Content_rdoYes1').bind('click', function () {
+        $('#ctl00_Content_txtCampName1').removeAttr('disabled');
+        $('#ctl00_Content_txtAddress1').removeAttr('disabled');
+        $('#ctl00_Content_ddlYearAttended1').removeAttr('disabled');
+    });
+
+    $('#ctl00_Content_rdoNo2').bind('click', function() {
+        $('#ctl00_Content_txtCampName2').attr("disabled", true);
+        $('#ctl00_Content_txtAddress2').attr("disabled", true);
+        $('#ctl00_Content_ddlYearAttended2').attr("disabled", true);
+    });
+
+    $('#ctl00_Content_rdoYes2').bind('click', function () {
+        $('#ctl00_Content_txtCampName2').removeAttr('disabled');
+        $('#ctl00_Content_txtAddress2').removeAttr('disabled');
+        $('#ctl00_Content_ddlYearAttended2').removeAttr('disabled');
+    });
+
+    if ($('#ctl00_Content_rdoNo1').is(':checked')) {
+        $('#ctl00_Content_rdoNo1').trigger('click');
+    }
+
+    if ($('#ctl00_Content_rdoNo2').is(':checked')) {
+        $('#ctl00_Content_rdoNo2').trigger('click');
+    }
 })

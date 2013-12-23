@@ -70,7 +70,6 @@
                     <asp:ListItem Text="Home school" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day school" Value="4"></asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:Label ID="lblJewishDaySchool" ForeColor="Red" runat="server" CssClass="QuestionText"></asp:Label>
             </td>
         </tr>
         <tr>

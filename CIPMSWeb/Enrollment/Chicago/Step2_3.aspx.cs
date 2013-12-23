@@ -57,6 +57,19 @@ public partial class Step2_Chicago_3 : Page
 				hdnFJCIDStep2_3.Value = (string)Session["FJCID"];
 				getCamperAnswers();
 			}
+
+            // 2013-12-12 Chicago Coupon page check
+            DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_3.Value, "17", "17", "N");
+            if (dsAnswers.Tables[0].Rows.Count > 0)
+            {
+                DataRow dr = dsAnswers.Tables[0].Rows[0];
+
+                if (!dr["OptionID"].Equals(DBNull.Value))
+                {
+                    if (dr["OptionID"].ToString() == "3")
+                        lblEligibilitySub.Text = "the Camp Coupon";
+                }
+            }
 		}
 
 		RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");

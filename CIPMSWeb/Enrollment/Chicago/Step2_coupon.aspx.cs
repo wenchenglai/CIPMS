@@ -192,7 +192,7 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
-                    txtYearAttended1.Text = dr["Answer"].ToString();
+                    ddlYearAttended1.SelectedItem.Text = dr["Answer"].ToString();
                 }
             }
             else if (qID == 1051) // Did the camper attend a Jewish day camp?
@@ -223,7 +223,7 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
-                    txtYearAttended2.Text = dr["Answer"].ToString();
+                    ddlYearAttended2.SelectedItem.Text = dr["Answer"].ToString();
                 }
             }
         }
@@ -239,12 +239,12 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
         string strTablevalues = "1047" + strFSeparator + (rdoYes1.Checked ? "1" : rdoNo1.Checked ? "2" : "") + strFSeparator + strQSeparator;
         strTablevalues += "1048" + strFSeparator + strFSeparator + txtCampName1.Text + strQSeparator;
         strTablevalues += "1049" + strFSeparator + strFSeparator + txtAddress1.Text + strQSeparator;
-        strTablevalues += "1050" + strFSeparator + strFSeparator + txtYearAttended1.Text + strQSeparator;
+        strTablevalues += "1050" + strFSeparator + strFSeparator + ddlYearAttended1.SelectedValue + strQSeparator;
 
         strTablevalues += "1051" + strFSeparator + (rdoYes2.Checked ? "1" : rdoNo2.Checked ? "2" : "") + strFSeparator + strQSeparator;
         strTablevalues += "1052" + strFSeparator + strFSeparator + txtCampName2.Text + strQSeparator;
         strTablevalues += "1053" + strFSeparator + strFSeparator + txtAddress2.Text + strQSeparator;
-        strTablevalues += "1054" + strFSeparator + strFSeparator + txtYearAttended2.Text + strQSeparator;
+        strTablevalues += "1054" + strFSeparator + strFSeparator + ddlYearAttended2.SelectedValue + strQSeparator;
 
         //to remove the extra character at the end of the string, if any
         char[] chartoRemove = { Convert.ToChar(strQSeparator) };
