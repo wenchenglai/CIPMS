@@ -192,7 +192,7 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
-                    ddlYearAttended1.SelectedItem.Text = dr["Answer"].ToString();
+                    ddlYearAttended1.SelectedValue = dr["Answer"].ToString();
                 }
             }
             else if (qID == 1051) // Did the camper attend a Jewish day camp?
@@ -223,7 +223,7 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
-                    ddlYearAttended2.SelectedItem.Text = dr["Answer"].ToString();
+                    ddlYearAttended2.SelectedValue = dr["Answer"].ToString();
                 }
             }
         }
