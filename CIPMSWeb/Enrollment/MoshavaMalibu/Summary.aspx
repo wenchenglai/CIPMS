@@ -38,7 +38,7 @@
 			<td colspan="2">
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<strong>The Moshava Malibu One Happy Camper program provides financial incentives of $1000 to all first-time campers</strong>, 
+						<strong>The Moshava Malibu One Happy Camper program provides financial incentives of up to $1000.  This is available to all first-time campers who have never attended a non-profit, Jewish overnight camp for 12 consecutive days or longer, </strong>, 
 						including those who are currently attend Jewish Day Schools.
 					</p>
 				</asp:Label>
