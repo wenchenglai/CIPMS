@@ -29,6 +29,7 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
+            GetStates();
             //to get the FJCID which is stored in session
             if (Session["FJCID"] != null)
             {
@@ -158,7 +159,9 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
     //to get the camper answers from the database
     void getCamperAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "1047", "1054", "N");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "1047", "1062", "N");
+
+        int countryID1 = 0, countryID2 = 0;
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -226,6 +229,72 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
                     ddlYearAttended2.SelectedValue = dr["Answer"].ToString();
                 }
             }
+            else if (qID == 1055)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    ddlCountry1.SelectedValue = dr["Answer"].ToString();
+                    countryID1 = Int32.Parse(ddlCountry1.SelectedValue);
+                }
+            }
+            else if (qID == 1056)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    if (countryID1 == 2)
+                    {
+                        get_CountryStates(ddlState1, countryID1);
+                    }
+                    ddlState1.SelectedValue = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 1057)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    txtCity1.Text = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 1058)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    txtZipCode1.Text = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 1059)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    ddlCountry2.SelectedValue = dr["Answer"].ToString();
+                    countryID2 = Int32.Parse(ddlCountry2.SelectedValue);
+                }
+            }
+            else if (qID == 1060)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    if (countryID2 == 2)
+                    {
+                        get_CountryStates(ddlState2, countryID2);
+                    }
+                    ddlState2.SelectedValue = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 1061)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    txtCity2.Text = dr["Answer"].ToString();
+                }
+            }
+            else if (qID == 1062)
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                {
+                    txtZipCode2.Text = dr["Answer"].ToString();
+                }
+            }
         }
     }
 
@@ -239,11 +308,19 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
         string strTablevalues = "1047" + strFSeparator + (rdoYes1.Checked ? "1" : rdoNo1.Checked ? "2" : "") + strFSeparator + strQSeparator;
         strTablevalues += "1048" + strFSeparator + strFSeparator + txtCampName1.Text + strQSeparator;
         strTablevalues += "1049" + strFSeparator + strFSeparator + txtAddress1.Text + strQSeparator;
+        strTablevalues += "1055" + strFSeparator + strFSeparator + ddlCountry1.SelectedValue + strQSeparator;
+        strTablevalues += "1056" + strFSeparator + strFSeparator + ddlState1.SelectedValue + strQSeparator;
+        strTablevalues += "1057" + strFSeparator + strFSeparator + txtCity1.Text + strQSeparator;
+        strTablevalues += "1058" + strFSeparator + strFSeparator + txtZipCode1.Text + strQSeparator;
         strTablevalues += "1050" + strFSeparator + strFSeparator + ddlYearAttended1.SelectedValue + strQSeparator;
 
         strTablevalues += "1051" + strFSeparator + (rdoYes2.Checked ? "1" : rdoNo2.Checked ? "2" : "") + strFSeparator + strQSeparator;
         strTablevalues += "1052" + strFSeparator + strFSeparator + txtCampName2.Text + strQSeparator;
         strTablevalues += "1053" + strFSeparator + strFSeparator + txtAddress2.Text + strQSeparator;
+        strTablevalues += "1059" + strFSeparator + strFSeparator + ddlCountry2.SelectedValue + strQSeparator;
+        strTablevalues += "1060" + strFSeparator + strFSeparator + ddlState2.SelectedValue + strQSeparator;
+        strTablevalues += "1061" + strFSeparator + strFSeparator + txtCity2.Text + strQSeparator;
+        strTablevalues += "1062" + strFSeparator + strFSeparator + txtZipCode2.Text + strQSeparator;
         strTablevalues += "1054" + strFSeparator + strFSeparator + ddlYearAttended2.SelectedValue + strQSeparator;
 
         //to remove the extra character at the end of the string, if any
@@ -266,5 +343,62 @@ public partial class Step2_Chicago_2_coupon : System.Web.UI.Page
         CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
         args.IsValid = bArgsValid;
         bPerformUpdate = bPerform;
+    }
+
+    private void GetStates()
+    {
+        DataSet dsStates = new DataSet();
+        try
+        {
+            dsStates = CamperAppl.get_States();
+
+            ddlState1.DataSource = dsStates;
+            ddlState1.DataTextField = "Name";
+            ddlState1.DataValueField = "ID";
+            ddlState1.DataBind();
+            ddlState1.Items.Insert(0, new ListItem("-- Select --", ""));
+
+            ddlState2.DataSource = dsStates;
+            ddlState2.DataTextField = "Name";
+            ddlState2.DataValueField = "ID";
+            ddlState2.DataBind();
+            ddlState2.Items.Insert(0, new ListItem("-- Select --", ""));
+        }
+        finally
+        {
+            dsStates.Clear();
+            dsStates.Dispose();
+            dsStates = null;
+        }
+    }
+
+    protected void get_CountryStates(DropDownList ddlState, int countryID)
+    {
+        DataSet dsStates = new DataSet();
+        try
+        {
+            dsStates = CamperAppl.get_CountryStates(countryID);
+            ddlState.DataSource = dsStates;
+            ddlState.DataTextField = "Name";
+            ddlState.DataValueField = "ID";
+            ddlState.DataBind();
+            ddlState.Items.Insert(0, new ListItem("-- Select --", ""));
+        }
+        finally
+        {
+            dsStates.Clear();
+            dsStates.Dispose();
+            dsStates = null;
+        }
+    }
+
+    protected void ddlCountry1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        get_CountryStates(ddlState1, int.Parse(ddlCountry1.SelectedValue));
+    }
+
+    protected void ddlCountry2_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        get_CountryStates(ddlState2, int.Parse(ddlCountry2.SelectedValue));
     }
 }

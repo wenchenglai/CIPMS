@@ -126,7 +126,23 @@
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Address</li></ul>";
             }
 
-            if ($('#ctl00_Content_txtYearAttended1').val() === "") {
+            if ($('#ctl00_Content_ddlCountry1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Country</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlState1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 State</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtCity1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 City</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtZipCode1').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Zip Code</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlYearAttended1').val() === "") {
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 Last Year Attended</li></ul>";
             }
         }
@@ -145,7 +161,23 @@
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Address</li></ul>";
             }
 
-            if ($('#ctl00_Content_txtYearAttended2').val() === "") {
+            if ($('#ctl00_Content_ddlCountry2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Country</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlState2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 State</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtCity2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 City</li></ul>";
+            }
+
+            if ($('#ctl00_Content_txtZipCode2').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Zip Code</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlYearAttended2').val() === "") {
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 Last Year Attended</li></ul>";
             }
         }
@@ -168,24 +200,40 @@ $(function () {
     $('#ctl00_Content_rdoNo1').bind('click', function() {
         $('#ctl00_Content_txtCampName1').attr("disabled", true);
         $('#ctl00_Content_txtAddress1').attr("disabled", true);
+        $('#ctl00_Content_ddlCountry1').attr("disabled", true);
+        $('#ctl00_Content_ddlState1').attr("disabled", true);
+        $('#ctl00_Content_txtCity1').attr("disabled", true);
+        $('#ctl00_Content_txtZipCode1').attr("disabled", true);
         $('#ctl00_Content_ddlYearAttended1').attr("disabled", true);
     });
 
     $('#ctl00_Content_rdoYes1').bind('click', function () {
         $('#ctl00_Content_txtCampName1').removeAttr('disabled');
         $('#ctl00_Content_txtAddress1').removeAttr('disabled');
+        $('#ctl00_Content_ddlCountry1').removeAttr('disabled');
+        $('#ctl00_Content_ddlState1').removeAttr('disabled');
+        $('#ctl00_Content_txtCity1').removeAttr('disabled');
+        $('#ctl00_Content_txtZipCode1').removeAttr('disabled');
         $('#ctl00_Content_ddlYearAttended1').removeAttr('disabled');
     });
 
     $('#ctl00_Content_rdoNo2').bind('click', function() {
         $('#ctl00_Content_txtCampName2').attr("disabled", true);
         $('#ctl00_Content_txtAddress2').attr("disabled", true);
+        $('#ctl00_Content_ddlCountry2').attr("disabled", true);
+        $('#ctl00_Content_ddlState2').attr("disabled", true);
+        $('#ctl00_Content_txtCity2').attr("disabled", true);
+        $('#ctl00_Content_txtZipCode2').attr("disabled", true);
         $('#ctl00_Content_ddlYearAttended2').attr("disabled", true);
     });
 
     $('#ctl00_Content_rdoYes2').bind('click', function () {
         $('#ctl00_Content_txtCampName2').removeAttr('disabled');
         $('#ctl00_Content_txtAddress2').removeAttr('disabled');
+        $('#ctl00_Content_ddlCountry2').removeAttr('disabled');
+        $('#ctl00_Content_ddlState2').removeAttr('disabled');
+        $('#ctl00_Content_txtCity2').removeAttr('disabled');
+        $('#ctl00_Content_txtZipCode2').removeAttr('disabled');
         $('#ctl00_Content_ddlYearAttended2').removeAttr('disabled');
     });
 

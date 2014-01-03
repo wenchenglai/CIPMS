@@ -107,7 +107,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             }
             else if (strStatus == StatusInfo.EligibleCampCoupon)
             {
-                lblCouponSub.Text = "a camp coupon";
+                lblCouponSub.Text = "a Camp Coupon";
                 lblCouponText.Visible = true;
             }
                       

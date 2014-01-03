@@ -16,7 +16,7 @@
         <tbody class="QuestionText">
         <tr>
             <td colspan="2">
-                <span style="color:red">Camp Coupons is a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system</span>
+                <span style="color:red">It appears that you are not eligible for the One Happy Camper first time incentive grant. However you may be eligible for a Camp Coupon, a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system. Please continue with the application to see if see if you are eligible.</span>
             </td>
         </tr>
         <tr>
@@ -27,38 +27,61 @@
                     <asp:RadioButton ID="rdoYes1" Text="Yes" runat="server" GroupName="one" />
                     <asp:RadioButton ID="rdoNo1" Text="No" runat="server" GroupName="one" />
                 </div>
-                <div style="margin-top:30px">
-                    <div style="width:400px; height:30px">
-                        <span style="margin-top:20px;">Name of Pre-School</span>
-                        <span style="float:right"><asp:TextBox ID="txtCampName1" runat="server" /></span>
+                <div style="margin-top:5px">
+                    <div>
+                        <span style="width:170px;display:inline-block;">Name of Pre-School</span>
+                        <span><asp:TextBox ID="txtCampName1" Width="300" runat="server" /></span>
                     </div>
-                    <div style="width:400px; height:30px">
-                        <span>Address (street/city/state/zip)</span>
-                        <span style="float:right"><asp:TextBox ID="txtAddress1" runat="server" /></span>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">Street Address</span>
+                        <span><asp:TextBox ID="txtAddress1" Width="300" runat="server" /></span>
                     </div>
-                    <div style="width:400px; height:30px">
-                        <span style="float:left">Last Year Attended</span>
-                        <span style="float:left; margin-left:125px">
-                            <asp:DropDownList ID="ddlYearAttended1" runat="server">
-                                <asp:ListItem Text="2014" Value="2014"></asp:ListItem>
-                                <asp:ListItem Text="2013" Value="2013"></asp:ListItem>
-                                <asp:ListItem Text="2012" Value="2012"></asp:ListItem>
-                                <asp:ListItem Text="2011" Value="2011"></asp:ListItem>
-                                <asp:ListItem Text="2010" Value="2010"></asp:ListItem>
-                                <asp:ListItem Text="2009" Value="2009"></asp:ListItem>
-                                <asp:ListItem Text="2008" Value="2008"></asp:ListItem>
-                                <asp:ListItem Text="2007" Value="2007"></asp:ListItem>
-                                <asp:ListItem Text="2006" Value="2006"></asp:ListItem>
-                                <asp:ListItem Text="2005" Value="2005"></asp:ListItem>
-                                <asp:ListItem Text="2004" Value="2004"></asp:ListItem>
-                                <asp:ListItem Text="2003" Value="2003"></asp:ListItem>
-                                <asp:ListItem Text="2002" Value="2002"></asp:ListItem>
-                                <asp:ListItem Text="2001" Value="2001"></asp:ListItem>
-                                <asp:ListItem Text="2000" Value="2000"></asp:ListItem>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">Country</span>
+                        <span>
+                            <asp:DropDownList ID="ddlCountry1" runat="server" CssClass="txtbox" AutoPostBack="True" OnSelectedIndexChanged="ddlCountry1_SelectedIndexChanged">
+                                <asp:ListItem Text="USA" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Canada" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                        </span>
+                    </div>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">State</span>
+                        <span><asp:DropDownList CssClass="txtbox" ID="ddlState1" runat="server" /></span>
+                    </div>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">City</span>
+                        <span><asp:TextBox ID="txtCity1" Width="300" runat="server" /></span>
+                    </div>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">Zip Code</span>
+                        <span><asp:TextBox ID="txtZipCode1" Width="300" runat="server" /></span>
+                    </div>
+                    <div style="">
+                        <span style="width:170px;display:inline-block;">Last Year Attended</span>
+                        <span>
+                            <asp:DropDownList ID="ddlYearAttended1"  style="font-family: verdana; font-size: 11; height:20; margin-left:0" runat="server">
+                                <asp:ListItem Text="--Select--" Value="" />
+                                <asp:ListItem Text="2014" Value="2014" />
+                                <asp:ListItem Text="2013" Value="2013" />
+                                <asp:ListItem Text="2012" Value="2012" />
+                                <asp:ListItem Text="2011" Value="2011" />
+                                <asp:ListItem Text="2010" Value="2010" />
+                                <asp:ListItem Text="2009" Value="2009" />
+                                <asp:ListItem Text="2008" Value="2008" />
+                                <asp:ListItem Text="2007" Value="2007" />
+                                <asp:ListItem Text="2006" Value="2006" />
+                                <asp:ListItem Text="2005" Value="2005" />
+                                <asp:ListItem Text="2004" Value="2004" />
+                                <asp:ListItem Text="2003" Value="2003" />
+                                <asp:ListItem Text="2002" Value="2002" />
+                                <asp:ListItem Text="2001" Value="2001" />
+                                <asp:ListItem Text="2000" Value="2000" />
                             </asp:DropDownList>
                         </span>
                     </div>
                 </div>
+                <br />
             </td>
         </tr>
         <tr>
@@ -69,34 +92,56 @@
                     <asp:RadioButton ID="rdoYes2" Text="Yes" runat="server" GroupName="two" />
                     <asp:RadioButton ID="rdoNo2" Text="No" runat="server" GroupName="two" />
                 </div>
-                <div style="margin-top:30px">
-                    <div style="width:400px; height:30px">
-                        <span style="margin-top:20px;">Name of Day Camp</span>
-                        <span style="float:right"><asp:TextBox ID="txtCampName2" runat="server" /></span>
+                <div style="margin-top:5px">
+                    <div>
+                        <span style="width:170px;display:inline-block;">Name of Day Camp</span>
+                        <span><asp:TextBox Width="300" ID="txtCampName2" runat="server" /></span>
                     </div>
-                    <div style="width:400px; height:30px">
-                        <span>Address (street/city/state/zip)</span>
-                        <span style="float:right"><asp:TextBox ID="txtAddress2" runat="server" /></span>
+                    <div>
+                        <span style="width:170px;display:inline-block;">Street Address</span>
+                        <span><asp:TextBox ID="txtAddress2" Width="300" runat="server" /></span>
                     </div>
-                    <div style="width:400px; height:30px">
-                        <span style="float:left">Last Year Attended</span>
-                        <span style="float:left; margin-left:125px">
-                            <asp:DropDownList ID="ddlYearAttended2" runat="server">
-                                <asp:ListItem Text="2014" Value="2014"></asp:ListItem>
-                                <asp:ListItem Text="2013" Value="2013"></asp:ListItem>
-                                <asp:ListItem Text="2012" Value="2012"></asp:ListItem>
-                                <asp:ListItem Text="2011" Value="2011"></asp:ListItem>
-                                <asp:ListItem Text="2010" Value="2010"></asp:ListItem>
-                                <asp:ListItem Text="2009" Value="2009"></asp:ListItem>
-                                <asp:ListItem Text="2008" Value="2008"></asp:ListItem>
-                                <asp:ListItem Text="2007" Value="2007"></asp:ListItem>
-                                <asp:ListItem Text="2006" Value="2006"></asp:ListItem>
-                                <asp:ListItem Text="2005" Value="2005"></asp:ListItem>
-                                <asp:ListItem Text="2004" Value="2004"></asp:ListItem>
-                                <asp:ListItem Text="2003" Value="2003"></asp:ListItem>
-                                <asp:ListItem Text="2002" Value="2002"></asp:ListItem>
-                                <asp:ListItem Text="2001" Value="2001"></asp:ListItem>
-                                <asp:ListItem Text="2000" Value="2000"></asp:ListItem>
+                    <div>
+                        <span style="width:170px;display:inline-block;">Country</span>
+                        <span>
+                            <asp:DropDownList ID="ddlCountry2" runat="server" CssClass="txtbox" AutoPostBack="True" OnSelectedIndexChanged="ddlCountry2_SelectedIndexChanged">
+                                <asp:ListItem Text="USA" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Canada" Value="2"></asp:ListItem>
+                            </asp:DropDownList>
+                        </span>
+                    </div>
+                    <div>
+                        <span style="width:170px;display:inline-block;">State</span>
+                        <span><asp:DropDownList ID="ddlState2" CssClass="txtbox" runat="server" /></span>
+                    </div>
+                    <div>
+                        <span style="width:170px;display:inline-block;">City</span>
+                        <span><asp:TextBox ID="txtCity2" Width="300" runat="server" /></span>
+                    </div>
+                    <div>
+                        <span style="width:170px;display:inline-block;">Zip Code</span>
+                        <span><asp:TextBox ID="txtZipCode2" Width="300" runat="server" /></span>
+                    </div>
+                    <div>
+                        <span style="width:170px;display:inline-block;">Last Year Attended</span>
+                        <span>
+                            <asp:DropDownList ID="ddlYearAttended2" style="font-family: verdana; font-size: 11; height:20; margin-left:0" runat="server">
+                                <asp:ListItem Text="--Select--" Value="" />
+                                <asp:ListItem Text="2014" Value="2014" />
+                                <asp:ListItem Text="2013" Value="2013" />
+                                <asp:ListItem Text="2012" Value="2012" />
+                                <asp:ListItem Text="2011" Value="2011" />
+                                <asp:ListItem Text="2010" Value="2010" />
+                                <asp:ListItem Text="2009" Value="2009" />
+                                <asp:ListItem Text="2008" Value="2008" />
+                                <asp:ListItem Text="2007" Value="2007" />
+                                <asp:ListItem Text="2006" Value="2006" />
+                                <asp:ListItem Text="2005" Value="2005" />
+                                <asp:ListItem Text="2004" Value="2004" />
+                                <asp:ListItem Text="2003" Value="2003" />
+                                <asp:ListItem Text="2002" Value="2002" />
+                                <asp:ListItem Text="2001" Value="2001" />
+                                <asp:ListItem Text="2000" Value="2000" />
                             </asp:DropDownList>
                         </span>
                     </div>
