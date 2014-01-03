@@ -30,11 +30,11 @@
                 <div style="margin-top:5px">
                     <div>
                         <span style="width:170px;display:inline-block;">Name of Pre-School</span>
-                        <span><asp:TextBox ID="txtCampName1" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtCampName1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div style="">
                         <span style="width:170px;display:inline-block;">Street Address</span>
-                        <span><asp:TextBox ID="txtAddress1" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtAddress1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div style="">
                         <span style="width:170px;display:inline-block;">Country</span>
@@ -51,16 +51,16 @@
                     </div>
                     <div style="">
                         <span style="width:170px;display:inline-block;">City</span>
-                        <span><asp:TextBox ID="txtCity1" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtCity1" Width="300" class="QuestionText" runat="server" /></span>
                     </div>
                     <div style="">
                         <span style="width:170px;display:inline-block;">Zip Code</span>
-                        <span><asp:TextBox ID="txtZipCode1" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtZipCode1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div style="">
                         <span style="width:170px;display:inline-block;">Last Year Attended</span>
                         <span>
-                            <asp:DropDownList ID="ddlYearAttended1"  style="font-family: verdana; font-size: 11; height:20; margin-left:0" runat="server">
+                            <asp:DropDownList ID="ddlYearAttended1" CssClass="QuestionText"  style="height:20; margin-left:0" runat="server">
                                 <asp:ListItem Text="--Select--" Value="" />
                                 <asp:ListItem Text="2014" Value="2014" />
                                 <asp:ListItem Text="2013" Value="2013" />
@@ -95,11 +95,11 @@
                 <div style="margin-top:5px">
                     <div>
                         <span style="width:170px;display:inline-block;">Name of Day Camp</span>
-                        <span><asp:TextBox Width="300" ID="txtCampName2" runat="server" /></span>
+                        <span><asp:TextBox Width="300" class="QuestionText" ID="txtCampName2" runat="server" /></span>
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">Street Address</span>
-                        <span><asp:TextBox ID="txtAddress2" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtAddress2" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">Country</span>
@@ -116,16 +116,16 @@
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">City</span>
-                        <span><asp:TextBox ID="txtCity2" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtCity2" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">Zip Code</span>
-                        <span><asp:TextBox ID="txtZipCode2" Width="300" runat="server" /></span>
+                        <span><asp:TextBox ID="txtZipCode2" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">Last Year Attended</span>
                         <span>
-                            <asp:DropDownList ID="ddlYearAttended2" style="font-family: verdana; font-size: 11; height:20; margin-left:0" runat="server">
+                            <asp:DropDownList ID="ddlYearAttended2" CssClass="QuestionText" style="height:20; margin-left:0" runat="server">
                                 <asp:ListItem Text="--Select--" Value="" />
                                 <asp:ListItem Text="2014" Value="2014" />
                                 <asp:ListItem Text="2013" Value="2013" />

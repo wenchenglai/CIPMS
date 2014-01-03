@@ -6,6 +6,11 @@
     margin-bottom:0;
 }
 
+input, select {
+    font-family:verdana;
+    font-size:11;
+}
+
 .questionrows
 {
     padding-top:5px;
