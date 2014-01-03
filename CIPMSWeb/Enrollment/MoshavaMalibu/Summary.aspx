@@ -38,8 +38,9 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						<strong>The Moshava Malibu One Happy Camper program provides financial incentives of up to $1,000 to all first-time campers </strong>
-						who have never attended a non-profit Jewish overnight camp, including those who currently attend Jewish Day Schools.  This incentive 
-                        cannot be combined with other discounts or promotions offered by Moshava Malibu.  These funds are limited and may run out at any time without notice.
+						who have never attended a non-profit Jewish overnight camp for 12 days or longer. Those who currently attend Jewish Day Schools are 
+                        eligible for up to $800. This incentive cannot be combined with other discounts or promotions offered by Moshava Malibu. 
+                        These funds are limited and may run out at any time without notice.
 					</p>
 				</asp:Label>
 			</td>
