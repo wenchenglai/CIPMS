@@ -26,7 +26,7 @@
                 <td colspan="3">
                     <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
                         <p style="text-align:justify"><b>
-                           Based on your responses thus far, you appear to be eligible for <asp:Label id="lblEligibilitySub" Text="this program’s" runat="server"></asp:Label> grant! 
+                            <asp:Label id="lblEligibilitySub" Text="Based on your responses thus far, you appear to be eligible for this program's grant!" runat="server" />
                             All we need now is the camp and session information to confirm the camper is attending a camp that is eligible for this program.
                             </b>
                         </p>

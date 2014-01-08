@@ -32,11 +32,11 @@
                         <span style="width:170px;display:inline-block;">Name of Pre-School</span>
                         <span><asp:TextBox ID="txtCampName1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
-                    <div style="">
+                    <div>
                         <span style="width:170px;display:inline-block;">Street Address</span>
                         <span><asp:TextBox ID="txtAddress1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
-                    <div style="">
+                    <div>
                         <span style="width:170px;display:inline-block;">Country</span>
                         <span>
                             <asp:DropDownList ID="ddlCountry1" runat="server" CssClass="txtbox" AutoPostBack="True" OnSelectedIndexChanged="ddlCountry1_SelectedIndexChanged">
@@ -45,19 +45,19 @@
                             </asp:DropDownList>
                         </span>
                     </div>
-                    <div style="">
-                        <span style="width:170px;display:inline-block;">State</span>
-                        <span><asp:DropDownList CssClass="txtbox" ID="ddlState1" runat="server" /></span>
-                    </div>
-                    <div style="">
+                    <div>
                         <span style="width:170px;display:inline-block;">City</span>
                         <span><asp:TextBox ID="txtCity1" Width="300" class="QuestionText" runat="server" /></span>
                     </div>
-                    <div style="">
+                    <div>
+                        <span style="width:170px;display:inline-block;">State</span>
+                        <span><asp:DropDownList CssClass="txtbox" ID="ddlState1" runat="server" /></span>
+                    </div>
+                    <div>
                         <span style="width:170px;display:inline-block;">Zip Code</span>
                         <span><asp:TextBox ID="txtZipCode1" class="QuestionText" Width="300" runat="server" /></span>
                     </div>
-                    <div style="">
+                    <div>
                         <span style="width:170px;display:inline-block;">Last Year Attended</span>
                         <span>
                             <asp:DropDownList ID="ddlYearAttended1" CssClass="QuestionText"  style="height:20; margin-left:0" runat="server">
@@ -111,12 +111,12 @@
                         </span>
                     </div>
                     <div>
-                        <span style="width:170px;display:inline-block;">State</span>
-                        <span><asp:DropDownList ID="ddlState2" CssClass="txtbox" runat="server" /></span>
-                    </div>
-                    <div>
                         <span style="width:170px;display:inline-block;">City</span>
                         <span><asp:TextBox ID="txtCity2" class="QuestionText" Width="300" runat="server" /></span>
+                    </div>
+                    <div>
+                        <span style="width:170px;display:inline-block;">State</span>
+                        <span><asp:DropDownList ID="ddlState2" CssClass="txtbox" runat="server" /></span>
                     </div>
                     <div>
                         <span style="width:170px;display:inline-block;">Zip Code</span>

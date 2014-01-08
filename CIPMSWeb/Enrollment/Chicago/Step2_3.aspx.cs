@@ -67,7 +67,7 @@ public partial class Step2_Chicago_3 : Page
                 if (!dr["OptionID"].Equals(DBNull.Value))
                 {
                     if (dr["OptionID"].ToString() == "3")
-                        lblEligibilitySub.Text = "the Camp Coupon";
+                        lblEligibilitySub.Text = "Based on your answers thus far, you appear to be eligible for the Camp Coupon grant, a program of Jewish United Fund of Chicago!";
                 }
             }
 		}
