@@ -56,7 +56,7 @@
 			<td>
 				<p class="infotext3">
 					<strong>
-						The Eden Village One Happy Camper Program is now closed for the summer of 2013. For more information, please contact the professional listed at the bottom of the screen.”
+						The Eden Village One Happy Camper program is now closed for the summer of 2014. For more information, please contact the camp professional listed at the bottom of the screen.
 					</strong>
 				</p>
 			</td>
@@ -76,7 +76,7 @@
                                 <asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                                 </td>
                             <td align="right">
-                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " Visible="false" CssClass="submitbtn" OnClick="btnNext_Click" /></td>                            
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" OnClick="btnNext_Click" /></td>                            
                         </tr>
                      </table>
                 </td>

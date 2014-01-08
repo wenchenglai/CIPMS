@@ -40,7 +40,6 @@ public partial class Enrollment_Chi_Summary : System.Web.UI.Page
                     string currentCode = Session["UsedCode"].ToString();
                     int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-                    // when moved to .NET 3.5 or above, remember to use lamda expression
                     if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
                     {
                         tblDisable.Visible = false;

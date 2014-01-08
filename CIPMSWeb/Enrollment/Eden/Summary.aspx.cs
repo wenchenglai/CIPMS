@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -21,31 +22,35 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-			const string FED_ID = "62";
+            int FedID = Convert.ToInt32(FederationEnum.Eden);
+            string FED_ID = FedID.ToString();
 			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+
+            if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID))
+                isDisabled = true;
 
 			if (isDisabled)
 			{
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
-				btnSaveandExit.Visible = false;
-				btnNext.Visible = false;
+
+                if (Session["UsedCode"] != null)
+                {
+                    string currentCode = Session["UsedCode"].ToString();
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
+                    {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
+                    }
+                }
 			}
 			else
 			{
 				tblDisable.Visible = false;
 				tblRegular.Visible = true;
-				btnSaveandExit.Visible = true;
-				btnNext.Visible = true;
 			}
         }
     }
@@ -57,7 +62,12 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Step2_2.aspx");
+        if (tblRegular.Visible)
+            Response.Redirect("Step2_2.aspx");
+        else
+        {
+            Response.Redirect("../Step1_NL.aspx");
+        }
     }
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
