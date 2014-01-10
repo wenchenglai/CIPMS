@@ -165,7 +165,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
         ReportViewer1.ShowDocumentMapButton = true;
         ReportViewer1.ShowPrintButton = true;
         ReportViewer1.ZoomMode = ZoomMode.PageWidth;
-
+        
         //*************************
         // Create report parameters
         //*************************
@@ -257,6 +257,11 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
         //ReportViewer1.ServerReport.ReportServerCredentials = irsc;
 		//IReportServerCredentials irsc = new CustomReportCredentials("ness", "wayne@1234", "FILE");
 		//ReportViewer1.ServerReport.ReportServerCredentials = irsc;
+
+        string strUserName = ConfigurationManager.AppSettings["UserName"].ToString();
+        string strPassword = ConfigurationManager.AppSettings["Password"].ToString();
+        string strDomain = ConfigurationManager.AppSettings["Domain"].ToString();
+        ReportViewer1.ServerReport.ReportServerCredentials = new CustomReportCredentials(strUserName, strPassword, strDomain);
 
 
         // Set the report parameters for the report
