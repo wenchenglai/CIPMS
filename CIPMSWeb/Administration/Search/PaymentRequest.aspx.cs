@@ -258,10 +258,10 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 		//IReportServerCredentials irsc = new CustomReportCredentials("ness", "wayne@1234", "FILE");
 		//ReportViewer1.ServerReport.ReportServerCredentials = irsc;
 
-        string strUserName = ConfigurationManager.AppSettings["UserName"].ToString();
-        string strPassword = ConfigurationManager.AppSettings["Password"].ToString();
-        string strDomain = ConfigurationManager.AppSettings["Domain"].ToString();
-        ReportViewer1.ServerReport.ReportServerCredentials = new CustomReportCredentials(strUserName, strPassword, strDomain);
+        //string strUserName = ConfigurationManager.AppSettings["UserName"].ToString();
+        //string strPassword = ConfigurationManager.AppSettings["Password"].ToString();
+        //string strDomain = ConfigurationManager.AppSettings["Domain"].ToString();
+        //ReportViewer1.ServerReport.ReportServerCredentials = new CustomReportCredentials(strUserName, strPassword, strDomain);
 
 
         // Set the report parameters for the report
