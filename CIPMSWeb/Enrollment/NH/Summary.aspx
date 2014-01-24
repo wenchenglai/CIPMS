@@ -29,7 +29,7 @@
 						One Happy Camper grants are not based on financial need and are designed to encourage families to send children to Jewish camps. 
 						Families must participate in the current JFNH Annual Campaign at a minimum level of $100.00. Camper must reside in New Hampshire or family must 
 						belong to a NH Jewish congregation. Recipient campers must write a short letter or article for publication in the NH Jewish Reporter. 
-						Applications will be accepted as long as money is available. 
+						The deadline for applications is February 15, 2014. Late applications will be accepted if money is available. 
 					</p>            
 				</asp:Label>
             </td>
