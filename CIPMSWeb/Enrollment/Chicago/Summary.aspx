@@ -47,8 +47,12 @@
             <td colspan="2">
                 <asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are ineligible for a One Happy Camper grant may be 
-						eligible to receive a Camp Coupon grant through JUF/JF. Please email <a href="mailto:JewishCamp@juf.org">JewishCamp@juf.org</a> to find out more.
+						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are not eligible for a One Happy Camper grant may qualify for up to $360 
+                        through the Camp Coupons program. Children have three opportunities to “earn” Camp Coupon credits by participating in other Chicago-area Jewish 
+                        educational programs: Jewish preschool, supplementary or day school, and Jewish day camp. Each credit is valued at $120 toward a camper’s first 
+                        overnight camp experience of 19 days or longer. Children who are not eligible for the One Happy Camper program may be able to use up to three 
+                        Camp Coupon credits, one of each type, for a maximum of $360 toward the first summer of overnight camp. Residency and age restrictions apply, 
+                        and attendance at the Jewish educational programs must be verified. Camp Coupons are also administered through the JUF Chicago One Happy Camper application.
 					</p>
                 </asp:Label>
             </td>
