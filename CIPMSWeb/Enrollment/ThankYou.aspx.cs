@@ -72,7 +72,8 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             strStatus == StatusInfo.EligibleNoCamp || 
             strStatus == StatusInfo.EligiblePendingSchool || 
             strStatus == StatusInfo.PendingSchoolAndCamp || 
-            strStatus == StatusInfo.EligibleByStaff)  //20- eligiblenoschoolnocamp
+            strStatus == StatusInfo.EligibleByStaff ||
+            strStatus == StatusInfo.EligibleCampCoupon)  //20- eligiblenoschoolnocamp
         {
             pnlEligible.Visible = true;
                    
@@ -88,22 +89,26 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 pnlStatus1B.Visible = false;
                 pnlStatus1F.Visible = false;
             }
-            if (strStatus == StatusInfo.EligibleNoCamp) //Status 1B (Appears to be eligible, but "No Camp" selected)
+            else if (strStatus == StatusInfo.EligibleNoCamp) //Status 1B (Appears to be eligible, but "No Camp" selected)
             {
                 pnlStatus1A.Visible = false;
                 pnlStatus1B.Visible = true;
                 pnlStatus1F.Visible = false;
             }
-            if (strStatus == StatusInfo.EligiblePendingSchool) //Status 1F (Appears to be eligible, but pending - School Eligibility)
+            else if (strStatus == StatusInfo.EligiblePendingSchool) //Status 1F (Appears to be eligible, but pending - School Eligibility)
             {
                 pnlStatus1A.Visible = false;
                 pnlStatus1B.Visible = false;
                 pnlStatus1F.Visible = true;
             }
-
-            if (strStatus == StatusInfo.PendingSchoolAndCamp) //Status 1G (Appears to be eligible, but No School, No Camp)
+            else if (strStatus == StatusInfo.PendingSchoolAndCamp) //Status 1G (Appears to be eligible, but No School, No Camp)
             {
                 pnlStatus1G.Visible = true;
+            }
+            else if (strStatus == StatusInfo.EligibleCampCoupon)
+            {
+                lblCouponSub.Text = "a Camp Coupon";
+                lblCouponText.Visible = true;
             }
                       
             if (iCount > 0)

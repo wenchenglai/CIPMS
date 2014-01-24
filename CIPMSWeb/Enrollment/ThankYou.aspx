@@ -9,8 +9,10 @@
 						    <asp:Label ID="lblThankYou" runat="server" CssClass="QuestionText">
 							    <p style="text-align:justify">
 								    <b>Congratulations! Based on your answers, and pending review by your One Happy Camper administrator, your camper appears to be eligible 
-								    for an incentive grant <%=strAmt %>.</b> To track the status of your grant, 
-								    you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link. 
+								    for <asp:Label ID="lblCouponSub" runat="server" Text="an incentive grant" /> <%=strAmt %>.</b> To track the status of your grant, 
+								    you can return to www.onehappycamper.org, sign in, and click the “Check Application Status” link.
+                                    <br /><br />
+                                    <asp:Label ID="lblCouponText" runat="server" Visible="false" Text="Please note, Camp Coupons is a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system." />
 							    </p> 
 							    <p runat="server" id="pTempleIsrael" class="text-align:justify;" visible="false">
 							    <!--Temple Israel is awarding an additional $250 to their members! Therefore, the camper appears to be eligible for a $1250 grant!-->

@@ -101,6 +101,10 @@ public partial class Common : System.Web.UI.MasterPage
             {
                 lblHeading.Text = "Section III:  Detailed Camper Information";
             }
+            else if (Request.Url.AbsoluteUri.Contains("Step2_coupon.aspx"))
+            {
+                lblHeading.Text = "Section III:  Camp Coupon";
+            }
             else if (Request.Url.AbsoluteUri.Contains("Step2_3.aspx"))
             {
                 lblHeading.Text = "Section IV: Camp and Session Information";
