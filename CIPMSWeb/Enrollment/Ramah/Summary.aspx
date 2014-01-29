@@ -152,14 +152,14 @@
                 <img id="Img1" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
             </td>
             <td>
-                <asp:Label ID="lblRamahDarom" runat="server" CssClass="infotext3">
-          The Camp Ramah Darom One Happy Camper program is now closed for summer 2013. For more information, please contact the professional listed at the bottom of this page.
+                <asp:Label ID="lblRamahDarom" runat="server" CssClass="infotext3" Visible="false">
+                    The Camp Ramah Darom One Happy Camper program is now closed for summer 2013. For more information, please contact the professional listed at the bottom of this page.
                 </asp:Label>
-                <asp:Label ID="lblRamahCal" runat="server" CssClass="infotext3">
-          While there are no more grants at this time, funding may become available at a later date. Please email Karmi Monsher for more information at karmi@ramah.org or call 818-668-2931.
+                <asp:Label ID="lblRamahCal" runat="server" CssClass="infotext3" Visible="false">
+                    While there are no more grants at this time, funding may become available at a later date. Please email Karmi Monsher for more information at karmi@ramah.org or call 818-668-2931.
                 </asp:Label>
-                <div id="divDisableBerkshire" runat="server" class="infotext3">
-                    The Camp Ramah in the Berkshires One Happy Camper application for summer 2013 is now closed. Please contact the camp professional listed at the bottom of this page for more information.
+                <div id="divDisableBerkshire" runat="server" class="infotext3" visible="false">
+                    The Camp Ramah in the Berkshires One Happy Camper program is now closed for summer 2014. For more information, please contact the camp professional listed at the bottom of this screen.
                 </div>
             </td>
         </tr>

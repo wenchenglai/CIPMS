@@ -98,23 +98,23 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         //        }
         //    }
         //}
-        //else if (CampID == 3082) //2012-03-28
-        //{
-        //    // Camp Ramah in the Berkshires
-        //    if (Session["UsedCode"] != null)
-        //    {
-        //        if (Session["UsedCode"].ToString() == "CRB421")
-        //        {
-        //            EnableRegistration();
-        //        }
-        //        else
-        //        {
-        //            Response.Redirect("~/NYCampRedirect.aspx");
-        //        }
-        //    }
-        //    else
-        //        Response.Redirect("~/NYCampRedirect.aspx");
-        //}
+        if (last3Digits == "082") //Berkshire
+        {
+            // Camp Ramah in the Berkshires
+            if (Session["UsedCode"] != null)
+            {
+                if (Session["UsedCode"].ToString() == "CRB849")
+                {
+                    EnableRegistration();
+                }
+                else
+                {
+                    DisableRegistration(last3Digits);
+                }
+            }
+            else
+                DisableRegistration(last3Digits);
+        }
         //else if (CampID == 4082) //2013-02-26 Close The camp Ramah in the Berkshire ONLY
         //{
         //    DisableRegistration(CampID);
@@ -133,25 +133,25 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         btnNext.Visible = true;
     }
 
-    private void DisableRegistration(int CampID)
+    private void DisableRegistration(string last3Digits)
     {
         tblRegular.Visible = false;
 		btnNext.Visible = false;
 
         tblDisable.Visible = true;
-        if (CampID == 4078)
+        if (last3Digits == "078")
         {
             lblRamahDarom.Visible = true;
             lblRamahCal.Visible = false;
 			divDisableBerkshire.Visible = false;
         }
-        else if (CampID == 4079)
+        else if (last3Digits == "079")
         {
             lblRamahDarom.Visible = false;
             lblRamahCal.Visible = true;
 			divDisableBerkshire.Visible = false;
         }
-		else if (CampID == 4082)
+        else if (last3Digits == "082")
 		{
 			lblRamahDarom.Visible = false;
 			lblRamahCal.Visible = false;
@@ -175,6 +175,6 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
     protected void btnNext_Click(object sender, EventArgs e)
     {
         var CampID = Convert.ToInt32(Session["CampID"]);
-        Response.Redirect(CampID == 4082 ? "../Step1_NL.aspx" : "Step2_2.aspx");
+        Response.Redirect(CampID == 5082 ? "../Step1_NL.aspx" : "Step2_2.aspx");
     }
 }
