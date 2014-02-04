@@ -2,7 +2,7 @@
     Inherits="Enrollment_Habonim_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
                 <img id="imgLogo" src="../../images/Camp Galil.jpg" alt="" runat="server" />
@@ -60,6 +60,17 @@
                 </asp:Label></td>
         </tr>
     </table>
+
+    <table id="tblDisable" runat="server" visible="false" width="100%" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>
+                <img id="ImgLogoDisable" runat="server" /></td>
+            <td>
+                <asp:Label ID="lblDisable" runat="server" CssClass="infotext3" />
+			</td>
+        </tr>
+    </table> 
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>

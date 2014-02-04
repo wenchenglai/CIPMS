@@ -4,7 +4,7 @@
      <table width="100%" cellpadding="5" cellspacing="0">
 		<tr>
 			<td>
-                <img src="../../images/berkshire.jpg" alt=""  /></td>
+                <img src="logo.jpg" alt=""  /></td>
             <td>
 				<asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
                     <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>

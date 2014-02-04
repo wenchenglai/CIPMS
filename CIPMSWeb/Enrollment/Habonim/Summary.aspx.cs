@@ -38,6 +38,7 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
 
             string campID = resultCampId.ToString();
             string last3digits = campID.Substring(campID.Length - 3);
+
             switch (last3digits)
             {
                 case "029": 
@@ -68,7 +69,7 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
                     liDelaware.Visible = true;
                     break;
 
-                case "066": 
+                case "066":                    
                     imgLogo.Src = "../../images/Camp Na'aleh.jpg";
                     break;
 
@@ -77,21 +78,15 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
                     break;
             }
 
-
-            if (resultCampId != 0 && resultCampId == 1133)
+            // Disable camps will overwrite above code
+            switch (last3digits)
             {
-                /*DataSet ds = new DataSet();
-                ds = new General().GetFederationCampContactDetails(resultFedID.ToString(), resultCampId.ToString());
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    DataRow dr = ds.Tables[0].Rows[0];
-                    spnCampName.InnerText = "At " + dr["Name"].ToString().Trim().Replace('-',' ') + ", t";
-                }*/
-                //spnCampName.InnerText = "At URJ Camp Newman Swig, the award is available to any camp-age child in grades 3-12 who registers at one of the listed URJ Camps, and who is attending a non-profit Jewish sleep-away camp for at least 12 days for the first time. If the camper attends a session that is 19 days or longer, he/she is eligible for a grant of $1,000. If the camper attends a session that is 12-18 days, he she is eligible for a prorated grant of $700.  Siblings from a single family are eligible to receive separate grants. The award is available regardless of need or whether the camper or camper’s family has received other scholarship or financial aid.";
-            }
-            else if (resultCampId != 0 && resultCampId == 1132)
-            {
-                // spnCampName.InnerText = "At URJ Camp Kalsman, the award is available to any camp-age child in grades 3-12 who registers at one of the listed URJ Camps, and who is attending a non-profit Jewish sleep-away camp for at least 12 days for the first time. If the camper attends a session that is 19 days or longer, he/she is eligible for a grant of $1,000. If the camper attends a session that is 12-18 days, he she is eligible for a prorated grant of $700.  Siblings from a single family are eligible to receive separate grants. The award is available regardless of need or whether the camper or camper’s family has received other scholarship or financial aid.";
+                case "066":
+                    ImgLogoDisable.Src = "../../images/Camp Na'aleh.jpg";
+                    lblDisable.Text = "For more information on scholarship opportunities, please contact Rabbi Eric Wittenstein at  212-229-2700 or rabbieric.naaleh@gmail.com.";
+                    tblDisable.Visible = true;
+                    tblRegular.Visible = false;
+                    break;
             }
         }
     }
@@ -103,7 +98,10 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        Response.Redirect("Step2_2.aspx");
+        if (tblRegular.Visible)
+            Response.Redirect("Step2_2.aspx");
+        else
+            Response.Redirect("../Step1_NL.aspx");            
     }
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)

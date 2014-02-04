@@ -16,7 +16,7 @@
         <tbody class="QuestionText">
         <tr>
             <td colspan="2">
-                <span style="color:red">It appears that you are not eligible for the One Happy Camper first time incentive grant. However you may be eligible for a Camp Coupon, a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system. Please continue with the application to see if see if you are eligible.</span>
+                <span style="color:red">It appears that you are not eligible for the One Happy Camper first time incentive grant. However you may be eligible for a Camp Coupon, a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system. Please continue with the application to see if you are eligible.</span>
             </td>
         </tr>
         <tr>
