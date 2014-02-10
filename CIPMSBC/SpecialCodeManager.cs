@@ -31,6 +31,28 @@ namespace CIPMSBC
 			return isValid;
 		}
 
+        // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what
+        public static bool IsValidPJLDirectPassCode(int CampYearID, string Code)
+        {
+            List<string> codes = new List<string>();
+            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+
+            db.AddParameter("@Action", "IsPJLDirectPass");
+            db.AddParameter("@CampYearID", CampYearID);
+            db.AddParameter("@Code", Code);
+
+            SqlDataReader dr = db.ExecuteReader("usprsSpecialCodes_Select");
+
+            bool res = false;
+
+            if (dr.Read())
+            {
+                res =  Convert.ToBoolean(dr[0]);
+            }
+
+            return res;
+        }
+
 		public static List<string> GetAvailableCodes(int CampYearID, int FedID)
 		{
             return GetAvailableCodesPerCamp(CampYearID, FedID, -1);

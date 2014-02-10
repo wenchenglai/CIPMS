@@ -30,6 +30,12 @@ public partial class Step1 : System.Web.UI.Page
     DataSet dsPJLCodes = new DataSet();
 	private string strSplURL;
 
+    private enum SpecialCodeType 
+    { 
+        PJL = 1,
+        Other = 99
+    }
+
     protected void Page_Init(object sender, EventArgs e)
     {
         btnNext.Click += new EventHandler(btnNext_Click);
@@ -200,7 +206,23 @@ public partial class Step1 : System.Web.UI.Page
         // 2. When CIPMS is open for registration, typically in mid-October
         // The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
         if (ZipCodeHasClosedProgram())
-            Response.Redirect("~/CamperHolding.aspx");
+        {
+            // if the code executes to this point, it means the system is open for registration, but this particular zip/associated fed is still closed
+            // 2014-02-7 Add new logic that if this user applies the Direct Pass for PJL, then instead of going to the camper holding page, we go to PJL
+            bool passFlag = false;
+            if ((SpecialCodeType)Convert.ToInt32(Session["codeValue"]) == SpecialCodeType.PJL)
+            {
+                string directPassPJLCode = Session["UsedCode"].ToString();
+                bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), directPassPJLCode);
+                if (isDirectPass)
+                {
+                    passFlag = true;
+                }
+            }
+            
+            if (!passFlag)
+                Response.Redirect("~/CamperHolding.aspx");
+        }
 
         if (!bPerformUpdate)
             return;
@@ -256,6 +278,10 @@ public partial class Step1 : System.Web.UI.Page
 		// NLP code redirection
 		if (codeValue == CodeWashinngton || codeValue == CodeNLP)
 			validateNLCodeRedirection();
+
+        // 2014-02-06 PJL Direct Pass allows user to go to PJL summary page directly 
+        if (IsPJLDirectPass())
+            Response.Redirect("~/Enrollment/PJL/Summary.aspx");
 
 		if (ddlCountry.SelectedItem.Text.ToLower() == "canada"
 			&& (txtZipCode.Text.StartsWith("A") 
@@ -377,6 +403,7 @@ public partial class Step1 : System.Web.UI.Page
 		}
 		else if (txtSplCode.Text != string.Empty && Convert.ToInt32(Session["codeValue"]) == 1)
 		{
+            // 2014-02-06 The zip code entered here doesn't have any federations associated, so we need to check if there is PJL code applied so we can go to PJL directly
 			//added by sreevani to check redirection to pjl based on day school codes.
 			if (!redirectionLogic.BeenToPJL)
 			{
@@ -500,7 +527,7 @@ public partial class Step1 : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("~/CamperHolding.aspx");
+                //Response.Redirect("~/CamperHolding.aspx");
             }
         }
 
@@ -797,7 +824,7 @@ public partial class Step1 : System.Web.UI.Page
         DataSet dsMiiPReferalCodeDetails = new DataSet();
         string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
 		string ConfigRamahDarom = ConfigurationManager.AppSettings["2012CRD6481"];
-        string ConfigSpecialPJLCapitalCode = ConfigurationManager.AppSettings["SpecialPJLCapitalCode"];
+        string ConfigSpecialPJLCapitalCode = "PJGTC2014B";
         strAction = hdnPerformAction.Value;
         strCamperUserId = Master.CamperUserId;
 
@@ -912,7 +939,10 @@ public partial class Step1 : System.Web.UI.Page
                         Session["FEDID"] = strFedId;
                     }
                     else
+                    {
+                        // 2014-02-06 If come here, it means the FederationID field of CamperApplication is NULL.  This will have catastrophic consequence because the redirect will fail
                         strNextURL = "";
+                    }
                 }
             }
             else if (iCount > 1)  //the zip code is applicable for both Jwest /Orange/jwest la / la cip
@@ -1474,6 +1504,27 @@ public partial class Step1 : System.Web.UI.Page
 			//CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
 			//Response.Redirect("~/Enrollment/PJL/Summary.aspx");
 		}
+    }
+
+    // 2014-02-06 This function will check if user use "direct pass" code for PJL - this means this code will bring the user directly to PJL, even there is matching federation
+    public bool IsPJLDirectPass()
+    {
+        UserDetails Info = getUserInfoStructwithValues();
+        Session["ZIPCODE"] = Info.ZipCode;
+
+        bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), txtSplCode.Text);
+        if (isDirectPass)
+        {
+            ProcessCamperInfo(Info);
+            InsertCamperAnswers();
+            //oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
+            string PJL_FedID = Convert.ToInt32(FederationEnum.PJL).ToString();
+            Session["FJCID"] = hdnFJCID.Value;
+            Session["FEDID"] = PJL_FedID;
+            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), PJL_FedID);
+            return true;
+        }
+        return false;
     }
 
     public void CusValSplCode_ServerValidate(object source, ServerValidateEventArgs args)

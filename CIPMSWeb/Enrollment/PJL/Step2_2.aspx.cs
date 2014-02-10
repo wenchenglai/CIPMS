@@ -217,69 +217,67 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
-        
-        try
+        if (!Page.IsValid)
+            return;
+
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+
+        if (!isReadOnly)
         {
-            if (Page.IsValid)
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
+                //to check whether the camper is eligible 
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+
+                // when user is from day school, if they have the special day school code, we let them pass
+                // if user has no special day school code, then we have to see total day school camper is over threshold
+                if (RadioButtionQ5.SelectedValue == "4")
                 {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCIDStep2_2.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
+                    var oCA = new CamperApplication();
+                    var FJCID = Session["FJCID"].ToString();
+                    //int validate = oCA.validateIsUsedPJLDSCode(FJCID);
+                    //if (validate != 1)
+                    //{
+                                
+                    //}
+
+                    string currentCode = Session["UsedCode"].ToString();
+                    int validate = oCA.validatePJLDSCode(currentCode);
+                    if (validate == 0 || validate == 2)
                     {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                        oCA.updatePJLDSCode(currentCode, FJCID);
                     }
                     else
                     {
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-
-                        // when user is from day school, if they have the special day school code, we let them pass
-                        // if user has no special day school code, then we have to see total day school camper is over threshold
-                        if (RadioButtionQ5.SelectedValue == "4")
+                        // 2014-02-07 now, the Direct Pass PJL code also allows day school by default
+                        bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), currentCode);
+                        if (!isDirectPass)
                         {
-                            var oCA = new CamperApplication();
-                            var FJCID = Session["FJCID"].ToString();
-                            //int validate = oCA.validateIsUsedPJLDSCode(FJCID);
-                            //if (validate != 1)
-                            //{
-                                
-                            //}
-
-                            string currentCode = Session["UsedCode"].ToString();
-                            int validate = oCA.validatePJLDSCode(currentCode);
-                            if (validate == 0 || validate == 2)
-                            {
-                                oCA.updatePJLDSCode(currentCode, FJCID);
-                            }
-                            else
-                            {
-                                iStatus = (int)StatusInfo.SystemInEligible;
-                            }
+                            iStatus = (int)StatusInfo.SystemInEligible;
                         }
                     }
-
-                    Session["STATUS"] = iStatus.ToString();
                 }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-                Response.Redirect("Step2_3.aspx");
             }
+
+            Session["STATUS"] = iStatus.ToString();
         }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+        Response.Redirect("Step2_3.aspx");
     }
 
     private void ProcessCamperAnswers()
