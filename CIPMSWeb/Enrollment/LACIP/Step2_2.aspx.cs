@@ -37,24 +37,18 @@ public partial class Step2_LACIP_2 : System.Web.UI.Page
     {
         objGeneral = new General();
         CamperAppl = new CamperApplication();
-        if (!Page.IsPostBack)
+        if (!IsPostBack)
         {
-            //Session["FJCID"] = "200810130000";
-            //to get the FJCID which is stored in session
+            getGrades();
+
             if (Session["FJCID"] != null)
             {
                 hdnFJCID.Value = (string)Session["FJCID"];
-                //Session["FJCID"] = null;
                 getCamperAnswers();
 				getCamperAnswers2();
             }
 
         }
-
-		if (!IsPostBack)
-		{
-			getGrades();
-		}
     }
 
     //page unload

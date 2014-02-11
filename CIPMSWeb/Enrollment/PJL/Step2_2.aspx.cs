@@ -197,21 +197,14 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
     void btnPrevious_Click(object sender, EventArgs e)
     {
-        try
+        if (Page.IsValid)
         {
-            if (Page.IsValid)
+            if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-                Response.Redirect("Summary.aspx");
+                ProcessCamperAnswers();
             }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
+            Session["FJCID"] = hdnFJCIDStep2_2.Value;
+            Response.Redirect("Summary.aspx");
         }
     }
 
@@ -241,34 +234,28 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
             else
             {
                 EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
-                //to check whether the camper is eligible 
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
 
                 // when user is from day school, if they have the special day school code, we let them pass
-                // if user has no special day school code, then we have to see total day school camper is over threshold
                 if (RadioButtionQ5.SelectedValue == "4")
                 {
                     var oCA = new CamperApplication();
                     var FJCID = Session["FJCID"].ToString();
-                    //int validate = oCA.validateIsUsedPJLDSCode(FJCID);
-                    //if (validate != 1)
-                    //{
-                                
-                    //}
 
                     string currentCode = Session["UsedCode"].ToString();
                     int validate = oCA.validatePJLDSCode(currentCode);
                     if (validate == 0 || validate == 2)
                     {
                         oCA.updatePJLDSCode(currentCode, FJCID);
+                        iStatus = (int)StatusInfo.SystemEligible;
                     }
                     else
                     {
                         // 2014-02-07 now, the Direct Pass PJL code also allows day school by default
-                        bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), currentCode);
-                        if (!isDirectPass)
+                        bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), FederationEnum.PJL, currentCode);
+                        if (isDirectPass)
                         {
-                            iStatus = (int)StatusInfo.SystemInEligible;
+                            iStatus = (int)StatusInfo.SystemEligible;
                         }
                     }
                 }

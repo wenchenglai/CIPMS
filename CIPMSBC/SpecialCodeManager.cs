@@ -32,13 +32,19 @@ namespace CIPMSBC
 		}
 
         // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what
-        public static bool IsValidPJLDirectPassCode(int CampYearID, string Code)
+        public static bool IsValidDirectPassCode(int CampYearID, FederationEnum Fed, string Code)
         {
             List<string> codes = new List<string>();
             SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
 
-            db.AddParameter("@Action", "IsPJLDirectPass");
+            int FedID = Convert.ToInt32(Fed);
+            string storeProcName = "IsDirectPass";
+            if (Fed == FederationEnum.PJL)
+                storeProcName = "IsPJLDirectPass";
+
+            db.AddParameter("@Action", storeProcName);
             db.AddParameter("@CampYearID", CampYearID);
+            db.AddParameter("@FedID", FedID);
             db.AddParameter("@Code", Code);
 
             SqlDataReader dr = db.ExecuteReader("usprsSpecialCodes_Select");

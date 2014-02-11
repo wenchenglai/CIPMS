@@ -213,7 +213,7 @@ public partial class Step1 : System.Web.UI.Page
             if ((SpecialCodeType)Convert.ToInt32(Session["codeValue"]) == SpecialCodeType.PJL)
             {
                 string directPassPJLCode = Session["UsedCode"].ToString();
-                bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), directPassPJLCode);
+                bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), FederationEnum.PJL, directPassPJLCode);
                 if (isDirectPass)
                 {
                     passFlag = true;
@@ -228,7 +228,7 @@ public partial class Step1 : System.Web.UI.Page
             return;
 
 		string strNextURL = string.Empty, strCheckUpdate, strFedId = string.Empty;
-		var dsFed = new DataSet();
+		
 		int iCount = 0;
 		int check = 0;
 		int fedCheck = 0;
@@ -273,6 +273,7 @@ public partial class Step1 : System.Web.UI.Page
 			}
 		}
 
+        // 2014-02-10 To bring sanity back, we put all special special-code routing logic here (e.g if use this code, we do xxxx)
 		int codeValue = Convert.ToInt32(Session["codeValue"]);
 		
 		// NLP code redirection
@@ -280,9 +281,14 @@ public partial class Step1 : System.Web.UI.Page
 			validateNLCodeRedirection();
 
         // 2014-02-06 PJL Direct Pass allows user to go to PJL summary page directly 
-        if (IsPJLDirectPass())
+        if (IsDirectPass(FederationEnum.PJL))
             Response.Redirect("~/Enrollment/PJL/Summary.aspx");
 
+        // 2014-02-06 
+        if (IsDirectPass(FederationEnum.MetroWest))
+            Response.Redirect("~/Enrollment/MetroWest/Summary.aspx");
+
+        var dsFed = new DataSet();
 		if (ddlCountry.SelectedItem.Text.ToLower() == "canada"
 			&& (txtZipCode.Text.StartsWith("A") 
 				|| txtZipCode.Text.StartsWith("B") 
@@ -1506,22 +1512,20 @@ public partial class Step1 : System.Web.UI.Page
 		}
     }
 
-    // 2014-02-06 This function will check if user use "direct pass" code for PJL - this means this code will bring the user directly to PJL, even there is matching federation
-    public bool IsPJLDirectPass()
+    // 2014-02-06 This function will check if user use "direct pass" code - this means this code will bring the user directly to the fed, even there is matching federation, or zip codes don't match
+    public bool IsDirectPass(FederationEnum fed)
     {
-        UserDetails Info = getUserInfoStructwithValues();
-        Session["ZIPCODE"] = Info.ZipCode;
-
-        bool isDirectPass = SpecialCodeManager.IsValidPJLDirectPassCode(Convert.ToInt32(Application["CampYearID"]), txtSplCode.Text);
+        bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), fed, txtSplCode.Text);
         if (isDirectPass)
         {
+            UserDetails Info = getUserInfoStructwithValues();
+            Session["ZIPCODE"] = Info.ZipCode;
             ProcessCamperInfo(Info);
             InsertCamperAnswers();
-            //oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
-            string PJL_FedID = Convert.ToInt32(FederationEnum.PJL).ToString();
             Session["FJCID"] = hdnFJCID.Value;
-            Session["FEDID"] = PJL_FedID;
-            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), PJL_FedID);
+            string FedID = Convert.ToInt32(fed).ToString();
+            Session["FEDID"] = FedID;
+            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), FedID);
             return true;
         }
         return false;
