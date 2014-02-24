@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Memphis_Summary" %>
 
 <asp:Content ID="Memphis_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
                 <img id="logo" src="../../images/Memphis_logo1.JPEG" alt="" />
@@ -59,6 +59,25 @@
                 </asp:Label>
             </td>
         </tr>       
+    </table>
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>
+                <img src="../../images/Memphis_logo1.JPEG" alt="" />
+            </td>
+            <td>
+
+			</td>
+        </tr>
+        <tr>
+			<td colspan="2">
+				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
+					<p style="text-align:justify">
+                        The Jewish Foundation of Memphis is closed for this year.  Please click the "Next" button to proceed.
+					</p>            
+				</asp:Label>
+			</td>
+        </tr>          
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            

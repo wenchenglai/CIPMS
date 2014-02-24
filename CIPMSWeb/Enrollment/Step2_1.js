@@ -132,6 +132,8 @@ function ValidateHowDidYouHearUsPage(sender, args) {
             isQ3Pass = true;
         } else if (inputobjs[i].id.indexOf("chk21") >= 0 && inputobjs[i].checked) {
             isQ3Pass = true;
+        } else if (inputobjs[i].id.indexOf("chkBunkConnect") >= 0 && inputobjs[i].checked) {
+            isQ3Pass = true;
         }
     } //end of for loop
 

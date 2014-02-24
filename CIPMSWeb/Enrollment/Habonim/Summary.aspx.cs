@@ -83,7 +83,7 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
             {
                 case "066":
                     ImgLogoDisable.Src = "../../images/Camp Na'aleh.jpg";
-                    lblDisable.Text = "For more information on scholarship opportunities, please contact Rabbi Eric Wittenstein at  212-229-2700 or rabbieric.naaleh@gmail.com.";
+                    lblDisable.Text = "For more information on scholarship opportunities, please contact Rabbi Eric Wittstein at  212-229-2700 or rabbieric.naaleh@gmail.com.";
                     tblDisable.Visible = true;
                     tblRegular.Visible = false;
                     break;

@@ -257,6 +257,15 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                         {
                             iStatus = (int)StatusInfo.SystemEligible;
                         }
+                        else
+                        {
+                            // 2014-02-19 now, a multi-use regular PJLCode code could allow day school
+                            bool allowDaySchool = SpecialCodeManager.IsValidPJLPassCodeAllowDaySchool(Convert.ToInt32(Application["CampYearID"]), currentCode);
+                            if (allowDaySchool)
+                            {
+                                iStatus = (int)StatusInfo.SystemEligible;
+                            }
+                        }
                     }
                 }
             }

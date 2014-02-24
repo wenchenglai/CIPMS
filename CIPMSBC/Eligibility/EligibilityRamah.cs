@@ -273,9 +273,9 @@ namespace CIPMSBC.Eligibility
                     else if (timeInCamp == "1" && daysInCamp >= 12)
                         Amount = 700;
                     else if (timeInCamp == "2" && daysInCamp >= 19)
-                        Amount = 700;
+                        Amount = 750;
                     else if (timeInCamp == "2" && daysInCamp >= 12)
-                        Amount = 500;
+                        Amount = 350;
                 }
                 else // all other camps
                     Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);

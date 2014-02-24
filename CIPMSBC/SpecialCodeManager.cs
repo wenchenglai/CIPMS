@@ -34,7 +34,6 @@ namespace CIPMSBC
         // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what
         public static bool IsValidDirectPassCode(int CampYearID, FederationEnum Fed, string Code)
         {
-            List<string> codes = new List<string>();
             SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
 
             int FedID = Convert.ToInt32(Fed);
@@ -54,6 +53,26 @@ namespace CIPMSBC
             if (dr.Read())
             {
                 res =  Convert.ToBoolean(dr[0]);
+            }
+
+            return res;
+        }
+
+        public static bool IsValidPJLPassCodeAllowDaySchool(int CampYearID, string Code)
+        {
+            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+
+            db.AddParameter("@Action", "IsValidPJLPassCodeAllowDaySchool");
+            db.AddParameter("@CampYearID", CampYearID);
+            db.AddParameter("@Code", Code);
+
+            SqlDataReader dr = db.ExecuteReader("usprsSpecialCodes_Select");
+
+            bool res = false;
+
+            if (dr.Read())
+            {
+                res = Convert.ToBoolean(dr[0]);
             }
 
             return res;

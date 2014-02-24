@@ -192,8 +192,6 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-           
-
             StatusBasedOnGrade(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
@@ -213,10 +211,7 @@ namespace CIPMSBC.Eligibility
             {
                 oCA.UpdateAmount(FJCID, 0.00, 0, "");
                 return true;
-            }
-
-           
-                        
+            }      
         }
     }
 }

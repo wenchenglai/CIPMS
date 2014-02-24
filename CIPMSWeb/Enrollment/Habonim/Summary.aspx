@@ -66,8 +66,14 @@
             <td>
                 <img id="ImgLogoDisable" runat="server" /></td>
             <td>
-                <asp:Label ID="lblDisable" runat="server" CssClass="infotext3" />
+                
 			</td>
+        </tr>
+        <tr>
+           <td colspan="2">
+               <br />
+               <asp:Label ID="lblDisable" runat="server" CssClass="infotext3" Font-Bold="true" Font-Size="Small" />
+           </td> 
         </tr>
     </table> 
 

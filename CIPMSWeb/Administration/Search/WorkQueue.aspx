@@ -11,13 +11,11 @@
       <td>
         <div style="font-weight:bold;">
             <br />
-            Welcome to the 2014 One Happy Camper admin portal!
+            One Happy Camper payment is starting in the Spring - make sure all approved campers are in the status of “Campership Approved; Payment Pending.”
             <br /><br />
-            This “Work Queue” message will be updated periodically, so stay tuned!
+            Please remember to approve all new “Eligible” applications within two weeks and send an email confirmation to parents. You may find a confirmation email template in the OHC Basic User Guide.
             <br /><br />
-            Please log in at least a few times a week to check if there have been “eligible” applications submitted and begin the approval 
-            process – Refer to the OHC Basic User Guide to review the status flow. Parents should receive an email confirmation once their 
-            grant has been approved (and attendance at camp has been confirmed).
+            Please contact <a href="mailto:Valentina@JewishCamp.org"><u>Valentina@JewishCamp.org</u></a> if you have any questions.
         </div>
       </td>
     </tr>

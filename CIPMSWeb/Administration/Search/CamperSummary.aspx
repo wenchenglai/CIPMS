@@ -94,12 +94,16 @@
             params += ', scrollbars=Yes';
             params += ', status=Yes';
             params += ', toolbar=no';
-            var newwin=window.open(url,'CancellationOrChangeForm', params);
+
+            var newwin = window.open(url,'CancellationOrChangeForm', params);
             
             debugger;
             
-            if (window.focus) {newwin.focus();}
-                return false;
+            if (window.focus) {
+                newwin.focus();
+            }
+
+            return false;
         }
         
         function ConfirmUpdateAmt(strRole, strApprover,campyear)

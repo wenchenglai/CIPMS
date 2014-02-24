@@ -3,6 +3,7 @@ using System.Data;
 using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -44,19 +45,11 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                     string currentCode = Session["UsedCode"].ToString();
                     int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-                    List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
-
-                    // when moved to .NET 3.5 or above, remember to use lamda expression
-                    foreach (string code in specialCodes)
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
                     {
-                        if (code == currentCode)
-                        {
-                            tblDisable.Visible = false;
-                            tblRegular.Visible = true;
-                            btnNext.Visible = true;
-                            SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-                            break;
-                        }
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
                     }
 
                     // 2013-07-11 Currently, tblPJLCodes and tblPJLDSCodes table are still being used in Step1.aspx
@@ -71,7 +64,6 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                         {
                             tblDisable.Visible = false;
                             tblRegular.Visible = true;
-                            btnNext.Visible = true;
                         }
                     }
                 }

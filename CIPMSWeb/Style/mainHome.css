@@ -228,6 +228,15 @@ body.ohc .content_head#ohc_apply {
 	height: 287px;
 }
 
+#ohc_apply3 {
+	background: url(../img/bg/bg_content_apply_ohc.jpg) no-repeat scroll -27px 0px;
+	height: 287px;
+}
+
+#ohc_apply3 h1{
+	display: none;
+}
+
 body.ohc .content_head#ohc_apply h1{
 	display: none;
 }
