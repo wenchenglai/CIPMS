@@ -73,7 +73,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
 			string FedID = (string)Session["FedID"];
-			if (FedID == "35" || FedID == "5")
+            if (FedID == "35" || FedID == "5" || FedID == "37" || FedID == "23" || FedID == "89" || FedID == "49" || FedID == "11" || FedID == "12" || FedID == "32" || FedID == "36" || FedID == "26")
 			{
 				divCheckRequest.Visible = true;
 			}

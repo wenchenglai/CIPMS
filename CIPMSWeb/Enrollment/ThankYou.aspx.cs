@@ -115,11 +115,16 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             {               
                 dr = ds.Tables[0].Rows[0];
               
-                if (strFedId == "60" || 
-                    strFedId == "7" || 
-                    strFedId == "26" || 
-                    strFedId == "62" || 
-                    strFedId =="66")
+                // 2014-03-03 Chicago Elibigle-coupon status has special contact info
+                if (strFedId == "9")
+                {
+                    lblFed1.Text = "JUF CHICAGO";
+                    lblContactPerson1.Text = "Lyndsey Yeary";
+                    lblPhone1.Text = "312-357-4798";
+                    lblEmail1.Text = "LyndseyYeary@juf.org";
+                    Email.HRef = "mailto:" + lblEmail1.Text;
+                }
+                else if (strFedId == "60" || strFedId == "7" || strFedId == "26" || strFedId == "62" || strFedId =="66")
                 {
                     dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
                     drContact = dsContactDetails.Tables[0].Rows[0];

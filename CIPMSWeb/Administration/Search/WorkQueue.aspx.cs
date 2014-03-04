@@ -119,7 +119,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         else if (strRole == ConfigurationManager.AppSettings["FEDADMIN"])
         {
             _objCamperDet.FederationID = (string)Session["FedID"];
-            _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43";
+            _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43,45";
         }
 
         //If logged in role is FJC Admin, show records for his federation with status - 
@@ -127,7 +127,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         else if (strRole == ConfigurationManager.AppSettings["FJCADMIN"])
         {
             _objCamperDet.FederationID = (string)ConfigurationManager.AppSettings["JWest"] + "," + (string)ConfigurationManager.AppSettings["JWestLA"];
-            _objCamperDet.Status = "1,2,6,9,12,14,20,21,27,43";
+            _objCamperDet.Status = "1,2,6,9,12,14,20,21,27,43,45";
         }
 
         //if logged in role is Approver, show records with status - Second Approval

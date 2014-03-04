@@ -61,9 +61,9 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Colorado One Happy Camper Program is now closed for the summer of 2013. For more information, please contact the professional listed at the bottom of this page.
+						For further information on how to apply for the Colorado One Happy Camper program, please contact the professional listed at the bottom of the screen.
 						<br /><br />
-						Click ‘NEXT?to see if your camp is sponsoring its own One Happy Camper program.
+						
 					</p>
 				</asp:Label>
 			</td>

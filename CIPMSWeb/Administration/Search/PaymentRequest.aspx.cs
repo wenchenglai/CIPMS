@@ -4,6 +4,7 @@ using System.Data;
 using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -40,9 +41,21 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
         _objGen = new General();
         DataSet dsFed = _objGen.get_AllFederations();
 
+
+        //var results = from myRow in dsFed.Tables[0].AsEnumerable()
+        //where myRow.Field<int>("allowAdminPaymentProcessing") == 1
+        //select myRow;
+
+
+
 		// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
 		string FedID = (string)Session["FedID"];
-		if (FedID == "35" || FedID == "5")
+
+        //DataRow[] drsss = dsFed.Tables[0].Select("ID = " + FedID);
+
+        //bool isAllow = (bool)drsss[0]["allowAdminPaymentProcessing"];
+
+        if (FedID == "35" || FedID == "5" || FedID == "37" || FedID == "23" || FedID == "89" || FedID == "49" || FedID == "11" || FedID == "12" || FedID == "32" || FedID == "36" || FedID == "26")
 		{
 			Dictionary<string, string> dict = new Dictionary<string, string>();
 			DataRow[] drs = dsFed.Tables[0].Select("ID = " + FedID);
