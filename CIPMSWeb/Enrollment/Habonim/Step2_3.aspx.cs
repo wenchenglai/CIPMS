@@ -99,7 +99,9 @@ public partial class Step2_Habonim_3 : Page
         SetPanelStates();
 
 		string strCampID = Session["CampID"].ToString();
-		if (strCampID == "4037" || strCampID == "4057")
+        string last3digits = strCampID.Substring(strCampID.Length - 3);
+
+        if (last3digits == "057") // Miriam
 			lblSessionDays.Text = "In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.";
     }
 

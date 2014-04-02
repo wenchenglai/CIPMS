@@ -81,6 +81,13 @@ public partial class Enrollment_Habonim_Summary : System.Web.UI.Page
             // Disable camps will overwrite above code
             switch (last3digits)
             {
+                case "060":
+                    ImgLogoDisable.Src = "../../images/Camp Moshava.jpg";
+                    lblDisable.Text = "The Habonim Dror Camp Moshava One Happy Camper application is now closed for the summer of 2014. For more information, please contact the camp professional listed at the bottom of the screen.";
+                    tblDisable.Visible = true;
+                    tblRegular.Visible = false;
+                    break;
+
                 case "066":
                     ImgLogoDisable.Src = "../../images/Camp Na'aleh.jpg";
                     lblDisable.Text = "For more information on scholarship opportunities, please contact Rabbi Eric Wittstein at  212-229-2700 or rabbieric.naaleh@gmail.com.";

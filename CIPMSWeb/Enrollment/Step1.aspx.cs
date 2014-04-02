@@ -471,7 +471,7 @@ public partial class Step1 : System.Web.UI.Page
 				strNextURL = "ThankYou.aspx";
 			}
 
-			if (strNextURL == "")
+			if (strNextURL == "" || dsFed.Tables.Count == 0)
 			{
 				lblMessage.Visible = true;
 				lblMessage.Text = "No Federation exists for the given Zip Code";

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.ComponentModel;
+using System.Configuration;
 using CIPMSOfficeObjects;
 using System.Reflection;
 namespace CIPMSBC
@@ -1552,7 +1553,11 @@ namespace CIPMSBC
 
         public string GetCanadianZipCode(string strZip)
         {
-            string CJA = "A,B,C,E", Montreal = "G, H, J", Toronto = "L, M, N", FedId = "";
+            string CJA = ConfigurationManager.AppSettings["CanadaCJAZipCodes"];
+            string Montreal = ConfigurationManager.AppSettings["CanadaMontrealZipCodes"];
+            string Toronto = ConfigurationManager.AppSettings["CanadaTorontoZipCodes"];
+            //string CJA = "A,B,C,E", Montreal = "G, H, J", Toronto = "L, M, N", 
+            string FedId = "";
              
             if (CJA.IndexOf(strZip.Substring(0, 1)) >= 0)
             {

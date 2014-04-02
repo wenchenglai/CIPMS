@@ -11,7 +11,7 @@ namespace CIPMSBC.DAL
     {
         public static DataTable GetWhoIsInSynagogue(FederationEnum fed)
         {
-            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+            var db = new SQLDBAccess("CIPConnectionString");
             db.AddParameter("@Action", "GetWhoIsInSynagogue");
             db.AddParameter("@FedID", (int)fed);
 

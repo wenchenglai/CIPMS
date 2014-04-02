@@ -116,7 +116,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 dr = ds.Tables[0].Rows[0];
               
                 // 2014-03-03 Chicago Elibigle-coupon status has special contact info
-                if (strFedId == "9")
+                if (strFedId == "9" && strStatus == StatusInfo.EligibleCampCoupon)
                 {
                     lblFed1.Text = "JUF CHICAGO";
                     lblContactPerson1.Text = "Lyndsey Yeary";

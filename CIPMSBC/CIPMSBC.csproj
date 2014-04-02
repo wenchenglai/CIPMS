@@ -72,6 +72,7 @@
     <Compile Include="BLL\SynagogueManager.cs" />
     <Compile Include="CamperApplication.cs" />
     <Compile Include="CIPDataAccess.cs" />
+    <Compile Include="DAL\SchedulerDA.cs" />
     <Compile Include="DAL\SynagogueDA.cs" />
     <Compile Include="Eligibility\EligibilityPortland.cs" />
     <Compile Include="Eligibility\EligibilityToronto.cs" />

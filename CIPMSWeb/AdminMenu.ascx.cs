@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Net;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -9,7 +10,8 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using System.Net;
+using CIPMSBC.DAL;
+
 
 public partial class AdminMenu : System.Web.UI.UserControl
 {
@@ -36,6 +38,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
         {
 			string localIP = Dns.GetHostAddresses(Request.Url.Host)[0].ToString();
             string prodIP = ConfigurationManager.AppSettings["ProductionServerIP"];
+
 			if ( localIP != prodIP )
 			{
                 hylCIPRS.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/Default.aspx", localIP);
@@ -45,13 +48,8 @@ public partial class AdminMenu : System.Web.UI.UserControl
 				hylCIPRS.NavigateUrl = "https://www.onehappycamper.org/CIPRS/Default.aspx";
 			}
 
-            CamperApplication oCam = new CamperApplication();
-            /*if (Session["UsrID"] != null)
-            {
-                strUserID = Session["UsrID"].ToString();
-                strUserID = oCam.EncryptQueryString(strUserID);
-                string debugID = oCam.DecryptQueryString(strUserID);
-            }*/
+            var oCam = new CamperApplication();
+
             this.Visible = IsMenuVisible;
             
             if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"].ToString())
@@ -72,8 +70,9 @@ public partial class AdminMenu : System.Web.UI.UserControl
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
-			string FedID = (string)Session["FedID"];
-            if (FedID == "35" || FedID == "5" || FedID == "37" || FedID == "23" || FedID == "89" || FedID == "49" || FedID == "11" || FedID == "12" || FedID == "32" || FedID == "36" || FedID == "26")
+			var fedId = (string)Session["FedID"];
+            int allowFedId = SchedulerDA.GetPaymentAccessFedID(DateTime.Now);
+            if (fedId == allowFedId.ToString())
 			{
 				divCheckRequest.Visible = true;
 			}

@@ -53,8 +53,8 @@
 					<p style="text-align:justify">
 						If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
 						please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank" >www.JewishCamp.org/Scholarships</a>, 
-						or contact your camp, or contact the Jewish Federation of Greater Philadelphia's Drew Martin 
-						at <a href="mailto:dmartin@jfgp.org" target="_blank">dmartin@jfgp.org</a>  or 215-832-0530. 
+						or contact your camp, or contact the Jewish Federation of Greater Philadelphia's Warren Hoffman  
+						at <a href="mailto:whoffman@jfgp.org" target="_blank">whoffman@jfgp.org</a>  or 215-832-0570. 
 					</p>
 				</asp:Label>
             </td>

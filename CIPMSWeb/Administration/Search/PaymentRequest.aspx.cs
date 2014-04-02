@@ -59,14 +59,8 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 		{
 			Dictionary<string, string> dict = new Dictionary<string, string>();
 			DataRow[] drs = dsFed.Tables[0].Select("ID = " + FedID);
-			if (FedID == "35")
-			{
-				dict.Add("35", drs[0]["Federation"].ToString());
-			}
-			else
-			{
-				dict.Add("5", drs[0]["Federation"].ToString());
-			}
+
+			dict.Add(FedID, drs[0]["Federation"].ToString());
 
 			lstFederations.DataSource = dict;
 			lstFederations.DataTextField = "Value";
