@@ -310,4 +310,9 @@ public partial class AdminMenu : System.Web.UI.UserControl
     {
         Response.Redirect("~/Administration/StatisticsReportGeneration.aspx");
     }
+
+    protected void lnkBulkStatusUpdate_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Administration/BulkStatusUpdate.aspx");
+    }
 }
