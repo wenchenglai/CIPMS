@@ -20,7 +20,7 @@
             <tr>
                 <td valign="top"><asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4" runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper’s first time attending camp for 19 days or longer?</asp:Label><br />
+                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper’s first time attending a non-profit Jewish overnight summer camp?</asp:Label><br />
                     &nbsp;<asp:RadioButton ID="RadioBtnQ31" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" />
                     <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" />
                 </td>

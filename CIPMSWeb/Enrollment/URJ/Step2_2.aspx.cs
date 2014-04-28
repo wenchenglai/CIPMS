@@ -1,13 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -80,7 +74,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
-        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
         ProcessCamperAnswers();
         Response.Redirect(strRedirURL);
     }

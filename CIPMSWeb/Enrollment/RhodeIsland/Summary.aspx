@@ -66,9 +66,7 @@
             <td>
                 <asp:Label ID="Label6" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						The Jewish Alliance of Greater Rhode Island One Happy Camper Program is closed.
-						<br />
-						Please click “Next” to see if you are eligible for a different One Happy Camper program.
+The Rhode Island One Happy Camper program has a limited number of grants remaining for summer of 2014. For more information on how to apply, please contact Elanah Chassen at 401-562-0979 or echassen@jewishallianceri.org.
                     </p>
                 </asp:Label>
             </td>
