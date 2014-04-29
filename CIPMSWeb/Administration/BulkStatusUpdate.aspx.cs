@@ -13,8 +13,9 @@ public partial class Administration_BulkStatusUpdate : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!IsPostBack) 
+        if (!IsPostBack)
         {
+            lblMsg.Text = "";
             var campYearId = (int)Application["CampYearID"];
             var fedId = (string)Session["FedID"];
 
@@ -32,14 +33,14 @@ public partial class Administration_BulkStatusUpdate : Page
                 ddlCampYear.DataBind();
             }
 
-            var objGen = new General();
-            DataSet dsFed = objGen.get_AllFederations();
-            ddlFed.DataSource = dsFed;
-            ddlFed.DataTextField = "Federation";
-            ddlFed.DataValueField = "ID";
-            ddlFed.DataBind();
-            if ((ddlFed.Items.Count != 0))
-                ddlFed.Items.Insert(0, new ListItem("--Select--", "-1"));            
+            //var objGen = new General();
+            //DataSet dsFed = objGen.get_AllFederations();
+            //ddlFed.DataSource = dsFed;
+            //ddlFed.DataTextField = "Federation";
+            //ddlFed.DataValueField = "ID";
+            //ddlFed.DataBind();
+            //if ((ddlFed.Items.Count != 0))
+            //    ddlFed.Items.Insert(0, new ListItem("--Select--", "-1"));            
         }
     }
     protected void btnUpdate_Click(object sender, EventArgs e) 

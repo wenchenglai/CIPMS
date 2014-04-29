@@ -36,17 +36,8 @@ public partial class Administration_ManageUser : System.Web.UI.Page
             ddlFed.DataBind();
             if ((ddlFed.Items.Count != 0))
                 ddlFed.Items.Insert(0, new ListItem("--Select--", "-1"));
+            ddlFed.SelectedIndex = 13;
 
-            //Populate Camp List
-            DataSet dsCamps;
-            _objGen = new General();
-            dsCamps = _objGen.get_AllCamps(Master.CampYear);
-            ddlCamps.DataSource = dsCamps;
-            ddlCamps.DataTextField = "Camp";
-            ddlCamps.DataValueField = "ID";
-            ddlCamps.DataBind();
-            if ((ddlCamps.Items.Count != 0))
-                ddlCamps.Items.Insert(0, new ListItem("--Select--", "-1"));
         }
         else
         {
