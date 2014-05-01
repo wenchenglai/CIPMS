@@ -446,7 +446,7 @@ public partial class Step2_NY_3 : Page
         //if (StateId == "0")
         //{
         //dsCamps = objGeneral.GetFedCamps(FederationID, Master.CampYear);
-        dsCamps = objGeneral.get_AllCamps(Master.CampYear);
+        dsCamps = objGeneral.get_AllCamps(Master.CampYear, 35);
         //}
         //else
         //{

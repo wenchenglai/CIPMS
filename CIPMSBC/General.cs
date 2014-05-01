@@ -55,14 +55,15 @@ namespace CIPMSBC
         }
 
         //to fill the Camps dropdown
-        public DataSet get_AllCamps(string CampYear)
+        public DataSet get_AllCamps(string CampYear, int fedID = -1)
         {
             CIPDataAccess dal = new CIPDataAccess();
             try
             {
                 DataSet dsCamps;
-                SqlParameter[] param = new SqlParameter[1];
+                SqlParameter[] param = new SqlParameter[2];
                 param[0] = new SqlParameter("@CampYear", CampYear);
+                param[1] = new SqlParameter("@FedID", fedID);
                 dsCamps = dal.getDataset("usp_GetAllCamps", param);
                 for (int i = 0; i < dsCamps.Tables[0].Rows.Count; i++)
                 {
