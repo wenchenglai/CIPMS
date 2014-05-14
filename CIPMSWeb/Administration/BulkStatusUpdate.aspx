@@ -12,25 +12,17 @@
                         width: 800,
                         buttons: [
                             {
-                                text: "Ok",
+                                text: "Yes",
                                 click: function () {
-                                    
-                                    if ($('#initial').val() !== "") {
-                                        $(this).dialog("close");
-                                        SimulateClick("ctl00_Content_btnUpdate");
-                                        return true;
-                                    }
-                                    if (!$('#warning').length) {
-                                        $('#confirm').append("<p id='warning' style='color:red;font-size:small'>You must enter your initials, or cancel the process</p>");
-                                    }
-                                    return false;
+                                    $(this).dialog("close");
+                                    SimulateClick("ctl00_Content_btnUpdate");
+                                    return true;
                                 }
                             },
                             {
-                                text: "Cancel",
+                                text: "No",
                                 click: function () {
                                     $(this).dialog("close");
-                                    debugger;
                                     return false;
                                 }
                             }
@@ -40,6 +32,17 @@
                 });
 
                 function update_click() {
+                    $('#ctl00_Content_lblMsg').text("");
+                    // Error Checking
+                    if (!$('#ctl00_Content_chkboxYes').is(':checked')) {
+                        $('#ctl00_Content_lblMsg').text("Please check the confirmation box before you proceed.");
+                        return false;
+                    }
+
+                    if ($('#ctl00_Content_txtInitials').val() === "") {
+                        $('#ctl00_Content_lblMsg').text("Please enter your initials before you proceed.");
+                        return false;
+                    }
 
                     if (flag) {
                         return true;
@@ -49,6 +52,7 @@
                     }
                 };
 
+                // Simulate a button click on asp.net form from Javascript
                 function SimulateClick(buttonId) {
                     flag = true;
                     var button = document.getElementById(buttonId);
@@ -68,12 +72,11 @@
                 }
             </script>
             <div id="dialog-modal" class="ui-dialog-content ui-widget-content" title="Basic modal dialog">
-                <p>Are you sure you want to go ahead and change?</p>
-                <p id="confirm">Please enter your initials to confirm: <input type="text" id="initial" /></p>
+                <p>Are you sure you would like to update all "Payment Requested" records for the camps selected to the status of "Camper Attended Camp"?</p>
             </div>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>    
-            <div>
+            <div style="margin-left: 20px;">
                 <h3>Mass updates from Payment Requested to Camper Attended Camp.</h3>
                 <strong>Summer:</strong>&nbsp;&nbsp;
                 <asp:DropDownList ID="ddlCampYear" DataValueField="id" DataTextField="text" AutoPostBack="true" runat="server" Enabled="false" />
@@ -84,8 +87,13 @@
                         <asp:ControlParameter ControlID="ddlCampYear" Name="CampYearID" PropertyName="SelectedValue" Type="Int32" />
                     </SelectParameters>     
                 </asp:ObjectDataSource>
-                <br/><br />
-                <asp:DropDownList runat="server" ID="ddlCamp" DataSourceID="odsCamp" DataTextField="Name" DataValueField="ID"/>
+                <br /><br />
+                <asp:CheckBox ID="chkAllCamps" runat="server" Text="Select all camps" oncheckedchanged="chkAll_CheckedChanged" AutoPostBack="true" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br /><br />
+                <asp:CheckBoxList ID="chklistCamp" runat="server" DataSourceID="odsCamp" DataTextField="Name" DataValueField="ID" RepeatDirection="Vertical" 
+                    RepeatColumns="2" ondatabound="chklistCamp_DataBound" />
+
                 <asp:ObjectDataSource ID="odsCamp" runat="server" TypeName="CampsDA" SelectMethod="GetAllCampsByFedID">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlCampYear" PropertyName="SelectedValue" Type="Int32" Name="CampYearID" />
@@ -93,14 +101,26 @@
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </div>
-            <div>
+            <div style="margin-left: 20px;">
                 <br/>
-                <p class="text" style="color:red;">Have you cancelled all applications within this camp that need to be cancelled?</p>
-                <p class="text" style="color:red;">If not please exit this process and complete the Cancellation process.</p>
+                <div style="border-width: 2px; border-style: solid; width: 350px; padding: 8px">
+                    <asp:CheckBox runat="server" ID="chkboxYes" Text="Yes, I have cancelled all applications for the selected camps that are no longer eligible for the grant." /><br />
+                    <asp:TextBox ID="txtInitials" Width="35" runat="server"></asp:TextBox> Enter initials here
+                </div>
+                <br />
                 <asp:Button runat="server" ID="btnUpdate" Text="Update" OnClientClick="return update_click()" OnClick="btnUpdate_Click"/>
                 <br/>
                 <br/>
                 <div><asp:Label runat="server" ID="lblMsg" ForeColor="Red"></asp:Label></div>
+            </div>
+            <div style="margin-left: 20px;">
+                <asp:GridView ID="gv" Visible="False" runat="server"></asp:GridView>
+                <asp:ObjectDataSource ID="odsGv" runat="server" TypeName="BulkStatusUpdateRecordDA" SelectMethod="GetAll">
+                    <SelectParameters>
+                        <asp:ControlParameter ControlID="ddlCampYear" PropertyName="SelectedValue" Type="Int32" Name="CampYearID" />
+                        <asp:ControlParameter ControlID="ddlFed" PropertyName="SelectedValue" Type="Int32" Name="FedID" />
+                    </SelectParameters>                    
+                </asp:ObjectDataSource>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
