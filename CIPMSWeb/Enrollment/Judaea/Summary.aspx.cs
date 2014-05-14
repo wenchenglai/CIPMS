@@ -84,6 +84,19 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
                     objGeneral = null;
                 }
             }
+
+            string campID = resultCampId.ToString();
+            string last3Digits = campID.Substring(campID.Length - 3);
+            // Disable camps will overwrite above code
+            switch (last3Digits)
+            {
+                case "107":
+                    lblDisable.Text = "The Young Judaea-Texas One Happy Camper application is now closed for the summer of 2014. For information about a waiting list, please contact the camp professional listed at the bottom of the screen.";
+                    tblDisable.Visible = true;
+                    tblRegular.Visible = false;
+                    break;
+            }
+
         }
     }
 

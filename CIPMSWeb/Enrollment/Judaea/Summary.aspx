@@ -111,31 +111,15 @@
             <td>
                 <img src="../../images/judaeacamp.jpg" /></td>
             <td>
-				<asp:Label ID="Label6" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify" class="infotext3"><b>The Young Judaea One Happy Camper program is now closed for summer 2013. For more information, please contact the camp professional listed at the bottom of this page.</b></p>
-				</asp:Label>
-                <asp:Label ID="Label7" CssClass="infotext3" runat="server">
-					<p style="text-align:justify"> 
-						
-					</p>
-                </asp:Label>
-            </td>
+                
+			</td>
         </tr>
         <tr>
-            <td colspan="2">
-                <asp:Label ID="Label8" runat="server" CssClass="infotext4">
-                    <p style="text-align:justify"> 
-If you are interested in learning more about our camps and available grants, please visit us at: www.youngjudaea.org/cip or visit the camp websites by clicking on the camp names below:
-<br /><br />
-<a href="http://www.cyjmid.org/" target="_blank">Camp Young Judaea Midwest</a> (Waupaca,Wisconsin)<br />
-<a href="http://www.cyjtexas.org/" target="_blank">Camp Young Judaea Texas</a> (Wimberley, TX)<br />
-<a href="http://www.campjudaea.org/" target="_blank">Camp Judaea</a> (Hendersonville, North Carolina)<br />
-<a href="http://www.cyjsproutlake.org/" target="_blank">Camp Young Judaea Sprout Lake</a> (Verbank, New York)<br />
-<a href="http://telyehudah.wordpress.com/" target="_blank">Camp Tel Yehudah</a> (Barryville, New York)<br />       
-                    </p>                    
-                </asp:Label>
-            </td>
-        </tr>
+           <td colspan="2">
+               <br />
+               <asp:Label ID="lblDisable" runat="server" CssClass="infotext3" Font-Bold="true" Font-Size="Small" />
+           </td> 
+        </tr>        
     </table>    
     
     <asp:Panel ID="Panel1" runat="server">
