@@ -83,39 +83,39 @@ namespace CIPMSBC.Eligibility
 
         private int StatusBasedOnSchool(string FJCID, int StatusValue)
         {
-            return (int)StatusInfo.SystemEligible;
+            //return (int)StatusInfo.SystemEligible;
 
-            //CamperApplication oCA = new CamperApplication();
-            //int iStatusValue = -1;
+            CamperApplication oCA = new CamperApplication();
+            int iStatusValue = -1;
 
-            //DataSet dsJewishSchool;
-            //dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
-            //DataRow drJewishSchool;
-            //int JewishSchoolOption;
+            DataSet dsJewishSchool;
+            dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
+            DataRow drJewishSchool;
+            int JewishSchoolOption;
 
-            //if (dsJewishSchool.Tables[0].Rows.Count > 0)
-            //{
-            //    drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
-            //    if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
-            //    {
-            //        JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
+            if (dsJewishSchool.Tables[0].Rows.Count > 0)
+            {
+                drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
+                if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
+                {
+                    JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
 
-            //        if (JewishSchoolOption == 4)
-            //        {
-            //            iStatusValue = (int)StatusInfo.SystemInEligible;
-            //        }
-            //        else
-            //        {
-            //            iStatusValue = (int)StatusInfo.SystemEligible;
-            //        }
-            //    }
-            //}
+                    if (JewishSchoolOption == 4)
+                    {
+                        iStatusValue = (int)StatusInfo.SystemInEligible;
+                    }
+                    else
+                    {
+                        iStatusValue = (int)StatusInfo.SystemEligible;
+                    }
+                }
+            }
 
 
-            //if (iStatusValue == -1)
-            //    iStatusValue = StatusValue;
+            if (iStatusValue == -1)
+                iStatusValue = StatusValue;
 
-            //return iStatusValue;
+            return iStatusValue;
         }
         private int StatusBasedOnSynagogue(string FJCID, int StatusValue)
         {
