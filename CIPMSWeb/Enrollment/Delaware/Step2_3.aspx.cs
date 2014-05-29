@@ -376,7 +376,7 @@ public partial class Step2_Adamah_3 : Page
         DataSet dsCamps;
 
        
-        dsCamps = objGeneral.get_AllCamps(Master.CampYear);
+        dsCamps = objGeneral.get_AllCamps(Master.CampYear, 97);
         
 
         ddlCamp.DataSource = dsCamps;
