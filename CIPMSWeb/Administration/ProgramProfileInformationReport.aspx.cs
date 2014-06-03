@@ -111,7 +111,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             }
             else
             {
-                strHTMLContent.Append("<tr width='100%'><td ><b>Jewish Day School : </b></td><td ><span style='color: Red;'>Children currently attending a Jewish day school or Yeshiva are not eligible for a camper incentive grant.</span></td></tr>");
+                strHTMLContent.Append("<tr width='100%'><td ><b>Jewish Day School : </b></td><td ><span style='color: Red;'>Children currently attending a Jewish day school or Yeshiva are not eligible.</span></td></tr>");
 
             }
 
@@ -138,12 +138,13 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
                 strHTMLContent.Append("<tr ><td ><b>Second Time Camper Definition : </b></td><td ><span style='color: Red;'>Eligible as long as applicant received a grant through the Jewish Federation of Greater Philadelphia One Happy Camper Program for the first time last year.</span></td></tr>");
             }
 
-            strHTMLContent.Append("<tr ><td ><b>Length of Stay at Camp to be Eligible:</b></td><td><span style='color: Red;'>At least ____ consecutive days</span></td></tr>");
-            strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;First-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
-            strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;Second-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Minimum Length of Stay at Camp to be Eligible:</b></td><td><span style='color: Red;'>At least ____ consecutive days.</span><br /><br /><span style='color: Red;'>At least ____ consecutive days if attended camp for 12-18 days in summer 2014 and was therefore ineligible for the grant.</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;First-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days.</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;Second-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Eligible Camps:</b></td><td><span style='color: Red;'>All camps FJC supports as listed on <a href='http://www.OneHappyCamper.org/FindaCamp'>http://www.OneHappyCamper.org/FindaCamp</a>. See list on accompanying spread sheet.  (Tab = Camps)</span></td></tr>");
-            strHTMLContent.Append("<tr ><td ><b>Exceptions:</b></td><td><span style='color: Red;'>Adamah Adventures &#45; 18+ consecutive days eligible for $1,000 as first time campers and $750 as second time campers.<br /><br />URJ Six Points Sports Academy &#45; 12-18 consecutive days eligible for $700 as first time campers and $500 as second time campers; 19+ consecutive days eligible for $1000 as first time campers and $750 as second time campers.</span></td></tr>");            
+            strHTMLContent.Append("<tr ><td ><b>Exceptions:</b></td><td><span style='color: Red;'>Review the list of exceptions on the attached word document.</span></td></tr>");            
             strHTMLContent.Append("<tr ><td ><b>Eligible Zip Codes:</b></td><td><span style='color: Red;'>Review the list of zip codes on the accompanying spread sheet.</span></td></tr>");
+
 
             //if (dsDocData.Tables[3].Rows.Count > 0)
             //{
@@ -155,6 +156,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             //}
 
             strHTMLContent.Append("<tr ><td ><b>Synagogue/JCC list</b></td><td><span style='color: Red;'>See attached spread sheet in tab 2.  If you have revisions to this list, please submit a new spread sheet with ALL synagogues/JCCs to be listed.<br /><br />Learn more about FJC&#39;s work with engaging synagogues in the camp conversation &#45; contact RebeccaK@JewishCamp.org.</span></td></tr>");
+            strHTMLContent.Append(@"<tr ><td ><b>""How Did You Hear about OHC"" Question</b></td><td><span style='color: Red;'>Would you like to list the professional who manages/administers the program (the parent-face of your OHC program)? Insert name of professional here: _____________ (limit one per program).</span></td></tr>");
 
 			strHTMLContent.Append("</table>");
 
@@ -171,10 +173,10 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
                         <h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + DateTime.Now.ToShortDateString() + "</h4>";
 
 		string instruction = @"<div><strong>Instructions: <br /><br />The information below (and on the accompanying spread sheet) is how your 
-One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2014 campaign 
-and submit prior to August 1st, 2013.  Revisions received prior to Aug 1st will be ready to be launched the week of October 7th, 2013.
+One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2015 campaign 
+and submit prior to August 4<sup>th</sup>, 2014.  Revisions received prior to Aug 4<sup>th</sup> will be ready to be launched the week of October 20<sup>th</sup>, 2014.
 <br /><br /><ul><li>Please make any edits in <span style='color: Red;'>RED</span></li>
-<li>Submit form to Valentina at <a href='mailto:Valentina@JewishCamp.org'>Valentina@JewishCamp.org</a></li></ul><br />
+<li>Submit form to Staci at <a href='mailto:staci@JewishCamp.org'>Staci@JewishCamp.org</a></li></ul><br />
 <u>Please confirm the following:</u></strong><br /><br />Payee Name (e.g. name of agency that checks should be made out to):  ____________________<br /><br />
 Address (where checks should be mailed):  ___________________________________________<br /><br />
 Employer Identification Number: __________________________________________________<div><br />";
@@ -586,7 +588,7 @@ the accompanying spread sheet)<br /><br />Name of person submitting these docume
         }
         catch (Exception ex)
         {
-            throw ex;
+            return "";
         }
         return FirstQuestion;
     }
