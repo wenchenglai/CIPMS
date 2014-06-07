@@ -68,7 +68,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
         for (int i = 0; i < dsDocData.Tables[0].Rows.Count; i++)
         {
             FederationName = dsDocData.Tables[0].Rows[i][12].ToString();
-            strHTMLContent.Append("<table border='1'>");       
+            strHTMLContent.Append("<table border='1'>");
 
             strHTMLContent.Append("<tr width='100%'><td ><b>Contact Name: </b></td><td >" +
                                   dsDocData.Tables[0].Rows[i][1].ToString() + "</td></tr>");
@@ -83,31 +83,31 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             if (dayschooleligibility == "true")
             {
                 strHTMLContent.Append("<tr width='100%'><td ><b>Day School: </b></td><td > Yes </td></tr>");
-               
-                 switch (strSelectedFedList)
-                 {
-                     case "11":
-                     {
-						strHTMLContent.Append("<tr width='100%'><td colspan='2'><b>Day Schools List</b></td></tr>");
-                        strHTMLContent.Append("<tr width='100%'><td>B'Nai Shalom</td></tr>");
-                        strHTMLContent.Append("<tr width='100%'><td>Hebrew Academy</td></tr>");
-                         break;
-                     }
-                     case "9":
-                     {
-                         strHTMLContent.Append("<tr width='100%'><td colspan='2'><b>Day Schools List</b></td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Arie Crown Academy</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Anshe Emet</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Akiba Schechter</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Bais Yaakov</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Cheder Lubovich</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Chicago Jewish Day</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Chicagoland Jewish High School</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Hillel Torah</td></tr>");
-                         strHTMLContent.Append("<tr width='100%'><td>Solomon Schechter</td></tr>");
-                         break;
-                     }    
-                 }
+
+                switch (strSelectedFedList)
+                {
+                    case "11":
+                        {
+                            strHTMLContent.Append("<tr width='100%'><td colspan='2'><b>Day Schools List</b></td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>B'Nai Shalom</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Hebrew Academy</td></tr>");
+                            break;
+                        }
+                    case "9":
+                        {
+                            strHTMLContent.Append("<tr width='100%'><td colspan='2'><b>Day Schools List</b></td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Arie Crown Academy</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Anshe Emet</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Akiba Schechter</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Bais Yaakov</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Cheder Lubovich</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Chicago Jewish Day</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Chicagoland Jewish High School</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Hillel Torah</td></tr>");
+                            strHTMLContent.Append("<tr width='100%'><td>Solomon Schechter</td></tr>");
+                            break;
+                        }
+                }
             }
             else
             {
@@ -117,12 +117,12 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
 
             //if (dsDocData.Tables[5].Rows.Count > 0)
             //{
-                //strHTMLContent.Append("<tr width='100%'><td>Camps : </td></tr>");
-                //for (int p = 0; p < dsDocData.Tables[5].Rows.Count; p++)
-                //{
-                //    strHTMLContent.Append("<tr width='100%'><td>" + dsDocData.Tables[5].Rows[p][1].ToString() +
-                //                          "</td></tr>");
-                //}
+            //strHTMLContent.Append("<tr width='100%'><td>Camps : </td></tr>");
+            //for (int p = 0; p < dsDocData.Tables[5].Rows.Count; p++)
+            //{
+            //    strHTMLContent.Append("<tr width='100%'><td>" + dsDocData.Tables[5].Rows[p][1].ToString() +
+            //                          "</td></tr>");
+            //}
             //}
             //else
             //{
@@ -142,13 +142,13 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;First-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;Second-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Eligible Camps:</b></td><td><span style='color: Red;'>All camps FJC supports as listed on <a href='http://www.OneHappyCamper.org/FindaCamp'>http://www.OneHappyCamper.org/FindaCamp</a>. See list on accompanying spread sheet.  (Tab = Camps)</span></td></tr>");
-            strHTMLContent.Append("<tr ><td ><b>Exceptions:</b></td><td><span style='color: Red;'>Review the list of exceptions on the attached word document.</span></td></tr>");            
+            strHTMLContent.Append("<tr ><td ><b>Exceptions:</b></td><td><span style='color: Red;'>Review the list of exceptions on the attached word document.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Eligible Zip Codes:</b></td><td><span style='color: Red;'>Review the list of zip codes on the accompanying spread sheet.</span></td></tr>");
 
 
             //if (dsDocData.Tables[3].Rows.Count > 0)
             //{
-				//strHTMLContent.Append("<tr width='100%'><td> Synagogues </td></tr>");
+            //strHTMLContent.Append("<tr width='100%'><td> Synagogues </td></tr>");
             //}
             //for (int m = 0; m < dsDocData.Tables[3].Rows.Count; m++)
             //{
@@ -158,13 +158,14 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             strHTMLContent.Append("<tr ><td ><b>Synagogue/JCC list</b></td><td><span style='color: Red;'>See attached spread sheet in tab 2.  If you have revisions to this list, please submit a new spread sheet with ALL synagogues/JCCs to be listed.<br /><br />Learn more about FJC&#39;s work with engaging synagogues in the camp conversation &#45; contact RebeccaK@JewishCamp.org.</span></td></tr>");
             strHTMLContent.Append(@"<tr ><td ><b>""How Did You Hear about OHC"" Question</b></td><td><span style='color: Red;'>Would you like to list the professional who manages/administers the program (the parent-face of your OHC program)? Insert name of professional here: _____________ (limit one per program).</span></td></tr>");
 
-			strHTMLContent.Append("</table>");
+            strHTMLContent.Append("</table>");
 
-			strHTMLContent.Append("<br /><br />Program Description:<br />");
-			// the summary page
-			strHTMLContent.Append("<table border='1'>");
-			strHTMLContent.Append("<tr ><td colspan='2'><h1 align='Center'style='font-family: verdana; font-size:16;color: black:width='100%'><u>" + dsDocData.Tables[0].Rows[i][0].ToString() + "</u></h1></td></tr>");
-			strHTMLContent.Append("<tr ><td>" + dsDocData.Tables[0].Rows[i][4].ToString() + "</td></tr>");
+            strHTMLContent.Append("<br /><br />Program Description:<br />");
+            // the summary page
+            strHTMLContent.Append("<table border='1'>");
+            strHTMLContent.Append("<tr ><td colspan='2'><h1 align='Center'style='font-family: verdana; font-size:16;color: black:width='100%'><u>" + dsDocData.Tables[0].Rows[i][0].ToString() + "</u></h1></td></tr>");
+            string noimageString = dsDocData.Tables[0].Rows[i][4].ToString().Replace("src", "data-src");
+            strHTMLContent.Append("<tr ><td>" + noimageString + "</td></tr>");
 
 			strHTMLContent.Append("</table>");
         }
@@ -572,7 +573,6 @@ the accompanying spread sheet)<br /><br />Name of person submitting these docume
         return sbQuestion.ToString();
     }
 
-    //added by sandhya 
     private string GetfirstQuestionnaire(string summaryPageUrl, int iFederationId)
     {
         HtmlWeb hw = new HtmlWeb();
