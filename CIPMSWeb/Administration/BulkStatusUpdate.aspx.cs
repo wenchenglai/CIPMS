@@ -85,14 +85,14 @@ public partial class Administration_BulkStatusUpdate : Page
         bool ret = CamperAppDA.BulkUpdateStatus(campYearId, fedId, campIdList, userId, fromStatusId, toStatusId);
         if (ret)
         {
-            gv.DataSourceID = "odsGv";
-            gv.DataBind();
-            gv.Visible = true;
+            //gv.DataSourceID = "odsGv";
+            //gv.DataBind();
+            //gv.Visible = true;
             lblMsg.Text = "Status updated successfully";
         }
         else
         {
-            gv.Visible = false;
+            //gv.Visible = false;
             lblMsg.Text = "Status updated failed.";
         }
 
@@ -106,7 +106,7 @@ public partial class Administration_BulkStatusUpdate : Page
         if (chklistCamp.Items.Count == 0)
         {
             if (lblMsg.Text == "")
-                lblMsg.Text = "The federation has no camp in the camper applications data";
+                lblMsg.Text = "The federation has no camp that has the status of Payment Requested";
             chkAllCamps.Enabled = false;
             btnUpdate.Enabled = false;
         }

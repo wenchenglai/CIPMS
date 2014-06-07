@@ -94,10 +94,11 @@
                 <asp:CheckBoxList ID="chklistCamp" runat="server" DataSourceID="odsCamp" DataTextField="Name" DataValueField="ID" RepeatDirection="Vertical" 
                     RepeatColumns="2" ondatabound="chklistCamp_DataBound" />
 
-                <asp:ObjectDataSource ID="odsCamp" runat="server" TypeName="CampsDA" SelectMethod="GetAllCampsByFedID">
+                <asp:ObjectDataSource ID="odsCamp" runat="server" TypeName="CampsDA" SelectMethod="GetAllCampsFilterByStatusMinimumOneCamper">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlCampYear" PropertyName="SelectedValue" Type="Int32" Name="CampYearID" />
                         <asp:ControlParameter ControlID="ddlFed" PropertyName="SelectedValue" Type="Int32" Name="FedID" />
+                        <asp:Parameter DefaultValue="25" Type="Int32" Name="StatusID" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
             </div>

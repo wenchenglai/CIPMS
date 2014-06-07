@@ -4,10 +4,20 @@ public class CampsDA
 {
     public static DataTable GetAllCampsByFedID(int CampYearID, int FedID)
     {
-        SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+        var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "ByFedID");
         db.AddParameter("@CampYearID", CampYearID);
         db.AddParameter("@FedID", FedID);
+        return db.FillDataTable("usprsCamps_Select");
+    }
+
+    public static DataTable GetAllCampsFilterByStatusMinimumOneCamper(int CampYearID, int FedID, int statusID)
+    {
+        var db = new SQLDBAccess("CIPConnectionString");
+        db.AddParameter("@Action", "FilterByStatusWithMinimumOneCamper");
+        db.AddParameter("@CampYearID", CampYearID);
+        db.AddParameter("@FedID", FedID);
+        db.AddParameter("@StatusID", statusID);
         return db.FillDataTable("usprsCamps_Select");
     }
 
