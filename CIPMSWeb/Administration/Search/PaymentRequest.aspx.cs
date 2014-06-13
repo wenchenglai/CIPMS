@@ -292,6 +292,10 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
             string datetime = Convert.ToString(DateTime.Now);
             datetime=datetime.Replace('/', '_');
             datetime=datetime.Replace(':', '_');
+
+            // 2014-06-13 Some federation names might have forward slash /, which will cause file creation error below, so we have to get rid of the /
+            FederationName = FederationName.Replace('/', '_');
+
             string strPaymentReportURL = ConfigurationManager.AppSettings["PaymentReportPath"];
             strPaymentReportURL = strPaymentReportURL + FederationName + "_" + datetime + ".pdf";
             //FederationID + "_" + Convert.ToString(DateTime.Now) +

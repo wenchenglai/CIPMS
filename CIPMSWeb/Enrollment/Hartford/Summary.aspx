@@ -76,7 +76,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+						The Hartford One Happy Camper application is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

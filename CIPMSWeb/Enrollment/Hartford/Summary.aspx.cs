@@ -1,14 +1,7 @@
 using System;
-using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
+using System.Linq;
 using CIPMSBC;
 
 public partial class Enrollment_Admah_Summary : System.Web.UI.Page
@@ -24,16 +17,7 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 		{
 			int FedID = Convert.ToInt32(FederationEnum.Hartford);
 			string FED_ID = FedID.ToString();
-			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+            bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
 			if (isDisabled)
 			{
@@ -46,19 +30,12 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 					string currentCode = Session["UsedCode"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
-
-					// when moved to .NET 3.5 or above, remember to use lamda expression
-					foreach (string code in specialCodes)
-					{
-						if (code == currentCode)
-						{
-							tblDisable.Visible = false;
-							tblRegular.Visible = true;
-							SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-							break;
-						}
-					}
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
+                    {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
+                    }
 				}
 			}
 			else
