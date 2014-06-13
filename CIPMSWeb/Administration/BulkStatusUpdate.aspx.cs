@@ -15,7 +15,13 @@ public partial class Administration_BulkStatusUpdate : Page
     {
         if (!IsPostBack)
         {
-            lblMsg.Text = "";
+            var msg = Request.QueryString["result"];
+
+            if (msg != "")
+                lblMsg.Text = msg;
+            else
+                lblMsg.Text = "";
+
             var campYearId = (int)Application["CampYearID"];
             var fedId = (string)Session["FedID"];
 
@@ -83,19 +89,9 @@ public partial class Administration_BulkStatusUpdate : Page
         int userId = int.Parse(Session["UsrID"].ToString());
 
         bool ret = CamperAppDA.BulkUpdateStatus(campYearId, fedId, campIdList, userId, fromStatusId, toStatusId);
-        if (ret)
-        {
-            //gv.DataSourceID = "odsGv";
-            //gv.DataBind();
-            //gv.Visible = true;
-            lblMsg.Text = "Status updated successfully";
-        }
-        else
-        {
-            //gv.Visible = false;
-            lblMsg.Text = "Status updated failed.";
-        }
-
+        string result = "";
+        result = ret ? "Status updated successfully" : "Status updated failed.";
+        Response.Redirect("~/Administration/BulkStatusUpdate.aspx?result=" + result);
     }
     protected void ddlFed_SelectedIndexChanged(object sender, EventArgs e)
     {
