@@ -52,13 +52,14 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
             this.Visible = IsMenuVisible;
             
-            if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"].ToString())
+            if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"])
             {
                 dvRpts.Visible = false;
                 lnkStatsReport.Visible = true;
+                lnkBulkStatusUpdate.Visible = true;
             }
          
-            if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"].ToString())
+            if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"])
             {
                 dvAdmin.Visible = false;
                 dvRpts.Visible = false;
@@ -77,8 +78,6 @@ public partial class AdminMenu : System.Web.UI.UserControl
 				divCheckRequest.Visible = true;
 			}
 
-            //if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"].ToString()
-            //    && (string)Session["RoleID"] != ConfigurationManager.AppSettings["FEDADMIN"].ToString())
             if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"].ToString())
             {
                 divExcel.Visible = false;                

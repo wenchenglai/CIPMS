@@ -140,7 +140,7 @@
                     <td>
                     </td>
                     <td>
-                        <asp:LinkButton ID="lnkBulkStatusUpdate" runat="server" Text="Mass Update" OnClick="lnkBulkStatusUpdate_Click" CausesValidation="false" /></td>
+                        <asp:LinkButton ID="lnkBulkStatusUpdate" Visible="false" runat="server" Text="Mass Update" OnClick="lnkBulkStatusUpdate_Click" CausesValidation="false" /></td>
                 </tr>
                 <tr>
                     <td>
