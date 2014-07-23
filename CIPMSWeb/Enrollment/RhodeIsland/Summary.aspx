@@ -4,7 +4,7 @@
     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <img id="logo" src="logo.jpg" alt="" width="270" /></td>
+                <img id="logo" src="logo.png" alt="" width="270" /></td>
             <td>
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
                     <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
@@ -61,7 +61,7 @@
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <img id="Img1" src="../../images/Rhode_Island_logo.jpg" alt="" />
+                <img id="Img1" src="logo.png" alt="" />
             </td>
             <td>
                 <asp:Label ID="Label6" runat="server" CssClass="infotext3">

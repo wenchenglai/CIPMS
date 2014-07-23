@@ -1,15 +1,6 @@
 using System;
-using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Enrollment_Washington_Summary : System.Web.UI.Page
@@ -24,16 +15,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 		{
 			int FedID = Convert.ToInt32(FederationEnum.PJL);
 			string FED_ID = FedID.ToString();
-			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+            bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
 			if (isDisabled)
 			{

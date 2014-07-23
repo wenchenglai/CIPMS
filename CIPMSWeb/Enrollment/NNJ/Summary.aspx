@@ -59,10 +59,7 @@
             <td colspan="2">
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-						The Northern New Jersey One Happy Camper grants are limited. 
-						For more information or to get on the waiting list, please contact the professional listed at the bottom of the screen.
-						<br /><br />
-						Click ‘NEXT’ to see if your camp is sponsoring its own One Happy Camper program.						
+                        The Jewish Federation of Northern New Jersey One Happy Camper application is now closed for the summer of 2014. Please click "Next" to see if your camp sponsors a One Happy Camper grant. If your camp is not listed, please contact the professional listed at the bottom of the screen to get on a waiting list.					
 					</p>
 					<br />
 				</asp:Label>

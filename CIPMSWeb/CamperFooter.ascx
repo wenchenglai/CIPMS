@@ -14,7 +14,7 @@
         </td>
         <td>
             <asp:Label ID="Label4" runat="server" Text="Email: " CssClass="headertext"></asp:Label>
-            <asp:Label ID="lblEmail" runat="server" Text="campgrants@jewishcamp.org" CssClass="headertext1"></asp:Label>
+            <asp:Label ID="lblEmail" runat="server" Text="OneHappyCamper@JewishCamp.org" CssClass="headertext1"></asp:Label>
         </td>
     </tr>
 </table>

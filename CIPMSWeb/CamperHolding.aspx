@@ -25,12 +25,11 @@
                             <td>
                                 <asp:Label ID="Label1" CssClass="QuestionText" runat="server">
                                     <p style="text-align: justify">
-                                        <b>Welcome! Thank you for your interest in the One Happy Camper Program. </b>
+                                        <b>Welcome!  Thank you for your interest in the Foundation for Jewish Camp’s One Happy Camper program. </b>
                                     </p>
-                                     <p style="text-align: justify">
-                                        <b><font face="Verdana">If you are seeing this message, your One Happy Camper application is not yet available for summer 2014. </b>
+                                     <p style="text-align: justify; font=Verdana">
+                                        <b>If you are seeing this message, your One Happy Camper application is not yet available for summer 2015.  Applications will start being available the week of October 20th, 2014.  Fill in your information below and you will be contacted once there is a program open that may be right for you.</b>
                                     </p>
-                                    <p style="text-align: justify"><b><font face="Verdana">Fill in your information below and we will contact you once there is a program available that may be right for you. </font></b></p>
                                     <br />
                                 </asp:Label>
                             </td>
@@ -158,7 +157,7 @@
                                                     <td style="width: 5px">
                                                     </td>
                                                     <td colspan="2" class="headertext1">
-                                                        <asp:CheckBox ID="chkPJL" runat="server" Text="Check if applicant or a sibling of is a member or alumni of the PJ Library program." />
+                                                        <asp:CheckBox ID="chkPJL" runat="server" Text="Check if applicant is or sibling of the applicant is a member or alumni of the PJ Library program as of September 1st, 2014." />
                                                         
                                                     </td>
                                                     <td style="width: 5px">

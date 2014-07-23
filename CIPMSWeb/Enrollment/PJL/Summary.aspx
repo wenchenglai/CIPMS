@@ -181,13 +181,13 @@
             <td colspan="2">
                 <asp:Label ID="Label10" runat="server" CssClass="infotext3">
                 <p style="text-align:justify; color:Red;">
-					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2013 camp session have been awarded both for Non – Day School & Day School Families
+					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2014 camp session have been awarded both for Non – Day School & Day School Families
 				</p>	                
                 <p style="text-align:justify">
-					If your child does not attend camp this summer and you would like to be notified of opening times of the 2014 One Happy Camper program registration, send an email to pjgtc@hgf.org in August of 2013 to be placed on the email distribution list that will contain all the information needed to apply for the 2014 camp session. 
+					If your child does not attend camp this summer and you would like to be notified of opening times of the 2015 One Happy Camper program registration, send an email to pjgtc@hgf.org in August of 2014 to be placed on the email distribution list that will contain all the information needed to apply for the 2015 camp session. 
 				</p>
                  <p style="text-align:justify">
-					Thank you for a successful 2013 PJ Goes To Camp season. Enjoys your camp experience!
+					Thank you for a successful 2014 PJ Goes To Camp season. Enjoys your camp experience!
 				</p>					
 				</asp:Label>
             </td>
@@ -208,22 +208,22 @@
 					If you have already received a PJ Library code and have reached this page, please contact Madeline Ramos at pjgtc@hgf.org.
 				</p>	                
                 <p style="text-align:justify">
-					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2013 camp session have been awarded.  
+					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2014 camp session have been awarded.  
 					We are accepting non-day school campers to a waiting list in the event that funding becomes available for additional campers.  
 					To be placed on this waiting list, please email your child’s first & last name, parent’s first & last name & email address you would like to be contacted at, 
 					in the event additional funding becomes available, to: pjgtc@hgf.org. 
 				</p>
                  <p style="text-align:justify">
 					Our waiting list for Jewish Day School Families is now CLOSED.  
-					We do not anticipate any additional funding for grants to Jewish day school children for the 2013 Camp Session. 
+					We do not anticipate any additional funding for grants to Jewish day school children for the 2014 Camp Session. 
 				</p>					
                 <p style="text-align:justify">
 					If your child does not go to camp this summer and you would like to be notified of opening times of the 
-					2014 One Happy Camper program registration, send an email to pjgtc@hgf.org in August of 2013 to be placed on the email distribution list 
-					that will contain all the information needed to apply for the 2014 camp session. 
+					2015 One Happy Camper program registration, send an email to pjgtc@hgf.org in August of 2014 to be placed on the email distribution list 
+					that will contain all the information needed to apply for the 2015 camp session. 
 				</p>					
                 <p style="text-align:justify">
-					Thank you for a successful 2013 PJ Goes To Camp season. Enjoys your camp experience!
+					Thank you for a successful 2014 PJ Goes To Camp season. Enjoys your camp experience!
 				</p>
 				</asp:Label>
             </td>

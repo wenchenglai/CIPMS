@@ -204,6 +204,21 @@ public partial class Step2_LACIP_2 : System.Web.UI.Page
     private void ProcessCamperAnswers()
     {
         InsertCamperAnswers();
+
+        string strFJCID = hdnFJCID.Value;
+        string strModifiedBy = Master.UserId;
+        if (strFJCID != "" & strModifiedBy != "" && bPerformUpdate)
+        {
+            int iGrade, iResult;
+            string strGrade = ddlGrade.SelectedValue;
+            int.TryParse(strGrade, out iResult);
+            if (iResult == 0 || strGrade.Equals(string.Empty))
+                iGrade = 0;
+            else
+                iGrade = iResult;
+
+            CamperAppl.updateGrade(strFJCID, iGrade, "", Convert.ToInt16(strModifiedBy));
+        }
     }
 
     protected void InsertCamperAnswers()
