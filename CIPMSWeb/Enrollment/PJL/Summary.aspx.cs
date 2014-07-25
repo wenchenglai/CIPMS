@@ -59,15 +59,12 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
     }
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
     {
-        string strRedirURL;
-        strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-        Response.Redirect(strRedirURL);
+        Response.Redirect(ConfigurationManager.AppSettings["AdminRedirURL"]);
     }
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
         Response.Redirect("../Step1.aspx");
-        //Response.Redirect("../Step1.aspx");
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
@@ -76,7 +73,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 
 		if (tblDisable.Visible)
 		{
-			// NL page has a code snippet that would check this value and return to this page, so we need to clear it here to avoid the loop
+			// NL page has a code snippet that would check this codeValue == 1 and return to this PJL page, so we need to clear it here to avoid the loop
 			if (Session["codeValue"] != null)
 			{
 				if (Session["codeValue"].ToString() == "1")
@@ -86,7 +83,6 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 			}
 			Next_URL = "../Step1_NL.aspx";
 		}
-
 		Response.Redirect(Next_URL);
     }
 }

@@ -1,14 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Step1_NL : System.Web.UI.Page
@@ -31,14 +25,15 @@ public partial class Step1_NL : System.Web.UI.Page
     {
         CamperAppl = new CamperApplication();
 
-        if (!Page.IsPostBack)
+        if (!IsPostBack)
         {
 			if (Session["codeValue"] != null)
 			{
 				if (Session["codeValue"].ToString() == "1")
 				{
-					Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
-					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
+				    var fedId = Convert.ToInt32(FederationEnum.Columbus).ToString();
+                    Session["FEDID"] = fedId;
+					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), fedId);
 					Response.Redirect("PJL/Summary.aspx");
 				}
 			}
