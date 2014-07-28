@@ -54,7 +54,6 @@ public partial class Enrollment_Indianapolis_Summary : System.Web.UI.Page
 						{
 							tblDisable.Visible = false;
 							tblRegular.Visible = true;
-							SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
 							break;
 						}
 					}

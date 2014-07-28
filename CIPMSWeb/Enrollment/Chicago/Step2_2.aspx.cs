@@ -637,27 +637,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         bPerformUpdate = bPerform;
     }
 
-	private bool hasValidCode()
-	{
-		int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-		int FedID = Convert.ToInt32(FederationEnum.Chicago);
-		List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
-
-		if (Session["UsedCode"] != null)
-		{
-			string currentCode = Session["UsedCode"].ToString();
-			foreach (string code in specialCodes)
-			{
-				if (code == currentCode)
-				{
-					SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
 	private bool hasValidCodeOld()
 	{
 		if (Session["UsedCode"] != null)

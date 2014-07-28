@@ -57,7 +57,6 @@ public partial class Enrollment_Barney_Summary : System.Web.UI.Page
                             tblRegular.Visible = true;
                             btnSaveandExit.Visible = true;
                             btnNext.Visible = true; 
-                            SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
                             break;
                         }
                     }

@@ -35,7 +35,6 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
-                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
                     }
 				}
 			}

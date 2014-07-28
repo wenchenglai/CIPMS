@@ -24,10 +24,7 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
         {
             int FedID = Convert.ToInt32(FederationEnum.Eden);
             string FED_ID = FedID.ToString();
-			bool isDisabled = false;
-
-            if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID))
-                isDisabled = true;
+			bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
 			if (isDisabled)
 			{
@@ -43,7 +40,6 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
-                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
                     }
                 }
 			}

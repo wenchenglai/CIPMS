@@ -31,7 +31,6 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
-                        SpecialCodeManager.UseCode(CampYearID, FedID, currentCode, Session["FJCID"].ToString());
                     }
 
                     // 2013-07-11 Currently, tblPJLCodes and tblPJLDSCodes table are still being used in Step1.aspx

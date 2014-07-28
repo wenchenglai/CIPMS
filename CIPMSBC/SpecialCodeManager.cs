@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text;
 
 namespace CIPMSBC
@@ -18,23 +19,13 @@ namespace CIPMSBC
 		{
 			var codes = GetAvailableCodes(CampYearID, FedID);
 
-			bool isValid = false;
-			foreach (string code in codes)
-			{
-				if (code == Code)
-				{
-					isValid = true;
-					break;
-				}
-			}
-
-			return isValid;
+		    return codes.Any(code => code == Code);
 		}
 
         // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what
         public static bool IsValidDirectPassCode(int CampYearID, FederationEnum Fed, string Code)
         {
-            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+            var db = new SQLDBAccess("CIPConnectionString");
 
             int FedID = Convert.ToInt32(Fed);
             string storeProcName = "IsDirectPass";
@@ -60,7 +51,7 @@ namespace CIPMSBC
 
         public static bool IsValidPJLPassCodeAllowDaySchool(int CampYearID, string Code)
         {
-            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+            var db = new SQLDBAccess("CIPConnectionString");
 
             db.AddParameter("@Action", "IsValidPJLPassCodeAllowDaySchool");
             db.AddParameter("@CampYearID", CampYearID);
@@ -85,8 +76,8 @@ namespace CIPMSBC
 
         public static List<string> GetAvailableCodesPerCamp(int CampYearID, int FedID, int CampID)
         {
-            List<string> codes = new List<string>();
-            SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+            var codes = new List<string>();
+            var db = new SQLDBAccess("CIPConnectionString");
 
             db.AddParameter("@Action", "GetAvailableCodes");
             db.AddParameter("@CampYearID", CampYearID);
@@ -107,7 +98,7 @@ namespace CIPMSBC
 		// This will increment 1 to tblSpecialCodes' Uses column
 		public static bool UseCode(int CampYearID, int FedID, string Code, string FJCID)
 		{
-			SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+			var db = new SQLDBAccess("CIPConnectionString");
 
 			db.AddParameter("@CampYearID", CampYearID);
 			db.AddParameter("@FedID", FedID);

@@ -1428,7 +1428,7 @@ public partial class Step1 : System.Web.UI.Page
         return years;
     }
     
-	//LACIP changes start
+	//2014-07-28 NLP special codes are used, we go to the NLP directly instead of going through the whole routing from community to PJL to NLP
     protected void validateNLCodeRedirection()
     {
         UserDetails Info;
@@ -1455,7 +1455,6 @@ public partial class Step1 : System.Web.UI.Page
 					{
 						ProcessCamperInfo(Info);
 						Session["FJCID"] = hdnFJCID.Value;
-						SpecialCodeManager.UseCode(CampYearID, 0, currentCode, Session["FJCID"].ToString());
 						Response.Redirect(strNationalURL);
 					}
                 }
