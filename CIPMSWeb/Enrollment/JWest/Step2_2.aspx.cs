@@ -207,15 +207,15 @@ public partial class Step2_JWest_2 : System.Web.UI.Page
 					{
 						if (Convert.ToInt32(Session["codeValue"]) == 1)// PJL Day School codes validation
 						{
-							if (Session["UsedCode"] != null)
+							if (Session["SpecialCodeValue"] != null)
 							{
 								CamperApplication oCA = new CamperApplication();
-								int validate = oCA.validatePJLDSCode(Session["UsedCode"].ToString());
+								int validate = oCA.validatePJLDSCode(Session["SpecialCodeValue"].ToString());
 								if (validate == 0 || validate == 2)
 								{
-									oCA.updatePJLDSCode(Session["UsedCode"].ToString(), hdnFJCID.Value);
+									oCA.updatePJLDSCode(Session["SpecialCodeValue"].ToString(), hdnFJCID.Value);
 									Session["FJCID"] = hdnFJCID.Value;
-									Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+									Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
 									CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
 									Response.Redirect("~/Enrollment/PJL/Summary.aspx");
 								}

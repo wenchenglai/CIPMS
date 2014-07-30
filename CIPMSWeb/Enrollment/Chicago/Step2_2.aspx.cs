@@ -179,7 +179,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		DataSet dsSynagogue;
 		DataView dvSynagogue = new DataView();
 		int FedID;
-		FedID = Convert.ToInt32(Session["FEDID"].ToString());
+		FedID = Convert.ToInt32(Session["FedId"].ToString());
 		dsSynagogue = objGeneral.GetSynagogueListByFederation(FedID, Master.CampYear);
 
 		ddlSynagogue.DataSource = dsSynagogue.Tables[0];
@@ -208,7 +208,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		DataSet dsJCC;
 		DataView dvJCC = new DataView();
 		int FedID;
-		FedID = Convert.ToInt32(Session["FEDID"].ToString());
+		FedID = Convert.ToInt32(Session["FedId"].ToString());
 		dsJCC = objGeneral.GetJCCListByFederation(FedID, CampYear);
 		if (dsJCC.Tables[0].Rows.Count > 0)
 		{
@@ -639,7 +639,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 
 	private bool hasValidCodeOld()
 	{
-		if (Session["UsedCode"] != null)
+		if (Session["SpecialCodeValue"] != null)
 		{
 			Dictionary<string, string> codes = new Dictionary<string, string>();
 			codes.Add("CHI2553", "CHI2553");
@@ -693,7 +693,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			codes.Add("CHI3201", "CHI3201");
 			codes.Add("CHI3165", "CHI3165");
 
-			return codes.ContainsKey(Session["UsedCode"].ToString());
+			return codes.ContainsKey(Session["SpecialCodeValue"].ToString());
 		}
 		return false;
 	}

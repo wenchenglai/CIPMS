@@ -65,7 +65,7 @@ public partial class Enrollment_JCC_Summary : System.Web.UI.Page
             _objRedirectionLogic.GetNextFederationDetails(strFJCID);
             nextfederationid = _objRedirectionLogic.NextFederationId;
             CamperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
-            Session["FEDID"] = nextfederationid.ToString();
+            Session["FedId"] = nextfederationid.ToString();
             if (nextfederationid == 48 || nextfederationid == 63)
                 Response.Redirect(_objRedirectionLogic.NextFederationURL);
             else

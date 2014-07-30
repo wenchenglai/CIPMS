@@ -40,10 +40,10 @@ public partial class Enrollment_Barney_Summary : System.Web.UI.Page
 				tblRegular.Visible = false;
 				btnNext.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
                     // 2013-02-21 Now Camp Barney use tblSpecialCodes table
-                    string currentCode = Session["UsedCode"].ToString();
+                    string currentCode = Session["SpecialCodeValue"].ToString();
                     int CampYearID = Convert.ToInt32(Application["CampYearID"]);
                     int FedID = Convert.ToInt32(FederationEnum.Barney);
                     List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);

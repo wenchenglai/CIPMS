@@ -35,9 +35,9 @@ public partial class Enrollment_Chi_Summary : System.Web.UI.Page
                 tblDisable.Visible = true;
                 tblRegular.Visible = false;
 
-                if (Session["UsedCode"] != null)
+                if (Session["SpecialCodeValue"] != null)
                 {
-                    string currentCode = Session["UsedCode"].ToString();
+                    string currentCode = Session["SpecialCodeValue"].ToString();
                     int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
                     if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))

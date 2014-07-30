@@ -41,7 +41,7 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
                 //Session["FJCID"] = null;
                 //Session["ZIPCODE"] = null;
                 //Session["FEDNAME"] = null;
-                //Session["FEDID"] = null;
+                //Session["FedId"] = null;
                 Response.Redirect(strRedirURL, false);
             }
         }
@@ -132,7 +132,7 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
                 //Session["FJCID"] = null;
                 //Session["FEDNAME"] = null;
                 //Session["ZIPCODE"] = null;
-                //Session["FEDID"] = null;
+                //Session["FedId"] = null;
                 //Session.Abandon();
                // Response.Redirect(strRedirURL, false);
                 
@@ -179,9 +179,9 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
         Session["FJCID"] = hdnFJCID_ParentInfo.Value;
         Session["FEDNAME"] = null;
 
-        if (Session["FEDID"] != null)
+        if (Session["FedId"] != null)
         {
-            strFedId = Session["FEDID"].ToString();
+            strFedId = Session["FedId"].ToString();
             //to get the navigation url for the federation based on the federation id
 
             ds = objGeneral.GetFederationDetails(strFedId);

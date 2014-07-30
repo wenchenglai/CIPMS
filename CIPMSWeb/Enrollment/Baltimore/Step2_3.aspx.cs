@@ -384,7 +384,7 @@ public partial class Step2_Dallas_3 : Page
     private void getCamps(string StateId,String CampYear)
     {
         DataSet dsCamps;
-        int fedID = Int32.Parse(Session["FEDID"].ToString());
+        int fedID = Int32.Parse(Session["FedId"].ToString());
        
             dsCamps = objGeneral.GetFedCamps(fedID, Master.CampYear);
        

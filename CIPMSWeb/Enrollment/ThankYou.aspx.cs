@@ -80,6 +80,42 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                     Email3.HRef = "mailto:" + lblEmail1.Text;
                 }
             }
+            else if (strStatus == StatusInfo.PendingPJLottery)
+            {
+                MarkSpecialCodeUsed(Int32.Parse(strFedId));
+                pnlPendingPJLottery.Visible = true;
+
+                if (iCount <= 0) return;
+
+                dr = ds.Tables[0].Rows[0];
+
+                if (strFedId == "60" ||
+                    strFedId == "7" ||
+                    strFedId == "26" ||
+                    strFedId == "62" ||
+                    strFedId == "66")
+                {
+                    dsContactDetails = objGeneral.GetFederationCampContactDetails(strFedId, strCampId);
+                    drContact = dsContactDetails.Tables[0].Rows[0];
+                    strOrganisation = drContact["Name"].ToString();
+                    strOrganisation = strOrganisation.Trim();
+                    lblFed3.Text = drContact["Name"].ToString();
+                    lblContactPerson3.Text = drContact["Contact"].ToString();
+                    lblPhone3.Text = drContact["Phone"].ToString();
+                    lblEmail3.Text = drContact["Email"].ToString();
+                    Email3.HRef = "mailto:" + lblEmail1.Text;
+                }
+                else
+                {
+                    lblContactPerson3.Text = dr["Contact"].ToString();
+                    strOrganisation = dr["Name"].ToString();
+                    strOrganisation = strOrganisation.Trim();
+                    lblFed3.Text = strOrganisation.Trim();
+                    lblPhone3.Text = dr["Phone"].ToString();
+                    lblEmail3.Text = dr["Email"].ToString();
+                    Email3.HRef = "mailto:" + lblEmail1.Text;
+                }
+            }
             else if (((strStatus == StatusInfo.SystemInEligible || strStatus == StatusInfo.CamperDeclinedToGoToCamp)) &&
                      !objRedirectionLogic.BeenToPJL)
             {
@@ -205,9 +241,9 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
     // Once it's used successfully, nobody else can use it, including the original owner.
     private void MarkSpecialCodeUsed(int fedId)
     {
-        if (Session["UsedCode"] != null)
+        if (Session["SpecialCodeValue"] != null)
         {
-            string currentCode = Session["UsedCode"].ToString();
+            string currentCode = Session["SpecialCodeValue"].ToString();
             int campYearId = Convert.ToInt32(Application["CampYearID"]);
             SpecialCodeManager.UseCode(campYearId, fedId, currentCode, Session["FJCID"].ToString());
         }        
@@ -327,9 +363,9 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             camperAppl.DeleteCamperAnswerUsingFJCID(newFJCID);
 
         if (nextFederationId == 0)
-            Session["FEDID"] = null;
+            Session["FedId"] = null;
         else
-            Session["FEDID"] = nextFederationId.ToString();
+            Session["FedId"] = nextFederationId.ToString();
             
         Session["FJCID"] = newFJCID;
         Session["STATUS"] = 5;

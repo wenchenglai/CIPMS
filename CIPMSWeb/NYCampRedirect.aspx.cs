@@ -24,9 +24,9 @@ public partial class NYCampRedirect : System.Web.UI.Page
 
         if (!IsPostBack)
         {
-            if (Session["FEDID"] != null)
+            if (Session["FedId"] != null)
             {
-                if (Session["FEDID"].ToString() == "46")
+                if (Session["FedId"].ToString() == "46")
                 {
                     pnlCampBarney.Visible = false;
                     pnlNYCampRedirect.Visible = true;

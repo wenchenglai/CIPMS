@@ -49,7 +49,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 
 
 		// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
-		string FedID = (string)Session["FedID"];
+		string FedID = (string)Session["FedId"];
 
         //DataRow[] drsss = dsFed.Tables[0].Select("ID = " + FedID);
 

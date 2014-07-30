@@ -55,7 +55,7 @@ public partial class ExcelExport : System.Web.UI.Page
         
         try
         {
-            FederationID = Session["FedID"].ToString();
+            FederationID = Session["FedId"].ToString();
         }
         catch { };
         if (FederationID == string.Empty)
@@ -114,7 +114,7 @@ public partial class ExcelExport : System.Web.UI.Page
         string FederationID = string.Empty;
         try
         {
-            FederationID = Session["FedID"].ToString();
+            FederationID = Session["FedId"].ToString();
        
             SqlParameter[] param = new SqlParameter[2];
             if (FederationID.Trim() == string.Empty)

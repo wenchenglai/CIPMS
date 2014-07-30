@@ -32,9 +32,9 @@ public partial class Enrollment_NNJ_Summary : System.Web.UI.Page
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
-					string currentCode = Session["UsedCode"].ToString();
+					string currentCode = Session["SpecialCodeValue"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
                     if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
@@ -117,7 +117,7 @@ public partial class Enrollment_NNJ_Summary : System.Web.UI.Page
 				if (Session["codeValue"].ToString() == "1")
 				{
 					CamperApplication CamperAppl = new CamperApplication();
-					Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+					Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
 					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
 					Response.Redirect("../PJL/Summary.aspx");
 				}

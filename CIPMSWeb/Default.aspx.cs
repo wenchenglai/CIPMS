@@ -51,7 +51,7 @@ public partial class _Default : System.Web.UI.Page
             Session["RoleID"] = ds.Tables[0].Rows[0]["UserRole"].ToString();
             Session["FirstName"] = ds.Tables[0].Rows[0]["FirstName"].ToString();
             Session["LastName"] = ds.Tables[0].Rows[0]["LastName"].ToString();
-            Session["FedID"] = ds.Tables[0].Rows[0]["Federation"].ToString();
+            Session["FedId"] = ds.Tables[0].Rows[0]["Federation"].ToString();
             Session["FedName"] = ds.Tables[0].Rows[0]["FedName"].ToString();
             
             //Set a cookie for authenticated user

@@ -276,7 +276,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         DataSet dsSynagogue;
         DataView dvSynagogue = new DataView();
         int FedID;
-        FedID = Convert.ToInt32(Session["FEDID"].ToString());
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
         dsSynagogue = objGeneral.GetSynagogueListByFederation(FedID,Master.CampYear);
        
         ddlSynagogue.DataSource = dsSynagogue.Tables[0];
@@ -304,7 +304,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         DataSet dsJCC;
         DataView dvJCC = new DataView();
         int FedID;
-        FedID = Convert.ToInt32(Session["FEDID"].ToString());
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
         dsJCC = objGeneral.GetJCCListByFederation(FedID, CampYear);
         if (dsJCC.Tables[0].Rows.Count > 0)
         {

@@ -23,7 +23,7 @@ public partial class Administration_BulkStatusUpdate : Page
                 lblMsg.Text = "";
 
             var campYearId = (int)Application["CampYearID"];
-            var fedId = (string)Session["FedID"];
+            var fedId = (string)Session["FedId"];
 
             if (fedId != "") {
                 lblMsg.Text = "This feature is still under development.";

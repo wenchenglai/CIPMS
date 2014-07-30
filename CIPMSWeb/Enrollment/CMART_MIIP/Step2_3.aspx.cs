@@ -74,9 +74,9 @@ public partial class Step2_CMART_3 : Page
             {
               
                 //Added by Ram
-                if (Session["FEDID"] != null)
+                if (Session["FedId"] != null)
                 {
-                    getCamps(Session["FEDID"].ToString(), Master.CampYear);//to get all camps for this federation                
+                    getCamps(Session["FedId"].ToString(), Master.CampYear);//to get all camps for this federation                
                 }
                 else
                 {

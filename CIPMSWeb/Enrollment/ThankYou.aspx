@@ -234,6 +234,21 @@
                 PLEASE NOTE: If the camper’s acceptance at camp has not yet been confirmed, be in touch with your camp directly to make certain that the camper has a spot at camp this summer. Incentive grants will only be disbursed (to the camp) after the camper’s attendance at camp has been confirmed.
             </p>
         </asp:Panel>
+        <asp:Panel ID="pnlPendingPJLottery" CssClass="QuestionText" Visible="false" runat="server">
+            <p style="text-align:justify; color:red">
+                <b>You’ve been entered into the PJ GOES TO CAMP OHC LOTTERY.</b>
+            </p>
+            <p class="QuestionText" style="text-align:justify">
+                The lottery will be drawn by XXX DATE and you will be notified whether or not your child’s name has been drawn via email.
+            </p>
+            <p class="QuestionText" style="text-align:justify">
+                If your child’s name is selected, YOU WILL RECEIVE AN email with instructions on how to complete the application. 
+                There will be a deadline of when the application must be completed. If not completed by that date, you will automatically forfeit the grant.
+            </p>
+            <p class="QuestionText" style="text-align:justify">
+                If you have any questions about the lottery process, please be in touch with Madeline Ramos at the PJ Goes to Camp at PJGTC@HGF.org.
+            </p>
+        </asp:Panel>
     </div>
 
     <div class="QuestionText">

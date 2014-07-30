@@ -22,11 +22,11 @@ public partial class Enrollment_Sabra_Summary : System.Web.UI.Page
     {
         //if (!IsPostBack)
         //{
-        //    if (Session["UsedCode"] != null)
+        //    if (Session["SpecialCodeValue"] != null)
         //    {
         //        int CampID = Convert.ToInt32(Session["CampID"]);
-        //        int FedID = Convert.ToInt32(Session["FedID"]);
-        //        string Code = Session["UsedCode"].ToString();
+        //        int FedID = Convert.ToInt32(Session["FedId"]);
+        //        string Code = Session["SpecialCodeValue"].ToString();
         //        string FJCID = Session["FJCID"].ToString();
 
         //        int UsedTimes = ValidateCode(FedID, CampID, Code, FJCID);

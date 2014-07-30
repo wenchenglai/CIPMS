@@ -26,7 +26,7 @@ public partial class Step2_1 : System.Web.UI.Page
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
 
-        if (Session["FedID"] != null)
+        if (Session["FedId"] != null)
         {
             General objGeneral = new General();
             CamperApplication objCamperApplication = new CamperApplication();
@@ -41,18 +41,18 @@ public partial class Step2_1 : System.Web.UI.Page
             DataSet dsFederationDetails = new DataSet();
             if (campID != string.Empty)
             {
-                dsFederationDetails = objGeneral.GetFederationDetailsUsingCampID(Session["FedID"].ToString(),campID);
+                dsFederationDetails = objGeneral.GetFederationDetailsUsingCampID(Session["FedId"].ToString(),campID);
             }
             else
             {
-                dsFederationDetails = objGeneral.GetFederationDetails(Session["FedID"].ToString());
+                dsFederationDetails = objGeneral.GetFederationDetails(Session["FedId"].ToString());
             }
             if (dsFederationDetails.Tables[0].Rows.Count > 0)
             {
                 navigationUrl = dsFederationDetails.Tables[0].Rows[0]["NavigationURL"].ToString();
             }
             //if ((Request.UrlReferrer.AbsolutePath.Contains("URJ/Acadamy") || (campID== "1146")) && (navigationUrl.Contains("URJ")))3146
-            if ((campID == "1146" || campID == "2146" || campID == "3146") && (Session["FedID"].ToString() == "7"))
+            if ((campID == "1146" || campID == "2146" || campID == "3146") && (Session["FedId"].ToString() == "7"))
                 federationFolderURL = navigationUrl.Remove(navigationUrl.IndexOf("Summary.aspx")) + "/Acadamy";
             else
                 federationFolderURL = navigationUrl.Remove(navigationUrl.IndexOf("Summary.aspx")) + "/";

@@ -200,7 +200,7 @@ public partial class Step1_WDC_CAL : System.Web.UI.Page
         if (dsFedDetails.Tables[0].Rows.Count == 1)
         {
             drFedDetails = dsFedDetails.Tables[0].Rows[0];
-            Session["FEDID"] = strFEDID = drFedDetails["FederationID"].ToString();
+            Session["FedId"] = strFEDID = drFedDetails["FederationID"].ToString();
         }
         return drFedDetails;        
     }

@@ -59,6 +59,50 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
         if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");
     }
 
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        int iStatus;
+        string strModifiedBy, strFJCID;
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Cleveland);
+
+        try
+        {
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
+                {
+                    ProcessCamperAnswers();
+                }
+                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+                //Modified by id taken from the Master Id
+                strModifiedBy = Master.UserId;
+                strFJCID = hdnFJCID.Value;
+                if (strFJCID != "" && strModifiedBy != "")
+                {
+                    if (isReadOnly)
+                    {
+                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                    }
+                    else
+                    {
+
+                        //to check whether the camper is eligible 
+                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+                    }
+
+                    Session["STATUS"] = iStatus.ToString();
+                }
+                Session["FJCID"] = hdnFJCID.Value;
+                Response.Redirect("Step2_3.aspx");
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
     private void PopulateWhoIsInSynagogue()
     {
         ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
@@ -148,50 +192,6 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
             }
             Session["FJCID"] = hdnFJCID.Value;
             Response.Redirect("Summary.aspx");
-        }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Cleveland);
-        
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCID.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCID.Value;
-                Response.Redirect("Step2_3.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
         }
     }
 
@@ -613,7 +613,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
         DataSet dsSynagogue;
         DataView dvSynagogue = new DataView();
         int FedID;
-        FedID = Convert.ToInt32(Session["FEDID"].ToString());
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
         dsSynagogue = objGeneral.GetSynagogueListByFederation(FedID,Master.CampYear);
        
         ddlSynagogue.DataSource = dsSynagogue.Tables[0];
@@ -642,7 +642,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
         DataSet dsJCC;
         DataView dvJCC = new DataView();
         int FedID;
-        FedID = Convert.ToInt32(Session["FEDID"].ToString());
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
         dsJCC = objGeneral.GetJCCListByFederation(FedID, CampYear);
         if (dsJCC.Tables[0].Rows.Count > 0)
         {

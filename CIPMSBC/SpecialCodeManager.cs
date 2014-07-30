@@ -12,7 +12,7 @@ namespace CIPMSBC
 		/// If this code is still valid for this specific year/fed
 		/// </summary>
 		/// <param name="CampYearID"></param>
-		/// <param name="FedID"></param>
+		/// <param name="FedID">FedID = 0 means </param>
 		/// <param name="Code"></param>
 		/// <returns></returns>
 		public static bool IsValidCode(int CampYearID, int FedID, string Code)
@@ -74,18 +74,26 @@ namespace CIPMSBC
             return GetAvailableCodesPerCamp(CampYearID, FedID, -1);
 		}
 
-        public static List<string> GetAvailableCodesPerCamp(int CampYearID, int FedID, int CampID)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="campYearId"></param>
+        /// <param name="fedId">-1 means we don't concern about fed</param>
+        /// <param name="campId"></param>
+        /// <returns></returns>
+        public static List<string> GetAvailableCodesPerCamp(int campYearId, int fedId, int campId)
         {
             var codes = new List<string>();
             var db = new SQLDBAccess("CIPConnectionString");
 
             db.AddParameter("@Action", "GetAvailableCodes");
-            db.AddParameter("@CampYearID", CampYearID);
-            db.AddParameter("@FedID", FedID);
-            if (CampID > 0)
-                db.AddParameter("@CampID", CampID);
+            db.AddParameter("@CampYearID", campYearId);
+            if (fedId != -1)
+                db.AddParameter("@FedID", fedId);
+            if (campId > 0)
+                db.AddParameter("@CampID", campId);
 
-            SqlDataReader dr = db.ExecuteReader("usprsSpecialCodes_Select");
+            var dr = db.ExecuteReader("usprsSpecialCodes_Select");
 
             while (dr.Read())
             {

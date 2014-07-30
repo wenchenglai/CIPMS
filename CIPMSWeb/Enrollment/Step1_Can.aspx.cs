@@ -400,7 +400,7 @@ public partial class Step1_Can : System.Web.UI.Page
                                 strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
                                 //sesion[fedid] will be set only if it is not jwest or orange county
                                 //for jwest and orange county it will be set in step1_questions.aspx
-                                Session["FEDID"] = strFedId;
+                                Session["FedId"] = strFedId;
                             }
                             else
                                 strNextURL = "";
@@ -840,7 +840,7 @@ public partial class Step1_Can : System.Web.UI.Page
         if (strCheckUpdate == "0") //some modification done and user is not admin
             ProcessCamperInfo(Info);
 
-        Session["FEDID"] = drFedDetails["FederationID"].ToString();
+        Session["FedId"] = drFedDetails["FederationID"].ToString();
 
         string federationID = drFedDetails["FederationID"].ToString();
         if (doStep1questions(federationID))

@@ -118,7 +118,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         //Elligible, Pending School Eligibility, Not Registered, Being Researched, Camp Full, Payment Review
         else if (strRole == ConfigurationManager.AppSettings["FEDADMIN"])
         {
-            _objCamperDet.FederationID = (string)Session["FedID"];
+            _objCamperDet.FederationID = (string)Session["FedId"];
             _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43,45";
         }
 

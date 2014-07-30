@@ -39,21 +39,10 @@ public partial class Step2_PJL_3 : Page
 
         imgbtnCalStartDt.Attributes.Add("onclick", "return ShowCalendar('" + txtStartDate.ClientID + "');");
         imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
-        if (Session["STATUS"] != null)
-        {
-            if (Convert.ToInt16(Session["STATUS"].ToString()) == Convert.ToInt16(StatusInfo.SystemInEligible))
-            {
-                lblEligibility.Visible = false;
-            }
-            else
-            {
-                lblEligibility.Visible = true;
-            }
-
-        }
 
         if (!(Page.IsPostBack))
         {
+            lblEligibility.Visible = AppRouteDisplayManager.IsAppEligible();
             //get_States();
             getCamps("0"); //to get all the camps and fill in
             //to get the FJCID which is stored in session
@@ -61,32 +50,18 @@ public partial class Step2_PJL_3 : Page
             {
                 hdnFJCIDStep2_3.Value = (string)Session["FJCID"];
                 getCamperAnswers();
-                //Session["FJCID"] = null;
-                //if (RadioButtonQ7Option1.Checked)
-                //{
-                //    btnChkEligibility.Enabled = false;
-                //}
             }
         }
         RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
         RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
-        //RadioButtonQ7Option3.Attributes.Add("onclick", "windowopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-        //RadioButtonQ7Option4.Attributes.Add("onclick", "windowopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-        //to enable / disable the panel states based on the radio button selected
-        SetPanelStates();
-    }
 
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
+        SetPanelStates();
     }
 
 	void btnChkEligibility_Click(object sender, EventArgs e)
 	{
 		int iStatus, iCampId;
 		string strModifiedBy, strFJCID, strComments;
-		EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
 
 		if (Page.IsValid)
 		{
@@ -115,24 +90,22 @@ public partial class Step2_PJL_3 : Page
 					//to update the camp value to the database (to be used for search functionality)
 					CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
-					//to check whether the camper is eligible 
+                    var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
 					objEligibility.checkEligibility(strFJCID, out iStatus);
 				}
 
-                var checkStatus = Convert.ToInt32(Session["STATUS"]);
-                if (checkStatus == (int)StatusInfo.SystemInEligible)
-                    iStatus = checkStatus;
-                else
-                    Session["STATUS"] = iStatus;
+                var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
+                if (checkStatus == StatusInfo.SystemInEligible || checkStatus == StatusInfo.PendingPJLottery)
+                    iStatus = (int)checkStatus;
 
-                if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible))
+                Session["STATUS"] = iStatus;
+
+                if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible) || iStatus == Convert.ToInt32(StatusInfo.PendingPJLottery))
 				{
-					string strRedirURL;
+                    var strRedirURL = "../ThankYou.aspx";
 
 					if (Master.UserId != Master.CamperUserId) //then the user is admin
 						strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
-					else //the user is Camper
-						strRedirURL = "../ThankYou.aspx";
 					
                     //to update the status to the database                  
 					if (!isReadOnly)

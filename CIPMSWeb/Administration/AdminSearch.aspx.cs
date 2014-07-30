@@ -40,7 +40,7 @@ public partial class AdminSearch : System.Web.UI.Page
         //Get the values from the session
         _strUsrID = (string)Session["UsrID"];
         _strRoleID = (string)Session["RoleID"];
-        _strFedID = (string)Session["FedID"];
+        _strFedID = (string)Session["FedId"];
         _strFedName = (string)Session["FedName"];
         _strUsrNm = (string)Session["LastName"] + ", " + (string)Session["FirstName"];
         _CampYear = (string)Master.CampYear;

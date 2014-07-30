@@ -16,16 +16,16 @@ public partial class Enrollment_ClosedFedRedirection : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Session["FEDID"] != null)
+            if (Session["FedId"] != null)
             {
-                if (Session["FEDID"].ToString() == "24")
+                if (Session["FedId"].ToString() == "24")
                 {
                     pnlColumbusRedirect.Visible = true;
                     pnlPalmBeachRedirect.Visible = false;
                     pnlMiamiRedirect.Visible = false;
                     pnlIndianapolis.Visible = false;
                 }
-                else if (Session["FEDID"].ToString() == "39")
+                else if (Session["FedId"].ToString() == "39")
                 {
                     pnlColumbusRedirect.Visible = false;
                     pnlPalmBeachRedirect.Visible = true;
@@ -36,7 +36,7 @@ public partial class Enrollment_ClosedFedRedirection : System.Web.UI.Page
                     pnlWashingtonRedirect.Visible = false;
                     btnSaveandExit.Visible = true;
                 }
-                else if (Session["FEDID"].ToString() == "49")
+                else if (Session["FedId"].ToString() == "49")
                 {
                     pnlWashingtonRedirect.Visible = true;
                     pnlColumbusRedirect.Visible = false;
@@ -47,14 +47,14 @@ public partial class Enrollment_ClosedFedRedirection : System.Web.UI.Page
                     btnPrevious.Visible = true;
                     btnSaveandExit.Visible = true;
                 }
-                else if (Session["FEDID"].ToString() == "40")
+                else if (Session["FedId"].ToString() == "40")
                 {
                     pnlColumbusRedirect.Visible = false;
                     pnlPalmBeachRedirect.Visible = false;
                     pnlMiamiRedirect.Visible = true;
                     pnlIndianapolis.Visible = false;
                 }
-                else if (Session["FEDID"].ToString() == "12")
+                else if (Session["FedId"].ToString() == "12")
                 {
                     pnlColumbusRedirect.Visible = false;
                     pnlPalmBeachRedirect.Visible = false;
@@ -77,7 +77,7 @@ public partial class Enrollment_ClosedFedRedirection : System.Web.UI.Page
             _objRedirectionLogic.GetNextFederationDetails(strFJCID);
             nextfederationid = _objRedirectionLogic.NextFederationId;
             CamperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
-            Session["FEDID"] = nextfederationid.ToString();
+            Session["FedId"] = nextfederationid.ToString();
             if (nextfederationid == 48 || nextfederationid == 63)
                 Response.Redirect(_objRedirectionLogic.NextFederationURL);
             else

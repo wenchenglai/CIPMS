@@ -56,8 +56,8 @@ public partial class CamperFooter : System.Web.UI.UserControl
         {
             //to set the FedId from the session variable if it is not null
             //session variable will be set from the camper summary page
-            if (string.IsNullOrEmpty(strFedId) && Session["FEDID"] != null)
-                strFedId = Session["FEDID"].ToString();
+            if (string.IsNullOrEmpty(strFedId) && Session["FedId"] != null)
+                strFedId = Session["FedId"].ToString();
             else if (string.IsNullOrEmpty(strFedId) && Request.Url.AbsoluteUri.Contains("CMART_MIIP/CampMessage.aspx"))
             {
                 //Added by Ram for CMART popup camp message

@@ -56,10 +56,10 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         //if (CampID == 4078)
         //{
         //    DisableRegistration(CampID);
-        //    if (Session["UsedCode"] != null)
+        //    if (Session["SpecialCodeValue"] != null)
         //    {
         //        // 2013-02-21 Now Camp Ramah Doram use tblSpecialCodes table
-        //        string currentCode = Session["UsedCode"].ToString();
+        //        string currentCode = Session["SpecialCodeValue"].ToString();
         //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
         //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
         //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4078);
@@ -79,9 +79,9 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         //else if (CampID == 4079) //2013-03-21 For Ramah Califonia 
         //{
         //    DisableRegistration(CampID);
-        //    if (Session["UsedCode"] != null)
+        //    if (Session["SpecialCodeValue"] != null)
         //    {
-        //        string currentCode = Session["UsedCode"].ToString();
+        //        string currentCode = Session["SpecialCodeValue"].ToString();
         //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
         //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
         //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4079);
@@ -101,9 +101,9 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         if (last3Digits == "082") //Berkshire
         {
             // Camp Ramah in the Berkshires
-            if (Session["UsedCode"] != null)
+            if (Session["SpecialCodeValue"] != null)
             {
-                if (Session["UsedCode"].ToString() == "CRB849")
+                if (Session["SpecialCodeValue"].ToString() == "CRB849")
                 {
                     EnableRegistration();
                 }

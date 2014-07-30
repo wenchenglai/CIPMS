@@ -50,8 +50,8 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
             //        strFedId = strCampId = string.Empty;
             //        //to set the FedId from the session variable if it is not null
             //        //session variable will be set from the camper summary page
-            //        if (string.IsNullOrEmpty(strFedId) && Session["FEDID"] != null)
-            //            strFedId = Session["FEDID"].ToString();
+            //        if (string.IsNullOrEmpty(strFedId) && Session["FedId"] != null)
+            //            strFedId = Session["FedId"].ToString();
 
             //        //Added by Ram
             //        /*if (Session["CampID"] != null)
@@ -90,9 +90,9 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
                     tblDisable.Visible = true;
                     tblRegular.Visible = false;
 
-                    if (Session["UsedCode"] != null)
+                    if (Session["SpecialCodeValue"] != null)
                     {
-                        string currentCode = Session["UsedCode"].ToString();
+                        string currentCode = Session["SpecialCodeValue"].ToString();
                         int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
                         if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))

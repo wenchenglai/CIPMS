@@ -56,9 +56,9 @@ public partial class Enrollment_Dallas_Summary : System.Web.UI.Page
 				tblRegular.Visible = false;
 				btnSaveandExit.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
-					string special_code = Session["UsedCode"].ToString();
+					string special_code = Session["SpecialCodeValue"].ToString();
 					if (special_code == "DL7281")
 					{
 						tblDisable.Visible = false;
@@ -101,7 +101,7 @@ public partial class Enrollment_Dallas_Summary : System.Web.UI.Page
 				if (Session["codeValue"].ToString() == "1")
 				{
 					CamperApplication CamperAppl = new CamperApplication();
-					Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+					Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
 					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
 					Response.Redirect("../PJL/Summary.aspx");
 				}
@@ -122,7 +122,7 @@ public partial class Enrollment_Dallas_Summary : System.Web.UI.Page
             _objRedirectionLogic.GetNextFederationDetails(strFJCID);
             nextfederationid = _objRedirectionLogic.NextFederationId;
             CamperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
-            Session["FEDID"] = nextfederationid.ToString();
+            Session["FedId"] = nextfederationid.ToString();
             if (nextfederationid == 48 || nextfederationid == 63)
                 Response.Redirect(_objRedirectionLogic.NextFederationURL);
             else

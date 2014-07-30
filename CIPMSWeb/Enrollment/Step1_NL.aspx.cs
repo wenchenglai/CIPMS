@@ -32,7 +32,7 @@ public partial class Step1_NL : System.Web.UI.Page
 				if (Session["codeValue"].ToString() == "1")
 				{
 				    var fedId = Convert.ToInt32(FederationEnum.Columbus).ToString();
-                    Session["FEDID"] = fedId;
+                    Session["FedId"] = fedId;
 					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), fedId);
 					Response.Redirect("PJL/Summary.aspx");
 				}
@@ -168,7 +168,7 @@ public partial class Step1_NL : System.Web.UI.Page
             }
         }
 
-        string strURL = GetNationalProgramForCamp(); //2013-09-14 this crazy function will set the hdnFEDID and Session["FedID"] as well, bad programming
+        string strURL = GetNationalProgramForCamp(); //2013-09-14 this crazy function will set the hdnFEDID and Session["FedId"] as well, bad programming
 
         string strFEDID = hdnFEDID.Value;
         string strFJCID = hdnFJCIDStep1_NL.Value;
@@ -327,7 +327,7 @@ public partial class Step1_NL : System.Web.UI.Page
             DataRow drNationalProgram = dsNationalProgram.Tables[0].Rows[0];
             strURL = drNationalProgram["NavigationURL"].ToString();
             hdnFEDID.Value = drNationalProgram["Federation"].ToString();
-            Session["FEDID"] = drNationalProgram["Federation"].ToString();
+            Session["FedId"] = drNationalProgram["Federation"].ToString();
         }
         else
             strURL = "";
@@ -347,14 +347,14 @@ public partial class Step1_NL : System.Web.UI.Page
 
         InsertCamperAnswers();
        
-        Session["FEDID"] = drFedDetails["FederationID"].ToString();
+        Session["FedId"] = drFedDetails["FederationID"].ToString();
         string strURL = drFedDetails["NavigationURL"].ToString();
         if (ddlCamp.SelectedValue == "1146" || ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
         {
             if (strURL.ToUpper().Contains("URJ/"))
                 strURL = strURL.Replace("URJ/", "URJ/Acadamy");
         }
-        else if (Session["FEDID"].ToString() == "66")
+        else if (Session["FedId"].ToString() == "66")
         {
 
         }

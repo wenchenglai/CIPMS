@@ -400,8 +400,8 @@ public partial class Step2_JWestLA_3 : Page
         DataSet dsCamps;
         string strFedId;
 
-        if (Session["FEDID"] != null)
-            strFedId = Session["FEDID"].ToString();
+        if (Session["FedId"] != null)
+            strFedId = Session["FedId"].ToString();
         else
             strFedId = "0";
 

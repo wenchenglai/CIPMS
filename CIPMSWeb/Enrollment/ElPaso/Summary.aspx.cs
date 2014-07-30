@@ -40,9 +40,9 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
-					string currentCode = Session["UsedCode"].ToString();
+					string currentCode = Session["SpecialCodeValue"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
 					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);

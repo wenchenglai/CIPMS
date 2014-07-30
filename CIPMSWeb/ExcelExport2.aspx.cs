@@ -52,7 +52,7 @@ public partial class ExcelExport2 : System.Web.UI.Page
             //Report mode parameter
             ReportParameter reportFederationID = new ReportParameter();
             reportFederationID.Name = "FederationID";
-            strParamValue = Session["FedID"].ToString();
+            strParamValue = Session["FedId"].ToString();
             reportFederationID.Values.Add(null);
 
             //Federation Name parameter
@@ -111,7 +111,7 @@ public partial class ExcelExport2 : System.Web.UI.Page
     //    string FederationID = string.Empty;
     //    try
     //    {
-    //        FederationID = Session["FedID"].ToString();
+    //        FederationID = Session["FedId"].ToString();
     //    }
     //    catch { };
 

@@ -36,9 +36,9 @@ public partial class Enrollment_Memphis_Summary : System.Web.UI.Page
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
-					string currentCode = Session["UsedCode"].ToString();
+					string currentCode = Session["SpecialCodeValue"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
 					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
@@ -66,9 +66,9 @@ public partial class Enrollment_Memphis_Summary : System.Web.UI.Page
 			if (Session["ZIPCODE"].ToString() == "02762")
 			{
 				pass = false;
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
-					string currentCode = Session["UsedCode"].ToString();
+					string currentCode = Session["SpecialCodeValue"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
 					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);

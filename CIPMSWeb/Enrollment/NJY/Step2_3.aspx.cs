@@ -76,9 +76,9 @@ public partial class Step2_NJY_3 : Page
             if (!(Page.IsPostBack))
             {
                 //Added by Ram
-                if (Session["FEDID"] != null)
+                if (Session["FedId"] != null)
                 {
-                    getCamps((string)Session["FEDID"], Master.CampYear);//to get all camps for this federation                
+                    getCamps((string)Session["FedId"], Master.CampYear);//to get all camps for this federation                
                 }
                 else
                 {

@@ -83,9 +83,9 @@ public partial class Step2_Chi_3 : Page
             }
             if (!(Page.IsPostBack))
             {
-                if (Session["FedID"] != null)
+                if (Session["FedId"] != null)
                 {
-                    getCamps(Session["FedID"].ToString(),Master.CampYear); // to get all camps referred to this federation
+                    getCamps(Session["FedId"].ToString(),Master.CampYear); // to get all camps referred to this federation
                 }
                 else
                     getCamps("0",Master.CampYear);//to get all the camps and fill in                

@@ -416,7 +416,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 ProcessCamperAnswers();
                 //Session["FJCID"] = null;
                 //Session["ZIPCODE"] = null;
-                //Session["FEDID"] = null;
+                //Session["FedId"] = null;
                // Session.Abandon();
                 //Response.Redirect(strRedirURL,false);
                 if (Master.CheckCamperUser == "Yes")
@@ -520,22 +520,22 @@ public partial class Step1_Questions : System.Web.UI.Page
                      {
                          if (UserInfo.NLCode.ToUpper() == "SD5771")
                          {
-                             if (Session["FJCID"] != null && Session["FEDID"] != null)
-                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FEDID"].ToString());
+                             if (Session["FJCID"] != null && Session["FedId"] != null)
+                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FedId"].ToString());
                              ProcessCamperAnswers();
                              Response.Redirect("Sandiego/Summary.aspx");
                          }
                          else if (UserInfo.NLCode.ToUpper() == "OC5771")
                          {
-                             if (Session["FJCID"] != null && Session["FEDID"] != null)
-                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FEDID"].ToString());
+                             if (Session["FJCID"] != null && Session["FedId"] != null)
+                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FedId"].ToString());
                              ProcessCamperAnswers();
                              Response.Redirect("Orange/Summary.aspx");
                          }
                          else if (UserInfo.NLCode.ToUpper() == "LA5771")
                          {
-                             if (Session["FJCID"] != null && Session["FEDID"] != null)
-                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FEDID"].ToString());
+                             if (Session["FJCID"] != null && Session["FedId"] != null)
+                                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FedId"].ToString());
                              ProcessCamperAnswers();
                              Response.Redirect("LACIP/Summary.aspx");
 
@@ -548,8 +548,8 @@ public partial class Step1_Questions : System.Web.UI.Page
             //then it has to redirect to the LACIP Summary page regardless of zipcode.
             //if (check != 1 && Session["LACode"] != null)
             //{
-            //    if(Session["FJCID"] != null && Session["FEDID"] != null)
-            //        CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FEDID"].ToString());
+            //    if(Session["FJCID"] != null && Session["FedId"] != null)
+            //        CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), Session["FedId"].ToString());
             //    ProcessCamperAnswers();
             //    Response.Redirect("LACIP/Summary.aspx");                   
 
@@ -630,7 +630,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                             _objRedirectionLogic.GetNextFederationDetails(strFJCID);
                             nextfederationid = _objRedirectionLogic.NextFederationId;
                             CamperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
-                            Session["FEDID"] = nextfederationid.ToString();
+                            Session["FedId"] = nextfederationid.ToString();
                             if (nextfederationid == 48 || nextfederationid == 63)
                                 Response.Redirect(_objRedirectionLogic.NextFederationURL);
                             else
@@ -650,7 +650,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 }
                 else
                 {
-                    Session["FEDID"] = strFEDID;
+                    Session["FedId"] = strFEDID;
                     if (bCamperEligibility)
                     {
                         Session["FJCID"] = strFJCID;
@@ -753,7 +753,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             if ((strFJCIDFedId != string.Empty && strFJCIDFedId == "23") && (strAppType != string.Empty && strAppType == "c"))
             {
                 CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "23");
-                Session["FEDID"] = "23";
+                Session["FedId"] = "23";
                 ProcessCamperAnswers();
                 Response.Redirect("LACIP/Summary.aspx");
             }
@@ -769,7 +769,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "4");
-                        Session["FEDID"] = "4";
+                        Session["FedId"] = "4";
                         ProcessCamperAnswers();
                         Response.Redirect("JWestLA/Summary.aspx");
                     }
@@ -777,7 +777,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "3");
-                        Session["FEDID"] = "3";
+                        Session["FedId"] = "3";
                         ProcessCamperAnswers();
                         Response.Redirect("JWest/Summary.aspx");
                     }
@@ -788,7 +788,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "23");
-                        Session["FEDID"] = "23";
+                        Session["FedId"] = "23";
                         ProcessCamperAnswers();
                         Response.Redirect("LACIP/Summary.aspx");
                     }
@@ -796,7 +796,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "4");
-                        Session["FEDID"] = "4";
+                        Session["FedId"] = "4";
                         ProcessCamperAnswers();
                         Response.Redirect("JWestLA/Summary.aspx");
                     }
@@ -804,7 +804,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "72");
-                        Session["FEDID"] = "72";
+                        Session["FedId"] = "72";
                         ProcessCamperAnswers();
                         Response.Redirect("SanDiego/Summary.aspx");
                     }
@@ -812,7 +812,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "22");
-                        Session["FEDID"] = "22";
+                        Session["FedId"] = "22";
                         ProcessCamperAnswers();
                         Response.Redirect("Orange/Summary.aspx");
                     }
@@ -820,7 +820,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "93");
-                        Session["FEDID"] = "93";
+                        Session["FedId"] = "93";
                         ProcessCamperAnswers();
                         Response.Redirect("Colorado/Summary.aspx");
                     }
@@ -828,7 +828,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         if (Session["FJCID"] != null)
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "95");
-                        Session["FEDID"] = "95";
+                        Session["FedId"] = "95";
                         ProcessCamperAnswers();
                         Response.Redirect("PalmSprings/Summary.aspx");
                     }
@@ -836,7 +836,7 @@ public partial class Step1_Questions : System.Web.UI.Page
 					{
 						if (Session["FJCID"] != null)
 							CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "98");
-						Session["FEDID"] = "98";
+						Session["FedId"] = "98";
 						ProcessCamperAnswers();
 						Response.Redirect("SanFrancisco/Summary.aspx");
 					}
@@ -844,7 +844,7 @@ public partial class Step1_Questions : System.Web.UI.Page
 					{
 						if (Session["FJCID"] != null)
 							CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "99");
-						Session["FEDID"] = "99";
+						Session["FedId"] = "99";
 						ProcessCamperAnswers();
 						Response.Redirect("Seattle/Summary.aspx");
 					}
@@ -858,7 +858,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                             _objRedirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
                             int nextfederationid = _objRedirectionLogic.NextFederationId;
                             CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextfederationid.ToString());
-                            Session["FEDID"] = nextfederationid.ToString();
+                            Session["FedId"] = nextfederationid.ToString();
                             ProcessCamperAnswers();
                             if (nextfederationid == 48 || nextfederationid == 63)
                                 Response.Redirect(_objRedirectionLogic.NextFederationURL);                                
@@ -875,7 +875,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     //    _objRedirectionLogic.GetNextFederationDetails(Session["FJCID"].ToString());
                     //    int nextfederationid = _objRedirectionLogic.NextFederationId;
                     //    CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextfederationid.ToString());
-                    //    Session["FEDID"] = nextfederationid.ToString();
+                    //    Session["FedId"] = nextfederationid.ToString();
                     //ProcessCamperAnswers();
                     //if (nextfederationid == 72)
                     //    Response.Redirect(_objRedirectionLogic.NextFederationURL);
@@ -1050,7 +1050,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                         {
                             // Not bad school -- first time camper -- public/private school
                             strRedirURL = strJWestLAURL;
-                            Session["FEDID"] = _strJWestLAFedId;
+                            Session["FedId"] = _strJWestLAFedId;
                             hdnFEDID.Value = _strJWestLAFedId;
 
                         }
@@ -1058,7 +1058,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                         {
                             //bad school -- first time camper -- public/private school
                             strRedirURL = strLACIPURL;
-                            Session["FEDID"] = _strLACIPFedId;
+                            Session["FedId"] = _strLACIPFedId;
                             hdnFEDID.Value = _strLACIPFedId;
 
                         }
@@ -1067,7 +1067,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     {
                         //bad school --  irrespective of first time camper or not -- public/private school
                         strRedirURL = strLACIPURL;
-                        Session["FEDID"] = _strLACIPFedId;
+                        Session["FedId"] = _strLACIPFedId;
                         hdnFEDID.Value = _strLACIPFedId;
                     }
                 }
@@ -1079,7 +1079,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // redirect to Jwest LA for first time campers
                     strRedirURL = strJWestLAURL;
-                    Session["FEDID"] = _strJWestLAFedId;
+                    Session["FedId"] = _strJWestLAFedId;
                     hdnFEDID.Value = _strJWestLAFedId;
                     
                 }
@@ -1087,7 +1087,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // redirect to LACIPURL for not first time campers
                     strRedirURL = strLACIPURL;
-                    Session["FEDID"] = _strLACIPFedId;
+                    Session["FedId"] = _strLACIPFedId;
                     hdnFEDID.Value = _strLACIPFedId;
                 }
             }
@@ -1101,14 +1101,14 @@ public partial class Step1_Questions : System.Web.UI.Page
         {
             // redirect to national landing page
             strRedirURL = strNationalURL;
-            Session["FEDID"] = _strNationalFedId;
+            Session["FedId"] = _strNationalFedId;
             hdnFEDID.Value = _strNationalFedId;
         }
         else
         {
             // redirect to LACIPURL for grades 2-5 or 9-12
             strRedirURL = strLACIPURL;
-            Session["FEDID"] = _strLACIPFedId;
+            Session["FedId"] = _strLACIPFedId;
             hdnFEDID.Value = _strLACIPFedId;
         }
 
@@ -1144,13 +1144,13 @@ public partial class Step1_Questions : System.Web.UI.Page
                         if (strFirstTimeCamper == "2")
                         {
                             strRedirURL = strJWestURL;
-                            Session["FEDID"] = _strJWestFedId;
+                            Session["FedId"] = _strJWestFedId;
                             hdnFEDID.Value = _strJWestFedId;
                         }
                         else
                         {
                             strRedirURL = strOrangeURL;
-                            Session["FEDID"] = _strOrangeFedId;
+                            Session["FedId"] = _strOrangeFedId;
                             hdnFEDID.Value = _strOrangeFedId; 
                         }
 
@@ -1158,7 +1158,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     else
                     {   //bad school 
                         strRedirURL = strNationalURL;
-                        Session["FEDID"] = _strNationalFedId;
+                        Session["FedId"] = _strNationalFedId;
                         hdnFEDID.Value = _strNationalFedId;
                     }
                 }
@@ -1169,13 +1169,13 @@ public partial class Step1_Questions : System.Web.UI.Page
                 if (strFirstTimeCamper == "2")
                 {
                     strRedirURL = strJWestURL;
-                    Session["FEDID"] = _strJWestFedId;
+                    Session["FedId"] = _strJWestFedId;
                     hdnFEDID.Value = _strJWestFedId;
                 }
                 else
                 {
                     strRedirURL = strOrangeURL;
-                    Session["FEDID"] = _strOrangeFedId;
+                    Session["FedId"] = _strOrangeFedId;
                     hdnFEDID.Value = _strOrangeFedId;
                 }
             }
@@ -1194,7 +1194,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // Not bad school 
                     strRedirURL = strOrangeURL;
-                    Session["FEDID"] = _strOrangeFedId;
+                    Session["FedId"] = _strOrangeFedId;
                     hdnFEDID.Value = _strOrangeFedId;
 
                 }
@@ -1203,14 +1203,14 @@ public partial class Step1_Questions : System.Web.UI.Page
                     if (strSchool == "-1")
                     {
                         strRedirURL = strOrangeURL;
-                        Session["FEDID"] = _strOrangeFedId;
+                        Session["FedId"] = _strOrangeFedId;
                         hdnFEDID.Value = _strOrangeFedId;                         
                     }
                     else
                     {
                         //bad school 
                         strRedirURL = strNationalURL;
-                        Session["FEDID"] = _strNationalFedId;
+                        Session["FedId"] = _strNationalFedId;
                         hdnFEDID.Value = _strNationalFedId;
                     }
 
@@ -1220,7 +1220,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             {
                 // home school
                 strRedirURL = strOrangeURL;
-                Session["FEDID"] = _strOrangeFedId;
+                Session["FedId"] = _strOrangeFedId;
                 hdnFEDID.Value = _strOrangeFedId;
             }
             else
@@ -1231,7 +1231,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // Not bad school 
                     strRedirURL = strOrangeURL;
-                    Session["FEDID"] = _strOrangeFedId;
+                    Session["FedId"] = _strOrangeFedId;
                     hdnFEDID.Value = _strOrangeFedId;
 
                 }
@@ -1240,14 +1240,14 @@ public partial class Step1_Questions : System.Web.UI.Page
                     if (strSchool == "-1")
                     {
                         strRedirURL = strOrangeURL;
-                        Session["FEDID"] = _strOrangeFedId;
+                        Session["FedId"] = _strOrangeFedId;
                         hdnFEDID.Value = _strOrangeFedId;
                     }
                     else
                     {
                         //bad school 
                         strRedirURL = strNationalURL;
-                        Session["FEDID"] = _strNationalFedId;
+                        Session["FedId"] = _strNationalFedId;
                         hdnFEDID.Value = _strNationalFedId;
                     }
                 }
@@ -1260,7 +1260,7 @@ public partial class Step1_Questions : System.Web.UI.Page
         {
             // redirect to national landing page for grade 1-2 and 10-12
             strRedirURL = strNationalURL;
-            Session["FEDID"] = _strNationalFedId;
+            Session["FedId"] = _strNationalFedId;
             hdnFEDID.Value = _strNationalFedId;
         }
 
@@ -1285,7 +1285,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             {
                 // first time camper -- status will be pending school 
                 strRedirURL = strJWestLAURL;
-                Session["FEDID"] = _strJWestLAFedId;
+                Session["FedId"] = _strJWestLAFedId;
                 hdnFEDID.Value = _strJWestLAFedId;
             }
             else
@@ -1294,14 +1294,14 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // first time camper -- not bad school
                     strRedirURL = strJWestLAURL;
-                    Session["FEDID"] = _strJWestLAFedId;
+                    Session["FedId"] = _strJWestLAFedId;
                     hdnFEDID.Value = _strJWestLAFedId;
                 }
                 else
                 {
                     // bad school 
                     strRedirURL = strLACIPURL;
-                    Session["FEDID"] = _strLACIPFedId;
+                    Session["FedId"] = _strLACIPFedId;
                     hdnFEDID.Value = _strLACIPFedId;
                 }
             }
@@ -1310,7 +1310,7 @@ public partial class Step1_Questions : System.Web.UI.Page
         {
             // not a first time camper -- send him to LACIP
             strRedirURL = strLACIPURL;
-            Session["FEDID"] = _strLACIPFedId;
+            Session["FedId"] = _strLACIPFedId;
             hdnFEDID.Value = _strLACIPFedId;
 
         }
@@ -1335,7 +1335,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             {
                 // first time camper -- status will be pending school 
                 strRedirURL = strJWestURL;
-                Session["FEDID"] = _strJWestFedId;
+                Session["FedId"] = _strJWestFedId;
                 hdnFEDID.Value = _strJWestFedId;
             }
             else
@@ -1344,14 +1344,14 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // first time camper -- not bad school
                     strRedirURL = strJWestURL;
-                    Session["FEDID"] = _strJWestFedId;
+                    Session["FedId"] = _strJWestFedId;
                     hdnFEDID.Value = _strJWestFedId;
                 }
                 else
                 {
                     // bad school 
                     strRedirURL = strNationalURL;
-                    Session["FEDID"] = _strNationalFedId;
+                    Session["FedId"] = _strNationalFedId;
                     hdnFEDID.Value = _strNationalFedId;
                 }
             }
@@ -1362,7 +1362,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             {
                 // first time camper -- status will be pending school 
                 strRedirURL = strOrangeURL;
-                Session["FEDID"] = _strOrangeFedId;
+                Session["FedId"] = _strOrangeFedId;
                 hdnFEDID.Value = _strOrangeFedId;
             }
             else
@@ -1372,14 +1372,14 @@ public partial class Step1_Questions : System.Web.UI.Page
                 {
                     // first time camper -- not bad school
                     strRedirURL = strOrangeURL;
-                    Session["FEDID"] = _strOrangeFedId;
+                    Session["FedId"] = _strOrangeFedId;
                     hdnFEDID.Value = _strOrangeFedId;
                 }
                 else
                 {
                     // bad school 
                     strRedirURL = strNationalURL;
-                    Session["FEDID"] = _strNationalFedId;
+                    Session["FedId"] = _strNationalFedId;
                     hdnFEDID.Value = _strNationalFedId;
                 }
             }
@@ -1739,7 +1739,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                             //{
                                 //PnlQ4.Visible = true;
                                 //SetSecondTimeCamper();
-                                //if (Session["FEDID"] != null)
+                                //if (Session["FedId"] != null)
                                 //{
                                 //    if (Session["FedId"].ToString() == "72")
                                 //    {
@@ -1939,7 +1939,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 //if (strGrade == "9")
                 //{
                 //    PnlQ4.Visible = true;
-                    //if (Session["FEDID"] != null)
+                    //if (Session["FedId"] != null)
                     //{
                     //    if (Session["FedId"].ToString() == "72")
                     //    {
@@ -2178,7 +2178,7 @@ public partial class Step1_Questions : System.Web.UI.Page
 
         InsertCamperAnswers();
 
-        Session["FEDID"] = drFedDetails["FederationID"].ToString();
+        Session["FedId"] = drFedDetails["FederationID"].ToString();
 
         Response.Redirect(drFedDetails["NavigationURL"].ToString());
     }

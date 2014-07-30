@@ -69,7 +69,7 @@ public partial class Enrollment_Middlesex_Summary : System.Web.UI.Page
 				if (Session["codeValue"].ToString() == "1")
 				{
 					CamperApplication CamperAppl = new CamperApplication();
-					Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+					Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
 					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
 					Response.Redirect("../PJL/Summary.aspx");
 				}

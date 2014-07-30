@@ -105,7 +105,7 @@ public partial class TrackMyStatus : System.Web.UI.Page
             if (dsFedDetails.Tables[0].Rows.Count > 0)
             {
                 drFedDetails = dsFedDetails.Tables[0].Rows[0];
-                Session["FEDID"] = drFedDetails["FederationID"].ToString();
+                Session["FedId"] = drFedDetails["FederationID"].ToString();
             }
             
         }

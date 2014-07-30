@@ -74,9 +74,9 @@ public partial class Step2_Judaea_3 : Page
             {
                 //getCamps("0"); //to get all the camps and fill in
                 //Added by Ram
-                if (Session["FEDID"] != null)
+                if (Session["FedId"] != null)
                 {
-                    getCamps((string)Session["FEDID"], Master.CampYear);//to get all camps for this federation                
+                    getCamps((string)Session["FedId"], Master.CampYear);//to get all camps for this federation                
                 }
                 else
                 {

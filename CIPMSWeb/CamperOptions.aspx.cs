@@ -30,7 +30,7 @@ public partial class CamperOptions : System.Web.UI.Page
                 //Session["CampYear"] = DateTime.Now.Year;
                 Session["CampYear"] = Application["CampYear"].ToString();
             }
-            Session["FEDID"] = null;
+            Session["FedId"] = null;
         }
 
         PopulateGrid();

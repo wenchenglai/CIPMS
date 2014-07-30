@@ -71,7 +71,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
-			var fedId = (string)Session["FedID"];
+			var fedId = (string)Session["FedId"];
             int allowFedId = SchedulerDA.GetPaymentAccessFedID(DateTime.Now);
             if (fedId == allowFedId.ToString())
 			{
@@ -85,7 +85,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
             //Added by Ram (03/31/2010) related to upload link (should be available for FJC admin and PJL fedAdmin
             if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"].ToString()
-                || ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FEDADMIN"].ToString() && (string)Session["FedID"] == ConfigurationManager.AppSettings["PJL"].ToString()))
+                || ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FEDADMIN"].ToString() && (string)Session["FedId"] == ConfigurationManager.AppSettings["PJL"].ToString()))
             {
                 divUpload.Visible = true;
             }

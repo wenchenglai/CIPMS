@@ -25,10 +25,10 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 				tblRegular.Visible = false;
 				btnNext.Visible = false;
 
-				if (Session["UsedCode"] != null)
+				if (Session["SpecialCodeValue"] != null)
 				{
 					// 2013-03-15 Now Adamah use tblSpecialCodes table
-					string currentCode = Session["UsedCode"].ToString();
+					string currentCode = Session["SpecialCodeValue"].ToString();
 					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
                     if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))

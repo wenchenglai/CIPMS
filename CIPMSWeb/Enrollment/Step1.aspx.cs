@@ -33,6 +33,8 @@ public partial class Step1 : System.Web.UI.Page
     private enum SpecialCodeType 
     { 
         PJL = 1,
+        NLP = 3,
+        Washington = 5,
         Other = 99
     }
 
@@ -111,7 +113,7 @@ public partial class Step1 : System.Web.UI.Page
 					fedID = dsForFedIDandURL.Tables[0].Rows[0]["FederationID"].ToString();
 					StatusID = Convert.ToInt16(dsForFedIDandURL.Tables[0].Rows[0]["Status"]);
 				}
-				Session["FedID"] = fedID;
+				Session["FedId"] = fedID;
 
 				// 2012-11-29 Status ID is used to determine if curretn app status is 42 (Eligible, Contact camper again), 
 				//then we have to route this page to Section V, HOw did you hear me (Step2_1.aspx)
@@ -121,7 +123,7 @@ public partial class Step1 : System.Web.UI.Page
 					Response.Redirect("Step2_1.aspx");
 				}
 
-				if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedID"] != null && Session["FedID"].ToString() != ""))
+				if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedId"] != null && Session["FedId"].ToString() != ""))
 				{
 
 					if (Session["CampID"].ToString() == "3037")
@@ -132,7 +134,7 @@ public partial class Step1 : System.Web.UI.Page
 						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1029", "1029", "N");
 					else if (Session["CampID"].ToString() == "3009")
 						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1030", "1030", "N");
-					else if (Session["FedID"].ToString() == "49")
+					else if (Session["FedId"].ToString() == "49")
 						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1031", "1031", "N");
 					if (((System.Data.InternalDataCollectionBase)(dsSplCode.Tables)).Count > 0)
 					{
@@ -150,7 +152,7 @@ public partial class Step1 : System.Web.UI.Page
 					txtSplCode.Text = dallasCode;
 					txtSplCode.Enabled = false;
 				}
-				differentiateCodes();
+				DifferentiateCodes();
 				get_CountryStates(int.Parse(UserInfo.Country));
 			}
 			else  //new user insert
@@ -209,10 +211,10 @@ public partial class Step1 : System.Web.UI.Page
         {
             // if the code executes to this point, it means the system is open for registration, but this particular zip/associated fed is still closed
             // 2014-02-7 Add new logic that if this user applies the Direct Pass for PJL, then instead of going to the camper holding page, we go to PJL
-            bool passFlag = false;
+            var passFlag = false;
             if ((SpecialCodeType)Convert.ToInt32(Session["codeValue"]) == SpecialCodeType.PJL)
             {
-                string directPassPJLCode = Session["UsedCode"].ToString();
+                var directPassPJLCode = Session["SpecialCodeValue"].ToString();
                 bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), FederationEnum.PJL, directPassPJLCode);
                 if (isDirectPass)
                 {
@@ -236,7 +238,7 @@ public partial class Step1 : System.Web.UI.Page
 		// 2012-01-24 If special code is empty, make sure we clean up the session variables
 		if (txtSplCode.Text == "")
 		{
-			Session["UsedCode"] = null;
+			Session["SpecialCodeValue"] = null;
 			Session["codeValue"] = 0;
 		}
 
@@ -289,18 +291,8 @@ public partial class Step1 : System.Web.UI.Page
             Response.Redirect("~/Enrollment/MetroWest/Summary.aspx");
 
         var dsFed = new DataSet();
-		if (ddlCountry.SelectedItem.Text.ToLower() == "canada"
-			&& (txtZipCode.Text.StartsWith("A") 
-				|| txtZipCode.Text.StartsWith("B") 
-				|| txtZipCode.Text.StartsWith("C") 
-				|| txtZipCode.Text.StartsWith("E") 
-				|| txtZipCode.Text.StartsWith("G") 
-				|| txtZipCode.Text.StartsWith("H") 
-				|| txtZipCode.Text.StartsWith("J")
-				|| txtZipCode.Text.StartsWith("L")
-				|| txtZipCode.Text.StartsWith("M")
-				|| txtZipCode.Text.StartsWith("N")				
-				))
+
+		if (IsFromCanada())
 		{
 			if (objGeneral.GetCanadianZipCode(Info.ZipCode).Trim() != "")
 			{
@@ -317,7 +309,7 @@ public partial class Step1 : System.Web.UI.Page
 			if (dsFed.Tables[0].Rows.Count > 0)
 			{
 				iCount = dsFed.Tables[0].Rows.Count;
-				Session["FEDID"] = dsFed.Tables[0].Rows[0][0];
+				Session["FedId"] = dsFed.Tables[0].Rows[0][0];
 			}
 		}
 
@@ -382,7 +374,7 @@ public partial class Step1 : System.Web.UI.Page
 								ProcessCamperInfo(Info);
 								Session["SDCode"] = SDCode;
 								Session["FJCID"] = hdnFJCID.Value;
-								Session["FEDID"] = 72;
+								Session["FedId"] = 72;
 								Response.Redirect("Step1_Questions.aspx");
 							}
 							else if (OCCode == ConfigOCCode && fedCheck == 3)
@@ -390,7 +382,7 @@ public partial class Step1 : System.Web.UI.Page
 								ProcessCamperInfo(Info);
 								Session["OCCode"] = OCCode;
 								Session["FJCID"] = hdnFJCID.Value;
-								Session["FEDID"] = 22;
+								Session["FedId"] = 22;
 								Response.Redirect("Step1_Questions.aspx");
 							}
 							else if (LACode == ConfigLACode && fedCheck == 4)
@@ -398,7 +390,7 @@ public partial class Step1 : System.Web.UI.Page
 								ProcessCamperInfo(Info);
 								Session["LACode"] = LACode;
 								Session["FJCID"] = hdnFJCID.Value;
-								Session["FEDID"] = 23;
+								Session["FedId"] = 23;
 								Response.Redirect("Step1_Questions.aspx");
 							}
 						}
@@ -419,7 +411,7 @@ public partial class Step1 : System.Web.UI.Page
 					if (txtSplCode.Text.Trim().ToUpper() == dsPJLCodes.Tables[0].Rows[i][0].ToString())
 					{
 						strNextURL = "~/Enrollment/PJL/Summary.aspx";
-						Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
+						Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
 						strFedId = ConfigurationManager.AppSettings["PJL"].ToString();
 						break;
 					}
@@ -496,52 +488,6 @@ public partial class Step1 : System.Web.UI.Page
 		}
 	}
 
-    bool ZipCodeHasClosedProgram()
-    {
-        string strZip = txtZipCode.Text.Trim();
-        string feds = ConfigurationManager.AppSettings["OpenFederations"];
-
-        if (feds == "" || feds == "None") return true;
-        if (!objGeneral.ValidateZipCode(strZip, feds)) return true;
-        return false;
-    }
-
-    void txtZipCode_TextChanged(object sender, EventArgs e)
-    {
-        txtZipCode.Text = txtZipCode.Text.ToUpper();
-        string strZip = txtZipCode.Text.Trim();
-        string Feds = ConfigurationManager.AppSettings["OpenFederations"];
-
-        if (Feds != "")
-        {
-            if (objGeneral.ValidateZipCode(strZip, Feds))
-            {
-                if (ddlCountry.SelectedItem.Value == "1")
-                {
-                    if (strZip.Length > 5)
-                    {
-                        txtZipCode.Text = strZip.Substring(0, 5);
-                    }
-                }
-                else
-                {
-                    if (strZip.Length > 7)
-                    {
-                        txtZipCode.Text = strZip.Substring(0, 7);
-                    }
-                }
-            }
-            else
-            {
-                //Response.Redirect("~/CamperHolding.aspx");
-            }
-        }
-
-        ddlState.SelectedIndex = -1;
-
-        PopulateStateCityForZIP(true);
-    }
-
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
         string strRedirURL;
@@ -609,6 +555,343 @@ public partial class Step1 : System.Web.UI.Page
                 Response.Redirect(strRedirURL);
             }
         }
+    }
+
+    protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        txtCityOthers.Text = string.Empty;
+
+        SetCountryValidationRules(ddlCountry.SelectedItem.Value);
+        get_CountryStates(int.Parse(ddlCountry.SelectedValue));
+
+        string strFJCID = hdnFJCID.Value;
+        if (!strFJCID.Equals(string.Empty))
+        {
+            UserInfo = CamperAppl.getCamperInfo(strFJCID);
+
+            if (ddlCountry.SelectedValue == UserInfo.Country)
+            {
+                txtZipCode.Text = UserInfo.ZipCode;
+                getCities(UserInfo.ZipCode, UserInfo.City);
+            }
+            else
+            {
+                txtZipCode.Text = string.Empty;
+
+            }
+
+        }
+        else
+        {
+            txtZipCode.Text = string.Empty;
+        }
+
+        PopulateStateCityForZIP(false);
+
+        if (ddlState.SelectedIndex == 0)
+        {
+            try // it may not exist when changing the country
+            {
+                ddlState.SelectedValue = UserInfo.State;
+            }
+            catch { }
+        }
+        txtZipCode.Focus();
+    }
+
+    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //Check if OTHERS is selected - make textbox required fiels 
+        //for another selections - city combobox has to be required control
+        if (ddlCity.SelectedItem.Text == "OTHERS")
+        {
+            reqvalCity.Enabled = false;
+            reqvalCityOther.Enabled = true;
+            txtCityOthers.Enabled = true;
+        }
+        else
+        {
+            reqvalCity.Enabled = true;
+            reqvalCityOther.Enabled = false;
+            txtCityOthers.Enabled = false;
+            txtCityOthers.Text = string.Empty;
+        }
+    }
+
+    void txtSplCode_TextChanged(object sender, EventArgs e)
+    {
+        DifferentiateCodes();
+    }
+
+    void txtZipCode_TextChanged(object sender, EventArgs e)
+    {
+        txtZipCode.Text = txtZipCode.Text.ToUpper();
+        var strZip = txtZipCode.Text.Trim();
+        string feds = ConfigurationManager.AppSettings["OpenFederations"];
+
+        if (feds != "")
+        {
+            if (objGeneral.ValidateZipCode(strZip, feds))
+            {
+                if (ddlCountry.SelectedItem.Value == "1")
+                {
+                    if (strZip.Length > 5)
+                    {
+                        txtZipCode.Text = strZip.Substring(0, 5);
+                    }
+                }
+                else
+                {
+                    if (strZip.Length > 7)
+                    {
+                        txtZipCode.Text = strZip.Substring(0, 7);
+                    }
+                }
+            }
+            else
+            {
+                //Response.Redirect("~/CamperHolding.aspx");
+            }
+        }
+
+        ddlState.SelectedIndex = -1;
+
+        PopulateStateCityForZIP(true);
+    }
+
+    public void CusValSplCode_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        var code = txtSplCode.Text.Trim();
+
+        if (code == "")
+            return;
+
+        // PJ uses a generic code + dynamic code formats.  In system, we just need to know if the code has the generic part or not
+        if (code.Contains("PJGTC"))
+            code = code.Substring(0, 9);
+
+        if (!SpecialCodeManager.IsValidCode(Convert.ToInt32(Application["CampYearID"]), -1, code))
+        {
+            CusValSplCode.ErrorMessage = "Invalid Code";
+            args.IsValid = false;
+            bPerformUpdate = args.IsValid;            
+        }
+    }
+
+    public void CusValSplCode_ServerValidate_old(object source, ServerValidateEventArgs args)
+    {
+        var oCA = new CamperApplication();
+        DifferentiateCodes();
+        //if (Master.UserId == Master.CamperUserId)
+        //{
+        if (txtSplCode.Text != "")
+        {
+            string LACode = txtSplCode.Text.ToUpper();
+            string ConfigLACode = ConfigurationManager.AppSettings["LACode"];
+            string SDCode = txtSplCode.Text.ToUpper();
+            string OCCode = txtSplCode.Text.ToUpper();
+            string ConfigSDCode = ConfigurationManager.AppSettings["SDCode"];
+            string ConfigOCCode = ConfigurationManager.AppSettings["OCCode"];
+            string GilboaCode = txtSplCode.Text.ToUpper();
+            string RDCode = txtSplCode.Text.ToUpper();
+            string RCCode = txtSplCode.Text.ToUpper();
+            string ALCode = txtSplCode.Text.ToUpper();
+            string DCCode = txtSplCode.Text.ToUpper();
+            string ConfigGilboaCode = ConfigurationManager.AppSettings["GilboaCode"];
+            string ConfigRDCode = ConfigurationManager.AppSettings["RDCode"];
+            string ConfigRCCode = ConfigurationManager.AppSettings["RCCode"];
+            string ConfigALCode = ConfigurationManager.AppSettings["ALCode"];
+            string ConfigDCCode = ConfigurationManager.AppSettings["DCCode"];
+            string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
+            string ConfigSpecialPJLCapitalCode = ConfigurationManager.AppSettings["SpecialPJLCapitalCode"];
+            bool isexceededcount = numbercapCheck();
+            UserDetails Info;
+            DataSet dsCamper = new DataSet();
+            //to get the user input values as struct object
+            Info = getUserInfoStructwithValues();
+            dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
+
+            if (dsCamper.Tables[0].Rows.Count > 0)
+            {
+
+            }
+            else //If camper is not returning camper 
+            {
+                //If number cap count exceeded the limit
+                if (!isexceededcount)
+                {
+                    //Sandiego and ORange counts                           
+                    int check = getzipcodefederations();
+                    if (SDCode == ConfigSDCode)
+                    {
+                        if (check != 2)
+                        {
+                            CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
+                            args.IsValid = false;
+                            bPerformUpdate = args.IsValid;
+                        }
+                    }
+                    if (OCCode == ConfigOCCode)
+                    {
+                        if (check != 3)
+                        {
+                            CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
+                            args.IsValid = false;
+                            bPerformUpdate = args.IsValid;
+                        }
+                    }
+                    if (LACode == ConfigLACode)
+                    {
+                        if (check != 4)
+                        {
+                            CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
+                            args.IsValid = false;
+                            bPerformUpdate = args.IsValid;
+                        }
+                    }
+                }
+            }
+
+            if (txtSplCode.Enabled == true)
+            {
+                if (LACode != ConfigLACode || OCCode != ConfigOCCode || SDCode != ConfigSDCode || GilboaCode != ConfigGilboaCode || RDCode != ConfigRDCode || RCCode != ConfigRCCode || ALCode != ConfigALCode || DCCode != ConfigDCCode)
+                {
+                    if (txtSplCode.Text.Trim().ToLower().Contains("nlp"))
+                    {
+                        if (!SpecialCodeManager.IsValidCode(Convert.ToInt32(Application["CampYearID"]), 0, txtSplCode.Text))
+                        {
+                            CusValSplCode.ErrorMessage = "This code is no longer valid. Please contact your program administrator for support.";
+                            args.IsValid = false;
+                            bPerformUpdate = args.IsValid;
+                        }
+                        else
+                        {
+                            args.IsValid = true;
+                            bPerformUpdate = args.IsValid;
+                        }
+                    }
+                    else if (txtSplCode.Text.Trim().ToLower().Contains("pjgtc"))
+                    {
+                        int validPJL = 0;
+                        dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
+                        //2012-05-07 Make sure pjCode is valid, so I can use the session variable again on every program's summary page
+                        string pjCode = txtSplCode.Text.Trim().ToUpper();
+                        for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
+                        {
+                            if (pjCode.Equals(dsPJLCodes.Tables[0].Rows[i].ItemArray[0]))
+                            {
+                                validPJL = 1;
+                                Session["SpecialCodeValue"] = pjCode;
+                                break;
+                            }
+                        }
+
+                        //added by sreevani to validate pjl day school codes
+                        if (validPJL != 1)
+                        {
+                            //added by sandhya to validate the special pjl codes
+                            if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
+                            {
+                                validPJL = 1;
+                            }
+                            else if (oCA.validatePJLDSCode(txtSplCode.Text.Trim().ToLower()) == 2 || oCA.validatePJLDSCode(txtSplCode.Text.Trim().ToLower()) == 1)
+                            {
+                                validPJL = 0;
+                            }
+                            else
+                            {
+                                args.IsValid = true;
+                                validPJL = 1;
+                                bPerformUpdate = args.IsValid;
+                            }
+
+                            // 2013-03-22 PJL uses tlbSpecialCode table now
+                            string currentCode = Session["SpecialCodeValue"].ToString();
+                            int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+                            int FedID = Convert.ToInt32(FederationEnum.PJL);
+                            List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
+
+                            // when moved to .NET 3.5 or above, remember to use lamda expression
+                            foreach (string code in specialCodes)
+                            {
+                                if (code == currentCode)
+                                {
+                                    validPJL = 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (validPJL == 1)
+                        {
+                            args.IsValid = true;
+                            bPerformUpdate = args.IsValid;
+                        }
+                        else
+                        {
+                            Session["codeValue"] = null;
+                            CusValSplCode.ErrorMessage = "INVALID CODE";
+                            args.IsValid = false;
+                            bPerformUpdate = args.IsValid;
+                        }
+                    }
+                    else if (Convert.ToInt32(Session["codeValue"]) == 0)
+                    {
+                        CusValSplCode.ErrorMessage = "INVALID CODE";
+                        args.IsValid = false;
+                        bPerformUpdate = args.IsValid;
+                    }
+                }
+            }
+        }
+        //}
+    }
+
+    void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
+    {
+        if (Master.UserId != Master.CamperUserId)
+        {
+            if ((txtComments.Text.Trim().Length > 0) || CheckforUpdate().Equals("1"))
+            {
+                args.IsValid = true;
+            }
+            else
+            {
+                args.IsValid = false;
+            }
+        }
+        else
+        {
+            args.IsValid = true;
+        }
+        bPerformUpdate = args.IsValid;
+    }
+
+    #region "Private functions"
+
+    bool IsFromCanada()
+    {
+        return ddlCountry.SelectedItem.Text.ToLower() == "canada" && 
+            (txtZipCode.Text.StartsWith("A") || 
+             txtZipCode.Text.StartsWith("B") || 
+             txtZipCode.Text.StartsWith("C") || 
+             txtZipCode.Text.StartsWith("E") || 
+             txtZipCode.Text.StartsWith("G") || 
+             txtZipCode.Text.StartsWith("H") || 
+             txtZipCode.Text.StartsWith("J") || 
+             txtZipCode.Text.StartsWith("L") || 
+             txtZipCode.Text.StartsWith("M") || 
+             txtZipCode.Text.StartsWith("N"));
+    }
+
+    bool ZipCodeHasClosedProgram()
+    {
+        string strZip = txtZipCode.Text.Trim();
+        string feds = ConfigurationManager.AppSettings["OpenFederations"];
+
+        if (feds == "" || feds == "None") return true;
+        if (!objGeneral.ValidateZipCode(strZip, feds)) return true;
+        return false;
     }
 
     private void getGenders(string strFJCID, string Gender)
@@ -776,7 +1059,7 @@ public partial class Step1 : System.Web.UI.Page
             txtAddress.Focus();
     }
 
-	protected int getzipcodefederations()
+    protected int getzipcodefederations()
     {
         General oGen = new General();
         DataSet dsFed = new DataSet();
@@ -808,8 +1091,8 @@ public partial class Step1 : System.Web.UI.Page
         }
         return check;
     }
-    
-	protected bool numbercapCheck()
+
+    protected bool numbercapCheck()
     {
         int jwestnumbercapConfigCount = Convert.ToInt32(ConfigurationManager.AppSettings["jwestnumbercapcount"].ToString());
         bool isexceededcount = false;
@@ -829,7 +1112,7 @@ public partial class Step1 : System.Web.UI.Page
         int iCount;
         DataSet dsMiiPReferalCodeDetails = new DataSet();
         string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
-		string ConfigRamahDarom = ConfigurationManager.AppSettings["2012CRD6481"];
+        string ConfigRamahDarom = ConfigurationManager.AppSettings["2012CRD6481"];
         string ConfigSpecialPJLCapitalCode = "PJGTC2014B";
         strAction = hdnPerformAction.Value;
         strCamperUserId = Master.CamperUserId;
@@ -838,18 +1121,18 @@ public partial class Step1 : System.Web.UI.Page
 
         int Isnumber;
 
-        if (ddlCountry.SelectedItem.Text.ToLower() == "canada" && 
-			(txtZipCode.Text.StartsWith("A") 
-			|| txtZipCode.Text.StartsWith("B") 
-			|| txtZipCode.Text.StartsWith("C") 
-			|| txtZipCode.Text.StartsWith("E") 
-			|| txtZipCode.Text.StartsWith("G") 
-			|| txtZipCode.Text.StartsWith("H") 
-			|| txtZipCode.Text.StartsWith("J")
-			|| txtZipCode.Text.StartsWith("L")
-			|| txtZipCode.Text.StartsWith("M")
-			|| txtZipCode.Text.StartsWith("N")
-			))
+        if (ddlCountry.SelectedItem.Text.ToLower() == "canada" &&
+            (txtZipCode.Text.StartsWith("A")
+            || txtZipCode.Text.StartsWith("B")
+            || txtZipCode.Text.StartsWith("C")
+            || txtZipCode.Text.StartsWith("E")
+            || txtZipCode.Text.StartsWith("G")
+            || txtZipCode.Text.StartsWith("H")
+            || txtZipCode.Text.StartsWith("J")
+            || txtZipCode.Text.StartsWith("L")
+            || txtZipCode.Text.StartsWith("M")
+            || txtZipCode.Text.StartsWith("N")
+            ))
         {
             iCount = 1;
         }
@@ -931,7 +1214,7 @@ public partial class Step1 : System.Web.UI.Page
                         {
                             ds = objGeneral.GetFederationDetails(strFedId);
                         }
-                    }                     
+                    }
                     else
                     {
                         ds = objGeneral.GetFederationDetails(strFedId);
@@ -942,7 +1225,7 @@ public partial class Step1 : System.Web.UI.Page
                         strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
                         //sesion[fedid] will be set only if it is not jwest or orange county
                         //for jwest and orange county it will be set in step1_questions.aspx
-                        Session["FEDID"] = strFedId;
+                        Session["FedId"] = strFedId;
                     }
                     else
                     {
@@ -1016,7 +1299,7 @@ public partial class Step1 : System.Web.UI.Page
         //this will take care of federation changes for a particular application
         if (strFedId != string.Empty && strNextURL != strStep1QuestionsURL)
             CamperAppl.UpdateFederationId(hdnFJCID.Value, strFedId);
-       //added by sreevani as because when fedid is updated camper answers are cleared and even special codes are cleared from tblcamperanswers.
+        //added by sreevani as because when fedid is updated camper answers are cleared and even special codes are cleared from tblcamperanswers.
         if (txtSplCode.Text != "" && Convert.ToInt32(Session["codeValue"]) == 6)
             InsertCamperAnswers();
         if (UserInfo.IsJewish == "2")
@@ -1039,11 +1322,11 @@ public partial class Step1 : System.Web.UI.Page
         {
             Session["FJCID"] = hdnFJCID.Value;
 
-			if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode || txtSplCode.Text.ToUpper() == ConfigRamahDarom)
+            if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode || txtSplCode.Text.ToUpper() == ConfigRamahDarom)
                 Response.Redirect(strNationalURL);
             else
             {
-				Response.Redirect(strNextURL);
+                Response.Redirect(strNextURL);
             }
 
         }
@@ -1252,7 +1535,7 @@ public partial class Step1 : System.Web.UI.Page
         string strFJCID = hdnFJCID.Value;
         string strDOB, strAge;
 
-		hdnPerformAction.Value = "INSERT";
+        hdnPerformAction.Value = "INSERT";
 
         if (strFJCID != "")
         {
@@ -1263,15 +1546,15 @@ public partial class Step1 : System.Web.UI.Page
                 hdnPerformAction.Value = "UPDATE";
                 strDOB = UserInfo.DateofBirth;
                 strAge = UserInfo.Age;
-				if (objGeneral.IsDate(strDOB))
-				{
-					strDOB = Convert.ToDateTime(strDOB).ToShortDateString();
-				}
-				else
-				{
-					strDOB = string.Empty;
-					strAge = string.Empty;
-				}
+                if (objGeneral.IsDate(strDOB))
+                {
+                    strDOB = Convert.ToDateTime(strDOB).ToShortDateString();
+                }
+                else
+                {
+                    strDOB = string.Empty;
+                    strAge = string.Empty;
+                }
                 //setting the user input values to the struct 'UserInfo'
                 txtFirstName.Text = UserInfo.FirstName;
                 txtLastName.Text = UserInfo.LastName;
@@ -1304,7 +1587,7 @@ public partial class Step1 : System.Web.UI.Page
 
                 SetCountryValidationRules(UserInfo.Country);
             }
-        }   
+        }
     }
 
     private void getCities(string strZip, string strCity)
@@ -1389,13 +1672,6 @@ public partial class Step1 : System.Web.UI.Page
         }
     }
 
-    //page unload
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
     // Siva - 12/03/2008 - start change to fix the age calculation problem when enter key is pressed 
     // to calculate age of the camper
     private int calculateAgeOld(DateTime Birthdate)
@@ -1427,8 +1703,8 @@ public partial class Step1 : System.Web.UI.Page
 
         return years;
     }
-    
-	//2014-07-28 NLP special codes are used, we go to the NLP directly instead of going through the whole routing from community to PJL to NLP
+
+    //2014-07-28 NLP special codes are used, we go to the NLP directly instead of going through the whole routing from community to PJL to NLP
     protected void validateNLCodeRedirection()
     {
         UserDetails Info;
@@ -1438,25 +1714,25 @@ public partial class Step1 : System.Web.UI.Page
         if (txtSplCode.Enabled)
         {
             if (txtSplCode.Text != "")
-            {              
+            {
                 string currentCode = txtSplCode.Text.Trim().ToUpper();
 
                 if (IsCodeInWashingtonCodes(currentCode))
                 {
-					Session["FEDID"] = 49;
-					Session["CampID"] = null;
-					InsertCamperAnswers();
-					strSplURL = "Washington/Summary.aspx";
+                    Session["FedId"] = 49;
+                    Session["CampID"] = null;
+                    InsertCamperAnswers();
+                    strSplURL = "Washington/Summary.aspx";
                 }
                 else
                 {
-					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-					if (SpecialCodeManager.IsValidCode(CampYearID, 0, currentCode))
-					{
-						ProcessCamperInfo(Info);
-						Session["FJCID"] = hdnFJCID.Value;
-						Response.Redirect(strNationalURL);
-					}
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+                    if (SpecialCodeManager.IsValidCode(CampYearID, 0, currentCode))
+                    {
+                        ProcessCamperInfo(Info);
+                        Session["FJCID"] = hdnFJCID.Value;
+                        Response.Redirect(strNationalURL);
+                    }
                 }
             }
         }
@@ -1489,7 +1765,7 @@ public partial class Step1 : System.Web.UI.Page
         return false;
     }
 
-	// 2012-11-13 This function check of there the code is day school code.  Note that it'll redirect to PJL summary page directly, bad design
+    // 2012-11-13 This function check of there the code is day school code.  Note that it'll redirect to PJL summary page directly, bad design
     //added by sreevani for pjl day school code redirection 
     public void validatePJLDaySchoolCodeRedirection()
     {
@@ -1499,16 +1775,16 @@ public partial class Step1 : System.Web.UI.Page
 
         var oCA = new CamperApplication();
         int validate = oCA.validatePJLDSCode(txtSplCode.Text);
-		if (validate == 0 || validate == 2)
-		{
-			//ProcessCamperInfo(Info);
-			//InsertCamperAnswers();
-			//oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
-			Session["FJCID"] = hdnFJCID.Value;
-			//Session["FEDID"] = ConfigurationManager.AppSettings["PJL"].ToString();
-			//CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
-			//Response.Redirect("~/Enrollment/PJL/Summary.aspx");
-		}
+        if (validate == 0 || validate == 2)
+        {
+            //ProcessCamperInfo(Info);
+            //InsertCamperAnswers();
+            //oCA.updatePJLDSCode(txtSplCode.Text, hdnFJCID.Value);
+            Session["FJCID"] = hdnFJCID.Value;
+            //Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
+            //CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
+            //Response.Redirect("~/Enrollment/PJL/Summary.aspx");
+        }
     }
 
     // 2014-02-06 This function will check if user use "direct pass" code - this means this code will bring the user directly to the fed, even there is matching federation, or zip codes don't match
@@ -1517,229 +1793,18 @@ public partial class Step1 : System.Web.UI.Page
         bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), fed, txtSplCode.Text);
         if (isDirectPass)
         {
-            UserDetails Info = getUserInfoStructwithValues();
-            Session["ZIPCODE"] = Info.ZipCode;
-            ProcessCamperInfo(Info);
+            UserDetails info = getUserInfoStructwithValues();
+            Session["ZIPCODE"] = info.ZipCode;
+            ProcessCamperInfo(info);
             InsertCamperAnswers();
             Session["FJCID"] = hdnFJCID.Value;
-            string FedID = Convert.ToInt32(fed).ToString();
-            Session["FEDID"] = FedID;
-            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), FedID);
+
+            var fedId = Convert.ToInt32(fed).ToString();
+            Session["FedId"] = fedId;
+            CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), fedId);
             return true;
         }
         return false;
-    }
-
-    public void CusValSplCode_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        CamperApplication oCA = new CamperApplication();
-        differentiateCodes();
-		//if (Master.UserId == Master.CamperUserId)
-		//{
-            if (txtSplCode.Text != "")
-            {
-                string LACode = txtSplCode.Text.ToUpper();
-                string ConfigLACode = ConfigurationManager.AppSettings["LACode"];
-                string SDCode = txtSplCode.Text.ToUpper();
-                string OCCode = txtSplCode.Text.ToUpper();
-                string ConfigSDCode = ConfigurationManager.AppSettings["SDCode"];
-                string ConfigOCCode = ConfigurationManager.AppSettings["OCCode"];
-                string GilboaCode = txtSplCode.Text.ToUpper();
-                string RDCode = txtSplCode.Text.ToUpper();
-                string RCCode = txtSplCode.Text.ToUpper();
-                string ALCode = txtSplCode.Text.ToUpper();
-                string DCCode = txtSplCode.Text.ToUpper();
-                string ConfigGilboaCode = ConfigurationManager.AppSettings["GilboaCode"];
-                string ConfigRDCode = ConfigurationManager.AppSettings["RDCode"];
-                string ConfigRCCode = ConfigurationManager.AppSettings["RCCode"];
-                string ConfigALCode = ConfigurationManager.AppSettings["ALCode"];
-                string ConfigDCCode = ConfigurationManager.AppSettings["DCCode"];
-                string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
-                string ConfigSpecialPJLCapitalCode = ConfigurationManager.AppSettings["SpecialPJLCapitalCode"];
-                bool isexceededcount = numbercapCheck();
-                UserDetails Info;
-                DataSet dsCamper = new DataSet();
-                //to get the user input values as struct object
-                Info = getUserInfoStructwithValues();
-                dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
-
-                if (dsCamper.Tables[0].Rows.Count > 0)
-                {
-
-                }
-                else //If camper is not returning camper 
-                {
-                    //If number cap count exceeded the limit
-                    if (!isexceededcount)
-                    {
-                        //Sandiego and ORange counts                           
-                        int check = getzipcodefederations();
-                        if (SDCode == ConfigSDCode)
-                        {
-                            if (check != 2)
-                            {
-                                CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
-                                args.IsValid = false;
-                                bPerformUpdate = args.IsValid;
-                            }
-                        }
-                        if (OCCode == ConfigOCCode)
-                        {
-                            if (check != 3)
-                            {
-                                CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
-                                args.IsValid = false;
-                                bPerformUpdate = args.IsValid;
-                            }
-                        }
-                        if (LACode == ConfigLACode)
-                        {
-                            if (check != 4)
-                            {
-                                CusValSplCode.ErrorMessage = "This code is not valid. Please contact Roni Ogin at 303-669-5418.";
-                                args.IsValid = false;
-                                bPerformUpdate = args.IsValid;
-                            }
-                        }
-                    }
-                }
-
-                if (txtSplCode.Enabled == true)
-                {
-                    if (LACode != ConfigLACode || OCCode != ConfigOCCode || SDCode != ConfigSDCode || GilboaCode != ConfigGilboaCode || RDCode != ConfigRDCode || RCCode != ConfigRCCode || ALCode != ConfigALCode || DCCode != ConfigDCCode)
-                    {
-                        if (txtSplCode.Text.Trim().ToLower().Contains("nlp"))
-                        {
-							if (!SpecialCodeManager.IsValidCode(Convert.ToInt32(Application["CampYearID"]), 0, txtSplCode.Text))
-                            {
-                                CusValSplCode.ErrorMessage = "This code is no longer valid. Please contact your program administrator for support.";
-                                args.IsValid = false;
-                                bPerformUpdate = args.IsValid;
-                            }
-                            else
-                            {
-                                args.IsValid = true;
-                                bPerformUpdate = args.IsValid;
-                            }
-                        }
-                        else if (txtSplCode.Text.Trim().ToLower().Contains("pjgtc"))
-                        {
-                            int validPJL = 0;
-                            dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
-							//2012-05-07 Make sure pjCode is valid, so I can use the session variable again on every program's summary page
-							string pjCode = txtSplCode.Text.Trim().ToUpper();
-                            for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-                            {
-                                if (pjCode.Equals(dsPJLCodes.Tables[0].Rows[i].ItemArray[0]))
-                                {
-                                    validPJL = 1;
-									Session["UsedCode"] = pjCode;
-                                    break;
-                                }
-                            }
-
-                            //added by sreevani to validate pjl day school codes
-                            if (validPJL != 1)
-                            {
-                                //added by sandhya to validate the special pjl codes
-                                if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
-                                {
-                                    validPJL = 1;
-                                }                                    
-                                else if (oCA.validatePJLDSCode(txtSplCode.Text.Trim().ToLower()) == 2 || oCA.validatePJLDSCode(txtSplCode.Text.Trim().ToLower()) == 1)
-                                {
-                                    validPJL = 0;
-                                }
-                                else
-                                {
-									args.IsValid = true;
-									validPJL = 1;
-									bPerformUpdate = args.IsValid;
-                                }
-
-								// 2013-03-22 PJL uses tlbSpecialCode table now
-								string currentCode = Session["UsedCode"].ToString();
-								int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-								int FedID = Convert.ToInt32(FederationEnum.PJL);
-								List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
-
-								// when moved to .NET 3.5 or above, remember to use lamda expression
-								foreach (string code in specialCodes)
-								{
-									if (code == currentCode)
-									{
-										validPJL = 1;
-										break;
-									}
-								}
-                            }
-
-                            if (validPJL == 1)
-                            {
-                                args.IsValid = true;
-                                bPerformUpdate = args.IsValid;
-                            }
-                            else
-                            {
-								Session["codeValue"] = null;
-                                CusValSplCode.ErrorMessage = "INVALID CODE";
-                                args.IsValid = false;
-                                bPerformUpdate = args.IsValid;
-                            }
-                        }
-                        else if (Convert.ToInt32(Session["codeValue"]) == 0)
-                        {
-                            CusValSplCode.ErrorMessage = "INVALID CODE";
-                            args.IsValid = false;
-                            bPerformUpdate = args.IsValid;
-                        }
-                    }
-                }
-            }
-		//}
-    }
-
-    //LACIP changes End
-
-    //to validate the comments for Admin user
-    void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
-    {
-        if (Master.UserId != Master.CamperUserId)
-        {
-            if ((txtComments.Text.Trim().Length > 0) || CheckforUpdate().Equals("1"))
-            {
-                args.IsValid = true;
-            }
-            else
-            {
-                args.IsValid = false;
-            }
-        }
-        else
-        {
-            args.IsValid = true;
-        }
-        bPerformUpdate = args.IsValid;
-    }
-
-    // Siva - 12/03/2008 - end change
-    protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        //Check if OTHERS is selected - make textbox required fiels 
-        //for another selections - city combobox has to be required control
-        if (ddlCity.SelectedItem.Text == "OTHERS")
-        {
-            reqvalCity.Enabled = false;
-            reqvalCityOther.Enabled = true;
-            txtCityOthers.Enabled = true;
-        }
-        else
-        {
-            reqvalCity.Enabled = true;
-            reqvalCityOther.Enabled = false;
-            txtCityOthers.Enabled = false;
-            txtCityOthers.Text = string.Empty;
-        }
     }
 
     // check for national program redirection.
@@ -1796,7 +1861,7 @@ public partial class Step1 : System.Web.UI.Page
         if (strCheckUpdate == "0") //some modification done and user is not admin
             ProcessCamperInfo(Info);
 
-        Session["FEDID"] = drFedDetails["FederationID"].ToString();
+        Session["FedId"] = drFedDetails["FederationID"].ToString();
 
         string federationID = drFedDetails["FederationID"].ToString();
 
@@ -1812,19 +1877,19 @@ public partial class Step1 : System.Web.UI.Page
 
         if (doStep1questions(federationID))
             Response.Redirect(strStep1QuestionsURL);
-		else if (Session["FEDID"].ToString() == "66")
-		{
-			strURL = GetNationalProgramForCamp(drFedDetails["CampID"].ToString());
-			Response.Redirect(strURL);
-		}
-		else
-		{
-			//2012-02-27 temporary code for new hemshpere fed, if querystring exsits, we allow it to pass through
-			if (Request.QueryString["a"] == null)
-				Response.Redirect(strURL);
-			else
-				Response.Redirect(strURL + "?a=a");
-		}
+        else if (Session["FedId"].ToString() == "66")
+        {
+            strURL = GetNationalProgramForCamp(drFedDetails["CampID"].ToString());
+            Response.Redirect(strURL);
+        }
+        else
+        {
+            //2012-02-27 temporary code for new hemshpere fed, if querystring exsits, we allow it to pass through
+            if (Request.QueryString["a"] == null)
+                Response.Redirect(strURL);
+            else
+                Response.Redirect(strURL + "?a=a");
+        }
     }
     //added by sandhya
     private string GetNationalProgramForCamp(string campid)
@@ -1866,48 +1931,6 @@ public partial class Step1 : System.Web.UI.Page
         }
         else
             return false;
-    }
-
-    protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        txtCityOthers.Text = string.Empty;
-
-        SetCountryValidationRules(ddlCountry.SelectedItem.Value);
-        get_CountryStates(int.Parse(ddlCountry.SelectedValue));
-
-        string strFJCID = hdnFJCID.Value;
-        if (!strFJCID.Equals(string.Empty))
-        {
-            UserInfo = CamperAppl.getCamperInfo(strFJCID);
-
-            if (ddlCountry.SelectedValue == UserInfo.Country)
-            {
-                txtZipCode.Text = UserInfo.ZipCode;
-                getCities(UserInfo.ZipCode, UserInfo.City);
-            }
-            else
-            {
-                txtZipCode.Text = string.Empty;
-
-            }
-
-        }
-        else
-        {
-            txtZipCode.Text = string.Empty;
-        }
-
-        PopulateStateCityForZIP(false);
-
-        if (ddlState.SelectedIndex == 0)
-        {
-            try // it may not exist when changing the country
-            {
-                ddlState.SelectedValue = UserInfo.State;
-            }
-            catch { }
-        }
-        txtZipCode.Focus();
     }
 
     private void SetCountryValidationRules(string CountryCode)
@@ -2004,13 +2027,13 @@ public partial class Step1 : System.Web.UI.Page
                 if (strFJCID != "" && strTablevalues != "" && strModifiedBy != "")
                     RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strTablevalues, strModifiedBy, "");
             }
-           if (Session["FedID"] != null && Session["FedID"] != "")
+            if (Session["FedId"] != null && Session["FedId"] != "")
             {
                 //strFJCID = hdnFJCID.Value;               
                 string strQuestionId, strTablevalues = "", strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
 
                 //for question 1031
-                if ((Session["FedID"]).ToString() == "49")
+                if ((Session["FedId"]).ToString() == "49")
                 {
                     strQuestionId = "1031";
                     strTablevalues += strQuestionId + strFSeparator + strFSeparator + txtSplCode.Text;
@@ -2035,8 +2058,8 @@ public partial class Step1 : System.Web.UI.Page
         strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
 
         strQuestionId = hdnQ1Id.Value;
-        if(Session["CampID"] !=null)
-        strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + Session["CampID"].ToString() + strQSeparator;
+        if (Session["CampID"] != null)
+            strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + Session["CampID"].ToString() + strQSeparator;
 
         //to remove the extra character at the end of the string, if any
         char[] chartoRemove = { Convert.ToChar(strQSeparator) };
@@ -2045,65 +2068,34 @@ public partial class Step1 : System.Web.UI.Page
         return strTablevalues;
     }
 
-    void txtSplCode_TextChanged(object sender, EventArgs e)
+    void DifferentiateCodes()
     {
-        differentiateCodes();
-    }
+        Session["codeValue"] = 0;
 
-    void differentiateCodes()
-    {
-        string splCode = txtSplCode.Text.Trim();
-		Session["codeValue"] = 0;
+        var currentCode = txtSplCode.Text.Trim().ToUpper();
+        if (currentCode == "")
+            return;
 
-		if (splCode == "")
-			return;
-
-		//string ConfigLACode = ConfigurationManager.AppSettings["LACode"];
-		//string ConfigSDCode = ConfigurationManager.AppSettings["SDCode"];
-		//string ConfigOCCode = ConfigurationManager.AppSettings["OCCode"];
-
-
-        // 2012-01-16 currentCode should be a local variable
-        string currentCode = splCode.ToUpper();
-
-        if (splCode.ToUpper().Contains("PJGTC"))//PJLCode
+        if (currentCode.ToUpper().Contains("PJGTC"))//PJLCode
         {
             Session["codeValue"] = 1;
-			Session["UsedCode"] = currentCode;
+            Session["SpecialCodeValue"] = currentCode;
         }
-		else if (splCode.ToUpper().Contains("NLP"))//NL code
-		{
-			Session["codeValue"] = CodeNLP;
-		}
-		//else if (splCode.Contains("Dallas"))//dallas code                
-		//    Session["codeValue"] = 4;
-		//else if (splCode.ToUpper().Contains("5771") || splCode.ToUpper().Contains("5772"))//special codes.
-		//{
-		//    if (splCode.ToUpper() == ConfigLACode || splCode.ToUpper() == ConfigOCCode || splCode.ToUpper() == ConfigSDCode)
-		//        Session["codeValue"] = 5;
-		//    else
-		//        Session["codeValue"] = 6;
-		//}
-		else if (IsCodeInWashingtonCodes(currentCode))
-		{
-			Session["codeValue"] = CodeWashinngton;
-			Session["UsedCode"] = currentCode;
-		}
-		//else if (currentCode == ConfigurationManager.AppSettings["2012CRD6481"]
-		//    || currentCode == ConfigurationManager.AppSettings["2012CRC6481"]) // 2012-01-22 for Camp Ramah Darom, Ramah Califonia
-		//{
-		//    Session["codeValue"] = 6;
-		//    Session["UsedCode"] = currentCode;
-		//}
-		//else if (splCode.ToUpper().Contains("CS")) // 2012-01-31 Camp SaBra code, need refactor later
-		//{
-		//    Session["codeValue"] = 99;  // an arbitrary number, so that code valication could pass
-		//    Session["UsedCode"] = currentCode;
-		//}
-		else
-		{
-			Session["codeValue"] = 99;  // an arbitrary number, so that code valication could pass
-			Session["UsedCode"] = currentCode;
-		}
+        else if (currentCode.ToUpper().Contains("NLP"))//NL code
+        {
+            Session["codeValue"] = CodeNLP;
+        }
+        else if (IsCodeInWashingtonCodes(currentCode))
+        {
+            Session["codeValue"] = CodeWashinngton;
+            Session["SpecialCodeValue"] = currentCode;
+        }
+        else
+        {
+            Session["codeValue"] = 99;  // an arbitrary number, so that code valication could pass
+            Session["SpecialCodeValue"] = currentCode;
+        }
     }
+
+    #endregion
 }

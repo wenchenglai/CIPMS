@@ -123,9 +123,9 @@ namespace CIPMSBC.Eligibility
 			}
 
 			// 2012-11-17 In Camp Year 2013, there will be JWest/JWest special codes with amount = 500.  Look at tblSpecialCodes for those 20 initial codes given by Val
-			if (HttpContext.Current.Session["UsedCode"] != null)
+			if (HttpContext.Current.Session["SpecialCodeValue"] != null)
 			{
-				string currentCode = HttpContext.Current.Session["UsedCode"].ToString();
+				string currentCode = HttpContext.Current.Session["SpecialCodeValue"].ToString();
 				List<string> codes = SpecialCodeManager.GetAvailableJWestJWestLACodes(5);
 
 				// when moved to .NET 3.5 or above, remember to use lamda expression
