@@ -3,7 +3,6 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <%@ Register Src="~/CamperFooter.ascx" TagName="CamperFooter" TagPrefix="uc1" %>
 <asp:Content ID="ContentStep1" ContentPlaceHolderID="Content" Runat="Server">
-    <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>
                 <td colspan="2"><asp:Label ID="Label10" CssClass="headertext" runat="server" Text="Section VI:  Parent Contact Information"></asp:Label><br /><br /></td>
@@ -207,7 +206,6 @@
                 </td>
             </tr>
         </table>
-    </asp:Panel>
     <asp:HiddenField ID="hdnFJCID_ParentInfo" runat="server" />
     <asp:HiddenField ID="hdnPerformAction" runat="server" />
 </asp:Content>

@@ -57,19 +57,19 @@ public partial class Step1 : System.Web.UI.Page
 		CamperAppl = new CamperApplication();
 		objGeneral = new General();
 
-		if (Session["CampYear"] == null)
-		{
-			var _objGen = new General();
-			DataSet dsCampYear = _objGen.GetCurrentYear();
-			if (dsCampYear.Tables[0].Rows.Count > 0)
-			{
-				Session["CampYear"] = dsCampYear.Tables[0].Rows[0]["CampYear"].ToString();
-			}
-			else
-			{
-                Session["CampYear"] = Application["CampYear"].ToString();
-			}
-		}
+        //if (Session["CampYear"] == null)
+        //{
+        //    var _objGen = new General();
+        //    DataSet dsCampYear = _objGen.GetCurrentYear();
+        //    if (dsCampYear.Tables[0].Rows.Count > 0)
+        //    {
+        //        Session["CampYear"] = dsCampYear.Tables[0].Rows[0]["CampYear"].ToString();
+        //    }
+        //    else
+        //    {
+        //        Session["CampYear"] = Application["CampYear"].ToString();
+        //    }
+        //}
 
 		var strPrevPage = Request.QueryString["check"];
 
@@ -123,28 +123,35 @@ public partial class Step1 : System.Web.UI.Page
 					Response.Redirect("Step2_1.aspx");
 				}
 
-				if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedId"] != null && Session["FedId"].ToString() != ""))
-				{
+                // 2014-08-03 PJL re-route - if status is Winnder PJ Lottery, we redirect to the survye page directly
+                if (StatusID == (int)StatusInfo.WinnerPJLottery)
+                {
+                    Session["STATUS"] = StatusID;
+                    Response.Redirect("Step2_1.aspx");
+                }
 
-					if (Session["CampID"].ToString() == "3037")
-						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1027", "1027", "N");
-					else if (Session["CampID"].ToString() == "3079")
-						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1028", "1028", "N");
-					else if (Session["CampID"].ToString() == "3078")
-						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1029", "1029", "N");
-					else if (Session["CampID"].ToString() == "3009")
-						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1030", "1030", "N");
-					else if (Session["FedId"].ToString() == "49")
-						dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1031", "1031", "N");
-					if (((System.Data.InternalDataCollectionBase)(dsSplCode.Tables)).Count > 0)
-					{
-						if (dsSplCode.Tables[0].Rows.Count > 0)
-						{
-							txtSplCode.Text = dsSplCode.Tables[0].Rows[0][3].ToString();
-							txtSplCode.Enabled = false;
-						}
-					}
-				}
+                //if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedId"] != null && Session["FedId"].ToString() != ""))
+                //{
+                //    if (Session["CampID"].ToString() == "3037")
+                //        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1027", "1027", "N");
+                //    else if (Session["CampID"].ToString() == "3079")
+                //        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1028", "1028", "N");
+                //    else if (Session["CampID"].ToString() == "3078")
+                //        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1029", "1029", "N");
+                //    else if (Session["CampID"].ToString() == "3009")
+                //        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1030", "1030", "N");
+                //    else if (Session["FedId"].ToString() == "49")
+                //        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1031", "1031", "N");
+
+                //    if (dsSplCode.Tables.Count > 0)
+                //    {
+                //        if (dsSplCode.Tables[0].Rows.Count > 0)
+                //        {
+                //            txtSplCode.Text = dsSplCode.Tables[0].Rows[0][3].ToString();
+                //            txtSplCode.Enabled = false;
+                //        }
+                //    }
+                //}
 
 				string dallasCode = CamperAppl.validateFJCID(hdnFJCID.Value);
 				if (dallasCode != null)
@@ -165,14 +172,14 @@ public partial class Step1 : System.Web.UI.Page
 			PopulateStateCityForZIP(false);
 			txtAge.Attributes.Add("readonly", "readonly");
 
-			dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
+            //dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
 
-			for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-			{
-				hdnPJLCodes.Value = hdnPJLCodes.Value + "," + dsPJLCodes.Tables[0].Rows[i][0].ToString();
-			}
+            //for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
+            //{
+            //    hdnPJLCodes.Value = hdnPJLCodes.Value + "," + dsPJLCodes.Tables[0].Rows[i][0].ToString();
+            //}
 
-			hdnPJLCodes.Value.TrimStart(',');
+            //hdnPJLCodes.Value.TrimStart(',');
 		}
 
 		if (strPrevPage == "popup")
@@ -233,7 +240,6 @@ public partial class Step1 : System.Web.UI.Page
 		
 		int iCount = 0;
 		int check = 0;
-		int fedCheck = 0;
 
 		// 2012-01-24 If special code is empty, make sure we clean up the session variables
 		if (txtSplCode.Text == "")
@@ -255,8 +261,8 @@ public partial class Step1 : System.Web.UI.Page
 		}
 
 		// Siva - 12/03/2008 - start change to fix the age calculation problem when enter key is pressed 
-		DateTime CamperBirthDate = Convert.ToDateTime(txtDOB.Text);
-		txtAge.Text = calculateAge(CamperBirthDate).ToString();
+        //DateTime CamperBirthDate = Convert.ToDateTime(txtDOB.Text);
+        //txtAge.Text = calculateAge(CamperBirthDate).ToString();
 		// Siva - 12/03/2008 - end change
 
 		//to get the user input values as struct object
@@ -290,6 +296,9 @@ public partial class Step1 : System.Web.UI.Page
         if (IsDirectPass(FederationEnum.MetroWest))
             Response.Redirect("~/Enrollment/MetroWest/Summary.aspx");
 
+        //2014-08-03 PJL - if the status is in Pending PJ Lottery, we go to the PJ Program (because this user might have zip code from a community program, but failed to pass due to DS)
+
+
         var dsFed = new DataSet();
 
 		if (IsFromCanada())
@@ -302,15 +311,14 @@ public partial class Step1 : System.Web.UI.Page
 		else
 		{
 			dsFed = objGeneral.GetFederationForZipCode(Info.ZipCode);
-		}
-
-		if (dsFed.Tables.Count > 0)
-		{
-			if (dsFed.Tables[0].Rows.Count > 0)
-			{
-				iCount = dsFed.Tables[0].Rows.Count;
-				Session["FedId"] = dsFed.Tables[0].Rows[0][0];
-			}
+            if (dsFed.Tables.Count > 0)
+            {
+                if (dsFed.Tables[0].Rows.Count > 0)
+                {
+                    iCount = dsFed.Tables[0].Rows.Count;
+                    Session["FedId"] = dsFed.Tables[0].Rows[0][0];
+                }
+            }
 		}
 
 		var redirectionLogic = new Redirection_Logic();
@@ -319,84 +327,7 @@ public partial class Step1 : System.Web.UI.Page
 		// if iCount == 0, it means the zip code has no federation associated
 		if (iCount > 0)
 		{
-			//added by sandhya 
-			if (dsFed.Tables.Count > 0)
-			{
-				for (int i = 0; dsFed.Tables[0].Rows.Count > i; i++)
-				{
-					if (dsFed.Tables[0].Rows[i]["Federation"].ToString() == "3" || dsFed.Tables[0].Rows[i]["Federation"].ToString() == "4")
-					{
-						check = 1;
-					}
-
-					if (dsFed.Tables[0].Rows[i]["Federation"].ToString() == "72")
-					{
-						fedCheck = 2;
-					}
-
-					if (dsFed.Tables[0].Rows[i]["Federation"].ToString() == "22")
-					{
-						fedCheck = 3;
-					}
-
-					if (dsFed.Tables[0].Rows[i]["Federation"].ToString() == "23")
-					{
-						fedCheck = 4;
-					}
-				}
-			}
-
-			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
-
-			if (txtSplCode.Text != "")
-			{
-				if (Convert.ToInt32(Session["codeValue"]) == 5)
-				{
-					if (dsCamper.Tables[0].Rows.Count > 0)
-					{
-
-					}
-					else //If camper is not returning camper
-					{
-						bool isexceededcount = numbercapCheck();
-						//If count exceeded the limit
-						if (!isexceededcount)
-						{
-							//Sandiego and ORange counts
-							string SDCode = txtSplCode.Text.ToUpper();
-							string OCCode = txtSplCode.Text.ToUpper();
-							string LACode = txtSplCode.Text.ToUpper();
-							string ConfigLACode = ConfigurationManager.AppSettings["LACode"];
-							string ConfigSDCode = ConfigurationManager.AppSettings["SDCode"];
-							string ConfigOCCode = ConfigurationManager.AppSettings["OCCode"];
-							if (SDCode == ConfigSDCode && fedCheck == 2)
-							{
-								ProcessCamperInfo(Info);
-								Session["SDCode"] = SDCode;
-								Session["FJCID"] = hdnFJCID.Value;
-								Session["FedId"] = 72;
-								Response.Redirect("Step1_Questions.aspx");
-							}
-							else if (OCCode == ConfigOCCode && fedCheck == 3)
-							{
-								ProcessCamperInfo(Info);
-								Session["OCCode"] = OCCode;
-								Session["FJCID"] = hdnFJCID.Value;
-								Session["FedId"] = 22;
-								Response.Redirect("Step1_Questions.aspx");
-							}
-							else if (LACode == ConfigLACode && fedCheck == 4)
-							{
-								ProcessCamperInfo(Info);
-								Session["LACode"] = LACode;
-								Session["FJCID"] = hdnFJCID.Value;
-								Session["FedId"] = 23;
-								Response.Redirect("Step1_Questions.aspx");
-							}
-						}
-					}
-				}
-			}
+            DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 			NewCamper(Info);
 		}
 		else if (txtSplCode.Text != string.Empty && Convert.ToInt32(Session["codeValue"]) == 1)
@@ -405,7 +336,7 @@ public partial class Step1 : System.Web.UI.Page
 			//added by sreevani to check redirection to pjl based on day school codes.
 			if (!redirectionLogic.BeenToPJL)
 			{
-				dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
+                dsPJLCodes = objGeneral.GetPJLCodes(Application["CampYear"] != null ? Application["CampYear"].ToString() : DBNull.Value.ToString());
 				for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
 				{
 					if (txtSplCode.Text.Trim().ToUpper() == dsPJLCodes.Tables[0].Rows[i][0].ToString())
@@ -773,7 +704,7 @@ public partial class Step1 : System.Web.UI.Page
                     else if (txtSplCode.Text.Trim().ToLower().Contains("pjgtc"))
                     {
                         int validPJL = 0;
-                        dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
+                        dsPJLCodes = objGeneral.GetPJLCodes(Application["CampYear"] != null ? Application["CampYear"].ToString() : DBNull.Value.ToString());
                         //2012-05-07 Make sure pjCode is valid, so I can use the session variable again on every program's summary page
                         string pjCode = txtSplCode.Text.Trim().ToUpper();
                         for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
@@ -1118,9 +1049,6 @@ public partial class Step1 : System.Web.UI.Page
         strCamperUserId = Master.CamperUserId;
 
         // BY Rajesh - Checks if ZipCode is Alphanumeric
-
-        int Isnumber;
-
         if (ddlCountry.SelectedItem.Text.ToLower() == "canada" &&
             (txtZipCode.Text.StartsWith("A")
             || txtZipCode.Text.StartsWith("B")

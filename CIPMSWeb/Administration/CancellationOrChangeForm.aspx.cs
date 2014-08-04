@@ -272,7 +272,7 @@ public partial class Administration_CancellationOrChangeForm : System.Web.UI.Pag
                 else if(cancellationPendingApprovalStatus == ChangeDetails.Current_Status.ToString())
                 {
                     string strNewFJCID = string.Empty;
-                    objCamperApplication.updateStatus(strFJCID, Int32.Parse(cancellationPaymentCreditPending), strReason, iUserID);
+                    objCamperApplication.UpdateStatus(strFJCID, Int32.Parse(cancellationPaymentCreditPending), strReason, iUserID);
                     objCamperApplication.UpdateDetailsOnRequestType(strFJCID, string.Empty, ChangeDetails.RequestID, "", "Cancellation request approved and the payment will be applied for credit.", iUserID, null, null, Int32.Parse(Enum.Format(typeof(RequestStatus), RequestStatus.ClosedOrApproved, "D")));
                 }
             }

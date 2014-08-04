@@ -102,16 +102,25 @@ public partial class Step2_PJL_3 : Page
 
                 if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible) || iStatus == Convert.ToInt32(StatusInfo.PendingPJLottery))
 				{
-                    var strRedirURL = "../ThankYou.aspx";
+                    var strRedirUrl = "EnterLotteryInfo.aspx";
 
 					if (Master.UserId != Master.CamperUserId) //then the user is admin
-						strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
+                        strRedirUrl = ConfigurationManager.AppSettings["AdminRedirURL"];
 					
                     //to update the status to the database                  
-					if (!isReadOnly)
-						CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
-					
-					Response.Redirect(strRedirURL, false);
+				    if (!isReadOnly)
+				    {
+                        //CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+				        CamperAppl.UpdateStatus(strFJCID, iStatus, "", 0);
+				    }
+						
+
+                    // Mark the special code as used
+                    var currentCode = Session["SpecialCodeValue"].ToString();
+                    int campYearId = Convert.ToInt32(Application["CampYearID"]);
+                    SpecialCodeManager.UseCode(campYearId, Convert.ToInt32(FederationEnum.PJL), currentCode, Session["FJCID"].ToString());
+
+                    Response.Redirect(strRedirUrl, false);
 				}
 				else //if he/she is eligible
 				{

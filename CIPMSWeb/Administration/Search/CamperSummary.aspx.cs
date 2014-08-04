@@ -607,7 +607,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 //*****[11/20/2008]Comments are not mandatory for change of status*****
                 //Commented by Ram on 23 Feb 2010
                 lblErr.Text = "";
-                _objCamperApp.updateStatus(strFJCID, iStatus, strReason, iUserId);
+                _objCamperApp.UpdateStatus(strFJCID, iStatus, strReason, iUserId);
                 return true;
             }
         }

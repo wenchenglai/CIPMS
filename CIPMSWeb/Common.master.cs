@@ -487,8 +487,13 @@ public partial class Common : System.Web.UI.MasterPage
                         if (!dr["MODIFIEDUSER"].Equals(DBNull.Value))
                             iModifiedBy = Convert.ToInt16(dr["MODIFIEDUSER"]);
 
+                        //to get the modified by user6
+                        int status = 0;
+                        if (!dr["Status"].Equals(DBNull.Value))
+                            status = Convert.ToInt32(dr["Status"]);
+
                         //Camper Application has been submitted (or) the Application has been modified by a Admin
-                        if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt16(CamperUserId) && iModifiedBy > 0))
+                        if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt16(CamperUserId) && iModifiedBy > 0 && status != (int)StatusInfo.WinnerPJLottery ))
                         {
                             //to disable the controls in the panel (Panel1 and Panel2 in all the questionnaire)
                             for (int i = 1; i <= 2; i++)

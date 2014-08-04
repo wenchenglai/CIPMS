@@ -54,28 +54,6 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                 getCamperAnswers();
             }
             div_dtlist.Attributes.Add("class", "div-dtlist_noheight");
-
-            //if (Session["FedId"] != null)
-            //{
-            //    string SynagogueFedIds = ConfigurationManager.AppSettings["SynagogueFedId"];
-            //    string FedId = Session["FedId"].ToString();
-            //    string[] synagogueList = SynagogueFedIds.Split(',');
-
-            //    string sin = (from fid in synagogueList
-            //             where fid == FedId
-            //             select fid).First();
-
-            //    if (sin != "")
-            //    {
-            //        RequiredFieldValidator3.Enabled = false;
-            //        reqvalJCC.Enabled = false;
-            //        PnlQ2.Enabled = false;
-            //        pnlJcc.Enabled = false;
-            //        PnlQ1.Enabled = false;
-            //        RadioBtnQ4.Enabled = false;
-            //        Label7.Enabled = false;
-            //    }
-            //}
         }
         foreach (ListItem li in chkQ9.Items)
         {
@@ -375,42 +353,52 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
         {
             if (Page.IsValid)
             {
-        if (!chkAgreement.Checked)
-        {
-			lblErrorMsg.Visible = true;
-			return;
-        }
+                if (!chkAgreement.Checked)
+                {
+			        lblErrorMsg.Visible = true;
+			        return;
+                }
 
-		if (!objGeneral.IsApplicationReadOnly(hdnFJCID_OtherInfo.Value, Master.CamperUserId))
-		{
-			ProcessCamperAnswers();
-			//Send Email to Parent one of the camper.
-			//SendEmailNotification();
-			//ProcessPJLFile();
+		        if (!objGeneral.IsApplicationReadOnly(hdnFJCID_OtherInfo.Value, Master.CamperUserId))
+		        {
+			        ProcessCamperAnswers();
+			        //Send Email to Parent one of the camper.
+			        //SendEmailNotification();
+			        //ProcessPJLFile();
 
-            if ((Request.Url.Host != "localhost") && (Dns.GetHostAddresses(Request.Url.Host)[0].ToString() == ConfigurationManager.AppSettings["UATIP"]))
-            {
-			    string strFolder;
-			    strFolder = ConfigurationManager.AppSettings["EmailNotificationFolderPath"];
-			    if (Directory.Exists(strFolder))
-			    {
-				    ProcessFile(strFolder);
-			    }
-			    else
-			    {
-				    Directory.CreateDirectory(strFolder);
-				    ProcessFile(strFolder);
-			    }
-            }
-		}
+                    if ((Request.Url.Host != "localhost") && (Dns.GetHostAddresses(Request.Url.Host)[0].ToString() == ConfigurationManager.AppSettings["UATIP"]))
+                    {
+			            string strFolder;
+			            strFolder = ConfigurationManager.AppSettings["EmailNotificationFolderPath"];
+			            if (Directory.Exists(strFolder))
+			            {
+				            ProcessFile(strFolder);
+			            }
+			            else
+			            {
+				            Directory.CreateDirectory(strFolder);
+				            ProcessFile(strFolder);
+			            }
+                    }
+		        }
 
-		string strRedirURL;
-		if (Master.UserId != Master.CamperUserId) //then the user is admin
-			strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
-		else //the user is Camper
-			strRedirURL = "ThankYou.aspx";
+                // 2014-08-04
+                var status = (StatusInfo) Convert.ToInt32(Session["STATUS"]);
+                if (status == StatusInfo.WinnerPJLottery)
+                {
+                    Session["Status"] = (int) StatusInfo.SystemEligible;
+                    CamperAppl.UpdateStatus(Session["FJCID"].ToString(), (int)StatusInfo.SystemEligible, "", 0);
+                }
+                    
 
-		Response.Redirect(strRedirURL, false);
+
+		        string strRedirURL;
+		        if (Master.UserId != Master.CamperUserId) //then the user is admin
+			        strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
+		        else //the user is Camper
+			        strRedirURL = "ThankYou.aspx";
+
+		        Response.Redirect(strRedirURL, false);
             }
         }
         catch (Exception ex)

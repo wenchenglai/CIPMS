@@ -907,7 +907,7 @@ namespace CIPMSBC
         }
 
         //to update the status of the Camper Application.
-        public int updateStatus(String FJCID, int Status, String Comment, int ModifiedBy)
+        public int UpdateStatus(String FJCID, int Status, String Comment, int ModifiedBy)
         {
             CIPDataAccess dal = new CIPDataAccess();
             int rowsaffected;

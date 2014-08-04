@@ -1,15 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using System.IO;
 
 public partial class Step3_Parentinformation : System.Web.UI.Page
 {
@@ -58,7 +51,7 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
             CamperAppl = new CamperApplication();
             objGeneral = new General();
             cFooter = (CamperFooter)Master.FindControl("CamperFooter1");
-            
+
             if (!Page.IsPostBack)
             {
                 //to fill the state values from the database
@@ -72,7 +65,7 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
                 }
                 else
                     hdnPerformAction.Value = "INSERT";
-                
+
                 setURLReferrer();
 
                 //if the camper is filling the application for the first time then take the values
@@ -88,12 +81,6 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
         { 
             Response.Write(ex.Message);
         }
-    }
-
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
     }
 
     //to set the URL REFERER (to be used in Other Info page)
@@ -506,7 +493,6 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
 
         return UserInfo;
     }
-
 
     private void SetCountryValidationRules(string CountryCode)
     {

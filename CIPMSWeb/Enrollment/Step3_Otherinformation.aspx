@@ -460,8 +460,8 @@
                 chk1.checked=true;
             }
         }
-        function Q8AndQ9CheckBoxSelection(ChkBoxClickedObj,ChkBoxClickedObjText,ChkBoxClickedObjValue)
-        {
+        function Q8AndQ9CheckBoxSelection(ChkBoxClickedObj,ChkBoxClickedObjText,ChkBoxClickedObjValue) {
+            debugger;
             var pnl = document.getElementById("ctl00_Content_Panel1");
             var pnlInputObjs = pnl.getElementsByTagName("input");
             var iCount,cnt;
@@ -546,7 +546,7 @@
                 chkQ10_0.disabled = chkQ10_1.disabled = chkQ10_2.disabled = true;
             }
         }
-        EnableQ8AndQ9CheckBoxed();    
+        //EnableQ8AndQ9CheckBoxed();    
     </script>
 
 </asp:Content>
