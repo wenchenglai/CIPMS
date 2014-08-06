@@ -1304,16 +1304,15 @@ namespace CIPMSBC
             file.Close();
         }
 
-        public DataSet GetFederationAndQuestionnaireDetails(string strFederationIds)
+        public DataSet GetFederationAndQuestionnaireDetails(string strFederationIds, int campYearId)
         {
-            CIPDataAccess dal = new CIPDataAccess();
-            DataSet dsFederationAndQuestionnaireDetails;
+            var dal = new CIPDataAccess();
             try
             {
-                SqlParameter[] parameters = new SqlParameter[1];
+                var parameters = new SqlParameter[2];
                 parameters[0] = new SqlParameter("@FederationIds", strFederationIds);
-                dsFederationAndQuestionnaireDetails = dal.getDataset("usp_GetFederationAndQuestionnaireDetails", parameters);
-                return dsFederationAndQuestionnaireDetails;
+                parameters[1] = new SqlParameter("@CampYearID", campYearId);
+                return dal.getDataset("usp_GetFederationAndQuestionnaireDetails", parameters);
             }
             catch (Exception ex)
             {
