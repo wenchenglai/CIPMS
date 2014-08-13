@@ -15,7 +15,6 @@ public partial class TrackMyStatus : System.Web.UI.Page
 {
     private General objGeneral;
 
-    
     protected void Page_Load(object sender, EventArgs e)
     {
         //Check whether camper has logged in
@@ -36,12 +35,9 @@ public partial class TrackMyStatus : System.Web.UI.Page
          }
 
         string strFJCID = string.Empty;
-        string _strFedId = string.Empty;
+
         if (!IsPostBack)
-        {
-           
-           
-            
+        {     
             if(!string.IsNullOrEmpty(Request.QueryString["FJCID"]))
             {
                 strFJCID = (string)Request.QueryString["FJCID"];

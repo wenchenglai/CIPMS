@@ -51,8 +51,8 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="View Status / Application" ItemStyle-HorizontalAlign="center">
                             <ItemTemplate>
-                                    <asp:LinkButton ID="lnkBtnChkStatus" Text="check application status" runat="server" CommandName="CheckStatus" CommandArgument='<%# Eval("FJCID") %>'></asp:LinkButton>
-                                    / <asp:LinkButton ID="lnkBtnViewApplication" Text="view application" runat="server" CommandName="ViewApplication" CommandArgument='<%# Eval("FJCID") %>'></asp:LinkButton>
+                                <asp:LinkButton ID="lnkBtnViewApplication" Text="Complete/View Application" runat="server" CommandName="ViewApplication" CommandArgument='<%# Eval("FJCID") %>' /> | 
+                                <asp:LinkButton ID="lnkBtnChkStatus" Text="Check Application Status" runat="server" CommandName="CheckStatus" CommandArgument='<%# Eval("FJCID") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                         

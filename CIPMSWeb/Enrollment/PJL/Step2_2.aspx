@@ -62,7 +62,7 @@
                     <asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4"
                         runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first-time attending a nonprofit Jewish overnight summer camp for 19 days or longer? (NOTE:if the camper is attending camp in the west for the first time for 12 days or longer answer “YES”).</asp:Label><br />
+                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first-time attending a nonprofit Jewish overnight summer camp for at least 12 consecutive days?</asp:Label><br />
                     &nbsp;<asp:RadioButton ID="RadioBtnQ31" value="1" runat="server" GroupName="RadiobuttonQ3"
                         Text="Yes" CssClass="QuestionText" />
                     <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server"

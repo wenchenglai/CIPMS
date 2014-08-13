@@ -2,25 +2,24 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
     <div class="QuestionText">
-        <p style="text-align:justify; color:red">
-            <b>You’ve been entered into the PJ GOES TO CAMP OHC LOTTERY.</b>
+        <p>
+            Congratulations, you’ve been entered in the PJ Goes to Camp One Happy Camper lottery for campers currently enrolled in Jewish day school.
         </p>
-        <p class="QuestionText" style="text-align:justify">
-            The lottery will be drawn by XXX DATE and you will be notified whether or not your child’s name has been drawn via email.
+        <p>
+            The lottery will be drawn the week of November 10th.  If selected you will notified via the email address that you used to complete this application with instructions on how to proceed. If you are NOT selected, you will receive an email notifying you about next steps and other opportunities.
         </p>
-        <p class="QuestionText" style="text-align:justify">
-            If your child’s name is selected, YOU WILL RECEIVE AN email with instructions on how to complete the application. 
-            There will be a deadline of when the application must be completed. If not completed by that date, you will automatically forfeit the grant.
+        <p>
+           If you have any questions about the lottery process, please contact PJ Goes to Camp at pjgtc@hgf.org
         </p>
-        <p class="QuestionText" style="text-align:justify">
-            If you have any questions about the lottery process, please be in touch with Madeline Ramos at the PJ Goes to Camp at PJGTC@HGF.org.
+        <p>
+            Please do not enter the lottery more than one time per child.
         </p>        
     </div>
 
     
     <div class="QuestionText">
         <br />
-        <a href="../../CamperOptions.aspx">Click here</a> to create another application
+        <a href="../../CamperOptions.aspx">Click here</a> to complete an application for another child.
     </div>
 </asp:Content>
 

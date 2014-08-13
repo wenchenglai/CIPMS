@@ -27,19 +27,6 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         gvWrkQ.Visible = true;
         lblWrkQueueMsg.Visible = false;
 
-        //commented by sreevani to remove attention message
-        //if (Session["RoleID"] != null)
-        //{
-        //   string strUserRole = Session["RoleID"].ToString();
-        //   if (strUserRole == ConfigurationManager.AppSettings["FEDADMIN"])
-        //   {
-        //       lblAttentionMsg.Visible = true;
-        //   }
-        //   else
-        //   {
-        //       lblAttentionMsg.Visible = false;
-        //   }
-        //}
         DataSet dsCampYear = _objGen.GetCurrentYear();
         if (dsCampYear.Tables[0].Rows.Count > 0)
         {
@@ -120,6 +107,8 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         {
             _objCamperDet.FederationID = (string)Session["FedId"];
             _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43,45";
+            if (_objCamperDet.FederationID == ((int)FederationEnum.PJL).ToString())
+                _objCamperDet.Status += ",46,47,48,49";
         }
 
         //If logged in role is FJC Admin, show records for his federation with status - 

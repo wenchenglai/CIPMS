@@ -49,7 +49,7 @@ public partial class CamperFooter : System.Web.UI.UserControl
                                                     "STEP3_OTHERINFORMATION.ASPX",
             "THANKYOU.ASPX","CAMPMESSAGE.ASPX","PJLDEFPOPUP.ASPX","TRACKMYSTATUS.ASPX",
             "CAMPEROPTIONS.ASPX","CAMPSEARCH_NEW.ASPX","ACADAMYSUMMARY.ASPX","ACADAMYSTEP2_2.ASPX", 
-            "ACADAMYSTEP2_3.ASPX","CLOSEDFEDREDIRECTION.ASPX","NLINTERMEDIATE.ASPX","NYCAMPREDIRECT.ASPX","STEP2_COUPON.ASPX"};
+            "ACADAMYSTEP2_3.ASPX","CLOSEDFEDREDIRECTION.ASPX","NLINTERMEDIATE.ASPX","NYCAMPREDIRECT.ASPX","STEP2_COUPON.ASPX", "STEP2_2_ROUTE_INFO.ASPX", "ENTERLOTTERYINFO.ASPX"};
         resultCampId = 0;
 
         try
@@ -58,33 +58,14 @@ public partial class CamperFooter : System.Web.UI.UserControl
             //session variable will be set from the camper summary page
             if (string.IsNullOrEmpty(strFedId) && Session["FedId"] != null)
                 strFedId = Session["FedId"].ToString();
-            else if (string.IsNullOrEmpty(strFedId) && Request.Url.AbsoluteUri.Contains("CMART_MIIP/CampMessage.aspx"))
-            {
-                //Added by Ram for CMART popup camp message
-                DataSet dsAllFederations = objGeneral.get_AllFederations();
-                DataRow[] drCMARTFederations = dsAllFederations.Tables[0].Select("Federation Like '%Interfaith Incentive%'", "ID Desc");
-                foreach (DataRow drCMARTFederation in drCMARTFederations)
-                {
-                    strFedId = drCMARTFederation["ID"].ToString();
-                    break;
-                }
-            }
-            else if (string.IsNullOrEmpty(strFedId) && Request.Url.AbsoluteUri.Contains("PJL/PJLDefPopUp.aspx"))
-            {
-                DataSet dsAllFederations = objGeneral.get_AllFederations();
-                DataRow[] drCMARTFederations = dsAllFederations.Tables[0].Select("Federation Like '%PJ Goes%'", "ID Desc");
-                foreach (DataRow drCMARTFederation in drCMARTFederations)
-                {
-                    strFedId = drCMARTFederation["ID"].ToString();
-                    break;
-                }
-            }
-            
+
+            if (Request.Path == "/Enrollment/PJL/Step2_2_route_info.aspx" || Request.Path == "/Enrollment/PJL/EnterLotteryInfo.aspx")
+                strFedId = ((int)FederationEnum.PJL).ToString();
 
             //Added by Ram
             if (Session["CampID"] != null)
             {
-                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);                
+                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
             }
             else if (Session["FJCID"] != null)
             {
@@ -102,7 +83,7 @@ public partial class CamperFooter : System.Web.UI.UserControl
                 strPath = Path.GetFileName(Request.Path.ToUpper());
 
                 //to check and implement only for step 2 of the Questionnaire strFedId=="24" || 
-                if ( Array.IndexOf(PagestobeAllowed, strPath) >= 0 && Path.GetDirectoryName(Request.Path.ToUpper()).IndexOf("NATIONAL")<0)
+                if ( Array.IndexOf(PagestobeAllowed, strPath) >= 0 && Path.GetDirectoryName(Request.Path.ToUpper()).IndexOf("NATIONAL") < 0)
                 {
                     //Added by Ram
                     if (string.IsNullOrEmpty(strCampId) || strCampId == "0")

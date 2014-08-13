@@ -2,7 +2,12 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
     <div class="QuestionText" style="margin: 30px;">
-        You are about to enter PJL application process because you don't qualify for the community program you are applying due to Day School constraint.
+        <p>You are being re-routed to the PJ Goes to Camp One Happy Camper program.</p>
+        <p>PJ Goes to Camp has a limited number of grants for children currently enrolled in a Jewish day school.  Grants are awarded by lottery.  To enter the lottery we need to know a bit more about your first-time camper.</p>  
+        <p>The lottery will take place the week of November 10th.  You will be notified via the email aaddress that you used to complete this application.</p>
+        <p>Questions, please contact:  PJGTC@HGF.org.</p>
+        <p>Please click “Next” button to continue the application process. </p>
+
     </div>
     <table width="100%">
         <tr>

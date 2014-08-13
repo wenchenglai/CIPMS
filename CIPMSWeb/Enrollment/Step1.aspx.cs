@@ -495,7 +495,7 @@ public partial class Step1 : System.Web.UI.Page
         SetCountryValidationRules(ddlCountry.SelectedItem.Value);
         get_CountryStates(int.Parse(ddlCountry.SelectedValue));
 
-        string strFJCID = hdnFJCID.Value;
+        var strFJCID = hdnFJCID.Value;
         if (!strFJCID.Equals(string.Empty))
         {
             UserInfo = CamperAppl.getCamperInfo(strFJCID);
@@ -592,7 +592,7 @@ public partial class Step1 : System.Web.UI.Page
 
     public void CusValSplCode_ServerValidate(object source, ServerValidateEventArgs args)
     {
-        var code = txtSplCode.Text.Trim();
+        var code = txtSplCode.Text.Trim().ToUpper();
 
         if (code == "")
             return;
