@@ -61,6 +61,20 @@ public partial class TrackMyStatus : System.Web.UI.Page
                         lblCamperName.Text = dsCamperTrackdetails.Tables[0].Rows[0]["CamperName"].ToString();
                         lblCamp.Text = dsCamperTrackdetails.Tables[0].Rows[0]["CampName"].ToString();
                         lblGrnatAmount.Text = string.Format("{0:C}", dsCamperTrackdetails.Tables[0].Rows[0]["GrantAmount"]);
+
+                        var status = (StatusInfo)dsCamperTrackdetails.Tables[0].Rows[0]["StatusID"];
+                        switch (status)
+                        {
+                            case StatusInfo.EligiblePJLottery:
+                            case StatusInfo.WinnerPJLottery:
+                            case StatusInfo.PendingPJLottery:
+                                lblGrnatAmount.Text = "Pending";
+                                break;
+                            case StatusInfo.IneligiblePJLottery:
+                                lblGrnatAmount.Text = "N/A";
+                                break;
+                        }
+
                         lblAppicationStatus.Text = dsCamperTrackdetails.Tables[0].Rows[0]["TarckingNote"].ToString();
                         if (Convert.ToBoolean(dsCamperTrackdetails.Tables[0].Rows[0]["IsJWest"]) == false)
                         {

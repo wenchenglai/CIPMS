@@ -334,23 +334,13 @@ public partial class Step1 : System.Web.UI.Page
 		{
             // 2014-02-06 The zip code entered here doesn't have any federations associated, so we need to check if there is PJL code applied so we can go to PJL directly
 			//added by sreevani to check redirection to pjl based on day school codes.
+            strNextURL = strNationalURL;
 			if (!redirectionLogic.BeenToPJL)
 			{
-                dsPJLCodes = objGeneral.GetPJLCodes(Application["CampYear"] != null ? Application["CampYear"].ToString() : DBNull.Value.ToString());
-				for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-				{
-					if (txtSplCode.Text.Trim().ToUpper() == dsPJLCodes.Tables[0].Rows[i][0].ToString())
-					{
-						strNextURL = "~/Enrollment/PJL/Summary.aspx";
-						Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
-						strFedId = ConfigurationManager.AppSettings["PJL"].ToString();
-						break;
-					}
-					else
-					{
-						strNextURL = strNationalURL; // "~/Enrollment/Step1.aspx";
-					}
-				}
+                string pjlId = ((int)FederationEnum.PJL).ToString();
+                strNextURL = "~/Enrollment/PJL/Summary.aspx";
+                Session["FedId"] = pjlId;
+                strFedId = pjlId;
 			}
 		}
 		else if (strNextURL.Trim() == "")

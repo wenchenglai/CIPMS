@@ -41,7 +41,7 @@ public partial class CamperFooter : System.Web.UI.UserControl
         DataSet dsFooterInfo;
         DataRow dr;
         int iCount,resultCampId;
-        string strPath;
+
         General objGeneral = new General();
         string[] PagestobeAllowed = new string[] { "STEP2_1.ASPX", "STEP2_2.ASPX", 
                                                     "STEP2_3.ASPX", "SUMMARY.ASPX", 
@@ -59,7 +59,9 @@ public partial class CamperFooter : System.Web.UI.UserControl
             if (string.IsNullOrEmpty(strFedId) && Session["FedId"] != null)
                 strFedId = Session["FedId"].ToString();
 
-            if (Request.Path == "/Enrollment/PJL/Step2_2_route_info.aspx" || Request.Path == "/Enrollment/PJL/EnterLotteryInfo.aspx")
+
+            var strPath = Path.GetFileName(Request.Path);
+            if (strPath == "Step2_2_route_info.aspx" || strPath == "EnterLotteryInfo.aspx")
                 strFedId = ((int)FederationEnum.PJL).ToString();
 
             //Added by Ram

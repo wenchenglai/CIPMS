@@ -31,7 +31,7 @@ public partial class Step1_NL : System.Web.UI.Page
 			{
 				if (Session["codeValue"].ToString() == "1")
 				{
-				    var fedId = Convert.ToInt32(FederationEnum.Columbus).ToString();
+				    var fedId = Convert.ToInt32(FederationEnum.PJL).ToString();
                     Session["FedId"] = fedId;
 					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), fedId);
 					Response.Redirect("PJL/Summary.aspx");
