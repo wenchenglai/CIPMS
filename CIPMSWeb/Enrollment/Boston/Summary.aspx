@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Boston_Summary" %>
 
 <asp:Content ID="MiddleSex_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
                 <img id="logo" src="../../images/boston.jpg" /></td>
@@ -69,6 +69,23 @@ Temple Sinai (Brookline)<br />
                     <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
                 </asp:Label></td></tr>
     </table>
+    
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>
+                <img id="Img1" src="../../images/boston.jpg" /></td>
+            <td>
+                <asp:Label ID="Label4" runat="server" CssClass="infotext3">
+                    <p style="text-align:justify">
+						The  Combined Jewish Philanthropies of Greater Boston One Happy Camper program is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.
+						<br /><br />
+						Click “NEXT” to see if your camp is sponsoring its own One Happy Camper program.
+					</p>
+				</asp:Label>
+			</td>
+        </tr>
+    </table>  
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
