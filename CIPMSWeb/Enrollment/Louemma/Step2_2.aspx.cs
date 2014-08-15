@@ -114,7 +114,7 @@ public partial class Step2_Louemma_2 : System.Web.UI.Page
                 //Session["FJCID"] = null;
                 //Session["ZIPCODE"] = null;
                 //Session.Abandon();
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

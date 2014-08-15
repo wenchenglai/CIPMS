@@ -55,7 +55,7 @@ public partial class Common : System.Web.UI.MasterPage
             string strRedirURL;
             strRedirURL = SaveandExitURL;
             
-            if (CheckCamperUser == "Yes")
+            if (IsCamperUser == "Yes")
             {
 
                 General oGen = new General();
@@ -238,7 +238,7 @@ public partial class Common : System.Web.UI.MasterPage
             return _sSaveandExitURL;
         }
     }
-    public string CheckCamperUser
+    public string IsCamperUser
     {
          get
         {

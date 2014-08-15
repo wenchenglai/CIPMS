@@ -61,7 +61,7 @@ public partial class Step2_JWestLA_3 : Page
                 }
                 //Session.Abandon();
               //  Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

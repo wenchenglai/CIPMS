@@ -43,7 +43,7 @@ public partial class Enrollment_Ramah_Information : System.Web.UI.Page
             strRedirURL = Master.SaveandExitURL;
             //Session.Abandon();
             //Response.Redirect(strRedirURL);
-            if (Master.CheckCamperUser == "Yes")
+            if (Master.IsCamperUser == "Yes")
             {
 
                 string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";

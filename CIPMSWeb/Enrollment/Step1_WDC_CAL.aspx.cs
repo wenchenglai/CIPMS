@@ -127,7 +127,7 @@ public partial class Step1_WDC_CAL : System.Web.UI.Page
                 strRedirURL = Master.SaveandExitURL;
                // Session.Abandon();
                 //Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

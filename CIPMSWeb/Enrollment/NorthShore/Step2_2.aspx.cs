@@ -105,7 +105,7 @@ public partial class Enrollment_NorthShore_Step2_2 : System.Web.UI.Page
                 }
                // Session.Abandon();
                // Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

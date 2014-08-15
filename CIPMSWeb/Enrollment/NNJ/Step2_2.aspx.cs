@@ -189,7 +189,7 @@ public partial class Step2_NNJ_2 : System.Web.UI.Page
                 //Session["ZIPCODE"] = null;
                 //Session.Abandon();
                // Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
                     General oGen = new General();
                     if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))

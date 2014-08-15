@@ -1,5 +1,4 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true"
-    CodeFile="Step2_2.aspx.cs" Inherits="Step2_PJL_2" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2.aspx.cs" Inherits="Step2_PJL_2" Title="Camper Enrollment Step 2" %>
 
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">

@@ -123,7 +123,7 @@ public partial class Step3_Parentinformation : System.Web.UI.Page
                 //Session.Abandon();
                // Response.Redirect(strRedirURL, false);
                 
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                    // string strScript = "<script language=javascript> window.open('../ThankYouMessage.aspx','Message','toolbar=no,status=no,scroll=no,width=800,height=400'); window.location='" + strRedirURL + "';</script>";

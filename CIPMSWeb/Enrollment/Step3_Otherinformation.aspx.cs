@@ -273,7 +273,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                     InsertStep4Answers();
                 }
 
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

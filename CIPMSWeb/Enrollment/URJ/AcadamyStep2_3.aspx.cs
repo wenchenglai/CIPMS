@@ -123,7 +123,7 @@ public partial class Step2_SportsAcadamy_3 : Page
                 //Session["FJCID"] = null;
                 //Session["ZIPCODE"] = null;
                 //Session["STATUS"] = null;
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

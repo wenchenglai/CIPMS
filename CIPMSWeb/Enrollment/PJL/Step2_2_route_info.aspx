@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_2_route_info.aspx.cs" Inherits="Enrollment_PJL_Step2_2_route_info" %>
-
+<%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
     <img id="Img1" style="float: left;" src="../../images/PJlogo.jpg" width="300" onclick="return Img1_onclick()" />
     <div class="QuestionText" style="margin: 30px;">

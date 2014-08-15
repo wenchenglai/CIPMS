@@ -123,7 +123,7 @@ public partial class Enrollment_NorthShore_step2_3 : System.Web.UI.Page
                 //Session["STATUS"] = null;
                 //Session.Abandon();
                // Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

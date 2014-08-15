@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using CIPMSBC;
 
 public partial class Enrollment_PJL_Step2_2_route_info : System.Web.UI.Page
@@ -32,6 +27,27 @@ public partial class Enrollment_PJL_Step2_2_route_info : System.Web.UI.Page
     }
     protected void btnSaveandExit_Click(object sender, EventArgs e)
     {
+        var strRedirUrl = Master.SaveandExitURL;
 
+        if (Master.IsCamperUser == "Yes")
+        {
+            var oGen = new General();
+            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
+            {
+                Response.Redirect(strRedirUrl);
+            }
+            else
+            {
+                string strScript = "<script language=javascript>openThis(); window.location='" + strRedirUrl + "';</script>";
+                if (!ClientScript.IsStartupScriptRegistered("clientScript"))
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
+                }
+            }
+        }
+        else
+        {
+            Response.Redirect(strRedirUrl);
+        }
     }
 }

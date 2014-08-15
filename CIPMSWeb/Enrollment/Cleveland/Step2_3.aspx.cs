@@ -105,7 +105,7 @@ public partial class Step2_Cleveland_3 : Page
                 InsertCamperAnswers();
             }
               
-            if (Master.CheckCamperUser == "Yes")
+            if (Master.IsCamperUser == "Yes")
             {
 
                 General oGen = new General();

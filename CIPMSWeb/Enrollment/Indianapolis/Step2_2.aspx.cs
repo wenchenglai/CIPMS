@@ -110,7 +110,7 @@ public partial class Step2_Indianapolis_2 : System.Web.UI.Page
                 }
                 //Session.Abandon();
                // Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

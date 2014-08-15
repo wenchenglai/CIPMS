@@ -112,7 +112,7 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                     ProcessCamperAnswers();
                 }
                
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

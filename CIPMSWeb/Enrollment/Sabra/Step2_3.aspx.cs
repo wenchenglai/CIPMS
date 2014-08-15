@@ -123,7 +123,7 @@ public partial class Step2_Sabra_3 : Page
                 //Session["STATUS"] = null;
               //  Session.Abandon();
               //  Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

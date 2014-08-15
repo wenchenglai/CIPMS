@@ -197,7 +197,7 @@ public partial class Step2_Ramah_3 : Page
             InsertCamperAnswers();
         }
 
-        if (Master.CheckCamperUser == "Yes")
+        if (Master.IsCamperUser == "Yes")
         {
 
             var oGen = new General();

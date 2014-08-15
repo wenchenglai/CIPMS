@@ -123,7 +123,7 @@ public partial class Step2_Adamah_3 : Page
                     InsertCamperAnswers();
                 }
 
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

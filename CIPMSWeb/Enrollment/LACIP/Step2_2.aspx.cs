@@ -108,7 +108,7 @@ public partial class Step2_LACIP_2 : System.Web.UI.Page
                 //Session["ZIPCODE"] = null;
                // Session.Abandon();
                // Response.Redirect(strRedirURL,false);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

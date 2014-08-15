@@ -419,7 +419,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                 //Session["FedId"] = null;
                // Session.Abandon();
                 //Response.Redirect(strRedirURL,false);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

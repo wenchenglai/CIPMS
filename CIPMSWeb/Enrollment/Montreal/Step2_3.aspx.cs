@@ -121,7 +121,7 @@ public partial class Step2_Calgary_3 : Page
                 {
                     InsertCamperAnswers();
                 }
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

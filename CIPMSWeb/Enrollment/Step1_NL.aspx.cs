@@ -80,7 +80,7 @@ public partial class Step1_NL : System.Web.UI.Page
                 //Session["ZIPCODE"] = null;
                 //Session.Abandon();
                // Response.Redirect(strRedirURL);
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     General oGen = new General();

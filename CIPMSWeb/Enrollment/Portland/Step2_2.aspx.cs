@@ -181,7 +181,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
             ProcessCamperAnswers();
         }
               
-        if (Master.CheckCamperUser == "Yes")
+        if (Master.IsCamperUser == "Yes")
         {
             string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
             if (!ClientScript.IsStartupScriptRegistered("clientScript"))

@@ -187,7 +187,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                     ProcessCamperAnswers();
                 }
               
-                if (Master.CheckCamperUser == "Yes")
+                if (Master.IsCamperUser == "Yes")
                 {
 
                     string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";

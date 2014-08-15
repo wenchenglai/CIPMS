@@ -48,7 +48,7 @@ public partial class NLIntermediate : System.Web.UI.Page
         {
             string strRedirURL;
             strRedirURL = Master.SaveandExitURL;
-            if (Master.CheckCamperUser == "Yes")
+            if (Master.IsCamperUser == "Yes")
             {
                 General oGen = new General();
                 if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))

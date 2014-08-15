@@ -444,7 +444,7 @@ public partial class Step1 : System.Web.UI.Page
             Info = getUserInfoStructwithValues();
             ProcessCamperInfo(Info);
 
-            if (Master.CheckCamperUser == "Yes")
+            if (Master.IsCamperUser == "Yes")
             {
                 General oGen = new General();
                 if (Session["FJCID"] != null)
