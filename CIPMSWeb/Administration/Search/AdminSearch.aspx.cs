@@ -491,7 +491,7 @@ public partial class AdminSearch : System.Web.UI.Page
 
             if (_CampYear != "")
             {
-                ddlCampYear.SelectedIndex = ddlCampYear.Items.Count - 1;
+                ddlCampYear.SelectedIndex = (int)Application["CampYear"] - 2008 - 1;
             }
         }
         

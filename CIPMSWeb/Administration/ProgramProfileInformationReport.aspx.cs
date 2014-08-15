@@ -58,7 +58,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
 	private void GenerateDocuments(string strSelectedFedList)
     {
         General objGeneral = new General();
-        DataSet dsFederationDetails = objGeneral.GetFederationAndQuestionnaireDetails(strSelectedFedList);
+        DataSet dsFederationDetails = objGeneral.GetFederationAndQuestionnaireDetails(strSelectedFedList, Convert.ToInt32(Application["CampYearID"]));
 		DataSet dsDocData = GenerateExcel(dsFederationDetails);
 
         StringBuilder strHTMLContent = new StringBuilder();
@@ -202,247 +202,214 @@ the accompanying spread sheet)<br /><br />Name of person submitting these docume
         DataSet dsDocTables = new DataSet();
         string FedName = string.Empty;
 
-        if (dsFederationDetails.Tables.Count > 0)
+        if (dsFederationDetails.Tables.Count < 1)
+            return dsDocTables;
+
+        if (dsFederationDetails.Tables[1] == null)
+            return dsDocTables;
+
+        DataTable dtBasicFederationDetails = new DataTable();
+
+        dtBasicFederationDetails.Columns.Add("PartnerName");
+        dtBasicFederationDetails.Columns.Add("ContactName");
+        dtBasicFederationDetails.Columns.Add("ContactEmail");
+        dtBasicFederationDetails.Columns.Add("ContactPhone");
+        dtBasicFederationDetails.Columns.Add("SummaryPageContent");
+        dtBasicFederationDetails.Columns.Add("FirstTimeCamperDefinition");
+        dtBasicFederationDetails.Columns.Add("SecondTimeCamperDefinition");
+        dtBasicFederationDetails.Columns.Add("GradeEligibility");
+        dtBasicFederationDetails.Columns.Add("DaySchoolEligibility");
+        dtBasicFederationDetails.Columns.Add("FirstQuestion");
+        dtBasicFederationDetails.Columns.Add("SecondQuestion");
+        dtBasicFederationDetails.Columns.Add("DaySchoolNames");
+        dtBasicFederationDetails.Columns.Add("FederationName");
+
+        foreach (DataRow dr in dsFederationDetails.Tables[1].Rows) //First 5 fields
         {
-            if (dsFederationDetails.Tables[1] != null)
+            int iFederationId = Int32.Parse(dr["FederationID"].ToString());
+            DataRow drDocData = dtBasicFederationDetails.NewRow();
+            drDocData["PartnerName"] = dr["PartnerName"].ToString();
+            FedName = dr["PartnerName"].ToString();
+            drDocData["ContactName"] = dr["ContactName"].ToString();
+            drDocData["ContactEmail"] = dr["ContactEmail"].ToString();
+            drDocData["ContactPhone"] = dr["ContactPhone"].ToString();
+            if (dr["NavigationURL"].ToString().ToLower().Contains("summary.aspx"))
             {
-                DataTable dtBasicFederationDetails = new DataTable();
-
-                dtBasicFederationDetails.Columns.Add("PartnerName");
-                dtBasicFederationDetails.Columns.Add("ContactName");
-                dtBasicFederationDetails.Columns.Add("ContactEmail");
-                dtBasicFederationDetails.Columns.Add("ContactPhone");
-                dtBasicFederationDetails.Columns.Add("SummaryPageContent");
-                dtBasicFederationDetails.Columns.Add("FirstTimeCamperDefinition");
-                dtBasicFederationDetails.Columns.Add("SecondTimeCamperDefinition");
-                dtBasicFederationDetails.Columns.Add("GradeEligibility");
-                dtBasicFederationDetails.Columns.Add("DaySchoolEligibility");
-                dtBasicFederationDetails.Columns.Add("FirstQuestion");
-                dtBasicFederationDetails.Columns.Add("SecondQuestion");
-                dtBasicFederationDetails.Columns.Add("DaySchoolNames");
-                dtBasicFederationDetails.Columns.Add("FederationName");
-
-                foreach (DataRow dr in dsFederationDetails.Tables[1].Rows) //First 5 fields
-                {
-                    int iFederationId = Int32.Parse(dr["FederationID"].ToString());
-                    DataRow drDocData = dtBasicFederationDetails.NewRow();
-                    drDocData["PartnerName"] = dr["PartnerName"].ToString();
-                    FedName = dr["PartnerName"].ToString();
-                    drDocData["ContactName"] = dr["ContactName"].ToString();
-                    drDocData["ContactEmail"] = dr["ContactEmail"].ToString();
-                    drDocData["ContactPhone"] = dr["ContactPhone"].ToString();
-                    if (dr["NavigationURL"].ToString().ToLower().Contains("summary.aspx"))
-                    {
-                        drDocData["SummaryPageContent"] = GetSummaryPageContent(dr["NavigationURL"].ToString().ToLower(), iFederationId);
-                        GetQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
-                        //added by sandhya
-                        string firstquestion = GetfirstQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
-                        drDocData["FirstQuestion"] = firstquestion;
-                        string secondquestion = GetsecondQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
-                        drDocData["SecondQuestion"] = secondquestion;
-                    }
-                    General gen = new General();
-                    drDocData["GradeEligibility"] = gen.GetGradeEligibilityRange(iFederationId);
-                    //FedGradeEligibility fedGradeEligibility = (FedGradeEligibility)iFederationId;
-                    //drDocData["GradeEligibility"] = General.GetEnumDescription(fedGradeEligibility);
-                    //FedName =((FedGradeEligibility)iFederationId).ToString();
-
-                    FedName = ((FedFolderName)iFederationId).ToString();
-                    FedDaySchoolEligibility fedDaySchoolEligibility = (FedDaySchoolEligibility)iFederationId;
-                    drDocData["DaySchoolEligibility"] = General.GetEnumDescription(fedDaySchoolEligibility);
-                    //string DaySchoolEligibility = drDocData["DaySchoolEligibility"].ToString();
-                    //if (DaySchoolEligibility == "true")
-                    //{
-                    //    if (dr["NavigationURL"].ToString().ToLower().Contains("summary.aspx"))
-                    //    {
-                    //        drDocData["DaySchoolNames"] = GetDaySchoolNames(dr["NavigationURL"].ToString().ToLower().Replace("summary.aspx", "Step2_2.aspx"), iFederationId);
-                    //    }
-                    //}
-                    drDocData["FederationName"] = FedName.Trim();
-                    dtBasicFederationDetails.Rows.Add(drDocData);
-                }
-
-                DataTable dtZipCodes = new DataTable();
-
-                dtZipCodes.Columns.Add("FederationID");
-                dtZipCodes.Columns.Add("ZipCode");
-
-//                    String FileName = FedName + "" + System.DateTime.Now.Year + "" + System.DateTime.Now.Month+ "" + System.DateTime.Now.Day +".xlsx";
-                //String FileName = FedName.Trim() + ".xlsx";
-				String FileName = getPPRPath() + FedName.Trim() + ".xlsx";
-                FileInfo newFile = new FileInfo(FileName);
-                
-                if (newFile.Exists) 
-                {
-                    newFile.Delete(); 
-                }
-                newFile = new FileInfo(FileName);
-                //FileInfo newFile = new FileInfo(@"D:\template.xlsx");
-
-                using (ExcelPackage xlPackage = new ExcelPackage(newFile))
-                {
-                    ExcelWorksheet worksheet;
-                    int i;
-					if (dsFederationDetails.Tables[7].Rows.Count > 0)
-					{
-						worksheet = xlPackage.Workbook.Worksheets.Add("ZipCodes");
-						i = 1;
-						worksheet.Cell(i, 1).Value = "ZipCodes";
-						i = i + 1;
-						worksheet.Cell(i, 1).Value = "";
-                        if (dsFederationDetails.Tables[7].Rows.Count < 1000) // 2013-06-11 Too many zip codes will crash the server, and excel file cannot handle that much data
-                        {
-                            foreach (DataRow dr in dsFederationDetails.Tables[7].Rows)
-                            {
-                                DataRow drZipData = dtZipCodes.NewRow();
-                                drZipData["FederationID"] = dr["FederationID"].ToString();
-                                drZipData["ZipCode"] = dr["ZipCode"].ToString();
-                                worksheet.Cell(i + 1, 1).Value = dr["ZipCode"].ToString(); // tins Carrots sold
-                                i++;
-                                xlPackage.Save();
-                                dtZipCodes.Rows.Add(drZipData);
-                            }
-                        }
-                        else
-                        {
-                            worksheet.Cell(i + 1, 1).Value = "There are too many zip codes.  Please ask the FJC admin to manual generate the report for you"; // tins Carrots sold
-                        }
-					}
-                    DataTable dtGrantAmount = new DataTable();
-
-                    dtGrantAmount.Columns.Add("FederationID");
-                    dtGrantAmount.Columns.Add("CampName");
-                    dtGrantAmount.Columns.Add("TimeInCamp");
-                    dtGrantAmount.Columns.Add("DaysAtleast");
-                    dtGrantAmount.Columns.Add("GrantAmount");
-
-                    //newFile = null;
-                   // newFile = new FileInfo("D:\\" + FileName);
-                    if (dsFederationDetails.Tables[6].Rows.Count > 0)
-                    {
-                        //worksheet = xlPackage.Workbook.Worksheets.Add("GrantAmount");
-                        //i = 1;
-
-                        //worksheet.Cell(i, 1).Value = "Camp Name";
-                        //worksheet.Cell(i, 2).Value = "TimeInCamp";
-                        //worksheet.Cell(i, 3).Value = "DaysAtLeast";
-                        //worksheet.Cell(i, 4).Value = "Grant Amount";
-                        //i = i + 1;
-                        //worksheet.Cell(i, 1).Value = "";
-                        //worksheet.Cell(i, 2).Value = "";
-                        //worksheet.Cell(i, 3).Value = "";
-                        //worksheet.Cell(i, 4).Value = "";
-                        //foreach (DataRow dr in dsFederationDetails.Tables[6].Rows)
-                        //{
-                        //    DataRow drGrantAmount = dtGrantAmount.NewRow();
-                        //    drGrantAmount["CampName"] = dr["Name"].ToString();
-                        //    drGrantAmount["TimeInCamp"] = dr["TimeInCamp"].ToString();
-                        //    drGrantAmount["DaysAtleast"] = dr["DaysAtleast"].ToString();
-                        //    drGrantAmount["GrantAmount"] = dr["GrantAmount"].ToString();
-
-                        //    worksheet.Cell(i + 1, 1).Value = dr["Name"].ToString().Replace('\'', ' ');
-                        //    worksheet.Cell(i + 1, 2).Value = dr["TimeInCamp"].ToString(); 
-                        //    worksheet.Cell(i + 1, 3).Value = dr["DaysAtleast"].ToString();
-                        //    worksheet.Cell(i + 1, 4).Value = dr["GrantAmount"].ToString();
-                        //    i++;
-                        //    xlPackage.Save();
-
-                        //    dtGrantAmount.Rows.Add(drGrantAmount);
-                        //}
-                    }
-
-
-                    //added by sandhya 08/07
-
-                    DataTable dtSynagogues = new DataTable();
-
-                    dtSynagogues.Columns.Add("FederationID");
-                    dtSynagogues.Columns.Add("SynagogueName");
-
-                   // newFile = null;
-                    //newFile = new FileInfo("D:\\" + FileName);
-                    if (dsFederationDetails.Tables[5].Rows.Count > 0)
-                    {
-                        worksheet = xlPackage.Workbook.Worksheets.Add("Synagogues");
-                        i = 1;
-                        worksheet.Cell(i, 1).Value = "Synagogues"; // tins Carrots sold
-                        i = i + 1;
-                        worksheet.Cell(i, 1).Value = "";
-                        foreach (DataRow dr in dsFederationDetails.Tables[5].Rows)
-                        {
-                            DataRow drSynagogueData = dtSynagogues.NewRow();
-                            drSynagogueData["FederationID"] = dr["FederationID"].ToString();
-                            drSynagogueData["SynagogueName"] = dr["SynagogueName"].ToString();
-                            worksheet.Cell(i + 1, 1).Value = dr["SynagogueName"].ToString().Replace('\'', ' ');
-                            i++;
-                            xlPackage.Save();
-                            dtSynagogues.Rows.Add(drSynagogueData);
-                        }
-                    }
-                
-                    DataTable dtReferralCodes = new DataTable();
-
-                        dtReferralCodes.Columns.Add("FederationID");
-                        dtReferralCodes.Columns.Add("PromotionalCode");
-
-                        // newFile = null;
-                        // newFile = new FileInfo("D:\\" + FileName);
-                        if (dsFederationDetails.Tables[4].Rows.Count > 0)
-                        {
-                            worksheet = xlPackage.Workbook.Worksheets.Add("Referral Codes");
-                            i = 1;
-                            worksheet.Cell(i, 1).Value = "Referral Codes"; // tins Carrots sold
-                            i = i + 1;
-                            worksheet.Cell(i, 1).Value = "";
-                            foreach (DataRow dr in dsFederationDetails.Tables[4].Rows)
-                            {
-                                DataRow drReferralCodesData = dtReferralCodes.NewRow();
-                                drReferralCodesData["FederationID"] = dr["FederationID"].ToString();
-                                drReferralCodesData["PromotionalCode"] = dr["PromotionalCode"].ToString();
-                                worksheet.Cell(i + 1, 1).Value = dr["PromotionalCode"].ToString();
-                                i++;
-                                xlPackage.Save();
-                                dtReferralCodes.Rows.Add(drReferralCodesData);
-                            }
-                        }
-                    
-                    DataTable dtCamps = new DataTable();
-
-                    dtCamps.Columns.Add("FederationID");
-                    dtCamps.Columns.Add("CampName");
-
-                   // newFile = null;
-                    //newFile = new FileInfo("D:\\" + FileName);
-                    if (dsFederationDetails.Tables[3].Rows.Count > 0)
-                    {
-                        worksheet = xlPackage.Workbook.Worksheets.Add("Camps");
-                        i = 1;
-                        worksheet.Cell(i, 1).Value = "Eligible Camps"; 
-                        i = i + 1;
-                        worksheet.Cell(i, 1).Value = "";
-                        foreach (DataRow dr in dsFederationDetails.Tables[3].Rows)
-                        {
-                            DataRow drCampsData = dtCamps.NewRow();
-                            drCampsData["FederationID"] = dr["FederationID"].ToString();
-                            drCampsData["CampName"] = dr["CampName"].ToString();
-                            worksheet.Cell(i + 1, 1).Value = dr["CampName"].ToString().Replace('\'', ' ');
-                            i++;
-                            xlPackage.Save();
-                            dtCamps.Rows.Add(drCampsData);
-                        }
-                    }
-                    dsDocTables.Tables.Add(dtBasicFederationDetails);
-                    dsDocTables.Tables.Add(dtZipCodes);
-                    dsDocTables.Tables.Add(dtGrantAmount);
-                    dsDocTables.Tables.Add(dtSynagogues);
-                    dsDocTables.Tables.Add(dtReferralCodes);
-                    dsDocTables.Tables.Add(dtCamps);
-                }
-                //added by sreevani to delete excel created if records does not exist corresponding to that federation
-                if (dsFederationDetails.Tables[3].Rows.Count == 0 && dsFederationDetails.Tables[4].Rows.Count == 0 && dsFederationDetails.Tables[5].Rows.Count == 0 && dsFederationDetails.Tables[7].Rows.Count == 0)
-                    newFile.Delete();
+                drDocData["SummaryPageContent"] = GetSummaryPageContent(dr["NavigationURL"].ToString().ToLower(), iFederationId);
+                GetQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
+                //added by sandhya
+                string firstquestion = GetfirstQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
+                drDocData["FirstQuestion"] = firstquestion;
+                string secondquestion = GetsecondQuestionnaire(dr["NavigationURL"].ToString().ToLower().Replace("Summary.aspx", "Step2_2.aspx"), iFederationId);
+                drDocData["SecondQuestion"] = secondquestion;
             }
+            var gen = new General();
+            drDocData["GradeEligibility"] = gen.GetGradeEligibilityRange(iFederationId);
+
+            FedName = ((FedFolderName)iFederationId).ToString();
+            var fedDaySchoolEligibility = (FedDaySchoolEligibility)iFederationId;
+            drDocData["DaySchoolEligibility"] = General.GetEnumDescription(fedDaySchoolEligibility);
+
+            drDocData["FederationName"] = FedName.Trim();
+            dtBasicFederationDetails.Rows.Add(drDocData);
         }
+
+        var dtZipCodes = new DataTable();
+        dtZipCodes.Columns.Add("FederationID");
+        dtZipCodes.Columns.Add("ZipCode");
+
+		var FileName = getPPRPath() + FedName.Trim() + ".xlsx";
+        var newFile = new FileInfo(FileName);
+                
+        if (newFile.Exists) 
+        {
+            newFile.Delete(); 
+        }
+        newFile = new FileInfo(FileName);
+
+        using (var xlPackage = new ExcelPackage(newFile))
+        {
+            ExcelWorksheet worksheet;
+            int i;
+			if (dsFederationDetails.Tables[7].Rows.Count > 0)
+			{
+				worksheet = xlPackage.Workbook.Worksheets.Add("ZipCodes");
+				i = 1;
+				worksheet.Cell(i, 1).Value = "ZipCodes";
+				i = i + 1;
+				worksheet.Cell(i, 1).Value = "";
+                if (dsFederationDetails.Tables[7].Rows.Count < 1000) // 2013-06-11 Too many zip codes will crash the server, and excel file cannot handle that much data
+                {
+                    foreach (DataRow dr in dsFederationDetails.Tables[7].Rows)
+                    {
+                        DataRow drZipData = dtZipCodes.NewRow();
+                        drZipData["FederationID"] = dr["FederationID"].ToString();
+                        drZipData["ZipCode"] = dr["ZipCode"].ToString();
+                        worksheet.Cell(i + 1, 1).Value = dr["ZipCode"].ToString(); // tins Carrots sold
+                        i++;
+                        xlPackage.Save();
+                        dtZipCodes.Rows.Add(drZipData);
+                    }
+                }
+                else
+                {
+                    worksheet.Cell(i + 1, 1).Value = "There are too many zip codes.  Please ask the FJC admin to manual generate the report for you"; // tins Carrots sold
+                }
+			}
+            var dtGrantAmount = new DataTable();
+            dtGrantAmount.Columns.Add("FederationID");
+            dtGrantAmount.Columns.Add("CampName");
+            dtGrantAmount.Columns.Add("TimeInCamp");
+            dtGrantAmount.Columns.Add("DaysAtleast");
+            dtGrantAmount.Columns.Add("GrantAmount");
+
+            //added by sandhya 08/07
+            var dtSynagogues = new DataTable();
+            dtSynagogues.Columns.Add("FederationID");
+            dtSynagogues.Columns.Add("SynagogueName");
+
+            if (dsFederationDetails.Tables[5].Rows.Count > 0)
+            {
+                worksheet = xlPackage.Workbook.Worksheets.Add("Synagogues");
+                i = 1;
+                worksheet.Cell(i, 1).Value = "Synagogues"; // tins Carrots sold
+                i = i + 1;
+                worksheet.Cell(i, 1).Value = "";
+                foreach (DataRow dr in dsFederationDetails.Tables[5].Rows)
+                {
+                    DataRow drSynagogueData = dtSynagogues.NewRow();
+                    drSynagogueData["FederationID"] = dr["FederationID"].ToString();
+                    drSynagogueData["SynagogueName"] = dr["SynagogueName"].ToString();
+                    worksheet.Cell(i + 1, 1).Value = dr["SynagogueName"].ToString().Replace('\'', ' ');
+                    i++;
+                    xlPackage.Save();
+                    dtSynagogues.Rows.Add(drSynagogueData);
+                }
+            }
+
+            var dtJCC = new DataTable();
+            dtJCC.Columns.Add("FederationID");
+            dtJCC.Columns.Add("JCCName");
+
+            if (dsFederationDetails.Tables[8].Rows.Count > 0)
+            {
+                worksheet = xlPackage.Workbook.Worksheets.Add("JCC");
+                i = 1;
+                worksheet.Cell(i, 1).Value = "JCCs";
+                i = i + 1;
+                worksheet.Cell(i, 1).Value = "";
+                foreach (DataRow dr in dsFederationDetails.Tables[8].Rows)
+                {
+                    DataRow drJCC = dtJCC.NewRow();
+                    drJCC["FederationID"] = dr["FederationID"].ToString();
+                    drJCC["JCCName"] = dr["JCCName"].ToString();
+                    worksheet.Cell(i + 1, 1).Value = dr["JCCName"].ToString().Replace('\'', ' ');
+                    i++;
+                    xlPackage.Save();
+                    dtJCC.Rows.Add(drJCC);
+                }
+            }
+                
+            var dtReferralCodes = new DataTable();
+            dtReferralCodes.Columns.Add("FederationID");
+            dtReferralCodes.Columns.Add("PromotionalCode");
+
+            if (dsFederationDetails.Tables[4].Rows.Count > 0)
+            {
+                worksheet = xlPackage.Workbook.Worksheets.Add("Referral Codes");
+                i = 1;
+                worksheet.Cell(i, 1).Value = "Referral Codes"; // tins Carrots sold
+                i = i + 1;
+                worksheet.Cell(i, 1).Value = "";
+                foreach (DataRow dr in dsFederationDetails.Tables[4].Rows)
+                {
+                    DataRow drReferralCodesData = dtReferralCodes.NewRow();
+                    drReferralCodesData["FederationID"] = dr["FederationID"].ToString();
+                    drReferralCodesData["PromotionalCode"] = dr["PromotionalCode"].ToString();
+                    worksheet.Cell(i + 1, 1).Value = dr["PromotionalCode"].ToString();
+                    i++;
+                    xlPackage.Save();
+                    dtReferralCodes.Rows.Add(drReferralCodesData);
+                }
+            }
+                    
+            var dtCamps = new DataTable();
+            dtCamps.Columns.Add("FederationID");
+            dtCamps.Columns.Add("CampName");
+
+            if (dsFederationDetails.Tables[3].Rows.Count > 0)
+            {
+                worksheet = xlPackage.Workbook.Worksheets.Add("Camps");
+                i = 1;
+                worksheet.Cell(i, 1).Value = "Eligible Camps"; 
+                i = i + 1;
+                worksheet.Cell(i, 1).Value = "";
+                foreach (DataRow dr in dsFederationDetails.Tables[3].Rows)
+                {
+                    DataRow drCampsData = dtCamps.NewRow();
+                    drCampsData["FederationID"] = dr["FederationID"].ToString();
+                    drCampsData["CampName"] = dr["CampName"].ToString();
+                    worksheet.Cell(i + 1, 1).Value = dr["CampName"].ToString().Replace('\'', ' ');
+                    i++;
+                    xlPackage.Save();
+                    dtCamps.Rows.Add(drCampsData);
+                }
+            }
+            dsDocTables.Tables.Add(dtBasicFederationDetails);
+            dsDocTables.Tables.Add(dtZipCodes);
+            dsDocTables.Tables.Add(dtGrantAmount);
+            dsDocTables.Tables.Add(dtSynagogues);
+            dsDocTables.Tables.Add(dtReferralCodes);
+            dsDocTables.Tables.Add(dtCamps);
+            dsDocTables.Tables.Add(dtJCC);
+        }
+        //added by sreevani to delete excel created if records does not exist corresponding to that federation
+        if (dsFederationDetails.Tables[3].Rows.Count == 0 && 
+            dsFederationDetails.Tables[4].Rows.Count == 0 && 
+            dsFederationDetails.Tables[5].Rows.Count == 0 && 
+            dsFederationDetails.Tables[7].Rows.Count == 0)
+            newFile.Delete();
+
         return dsDocTables;
     }
 

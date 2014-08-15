@@ -229,7 +229,7 @@ public partial class Step1 : System.Web.UI.Page
                 }
             }
             
-            if (!passFlag)
+            if (!passFlag && Master.UserId == "0" && Master.CamperUserId == "0")
                 Response.Redirect("~/CamperHolding.aspx");
         }
 
