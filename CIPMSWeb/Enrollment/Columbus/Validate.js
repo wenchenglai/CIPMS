@@ -1,4 +1,12 @@
 ﻿var PageValidator = {
+    OnFirstTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_RadioBtnQ32').is(':checked')) {
+            $('#ctl00_Content_divGrandfatherRule :input').removeAttr('disabled');
+        } else {
+            $('#ctl00_Content_divGrandfatherRule :input').attr('disabled', true);
+        }
+    },
+
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";

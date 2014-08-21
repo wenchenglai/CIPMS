@@ -9,11 +9,11 @@
 			</td>
 			<td >
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news!  You may be eligible for an incentive.</p>
+                    <p style="text-align:justify">Good news!  You may be eligible for a One Happy Camper grant.</p>
                 </asp:Label>
                 <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+						To determine if you are eligible, continue reading and, if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
 					</p>
 				</asp:Label>
             </td>
@@ -22,10 +22,8 @@
             <td colspan="2">
                 <asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						The JUF Chicago One Happy Camper program, sponsored by the Foundation for Jewish Camp and JUF Chicago, offers financial incentives of up to 
-						$1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must 
-						be entering grades 3-9 (after camp) and live in the six-county Illinois area served by JUF. Siblings of campers who previously received a 
-						$1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.
+						The JUF Chicago One Happy Camper program, sponsored by the Foundation for Jewish Camp and JUF Chicago, offers financial incentives of up to $1,000 to 
+                        first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days.
 					</p>
                 </asp:Label>
             </td>
@@ -34,11 +32,22 @@
             <td colspan="2">
                 <asp:Label ID="Label1" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-					Campers must also attend a Jewish overnight camp listed on the Foundation for Jewish Camp’s website 
-					(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>). 
-                        This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. 
-                        As such, children who attend Orthodox Jewish day school are generally 
-					not eligible for this incentive program, although exceptions do exist.
+					    The following outlines the eligibility criteria for this program:
+                        <ul style="font-weight: bold">
+                            <li>First time camper must be entering grades 3-9 (after camp).</li>
+                            <li>Live in the six-county Illinois area served by JUF</li>
+                            <li>Siblings of campers who previously received a $1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.</li>
+                            <li>Campers must attend a Jewish overnight camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        </ul>
+					</p>
+                </asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <asp:Label ID="Label4" CssClass="infotext3" runat="server">
+					<p style="text-align:justify">
+						This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. As such, children who attend Orthodox Jewish day school are generally not eligible for this incentive program, although exceptions do exist.
 					</p>
                 </asp:Label>
             </td>
@@ -47,12 +56,8 @@
             <td colspan="2">
                 <asp:Label ID="Label3" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span> who are not eligible for a One Happy Camper grant may qualify for up to $360 
-                        through the Camp Coupons program. Children have three opportunities to “earn” Camp Coupon credits by participating in other Chicago-area Jewish 
-                        educational programs: Jewish preschool, supplementary or day school, and Jewish day camp. Each credit is valued at $120 toward a camper’s first 
-                        overnight camp experience of 19 days or longer. Children who are not eligible for the One Happy Camper program may be able to use up to three 
-                        Camp Coupon credits, one of each type, for a maximum of $360 toward the first summer of overnight camp. Residency and age restrictions apply, 
-                        and attendance at the Jewish educational programs must be verified. Camp Coupons are also administered through the JUF Chicago One Happy Camper application.
+						<span style="color:Red;"><b>Students at Orthodox Day Schools</b></span>
+                        who are ineligible for a One Happy Camper grant should contact <a href="mailto:JewishCamp@juf.org">JewishCamp@juf.org</a>.
 					</p>
                 </asp:Label>
             </td>

@@ -18,9 +18,21 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 19 days or longer?</asp:Label><br />
-                &nbsp;<asp:RadioButton ID="RadioBtnQ31" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" />
-                <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" />
+                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">
+                    Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
+                </asp:Label><br />&nbsp;
+                <asp:RadioButton ID="RadioBtnQ31" value="1" GroupName="RadiobuttonQ3" runat="server" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><span class="InfoText">*</span>1a</td>
+            <td valign="top">
+                How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
+                <div id="divGrandfatherRule" runat="server">
+                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />                    
+                </div>
             </td>
         </tr>
         <tr>

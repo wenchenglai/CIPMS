@@ -5,13 +5,39 @@ using System.Text;
 
 namespace CIPMSBC.Eligibility
 {
-    class EligibilityPJL : EligibilityBase
+    public class EligibilityPJL : EligibilityBase
     {
         public EligibilityPJL(FederationEnum fed)
             : base(fed)
         {
         }
         public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
+        {
+            //if (checkEligibilityCommon(FJCID, out StatusValue))
+            //{
+            //    return true;
+            //}
+            //StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    return true;
+            //} 
+            //StatusBasedOnGrade(FJCID, out StatusValue);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    return true;
+            //}
+            //StatusBasedOnSchool(FJCID, out StatusValue);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    return true;
+            //}
+            //return true;
+            StatusValue = 3;
+            return true;
+        }
+
+        public bool checkEligibilityforStep2(string FJCID, out int StatusValue, StatusInfo currentStatus)
         {
             if (checkEligibilityCommon(FJCID, out StatusValue))
             {
@@ -21,13 +47,13 @@ namespace CIPMSBC.Eligibility
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
-            } 
+            }
             StatusBasedOnGrade(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
-            StatusBasedOnSchool(FJCID, out StatusValue);
+            StatusBasedOnSchool(FJCID, out StatusValue, currentStatus);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
@@ -78,7 +104,7 @@ namespace CIPMSBC.Eligibility
             return iStatusValue;
         }
 
-        private void StatusBasedOnSchool(string FJCID, out int StatusValue)
+        private void StatusBasedOnSchool(string FJCID, out int StatusValue, StatusInfo currentStatus)
         {
             //StatusValue = (int)StatusInfo.SystemEligible;
             //return;
@@ -99,6 +125,10 @@ namespace CIPMSBC.Eligibility
                     if (JewishSchoolOption == 4)
                     {
                         StatusValue = (int)StatusInfo.SystemInEligible;
+
+                        //2014-08-20 If it's PendingPJLottery, we temporarily make it eligible, so the process can still keep the PendingPJLottery on Step2_2
+                        if (currentStatus == StatusInfo.PendingPJLottery)
+                            StatusValue = (int)StatusInfo.SystemEligible;
                     }
                     else
                     {
@@ -183,35 +213,7 @@ namespace CIPMSBC.Eligibility
             
             oCA.UpdateAmount(FJCID, Amount, 0, "");
 
-            return true;
-
-           // return true;
-
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
-
-            StatusBasedOnGrade(FJCID, out StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
-
-            StatusBasedOnSchool(FJCID, out StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
-
-            StatusValue = StatusBasedOnCamp(FJCID, StatusValue);
-            if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }      
+            return true;   
         }
     }
 }

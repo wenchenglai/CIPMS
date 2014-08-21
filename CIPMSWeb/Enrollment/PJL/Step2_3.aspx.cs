@@ -95,12 +95,12 @@ public partial class Step2_PJL_3 : Page
 				}
 
                 var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
-                if (checkStatus == StatusInfo.SystemInEligible || checkStatus == StatusInfo.PendingPJLottery)
+                if ((checkStatus == StatusInfo.SystemInEligible || checkStatus == StatusInfo.PendingPJLottery) && (StatusInfo)iStatus != StatusInfo.SystemInEligible)
                     iStatus = (int)checkStatus;
 
                 Session["STATUS"] = iStatus;
 
-                if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible) || iStatus == Convert.ToInt32(StatusInfo.PendingPJLottery))
+                if (iStatus == Convert.ToInt32(StatusInfo.PendingPJLottery))
 				{
                     var strRedirUrl = "EnterLotteryInfo.aspx";
 
@@ -122,11 +122,19 @@ public partial class Step2_PJL_3 : Page
 
                     Response.Redirect(strRedirUrl, false);
 				}
-				else //if he/she is eligible
-				{
-					Session["FJCID"] = hdnFJCIDStep2_3.Value;
-					Response.Redirect("../Step2_1.aspx");
-				}
+                else if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible))
+                {
+                    if (!isReadOnly)
+                    {
+                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+                    }
+                    Response.Redirect("../ThankYou.aspx", false);
+                }
+                else //if he/she is eligible
+                {
+                    Session["FJCID"] = hdnFJCIDStep2_3.Value;
+                    Response.Redirect("../Step2_1.aspx");
+                }
 			}
 		}
 	}

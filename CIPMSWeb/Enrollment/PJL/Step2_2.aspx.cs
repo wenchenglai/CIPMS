@@ -87,48 +87,18 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
             }
             else
             {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-
-                //// when user is from day school, if they have the special day school code, we let them pass
-                //if (RadioButtionQ5.SelectedValue == "4")
-                //{
-                //    var oCA = new CamperApplication();
-                //    var FJCID = Session["FJCID"].ToString();
-
-                //    string currentCode = Session["SpecialCodeValue"].ToString();
-                //    int validate = oCA.validatePJLDSCode(currentCode);
-                //    if (validate == 0 || validate == 2)
-                //    {
-                //        oCA.updatePJLDSCode(currentCode, FJCID);
-                //        iStatus = (int)StatusInfo.SystemEligible;
-                //    }
-                //    else
-                //    {
-                //        // 2014-02-07 now, the Direct Pass PJL code also allows day school by default
-                //        bool isDirectPass = SpecialCodeManager.IsValidDirectPassCode(Convert.ToInt32(Application["CampYearID"]), FederationEnum.PJL, currentCode);
-                //        if (isDirectPass)
-                //        {
-                //            iStatus = (int)StatusInfo.SystemEligible;
-                //        }
-                //        else
-                //        {
-                //            // 2014-02-19 now, a multi-use regular PJLCode code could allow day school
-                //            bool allowDaySchool = SpecialCodeManager.IsValidPJLPassCodeAllowDaySchool(Convert.ToInt32(Application["CampYearID"]), currentCode);
-                //            if (allowDaySchool)
-                //            {
-                //                iStatus = (int)StatusInfo.SystemEligible;
-                //            }
-                //        }
-                //    }
-                //}
+                //EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
+                var pjl = new EligibilityPJL(FederationEnum.PJL);
+                pjl.checkEligibilityforStep2(strFJCID, out iStatus, (StatusInfo)Convert.ToInt32(Session["STATUS"]));
             }
 
             // 2014-07-28 Starting for Year 2015, PJL has lottery system that campers failed through other community program could land this page with PendingPJLottery status
             if (Session["STATUS"] != null)
             {
                 var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
-                if (checkStatus == StatusInfo.PendingPJLottery || checkStatus == StatusInfo.SystemInEligible)
+
+                // if this page's iStatus is ineligible, we don't even allow it to have PendingLottery
+                if ((checkStatus == StatusInfo.PendingPJLottery || checkStatus == StatusInfo.SystemInEligible) && (StatusInfo)iStatus != StatusInfo.SystemInEligible )
                     iStatus = (int)checkStatus;
             }
 
