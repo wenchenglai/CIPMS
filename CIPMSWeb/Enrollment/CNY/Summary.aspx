@@ -1,65 +1,52 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img src="../../images/CNY Logo.jpg" /></td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="infotext3">
-                        <b>Great news! The Foundation for Jewish Camp, continues to partner with the Jewish Federation of CNY.  
-                            We offer funding to children in our community who wish to attend Jewish overnight camp for the first-time.</b>
-                    </p>
-                </asp:Label>
-                <asp:Label ID="Label4" CssClass="infotext3" runat="server">
-                     <p style="text-align:justify"> 
-                        To determine if you are eligible for a One Happy Camper grant please read the paragraph below.  
-                         If you believe that your camper meets the criteria please proceed with the application by clicking the “next” button below.
-                     </p>
-                </asp:Label>
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                    The One Happy Camper program, administered by the Jewish Federation of CNY, 
-                    provides <b>joint</b> financial incentives <b>totaling</b> $1,000 to first-time campers who attend a 
-                    nonprofit Jewish overnight summer camp for at least 19 consecutive days. 
-                    Eligible campers must be entering grades 1-12 and attending a camp listed on the 
-                    Foundation for Jewish Camp website (<a href="http://www.jewishcamp.org" target="_blank">www.jewishcamp.org</a>).                 
+                <p>
+                    The Foundation for Jewish Camp continues to partner with the Jewish Federation of CNY. We offer funding to children in our community 
+                    who wish to attend Jewish overnight camp for the first-time.
                 </p>
-                </asp:Label></td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label2" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                 <b>Funds that are awarded will be paid directly to the camp.</b></p>
-                </asp:Label></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label6" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                If your child is not eligible for this particular program and you are interested in learning about financial-needs based grants 
-                    or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp.</p>
-                </asp:Label></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label3" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                 For information about <b>SYRACUSE AND CENTRAL NEW YORK INCENTIVES ONLY</b>, contact Judith Stander at <a href="mailto:jstander@jewishfederationcny.com">jstander@jewishfederationcny.com</a>. </p>
-                </asp:Label></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call the camp professional listed at the bottom of this page.</p>
-                </asp:Label></td>
+                <p>
+                    To determine if you are eligible for a One Happy Camper grant please read below. 
+                    If you believe that your camper meets the criteria please proceed with the application by clicking the “Next” button below.
+                </p>
+				<p>
+                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> 
+                    If your child is currently enrolled in a Jewish day school, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org .
+				</p>
+                <p>
+                    All other families, to determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+                </p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p> 
+                <p>
+                    Funds that are awarded will be paid directly to the camp.
+                </p>  
+                <p>
+                    If your child is not eligible for this particular program and you are interested in learning about financial-needs based grants or other camper funding opportunities 
+                    please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp.               
+                </p>
+                <p>
+                    For information about SYRACUSE AND CENTRAL NEW YORK INCENTIVES ONLY, contact the professional listed at the bottom of this page.
+                </p>            
+            </td>
         </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">

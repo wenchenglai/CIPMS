@@ -1,62 +1,47 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Cleveland_Summary" %>
 
 <asp:Content ID="Cleveland_Summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td align="center">
                 <img id="logo" src="../../images/JFC_logo.jpg" alt="" />
                 <img id="Img1" src="../../images/JECCBLKS.jpg" alt="" height="85" width="90" />
             </td>
             <td>
-
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify" >
-                        <span style="color:red; font-weight:bold">ATTENTION</span> <span style="font-weight:bold">
-                            Jewish Day School families: If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click    
-                            here:</span> <br /><a href="http://www.jecc.org/YouthOpportunities/CampFundingl.htm" target="_blank">www.jecc.org/YouthOpportunities/CampFundingl.htm</a> 
-					</p>
-				</asp:Label>
-
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1"><b>Good news! You may be eligible for an incentive.</b> </p>
-                </asp:Label>
-                <asp:Label ID="Labelnew" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.</p>
-                </asp:Label>
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>
 	        </td>
         </tr>   
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						The Cleveland One Happy Camper Program, administered by the Jewish Education Center of Cleveland (JECC) and the Foundation for Jewish Camp, 
-						supported by the Endowment Fund of the Jewish Federation of Cleveland, Madav IX Foundation, a supporting foundation of the Jewish Federation of Cleveland, 
-						Congregations and several anonymous donors, awards up to $1000 to first-time campers.
-					</p>
-				</asp:Label>
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						Eligible campers must attend one of the Cleveland-approved non-profit Jewish overnight camps for a minimum of 19 consecutive days. 
-						Eligible campers must be entering grades 4-12 (after camp). Multiple children from a single family are eligible to receive funds.
-					</p>
-				</asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						If you do not think that you are eligible for this program, but are interested in learning about camp funding opportunities, please visit   
-						<a href="http://www.JewishCamp.org/Scholarships" target= "_blank" >www.JewishCamp.org/Scholarships</a>, 
-						or contact the camp of your choice.
-					</p>
-				</asp:Label></td>
-        </tr>        
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
-                </asp:Label>
+				<p>
+                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> <span style="font-weight:bold">
+                            If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click    
+                            </span><a href="http://www.jecc.org/YouthOpportunities/CampFundingl.htm" target="_blank">here</a>.
+				</p>
+                <p>
+                    All other families, to determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+                </p>
+                <p>
+                    The Michael and Anita Siegal One Happy Camper program administered by the Jewish Education Center of Cleveland (JECC) and supported 
+                    by the Foundation for Jewish Camp and the Endowment Fund of the Jewish Federation of Cleveland, Madav IX Foundation, 
+                    a supporting foundation of the Jewish Federation of Cleveland, Congregations and several anonymous donors, awards up to $1000 to first-time campers. 
+                </p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>First time camper must be entering grades 4-12 (after camp).</li>
+                        <li>Must attend one of the Cleveland-approved non-profit Jewish overnight camps.</li>
+                        <li>Multiple children from a single family are eligible to receive funds.</li>
+                    </ul>
+				</p>   
+                <p>
+                    If you do not think that you are eligible for this program, but are interested in learning about camp funding opportunities, 
+                    please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact the camp of your choice.                 
+                </p>
+                <p>
+                    If you need additional assistance, please call your community professional listed at the bottom of this page.
+                </p>
             </td>
         </tr>
     </table>

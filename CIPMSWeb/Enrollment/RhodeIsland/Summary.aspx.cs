@@ -63,28 +63,31 @@ public partial class Enrollment_Memphis_Summary : System.Web.UI.Page
 
 			// 2013-04-17 special code, for 02762 zip, we only allow them if they have special codes
 			bool pass = true;
-			if (Session["ZIPCODE"].ToString() == "02762")
-			{
-				pass = false;
-				if (Session["SpecialCodeValue"] != null)
-				{
-					string currentCode = Session["SpecialCodeValue"].ToString();
-					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+            if (Session["ZIPCODE"] != null)
+		    {
+                if (Session["ZIPCODE"].ToString() == "02762")
+                {
+                    pass = false;
+                    if (Session["SpecialCodeValue"] != null)
+                    {
+                        string currentCode = Session["SpecialCodeValue"].ToString();
+                        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
+                        List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
 
-					// when moved to .NET 3.5 or above, remember to use lamda expression
-					foreach (string code in specialCodes)
-					{
-						if (code == currentCode)
-						{
-							tblDisable.Visible = false;
-							tblRegular.Visible = true;
-							pass = true;
-						}
-					}
-				}
-			}
+                        // when moved to .NET 3.5 or above, remember to use lamda expression
+                        foreach (string code in specialCodes)
+                        {
+                            if (code == currentCode)
+                            {
+                                tblDisable.Visible = false;
+                                tblRegular.Visible = true;
+                                pass = true;
+                            }
+                        }
+                    }
+                }
+		    }
 
 			if (!pass)
 				Response.Redirect("../Step1_NL.aspx");

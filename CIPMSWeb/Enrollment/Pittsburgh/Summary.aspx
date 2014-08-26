@@ -10,44 +10,36 @@ function logo_onclick() {
 
 // ]]>
 </script>
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="../../images/Pittsburgh_Logo_New.JPG" alt="" onclick="return logo_onclick()" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>    
-                <asp:Label ID="Label3" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>
+                <p>
+                    To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+                </p>
 			</td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						The Pittsburgh One Happy Camper Program, sponsored by the Jewish Federation of Greater Pittsburgh's Centennial Fund for a Jewish Future and the 
-						Foundation for Jewish Camp, provides financial incentives of $1,000 to campers who are attending a nonprofit Jewish overnight summer camp for at 
-						least 19 consecutive days for the first time. Campers must be attending a camp listed on the Foundation for Jewish Camp’s website 
-						(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>) 
-						in order to be eligible for an incentive. 
-					</p>            
-				</asp:Label>
+                <p>
+                    The Pittsburgh One Happy Camper program, sponsored by the Jewish Federation of Greater Pittsburgh's Centennial Fund for a Jewish Future and in partnership with the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to campers who are attending a nonprofit Jewish overnight summer camp for the first time. 
+                </p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>First time camper must be entering grades 2-12 (after camp).</li>
+                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p> 
+                <p>
+                    Important Note: Please be advised that ALL One Happy Camper grant recipients will be required to complete an anonymous survey to understand the program’s impact.
+                </p>   
 			</td>
         </tr>
-			<tr>
-				<td colspan="2">
-					<asp:Label ID="Label4" runat="server" CssClass="infotext3">
-						<p style="text-align:justify">
-							<b>Important Note: Please be advised that ALL Happy Camper grant recipients will be required to complete a survey.</b>
-						</p>
-					</asp:Label>
-				</td>
-			</tr> 
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            

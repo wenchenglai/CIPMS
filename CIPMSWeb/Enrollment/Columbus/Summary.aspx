@@ -7,17 +7,13 @@
                 <img id="logo" src="../../images/Columbus.jpg" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1">
-						Good news! You may be eligible for an incentive.
-					</p>
-				</asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-						please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
 			</td>
         </tr>
         <tr>
@@ -42,7 +38,7 @@
 				</p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
-                    please visit:<a href="www.JewishCamp.org/Scholarships">www.JewishCamp.org/Scholarships</a> or contact your camp or the Jewish Federation of Columbus directly.                     
+                    please visit:<a href="www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp or the Jewish Federation of Columbus directly.                     
                 </p>
                 <p>
 					If you need additional assistance, please call your community professional listed at the bottom of this page.

@@ -1,57 +1,46 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Calgary_Summary" %>
 
 <asp:Content ID="Pittsburgh_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
 				<img id="Img2" src="../../images/AJClogo.jpg" alt="" height="100" width="100" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>    
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-						please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>            
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>    
+                <p>
+				    To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+			    </p>
             </td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						<b>The Atlantic Canada One Happy Camper Program, sponsored by the Atlantic Jewish Council and the Foundation for Jewish Camp, 
-						provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. 
-						Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000 off their camp fee to try a Jewish one.
-						</b>
-					</p>
-				</asp:Label>          
+				<p>
+					The Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, 
+                    is offering a one-time grant of up to $1,000 to eligible Montreal children. 
+				</p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p>   
+                <p>
+                    <span style="font-weight: bold; color:red;">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> Do NOT continue with this application. The Generations Fund Initiative, funded by the Schwartz and Segel families, 
+                    is offering a multi-year Camp Access Grant of $1,000 to eligible Montreal children between the ages of 7 and 16. These grants are specifically intended 
+                    for first-time Jewish campers who attend one of our eligible Jewish day schools. Please click <a href="http://www.federationcja.org/en/camps/#sthash.LsrN4OE3.dpbs" target="_blank">here</a> to apply.                    
+                </p>
+                <p>
+                    Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program, but are interested in learning about other scholarship opportunities, 
+                    please contact your camp directly.
+                </p>
             </td>
         </tr> 
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						Atlantic Canada One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for 
-						at least 19 consecutive days. Eligible campers must be entering grades 1-12 (after camp) and be attending one of the 150+ non-profit, 
-						Jewish, overnight summer camp listed on the Foundation for 
-						Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).
-					</p>   
-					<p style="text-align:justify">
-						Included in this list is the only Jewish summer camp in Atlantic Canada as well as our community camp, 
-						Camp Kadimah <a href="http://www.campkadimah.com"  target="_blank">www.campkadimah.com</a>. Camp Kadimah 
-						has different sessions that meet the requirements of the One Happy Camper Program.
-					</p>         
-				</asp:Label>
-			</td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
-                </asp:Label></td></tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            

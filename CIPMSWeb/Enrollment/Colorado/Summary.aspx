@@ -1,56 +1,46 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Admah_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
 				<img src="../../images/Colorado Logo.jpg" alt=""  />
 			</td>
 			<td>
-				<asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-					<p style="text-align:justify" class="lblPopup1">Good news! You may be eligible for an incentive.</p>
-				</asp:Label>
-				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
-					<p style="text-align:justify"> 
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>    
+                <p>
+				    To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+			    </p>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-			 The Jewish Community Foundation’s (JCF) One Happy Camper Program, a partnership with the Foundation for Jewish Camp provides Jewish children the opportunity to 
-			 experience the incredible gift of Jewish overnight summer camp for the first time. Subsidies of $1,000 per child (minimum 19 days) 
-			 or $700 (minimum 12 days) will be provided to Jewish children currently in grades 1 through 12 grade who are residents of Colorado, 
-			 who have not previously attended an overnight Jewish summer camp (for at least 12 days), and who do not currently attend a Jewish Day School. 
-			 Eligible participants may choose from one of the 150+ non-profit, Jewish, overnight summer camp listed on the Foundation for Jewish Camp’s website 
-			 (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).
-					</p>
-				</asp:Label>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						In Colorado, JCC Ranch Camp, Ramah of the Rockies, and Shwayder Camp provide needs-based scholarship and we encourage you to speak directly with the camps 
-						if you are in need of greater financial assistance. Outside of Colorado, 
-						please visit <a href="http://www.JewishCamp.org/Scholarships " target="_blank">www.JewishCamp.org/Scholarships</a> to 
-						learn more about other financial aid opportunities. 
-					</p>
-				</asp:Label>
-			</td>
-		</tr> 
-		<tr>
-			<td colspan="2">
-				<asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-					<p style="text-align:justify">
-						If you need additional assistance, please call your community professional listed at the bottom of this page.
-					</p>
-				</asp:Label>
-			</td>
+				<p style="text-align:justify">
+					The Jewish Community Foundation’s (JCF) One Happy Camper program, a partnership with the Foundation for Jewish Camp provides Jewish children the opportunity to 
+                    experience the incredible gift of Jewish overnight summer camp for the first time.  
+				</p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>                       
+                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p>   
+                <p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, 
+                    children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
+                </p>
+                <p>
+                    In Colorado, JCC Ranch Camp, Ramah of the Rockies, and Shwayder Camp provide needs-based scholarship and we encourage you to speak directly with the camps 
+                    if you are in need of greater financial assistance. Outside of Colorado, please visit <a href="http://www.JewishCamp.org/Scholarships">www.JewishCamp.org/Scholarships</a> 
+                    to learn more about other financial aid opportunities.
+                    If you need additional assistance, please call your community professional listed at the bottom of this page.
+
+                </p>
+            </td>
 		</tr>
 	</table>
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">

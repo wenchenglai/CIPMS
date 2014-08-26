@@ -1,49 +1,51 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Summary" %>
 
 <asp:Content ID="Greenboro_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="../../images/Greensboro_Logo.jpg" width="270" /></td> 
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-						please proceed by clicking the "next" button below.</p>
-				</asp:Label>
+                <p>Good news! You may be eligible for a One Happy Camper grant.</p>    
+                <p>
+				    To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+			    </p>
 			</td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						<b>The Greensboro One Happy Camper Program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, Temple Emanuel, and 
-						the Foundation for Jewish Camp, provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp 
-						for at least 19 days. $700 is offered to first-time campers attending URJ Six Points Sports Academy.</b>
-					</p>                
-					<p style="text-align:justify">
-						Eligible campers must be entering grades 3-12 (after camp), live in Greensboro or its environs, and be attending a camp listed on the Foundation for 
-						Jewish Camp’s website (www.jewishcamp.org/camps). Multiple children from a single family are eligible to receive separate grants. 
-						At least one parent or guardian must be a member in good standing and contribute to the Greensboro Jewish Federation in the year the grant is awarded. 
-						Members of Beth David Synagogue and Temple Emanuel are eligible to receive full incentives. Unaffiliated members may apply to the Federation and will 
-						be reviewed on a case-by-case basis.
-					</p>
-					<p style="text-align:justify">
-						If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 
-						please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, your camp, or
-                        visit <a href='http://www.shalomgreensboro.org/camp'>www.shalomgreensboro.org/camp</a> to learn about local scholarships available. 
-					</p>
-				</asp:Label>
+				<p>
+					The Greensboro One Happy Camper program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, 
+                    Temple Emanuel, and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers.
+				</p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p>   
+                <p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
+                </p>
+                <p>
+                    <span style="font-weight: bold">Note:</span> Multiple children from a single family are eligible to receive separate grants. At least one parent or guardian must be a member in good standing and 
+                    contribute to the Greensboro Jewish Federation in the year the grant is awarded. Members of Beth David Synagogue and Temple Emanuel are eligible to receive 
+                    full incentives. Unaffiliated members may apply to the Federation and will be reviewed on a case-by-case basis. 
+                </p>
+                <p>
+                    If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 
+                    please visit <a href="http://www.shalomgreensboro.org/jewish-family-services/camp-grants-and-scholarships" target="_blank">www.shalomgreensboro.org/jewish-family-services/camp-grants-and-scholarships</a> to learn about local scholarship opportunities, 
+                    contact your camp or visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
+                </p>
+                <p>
+                    If you need additional assistance, please call your community professional listed at the bottom of this page.
+                </p>
 			</td>
-        </tr>        
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
-                </asp:Label>
-            </td>
         </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">
