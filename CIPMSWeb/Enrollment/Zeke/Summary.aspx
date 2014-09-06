@@ -1,41 +1,36 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Nageela_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table width="100%" cellpadding="5" cellspacing="0">
+	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td>
                 <img src="Zeke.png" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="infotext3"><b>Good news!  The Foundation for Jewish Camp, in partnership with Camp Zeke, offers an incentive program that is open to campers who live anywhere in North America!</b></p>
-				</asp:Label>
+                <p>
+                    Good news! You may be eligible for a One Happy Camper grant.
+                </p>
             </td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-                        Camp Zeke is the first Jewish overnight camp where 7 to 17 year-olds celebrate healthy living while eating local, 
-                        organic foods and cooking kosher, gourmet meals. In addition to traditional sports, campers choose from alternative 
-                        fitness activities like dance, krav maga, running, strength training, yoga, and sailing. We also offer a culinary 
-                        arts program in which kids can throw on an apron and cook with a professional chef. To learn more, visit www.campzeke.org 
-                        or email questions@campzeke.org!
-					</p>
-				</asp:Label>
+                <p>
+                    The Foundation for Jewish Camp, in partnership with Camp Zeke, offers an incentive program that is open to campers who live anywhere in North America!
+				</p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                    </ul>
+		        </p>                
+		        <p>
+		            Camp Zeke is the first Jewish overnight camp where 7 to 17 year-olds celebrate healthy living while eating local, organic foods and cooking kosher, gourmet meals. In addition to traditional sports, campers choose from alternative fitness activities like dance, krav maga, running, strength training, yoga, and sailing. We also offer a culinary arts program in which kids can throw on an apron and cook with a professional chef. To learn more, visit www.campzeke.org or email questions@campzeke.org! 
+		        </p>
 			</td>
         </tr>
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-                        The Camp Zeke One Happy Camper program provides financial incentives of $1,000 to first-time campers who attend one of our nonprofit 
-                        Jewish overnight summer camps for at least 19 consecutive days. Eligible campers must be entering grades 1-12 (after camp) 
-                        and attending Camp Zeke.
-					</p>
-				</asp:Label>
-			</td>
-        </tr> 
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            

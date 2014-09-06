@@ -1,9 +1,9 @@
 ﻿var PageValidator = {
     OnFirstTimerChange: function (rdoObject) {
         if ($('#ctl00_Content_RadioBtnQ32').is(':checked')) {
-            $('#ctl00_Content_divGrandfatherRule :input').removeAttr('disabled');
+            $("#1a").show();
         } else {
-            $('#ctl00_Content_divGrandfatherRule :input').attr('disabled', true);
+            $("#1a").hide();
         }
     },
 
@@ -50,6 +50,17 @@
             valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
             args.IsValid = false;
             return;
+        }
+
+        //// First Timer camper or not
+        //if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+        //    errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
+        //}
+
+        if ($('#ctl00_Content_RadioBtnQ32').is(':checked')) {
+            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
+            }
         }
 
         // Synagogue/JCC
@@ -141,4 +152,5 @@ $(function () {
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
+    PageValidator.OnFirstTimerChange();
 })

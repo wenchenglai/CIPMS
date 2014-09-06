@@ -501,9 +501,9 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         string strGrade, strSchool, strJewishSchool;
         
         //to get the Question separator from Web.config
-        string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
+        string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"];
         //to get the Field separator from Web.config
-        string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
+        string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"];
 
         //for question FirstTimerOrNot
         strQID = ((int)Questions.Q0003IsFirtTimer).ToString();

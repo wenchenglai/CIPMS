@@ -145,21 +145,20 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
     }
 
     void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Columbus);
-        
+    {      
         if (Page.IsValid)
         {
-            if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+            bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+
+            if (!isReadOnly)
             {
                 ProcessCamperAnswers();
             }
-            bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+            
             //Modified by id taken from the Master Id
-            strModifiedBy = Master.UserId;
-            strFJCID = hdnFJCIDStep2_2.Value;
+            string strModifiedBy = Master.UserId;
+            string strFJCID = hdnFJCIDStep2_2.Value;
+            int iStatus;
             if (strFJCID != "" && strModifiedBy != "")
             {
                 if (isReadOnly)
@@ -169,7 +168,7 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                 }
                 else
                 {
-                    //to check whether the camper is eligible 
+                    var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Columbus);
                     objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
                 }
 
@@ -400,7 +399,7 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                                     rb.Checked = true;
                                 }
                             }
-                            getSynagogueAnswers();
+                            GetAnswers();
                             break;
                         case 6: // assigning the answer for question 6
 
@@ -440,9 +439,9 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
             setTextBoxStatus();
         } //end if for null check of fjcid
     }
-    void getSynagogueAnswers()
+    void GetAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "30,31,1044,1045,1063");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -533,11 +532,22 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                 else
                     txtWhoInSynagogue.Enabled = false;
             }
+            else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoDays12.Checked = true;
+                else
+                    rdoDays19.Checked = true;
+            }
         }
     }
 
     private string ConstructCamperAnswers()
     {
+        var strQId = "";
         string strQuestionId = "";
         string strTablevalues = "";
         string strFSeparator;
@@ -555,6 +565,10 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
         //
         strQuestionId = hdnQ3Id.Value;
         strTablevalues += strQuestionId + strFSeparator + Convert.ToString(RadioBtnQ31.Checked ? "1" : RadioBtnQ32.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //Grandfaother question
+        strQId = ((int) QuestionId.GrandfatherPolicySessionLength).ToString();
+        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //
         if (chkNo.Checked)

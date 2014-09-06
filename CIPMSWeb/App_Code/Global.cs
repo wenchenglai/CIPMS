@@ -35,3 +35,12 @@ public enum SearchKeys
     Email,
     BirthDate
 }
+
+public enum QuestionId
+{
+    FirstTime = 3,
+    Grade = 6,
+    SchoolType = 7,
+    SchoolName = 8,
+    GrandfatherPolicySessionLength = 1063
+}

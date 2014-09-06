@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Admah_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-  <table width="100%" cellpadding="5" cellspacing="0">
+  <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
     <tr>
       <td colspan="2">
         <img src="../../images/PalmSprings.jpg" style="height:100px; width:300px" alt=""  />
@@ -9,59 +9,37 @@
     </tr>
     <tr>
       <td colspan="2">
-        <asp:Label ID="lblHeading" CssClass="infotext3" runat="server">
-          <p>
-            Great news!  The Foundation for Jewish Camp, in partnership with the Jewish Federation of Palm Springs & Desert Area, 
-            offers funding to children in our community who wish to attended Jewish overnight camp for the first-time.
-          </p>
-        </asp:Label>
-        <asp:Label ID="Label4" CssClass="infotext3" runat="server">
-          <p style="text-align:justify"> 
-            To determine if you are eligible for a One Happy Camper grant please read the paragraph below. If you believe that your camper meets the criteria please 
-            proceed with the application by clicking the next button below.                      
-          </p>
-        </asp:Label> 
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <asp:Label ID="Label1" CssClass="infotext3" runat="server">
-          <p style="text-align:justify; font-weight:bold;">
-            The Desert One Happy Camper Program provides grants to encourage children to attend overnight Jewish camp for the first-time.  
-            It is not a scholarship fund and is not needs-based.  Our goal is to engage families who are considering sending their children to camp and, 
-            in effect, to give them up to $1,000 off their camp fee to try a Jewish one.
-          </p>
-        </asp:Label>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <asp:Label ID="Label2" CssClass="infotext3" runat="server">
-          <p style="text-align:justify">
-            The Desert One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
-            Eligible campers must be entering grades 1-12 (after camp) and be attending one of the 150+ non-profit, Jewish, overnight summer camp listed on the 
-            Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).                  
-          </p>
-        </asp:Label>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <asp:Label ID="Label3" CssClass="infotext3" runat="server">
-          <p style="text-align:justify; color:Red; ">
-            If the camper currently attends Jewish day school or Yeshiva please contact Sandy Durham at Sandy.durham@jfedps.org or 760-324-4737.  
-            Do not continue with this online application.                  
-          </p>
-        </asp:Label>
-      </td>
-    </tr>        
-    <tr>
-      <td colspan="2">
-        <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-          <p style="text-align:justify">
+        <p>
+			Good news! You may be eligible for an incentive.
+		</p>
+		<p>
+            The Foundation for Jewish Camp, in partnership with the Jewish Federation of Palm Springs & Desert Area, offers funding to children in our community who wish to attended Jewish overnight camp for the first-time.
+		</p>
+        <p>
+            To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the next button below.
+        </p>
+        <p>
+            The Desert One Happy Camper program provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one.
+        </p>
+		<p>
+			The following outlines the eligibility criteria for this program:
+            <ul style="font-weight: bold">
+                <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                <li>First time camper must be entering grades 1-12 (after camp).</li>
+                <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+            </ul>
+		</p>                
+		<p>
+		    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+		</p>
+        <p>
+            <span style="font-weight: bold; color:red;">Attention Jewish day school families:</span>  If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application and instead please contact Sandy Durham at Sandy.Durham@jfedps.org or 760-324-4737.
+        </p>
+        <p>
             If you need additional assistance, please call your community professional listed at the bottom of this page.
-          </p>
-        </asp:Label>
+		</p>    
       </td>
     </tr>
   </table>

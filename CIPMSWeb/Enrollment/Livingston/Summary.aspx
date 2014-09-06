@@ -1,56 +1,45 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img src="../../images/Livingston.png" alt="" /></td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>
-                <asp:Label ID="Label4" CssClass="infotext3" runat="server">
-                     <p style="text-align:justify"> 
-                    To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.</p>
-                   
-                </asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
             </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                 <b>The Camp Livingston One Happy Camper Program, sponsored by Camp Livingston and the Foundation for Jewish Camp provides financial incentives of $1,000 
-                     to campers who attend camp for at least 19 consecutive days for the first time. Eligible campers must be entering grades 3-12 (after camp) and already signed up for Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs (mini-sessions are not eligible). 
-                </b> </p>
-                </asp:Label></td>
-        </tr>
-
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label2" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                 Camp Livingston has been serving campers from all over for over 90 years. Campers enjoy sports, arts, aquatics, ropes course, rock climbing, nature, 
-                 Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. 
-                 We provide a safe and nurturing environment where campers gain self-esteem confidence, and form lasting friendships with their cabin and unit friends, 
-                 all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are 
-                 difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, 
-                    experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.</p>
-                </asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label3" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                 If you are interested in learning more about our camps and available grants, please visit our website at <a href="http://www.camplivingston.com" target="_blank">www.camplivingston.com</a>.</p>
-                </asp:Label></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call the camp office at 513-793-5554.</p>
-                </asp:Label></td>
+			<td colspan="2">
+                <p>
+                    The Camp Livingston One Happy Camper program, sponsored by Camp Livingston and the Foundation for Jewish Camp provides financial incentives.
+				</p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 to campers who attend camp for at least 19 consecutive days for the first time.</li>
+                        <li>$700 to campers who attend camp for 12-18 consecutive days for the first time.</li>
+                        <li>Eligible campers must be entering grades 3-12 (after camp).</li>
+                        <li>You must be already signed up for Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs.</li>
+                        <li>If your child attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                    </ul>
+		        </p>                
+		        <p>
+		            Camp Livingston has been serving campers from all over for 95 years. Campers enjoy sports, arts, aquatics, ropes courses, rock climbing, nature, Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.
+		        </p>
+                <p>
+                    If you are interested in learning more about our camps and available grants, please visit our website at <a href="http://www.camplivingston.com" target="_blank">www.camplivingston.com</a>.
+                </p>
+                <p>
+                    If you need additional assistance, please call the camp office at 513-793-5554.
+                </p>
+			</td>
         </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">

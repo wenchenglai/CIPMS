@@ -6,26 +6,23 @@
 
     <div>
         <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="PageValidator.OnSubmitClick"></asp:CustomValidator>
-        <!--to vaidate the comments text box for admin user-->
         <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
         <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
-        <!--this summary will be used only for Comments field (only for Admin user)-->
         <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
     </div>
-
     <table width="100%">
         <tbody class="QuestionText">
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">
-                    Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
-                </asp:Label><br />&nbsp;
-                <asp:RadioButton ID="RadioBtnQ31" value="1" GroupName="RadiobuttonQ3" runat="server" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
-                <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
+                <div>
+                    <asp:RadioButton ID="RadioBtnQ31" value="1" GroupName="RadiobuttonQ3" runat="server" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />                    
+                </div>
             </td>
         </tr>
-        <tr>
+        <tr id="1a">
             <td valign="top"><span class="InfoText">*</span>1a</td>
             <td valign="top">
                 How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 

@@ -1,52 +1,48 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Admah_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
 				<img src="../../images/EVClogo_arch_2C.jpg" alt=""  /></td>
 			<td>
-				<asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-					<p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-				</asp:Label>
-				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
-					<p style="text-align:justify"> 
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p> 
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
-				<p style="text-align:justify">
-				 <b>The Eden Village One Happy Camper program sponsored by Eden Village Camp and the Foundation for Jewish Camp provides financial incentives of $1,000 to first-time campers who attend Eden Village Camp for at least 19 consecutive days. Campers from anywhere in North America are eligible. Eligible campers must be entering grades 3-12 (after camp).</b>
-				 </p>
-				  <p style="text-align:justify">
-				 Eden Village Camp: a first-of-its-kind Jewish environmental sleep-away camp for a healthy, sustainable world! Located 50 miles north of NYC on 248 gorgeous acres touching the Appalachian Trail, Eden Village Camp is a compassionate non-profit community that supports our 3rd - 12th graders in gaining leadership and outdoor living skills, and awakening their sense of connectedness, purpose and joy. 
-				  </p>
-				  <p style="text-align:justify">
-			Eden Village Camp brings an innovative environmental program to the best of traditional camp. The experience includes organic farming, outstanding organic Kosher food, animal care, wilderness adventure, natural science, a zero-waste goal, pool & lake, climbing, music, arts, sports, service projects, amazing staff in a 3:1 camper:counselor ratio... all in a vibrant and diverse Jewish community! </p>
-			<p style="text-align:justify">
-			Our campers have fun while deepening their understanding and appreciation for themselves, their communities, and the natural systems that sustain us.  
-			</p>
-			</asp:Label>
-			</td>
-		</tr>
-		<tr>
+        <tr>
 			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						If you are interested in learning more about our camp, please go to <a href="http://www.edenvillagecamp.org" target="_blank">EdenVillageCamp.org</a>
-					</p>
-				</asp:Label>
+			    <p>
+			        The Eden Village One Happy Camper program sponsored by Eden Village Camp and the Foundation for Jewish Camp.
+			    </p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                    </ul>
+		        </p>                
+		        <p>
+		            Eden Village Camp: a first-of-its-kind Jewish environmental sleep-away camp for a healthy, sustainable world! Located 50 miles north of NYC on 248 gorgeous acres touching the Appalachian Trail, Eden Village Camp is a compassionate non-profit community that supports our 3rd - 12th graders in gaining leadership and outdoor living skills, and awakening their sense of connectedness, purpose and joy. 
+Eden Village Camp brings an innovative environmental program to the best of traditional camp. The experience includes organic farming, outstanding organic Kosher food, animal care, wilderness adventure, natural science, a zero-waste goal, pool & lake, climbing, music, arts, sports, service projects, amazing staff in a 3:1 camper:counselor ratio... all in a vibrant and diverse Jewish community! 
+Our campers have fun while deepening their understanding and appreciation for themselves, their communities, and the natural systems that sustain us. 
+
+		        </p>
+                <p>
+                    If you are interested in learning more about our camp, please go to <a href="http://www.edenvillagecamp.org" target="_blank">EdenVillageCamp.org</a>
+                </p>
+                <p>
+                    If you need additional assistance, please call the camp professional listed at the bottom of this page.
+                </p>
 			</td>
-		</tr> 
-		<tr>
-			<td colspan="2">
-				<asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-					<p style="text-align:justify">If you need additional assistance, please call the camp professional listed at the bottom of this page.</p>
-				</asp:Label></td>
-		</tr>
+        </tr>
 	</table>
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>

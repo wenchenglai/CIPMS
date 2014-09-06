@@ -2,47 +2,48 @@
     Inherits="Enrollment_NNJ_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr> 
             <td>
                 <img id="imgLogo" src="../../images/jewish nnj.jpg" alt="" runat="server" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-					<p style="text-align:justify"><b>Good news! You may be eligible for an incentive.</b></p><br/>
-				</asp:Label>    
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3" >
-					<p style="text-align:justify" >
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-					<br />
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
             </td>
         </tr>
         <tr>
             <td colspan="2">
-				<asp:Label ID="Label1" runat="server" CssClass="infotext3">
-					<p style="text-align:justify">
-						<b>JFNNJ’s One Happy Camper program is made possible by the Jewish Federation of Northern New Jersey (JFNNJ) and the Foundation for Jewish Camp. 
-						The program provides a limited number of grants to encourage children to attend overnight Jewish camp for the first-time.  
-						Financial incentives of $1,000 are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 days. 
-						Eligible campers must be entering grades 4-12 (after camp) and attending a camp listed on the Foundation for Jewish Camp’s website 
-						(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>). Grants are distributed on a first-come first-serve basis.</b>
-					</p>
-                </asp:Label>
-				<asp:Label ID="lblAdditionalInfo" runat="server" CssClass="infotext3">
-					<p style="text-align:justify">
-						This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-						As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program. If you do not think that you are 
-						eligible for this program, but are interested in learning about camp scholarship opportunities, please visit 
-						(<a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>) or contact your camp directly.
-					</p>
-					<p style="text-align:justify">
-						If you are interested in learning more about the services of the Jewish Federation of Northern New Jersey, 
-						please visit (<a href="http://www.jfnnj.org" target="_blank">www.jfnnj.org</a>). 
-					</p>
-					<p style="text-align:justify">For more information, please contact the person listed below.</p>
-				</asp:Label>
+                <p>
+                    JFNNJ’s One Happy Camper program is made possible by the Jewish Federation of Northern New Jersey (JFNNJ) and the Foundation for Jewish Camp. The program provides a limited number of grants to encourage children to attend overnight Jewish camp for the first-time.
+                </p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                        <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p> 
+                <p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                </p>
+                <p>
+                    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit (<a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>) or contact your camp directly.
+                </p>
+                <p>
+                    If you are interested in learning more about the services of the Jewish Federation of Northern New Jersey, please visit (<a href="http://www.jfnnj.org" target="_blank">www.jfnnj.org</a>).
+                </p>
+                <p>
+                    For more information, please contact the person listed at the bottom of this page.
+                </p>
 			</td>
         </tr>
     </table>

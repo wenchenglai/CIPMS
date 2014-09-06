@@ -778,8 +778,8 @@ namespace CIPMSBC
                 dal = null;
             }
         }
-        
-		public decimal getCamperGrantForTimeInCamp(string FJCID, int Days,int TimeInCamp)
+
+        public decimal getCamperGrantForTimeInCamp(string FJCID, int Days, int TimeInCamp)
         {
             decimal StandardGrant = 0;
             CIPDataAccess dal = new CIPDataAccess();
