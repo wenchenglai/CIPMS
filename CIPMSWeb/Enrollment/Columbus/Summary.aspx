@@ -38,7 +38,7 @@
 				</p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
-                    please visit:<a href="www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp or the Jewish Federation of Columbus directly.                     
+                    please visit:<a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp or the Jewish Federation of Columbus directly.                     
                 </p>
                 <p>
 					If you need additional assistance, please call your community professional listed at the bottom of this page.

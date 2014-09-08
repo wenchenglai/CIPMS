@@ -310,9 +310,7 @@ public partial class Step2_Calgary_2 : System.Web.UI.Page
         var strQId = "";
         string strTablevalues = "";
 
-        //to get the Question separator from Web.config
         string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"];
-        //to get the Field separator from Web.config
         string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"];
 
         //for question FirstTimerOrNot

@@ -37,7 +37,7 @@
                 <p>
                     If your child is not eligible and/or you are interested in learning about needs-based grants or other camper funding opportunities, 
                     contact Camp JORI, greater Rhode Island’s overnight Jewish camp, at campjori@hotmail.com or 
-                    visit <a href="http://www.JewishCamp.org/Scholarships">www.JewishCamp.org/Scholarships</a>.
+                    visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

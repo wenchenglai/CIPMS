@@ -42,5 +42,10 @@ public enum QuestionId
     Grade = 6,
     SchoolType = 7,
     SchoolName = 8,
+    SelectJewishDaySchool = 17,
+    ReferredBySynagogueOrJCC = 30,
+    SelectYourSynagogueOrJCC = 31,
+    WhoYouSpeakToInSynagogue = 1044,
+    ProfessionalOrCongregate = 1045,
     GrandfatherPolicySessionLength = 1063
 }

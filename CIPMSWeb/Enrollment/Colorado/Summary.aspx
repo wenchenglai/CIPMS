@@ -35,7 +35,7 @@
                 </p>
                 <p>
                     In Colorado, JCC Ranch Camp, Ramah of the Rockies, and Shwayder Camp provide needs-based scholarship and we encourage you to speak directly with the camps 
-                    if you are in need of greater financial assistance. Outside of Colorado, please visit <a href="http://www.JewishCamp.org/Scholarships">www.JewishCamp.org/Scholarships</a> 
+                    if you are in need of greater financial assistance. Outside of Colorado, please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> 
                     to learn more about other financial aid opportunities.
                     If you need additional assistance, please call your community professional listed at the bottom of this page.
 
