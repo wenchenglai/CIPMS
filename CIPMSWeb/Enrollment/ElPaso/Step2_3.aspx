@@ -79,8 +79,7 @@
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                         <asp:Label ID="lbl" runat="server" CssClass="QuestionText">
 							<font color="red">
-								<b> In order to be eligible for the El Paso OHC incentive grant, the camper must attend camp for at least 19 consecutive days 
-								(unless attending camp in the west; s/he must attend for at least 12 consecutive days).</b>
+								<b>In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is ONLY eligible for the grant if attending camp for 19 or more consecutive days in summer 2015.</b>
 							</font>
 						</asp:Label><br />
                         <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />

@@ -2,118 +2,74 @@
 
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">
-    <%--<table width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td>
-                <asp:Label CssClass="headertext" runat="server">Basic Camper Information: Section II continued..</asp:Label><br />
-                <br />
-            </td>
-        </tr>
-    </table>--%>
-    <!--Panel 2 - Questions displayed on page 2 of Step 2-->
+    <script type="text/javascript" src="../CommonValidate.js"></script>
+    <script type="text/javascript" src="Validate.js"></script>
+    
+    <div>
+        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="PageValidator.OnSubmitClick" />
+        <!--to vaidate the comments text box for admin user-->
+        <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false" />
+        <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
+        <!--this summary will be used only for Comments field (only for Admin user)-->
+        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />        
+    </div>
+
     <asp:Panel ID="Panel2" runat="server">
-        <!--to display the validation summary (error messages)-->
-        <table width="50%" cellpadding="0" cellspacing="0" align="center" border="0">
-            <tr>
-                <td>
-                    <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText"
-                        runat="server" Display="Dynamic" ClientValidationFunction="ValidatePage2Step2_PJLibrary"></asp:CustomValidator>
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server"
-                        Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>"
-                        EnableClientScript="false"></asp:CustomValidator>
-                    <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server"
-                        ShowSummary="true" ValidationGroup="GroupAddMore" />
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server"
-                        ShowSummary="true" CssClass="InfoText" />
-                </td>
-            </tr>
-        </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
+        <tbody class="QuestionText">
             <tr>
-                <td valign="top">
-                    <asp:Label ID="Label17" Text="*" runat="server" CssClass="InfoText" />
-                    <asp:Label ID="Label18" runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><span class="InfoText">*</span>1</td>
+                <td valign="top">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
+                <div>
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                </div>
+                </td>
+            </tr>
+            <tr id="1a">
+                <td valign="top"><span class="InfoText">*</span>1a</td>
+                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
+                <div id="divGrandfatherRule" runat="server">
+                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>2</td>
                 <td>
-                    <asp:Label ID="Label6" CssClass="text" runat="server" Text="Name of registered <font style='font-weight:bold;text-decoration:underline;'>PJ Library member</font>?"></asp:Label>
+                    Name of registered <span style="font-weight:bold;text-decoration:underline;">PJ Library member</span>
+                    <div>
+                        First Name: <asp:TextBox ID="txtFirstName" CssClass="txtbox" MaxLength="50" runat="server" /><br/>
+                        Last Name: <asp:TextBox ID="txtLastName" CssClass="txtbox" MaxLength="50" runat="server" />
+                    </div>
                 </td>
             </tr>
             <tr>
-                <td valign="top"></td>
-                <td colspan="2">
-                    <asp:Label ID="Label13" CssClass="text" runat="server" Text="First Name"></asp:Label>
-                    <asp:TextBox ID="txtFirstName1" CssClass="txtbox" MaxLength="50" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqvalFirstName" runat="server" ControlToValidate="txtFirstName1"
-                        Display="None" ErrorMessage="Please enter the First Name"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regexpFirstName" runat="server" ValidationExpression="^[a-zA-Z'\s-]{1,50}$"
-                        ControlToValidate="txtFirstName1" Display="None" ErrorMessage="Please enter a valid First Name" /><br /> 
-                    <asp:Label ID="Label14" CssClass="text" runat="server" Text="Last Name"></asp:Label>
-                    <asp:TextBox ID="txtLastName1" CssClass="txtbox" MaxLength="50" runat="server"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqvalLastName" runat="server" ControlToValidate="txtLastName1"
-                        Display="None" ErrorMessage="Please enter the Last Name"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="regexpLastName" runat="server" ValidationExpression="^[a-zA-Z'\s-]{1,50}$"
-                        ControlToValidate="txtLastName1" Display="None" ErrorMessage="Please enter a valid Last Name" />
+                <td valign="top"><span class="InfoText">*</span>3</td>
+                <td valign="top" style="padding-bottom: 20px;">What grade will the camper enter AFTER camp?
+                <div class="QuestionsLeaveSomeUpperSpace">
+                    <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />
+                </div>
                 </td>
             </tr>
             <tr>
-                <td valign="top">
-                    <asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4"
-                        runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first-time attending a nonprofit Jewish overnight summer camp for at least 12 consecutive days?</asp:Label><br />
-                    &nbsp;<asp:RadioButton ID="RadioBtnQ31" value="1" runat="server" GroupName="RadiobuttonQ3"
-                        Text="Yes" CssClass="QuestionText" />
-                    <asp:RadioButton ID="RadioBtnQ32" value="2" GroupName="RadiobuttonQ3" runat="server"
-                        Text="No" CssClass="QuestionText" />
+                <td valign="top"><span class="InfoText">*</span>4</td>
+                <td valign="top" style="padding-bottom: 20px;">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                </asp:RadioButtonList>
                 </td>
             </tr>
             <tr>
-                <td valign="top">
-                    <asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label8"
-                        runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="divQ6" runat="server">
-                        <asp:Label ID="Label9" runat="server" CssClass="QuestionText">What grade will the camper enter AFTER camp?</asp:Label><br />
-                        <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown">
-                        </asp:DropDownList>
-                        <asp:RequiredFieldValidator Enabled="false" ID="reqvalgrade" ControlToValidate="ddlGrade"
-                            runat="server" ErrorMessage="Please enter the Grade" Display="none"></asp:RequiredFieldValidator>
-                        <asp:RangeValidator Enabled="false" runat="server" ID="rangeValGrade" ErrorMessage="Please enter a valid Grade"
-                            Display="none" ControlToValidate="ddlGrade" Type="Integer" MaximumValue="100"
-                            MinimumValue="0"></asp:RangeValidator>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top">
-                    <asp:Label ID="Label3" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label10"
-                        runat="server" Text="4" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?</asp:Label><br />
-                    <asp:RadioButtonList AutoPostBack="false" CssClass="QuestionText" ID="RadioButtionQ5"
-                        runat="server" RepeatDirection="Horizontal" >
-                        <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
-                    </asp:RadioButtonList>
-                    <asp:RequiredFieldValidator ID="reqval" ControlToValidate="RadioButtionQ5" runat="server"
-                        Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
-                    <asp:Label ID="lblDaySchoolMsg" CssClass="InfoText" Visible="false" runat="server" ForeColor="Red" Text="As the popular PJ Goes to Camp One Happy Camper program for Jewish Day School students is limited, please be in touch with Madeline Ramos at the PJ Library for more information on how to proceed with the grant application. She may be reached at 413-439-1935 or Maddie@hgf.org."></asp:Label>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top" width="5%">
-                    <asp:Label ID="lblQ6star" Text="*" runat="server" CssClass="InfoText" /><asp:Label
-                        ID="lblQ6" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" colspan="2">
-                    <asp:Panel ID="PnlQ6" runat="server">
-                        <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:</asp:Label><br />
-                        <asp:TextBox ID="txtCamperSchool" runat="server" CssClass="txtbox" MaxLength="200"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="reqvalSchool" Display="none" ControlToValidate="txtCamperSchool"
-                            runat="server" ErrorMessage="Please enter the Name of the School"></asp:RequiredFieldValidator>
-                    </asp:Panel>
+                <td valign="top"><span class="InfoText">*</span>5</td>
+                <td valign="top" style="padding-bottom: 20px;">Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
+                <div class="QuestionsLeaveSomeUpperSpace">
+                    <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
+                </div>
                 </td>
             </tr>
             <!-- Admin Panel-->
@@ -155,6 +111,7 @@
                 </table>
             </td>
             </tr>
+        </tbody>
         </table>
     </asp:Panel>
     <!--End of Panel 2 -->

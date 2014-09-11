@@ -431,7 +431,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
+            else if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
@@ -456,7 +456,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                         break;
                 }
             }
-            else if (qID == QuestionId.SelectYourSynagogueOrJCC) // Please select your synagogue or JCC
+            else if (qID == QuestionId.Q31_SelectYourSynagogueOrJCC) // Please select your synagogue or JCC
             {
                 if (dr["OptionID"].Equals(DBNull.Value) || dr["Answer"].Equals(DBNull.Value))
                     continue;

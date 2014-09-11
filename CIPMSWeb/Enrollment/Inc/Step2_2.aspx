@@ -28,7 +28,7 @@
                     <asp:Label ID="Label1" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label4"
                         runat="server" Text="1" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top">
-                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first time attending a nonprofit Jewish overnight summer camp for 12 consecutive days or longer?</asp:Label><br />
+                    <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?</asp:Label><br />
                     <asp:RadioButtonList ID="RadioBtnListQ2" CssClass="QuestionText" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
                         <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                         <asp:ListItem Text="No" Value="2"></asp:ListItem>

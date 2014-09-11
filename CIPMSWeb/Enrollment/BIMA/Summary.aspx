@@ -7,7 +7,7 @@
                 <img src="../../images/bima-large.jpg" /></td>
             <td>
                 <p>
-					Good news! You may be eligible for an incentive.
+					Good news! You may be eligible for a One Happy Camper grant.
 				</p>
                 <p>
 					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 

@@ -1,43 +1,45 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td>
                 <img src="../../images/genesis1.jpg" /></td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1">Good news! You may be eligible for an incentive.</p>
-                 </asp:Label>
-                     <asp:Label ID="Label4" CssClass="infotext3" runat="server">
-                     <p style="text-align:justify"> 
-                     To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.</p>
-                     </asp:Label>
+                <p>
+					Good news! You may be eligible for a One Happy Camper grant.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
             </td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						<b>The BIMA/Genesis at Brandeis University One Happy Camper Program, sponsored by BIMA/Genesis at Brandeis University and the Foundation 
-						for Jewish Camp provides financial incentives of $1,000 to first-time campers who attend one of our nonprofit Jewish overnight summer 
-						camps for at least 19 consecutive days. Eligible campers must be entering grades 10-college (after camp) and attending one of our programs
-						and must not currently attend a Jewish day school. Students who receive BIMA/Genesis scholarships for Russian speaking Jews 
-						may not be eligible for this grant (call us for details).</b>
-					</p>
-				</asp:Label>
+                <p>
+                    BIMA/Genesis at Brandeis University One Happy Camper Program, sponsored by BIMA/Genesis at Brandeis University and the Foundation for Jewish Camp. 
+
+                </p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 10-12 (after camp).</li>
+                        <li>Students who receive BGI Fellowships for Russian Speaking Jews may not be eligible for this grant (call us for details). </li>
+                    </ul>
+		        </p>                
+		        <p>
+		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+		        </p>
+                <p>
+                    If you are interested in learning more about our camps and available grants, please visit us at: 
+                    <a href="http://www.brandeis.edu/highschool/apply/financialaid-bimagen.html" target="_blank">www.brandeis.edu/highschool/apply/financialaid-bimagen.html</a> or 
+                    visit our website 
+                    <a href="http://www.brandeis.edu/highschool" target="_blank">www.brandeis.edu/highschool</a>.
+                </p>
 			</td>
-        </tr> 
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						If you are interested in learning more about our camps and available grants, please visit us at: 
-						<a href="http://www.brandeis.edu/highschool/apply/onehappycamper.html" target="_blank">http://www.brandeis.edu/highschool/apply/onehappycamper.html</a> 
-						or visit the camp websites <a href="http:\\www.brandeis.edu/highschool" target="_blank">www.brandeis.edu/highschool</a>
-					</p>
-				</asp:Label>
-            </td>
         </tr>
     </table>
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">

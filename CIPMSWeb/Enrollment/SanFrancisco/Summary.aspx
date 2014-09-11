@@ -41,7 +41,7 @@
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
                     As such, children who attend Jewish day school or Yeshiva are not eligible for the program. If your child is not eligible
                      and/or you are interested in learning about financial need-based grants or other camper funding opportunities 
-                    please visit <a href="http://www.jewishfed.org/see-how-we-help/scholarships-jewish-overnight-camps" target="_blank">www.jewishfed.org/see-how-we-help/scholarships-jewish-overnight-camps</a>, 
+                    please visit <a href="http://www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants" target="_blank">www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants</a>, 
                     contact your camp directly, or contact your community professional listed at the bottom of this page.              
                 </p>
 			</td>

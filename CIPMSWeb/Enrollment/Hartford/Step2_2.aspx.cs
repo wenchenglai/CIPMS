@@ -47,8 +47,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
 			if (Session["FJCID"] != null)
 			{
 				hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-				//getCamperAnswers();
-                getSynagogueAnswers();
+                PopulateAnswers();
 			}
 		}
 		if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = txtOtherSynagogue.Enabled = false;
@@ -254,102 +253,9 @@ public partial class HartfordPage2 : System.Web.UI.Page
         CamperAppl.UpdateTimeInCampInApplication(strFJCID);
     }
 
-    void getCamperAnswers()
+    void PopulateAnswers()
     {
-        string strFJCID;
-        DataSet dsAnswers;
-        DataView dv;
-        RadioButton rb;
-        string strFilter;
-        
-        strFJCID = hdnFJCIDStep2_2.Value;
-        if (!strFJCID.Equals(string.Empty))
-        {
-            dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "3", "8", "N");
-            if (dsAnswers.Tables[0].Rows.Count > 0) //if there are records for the current FJCID
-            {
-                dv = dsAnswers.Tables[0].DefaultView;
-                //to display answers for the QuestionId 3,6,7 and 8 for step 2_2_Midsex
-                for (int i = 3; i <= 8; i++)
-                {
-                    strFilter = "QuestionId = '" + i.ToString() + "'";
-
-                    switch (i)
-                    {
-                        case 3:  //assigning the answer for question 3
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    rb = (RadioButton)this.Master.FindControl("Content").FindControl("RadioBtnQ3" + dr["OptionID"].ToString());
-                                    rb.Checked = true;
-                                }
-                            }
-                            
-                            break;
-                        case 6: // assigning the answer for question 6
-
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["Answer"].Equals(DBNull.Value))
-                                {
-                                    ddlGrade.SelectedValue = dr["Answer"].ToString();
-                                }
-                            }
-                            break;
-
-                        case 7:// assigning the answer for question 7
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
-                                }
-                            }
-                            break;
-
-                        case 8: // assigning the answer for question 8
-                            int intSchool;
-                            DataSet dsSchool = new DataSet();
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    if (!dr["Answer"].Equals(DBNull.Value))
-                                    {
-                                        Int32.TryParse(dr["Answer"].ToString(), out intSchool);
-                                        if (intSchool > 0)
-                                        {
-                                            dsSchool = CamperAppl.GetSchool(intSchool);
-                                            txtSchoolName.Text = dsSchool.Tables[0].Rows[0]["Answer"].ToString();
-                                        }
-                                        else
-                                        {
-                                            txtSchoolName.Text = dr["Answer"].ToString();
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (!dr["Answer"].Equals(DBNull.Value))
-                                    {
-                                        txtSchoolName.Text = dr["Answer"].ToString();
-                                    }
-                                }
-                            }
-                            break;
-						default:
-							getSynagogueAnswers();
-							break;
-                    }
-                }
-            }
-        } //end if for null check of fjcid
-    }
-
-    void getSynagogueAnswers()
-    {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045,1063");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -392,7 +298,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            if (qID == 30) //Were you referred to this application through a synagogue or JCC liaison?
+            else if (qID == 30) //Were you referred to this application through a synagogue or JCC liaison?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
@@ -477,64 +383,81 @@ public partial class HartfordPage2 : System.Web.UI.Page
                 else
                     txtWhoInSynagogue.Enabled = false;
             }
+            else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoDays12.Checked = true;
+                else
+                    rdoDays19.Checked = true;
+            }
         }
     }
 
     private string ConstructCamperAnswers()
     {
-        string strQID = "";
+        string strQId = "";
         string strTablevalues = "";
 
         string strQSeparator = QuestionsDelimiters.QuestionSeparator; 
         string strFSeparator = QuestionsDelimiters.FieldSeparator;
 
-        //for question 3
-        strQID = hdnQ3Id.Value;
-        strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        //for question FirstTimerOrNot
+        strQId = ((int)QuestionId.FirstTime).ToString();
+        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        //for question 4
-        strQID = hdnQ4Id.Value;
-        strTablevalues += strQID + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
+        //Grandfaother question
+        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
+        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        //for question 5
-        strQID = hdnQ5Id.Value;
-        strTablevalues += strQID + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + strQSeparator;
+        //for question Grade
+        strQId = ((int)QuestionId.Grade).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
 
-        //for question 6
-        strQID = hdnQ6Id.Value;
-        strTablevalues += strQID + strFSeparator + strFSeparator + txtSchoolName.Text.Trim() + strQSeparator;
+        //for question School Type
+        if (rdoSchoolType.SelectedValue != "")
+        {
+            strQId = ((int)QuestionId.SchoolType).ToString();
+            strTablevalues += strQId + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
+        }
+
+        //for question School Name
+        strQId = ((int)QuestionId.SchoolName).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
 
 		// 2012-09-13 Synagogue/JCC question
 		if (chkNo.Checked)
 		{
-			strQID = hdnQ25Id.Value;
-			strTablevalues += strQID + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
-			strQID = hdnQ26Id.Value;
-			strTablevalues += strQID + strFSeparator + "" + strFSeparator + "" + strQSeparator;
+            strQId = ((int)QuestionId.Q30_ReferredBySynagogueOrJCC).ToString();
+			strTablevalues += strQId + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
+            strQId = ((int)QuestionId.Q31_SelectYourSynagogueOrJCC).ToString();
+			strTablevalues += strQId + strFSeparator + "" + strFSeparator + "" + strQSeparator;
 		}
 		else
 		{
 			if (chkSynagogue.Checked)
 			{
-				strQID = hdnQ25Id.Value;
-				strTablevalues += strQID + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
+                strQId = ((int)QuestionId.Q30_ReferredBySynagogueOrJCC).ToString();
+				strTablevalues += strQId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
 			}
 
 			if (chkJCC.Checked)
 			{
-				strQID = hdnQ25Id.Value;
-				strTablevalues += strQID + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
+                strQId = ((int)QuestionId.Q30_ReferredBySynagogueOrJCC).ToString();
+				strTablevalues += strQId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
 			}
 
 			//This redundant condition is used to insert records in questionid sequence
-			strQID = hdnQ26Id.Value;
+            strQId = ((int)QuestionId.Q31_SelectYourSynagogueOrJCC).ToString();
 			if (chkSynagogue.Checked)
 			{
 				if (ddlSynagogue.SelectedValue != "0")
 				{
-					strTablevalues += strQID + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
+					strTablevalues += strQId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
-						strTablevalues += strQID + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+						strTablevalues += strQId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
 					if (txtOtherSynagogue.Text.Trim() != String.Empty)
 					{
 						strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
@@ -570,8 +493,8 @@ public partial class HartfordPage2 : System.Web.UI.Page
 			}
 			else
 			{
-				strTablevalues += strQID + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQID + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
 			}
 
 			if (chkJCC.Checked)
@@ -580,18 +503,18 @@ public partial class HartfordPage2 : System.Web.UI.Page
 				{
 					if (ddlJCC.SelectedValue != "0")
 					{
-						strTablevalues += strQID + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
+						strTablevalues += strQId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
 						if (txtOtherJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+							strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 					}
 				}
 				else
-					strTablevalues += strQID + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+					strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
 			}
 			else
 			{
-				strTablevalues += strQID + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQID + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
 			}
 		}
 

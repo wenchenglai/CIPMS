@@ -17,13 +17,22 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                Will this be the camper’s first time attending a nonprofit Jewish overnight summer camp for 19 days or longer?
+                Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" GroupName="RadiobuttonQ3" runat="server" Text="Yes" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" />
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" GroupName="RadiobuttonQ3" runat="server" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
                 </div>
             </td>
         </tr>
+            <tr id="1a">
+                <td valign="top"><span class="InfoText">*</span>1a</td>
+                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
+                <div id="divGrandfatherRule" runat="server">
+                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />
+                </div>
+                </td>
+            </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span>2</td>
             <td valign="top">

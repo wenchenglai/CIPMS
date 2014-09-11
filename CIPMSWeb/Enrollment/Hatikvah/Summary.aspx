@@ -2,34 +2,45 @@
     Inherits="Enrollment_Habonim_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="imgLogo" src="../../images/CampHatikvahLogo.jpg" alt="" runat="server" />
             </td>
 			<td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1">
-						Good news! You may be eligible for an incentive.
-                    </p>
-                </asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-						please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
             </td>
         </tr>    
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" runat="server" CssClass="infotext3">
-					<p style="text-align:justify"><b>The Camp Hatikvah One Happy Camper Program, sponsored by Camp Hatikvah and the Foundation for Jewish Camp provides financial incentives of up to $1,000 to first-time campers who attend one of our nonprofit Jewish overnight summer camps for at least 12 consecutive days. Eligible campers must have completed grades 1-9. If you are currently enrolled in Jewish day school or yeshiva, please contact the Camp Hatikvah office directly to learn about incentive grant opportunities. Please do not proceed with this application.</b></p>
-					<p style="text-align:justify">Camp Hatikvah is located in sunny Oyama, B.C. on beautiful Lake Kalamalka. Camp Hatikvah is the largest Jewish camp in Western Canada, is affiliated with the Young Judaea Youth Movement, and consistently operates at full capacity each summer. It not only attracts campers from the Vancouver Lower Mainland and other parts of British Columbia, but also from Alberta, Ontario, Washington, California, Oregon and even as far as Mexico and Switzerland. Approximately 400 Jewish children attend Camp Hatikvah each summer. Camp Hatikvah specializes in incorporating a traditional Jewish environment while offering the best in watersport activities; swimming, waterskiing, wake boarding, canoeing, kayaking, sailing and much more!</p>
-					<p style="text-align:justify">If you need additional assistance, please call the camp professional listed at the bottom of this page.</p>
-				</asp:Label>
-			</td> 
-        </tr>
+				<p>
+				    The Camp Hatikvah One Happy Camper Program, sponsored by Camp Hatikvah and the Foundation for Jewish Camp provides financial incentives of up to $1,000 to first-time campers.
+				</p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 2-10 (after camp).</li>
+                    </ul>
+				</p>   
+                <p>
+                    <span style="font-weight: bold; color: red;">Attention Jewish day school families:</span> If you are currently enrolled in Jewish day school or yeshiva, please contact the Camp Hatikvah office directly to learn about incentive grant opportunities. Please do not proceed with this application.
+                </p> 
+                <p>
+                    Camp Hatikvah is located in sunny Oyama, B.C. on beautiful Lake Kalamalka. Camp Hatikvah is the largest Jewish camp in Western Canada, is affiliated with the Young Judaea Youth Movement, and consistently operates at full capacity each summer. It not only attracts campers from the Vancouver Lower Mainland and other parts of British Columbia, but also from Alberta, Ontario, Washington, California, Oregon and even as far as Mexico and Switzerland. Approximately 400 Jewish children attend Camp Hatikvah each summer. Camp Hatikvah specializes in incorporating a traditional Jewish environment while offering the best in watersport activities; swimming, waterskiing, wake boarding, canoeing, kayaking, sailing and much more!
+                </p>
+                <p>
+                    If you need additional assistance, please call the camp professional listed at the bottom of this page.
+                </p>           
+            </td>
+        </tr>   
     </table>
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>

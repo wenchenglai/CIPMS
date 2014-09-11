@@ -39,7 +39,7 @@
                 </p>
                 <p>
                     If your child is not eligible and/or is interested in learning about financial-needs based grants or other 
-                    camper funding opportunities please visit<a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp or rabbi.                                 
+                    camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp or rabbi.                                 
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

@@ -28,7 +28,7 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 3-10 (after camp).</li>
+                        <li>First time camper must be entering grades 3-9 (after camp).</li>
                         <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                     </ul>
 		        </p>                
@@ -39,7 +39,7 @@
                     Camp Sabra is a place where your child can develop a joyous Jewish identity in a unique and personal way. Located in the beautiful Lake of the Ozarks, Sabra boasts 3.5 miles of private shoreline and over 200 acres of undeveloped forest. We offer a place for our Jewish children to create their own Jewish community and to make lifelong connections with Jews from all over the country and the world. Sabra is a place for your child to learn new skills. We offer waterskiing, wakeboarding, tubing, sailing, kayaking, water sliding, swimming in a pool and lake, land sports, extensive challenge ropes course activities, climbing wall, arts and crafts, drama, camping trips out of camp, nature, camp crafts - all flavored with Judaism. From celebrating Shabbat as a community, to dining together in our kosher facility, our Sabra campers live in a fun, friend-filled Jewish community during their Sabra experience. A summer of fun, a lifetime of memories. It will be magic!
                 </p>
                 <p>
-                    If you are interesting in learning more about Camp Sabra, visit our website at <a href="http://www.campsabra.com" target="_blank">www.campsabra.com</a> or call us at 314-442-3225. 
+                    If you are interesting in learning more about Camp Sabra, visit our website at <a href="http://www.campsabra.com" target="_blank">www.campsabra.com</a> or call us at 314-442-3151. 
                 </p>
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page.

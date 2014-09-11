@@ -1,52 +1,34 @@
 ﻿var PageValidator = {
+    OnFirstTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            $("#1a").show();
+        } else {
+            $("#1a").hide();
+        }
+    },
+
+    OnSchoolDropDownChange: function (ddlObject) {
+        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
+            $('#ctl00_Content_txtSchoolName').attr('disabled', true);
+        } else {
+            $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
+        }
+    },
+
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        var inputobjs = document.getElementsByTagName("input");
-        var selectobjs = document.getElementsByTagName("select");
-        var Q3_1, Q3_2, Q5, Q6, Q7, Q8, bValid = true, Q7CheckedValue;
-        var Q7 = new Array();
-        var j = 0;
-        var valobj = document.getElementById(sender.id);
-
-        for (var i = 0; i < inputobjs.length - 1; i++) {
-            //for Q3_1
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_0") >= 0) {
-                Q3_1 = inputobjs[i];
-            }
-            //for Q3_2
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_1") >= 0) {
-                Q3_2 = inputobjs[i];
-            }
-
-            //for school type
-            if (inputobjs[i].id.indexOf("RadioBtnQ7") >= 0) {
-                Q7[j] = inputobjs[i];
-                j = j + 1;
-            }
-
-            if (inputobjs[i].id.indexOf("txtCamperSchool") >= 0)
-                Q8 = inputobjs[i];
-
-
-        }  //end of for loop   
-
-        //    
-        //to get the select objects (ddlgrade) for Q6
-        for (var k = 0; k <= selectobjs.length - 1; k++) {
-            if (selectobjs[k].id.indexOf("ddlGrade") >= 0) {
-                Q6 = selectobjs[k];
-                break;
-            }
+        // First Timer camper or not
+        if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
         }
 
-        //validate Q3
-        if (Q3_1.checked == false && Q3_2.checked == false) {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-            args.IsValid = false;
-            return;
-            //bValid = false;
+        // 1a Grandfather rule
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
+            }
         }
 
         // Synagogue/JCC
@@ -56,7 +38,7 @@
             $rdoCongregant = $('#ctl00_Content_rdoCongregant');
 
         if (!$chkSynagogue.is(':checked') && !$chkJCC.is(':checked') && !$chkNo.is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5 - at least check one of three options</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2 - at least check one of three options</li></ul>";
         }
 
         // Synagogue - when it's checked, some error checking
@@ -99,35 +81,22 @@
             }
         }
 
-        //validate Q6
-        if (Q6.selectedIndex == 0) {
-            valobj.innerHTML = "<ul><li>Please select a Grade</li></ul>";
-            args.IsValid = false;
-            return;
+        // Grade
+        if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 3</li></ul>";
         }
-        else {
-            //validate Q7
-            var bChecked = false;
 
-            for (var k = 0; k <= Q7.length - 1; k++) {
-                if (Q7[k].checked == true) {
-                    Q7CheckedValue = Q7[k].value;
-                    bChecked = true;
-                    break;
-                }
-            }
+        // School Type
+        if (!$('#ctl00_Content_rdoSchoolType_0').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
+        }
 
-            if (!bChecked) {
-                valobj.innerHTML = "<ul><li>Please answer Question No. 4</li></ul>";
-                args.IsValid = false;
-                return;
-            }
-            else if (Q7CheckedValue != "3" && trim(Q8.value) == "") //validate Q8 (if it is not home school)
-            {
-                valobj.innerHTML = "<ul><li>Please enter Name of the School</li></ul>";
-                args.IsValid = false;
-                return;
-            }
+        // School Name
+        if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5</li></ul>";
         }
 
         args.IsValid = true;
@@ -146,4 +115,7 @@ $(function () {
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
+
+    PageValidator.OnFirstTimerChange();
+    PageValidator.OnSchoolDropDownChange();
 })

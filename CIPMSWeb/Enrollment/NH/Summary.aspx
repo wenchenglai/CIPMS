@@ -1,49 +1,49 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_NH_Summary" %>
 
 <asp:Content ID="NH_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="../../images/NewHampshire_Logo.jpg" alt = "" /></td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
 			</td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 
-						to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible camps are listed on the 
-						Foundation for Jewish Camp’s website ( <a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>). 
-					</p>            
-				</asp:Label>
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						One Happy Camper grants are not based on financial need and are designed to encourage families to send children to Jewish camps. 
-						Families must participate in the current JFNH Annual Campaign at a minimum level of $100.00. Camper must reside in New Hampshire or family must 
-						belong to a NH Jewish congregation. Recipient campers must write a short letter or article for publication in the NH Jewish Reporter. 
-						The deadline for applications is February 15, 2014. Late applications will be accepted if money is available. 
-					</p>            
-				</asp:Label>
+				<p>
+				    The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
+				</p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
+                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                    </ul>
+				</p>   
+                <p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                </p> 
+                <p>
+                    <strong>Note:</strong> One Happy Camper grants are not based on financial need and are designed to encourage families to send children to Jewish camps. Families must participate in the current JFNH Annual Campaign at a minimum level of $100.00. Camper must reside in New Hampshire or family must belong to a NH Jewish congregation. Recipient campers must write a short letter or article for publication in the NH Jewish Reporter. The deadline for applications is February 15, 2015. Late applications will be accepted if money is available. 
+                </p>
+                <p>
+                    For more information, please contact the JFNH Camp Grant Chair listed below:
+                </p>    
+                <p>
+                    Nancy Frankel (<a href="mailto:corkyatcf@aol.com">corkyatcf@aol.com</a>) 603 472-3983
+                </p>       
             </td>
-        </tr>        
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">
-						For more information, please contact the JFNH Camp Grant Chair listed below:<br /><br />
-						Nancy Frankel (<a href="mailto:corkyatcf@aol.com">corkyatcf@aol.com</a>) 603 472-3983
-                    </p>
-                </asp:Label>
-            </td>
-        </tr>
+        </tr>       
     </table>
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
