@@ -31,10 +31,7 @@
 				</p> 
                 <p>
                     <span style="font-weight:bold;">Note:</span> If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities, please contact The Jewish Federation of Greater Houston at pwalden@houstonjewish.org or 713-729-7000 ext. 309.
-                </p>  
-                <p>
-                    For information about SYRACUSE AND CENTRAL NEW YORK INCENTIVES ONLY, contact the professional listed at the bottom of this page.
-                </p>            
+                </p>         
             </td>
         </tr>
     </table>

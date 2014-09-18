@@ -128,7 +128,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
     {
         int iStatus;
         string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.CNY);
+
         
         try
         {
@@ -151,8 +151,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
                     }
                     else
                     {
-
-                        //to check whether the camper is eligible 
+                        var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.CNY);
                         objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
                     }
 

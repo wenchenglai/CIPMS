@@ -94,6 +94,11 @@ public partial class Step2_1 : System.Web.UI.Page
 		}
 	}
 
+    public string GetCurrentYear()
+    {
+        return "2015";
+    }
+
 	protected void btnNext_Click(object sender, EventArgs e)
 	{
 		if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_1.Value, Master.CamperUserId))
@@ -234,7 +239,7 @@ public partial class Step2_1 : System.Web.UI.Page
 			return;
 		}
 
-        dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "1035", "1039", "N");
+        dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "", "", "1035,1036,1037,1038,1039,1065");
         if (dsAnswers.Tables[0].Rows.Count > 0) //if there are records for the current FJCID
         {
             dv = dsAnswers.Tables[0].DefaultView;
@@ -307,9 +312,21 @@ public partial class Step2_1 : System.Web.UI.Page
 					chk26.Checked = true;
 				if (dr["OptionID"].ToString() == "6")
 					chk27.Checked = true;
-				if (dr["OptionID"].ToString() == "7")
-					chk28.Checked = true;
+			    if (dr["OptionID"].ToString() == "7")
+			    {
+			        chk28.Checked = true;
+			        txtOtherAd.Text = dr["Answer"].ToString();
+			    }
 			}
+
+            drs = dv.Table.Select("QuestionID = 1065");
+            foreach (DataRow dr in drs)
+            {
+                if (chk22.Checked || chk23.Checked || chk24.Checked || chk26.Checked || chk27.Checked)
+                {
+                    txtPubName.Text = dr["Answer"].ToString();
+                }
+            }            
         }
     }
 
@@ -411,30 +428,52 @@ public partial class Step2_1 : System.Web.UI.Page
 		{
 			strQuestionId = hdnQ1038HowDidYouHearUSB.Value;
 
-			if (chk22.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + "A Jewish publication" + strQSeparator;
+		    bool hasAdName = false;
 
-			if (chk23.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + "A parenting publication" + strQSeparator;
+		    if (chk22.Checked)
+		    {
+		        strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + "A Jewish publication" + strQSeparator;
+		        hasAdName = true;
+		    }
 
-			if (chk24.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + "Your local newspapers" + strQSeparator;
+		    if (chk23.Checked)
+		    {
+		        strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + "A parenting publication" + strQSeparator;
+                hasAdName = true;
+		    }
 
-			if (chk25.Checked)
+		    if (chk24.Checked)
+		    {
+		        strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + "Your local newspapers" + strQSeparator;
+                hasAdName = true;
+		    }
+
+		    if (chk25.Checked)
 				strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + "Facebook ad" + strQSeparator;
 
-			if (chk26.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "5" + strFSeparator + "Online ad (not Facebook)" + strQSeparator;
+		    if (chk26.Checked)
+		    {
+		        strTablevalues += strQuestionId + strFSeparator + "5" + strFSeparator + "Online ad (not Facebook)" + strQSeparator;
+                hasAdName = true;
+		    }
 
-			if (chk27.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "6" + strFSeparator + "Poster in public space (e.g. coffee shop, grocery store)" + strQSeparator;
+		    if (chk27.Checked)
+		    {
+		        strTablevalues += strQuestionId + strFSeparator + "6" + strFSeparator + "Poster in public space (e.g. coffee shop, grocery store)" + strQSeparator;
+                hasAdName = true;
+		    }
 
-			if (chk28.Checked)
-				strTablevalues += strQuestionId + strFSeparator + "7" + strFSeparator + "Other" + strQSeparator;
-		}
+		    if (chk28.Checked)
+		    {
+                strTablevalues += strQuestionId + strFSeparator + "7" + strFSeparator + txtOtherAd.Text + strQSeparator;
+		    }
 
-        if (strTablevalues == "")  //if Q1 is not answered
-            strTablevalues += strQuestionId + strFSeparator + strFSeparator + strQSeparator;       
+            if (hasAdName)
+            {
+                strQuestionId = "1065";
+                strTablevalues += strQuestionId + strFSeparator + "" + strFSeparator + txtPubName.Text + strQSeparator;
+            }
+		}    
 
         //to remove the extra character at the end of the string, if any
         char[] chartoRemove = { Convert.ToChar(strQSeparator) };

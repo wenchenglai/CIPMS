@@ -7,9 +7,33 @@
         }
     },
 
+    OnPubName: function (sender) {
+        if ($('#ctl00_Content_chk22').is(':checked') ||
+            $('#ctl00_Content_chk23').is(':checked') ||
+            $('#ctl00_Content_chk24').is(':checked') ||
+            $('#ctl00_Content_chk26').is(':checked') ||
+            $('#ctl00_Content_chk27').is(':checked')) {
+            $('#liPubName').show();
+        } else {
+            $('#liPubName').hide();
+        }
+    },
+
+    On3bOther: function (ddlObject) {
+        if ($('#ctl00_Content_chk28').is(':checked')) {
+            $('#liOtherAd').show();
+        } else {
+            $('#liOtherAd').hide();
+        }
+    },
+
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
+
+        if (args.IsValid) {
+            ValidateHowDidYouHearUsPage(sender, args);
+        }
 
         // Q3a Who is the member?
         if ($('#ctl00_Content_ddlStaffNames').length) {
@@ -20,14 +44,28 @@
             }
         }
 
+        //
+        if ($('#ctl00_Content_chk22').is(':checked') ||
+            $('#ctl00_Content_chk23').is(':checked') ||
+            $('#ctl00_Content_chk24').is(':checked') ||
+            $('#ctl00_Content_chk26').is(':checked') ||
+            $('#ctl00_Content_chk27').is(':checked')) {
+            if ($('#ctl00_Content_txtPubName').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 3b - please specify the name of the publication/location of the ad.</li></ul>";
+            }
+        }
+
+        // Q3b Other ad text box
+        if ($('#ctl00_Content_chk28').is(':checked')) {
+            if ($('#ctl00_Content_txtOtherAd').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 3b - please specify other ad.</li></ul>";
+            }
+        }
+
         if (errorMsg.innerHTML === "") {
             args.IsValid = true;
         } else {
             args.IsValid = false;
-        }
-
-        if (args.IsValid) {
-            ValidateHowDidYouHearUsPage(sender, args);
         }
 
         return;
@@ -36,7 +74,8 @@
 
 $(function () {
     HowDidYouHearUsValidator.OnMemberDropDownChange(null);
-
+    HowDidYouHearUsValidator.On3bOther(null);
+    HowDidYouHearUsValidator.OnPubName(null);
 })
 
 function ValidateHowDidYouHearUsPage(sender, args) {

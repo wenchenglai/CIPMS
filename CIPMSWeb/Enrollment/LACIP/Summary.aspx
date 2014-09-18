@@ -3,12 +3,19 @@
 
 <asp:Content ID="LACIP_summary" ContentPlaceHolderID="Content" runat="Server">
     <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
-        <tr>
-            <td colspan="2">
+		<tr>
+            <td>
+                <img src="logo.jpg" />
+            </td>
+            <td>
                 <p>Good news! You may be eligible for a One Happy Camper grant.</p>
                 <p>
                     To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
                 </p>
+            </td>
+        </tr>        
+        <tr>
+            <td colspan="2">
                 <p>
                     The Los Angeles One Happy Camper program, sponsored by the Jewish Federation of Greater Los Angeles and the Foundation for Jewish Camp, 
                     provides financial incentives for children attending Jewish overnight summer camp for the first time for at least 12 consecutive days. 

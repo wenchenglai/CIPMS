@@ -1,5 +1,4 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true"
-    CodeFile="Step2_1.aspx.cs" Inherits="Step2_1" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_1.aspx.cs" Inherits="Step2_1" Title="Camper Enrollment Step 2" %>
 
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">
@@ -29,12 +28,12 @@
 				<div>
 					<asp:DropDownList ID="ddlWhatYear" runat="server">
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>
-						<asp:ListItem Text="Before this past summer (prior to June 2013)" Value="1"></asp:ListItem>
-						<asp:ListItem Text="Last Summer (Jun - Aug of 2013)" Value="2"></asp:ListItem>
-						<asp:ListItem Text="This past Fall (Sep - Dec 2013)" Value="3"></asp:ListItem>
-						<asp:ListItem Text="This past Winter (Jan - Mar 2014)" Value="4"></asp:ListItem>
-						<asp:ListItem Text="This Spring (Apr - May 2014)" Value="5"></asp:ListItem>
-						<asp:ListItem Text="This Summer (Jun - Aug 2014)" Value="6"></asp:ListItem>
+						<asp:ListItem Text="Before this past summer (prior to June 2014)" Value="1"></asp:ListItem>
+						<asp:ListItem Text="Last Summer (Jun - Aug of 2014)" Value="2"></asp:ListItem>
+						<asp:ListItem Text="This past Fall (Sep - Dec 2014)" Value="3"></asp:ListItem>
+						<asp:ListItem Text="This past Winter (Jan - Mar 2015)" Value="4"></asp:ListItem>
+						<asp:ListItem Text="This Spring (Apr - May 2015)" Value="5"></asp:ListItem>
+						<asp:ListItem Text="This Summer (Jun - Aug 2015)" Value="6"></asp:ListItem>
 						<asp:ListItem Text="Don't know/Not sure" Value="7"></asp:ListItem>																																										
 					</asp:DropDownList>
 				</div>
@@ -127,7 +126,6 @@
 						<asp:ListItem Text="Mary Sue Grossman" Value="5"></asp:ListItem>
                         <asp:ListItem Text="Jennifer Gutberg" Value="23"></asp:ListItem>
 						<asp:ListItem Text="Larry Katz" Value="6"></asp:ListItem>							
-						<asp:ListItem Text="Veronica Klein" Value="7"></asp:ListItem>
 						<asp:ListItem Text="Beth Koritz" Value="8"></asp:ListItem>		
 						<asp:ListItem Text="Meredith Lefkoff" Value="9"></asp:ListItem>												
 						<asp:ListItem Text="Tracy Levine" Value="10"></asp:ListItem>
@@ -135,15 +133,18 @@
 						<asp:ListItem Text="Nina Patchak" Value="12"></asp:ListItem>	
 						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>	
 						<asp:ListItem Text="Nancy Perlman" Value="14"></asp:ListItem>	
-						<asp:ListItem Text="Ricci Postan" Value="23"></asp:ListItem>                                                																		
+						<asp:ListItem Text="Ricci Postan" Value="24"></asp:ListItem>                                                																		
 						<asp:ListItem Text="Alyssa Russell" Value="15"></asp:ListItem>
+                        <asp:ListItem Text="Harriet Schiftan" Value="25"></asp:ListItem>
 						<asp:ListItem Text="Judy Shapiro" Value="16"></asp:ListItem>							
+                        <asp:ListItem Text="Inna Kolesnikova-Shmukler" Value="16"></asp:ListItem>
 						<asp:ListItem Text="Brenda Silvers" Value="17"></asp:ListItem>													
 						<asp:ListItem Text="Sally Stein" Value="18"></asp:ListItem>
 						<asp:ListItem Text="Sara Klein Wagner" Value="19"></asp:ListItem>	
 						<asp:ListItem Text="Rachel White" Value="20"></asp:ListItem>
 						<asp:ListItem Text="Helen Wolf" Value="21"></asp:ListItem>	
 						<asp:ListItem Text="Rachel Wolf" Value="22"></asp:ListItem>								
+                        <asp:ListItem Text="Claire Winthrop" Value="22"></asp:ListItem>	
 						<asp:ListItem Text="Don't know/Not sure" Value="2"></asp:ListItem>																																										
 						<asp:ListItem Text="Other" Value="1"></asp:ListItem>							
 					</asp:DropDownList>
@@ -160,26 +161,32 @@
 				<div>
 					<ul style="list-style-type: none;" class="QuestionText">
 						<li>
-							<asp:CheckBox ID="chk22" runat="server" Text="A Jewish publication" />
+							<asp:CheckBox ID="chk22" runat="server" Text="A Jewish publication" onclick="HowDidYouHearUsValidator.OnPubName(this);" />
 						</li>
 						<li>
-							<asp:CheckBox ID="chk23" runat="server" Text="A parenting publication" />
+							<asp:CheckBox ID="chk23" runat="server" Text="A parenting publication" onclick="HowDidYouHearUsValidator.OnPubName(this);" />
 						</li>		
 						<li>
-							<asp:CheckBox ID="chk24" runat="server" Text="Your local newspapers" />
+							<asp:CheckBox ID="chk24" runat="server" Text="Your local newspapers" onclick="HowDidYouHearUsValidator.OnPubName(this);" />
 						</li>	
 						<li>
 							<asp:CheckBox ID="chk25" runat="server" Text="Facebook ad" />
 						</li>	
 						<li>
-							<asp:CheckBox ID="chk26" runat="server" Text="Online ad (not Facebook)" />
+							<asp:CheckBox ID="chk26" runat="server" Text="Online ad (not Facebook)" onclick="HowDidYouHearUsValidator.OnPubName(this);" />
 						</li>	
 						<li>
-							<asp:CheckBox ID="chk27" runat="server" Text="Poster in public space (e.g. coffee shop, grocery store)" />
+							<asp:CheckBox ID="chk27" runat="server" Text="Poster in public space (e.g. coffee shop, grocery store)" onclick="HowDidYouHearUsValidator.OnPubName(this);" />
 						</li>	
 						<li>
-							<asp:CheckBox ID="chk28" runat="server" Text="Other" />
-						</li>																																																													
+							<asp:CheckBox ID="chk28" runat="server" onclick="HowDidYouHearUsValidator.On3bOther(this);" Text="Other" />
+						</li>
+                        <li id="liPubName">
+                            Do you remember the name of the publication/location of the ad? <asp:TextBox runat="server" ID="txtPubName"></asp:TextBox>
+                        </li>
+                        <li id="liOtherAd">
+                            Other Ad: <asp:TextBox runat="server" ID="txtOtherAd"></asp:TextBox>
+                        </li>                        																																																										
 					</ul>											
 				</div>
 			</td>

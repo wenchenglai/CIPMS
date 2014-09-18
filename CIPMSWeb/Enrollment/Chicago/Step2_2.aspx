@@ -34,7 +34,7 @@
                     <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
                 <span id="siblingContact" style="color:red;">
-                    Please contact Hallie Shapiro Devir at <a href='mailto:JewishCamp@juf.org'>JewishCamp@juf.org</a> or 312-357-4995. <br />
+                    Please contact Rachel White at <a href='mailto:RachelWhite@juf.org'>RachelWhite@juf.org</a> or 312-357-4995. <br />
                     Siblings of second-time campers who previously/currently received a $1,000 grant are eligible <br />
                     to receive $500 when they attend camp for the first time for at least 19 consecutive days.
                 </span>
