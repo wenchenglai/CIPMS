@@ -12,59 +12,48 @@ function Img1_onclick() {
 // ]]>
 	</script>
 	
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
 				<img id="logo" src="../../images/DC logo.jpg" alt="" height="100" width="320" />
             </td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                <p>
+					Good news! You may be eligible for an incentive.
+				</p>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>   
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <asp:Label ID="Label6" runat="server" CssClass="infotext3">
-					<p style="text-align:justify">
-						<b>The Greater Washington DC area One Happy Camper Program, sponsored by The Jewish Federation of Greater Washington and the Foundation for Jewish Camp, 
-						provides <u>limited</u> grants to encourage children to attend overnight Jewish camp for the first-time. 
-						<font color="red">Please contact Steffanie Jackson directly at 
-						<a href="mailto:onehappycamper@shalomdc.org" target="_blank">onehappycamper@shalomdc.org</a> for more information and/or to proceed with the application by clicking the “next” button below.</font></b>
-					</p>
-					<p style="text-align:justify">
-						This is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, 
-						to give them $1,000 off their camp fee to try a Jewish one.</p>
-					<p style="text-align:justify">
-						Eligible campers must be entering grades 1-12 (after camp) and attending a nonprofit Jewish overnight summer camp for at least 19 consecutive days. 
-						Funds will be forwarded directly to the camp and then the camp will reimburse you, if necessary.
-					</p>
-				</asp:Label>
-			</td>
-        </tr>        
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label7" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						<u>Note:</u> This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, 
-						children who attend Jewish day school or Yeshiva are not eligible for this program.</p>
-					<p style="text-align:justify">
-						If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities please 
-						visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp.
-					</p>
-                </asp:Label>
+                <p>
+                    The Greater Washington DC area One Happy Camper Program, sponsored by The Jewish Federation of Greater Washington and the Foundation for Jewish Camp, provides limited grants to encourage children to attend overnight Jewish camp for the first-time. 
+                </p>
+                <p>
+                    This is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000 off their camp fee to try a Jewish one.
+                </p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First-time campers must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
+                    </ul>
+		        </p>                
+		        <p>
+		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+		        </p>
+                <p>
+                    <u>Note:</u> If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.JewishCamp.org/Scholarships</a>,  or contact your camp. 
+                </p>
+                <p>
+                    If you need additional assistance, please call your community professional listed at the bottom of this page.
+                </p>
             </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
-                </asp:Label></td>
         </tr>
     </table>
     <table id="tblDisable" runat="server"  width="100%" cellpadding="5" cellspacing="0">

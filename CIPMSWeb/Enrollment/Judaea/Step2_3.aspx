@@ -65,12 +65,12 @@
                 <td valign="top"><asp:Label ID="Label1" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" style="width:20%" >
                     <asp:Panel ID="PnlQ8_2_1" Enabled="false" runat="server">
-                        <asp:Label ID="Label2" runat="server" CssClass="QuestionText">Camp</asp:Label><br />
+                        <asp:Label ID="Label2" runat="server" Enabled="false" CssClass="QuestionText">Camp</asp:Label><br />
                     </asp:Panel>
                 </td>
                 <td>
-                    <asp:Panel ID="PnlQ8_2_2" Enabled="false" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlCamp"  Enabled="false" runat="server" CssClass="dropdown">
+                    <asp:Panel ID="PnlQ8_2_2" Enabled="true" runat="server" width="100%">
+                        <asp:DropDownList ID="ddlCamp" Enabled="false" runat="server" CssClass="dropdown">
                         </asp:DropDownList>
                     </asp:Panel>
                 </td>

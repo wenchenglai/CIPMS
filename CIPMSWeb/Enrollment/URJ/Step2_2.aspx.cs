@@ -54,15 +54,12 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 strCampID = resultCampId.ToString();
             }
 
-            //string campIDLast3Digits = strCampID.Substring(strCampID.Length - 3);
-            //if (campIDLast3Digits == "132" || campIDLast3Digits == "133" || campIDLast3Digits == "190")
-            //{
-            //    lblMinimumDays.Text = "12";
-            //}
-            //else
-            //{
-            //    lblMinimumDays.Text = "19";
-            //}
+            string campIDLast3Digits = strCampID.Substring(strCampID.Length - 3);
+            if (campIDLast3Digits == "132" || campIDLast3Digits == "133" || campIDLast3Digits == "146" || campIDLast3Digits == "190")
+            {
+                rdoFirstTimerYes.Attributes.Remove("onclick");
+                rdoFirstTimerNo.Attributes.Remove("onclick");
+            }
         }
     }
 

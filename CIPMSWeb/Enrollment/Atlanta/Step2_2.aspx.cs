@@ -1,7 +1,6 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Linq;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
@@ -41,8 +40,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
 			if (Session["FJCID"] != null)
 			{
 				hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-				//getCamperAnswers();
-                getSynagogueAnswers();
+                PopulateAnswers();
 			}
 		}
 		if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = txtOtherSynagogue.Enabled = false;
@@ -144,9 +142,9 @@ public partial class HartfordPage2 : System.Web.UI.Page
             ProcessCamperAnswers();
         }
 
-        int iStatus;
         if (strFJCID != "" && Master.UserId != "")
         {
+            int iStatus;
             if (isReadOnly)
             {
                 DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
@@ -154,7 +152,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
             }
             else
             {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
             Session["STATUS"] = iStatus.ToString();
@@ -224,7 +222,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
             else
                 iGrade = iResult;
 
-            int iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
+            CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
         }
     }
 
@@ -234,109 +232,16 @@ public partial class HartfordPage2 : System.Web.UI.Page
 
         if (strFJCID != "" && strCamperAnswers != "" && strModifiedBy != "" && bPerformUpdate)
         {
-            int RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
+            CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
         }
         
         CamperAppl = new CamperApplication();
         CamperAppl.UpdateTimeInCampInApplication(strFJCID);
     }
 
-    void getCamperAnswers()
+    void PopulateAnswers()
     {
-        string strFJCID;
-        DataSet dsAnswers;
-        DataView dv;
-        RadioButton rb;
-        string strFilter;
-        
-        strFJCID = hdnFJCIDStep2_2.Value;
-        if (!strFJCID.Equals(string.Empty))
-        {
-            dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "3", "8", "N");
-            if (dsAnswers.Tables[0].Rows.Count > 0) //if there are records for the current FJCID
-            {
-                dv = dsAnswers.Tables[0].DefaultView;
-                //to display answers for the QuestionId 3,6,7 and 8 for step 2_2_Midsex
-                for (int i = 3; i <= 8; i++)
-                {
-                    strFilter = "QuestionId = '" + i.ToString() + "'";
-
-                    switch (i)
-                    {
-                        case 3:  //assigning the answer for question 3
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    rb = (RadioButton)this.Master.FindControl("Content").FindControl("RadioBtnQ3" + dr["OptionID"].ToString());
-                                    rb.Checked = true;
-                                }
-                            }
-                            
-                            break;
-                        case 6: // assigning the answer for question 6
-
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["Answer"].Equals(DBNull.Value))
-                                {
-                                    ddlGrade.SelectedValue = dr["Answer"].ToString();
-                                }
-                            }
-                            break;
-
-                        case 7:// assigning the answer for question 7
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
-                                }
-                            }
-                            break;
-
-                        case 8: // assigning the answer for question 8
-                            int intSchool;
-                            DataSet dsSchool = new DataSet();
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
-                            {
-                                if (!dr["OptionID"].Equals(DBNull.Value))
-                                {
-                                    if (!dr["Answer"].Equals(DBNull.Value))
-                                    {
-                                        Int32.TryParse(dr["Answer"].ToString(), out intSchool);
-                                        if (intSchool > 0)
-                                        {
-                                            dsSchool = CamperAppl.GetSchool(intSchool);
-                                            txtSchoolName.Text = dsSchool.Tables[0].Rows[0]["Answer"].ToString();
-                                        }
-                                        else
-                                        {
-                                            txtSchoolName.Text = dr["Answer"].ToString();
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    if (!dr["Answer"].Equals(DBNull.Value))
-                                    {
-                                        txtSchoolName.Text = dr["Answer"].ToString();
-                                    }
-                                }
-                            }
-                            break;
-						default:
-							getSynagogueAnswers();
-							break;
-                    }
-                }
-            }
-        } //end if for null check of fjcid
-    }
-
-    void getSynagogueAnswers()
-    {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045,1063,1066,1067");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -432,6 +337,36 @@ public partial class HartfordPage2 : System.Web.UI.Page
                     txtOtherJCC.Text = dr["Answer"].ToString();
                 }
             }
+            else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) 
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoDays12.Checked = true;
+                else
+                    rdoDays19.Checked = true;
+            }
+            else if (qID == 1066) // Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoLastYearYes.Checked = true;
+                else
+                    rdoLastYearNo.Checked = true;
+            }
+            else if (qID == 1067) // Is your combined gross household income $160,000 or less?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoYes160.Checked = true;
+                else
+                    rdoNo160.Checked = true;
+            }
         }
     }
 
@@ -446,6 +381,18 @@ public partial class HartfordPage2 : System.Web.UI.Page
         //for question 3
         strQID = hdnQ3Id.Value;
         strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //Grandfaother question
+        strQID = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
+        strTablevalues += strQID + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //Grandfaother question
+        strQID = "1066";
+        strTablevalues += strQID + strFSeparator + (rdoLastYearYes.Checked ? "1" : rdoLastYearNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //Grandfaother question
+        strQID = "1067";
+        strTablevalues += strQID + strFSeparator + (rdoYes160.Checked ? "1" : rdoNo160.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question 4
         strQID = hdnQ4Id.Value;

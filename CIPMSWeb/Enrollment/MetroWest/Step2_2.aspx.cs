@@ -1,18 +1,11 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
 using CIPMSBC.Eligibility;
-
 
 public partial class Step2_MetroWest_2 : System.Web.UI.Page
 {
@@ -28,53 +21,6 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);    
-    }
-
-    void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        try
-        {
-            setPanelStatus(false);
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-    void enableSynagogueQues()
-    {
-        if (chkNo.Checked)
-        {
-            ddlSynagogue.SelectedIndex = -1;
-            //Pnl9a.Enabled = Pnl10a.Enabled = false;
-        }
-        if (chkJCC.Checked)
-        {
-            chkJCC.Disabled = false;
-        }
-        if (chkSynagogue.Checked)
-        {
-            chkSynagogue.Disabled = false;
-        }
-        if (ddlSynagogue.SelectedItem.Value != "0")
-        {
-            ddlSynagogue.Enabled = true;
-        }
-        if (ddlJCC.Items.Count > 0)
-        {
-            if (ddlJCC.SelectedItem.Value != "0")
-            {
-                ddlJCC.Enabled = true;
-            }
-        }
-        if (txtOtherSynagogue.Text != "")
-        {
-            txtOtherSynagogue.Enabled = true;
-        }
-        if (txtOtherJCC.Text != "")
-        {
-            txtOtherJCC.Enabled = true;
-        }
     }
     
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -125,13 +71,6 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
         ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
     
-    //page unload
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
         string strRedirURL;
@@ -238,91 +177,6 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
-    }
-
-    //to set the panels and controls to be disabled based on the radio button selected
-    void setPanelStatus(bool reset)
-    {
-        //for Question 3 & 4
-        //if (RadioBtnQ3.SelectedIndex.Equals(0)) //Yes is selected
-        //{
-            Pnl9a.Enabled = Pnl10a.Enabled = pnl11Q.Enabled = true;
-            
-            if (reset)//As the same function used (to differentiate whether it is called by radio button change event or getcamperanswer function
-            {
-                ddlJCC.SelectedIndex = -1;
-                txtOtherSynagogue.Text = string.Empty;
-                txtOtherJCC.Text = string.Empty;
-                ddlSynagogue.SelectedIndex = -1;
-                chkSynagogue.Checked = chkJCC.Checked = chkNo.Checked = false;
-                chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Disabled = false;
-            }
-            else
-            {
-                if (chkNo.Checked)
-                {
-                    chkSynagogue.Checked = chkJCC.Checked = !chkNo.Checked;
-                    chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Checked;
-                }
-                else
-                {
-                    chkSynagogue.Disabled = chkJCC.Disabled = false;
-                }
-            }
-            ddlSynagogue.Enabled = chkSynagogue.Checked;
-            ddlJCC.Enabled = chkJCC.Checked;
-
-        //}
-        //else
-        //{
-        //    Pnl9a.Enabled = Pnl10a.Enabled = pnl11Q.Enabled = false;
-        //    ddlSynagogue.SelectedIndex = -1;
-        //    ddlJCC.SelectedIndex = -1;
-        //    txtOtherSynagogue.Text = string.Empty;
-        //    txtOtherJCC.Text = string.Empty;
-        //    chkSynagogue.Checked = chkJCC.Checked = chkNo.Checked = false;
-        //    chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Disabled = true;
-        //}
-        
-        if (ddlSynagogue.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-        {
-            lblOtherSynogogueQues.Enabled = true;
-            txtOtherSynagogue.Enabled = true;
-        }
-        else
-        {
-            txtOtherSynagogue.Enabled = false;
-            txtOtherSynagogue.Text = string.Empty;
-        }
-        //if (ddlJCC.Items.Count > 0)
-        //{
-        //    if (ddlJCC.SelectedItem.Text.ToLower().IndexOf("other") != -1)
-        //    {
-        //        lblJCC.Enabled = true;
-        //        txtOtherJCC.Enabled = true;
-        //    }
-        //    else
-        //    {
-        //        txtOtherJCC.Enabled = false;
-        //        txtOtherJCC.Text = string.Empty;
-        //    }
-        //}
-        if (chkJCC.Checked == false)
-        {
-            txtOtherJCC.Enabled = false;
-            txtOtherJCC.Text = string.Empty;
-        }
-        else
-        {
-            if (ddlJCC.SelectedItem != null)
-            {
-                if (ddlJCC.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-                {
-                    lblJCC.Enabled = true;
-                    txtOtherJCC.Enabled = true;
-                }
-            }
-        }   
     }
 
     private void ProcessCamperAnswers()
@@ -667,6 +521,7 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }    
+    
     private void getSynagogueList(string CampYear)
     {
         DataSet dsSynagogue;

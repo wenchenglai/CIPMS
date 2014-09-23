@@ -133,7 +133,7 @@ function ValidateHowDidYouHearUsPage(sender, args) {
                 valObj.innerHTML = "<li>Please select from Question 3a</li>";
                 args.IsValid = false;
                 return;
-            } else if (Q3aStaffNames.selectedIndex == 12) {
+            } else if (Q3aStaffNames[Q3aStaffNames.selectedIndex].text == "Other") {
                 var txtbox = document.getElementById("ctl00_Content_txtOtherName");
                 if (txtbox.value == "") {
                     isQ3aPass = false;

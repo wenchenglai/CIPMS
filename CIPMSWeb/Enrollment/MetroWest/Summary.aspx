@@ -27,18 +27,21 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended a previous stay of less than 12 days, s/he is still eligible for the grant</li>
                         <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                         <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
 
                     </ul>
 				</p>                
 				<p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program. If your child is currently a Jewish day school student, please contact the community professional listed at the bottom of the page for information about potential grant opportunities that may be available. 
+				    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program. If your child is currently a Jewish day school student, please contact the community professional listed at the bottom of the page for information about potential grant opportunities that may be available. 
 				</p>
                 <p>
                     If you are interested in learning about additional financial resources for camp, please visit 
-                    <a href="www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> 
-                    for needs-based scholarship opportunities or contact your camp or synagogue directly.                 </p>
+                    <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> 
+                    for needs-based scholarship opportunities or contact your camp or synagogue directly.                 
+
+                </p>
                 <p>
                     If you need additional assistance, including free guidance on finding a camp, please call your community professional listed at the bottom of this page.
 				</p>  

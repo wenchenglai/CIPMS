@@ -57,6 +57,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 dvRpts.Visible = false;
                 lnkStatsReport.Visible = true;
                 lnkBulkStatusUpdate.Visible = true;
+                divProgramFinder.Visible = true;
             }
          
             if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"])
@@ -82,6 +83,10 @@ public partial class AdminMenu : System.Web.UI.UserControl
             {
                 divExcel.Visible = false;                
             }
+
+            // 2014-09-19 allow PJ to find program by zip code
+            if (fedId == ((int) FederationEnum.PJL).ToString())
+                divProgramFinder.Visible = true;
 
             //Added by Ram (03/31/2010) related to upload link (should be available for FJC admin and PJL fedAdmin
             if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"].ToString()
@@ -313,5 +318,10 @@ public partial class AdminMenu : System.Web.UI.UserControl
     protected void lnkBulkStatusUpdate_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/Administration/BulkStatusUpdate.aspx");
+    }
+
+    protected void lnkProgramFinder_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Administration/ProgramFinder.aspx");
     }
 }

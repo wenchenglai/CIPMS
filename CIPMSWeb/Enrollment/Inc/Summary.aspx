@@ -30,10 +30,10 @@
                     </ul>
 				</p>   
                 <p>
-                    Camp Inc. is a Jewish overnight camp in Boulder, CO where 5th-12th graders from around the world join together to explore what it means to be an entrepreneur. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on experience in entrepreneurship and business. Under the direction of Camp Inc.'s business specialists, campers work in small startup teams to turn an idea into a reality and receive the skills to become leaders and innovators in business, philanthropy, and the Jewish community.
+                    Camp Inc. is a Jewish overnight camp in Boulder, CO where 6th-12th graders from around the world join together to explore what it means to be an entrepreneur. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on experience in entrepreneurship and business. Under the direction of Camp Inc.'s business specialists, campers work in small startup teams to turn an idea into a reality and receive the skills to become leaders and innovators in business, philanthropy, and the Jewish community.
                 </p> 
                 <p>
-                    Camp Inc. offers (3) 20 day sessions for entering 6th through 12th grade campers.
+                    Camp Inc. offers (3) 17-day sessions for entering 6th through 12th grade campers.
                 </p>
                 <p>
                     If you are interested in learning more about Camp Inc. and other discounts and scholarships, please visit us at: <a href="http://www.CampInc.com" target="_blank">www.CampInc.com</a> or call 303-500-3020.

@@ -5,6 +5,7 @@ using CIPMSBC;
 
 public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 {
+    private string Berkshire = "082";
     protected void Page_Init(object sender, EventArgs e)
     {
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
@@ -21,7 +22,7 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
             Response.Redirect("~/NLIntermediate.aspx");
 
         // Berkshires
-        if (last3Digits == "082")
+        if (last3Digits == Berkshire)
         {
             trBerkshires.Visible = true;
         }
@@ -51,78 +52,24 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
             trDefault1.Visible = true;
             trDefault2.Visible = true;
         }
-            
-        //// Camp Ramah Darom, for 2013 calendar year ONLY
-        //if (CampID == 4078)
+
+
+        //if (last3Digits == Berkshire) //Berkshire
         //{
-        //    DisableRegistration(CampID);
+        //    // Camp Ramah in the Berkshires
         //    if (Session["SpecialCodeValue"] != null)
         //    {
-        //        // 2013-02-21 Now Camp Ramah Doram use tblSpecialCodes table
-        //        string currentCode = Session["SpecialCodeValue"].ToString();
-        //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-        //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
-        //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4078);
-
-        //        // when moved to .NET 3.5 or above, remember to use lamda expression
-        //        foreach (string code in specialCodes)
+        //        if (Session["SpecialCodeValue"].ToString() == "CRB849")
         //        {
-        //            if (code == currentCode)
-        //            {
-        //                EnableRegistration();
-        //                SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-        //                break;
-        //            }
+        //            EnableRegistration();
+        //        }
+        //        else
+        //        {
+        //            DisableRegistration(last3Digits);
         //        }
         //    }
-        //}
-        //else if (CampID == 4079) //2013-03-21 For Ramah Califonia 
-        //{
-        //    DisableRegistration(CampID);
-        //    if (Session["SpecialCodeValue"] != null)
-        //    {
-        //        string currentCode = Session["SpecialCodeValue"].ToString();
-        //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-        //        int FedID = Convert.ToInt32(FederationEnum.Ramah);
-        //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, 4079);
-
-        //        // when moved to .NET 3.5 or above, remember to use lamda expression
-        //        foreach (string code in specialCodes)
-        //        {
-        //            if (code == currentCode)
-        //            {
-        //                EnableRegistration();
-        //                SpecialCodeManager.UseCode(CampYearID, FedID, code, Session["FJCID"].ToString());
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
-        if (last3Digits == "082") //Berkshire
-        {
-            // Camp Ramah in the Berkshires
-            if (Session["SpecialCodeValue"] != null)
-            {
-                if (Session["SpecialCodeValue"].ToString() == "CRB849")
-                {
-                    EnableRegistration();
-                }
-                else
-                {
-                    DisableRegistration(last3Digits);
-                }
-            }
-            else
-                DisableRegistration(last3Digits);
-        }
-        //else if (CampID == 4082) //2013-02-26 Close The camp Ramah in the Berkshire ONLY
-        //{
-        //    DisableRegistration(CampID);
-        //}
-        //else
-        //{
-        //    // All other Ramah camps
-        //    EnableRegistration();
+        //    else
+        //        DisableRegistration(last3Digits);
         //}
     }
 

@@ -1,9 +1,4 @@
-﻿// JScript File
-
-
-
-
-//////////////////////////age calculation///////////////////////////////////
+﻿//////////////////////////age calculation///////////////////////////////////
 //to calculate the age based on the date of birth entered in the UI
 //this is used in the Step 1 of the Camper Application
 function getAge(DOBtxt)
@@ -103,8 +98,6 @@ function CompareDates(StartDate, EndDate)
 }
 
             
-
-
 /////////////////////////////leap year validation////////////////////////////
 //to check whether the year is a leap year or not///////////////////////////
 function leapyear(a) {
@@ -1691,7 +1684,6 @@ function ValidatePage2Step2_LACIP(sender,args)
     var j=0;
     var valobj = document.getElementById(sender.id);
     
-    debugger;
     for (var i = 0; i< inputobjs.length-1; i++)
     {
         if (inputobjs[i].id.indexOf("RadioBtnQ3_0")>=0)
@@ -2674,135 +2666,6 @@ function windowBnaiopen()
 //*****************************END OF VALIDATION FOR BNai Brith**********************************
 
 //********************************* BEGIN OF VALIDATION FOR Washington DC **************************
-function ValidatePage2Step2_Washington(sender,args)
-{
-    var inputobjs = document.getElementsByTagName("input");
-    var selectobjs = document.getElementsByTagName("select");
-    var Q3_1, Q3_2, Q4_1, Q4_2, Q5_1, Q5_2, Q6, Q7_1, Q7_2, Q8_1, Q8_2, Q9, Q10,Q11_1,Q11_2,Q12;
-    Q9 = new Array();
-    var j=0;
-    var valobj = document.getElementById(sender.id);
-    var hdnYearCount;
-    for (var i = 0; i< inputobjs.length-1; i++)
-    {
-        //for Q3_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_0")>=0)
-        {
-            Q3_1 = inputobjs[i];
-        }
-        //for Q3_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ3_1")>=0)
-        {
-            Q3_2 = inputobjs[i];
-        }
-
-        //for Q9
-        if (inputobjs[i].id.indexOf("RadioBtnQ9")>=0)
-        {
-            Q9[j] = inputobjs[i];
-            j=j+1;
-        }      
-
-        //for Q10
-        if (inputobjs[i].id.indexOf("txtCamperSchool")>=0)
-        {
-            Q10 = inputobjs[i];
-        }
-        //for Q11_1
-        if (inputobjs[i].id.indexOf("RadioBtnQ12_0")>=0)
-        {
-            Q11_1 = inputobjs[i];
-        }
-        
-        //for Q11_2
-        if (inputobjs[i].id.indexOf("RadioBtnQ12_1")>=0)
-        {
-            Q11_2 = inputobjs[i];
-        } 
-        //for Q12
-        if (inputobjs[i].id.indexOf("txtDayCamp")>=0)
-        {
-            Q12 = inputobjs[i];
-        }
-    }  //end of for loop
-    
-    //to get the <select> objects for Q8 and Q10
-    for (var i = 0; i<= selectobjs.length-1; i++)
-    {
-        //for Q6
-         if (selectobjs[i].id.indexOf("ddlGrade")>=0)
-        {
-            Q6 = selectobjs[i];
-        } 
-    }
-
-    //validate Q3
-    if (Q3_1.checked==false && Q3_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-        args.IsValid=false;
-        return;
-    }
-
-       var returnVal = ValidateSynagogueAndJCCQuestion(inputobjs,selectobjs,valobj,false);
-    if(returnVal == false)
-    {
-        args.IsValid = false;
-        return;
-    }
-    //validate Q6
-    if (Q6.selectedIndex==0)
-    {
-        valobj.innerHTML = "<li>Please select the Grade</li>";
-        args.IsValid=false;
-        return;
-    }   
-    
-    //for Question 9
-    var bQ9Checked = false;
-    for (var j =0 ; j<= Q9.length-1; j++)
-    {
-        if (Q9[j].checked) //Q9 has been answered
-        {
-            bQ9Checked=true;
-            //for Question 11
-            if (trim(Q10.value)=="" && Q9[j].value!=3)
-            {
-                valobj.innerHTML = "<li>Please enter Name of the School</li>";
-                args.IsValid=false;
-                return;
-            }   
-        }
-    }   
-    //if Q9 is not answered
-    if (!bQ9Checked)
-    {
-         valobj.innerHTML = "<li>Please answer Question No. 4</li>";
-         args.IsValid=false;
-         return;
-    }  
-  if (Q11_1.checked==false && Q11_2.checked==false)
-    {
-        valobj.innerHTML = "<ul><li>Please answer Question No. 6</li></ul>";
-        args.IsValid=false;
-        return;
-    }
-    else if (Q11_1.checked) // if yes is checked
-    {
-        if(trim(Q12.value)=="")
-        {
-            valobj.innerHTML = "<ul><li>Please enter Day Camp attended </li></ul>";
-            args.IsValid=false;
-            return;
-        }
-    }
-
-
-
-    args.IsValid = true;
-    return;
-}
-
 function VaildatePage3Step2_Washington(sender,args)
 {
     var Q7_1, Q7_2, Q7_3, Q7_4, Q8_State, Q8_Camp, Q9_CampSession, Q10_StartDate, Q10_EndDate;
@@ -5389,7 +5252,7 @@ function CheckSynagogue(chkboxObject)
     var lblJCC = document.getElementById("ctl00_Content_lblJCC");
     var lblRefCode = document.getElementById("ctl00_Content_LblRefCode");
     var txtSynagogueReferral = document.getElementById("ctl00_Content_txtSynagogueReferral");
-    debugger;
+    
     if(chkboxObject.id.indexOf("chkSynagogue") != -1) {
         if(chkboxObject.checked) {
             ddlSynagogue.disabled = false;    

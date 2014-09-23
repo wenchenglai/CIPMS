@@ -136,11 +136,22 @@
                         <asp:LinkButton ID="lnkStatsReport" runat="server" Text="JWest Upgraded Sessions Report" OnClick="lnkStatsReport_Click"
                             CausesValidation="false" /></td>
                 </tr>
-                 <tr>
+                <tr>
                     <td>
                     </td>
                     <td>
-                        <asp:LinkButton ID="lnkBulkStatusUpdate" Visible="false" runat="server" Text="Mass Update" OnClick="lnkBulkStatusUpdate_Click" CausesValidation="false" /></td>
+                        <asp:LinkButton ID="lnkBulkStatusUpdate" Visible="false" runat="server" Text="Mass Update" OnClick="lnkBulkStatusUpdate_Click" CausesValidation="false" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                        <div id="divProgramFinder" runat="server" Visible="false">
+                            <asp:LinkButton ID="lnkProgramFinder" runat="server" Text="Program Finder" OnClick="lnkProgramFinder_Click" CausesValidation="false" />
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>

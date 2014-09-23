@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMaster.master" AutoEventWireup="true" CodeFile="BulkStatusUpdate.aspx.cs" Inherits="Administration_BulkStatusUpdate" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
-                    &nbsp;<asp:ScriptManager ID="ScriptManager1" runat="server">
-                </asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
             <script type="text/javascript">
                 var flag = false;

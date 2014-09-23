@@ -45,6 +45,8 @@ public enum QuestionId
     SelectJewishDaySchool = 17,
     Q30_ReferredBySynagogueOrJCC = 30,
     Q31_SelectYourSynagogueOrJCC = 31,
+    Q1016_AttendedDayCamp = 1016,
+    Q1017_DayCampName = 1017,
     Q1021_PJLNames = 1021,
     WhoYouSpeakToInSynagogue = 1044,
     ProfessionalOrCongregate = 1045,

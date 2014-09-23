@@ -60,8 +60,7 @@
             <td valign="top" style="padding-bottom:20px;">
                 <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                     <p class="InfoText">
-					    In order to be eligible for the Atlanta OHC incentive grant, the camper must attend camp for at least 19 consecutive days 
-						(some exceptions may apply).
+					    In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is ONLY eligible for the grant if attending camp for 19 or more consecutive days in summer 2015.
                     </p>
                     <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                     <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
