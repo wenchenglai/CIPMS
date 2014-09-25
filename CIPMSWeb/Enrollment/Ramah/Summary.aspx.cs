@@ -47,6 +47,13 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
         {
             trOutdoor.Visible = true;
         }
+        else if (last3Digits == "078") // Darom
+        {
+            tblDarom.Visible = true;
+            tblRegular.Visible = false;
+            tblDisable.Visible = false;
+            btnNext.Visible = false;
+        }
         else
         {
             trDefault1.Visible = true;

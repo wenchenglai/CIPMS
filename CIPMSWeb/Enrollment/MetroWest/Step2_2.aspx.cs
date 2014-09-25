@@ -494,6 +494,21 @@ public partial class Step2_MetroWest_2 : System.Web.UI.Page
             }
         }
 
+        //for question Grade
+        strQId = ((int)QuestionId.Grade).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
+
+        //for question School Type
+        if (rdoSchoolType.SelectedValue != "")
+        {
+            strQId = ((int)QuestionId.SchoolType).ToString();
+            strTablevalues += strQId + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
+        }
+
+        //for question School Name
+        strQId = ((int)QuestionId.SchoolName).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
+
         //to remove the extra character at the end of the string, if any
         char[] chartoRemove = { Convert.ToChar(strQSeparator) };
         strTablevalues = strTablevalues.TrimEnd(chartoRemove);

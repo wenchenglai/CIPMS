@@ -11,19 +11,39 @@ public partial class Enrollment_PJL_Step2_2_route_info : System.Web.UI.Page
     protected void btnPrevious_Click1(object sender, EventArgs e)
     {
         var url = "../Step1.aspx";
-        if (Request.QueryString["prevJPL"] != null)
+        if (Request.QueryString["prev"] != null)
         {
-            url = Request.QueryString["prevJPL"];
+            url = Request.QueryString["prev"];
+
+            if (Request.QueryString["prevfedid"] != null)
+            {
+                Session["FedId"] = Request.QueryString["prevfedid"];
+            }
+
+            //// delete Q3 because number of days are different
+            //var fjcid = Session["FJCID"].ToString();
+            //var camperApp = new CamperApplication();
+            //camperApp.InsertCamperAnswers(fjcid, "3~3~", Master.UserId, "PJL Lottery - delete Q1");
         }
 
         Response.Redirect(url);
     }
     protected void btnNext_Click(object sender, EventArgs e)
     {
+        var fjcid = Session["FJCID"].ToString();
         var camperApp = new CamperApplication();
-        camperApp.UpdateFederationId(Session["FJCID"].ToString(), ((int)FederationEnum.PJL).ToString());
+        camperApp.UpdateFederationId(fjcid, ((int)FederationEnum.PJL).ToString());
+        var previousFedID = Session["FedId"].ToString();
         Session["FedId"] = (int) FederationEnum.PJL;
-        Response.Redirect("Step2_2.aspx");
+
+        camperApp.InsertCamperAnswers(fjcid, "3~3~", Master.UserId, "PJL Lottery - delete Q1");
+
+        var nextUrl = "Step2_2.aspx";
+        if (Request.QueryString["prev"] != null)
+        {
+            nextUrl += "?prev=" + Request.QueryString["prev"] + "&prevfedid=" + previousFedID;
+        }
+        Response.Redirect(nextUrl);
     }
     protected void btnSaveandExit_Click(object sender, EventArgs e)
     {

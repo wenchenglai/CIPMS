@@ -59,7 +59,7 @@ public partial class CamperFooter : System.Web.UI.UserControl
             if (string.IsNullOrEmpty(strFedId) && Session["FedId"] != null)
                 strFedId = Session["FedId"].ToString();
 
-
+            // 2014-09-01 based on these two pages URL, we knwo it's time to show PJL contact info
             var strPath = Path.GetFileName(Request.Path);
             if (strPath == "Step2_2_route_info.aspx" || strPath == "EnterLotteryInfo.aspx")
                 strFedId = ((int)FederationEnum.PJL).ToString();

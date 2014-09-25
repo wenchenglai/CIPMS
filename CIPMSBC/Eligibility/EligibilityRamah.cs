@@ -18,16 +18,16 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            //StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            //{
-            //    return true;
-            //}
-            StatusValue = CheckOnTimeInCamp(FJCID);
+            StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
+            //StatusValue = CheckOnTimeInCamp(FJCID);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    return true;
+            //}
 
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))

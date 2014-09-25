@@ -165,7 +165,18 @@
         </tr>
 
     </table>
-
+    <table id="tblDarom" Visible="false" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
+            </td>
+            <td>
+                <p>
+                    At this time, Camp Ramah Darom is not providing One Happy Camper incentive grants for summer 2015. First-time camper families needing financial assistance may contact Holly Fortson, (Hfortson@ramahdarom.org), to explore applying for financial aid from Ramah Darom
+                </p>
+            </td>
+        </tr>
+    </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>

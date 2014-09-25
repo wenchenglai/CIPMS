@@ -13,8 +13,7 @@
 		<tr>
 			<td colspan="2">
                 <p>
-                    The Jewish Federation of Greater Seattle (JFGS) in partnership with the Foundation for Jewish Camp is now offering the One Happy Camper first-time camper incentive program for all Washington State residents. This program will offer substantial funding to campers in our community looking to attend Jewish overnight camp for the first time. This is not a scholarship, but a grant program to encourage families to consider Jewish overnight camp.                
-
+                    The Jewish Federation of Greater Seattle (JFGS) in partnership with the Foundation for Jewish Camp is now offering the One Happy Camper first-time camper incentive program for all Washington State residents. This program will offer substantial funding to campers in our community looking to attend Jewish overnight camp for the first time. This is not a scholarship, but a grant program to encourage families to consider Jewish overnight camp.
                 </p>
                 <p>
                     Through this grant and other community initiatives and programs, the Federation hopes to increase by 25%, over three years, the number of children from Washington State attending Jewish summer camps, with a preference for Washington State camps.
@@ -25,7 +24,8 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 2-10 (after camp).</li>
-                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website 
+                            (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p> 
                 <p>
@@ -34,7 +34,7 @@
                 <p>
                     JFGS continues to offer its Jewish overnight camp needs-based scholarship program. Information about this program can be 
                     found at <a href="http://www.jewishinseattle.org/campscholarships" target="_blank">www.jewishinseattle.org/campscholarships</a>. 
-                    If you have any questions or need any additional assistance, please contact our camping staff at Camp@JewishInSeattle.org or call 206-774-2243.
+                    If you have any questions or need any additional assistance, please contact our camping staff at Camp@JewishInSeattle.org or call 206-443-5400.
                 </p>
 			</td>
 		</tr>

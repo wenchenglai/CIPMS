@@ -198,7 +198,18 @@ public partial class Step2_PJL_3 : Page
                 }
                 Session["FJCID"] = hdnFJCIDStep2_3.Value;
                 Session["STATUS"] = null;
-                Response.Redirect("Step2_2.aspx");
+
+                var nextUrl = "Step2_2.aspx";
+                if (Request.QueryString["prev"] != null)
+                {
+                    nextUrl += "?prev=" + Request.QueryString["prev"];
+                    if (Request.QueryString["prevfedid"] != null)
+                    {
+                        nextUrl += "&prevfedid=" + Request.QueryString["prevfedid"];
+                    }
+                }
+
+                Response.Redirect(nextUrl);
             }
         }
         catch (Exception ex)

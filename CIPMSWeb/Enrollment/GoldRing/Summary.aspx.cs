@@ -1,13 +1,5 @@
 using System;
-using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Enrollment_JCC_Summary : System.Web.UI.Page
@@ -52,31 +44,26 @@ public partial class Enrollment_JCC_Summary : System.Web.UI.Page
     }
     protected void goldringlink_Click(object sender, EventArgs e)
     {
-        CamperApplication CamperAppl = new CamperApplication();
-        CamperAppl.submitCamperApplication(Session["FJCID"].ToString(), string.Empty, 0, 37);
-        Response.Redirect("http://www.jefno.org/6_grants_camp.html");
+        var camperAppl = new CamperApplication();
+        camperAppl.submitCamperApplication(Session["FJCID"].ToString(), string.Empty, 0, 37);
+        Response.Redirect("https://jefno.org/youth-camping/goldring-summer-camp/");
     }
    // added to redirect to either pjl or miip or NL page depending on inputs by sreevani
     protected void goldringcontinue_Click(object sender, EventArgs e)
     {
-
-        CamperApplication CamperAppl = new CamperApplication();
-
         if (Session["FJCID"] != null)
         {
+            var camperAppl = new CamperApplication();
             string strFJCID = Session["FJCID"].ToString();
-            int nextfederationid;
-            Redirection_Logic _objRedirectionLogic = new Redirection_Logic();
+            var _objRedirectionLogic = new Redirection_Logic();
             _objRedirectionLogic.GetNextFederationDetails(strFJCID);
-            nextfederationid = _objRedirectionLogic.NextFederationId;
-            CamperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
+            int nextfederationid = _objRedirectionLogic.NextFederationId;
+            camperAppl.UpdateFederationId(strFJCID, nextfederationid.ToString());
             Session["FedId"] = nextfederationid.ToString();
             if (nextfederationid == 48 || nextfederationid == 63)
                 Response.Redirect(_objRedirectionLogic.NextFederationURL);
             else
                 Response.Redirect("~/Enrollment/Step1_NL.aspx");
-
         }
-        // Response.Redirect("~/Enrollment/Step1_NL.aspx");
     }
 }

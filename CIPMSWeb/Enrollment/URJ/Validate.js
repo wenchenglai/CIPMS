@@ -31,7 +31,7 @@
             }
         } else {
             $('#ctl00_Content_rdoDays12').attr('checked', false);
-            $('#ctl00_Content_rdoDays19').attr('checked', false);
+            $('#ctl00_Content_rdoDays19').attr('checked', true);
         }
 
         // Grade

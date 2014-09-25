@@ -122,6 +122,7 @@
 					<asp:DropDownList ID="ddlStaffNames" runat="server" onChange="HowDidYouHearUsValidator.OnMemberDropDownChange(this);" >
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>							
 						<asp:ListItem Text="Dirk Bird" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Elanah Chassen" Value="27"></asp:ListItem>
 						<asp:ListItem Text="Anna Elfenbaum" Value="4"></asp:ListItem>
 						<asp:ListItem Text="Mary Sue Grossman" Value="5"></asp:ListItem>
                         <asp:ListItem Text="Jennifer Gutberg" Value="23"></asp:ListItem>
@@ -144,7 +145,7 @@
 						<asp:ListItem Text="Rachel White" Value="20"></asp:ListItem>
 						<asp:ListItem Text="Helen Wolf" Value="21"></asp:ListItem>	
 						<asp:ListItem Text="Rachel Wolf" Value="22"></asp:ListItem>								
-                        <asp:ListItem Text="Claire Winthrop" Value="22"></asp:ListItem>	
+                        <asp:ListItem Text="Claire Winthrop" Value="26"></asp:ListItem>	
 						<asp:ListItem Text="Don't know/Not sure" Value="2"></asp:ListItem>																																										
 						<asp:ListItem Text="Other" Value="1"></asp:ListItem>							
 					</asp:DropDownList>

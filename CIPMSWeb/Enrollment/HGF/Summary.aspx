@@ -2,7 +2,7 @@
     Inherits="Enrollment_JCC_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="../../images/HGF.png" />
@@ -10,34 +10,27 @@
         </tr>
         <tr>
             <td colspan="2">
-                <asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						Thank you for visiting One Happy Camper.
-						<br />
-						<br />
-						Because you live in the Western Massachusetts area, you may be eligible for a $1500 first-time incentive grant sponsored by the Harold Grinspoon Foundation!</p>
-						<br />
-						Jewish Overnight Summer Camping grants are available for first-time campers who are current residents of 
-						<br />Western Massachusetts, Southern Vermont or Northern Connecticut who are attending a qualifying 
-						<a href='http://www.jewishcamp.org/camps' target="_blank">Jewish Overnight Camp</a>
-						<br />
-                </asp:Label>
-				<p class="infotext3" style="text-align:center"> 
-					<span style="color:red">
-						To learn more and apply for this grant, 
-						<asp:LinkButton ID="hgflink" runat="server" OnClick="hgflink_Click" Text="CLICK HERE" />
-					</span>.
-					(You will leave this website)</p>
-                <p class="infotext3" style="text-align:center">
-					Campers may not receive an incentive grant from both One Happy Camper and the Harold Grinspoon Foundation.
-					<br />
-					For more information about the Harold Grinspoon Foundation incentive program 
-					<br />
-					please contact the Harold Grinspoon Foundation at <a href="mailto:gti@hgf.org" target="_blank">gti@hgf.org.</a> 
-				</p>
+                <p>
+                    Thank you for visiting One Happy Camper. 
+                </p>
+                <p>
+                    Because you live in the Western Massachusetts area, you may be eligible for a $1500 first-time incentive grant sponsored by the Harold Grinspoon Foundation!
+                </p>
+                <p>
+                    Jewish Overnight Summer Camping grants are available for first-time campers who are current residents of Western Massachusetts, Southern Vermont or Northern Connecticut who are attending a qualifying 
+                    <a href='http://www.jewishcamp.org/camps' target="_blank">Jewish Overnight Camp</a>.
+                </p>
+                <p>
+                    Campers may not receive an incentive grant from both One Happy Camper and the Harold Grinspoon Foundation.
+                </p>
+                <p>
+                    To learn more and apply for this grant, <asp:LinkButton ID="hgflink" runat="server" OnClick="hgflink_Click" Text="CLICK HERE" />. (You will leave this website)
+                </p>
+                <p>
+                    For more information about the Harold Grinspoon Foundation incentive program please contact the Harold Grinspoon Foundation at gti@hgf.org.
+                </p>
             </td>
         </tr>        
-        
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">

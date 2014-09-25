@@ -180,7 +180,7 @@ public partial class Step2_Nageela_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Nageela);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.NageelaMidwest);
         try
         {
             if (Page.IsValid)

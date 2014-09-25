@@ -28,15 +28,15 @@
                     </ul>
 				</p> 
                 <p>
-                    <span style="color:red; font-weight: bold">Attention Jewish day school families:</span> Children currently enrolled in a Jewish day school are eligible for the Portland One Happy Camper program.  Please continue with this application by clicking NEXT. Applications for Jewish day school students must be submitted by May 15 of each year.
+                    <span style="color:red; font-weight: bold">Attention Jewish day school families:</span> 
+                    Children currently enrolled in a Jewish day school are eligible for the Portland One Happy Camper program.  Please continue with this application by clicking NEXT. Applications for Jewish day school students must be submitted by May 1 of each year.
                 </p>  
                 <p>
-                    If your child is not eligible and/or is interested in learning about financial-needs based grants or other 
-                    camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp directly.                                 
+                    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit 
+                    <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp directly.                                 
                 </p>
                 <p>
-                    If you need additional assistance with registration, please call Rachel Halupowski at 503.892.7413. For eligibility requirement questions, please call Bob Horenstein, Federation Director of Community Relations and Allocations, at 503-245-6496.                
-
+                    If you need additional assistance with registration, please call Rachel Halupowski at 503-892-7413. For eligibility requirement questions, please call Bob Horenstein, Federation Director of Community Relations and Allocations, at 503-245-6496.
                 </p>   
 			</td>
 		</tr>

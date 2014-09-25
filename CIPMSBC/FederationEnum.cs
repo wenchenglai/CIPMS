@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel;
 
 namespace CIPMSBC
@@ -42,7 +39,7 @@ namespace CIPMSBC
 		Adamahadventures = 47,
 		CMART = 48,
 		WashingtonDC = 49,
-		Nageela = 50,
+		NageelaMidwest = 50,
 		SixPointsSportsAcadamy = 51,
 		SolomonSchechter = 52,
 		Kansas = 28,
@@ -91,10 +88,12 @@ namespace CIPMSBC
 		ElPaso = 102,
 		JCAShalom = 103,
 		MoshavaMalibu = 105,
-        Zeke = 106,
-        Atlanta = 107,
-        Nashville = 108,
-        Portland = 112
+		Zeke = 106,
+		Atlanta = 107,
+		Nashville = 108,
+		Portland = 112,
+		RamahBerkshires = 115,
+		RamahCanada = 117
 		//if you are adding new federation enter a value in FedFolderName, FedDaySchoolEligibility & FedGradeEligibility 
 		//enums too FedFolderName with the folder name created for the federation, FedDaySchoolEligibility (JewishDaySchool) and FedGradeEligibility (eligible Grade) in the description attribute
 		//and federationid assigned to all 3 enums--- these enums are used by the word project to generate report

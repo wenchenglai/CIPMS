@@ -16,8 +16,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-					The Greensboro One Happy Camper program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, 
-                    Temple Emanuel, and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers.
+                    The Greensboro One Happy Camper program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, Temple Emanuel, and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers.
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -30,12 +29,7 @@
                     </ul>
 				</p>   
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
-                </p>
-                <p>
-                    <span style="font-weight: bold">Note:</span> Multiple children from a single family are eligible to receive separate grants. At least one parent or guardian must be a member in good standing and 
-                    contribute to the Greensboro Jewish Federation in the year the grant is awarded. Members of Beth David Synagogue and Temple Emanuel are eligible to receive 
-                    full incentives. Unaffiliated members may apply to the Federation and will be reviewed on a case-by-case basis. 
+                    <span style="font-weight: bold">Note:</span> Multiple children from a single family are eligible to receive separate grants. At least one parent or guardian must be a member in good standing and contribute to the Greensboro Jewish Federation in the year the grant is awarded. Members of Beth David Synagogue and Temple Emanuel are eligible to receive full incentives. Unaffiliated members may apply to the Federation and will be reviewed on a case-by-case basis.  
                 </p>
                 <p>
                     If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 

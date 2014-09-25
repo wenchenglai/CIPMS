@@ -5,14 +5,11 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
-public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
+public partial class Enrollment_Judaea_Summary : Page
 {
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -21,10 +18,6 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        string strFedId, strCampId;
-
-        var objGeneral = new General();
- 
         if (!IsPostBack)
         {
             // 2012-04-01 Two possible scenarios - either the regular summary page, or then camp is full, show the close message
@@ -80,31 +73,30 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
             //int resultCampId = 0;
             //Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
 
-            string campID = Session["CampID"].ToString();
-            string last3Digits = campID.Substring(campID.Length - 3);
-            // Disable camps will overwrite above code
-            switch (last3Digits)
-            {
-                case "107":
-                    lblDisable.Text = "The Young Judaea-Texas One Happy Camper application is now closed for the summer of 2014. For information about a waiting list, please contact the camp professional listed at the bottom of the screen.";
-                    tblDisable.Visible = true;
-                    tblRegular.Visible = false;
+            //string campID = Session["CampID"].ToString();
+            //string last3Digits = campID.Substring(campID.Length - 3);
+            //// Disable camps will overwrite above code
+            //switch (last3Digits)
+            //{
+            //    case "107":
+            //        lblDisable.Text = "The Young Judaea-Texas One Happy Camper application is now closed for the summer of 2014. For information about a waiting list, please contact the camp professional listed at the bottom of the screen.";
+            //        tblDisable.Visible = true;
+            //        tblRegular.Visible = false;
 
-                    if (Session["SpecialCodeValue"] != null)
-                    {
-                        string currentCode = Session["SpecialCodeValue"].ToString();
-                        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+            //        if (Session["SpecialCodeValue"] != null)
+            //        {
+            //            string currentCode = Session["SpecialCodeValue"].ToString();
+            //            int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-                        if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))
-                        {
-                            tblDisable.Visible = false;
-                            tblRegular.Visible = true;
-                        }
-                    }
+            //            if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))
+            //            {
+            //                tblDisable.Visible = false;
+            //                tblRegular.Visible = true;
+            //            }
+            //        }
 
-                    break;
-            }
-
+            //        break;
+            //}
         }
     }
 
@@ -121,7 +113,6 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
         {
             Response.Redirect("../Step1_NL.aspx");
         }
-
     }
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -141,10 +132,10 @@ public partial class Enrollment_Judaea_Summary : System.Web.UI.Page
     {
         if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
         {
-            Label lblContactName = (Label)e.Item.FindControl("lblContactName");
-            Label lblFederationName = (Label)e.Item.FindControl("lblFederationName");
-            HyperLink hprLnkContactEmail = (HyperLink)e.Item.FindControl("hprLnkContactEmail");
-            Label lblContactNo = (Label)e.Item.FindControl("lblContactNo");
+            var lblContactName = (Label)e.Item.FindControl("lblContactName");
+            var lblFederationName = (Label)e.Item.FindControl("lblFederationName");
+            var hprLnkContactEmail = (HyperLink)e.Item.FindControl("hprLnkContactEmail");
+            var lblContactNo = (Label)e.Item.FindControl("lblContactNo");
 
             DataRowView drView = e.Item.DataItem != null ? (DataRowView)e.Item.DataItem : null;
             if (drView != null)
