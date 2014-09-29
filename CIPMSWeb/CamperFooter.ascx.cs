@@ -124,6 +124,11 @@ public partial class CamperFooter : System.Web.UI.UserControl
                             // The Partnership for Jewish Learning and Life (Greater MetroWest NJ)
                             lblFederationName.Text = "The Partnership for Jewish Learning <br /> and Life (Greater MetroWest NJ)";
                         }
+                        else if (strFedId == "69")
+                        {
+                            // 2014-09-26 Montreal wants to use different name at footer
+                            lblFederationName.Text = "Generation Fund, an Initiative of Federation CJA";
+                        }
                     }
                     else
                     {

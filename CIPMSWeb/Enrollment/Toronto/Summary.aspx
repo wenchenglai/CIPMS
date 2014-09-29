@@ -1,67 +1,41 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Admah_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table id="tblRegular" runat="server" >
+	<table id="tblRegular" runat="server" class="infotext3" style="text-align:justify">
 		<tr>
-			<td colspan="2">
+			<td>
 				<img src="Toronto OHC Logo.jpg" height="81" width="371" /> 
 				<img src="logo2.jpg" height="144" width="240" />                             
 			</td>
 		</tr>
-		<tr>
-			<td colspan="2">
-				<p class="infotext3" style="text-align:justify">
-					Good news! You may be eligible for a $1000 incentive grant.
-				</p>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<p class="infotext3" style="text-align:justify">
-					Thank you for choosing Jewish overnight camp and helping us to be one camper closer to achieving our goal.  
-					The Silber Family Centre for Jewish Camping has committed to doubling the number of campers attending Jewish overnight camp by 2016.  
-					One of the ways that we are spreading the 'I LOVE Jewish Camp' philosophy is through our partnership with Foundation for Jewish Camp.  
-				</p>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<div class="infotext3" style="text-align:justify">
-					UJA Federation of Greater Toronto and our participating camps are proud to offer the One Happy Camper incentive grant to all campers who meet the following criteria: 
-					<ul>
-						<li>A first-time camper (has never attended a Jewish overnight camp for more than two consecutive weeks)</li>
-						<li>Currently residing in the Greater Toronto Area (GTA)</li>            
-						<li>Applying for camp sessions that are a minimum of three weeks</li>
-					</ul>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<p class="infotext3" style="text-align:justify">
-					We know that camp can be a new adventure and that you may want to dip your toes before jumping in, so we offer a shorter session option:  
-					Eligible campers registered for a 'taste of' session at camp, will have a grant reserved in their name.  Just in case your camper loves camp 
-					and chooses to extend their 10 day or 2 week session to an eligible program, most camps will offer the option to extend to a full session, 
-					at which time, we will activate the reserved grant for your camper.   If they prefer just to have a 'taste of' camp, he/she would still be 
-					considered a first-time camper next summer and is welcome to apply again.
-				</p>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<p class="infotext3" style="text-align:justify">
-					Grants will be awarded on a first-come, first-serve basis.  If you are not eligible for this program and/or you are interested in learning about 
-					other scholarship opportunities, please contact your camp and your local One Happy Camper Administrator.
-				</p>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<p class="infotext3" style="text-align:justify">
-					To proceed with your application, click on the Next button.
-				</p>
-			</td>
-		</tr>                
+        <tr>
+            <td>
+                <p>
+                    Good news! You may be eligible for a $1000 incentive grant.
+                </p>
+                <p>
+                    Thank you for choosing Jewish overnight camp and helping us to be One Happy Camper closer to achieving our goal. UJA’s Silber Family Centre for Jewish Camping is committed to promoting the importance of Jewish Camping in our community. One of the ways that we are spreading the 'I LOVE Jewish Camp' philosophy is through our partnership with Foundation for Jewish Camp. 
+                </p>
+                <p>
+                    Along with our partner camps, UJA Federation of Greater Toronto is proud to offer the One Happy Camper incentive grant to all campers who meet the following criteria.
+                </p>
+				<p>
+				    The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>Currently residing in the Greater Toronto Area (GTA)</li>
+                        <li>Enrolled with one of the OHC Toronto partner camps</li>
+                    </ul>
+				</p> 
+                <p>
+                    Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program and/or you are interested in learning about other scholarship opportunities, please contact your camp and your local One Happy Camper Administrator. 
+                </p>  
+                <p>
+                    To proceed with your application, click on the Next button. 
+                </p>            
+            </td>
+        </tr>            
 	</table>
 
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">

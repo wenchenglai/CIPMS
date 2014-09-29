@@ -10,16 +10,14 @@
 			<td>
 				<p>Good news! You may be eligible for a One Happy Camper grant.</p>    
 				<p>
-					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-					please proceed by clicking the "next" button below.
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
 				</p>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
 				<p>
-					The Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, 
-					is offering a one-time grant of up to $1,000 to eligible Montreal children. 
+					The Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, is offering a one-time grant of up to $1,000 to eligible Montreal children. 
 				</p>
 				<p>
 					The following outlines the eligibility criteria for this program:
@@ -28,7 +26,7 @@
 						<li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
 						<li>First time camper must be entering grades 1-12 (after camp).</li>
 						<li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
-						<li>Attending one of the 23 Montreal area non-profit Jewish, overnight camps.</li>
+						<li>Attending one of our eligible Montreal area non-profit Jewish overnight camps.</li>
 					</ul>
 				</p>   
 				<p>
@@ -37,8 +35,7 @@
 					for first-time Jewish campers who attend one of our eligible Jewish day schools. Please click <a href="http://www.federationcja.org/en/camps/#sthash.LsrN4OE3.dpbs" target="_blank">here</a> to apply.                    
 				</p>
 				<p>
-					Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program, but are interested in learning about other scholarship opportunities, 
-					please contact your camp directly.
+					Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program, but are interested in learning about other scholarship opportunities, please contact your camp directly.
 				</p>
 			</td>
 		</tr> 

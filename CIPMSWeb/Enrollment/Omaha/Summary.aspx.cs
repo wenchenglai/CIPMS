@@ -13,7 +13,20 @@ public partial class Enrollment_Memphis_Summary : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            tblRegular.Visible = false;
+            tblOffline.Visible = true;
 
+            if (tblRegular.Visible)
+            {
+                btnNext.Visible = true;
+            }
+            else
+            {
+                btnNext.Visible = false;
+            }
+        }
     }
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)

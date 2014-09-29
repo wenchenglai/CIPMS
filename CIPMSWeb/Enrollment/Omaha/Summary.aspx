@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Memphis_Summary" %>
 
 <asp:Content ID="Memphis_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td> 
                 <img id="logo" src="../../images/Omaha Logo.jpg" alt="" /></td>
@@ -47,6 +47,26 @@
                     <p style="text-align:justify">If you need additional assistance or are interested in learning about financial-need based scholarship - please call your community professional listed at the bottom of this page.</p>
                 </asp:Label></td></tr>
                
+    </table>
+    <table id="tblOffline" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td> 
+                <img id="logo" src="../../images/Omaha Logo.jpg" alt="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    The Jewish Federation of Omaha, through its Jewish Experience Grant program, provides grants to encourage children to attend overnight Jewish camp.
+                </p>
+				<p>
+                    It is not a scholarship fund and is not need-based.  The Jewish Experience Grant is a gift of $1,000 from the Jewish Federation of Omaha to encourage attendance at a Jewish summer residential camp and continued attendance at religious school.  
+				</p> 
+                <p>
+                    To learn more about Omaha’s Jewish Experience Grants visit <a href="http://www.jewishomaha.org/education/scholarships-and-grants/" target="_blank">www.jewishomaha.org/education/scholarships-and-grants</a> or contact Mary Sue Grossman at (402) 334-6445 or mgrossman@jewishomaha.org.
+                </p>         
+            </td>
+        </tr>          
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            

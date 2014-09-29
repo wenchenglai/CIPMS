@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_CAiryLouise_Summary" %>
 
 <asp:Content ID="CAityLouise_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table width="100%" cellpadding="5" cellspacing="0">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td>
                 <img src="../../images/Airy Louise Logo.bmp" alt="" />
@@ -65,6 +65,26 @@
                 </asp:Label>
             </td>
         </tr>
+    </table>
+	<table id="tblOffline" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+		<tr>
+            <td>
+                <img src="../../images/Airy Louise Logo.bmp" alt="" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    Thank you for your interest in Camp Airy & Camp Louise's One Happy Camper Program. 
+                </p>
+				<p>
+				    For more information, please contact Stacy Schwartz Frazier at stacy@airylouise.org or visit the Incentive page on our website:
+				</p> 
+                <p>
+                    <a href="http://airylouise.org/general-information/one-happy-camper-tuition-incentive" target="_blank">airylouise.org/general-information/one-happy-camper-tuition-incentive</a>
+                </p>         
+            </td>
+        </tr>  
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
