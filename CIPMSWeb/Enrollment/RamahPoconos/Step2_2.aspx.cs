@@ -244,7 +244,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     }
                     else if (dr["OptionID"].ToString() == "2")
                     {
-                        rdoFirstTimerNo.Checked = true;
+                        rdoSecondTimerNo.Checked = true;
                     }
                     break;
 
@@ -257,7 +257,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     }
                     else if (dr["OptionID"].ToString() == "2")
                     {
-                        rdoFirstTimerNo.Checked = true;
+                        rdoReceivedGrantNo.Checked = true;
                     }
                     break;
 
@@ -316,7 +316,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
         //for question Received Grant or not
         strQId = ((int)QuestionId.Q33_ReceivedGrant).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantNo.Checked ? "1" : rdoReceivedGrantYes.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

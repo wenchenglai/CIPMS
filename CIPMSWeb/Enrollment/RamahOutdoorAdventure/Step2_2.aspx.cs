@@ -244,7 +244,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     }
                     else if (dr["OptionID"].ToString() == "2")
                     {
-                        rdoFirstTimerNo.Checked = true;
+                        rdoSecondTimerNo.Checked = true;
                     }
                     break;
 
@@ -257,7 +257,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     }
                     else if (dr["OptionID"].ToString() == "2")
                     {
-                        rdoFirstTimerNo.Checked = true;
+                        rdoReceivedGrantNo.Checked = true;
                     }
                     break;
 
