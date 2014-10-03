@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIPMSBC", "CIPMSBC\CIPMSBC.csproj", "{E39DB499-40D1-4E04-9B96-CFD10BC8802C}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CIPMSWeb", "CIPMSWeb\", "{BDF2A977-F373-42CF-9A50-6F23729D2800}"
@@ -11,14 +12,14 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CIPMSWeb", "CIPMSWeb\", "{B
 		SccProvider = ""
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
 		ProjectReferences = "{E39DB499-40D1-4E04-9B96-CFD10BC8802C}|CIPMSBC.dll;{C998FA1A-E17F-4F35-ADA1-3FB0A1639EF9}|CIPMSOfficeObjects.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/CIPMS"
+		Debug.AspNetCompiler.VirtualPath = "/CIPMSWeb"
 		Debug.AspNetCompiler.PhysicalPath = "CIPMSWeb\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\CIPMSWeb\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "true"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/CIPMS"
+		Release.AspNetCompiler.VirtualPath = "/CIPMSWeb"
 		Release.AspNetCompiler.PhysicalPath = "CIPMSWeb\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\CIPMSWeb\"
 		Release.AspNetCompiler.Updateable = "true"
@@ -26,6 +27,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CIPMSWeb", "CIPMSWeb\", "{B
 		Release.AspNetCompiler.FixedNames = "true"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "4458"
+		SlnRelativePath = "CIPMSWeb\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIPMSOfficeObjects", "CIPMSOfficeObjects\CIPMSOfficeObjects.csproj", "{C998FA1A-E17F-4F35-ADA1-3FB0A1639EF9}"
