@@ -17,7 +17,24 @@ namespace CIPMSBC.Eligibility
 
         public abstract bool checkEligibility(string FJCID, out int StatusValue);
         
-		public abstract bool checkEligibilityforStep2(string FJCID, out int StatusValue);
+		public virtual bool checkEligibilityforStep2(string FJCID, out int StatusValue)
+        {
+            StatusValue = 3;
+            return true;
+        }
+        public virtual EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
+        {
+            StatusValue = 3;
+            return new EligibilityResult();
+        }
+
+        public struct EligibilityResult
+        {
+            public StatusInfo CurrentUserStatusFromDB;
+            public StatusInfo TimeInCamp;
+            public StatusInfo SchoolType;
+            public StatusInfo Grade;
+        }
 
         public struct structCamperGrantInfo
         {

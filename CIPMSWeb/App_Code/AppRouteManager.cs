@@ -15,13 +15,11 @@ public class AppRouteManager
         var url = "Step2_3.aspx";
         if (status == StatusInfo.PendingPJLottery)
         {
-            var session = HttpContext.Current.Session;
-            if (session["SpecialCodeValue"] != null)
+            var specialCode = SessionSpecialCode.GetPJLotterySpecialCode();
+            if (specialCode != "")
             {
-                var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
                 var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
-
-                if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
+                if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, specialCode))
                 {
                     url = "../PJL/Step2_2_route_info.aspx?prev=" + option;
                 }                

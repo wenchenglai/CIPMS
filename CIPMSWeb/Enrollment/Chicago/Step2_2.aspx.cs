@@ -3,6 +3,7 @@ using System.Data;
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
@@ -71,7 +72,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			}
 			else
 			{
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Chicago);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Chicago);
 				objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
 			}
 
@@ -82,7 +83,24 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
         // Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
         if (ddlJewishDaySchool.SelectedValue == "3")
         {
-            Response.Redirect("Step2_coupon.aspx");
+            //Response.Redirect("Step2_coupon.aspx");
+
+            var url = "Step2_camp_coupon_holding.aspx?prev=";
+
+            var session = HttpContext.Current.Session;
+            if (session["SpecialCodeValue"] != null)
+            {
+                var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
+                var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
+
+                if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
+                {
+                    url = "../PJL/Step2_2_route_info.aspx?prev=";
+                }
+            }
+
+            Session["STATUS"] = ((int)StatusInfo.PendingPJLottery).ToString();
+            Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
         }
         else
 		    Response.Redirect("Step2_3.aspx");

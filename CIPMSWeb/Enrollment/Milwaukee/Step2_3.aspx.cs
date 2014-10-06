@@ -68,7 +68,7 @@ public partial class Step2_Adamah_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
+        
         try
         {
             if (Page.IsValid)
@@ -98,6 +98,7 @@ public partial class Step2_Adamah_3 : Page
                         CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
                         //to check whether the camper is eligible 
+                        var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Milwaukee);
                         objEligibility.checkEligibility(strFJCID, out iStatus);
                     }
 
@@ -134,10 +135,6 @@ public partial class Step2_Adamah_3 : Page
         catch (Exception ex)
         {
             Response.Write(ex.Message);
-        }
-        finally
-        {
-            objEligibility = null;
         }
     }
 
