@@ -20,7 +20,7 @@
         <tr>
             <td colspan="2">
 			    <p>
-			        The JUF Chicago One Happy Camper program, sponsored by the Foundation for Jewish Camp and JUF Chicago, offers financial incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days.
+                    The JUF Chicago One Happy Camper program, sponsored by the Foundation for Jewish Camp and JUF Chicago, offers financial incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days.
 			    </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -32,11 +32,11 @@
                     </ul>
 				</p>                
 				<p>
-				    This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. As such, children who attend Orthodox Jewish day school are generally not eligible for this incentive program, although exceptions do exist.
+                    This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. As such, children who attend Orthodox Jewish day school are generally not eligible for this incentive program, although exceptions do exist.
 				</p>
                 <p>
                     <span style="font-weight: bold; color:red;">Students at Orthodox Day Schools </span>
-                    who are ineligible for a One Happy Camper grant should contact JewishCamp@juf.org.                   
+                    who are ineligible for a One Happy Camper grant may still be eligible for Camp Coupons. Continue filling out this application and you will be directed to the Camp Coupon section. If you have problems or questions, please email JewishCamp@juf.org, or contact Lyndsey Yeary at 312-357-4798.                    
                 </p>
                 <p>
 					If you need additional assistance, please call your community professional listed at the bottom of this page.

@@ -6,7 +6,7 @@
 
     <script type="text/javascript" language="javascript">
         function windowopener(){
-        	window.open('Jewish Federation Los Angeles  Release 2013 (Summer Camp).pdf', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
+        	window.open('Jewish Federation Los Angeles  Release 2015 (Summer Camp).pdf', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
         }
     </script>
 

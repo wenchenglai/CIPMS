@@ -18,7 +18,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-				    The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
+                    The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -34,7 +34,8 @@
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
                 </p> 
                 <p>
-                    <strong>Note:</strong> One Happy Camper grants are not based on financial need and are designed to encourage families to send children to Jewish camps. Families must participate in the current JFNH Annual Campaign at a minimum level of $100.00. Camper must reside in New Hampshire or family must belong to a NH Jewish congregation. Recipient campers must write a short letter or article for publication in the NH Jewish Reporter. The deadline for applications is February 15, 2015. Late applications will be accepted if money is available. 
+                    <strong>Note:</strong> 
+                    One Happy Camper grants are not based on financial need and are designed to encourage families to send children to Jewish camps. Families must participate in the current JFNH Annual Campaign at a minimum level of $100.00. Camper must reside in New Hampshire or family must belong to a NH Jewish congregation. Recipient campers must write a short letter or article for publication in the NH Jewish Reporter. Applications will be considered on a rolling basis as long as funds are available.
                 </p>
                 <p>
                     For more information, please contact the JFNH Camp Grant Chair listed below:

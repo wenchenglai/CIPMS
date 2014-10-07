@@ -4,7 +4,7 @@
 	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td>
-                <img src="../../images/Camp_Nageela_Logo.JPG" />
+                <img src="logo.jpg" />
             </td>
             <td>
                 <p>
@@ -19,23 +19,26 @@
         <tr>
 			<td colspan="2">
                 <p>
-                    The Camp Nageela One Happy Camper program, sponsored by Camp Nageela and the Foundation for Jewish Camp offers incentives.
+                    Camp Nageela Midwest is proud to partner with the Foundation for Jewish Camp and offer One Happy Camper incentive grants to campers anywhere in North America.
 				</p>
 		        <p>
 			        The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
-                        <li>First time camper must be entering grades 3-11 (after camp).</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>Campers who currently attend (most) Jewish day schools are not eligible for the incentive grant. </li>
+                        <li>First time campers can attend for as low as $995.</li>
                     </ul>
 		        </p>                
 		        <p>
-		            Situated on our campus of 500+ breathtaking acres in rural Indiana, Camp Nageela Midwest is an extraordinary three-week experience of fun and unforgettable memories. Our extensive daily schedule is a camper’s dream and includes both traditional and specialty camp activities and surprises. Camp Nageela is ACA accredited, with separate gender sessions giving every child the opportunity to thrive in a low-pressure environment. Campers in Camp Nageela come from over 25 states and identify with all Jewish affiliations. Staff members practice traditional Jewish observance and are selected for their passion to live by its values of caring, warmth, and joy of living. Be sure to check out our first-time camper incentive grant opportunities! Additional scholarships are available as well.
+                    Camp Nageela Midwest is a Jewish Residential camp in Marshall, Indiana. Camp Nageela campers quickly become part of the warm Camp Nageela community.   Our campus boasts a heated outdoor pool, low & high ropes challenge courses complete with a five-story climbing wall and zip line. The arts center will delight the creative, while our professional sports fields, state-of-the-art gym, tennis courts and six outdoor covered basketball courts are sure to impress the most competitive sports enthusiast. Warm, caring, and professional staff are at the core of Nageela, ensuring safe unforgettable summers year after year. 
 		        </p>
                 <p>
-                   Learn More: <a href="http://campnageelamidwest.org" target="_blank">camp website</a>  • dates & rates 
+                    Camp Nageela Midwest is accredited by the American Camping Association. 
                 </p>
                 <p>
-                    If you are interested in learning more about our camps and other available grants, and our many and varied year-round programs, please call Rabbi David Shenker at (516) 374-1528 Ext 103.
+                    For more information, check out our website @ www.campnageelamidwest.org
                 </p>
 			</td>
         </tr>

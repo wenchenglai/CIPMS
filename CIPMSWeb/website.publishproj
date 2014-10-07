@@ -21,7 +21,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
     <SourceWebVirtualPath>/CIPMSWeb</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SourceWebProject>C:\Users\Wen\Documents\GitHub\CIPMS\CIPMSWeb</SourceWebProject>
-    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/6/ROOT</SourceWebMetabasePath>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/2/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

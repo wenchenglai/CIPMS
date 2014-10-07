@@ -1559,7 +1559,7 @@ namespace CIPMSBC
             string Toronto = ConfigurationManager.AppSettings["CanadaTorontoZipCodes"];
             //string CJA = "A,B,C,E", Montreal = "G, H, J", Toronto = "L, M, N", 
             string FedId = "";
-             
+
             if (CJA.IndexOf(strZip.Substring(0, 1)) >= 0)
             {
                 FedId = "65";
@@ -1568,10 +1568,12 @@ namespace CIPMSBC
             {
                 FedId = "69";
             }
-			else if (Toronto.IndexOf(strZip.Substring(0, 1)) >= 0)
-			{
-				FedId = "89";
-			}
+            else if (Toronto.IndexOf(strZip.Substring(0, 1)) >= 0)
+            {
+                FedId = "89";
+            }
+            else if (strZip.Substring(0, 1) == "T")
+                FedId = "59";
 
             return FedId;
         }
