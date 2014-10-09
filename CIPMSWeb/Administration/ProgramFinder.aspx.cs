@@ -59,7 +59,13 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             if (isActive == "True")
                 lblStatus.Text = "Active";
             else if (isActive == "False")
+            {
                 lblStatus.Text = "Inactive";
+                lblProgram.Text = "";
+                lblContact.Text = "";
+                lblEmail.Text = "";
+                lblPhone.Text = "";
+            }
             else if (isActive == "")
                 lblStatus.Text = "No Program";
 
@@ -67,7 +73,12 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             if (isGrantAvailable == "True")
                 lblAvail.Text = "Grants Available";
             else if (isGrantAvailable == "False")
+            {
                 lblAvail.Text = "Sold Out";
+
+                if (isActive == "False")
+                    lblAvail.Text = "N/A";
+            }
             else if (isGrantAvailable == "")
                 lblAvail.Text = "Offline, contact community directly";
 
@@ -86,7 +97,9 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
 
                 if (fed["ID"] == "9")
                 {
-                    lblJDS.Text = "Yes (only specific day schools permitted, contact community directly)";
+                    lblJDS.Text = "Yes ";
+                    lblJDS.Text += "(Provide PJ Code ONLY IF school NOT listed below.  If school listed below send to Reg System for processing.)";
+                    //lblJDS.Text += "(Send all to Reg System)";
                     lblJDS.Text += "<br />Bernard Zell Anshe Emet Day School";
                     lblJDS.Text += "<br />Akiba Schechter Jewish Day School";
                     lblJDS.Text += "<br />Chicago Jewish Day School";

@@ -1,7 +1,8 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Ramah_3" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Habonim_3" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
-<%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %> 
-<asp:Content ID="ContentStep2_Chicago_1" ContentPlaceHolderID="Content" Runat="Server">
+<%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
+
+<asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
@@ -15,10 +16,9 @@
         </table>--%>
          <!--to display the validation summary (error messages)-->
         <table width="50%" cellpadding="0" cellspacing="0" align="center">
-       
             <tr>
                 <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Ramah"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Midsex"></asp:CustomValidator>
                     <!--this summary will be used only for Comments field (only for Admin user)-->
                     <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
                     <!--to vaidate the comments text box for admin user-->
@@ -37,99 +37,58 @@
         </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Have you registered for camp yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
-                          The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="#" onclick="javascript:window.open('http://www.JewishCamp.org/camps','search','toolbar=no,status=no,scrollbars=yes,width=800,height=400,resizable=yes')">camp</a>?</p></asp:Label>                                      
-                           <uc1:RegControls ID="RegControls1" runat="server" />  
-<%--                          <asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist1" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist1" /><br />                    --%>
-                    
+                            The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                                       
+                      <uc1:RegControls ID="RegControls1" runat="server" />
+                    <%--<asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist" /><br />
+                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist" /><br />                    
+                   --%>
                    <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
                     <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />--%>
                 </td>
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Panel ID="PnlQ8" runat="server" width="100%">
-                        <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Please select the camp that the camper wishes to attend this summer.</asp:Label><br />
+                    <asp:Panel ID="PnlQ8"  Enabled="false" runat="server" width="100%">
+                        <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Select the camp that the camper wishes to attend this summer:</asp:Label><br />
                     </asp:Panel>
                 </td>
-             </tr>
-            <!--<tr>
-                <td valign="top"><asp:Label ID="Label20" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" >
-                    <asp:Panel ID="PnlQ8_1_1" runat="server" width="100%">
-                        <asp:Label ID="Label21" runat="server" CssClass="QuestionText">State</asp:Label><br />
-                    </asp:Panel>
-                </td>
-                <td>
-                    <asp:Panel ID="PnlQ8_1_2" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlState" runat="server" CssClass="dropdown" AutoPostBack="true"></asp:DropDownList>
-                    </asp:Panel>
-                </td>
-            </tr>-->
+             </tr>   
             <tr>
                 <td valign="top"><asp:Label ID="Label1" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" style="width:20%" >
-                    <asp:Panel ID="PnlQ8_2_1" runat="server">
+                    <asp:Panel ID="PnlQ8_2_1" Enabled="false" runat="server">
                         <asp:Label ID="Label2" runat="server" CssClass="QuestionText">Camp</asp:Label><br />
                     </asp:Panel>
                 </td>
                 <td>
-                    <asp:Panel ID="PnlQ8_2_2" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlCamp" runat="server" CssClass="dropdown" Enabled="false">
+                    <asp:Panel ID="PnlQ8_2_2" Enabled="false" runat="server" width="100%">
+                        <asp:DropDownList ID="ddlCamp"  Enabled="false" runat="server" CssClass="dropdown">
                         </asp:DropDownList>
                     </asp:Panel>
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Which session will the camper be attending (if unknown, write unknown)?</asp:Label><br />
-                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox1"></asp:TextBox>
-                       <%-- <asp:DropDownList ID="ddlCampSession" AutoPostBack="true" runat="server" CssClass="dropdown">
-                        </asp:DropDownList>--%>
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
+                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
                     </asp:Panel>
                 </td>
             </tr>
-            <%--<tr>
-                <td>
-                </td>
-                <td   colspan="2">
-                    <asp:Panel ID="PnlNote" runat="server">
-                        <asp:Label ID="lblNote" runat="server" CssClass="QuestionText">
-                            <p style="text-align: justify" id="pNote" runat="server">
-                                <font color="red"><b>In order to be eligible</b></font> for the incentive grant,
-                                the camper must attend camp for at least 19 consecutive days.</p>
-                        </asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
-           <%-- <tr>
-                <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="11" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" colspan="2">
-                    <asp:Panel ID="Panel3" runat="server">
-                        <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Dates of the Camp session</asp:Label><br />
-                        <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblStartDate" runat="server" CssClass="QuestionText"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label28" runat="server" CssClass="QuestionText">End Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblEndDate" runat="server" CssClass="QuestionText"></asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                       <font color="red"><b> <asp:Label ID="lbl" runat="server" CssClass="QuestionText">In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days.</asp:Label> </b></font> <br />
+                        <div id="daysNote" runat="server"><b><asp:Label ID="lblSessionDays" runat="server" ForeColor="Red" Text="In order to be eligible for the incentive grant, camper must attend camp for at least 19 consecutive days." CssClass="QuestionText"></asp:Label></b><br /></div>
                         <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
@@ -218,5 +177,5 @@
     <asp:HiddenField ID="hdnQ8Id" runat="server" Value="10" />
     <asp:HiddenField ID="hdnQ9Id" runat="server" Value="11" />
     <asp:HiddenField ID="hdnQ10Id" runat="server" Value="12" />    
-    <asp:HiddenField ID="hdnQNoIncrement" runat="server" Value="0" />
 </asp:Content>
+

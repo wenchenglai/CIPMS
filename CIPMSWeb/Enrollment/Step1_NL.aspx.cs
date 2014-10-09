@@ -201,10 +201,6 @@ public partial class Step1_NL : System.Web.UI.Page
                 strURL = strURL.Replace("URJ/", "URJ/Acadamy");
         }
 
-        // 2013-09-12 For Habonim Dror Camp Tavor, we need speical summary page and questions
-        if (campID.Substring(campID.Length - 3) == "095") // Habonim Dror Camp Tavor
-            Response.Redirect("~/Enrollment/Habonim/SummaryTavor.aspx");
-
         Response.Redirect(strURL, false);
     }
 

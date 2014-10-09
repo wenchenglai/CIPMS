@@ -123,12 +123,12 @@
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>							
 						<asp:ListItem Text="Dirk Bird" Value="3"></asp:ListItem>
                         <asp:ListItem Text="Elanah Chassen" Value="27"></asp:ListItem>
+                        <asp:ListItem Text="Lauri Cohen" Value="28"></asp:ListItem>
 						<asp:ListItem Text="Anna Elfenbaum" Value="4"></asp:ListItem>
 						<asp:ListItem Text="Mary Sue Grossman" Value="5"></asp:ListItem>
                         <asp:ListItem Text="Jennifer Gutberg" Value="23"></asp:ListItem>
 						<asp:ListItem Text="Larry Katz" Value="6"></asp:ListItem>							
-						<asp:ListItem Text="Beth Koritz" Value="8"></asp:ListItem>		
-						<asp:ListItem Text="Meredith Lefkoff" Value="9"></asp:ListItem>												
+						<asp:ListItem Text="Beth Koritz" Value="8"></asp:ListItem>													
 						<asp:ListItem Text="Tracy Levine" Value="10"></asp:ListItem>
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>	
 						<asp:ListItem Text="Nina Patchak" Value="12"></asp:ListItem>	
