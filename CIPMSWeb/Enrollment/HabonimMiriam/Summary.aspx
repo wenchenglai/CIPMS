@@ -19,11 +19,11 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The Habonim Dror One Happy Camper Program, sponsored by the Habonim Dror Camp Association and the Foundation for Jewish Camp, provides grants of up to a $1,000 to first-time campers Habonim Dror Camp Tavor in the summer of 2015
+                    The Habonim Dror One Happy Camper Program, sponsored by the Habonim Dror Camp Association and the Foundation for Jewish Camp, provides grants of up to a $1,000 to first-time campers Habonim Dror Camp Miriam in the summer of 2015
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
-                        <li>Siblings of campers who previously received a $1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.</li>
-                        <li>First time camper must be entering grades 3-10 (after camp).</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 4-9 (after camp).</li>
                     </ul>
 				</p> 
                 <p>

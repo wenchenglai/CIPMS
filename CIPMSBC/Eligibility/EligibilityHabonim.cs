@@ -221,7 +221,7 @@ namespace CIPMSBC.Eligibility
 
             string strCampID = CampID.ToString();
             string last3digits = strCampID.Substring(strCampID.Length - 3);
-            if (Amount > 0 && (last3digits == "095" || last3digits == "029"))
+            if (Amount > 0 && (last3digits == "095" || last3digits == "029" || last3digits == "060"))
             {
                 double OriginalAmount = Amount;
                 // 2013-07-23 Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days
