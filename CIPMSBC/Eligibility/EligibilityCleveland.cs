@@ -5,198 +5,197 @@ using System.Text;
 
 namespace CIPMSBC.Eligibility
 {
-    class EligibilityCleveland : EligibilityBase
-    {
-        public EligibilityCleveland(FederationEnum fed)
-            : base(fed)
-        {
-        }
-        public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
-        {
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
-            StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            } 
-            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            return true;
-        }
-        private int StatusBasedOnCamp(string FJCID, int StatusValue)
-        {
-            CamperApplication oCA = new CamperApplication();
-            DataSet dsCamp;
-            dsCamp = oCA.getCamperAnswers(FJCID, "10", "10", "N");
-            DataRow drCamp;
-            int CampID = 0;
-            int CampOption = 0;
-            int iStatusValue = -1;
+	class EligibilityCleveland : EligibilityBase
+	{
+		public EligibilityCleveland(FederationEnum fed)
+			: base(fed)
+		{
+		}
 
-            if (dsCamp.Tables[0].Rows.Count > 0)
-            {
-                int i;
-                for (i = 0; i < dsCamp.Tables[0].Rows.Count; i++)
-                {
-                    drCamp = dsCamp.Tables[0].Rows[i];
-                    if (!DBNull.Value.Equals(drCamp["OptionID"]))
-                    {
-                        CampOption = Convert.ToInt32(drCamp["OptionID"]);
-                    }
-                    if (CampOption == 2)
-                    {
-                        CampID = Convert.ToInt32(drCamp["Answer"]);
-                        if (CampID == 0)
-                        {
-                            iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoCamp);
-                        }
-                        else
-                        {
-                            iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                        }
-                    }
-                }
-            }
+		public override EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
+		{
+			var result = new EligibilityResult();
 
-            if (iStatusValue == -1)
-            {
-                iStatusValue = StatusValue;
-            }
-            return iStatusValue;
-        }
+			checkEligibilityCommon(FJCID, out StatusValue);
+			result.CurrentUserStatusFromDB = (StatusInfo)StatusValue;
 
-        private int StatusBasedOnSchool(string FJCID, int StatusValue)
-        {
-            CamperApplication oCA = new CamperApplication();
-            int iStatusValue = -1;
+			StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+			result.TimeInCamp = (StatusInfo)StatusValue;
 
-            DataSet dsJewishSchool;
-            dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
-            DataRow drJewishSchool;
-            int JewishSchoolOption;
+			StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+			result.Grade = (StatusInfo)StatusValue;
 
-            if (dsJewishSchool.Tables[0].Rows.Count > 0)
-            {
-                drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
-                if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
-                {
-                    JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
+			StatusValue = StatusBasedOnSchool(FJCID, StatusValue, specialCode);
+			result.SchoolType = (StatusInfo)StatusValue;
 
-                    if (JewishSchoolOption == 4)
-                    {
-						//iStatusValue = (int)StatusInfo.SystemEligible;
-						iStatusValue = (int)StatusInfo.SystemInEligible;
-                    }
-                    else
-                    {
-                        iStatusValue = (int)StatusInfo.SystemEligible;
-                    }
-                }
-            }
+			return result;
+		}
 
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
+		private int StatusBasedOnCamp(string FJCID, int StatusValue)
+		{
+			CamperApplication oCA = new CamperApplication();
+			DataSet dsCamp;
+			dsCamp = oCA.getCamperAnswers(FJCID, "10", "10", "N");
+			DataRow drCamp;
+			int CampID = 0;
+			int CampOption = 0;
+			int iStatusValue = -1;
 
-            return iStatusValue;
-        }
+			if (dsCamp.Tables[0].Rows.Count > 0)
+			{
+				int i;
+				for (i = 0; i < dsCamp.Tables[0].Rows.Count; i++)
+				{
+					drCamp = dsCamp.Tables[0].Rows[i];
+					if (!DBNull.Value.Equals(drCamp["OptionID"]))
+					{
+						CampOption = Convert.ToInt32(drCamp["OptionID"]);
+					}
+					if (CampOption == 2)
+					{
+						CampID = Convert.ToInt32(drCamp["Answer"]);
+						if (CampID == 0)
+						{
+							iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoCamp);
+						}
+						else
+						{
+							iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+						}
+					}
+				}
+			}
 
-        private int StatusBasedOnGrade(string FJCID, int StatusValue)
-        {
-            CamperApplication oCA = new CamperApplication();
-            DataSet dsGrade;
-            dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
-            DataRow drGrade;
-            int iStatusValue = -1;
-            int Grade;
+			if (iStatusValue == -1)
+			{
+				iStatusValue = StatusValue;
+			}
+			return iStatusValue;
+		}
 
-            if (dsGrade.Tables[0].Rows.Count > 0)
-            {
-                drGrade = dsGrade.Tables[0].Rows[0];
-                if (DBNull.Value.Equals(drGrade["Answer"]))
-                {
-                    iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                }
-                else
-                {
-                    General objGeneral = new General();
-                    Grade = Convert.ToInt32(drGrade["Answer"]);
-                    if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
-                    {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                    }
-                    else
-                    {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                    }
-                }
-            }
+		private int StatusBasedOnSchool(string FJCID, int StatusValue, string specialCode = "None")
+		{
+			CamperApplication oCA = new CamperApplication();
+			int iStatusValue = -1;
 
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
+			DataSet dsJewishSchool;
+			dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
+			DataRow drJewishSchool;
+			int JewishSchoolOption;
 
-            return iStatusValue;
-        }
+			if (dsJewishSchool.Tables[0].Rows.Count > 0)
+			{
+				drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
+				if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
+				{
+					JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
 
-        public override bool checkEligibility(string FJCID, out int StatusValue)
-        {
+					if (JewishSchoolOption == 4)
+					{
+						if (specialCode == "PJGTC2015")
+							iStatusValue = (int)StatusInfo.PendingPJLottery;
+						else
+							iStatusValue = (int)StatusInfo.SystemInEligible;
+					}
+					else
+					{
+						iStatusValue = (int)StatusInfo.SystemEligible;
+					}
+				}
+			}
 
-            StatusValue = 0;
-            int daysInCamp;
-            double Amount = 0.00;
+			if (iStatusValue == -1)
+				iStatusValue = StatusValue;
 
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
+			return iStatusValue;
+		}
 
-            CamperApplication oCA = new CamperApplication();
+		private int StatusBasedOnGrade(string FJCID, int StatusValue)
+		{
+			CamperApplication oCA = new CamperApplication();
+			DataSet dsGrade;
+			dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
+			DataRow drGrade;
+			int iStatusValue = -1;
+			int Grade;
 
-            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+			if (dsGrade.Tables[0].Rows.Count > 0)
+			{
+				drGrade = dsGrade.Tables[0].Rows[0];
+				if (DBNull.Value.Equals(drGrade["Answer"]))
+				{
+					iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+				}
+				else
+				{
+					General objGeneral = new General();
+					Grade = Convert.ToInt32(drGrade["Answer"]);
+					if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
+					{
+						StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+					}
+					else
+					{
+						StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+					}
+				}
+			}
 
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+			if (iStatusValue == -1)
+				iStatusValue = StatusValue;
 
-            StatusValue = StatusBasedOnCamp(FJCID, StatusValue);
-            if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+			return iStatusValue;
+		}
 
-            daysInCamp = DaysInCamp(FJCID);
-            if (daysInCamp > 0)
-            {
-                Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
-            }
-            else
-            {
-                StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                Amount = 0;
-            }
+		public override bool checkEligibility(string FJCID, out int StatusValue)
+		{
 
-            oCA.UpdateAmount(FJCID, Amount, 0, "");
-            return true;
+			StatusValue = 0;
+			int daysInCamp;
+			double Amount = 0.00;
 
-         }
-    }
+			if (checkEligibilityCommon(FJCID, out StatusValue))
+			{
+				return true;
+			}
+
+			CamperApplication oCA = new CamperApplication();
+
+			StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+			if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+			{
+				oCA.UpdateAmount(FJCID, 0.00, 0, "");
+				return true;
+			}
+
+			StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
+			if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+			{
+				oCA.UpdateAmount(FJCID, 0.00, 0, "");
+				return true;
+			}
+
+			StatusValue = StatusBasedOnCamp(FJCID, StatusValue);
+			if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
+			{
+				oCA.UpdateAmount(FJCID, 0.00, 0, "");
+				return true;
+			}
+
+			daysInCamp = DaysInCamp(FJCID);
+			if (daysInCamp > 0)
+			{
+				Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
+			}
+			else
+			{
+				StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+				Amount = 0;
+			}
+
+			oCA.UpdateAmount(FJCID, Amount, 0, "");
+			return true;
+
+		 }
+	}
 }

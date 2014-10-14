@@ -38,7 +38,7 @@
 		            Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
                     As such, children who attend Jewish day school or Yeshiva are not eligible for the program. 
                     If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper funding opportunities 
-                    please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.JewishCamp.org/Scholarships</a>, 
+                    please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.jewishcamp.org/scholarships</a>, 
                     contact your camp, or the contact person listed at the bottom of this page.
 		        </p>
                 <p>

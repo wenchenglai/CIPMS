@@ -61,6 +61,38 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
         }
     }
 
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCID.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.WashingtonDC);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+            }
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCID.Value;
+
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
+    }
+
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
         string strRedirURL;
@@ -136,50 +168,6 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
                 Session["FJCID"] = hdnFJCID.Value;
                 //Response.Redirect("../Step2_1.aspx");
                 Response.Redirect("Summary.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.WashingtonDC);
-
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCID.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCID.Value;
-                Response.Redirect("Step2_3.aspx");
             }
         }
         catch (Exception ex)

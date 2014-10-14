@@ -25,7 +25,13 @@ namespace CIPMSBC.Eligibility
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
-            } 
+            }
+
+            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            {
+                return true;
+            }
 
             StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
@@ -129,48 +135,20 @@ namespace CIPMSBC.Eligibility
                     General objGeneral = new General();
                     int Grade = Convert.ToInt32(drGrade["Answer"]);
 
-                    // 2013-10-06 Camp Miriam, Galil, Moshava have different grade eligibility
-                    string strCampID = CampID.ToString();
-                    string campID3digits = strCampID.Substring(strCampID.Length - 3);
-                    if (campID3digits == "057") // Miriam
+                    if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
                     {
-                        if (Grade > 3 && Grade < 10)
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                        else
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                    }
-                    else if (campID3digits == "029") // Galil
-                    {
-                        if (Grade > 2 && Grade < 9)
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                        else
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                    }
-                    else if (campID3digits == "060") // Moshava
-                    {
-                        if (Grade > 2 && Grade < 11)
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                        else
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                        iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
                     }
                     else
                     {
-                        // all other camps that still uses the tblFedGrants table
-                        if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
-                        {
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                        }
-                        else
-                        {
-                            StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-                        }
+                        iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
                     }
                 }
             }
-
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
-
+            else
+            {
+                iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+            }
             return iStatusValue;
         }
 

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
+using System.Web;
 
 public partial class Step2_URJ_2 : System.Web.UI.Page
 {
@@ -124,17 +125,16 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        if (!isReadOnly)
         {
             ProcessCamperAnswers();
         }
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+
         //Modified by id taken from the Master Id
-        strModifiedBy = Master.UserId;
-        strFJCID = hdnFJCIDStep2_2.Value;
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
         if (strFJCID != "" && strModifiedBy != "")
         {
             if (isReadOnly)
@@ -144,16 +144,16 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
             }
             else
             {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.URJ);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.URJ);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
             }
-
             Session["STATUS"] = iStatus.ToString();
         }
         Session["FJCID"] = hdnFJCIDStep2_2.Value;
-        Response.Redirect("Step2_3.aspx");
-    }
 
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
+    }
     private void ProcessCamperAnswers()
     {
         string strFJCID;

@@ -29,6 +29,64 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
 
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CamperAppl = new CamperApplication();
+        objGeneral = new General();
+        if (!Page.IsPostBack)
+        {
+            //to fill the grades in the dropdown
+            getGrades();
+            PopulateWhoIsInSynagogue();
+
+            // to fill the Synagogues names in the dropdown.
+            getSynagogues();
+            getJCCList(Master.CampYear);
+            //to get the FJCID which is stored in session
+            if (Session["FJCID"] != null)
+            {
+                hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
+                GetAnswers();
+            }
+        }
+        //to set the client validation function for Q5            
+        if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
+        if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = false;
+        if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");
+    }
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Boston);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+            }
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
+    }    
+    
     void RadioButtionQ5_SelectedIndexChanged(object sender, EventArgs e)
     {
         try
@@ -59,44 +117,11 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         }
     }
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        CamperAppl = new CamperApplication();
-        objGeneral = new General();
-        if (!Page.IsPostBack)
-        {
-            //to fill the grades in the dropdown
-            getGrades();
-            PopulateWhoIsInSynagogue();
-
-            // to fill the Synagogues names in the dropdown.
-            getSynagogues();
-            getJCCList(Master.CampYear);
-            //to get the FJCID which is stored in session
-            if (Session["FJCID"] != null)
-            {
-                hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-                GetAnswers();
-            }                
-        }
-        //to set the client validation function for Q5            
-        if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
-        if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = false;
-        if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");
-    }
-
     private void PopulateWhoIsInSynagogue()
     {
         ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Boston);
         ddlWho.DataBind();
         ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
-    }
-    
-    //page unload
-    void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
     }
 
     void btnSaveandExit_Click(object sender, EventArgs e)
@@ -153,50 +178,6 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                 }
                 Session["FJCID"] = hdnFJCIDStep2_2.Value;
                 Response.Redirect("Summary.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Boston);
-        
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCIDStep2_2.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-                Response.Redirect("Step2_3.aspx");
             }
         }
         catch (Exception ex)

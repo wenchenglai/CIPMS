@@ -116,8 +116,7 @@ namespace CIPMSBC.Eligibility
         private void StatusBasedOnGrade(string FJCID, out int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
-            DataSet dsGrade;
-            dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
+            DataSet dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
             DataRow drGrade;
             int Grade = 0;
 

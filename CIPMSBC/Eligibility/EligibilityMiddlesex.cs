@@ -10,29 +10,26 @@ namespace CIPMSBC.Eligibility
         public EligibilityMiddlesex(FederationEnum fed) : base(fed)
         {
         }
-        public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
+
+        public override EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
         {
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
+            var result = new EligibilityResult();
+
+            checkEligibilityCommon(FJCID, out StatusValue);
+            result.CurrentUserStatusFromDB = (StatusInfo)StatusValue;
+
             StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            } 
+            result.TimeInCamp = (StatusInfo)StatusValue;
+
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            return true;
+            result.Grade = (StatusInfo)StatusValue;
+
+            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, specialCode);
+            result.SchoolType = (StatusInfo)StatusValue;
+
+            return result;
         }
+
         private int StatusBasedOnCamp(string FJCID, int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
@@ -76,7 +73,7 @@ namespace CIPMSBC.Eligibility
             return iStatusValue;
         }
 
-        private int StatusBasedOnSchool(string FJCID, int StatusValue)
+        private int StatusBasedOnSchool(string FJCID, int StatusValue, string specialCode = "None")
         {
             CamperApplication oCA = new CamperApplication();
             int iStatusValue = -1;
@@ -95,7 +92,10 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        iStatusValue = (int)StatusInfo.SystemInEligible;
+                        if (specialCode == "PJGTC2015")
+                            iStatusValue = (int)StatusInfo.PendingPJLottery;
+                        else
+                            iStatusValue = (int)StatusInfo.SystemInEligible;
                     }
                     else
                     {

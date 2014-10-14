@@ -39,7 +39,7 @@
 						<li>URJ Camp Kalsman (Arlington, WA) - <a href="http://www.kalsman.urjcamps.org" target="_blank">www.kalsman.urjcamps.org</a></li>
 						<li>URJ Camp Newman Swig (Santa Rosa, CA) - <a href="http://newman.urjcamps.org/" target="_blank">www.newman.urjcamps.org</a></li>	
 						<li>URJ Greene Family Camp (Bruceville, TX) - <a href="http://greene.urjcamps.org/" target="_blank">www.greene.urjcamps.org</a></li>
-						<li>URJ Joseph Eisner Camp Institute (Great Barrington, MA) - <a href="http://eisner.urjcamps.org/" target="_blank">www.eisner.urjcamps.org</a></li>
+						<li>URJ Eisner Camp Institute (Great Barrington, MA) - <a href="http://eisner.urjcamps.org/" target="_blank">www.eisner.urjcamps.org</a></li>
 						<li>URJ Crane Lake Camp (West Stockbridge, MA) - <a href="http://www.cranelake.urjcamps.org" target="_blank">www.cranelake.urjcamps.org</a></li>
 						<li>URJ Goldman Union Camp Institute (Zionsville, IN) - <a href="http://guci.urjcamps.org/" target="_blank">www.guci.urjcamps.org</a></li>
 						<li>URJ Henry S. Jacobs Camp (Utica, MS) - <a href="http://jacobs.urjcamps.org/" target="_blank">www.jacobs.urjcamps.org</a></li>

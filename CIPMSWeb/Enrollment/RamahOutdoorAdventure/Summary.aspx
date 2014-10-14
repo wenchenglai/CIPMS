@@ -29,7 +29,7 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 3-11 (after camp).</li>
+                        <li>First time camper must be entering grades 3-12 (after camp).</li>
                     </ul>
 				</p>                
 				<p>

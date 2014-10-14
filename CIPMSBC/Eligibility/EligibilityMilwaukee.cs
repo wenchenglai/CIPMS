@@ -14,48 +14,48 @@ namespace CIPMSBC.Eligibility
 			: base(fed)
 		{}
 
-        public override EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
-        {
-            var result = new EligibilityResult();
+		public override EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
+		{
+			var result = new EligibilityResult();
 
-            checkEligibilityCommon(FJCID, out StatusValue);
-            result.CurrentUserStatusFromDB = (StatusInfo)StatusValue;
+			checkEligibilityCommon(FJCID, out StatusValue);
+			result.CurrentUserStatusFromDB = (StatusInfo)StatusValue;
 
-            StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            result.TimeInCamp = (StatusInfo)StatusValue;
+			StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+			result.TimeInCamp = (StatusInfo)StatusValue;
 
-            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            result.Grade = (StatusInfo)StatusValue;
+			StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+			result.Grade = (StatusInfo)StatusValue;
 
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, specialCode);
-            result.SchoolType = (StatusInfo)StatusValue;
+			StatusValue = StatusBasedOnSchool(FJCID, StatusValue, specialCode);
+			result.SchoolType = (StatusInfo)StatusValue;
 
-            return result;
-        }
+			return result;
+		}
 
-        //public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
-        //{
-        //    if (checkEligibilityCommon(FJCID, out StatusValue))
-        //    {
-        //        return true;
-        //    }
-        //    StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-        //    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-        //    {
-        //        return true;
-        //    } 
-        //    StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-        //    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-        //    {
-        //        return true;
-        //    }
-        //    StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
-        //    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-        //    {
-        //        return true;
-        //    }
-        //    return true;
-        //}
+		//public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
+		//{
+		//    if (checkEligibilityCommon(FJCID, out StatusValue))
+		//    {
+		//        return true;
+		//    }
+		//    StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
+		//    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+		//    {
+		//        return true;
+		//    } 
+		//    StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+		//    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+		//    {
+		//        return true;
+		//    }
+		//    StatusValue = StatusBasedOnSchool(FJCID, StatusValue);
+		//    if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+		//    {
+		//        return true;
+		//    }
+		//    return true;
+		//}
 
 		private int StatusBasedOnCamp(string FJCID, int StatusValue)
 		{
@@ -119,10 +119,10 @@ namespace CIPMSBC.Eligibility
 
 					if (JewishSchoolOption == 4)
 					{
-                        if (specialCode == "PJGTC2015")
-						    iStatusValue = (int)StatusInfo.PendingPJLottery;
-                        else
-                            iStatusValue = (int)StatusInfo.SystemInEligible;
+						if (specialCode == "PJGTC2015")
+							iStatusValue = (int)StatusInfo.PendingPJLottery;
+						else
+							iStatusValue = (int)StatusInfo.SystemInEligible;
 					}
 					else
 					{
@@ -138,7 +138,7 @@ namespace CIPMSBC.Eligibility
 			return iStatusValue;
 		}
 		
-        private int StatusBasedOnSynagogue(string FJCID, int StatusValue)
+		private int StatusBasedOnSynagogue(string FJCID, int StatusValue)
 		{
 			CamperApplication oCA = new CamperApplication();
 			DataSet dsSynagogue;

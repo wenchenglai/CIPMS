@@ -33,7 +33,7 @@
                     <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
                 <span id="siblingContact" style="color:red;">
-                    Please contact Shelley Goldwater at <a href='mailto:execdir@camptavor.org'>execdir@camptavor.org</a> or 262-334-0399. <br />
+                    Please contact Jenn Reiss at Jenn@campgalil.org or 215-832-0677 <br />
                     Siblings of first-time campers who previously/or are currently receiving a $1,000 grant are eligible <br />
                     to receive $500 when they attend camp for the first time for at least 19 consecutive days.
                 </span>

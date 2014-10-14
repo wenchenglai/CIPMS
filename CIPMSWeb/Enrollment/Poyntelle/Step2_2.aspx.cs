@@ -142,52 +142,42 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Poyntelle);
-        
-        try
+        General objGen = new General();
+        int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
+        if (ZipCodeCount == 0)
         {
-            if (Page.IsValid)
+            Session["STATUS"] = "3";
+            Response.Redirect("Step2_3.aspx");
+        }
+
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+                
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCIDStep2_2.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-
-                General objGen = new General();
-                int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
-                if (ZipCodeCount == 0)
-                    Session["STATUS"] = "3";
-
-                Response.Redirect("Step2_3.aspx");
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
             }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Poyntelle);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
         }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+
+        Response.Redirect("Step2_3.aspx");
     }
 
     private void ProcessCamperAnswers()

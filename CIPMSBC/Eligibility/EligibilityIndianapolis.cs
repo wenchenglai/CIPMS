@@ -10,30 +10,26 @@ namespace CIPMSBC.Eligibility
         public EligibilityIndianapolis(FederationEnum fed) : base(fed)
         {
         }
-        public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
+
+        public override EligibilityResult checkEligibilityforStep2(string FJCID, out int StatusValue, string specialCode)
         {
-            bool PendingSchool = false;
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
+            var result = new EligibilityResult();
+
+            checkEligibilityCommon(FJCID, out StatusValue);
+            result.CurrentUserStatusFromDB = (StatusInfo)StatusValue;
+
             StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            } 
+            result.TimeInCamp = (StatusInfo)StatusValue;
+
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                return true;
-            }
-            return true;
+            result.Grade = (StatusInfo)StatusValue;
+
+            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, specialCode);
+            result.SchoolType = (StatusInfo)StatusValue;
+
+            return result;
         }
+
         private int StatusBasedOnCamp(string FJCID, int StatusValue, bool PendingSchool)
         {
             CamperApplication oCA = new CamperApplication();
@@ -91,7 +87,7 @@ namespace CIPMSBC.Eligibility
             return iStatusValue;
         }
 
-        private int StatusBasedOnSchool(string FJCID, int StatusValue, out bool PendingSchool)
+        private int StatusBasedOnSchool(string FJCID, int StatusValue, string specialCode = "None")
         {
             CamperApplication oCA = new CamperApplication();
             int iStatusValue = -1;
@@ -102,30 +98,20 @@ namespace CIPMSBC.Eligibility
             int SchoolOption;
             int JewishSchool;
 
-            PendingSchool = false;
-
             if (dsSchoolOption.Tables[0].Rows.Count > 0)
             {
                 drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
                 if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
                 {
                     SchoolOption = Convert.ToInt32(drSchoolOption["OptionID"]);
-                    /*drSchoolOption = dsSchoolOption.Tables[0].Rows[1];
-                    JewishSchool = Convert.ToInt32(drSchoolOption["OptionID"]);
+
                     if (SchoolOption == 4)
                     {
-                        if (JewishSchool == 2)
-                        {
-                            iStatusValue = (int)StatusInfo.EligiblePendingSchool;
-                            PendingSchool = true;
-                        }
-                        else if (JewishSchool == 1)
-                        {
-                            iStatusValue = (int)StatusInfo.SystemEligible;
-                        }
-                    }*/
-                    if (SchoolOption == 4)
-                        iStatusValue = (int)StatusInfo.SystemInEligible;
+                        if (specialCode == "PJGTC2015")
+                            iStatusValue = (int)StatusInfo.PendingPJLottery;
+                        else
+                            iStatusValue = (int)StatusInfo.SystemInEligible;
+                    }
                     else
                     {
                         iStatusValue = (int)StatusInfo.SystemEligible;
@@ -184,33 +170,33 @@ namespace CIPMSBC.Eligibility
             double Amount = 0.00;
             bool PendingSchool = false;
 
-            if (checkEligibilityCommon(FJCID, out StatusValue))
-            {
-                return true;
-            }
+            //if (checkEligibilityCommon(FJCID, out StatusValue))
+            //{
+            //    return true;
+            //}
 
             CamperApplication oCA = new CamperApplication();
 
-            StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+            //StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    oCA.UpdateAmount(FJCID, 0.00, 0, "");
+            //    return true;
+            //}
 
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
-            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+            //StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
+            //if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
+            //{
+            //    oCA.UpdateAmount(FJCID, 0.00, 0, "");
+            //    return true;
+            //}
 
-            StatusValue = StatusBasedOnCamp(FJCID, StatusValue, PendingSchool);
-            if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
-            {
-                oCA.UpdateAmount(FJCID, 0.00, 0, "");
-                return true;
-            }
+            //StatusValue = StatusBasedOnCamp(FJCID, StatusValue, PendingSchool);
+            //if (StatusValue != Convert.ToInt32(StatusInfo.SystemEligible))
+            //{
+            //    oCA.UpdateAmount(FJCID, 0.00, 0, "");
+            //    return true;
+            //}
 
             daysInCamp = DaysInCamp(FJCID);
             if (daysInCamp > 0)

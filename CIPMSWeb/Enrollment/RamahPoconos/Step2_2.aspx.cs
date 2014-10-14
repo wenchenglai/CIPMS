@@ -149,6 +149,16 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
 
+            // 2014-10-14 If No for both firsttime and secondtime questions (1 and 2), it's inelibigle
+            if (rdoFirstTimerNo.Checked && rdoSecondTimerNo.Checked)
+                iStatus = (int)StatusInfo.SystemInEligible;
+
+            // 2014-10-14 if the condition below is met, camper must pick 19 days or more on next page.
+            if (rdoFirstTimerNo.Checked && rdoSecondTimerYes.Checked && rdoReceivedGrantNo.Checked)
+                Session["MustHave19Days"] = true;
+            else
+                Session["MustHave19Days"] = false;
+
             Session["STATUS"] = iStatus.ToString();
         }
         Session["FJCID"] = hdnFJCID.Value;

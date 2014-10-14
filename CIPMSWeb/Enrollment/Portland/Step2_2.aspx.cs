@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
+using System.Web;
 
 public partial class HartfordPage2 : System.Web.UI.Page
 {
@@ -140,15 +141,17 @@ public partial class HartfordPage2 : System.Web.UI.Page
     #region "Controls Events"
     void btnNext_Click(object sender, EventArgs e)
     {
-        string strFJCID = hdnFJCIDStep2_2.Value;
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(strFJCID, Master.CamperUserId);
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
         if (!isReadOnly)
         {
             ProcessCamperAnswers();
         }
 
-        int iStatus;
-        if (strFJCID != "" && Master.UserId != "")
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
+        if (strFJCID != "" && strModifiedBy != "")
         {
             if (isReadOnly)
             {
@@ -157,13 +160,15 @@ public partial class HartfordPage2 : System.Web.UI.Page
             }
             else
             {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Portland);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Portland);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
             }
             Session["STATUS"] = iStatus.ToString();
-            Session["FJCID"] = strFJCID;
         }
-        Response.Redirect("Step2_3.aspx");
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)

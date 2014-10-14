@@ -96,7 +96,7 @@
                         <a href="http://newman.urjcamps.org/" target="_blank">www.newman.urjcamps.org</a><br />
                         URJ Greene Family Camp (Bruceville, TX)<br />                               
                         <a href="http://greene.urjcamps.org/" target="_blank">www.greene.urjcamps.org</a><br />                        
-                        URJ Joseph Eisner Camp Institute (Great Barrington, MA)<br />			            
+                        URJ Eisner Camp Institute (Great Barrington, MA)<br />			            
                         <a href="http://eisner.urjcamps.org/" target="_blank">www.eisner.urjcamps.org</a><br />                                               
                         URJ Crane Lake Camp (West Stockbridge, MA)<br />		
                         <a href="http://www.cranelake.urjcamps.org" target="_blank">www.cranelake.urjcamps.org</a><br /> 

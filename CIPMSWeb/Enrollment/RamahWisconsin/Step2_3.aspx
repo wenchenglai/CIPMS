@@ -129,7 +129,7 @@
                     <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                       <font color="red"><b> <asp:Label ID="lbl" runat="server" CssClass="QuestionText">In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days.</asp:Label> </b></font> <br />
+                       <font color="red"><b> <asp:Label ID="lbl" runat="server" CssClass="QuestionText">In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days.</asp:Label> </b></font> <br />
                         <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />

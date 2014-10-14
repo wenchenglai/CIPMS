@@ -81,6 +81,38 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
         if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");
     }
 
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCIDStep2_2.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Columbus);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+            }
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
+    }
+
     private void PopulateWhoIsInSynagogue()
     {
         ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Columbus);
@@ -141,41 +173,6 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
             }
             Session["FJCID"] = hdnFJCIDStep2_2.Value;
             Response.Redirect("Summary.aspx");
-        }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {      
-        if (Page.IsValid)
-        {
-            bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-
-            if (!isReadOnly)
-            {
-                ProcessCamperAnswers();
-            }
-            
-            //Modified by id taken from the Master Id
-            string strModifiedBy = Master.UserId;
-            string strFJCID = hdnFJCIDStep2_2.Value;
-            int iStatus;
-            if (strFJCID != "" && strModifiedBy != "")
-            {
-                if (isReadOnly)
-                {
-                    DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                    iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                }
-                else
-                {
-                    var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Columbus);
-                    objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                }
-
-                Session["STATUS"] = iStatus.ToString();
-            }
-            Session["FJCID"] = hdnFJCIDStep2_2.Value;
-            Response.Redirect("Step2_3.aspx");
         }
     }
 

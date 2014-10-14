@@ -56,7 +56,6 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 	void btnNext_Click(object sender, EventArgs e)
 	{
 		bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-
 		if (!isReadOnly)
 		{
 			ProcessCamperAnswers();
@@ -82,7 +81,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 		}
 		Session["FJCID"] = hdnFJCIDStep2_2.Value;
 
-		var status = (StatusInfo) iStatus;
+		var status = (StatusInfo)iStatus;
 		Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
 	}
 
