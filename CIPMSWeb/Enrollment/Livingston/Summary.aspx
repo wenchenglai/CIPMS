@@ -26,12 +26,12 @@
                         <li>$1,000 to campers who attend camp for at least 19 consecutive days for the first time.</li>
                         <li>$700 to campers who attend camp for 12-18 consecutive days for the first time.</li>
                         <li>Eligible campers must be entering grades 3-12 (after camp).</li>
-                        <li>You must be already signed up for Mini Session 1, Mini Session 2Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs.</li>
+                        <li>You must be already signed up for Mini Session 1, Mini Session 2, Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs.</li>
                         <li>If your child attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                     </ul>
 		        </p>                
 		        <p>
-		            Camp Livingston has been serving campers from all over for 95 years. Campers enjoy sports, arts, aquatics, ropes courses, rock climbing, nature, Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.
+                    Camp Livingston has been serving campers from all over for 95 years. Campers enjoy sports, arts, aquatics, ropes courses, rock climbing, nature, Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem, confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.
 		        </p>
                 <p>
                     If you are interested in learning more about our camps and available grants, please visit our website at <a href="http://www.camplivingston.com" target="_blank">www.camplivingston.com</a>.

@@ -30,20 +30,23 @@
                     </ul>
 		        </p>                
 		        <p>
-		            At Young Judaea camps, young people can count on having an experience that develops independence, strong connections with Israel, and lifelong Jewish identity. Young Judaea camps provide an environment of informal Jewish education where both learning and having fun are high on the agenda. In addition to engaging in Israeli song and dance, pluralistic prayer, conversational Hebrew and delicious kosher meals, Young Judaeans enjoy activities such as swimming, basketball, hiking, climbing and ropes course. Campers begin their experience in second or third grade at one of Young Judaea’s four regional camps. Teens attending high school are eligible to attend Camp Tel Yehudah, Young Judaea’s National Senior Leadership camp in Barryville, NY, where generations of Jewish activists, educators and leaders got their start while making friendships that last a lifetime. Young Judaea is the oldest Zionist Youth Movement in the United States and has been running quality Jewish camping programs since 1948.
+                    At Young Judaea camps, young people can count on having an experience that develops independence, strong connections with Israel, and lifelong Jewish identity. Young Judaea camps provide an environment of informal Jewish education where both learning and having fun are high on the agenda. In addition to engaging in Israeli song and dance, pluralistic prayer, conversational Hebrew and delicious kosher meals, Young Judaeans enjoy activities such as swimming, basketball, hiking, climbing and ropes course. 
 		        </p>
+                <p>
+                    Campers begin their experience in second or third grade at one of Young Judaea’s four regional camps. Teens attending high school are eligible to attend Camp Tel Yehudah, Young Judaea’s National Senior Leadership camp in Barryville, NY, where generations of Jewish activists, educators and leaders got their start while making friendships that last a lifetime. Young Judaea is the oldest Zionist Youth Movement in the United States and has been running quality Jewish camping programs since 1948.
+                </p>
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program.
                 </p>
                 <p>
-                    If you are interested in learning more about our camps and available grants, please visit us at: <a href="http://www.youngjudaea.org/home/programs-in-israel/college-beyond/young-judaea-wujs-experience/scholarships/" target="_blank">www.youngjudaea.org/home/programs-in-israel/college-beyond/young-judaea-wujs-experience/scholarships</a> or visit the camp websites by clicking on the camp names below: 
+                    If you are interested in learning more about our camps and available grants, please visit the camp websites by clicking on the camp names below:
                 </p>
                 <p>
                     <b><a href="http://www.cyjmid.org" target="_blank">Camp Young Judaea Midwest</a></b>  (Waupaca,Wisconsin)<br />
                     <b><a href="http://www.cyjtexas.org" target="_blank">Camp Young Judaea Texas</a></b>  (Wimberley, TX)<br />
                     <b><a href="http://www.campjudaea.org" target="_blank">Camp Judaea</a></b> (Hendersonville, North Carolina)<br />
                     <b><a href="http://www.cyjsproutlake.org" target="_blank">Camp Young Judaea Sprout Lake</a></b> (Verbank, New York)<br />
-                    <b><a href="http://telyehudah.wordpress.com" target="_blank">Camp Tel Yehudah</a></b>(Barryville, New York)<br />
+                    <b><a href="http://www.campty.com" target="_blank">Camp Tel Yehudah</a></b>(Barryville, New York)<br />
                 </p>
             </td>
         </tr>

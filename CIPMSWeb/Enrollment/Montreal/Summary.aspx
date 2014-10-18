@@ -27,6 +27,8 @@
 						<li>First time camper must be entering grades 1-12 (after camp).</li>
 						<li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
 						<li>Attending one of our eligible Montreal area non-profit Jewish overnight camps.</li>
+                        <li>Before your child can qualify for a grant, s/he must first be enrolled at one of our eligible camps.</li>
+                        <li>This is not a scholarship program. Grants are not based on financial need.</li>
 					</ul>
 				</p>   
 				<p>

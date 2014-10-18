@@ -26,10 +26,10 @@
 		        <p>
 			        The following outlines the eligibility criteria for this One Happy Camper program:
                     <ul style="font-weight: bold">
-                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
-                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
-                        <li>If a camper attended camp in Summer 2014 and s/he received a grant, and will be attending a camp for at least 19 consecutive days in summer 2015, they may be eligible for a second year grant up to $500.</li>
+                        <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 12-18 consecutive days.</li>
+                        <li>If camper attended a Jewish overnight camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp in summer 2015 for 19 or more consecutive days.</li>
+                        <li>If a camper attended a Jewish overnight camp in summer 2014 and s/he received a grant, and will be attending a Jewish overnight camp for at least 19 consecutive days in summer 2015, they may be eligible for a second year grant up to $500.</li>
                         <li>Eligible campers must be entering grades 3-12 (after camp).</li>
                         <li>Attend one of the 150+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
                     </ul>

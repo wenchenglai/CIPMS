@@ -30,6 +30,9 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>$750 grants awarded to eligible second-time campers returning to camp for a second year for 19 or more consecutive days. </li>
+                        <li>$500 grants awarded to eligible second-time campers returning to camp for a second yea for 12-18 consecutive days.</li>
+                        <li>To receive a second year grant, campers MUST have received a grant through the Ramah One Happy Camper program for summer 2014.</li>
                     </ul>
 				</p>                
 				<p>

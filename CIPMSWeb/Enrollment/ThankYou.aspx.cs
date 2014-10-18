@@ -334,12 +334,26 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
         Session["FJCID"] = newFJCID;
         Session["STATUS"] = 5;
 
-        camperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
+
 
         // 2013-10-31 we must delete the codeValue Session variable 
         if (redirectionLogic.BeenToPJL)
             Session["codeValue"] = null;
 
-        Response.Redirect(redirectionLogic.NextFederationURL);
+        // 2014-10-15 no one should pass to PJL now because PJL only accept JDS users but JDS users are routed to PJ Lottery already
+        // all other failed applicants must 
+        if (redirectionLogic.NextFederationURL == "~/Enrollment/PJL/Summary.aspx")
+        {
+            camperAppl.UpdateFederationId(Session["FJCID"].ToString(), "0");
+            redirectionLogic.NextFederationId = 0;
+            Session["FedId"] = null;
+            Response.Redirect("Step1_NL.aspx");
+
+        }
+        else
+        {
+            camperAppl.UpdateFederationId(Session["FJCID"].ToString(), nextFederationId.ToString());
+            Response.Redirect(redirectionLogic.NextFederationURL);
+        }
     }
 }

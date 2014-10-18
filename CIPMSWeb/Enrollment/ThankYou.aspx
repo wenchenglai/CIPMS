@@ -162,10 +162,10 @@
 					</p>
 				<p style="text-align:justify; font-weight:bold">
 					<asp:LinkButton ID="lnkCopyApp" runat="server" CssClass="QuestionText" OnClick="lnkCopyApp_Click" Font-Size="12px">
-                        Click Here</asp:LinkButton> to continue as we check your eligibility against various other One Happy Camper programs such as:
+                        Click Here</asp:LinkButton> to continue as we check your eligibility against various other One Happy Camper programs.
 
 				</p>
-                <ul style="list-style-type: none;">
+                <ul style="list-style-type: none; display:none;">
                     <li>
                         PJ Library One Happy Camper (PJ Goes to Camp)
                         <br />

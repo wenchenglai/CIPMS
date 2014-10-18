@@ -25,18 +25,7 @@
                         <li>Siblings of campers who previously received a $1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.</li>
                         <li>First time camper must be entering grades 3-10 (after camp).</li>
                     </ul>
-				</p> 
-                <p>
-					<ul>
-						<li>Philadelphia, New Jersey, New York, and Delaware - <a href="http://www.campgalil.org" target="_blank">Habonim Dror Camp Galil</a></li>
-						<li>Eastern Canada and upstate New York - <a href="http://www.campgesher.com" target="_blank">Habonim Dror Camp Gesher</a></li>
-						<li>California and the Southwest - <a href="http://www.campgilboa.org" target="_blank">Habonim Dror Camp Gilboa</a></li>
-						<li>Greater Vancouver, Western Canada and the Northwest U.S. - <a href="http://www.campmosh.org" target="_blank">Habonim Dror Camp Miriam</a></li>
-						<li>The Baltimore-Washington region and the Southeastern U.S. - <a href="http://campmosh.org/page.php?id=2" target="_blank">Habonim Dror Camp Moshava</a></li>
-						<li>The Greater New York region and New England - <a href="http://www.naaleh.org" target="_blank">Habonim Dror Camp Naleeh</a></li>
-						<li>Chicago, Detroit and the Greater Midwest - <a href="http://www.camptavor.org" target="_blank">Habonim Dror Camp Tavor</a></li>                                           
-					</ul>  
-                </p>    
+				</p>    
                 <p>
                     At our Habonim Dror camps young people learn the values and skills needed for community building and leadership, independent thinking, a strong connection to Israel, and lifelong Jewish identity.  Campers are embedded in a 24/7 experiential Jewish education environment that blurs the boundary between learning and having fun so that both can occur simultaneously.
                 </p>        

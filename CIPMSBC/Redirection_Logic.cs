@@ -177,6 +177,7 @@ namespace CIPMSBC
                 FJCID = strFJCID;
                 GetCamperApplicationDetails(FJCID);
             }
+
             switch (CurrentFederationId)
             {
                 case 3:
@@ -197,11 +198,26 @@ namespace CIPMSBC
                     break;
                 case 4:
                     {                        
-                        if (IsLACIPZipCode && !BeenToLACIP) { NextFederationId = 23; } else goto default; //If JWest-LA then LACIP else normal flow 
+                        if (IsLACIPZipCode && !BeenToLACIP) 
+                        { NextFederationId = 23; } 
+                        else goto default; //If JWest-LA then LACIP else normal flow 
                     }
                     break;
-                case 48: { if (IsValidMiiPCodeEntered && !BeenToMiiP) NextFederationId = 48; else if (IsValidPJLCodeEntered && !BeenToPJL && BeenToMiiP) NextFederationId = 63; else goto case 63; } break; //if already in MiiP then next would be PJL if PJLCode provided else NL
-                case 63: { if (IsValidPJLCodeEntered && !BeenToPJL) NextFederationId = 63; else if (IsValidPJLCodeEntered && BeenToPJL) NextFederationId = ((PageNames)PageName == PageNames.ThankYou ? 0 : CurrentFederationId); } break;//changed by ram to fix bug in step1_questions page when navigating to NL of incomplete application } 
+                case 48: 
+                    { 
+                        if (IsValidMiiPCodeEntered && !BeenToMiiP) NextFederationId = 48; 
+                        else if (IsValidPJLCodeEntered && !BeenToPJL && BeenToMiiP) NextFederationId = 63; 
+                        else goto case 63; 
+                    } 
+                    break; //if already in MiiP then next would be PJL if PJLCode provided else NL
+                case 63: 
+                    { 
+                        if (IsValidPJLCodeEntered && !BeenToPJL) 
+                            NextFederationId = 63; 
+                        else if (IsValidPJLCodeEntered && BeenToPJL) 
+                            NextFederationId = ((PageNames)PageName == PageNames.ThankYou ? 0 : CurrentFederationId); 
+                    } 
+                    break;//changed by ram to fix bug in step1_questions page when navigating to NL of incomplete application } 
                             
                 default:
                     {
@@ -230,15 +246,21 @@ namespace CIPMSBC
                     DataRow dr = dsCamperApplication.Tables[0].Rows[0];
                     if (String.IsNullOrEmpty(dr["CMART_MiiP_ReferalCode"].ToString()))
                         IsValidMiiPCodeEntered = false;
-                    else IsValidMiiPCodeEntered = true;
+                    else 
+                        IsValidMiiPCodeEntered = true;
 
                     if (String.IsNullOrEmpty(dr["PJLCode"].ToString()))
                         IsValidPJLCodeEntered = false;
-                    else { IsValidPJLCodeEntered = true; pjlCode = dr["PJLCode"].ToString(); }
+                    else 
+                    { 
+                        IsValidPJLCodeEntered = true; 
+                        pjlCode = dr["PJLCode"].ToString(); 
+                    }
 
                     if (String.IsNullOrEmpty(dr["FederationId"].ToString()))
                         CurrentFederationId = 0;
-                    else CurrentFederationId = Int32.Parse(dr["FederationId"].ToString());
+                    else 
+                        CurrentFederationId = Int32.Parse(dr["FederationId"].ToString());
 
                     if (!String.IsNullOrEmpty(dr["Zip"].ToString()))
                         zipCode = dr["Zip"].ToString();
@@ -247,6 +269,7 @@ namespace CIPMSBC
                         camperID = dr["CamperID"].ToString();
                 }
             }
+
             if (zipCode != String.Empty)
             {
                 General _objGeneral = new General();
@@ -318,12 +341,18 @@ namespace CIPMSBC
                 {
                     foreach (DataRow dr in drArray)
                     {
-                        if (dr["FederationID"].ToString() == "72") BeenToSandiego = true;
-						if (dr["FederationID"].ToString() == "98") BeenToSanFrancisco = true;
-                        if (dr["FederationID"].ToString() == "93") BeenToColorado = true;
-                        if (dr["FederationID"].ToString() == "23") BeenToLACIP = true;
-                        if (dr["FederationID"].ToString() == "48") BeenToMiiP = true;
-                        if (dr["FederationID"].ToString() == "63" || pjlCode.ToLower() == ConfigurationManager.AppSettings["SpecialPJLCode"].ToLower()) BeenToPJL = true;
+                        if (dr["FederationID"].ToString() == "72") 
+                            BeenToSandiego = true;
+						if (dr["FederationID"].ToString() == "98") 
+                            BeenToSanFrancisco = true;
+                        if (dr["FederationID"].ToString() == "93") 
+                            BeenToColorado = true;
+                        if (dr["FederationID"].ToString() == "23") 
+                            BeenToLACIP = true;
+                        if (dr["FederationID"].ToString() == "48") 
+                            BeenToMiiP = true;
+                        if (dr["FederationID"].ToString() == "63" || pjlCode.ToLower() == ConfigurationManager.AppSettings["SpecialPJLCode"].ToLower()) 
+                            BeenToPJL = true;
                     }
                 }
             }
