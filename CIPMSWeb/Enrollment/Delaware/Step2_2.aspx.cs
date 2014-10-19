@@ -94,7 +94,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PalmSprings);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
             }
-            Session["STATUS"] = iStatus.ToString();
+             Session["STATUS"] = iStatus.ToString();
         }
         Session["FJCID"] = hdnFJCIDStep2_2.Value;
 

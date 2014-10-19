@@ -4,7 +4,7 @@
 	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
-				<img src="../../images/Seattle.gif" width="280" alt=""  />
+				<img src="logo.jpg" width="280" alt=""  />
 			</td>
 			<td>
                 <p>Good news! You may be eligible for a One Happy Camper grant.</p>
