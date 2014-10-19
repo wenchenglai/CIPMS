@@ -141,7 +141,21 @@ public partial class Step2_JCC_2 : System.Web.UI.Page
 			else
 			{
 				var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.JCCRanchCamp);
-				objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+                EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+
+                if (result.SchoolType == StatusInfo.PendingPJLottery)
+                    iStatus = (int)StatusInfo.PendingPJLottery;
+                else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
+                    result.Grade == StatusInfo.SystemInEligible ||
+                    result.SchoolType == StatusInfo.SystemInEligible ||
+                    result.TimeInCamp == StatusInfo.SystemInEligible)
+                {
+                    iStatus = (int)StatusInfo.SystemInEligible;
+                }
+                else
+                {
+                    iStatus = (int)StatusInfo.SystemEligible;
+                }
 			}
 			Session["STATUS"] = iStatus.ToString();
 		}

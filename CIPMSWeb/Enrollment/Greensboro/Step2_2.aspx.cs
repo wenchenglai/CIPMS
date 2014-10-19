@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 using CIPMSBC.ApplicationQuestions;
+using System.Web;
 
 
 
@@ -45,6 +46,53 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
         if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
         if (chkJCC.Checked == false) ddlJCC.Enabled = lblJCC.Enabled = txtJCC.Enabled = false;
         if (ddlJCC.Visible == false) tdJCCOther.Attributes.Remove("align");          
+    }
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        //Modified by id taken from the Master Id
+        string strModifiedBy = Master.UserId;
+        string strFJCID = hdnFJCID.Value;
+        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Milwaukee);
+                EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+
+                if (result.SchoolType == StatusInfo.PendingPJLottery)
+                    iStatus = (int)StatusInfo.PendingPJLottery;
+                else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
+                    result.Grade == StatusInfo.SystemInEligible ||
+                    result.SchoolType == StatusInfo.SystemInEligible ||
+                    result.TimeInCamp == StatusInfo.SystemInEligible)
+                {
+                    iStatus = (int)StatusInfo.SystemInEligible;
+                }
+                else
+                {
+                    iStatus = (int)StatusInfo.SystemEligible;
+                }
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCID.Value;
+
+        var status = (StatusInfo)iStatus;
+        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -121,48 +169,6 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
                 }
                 Session["FJCID"] = hdnFJCID.Value;
                 Response.Redirect("Summary.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCID.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-                        var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Greensboro);
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCID.Value;
-                Response.Redirect("Step2_3.aspx");
             }
         }
         catch (Exception ex)
