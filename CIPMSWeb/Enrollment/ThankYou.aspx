@@ -156,13 +156,14 @@
 		<asp:Panel ID="pnlInEligible" runat="server" Visible="false" Width="100%">
 			<asp:Label ID="lblTxtInEligible" runat="server" CssClass="QuestionText">
 				<p style="text-align:justify">
-					While it appears that your camper does not qualify for the program initially selected, s/he may still be eligible for one of our other One Happy Camper programs. <b>While you may feel like you are filling out the same application – don’t give up.</b> There are many different One Happy Camper programs – hopefully one will be right for you.<br /><br />
-					<br />
-							
-					</p>
+                    While it appears that your camper does not qualify for the program initially selected, he/she may still be eligible for one of our other One Happy Camper programs. 
+				</p>
+                <p>
+                    <strong>While you may feel like you are filling out the same application – don’t give up.</strong> There are many different One Happy Camper programs – hopefully one will be right for you.
+                </p>
 				<p style="text-align:justify; font-weight:bold">
 					<asp:LinkButton ID="lnkCopyApp" runat="server" CssClass="QuestionText" OnClick="lnkCopyApp_Click" Font-Size="12px">
-                        Click Here</asp:LinkButton> to continue as we check your eligibility against various other One Happy Camper programs.
+                        Click Here</asp:LinkButton> to check your eligibility against our other One Happy Camper programs.
 
 				</p>
                 <ul style="list-style-type: none; display:none;">
@@ -177,9 +178,9 @@
 			</asp:Label>
 			<asp:Label ID="lblContactinfo" runat="server" CssClass="QuestionText">
 				<p style="text-align:justify">
-				If you think you received this message in error please contact your local partner - information below – or contact your camp directly.</p>
-				<p style="text-align:justify">
-					If you prefer to speak to someone about this incentive application, please contact:</p></asp:Label>
+				    If you think you received this message in error please contact your local partner - information below – or contact your camp directly.
+				</p>
+            </asp:Label>
 			<asp:Label ID="lblContactPerson2" runat="server" CssClass="QuestionText" /><br />
 			<asp:Label ID="lblFed2" runat="server" CssClass="QuestionText" /><asp:Label ID="lblDesignation2" 
 			runat="server" CssClass="QuestionText" /><br />
@@ -191,17 +192,15 @@
 		<asp:Panel ID="PanelInEligiblePJL" runat="server" Visible="false" Width="100%">
 			<asp:Label ID="Label7" runat="server" CssClass="QuestionText">
 				<p style="text-align:justify">
-					Thank you for your interest in Jewish overnight summer camp! 
-					While it appears that the camper does not qualify for an incentive program in 
-					your community, he/she could be eligible for one of our national incentive programs.</p>
+					Thank you for your interest in Jewish overnight summer camp! While it appears that the camper does not qualify for a community sponsored One Happy Camper grant, he/she could be eligible for one of our other programs.
+				</p>
 				<p style="text-align:justify; font-weight:bold">
 					Please <asp:LinkButton ID="LinkButton1" runat="server" CssClass="QuestionText" 
-					OnClick="lnkCopyApp_Click">click here</asp:LinkButton> to see if you are eligible for 
-					one of these national programs.</p></asp:Label>
+					OnClick="lnkCopyApp_Click">click here</asp:LinkButton> to see if you are eligible for a different One Happy Camper program.</p></asp:Label>
 			<asp:Label ID="Label8" runat="server" CssClass="QuestionText">
 				<p style="text-align:justify">
-					If you prefer to speak to someone about this incentive application, please contact:<br />
-					For more information on your local incentive program</p>
+				    If you think you received this message in error please contact your local partner - information below – or contact your camp directly.	
+                </p>
 					</asp:Label>
 					<asp:Label ID="Label9" runat="server" CssClass="QuestionText" /><br />
 					<asp:Label ID="Label10" runat="server" CssClass="QuestionText" /><br />

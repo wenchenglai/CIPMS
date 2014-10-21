@@ -19,25 +19,21 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The Young Judaea One Happy Camper Program, sponsored by Young Judaea awards incentive grants up to $1,000 to first time campers.
+                    The Young Judaea One Happy Camper Program, awards incentive grants up to $1,000 to first time campers.
                 </p>
 		        <p>
 			        The following outlines the eligibility criteria for this One Happy Camper program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
-                        <li>First-time campers must be entering grades 1-12 (after camp).</li>
+                        <li>First-time campers must be entering grades 2-12 (after camp).</li>
                         <li>Attending one of our camps, including Camp Judaea (Hendersonville, NC), Camp Young Judaea Midwest (Waupaca, WI), Camp Young Judaea Sprout Lake (Verbank, NY), Camp Young Judaea Texas (Wimberley, TX), and our senior leadership camp, Camp Tel Yehudah (Barryville, NY).</li>
                     </ul>
 		        </p>                
 		        <p>
-                    At Young Judaea camps, young people can count on having an experience that develops independence, strong connections with Israel, and lifelong Jewish identity. Young Judaea camps provide an environment of informal Jewish education where both learning and having fun are high on the agenda. In addition to engaging in Israeli song and dance, pluralistic prayer, conversational Hebrew and delicious kosher meals, Young Judaeans enjoy activities such as swimming, basketball, hiking, climbing and ropes course. 
+                    At Young Judaea camps, young people can count on having an experience that develops independence, strong connections with Israel, and lifelong Jewish identity. Young Judaea camps provide an environment of informal Jewish education where both learning and having fun are high on the agenda. In addition to engaging in Israeli song and dance, pluralistic prayer, conversational Hebrew and delicious kosher meals, Young Judaeans enjoy activities such as swimming, basketball, hiking, climbing and ropes course. Campers begin their experience in second or third grade at one of Young Judaea’s four regional camps. Teens attending high school are eligible to attend Camp Tel Yehudah, Young Judaea’s National Senior Leadership camp in Barryville, NY, where generations of Jewish activists, educators and leaders got their start while making friendships that last a lifetime. Young Judaea is the oldest Zionist Youth Movement in the United States and has been running quality Jewish camping programs since 1948.
 		        </p>
                 <p>
-                    Campers begin their experience in second or third grade at one of Young Judaea’s four regional camps. Teens attending high school are eligible to attend Camp Tel Yehudah, Young Judaea’s National Senior Leadership camp in Barryville, NY, where generations of Jewish activists, educators and leaders got their start while making friendships that last a lifetime. Young Judaea is the oldest Zionist Youth Movement in the United States and has been running quality Jewish camping programs since 1948.
-                </p>
-                <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program.
-                </p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program.                </p>
                 <p>
                     If you are interested in learning more about our camps and available grants, please visit the camp websites by clicking on the camp names below:
                 </p>

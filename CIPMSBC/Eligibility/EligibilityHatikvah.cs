@@ -94,7 +94,7 @@ namespace CIPMSBC.Eligibility
                     if (JewishSchoolOption == 4)
                     {
                         if (specialCode == "PJGTC2015")
-                            iStatusValue = (int)StatusInfo.PendingPJLottery;
+                            iStatusValue = (int)StatusInfo.SystemInEligible;
                         else
                             iStatusValue = (int)StatusInfo.SystemInEligible;
                     }

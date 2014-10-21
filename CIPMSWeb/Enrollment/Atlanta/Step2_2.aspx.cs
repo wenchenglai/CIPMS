@@ -155,7 +155,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
 			}
 			else
 			{
-				var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Hartford);
+				var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Atlanta);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
                 if (result.SchoolType == StatusInfo.PendingPJLottery)
@@ -170,6 +170,24 @@ public partial class HartfordPage2 : System.Web.UI.Page
                 else
                 {
                     iStatus = (int)StatusInfo.SystemEligible;
+                }
+
+                if (iStatus == (int)StatusInfo.SystemEligible)
+                {
+                    if (rdoFirstTimerNo.Checked)
+                    {
+                        if (rdoDays19.Checked)
+                        { 
+                            if (rdoLastYearNo.Checked)
+                                iStatus = (int)StatusInfo.SystemInEligible;
+                            else if (rdoLastYearYes.Checked)
+                            {
+                                if (rdoNo160.Checked)
+                                    iStatus = (int)StatusInfo.SystemInEligible;
+                            }
+
+                        }
+                    }
                 }
 			}
 			Session["STATUS"] = iStatus.ToString();

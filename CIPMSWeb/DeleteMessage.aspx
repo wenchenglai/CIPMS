@@ -5,19 +5,21 @@
         <tr>
             <td colspan="2" >
                 <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3" >
-                    <br /><br /><p style="text-align:justify"> 
-                     <b><font color="red">Thank you for applying for a campership incentive grant!</font></b> 
+                    <br /><br />
+                    <p style="text-align:justify"> 
+                        Thank you for applying for a One Happy Camper grant.
                     </p>
-                    <p style="text-align:justify"><b><font color="red">Our records indicate that you have begun an application for a camp-based program after being informed that the camper is ineligible for a community-based one.</b></p></asp:Label>
-                    
+                    <p style="text-align:justify">
+                        Our records indicate that you have begun an application for a camp-sponsored program after being informed that the camper is ineligible for a community-sponsored one.
+                    </p>
+                    <p>
+                        Because the camper is ineligible for a community program, your initial application is no longer accessible. A new one has been created for the camp-sponsored program you have now selected.
+                    </p>
+                    <p>
+                        The new application can be accessed by clicking on the FJC ID. (Example:  201510150060)
+                    </p>
+                </asp:Label>
             </td>
-        </tr>
-        <tr>
-          <td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                <b><font color="red">Because the camper is ineligible for a community-based campership grant, your initial application is no longer accessible. A new one has been created for the camp-based program you have now selected. This application can be accessed by clicking the FJC ID.</font></b>                 
-               </p>
-            </asp:Label></td>
         </tr>
         <tr>
             <td colspan="2" >

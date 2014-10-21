@@ -4,7 +4,7 @@
     <table width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-                <asp:Label ID="Label4" CssClass="headertext" runat="server">Co-Sponsored Camp One Happy Camper Programs</asp:Label><br /><br />
+                <asp:Label ID="Label4" CssClass="headertext" runat="server">One Happy Camper Camp Programs</asp:Label><br /><br />
             </td>
         </tr>
     </table>
@@ -26,7 +26,7 @@
                 <td>
                 <asp:Label ID="Label3" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">
-                        Below is the list of camps sponsoring a One Happy Camper program. If your camp is on the list  <font color="red"><b>select and click the "continue application" button.</b></font>
+                        See if your camp is a One Happy Camper partner. (Select camp and click ‘continue application’):
                     </p>
                        
                 </asp:Label>
@@ -48,9 +48,8 @@
                 <td>
                 <asp:Label ID="Label1" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">
-                     If you do not see your camp on the list it may mean that they are not sponsoring their own One Happy Camper (incentive) program. <b>It is possible that your local community or camp is not using this registration system, or the application is not yet available. </b>
+                        If you do not see your camp it may mean that they are not sponsoring their own One Happy Camper program. <strong>It is possible that your community or camp is not using this registration system, or the application is not yet available.</strong>
                     </p>
-                       
                 </asp:Label>
                 </td>
              </tr>
@@ -63,8 +62,8 @@
                     <asp:Label ID="lbl125" runat="server" CssClass="QuestionText">
 						<p style="text-align:justify">
 						<b>
-							To access a list of participating One Happy Camper Programs please 
-							<a href="http://www.jewishcamp.org/contact-us%23OHC#OHC" target="_blank" style="color:Black;">click here</a> and/or contact your camp directly.
+							To contact a One Happy Camper program partner please  
+							<a href="http://www.jewishcamp.org/contact-us%23OHC#OHC" target="_blank" style="color:Black;">click here</a>.
 						</b>
 						</p>
 					</asp:Label>
@@ -77,8 +76,8 @@
             <tr>
 				<td>
 					<asp:Label ID="Label124" runat="server" CssClass="QuestionText">
-						To access the Foundation for Jewish Camp’s online directory of <font color="red"><b><i>financial needs-based scholarship</i></b></font> 
-						please visit <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
+						Browse the Foundation for Jewish Camp’s online directory of <span style="color:red; font-weight:bold">needs-based scholarship</span> at 
+                        <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
 					</asp:Label>
                 </td>
             </tr>

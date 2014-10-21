@@ -267,7 +267,7 @@ namespace CIPMSBC.Eligibility
 					elig = new EligibilityZeke(fed);
 					break;
 				case FederationEnum.Atlanta:
-					elig = new EligibilityHartford(fed);
+					elig = new EligibilityAtlanta(fed);
 					break;
 				case FederationEnum.Nashville:
 					elig = new EligibilityHartford(fed);

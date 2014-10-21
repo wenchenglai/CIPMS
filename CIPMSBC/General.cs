@@ -65,11 +65,7 @@ namespace CIPMSBC
                 param[0] = new SqlParameter("@CampYear", CampYear);
                 param[1] = new SqlParameter("@FedID", fedID);
                 dsCamps = dal.getDataset("usp_GetAllCamps", param);
-                for (int i = 0; i < dsCamps.Tables[0].Rows.Count; i++)
-                {
-                    if (dsCamps.Tables[0].Rows[i]["Camp"].ToString().ToLower() == "camp menorah")
-                        dsCamps.Tables[0].Rows.RemoveAt(i);
-                }
+
                 return dsCamps;
             }
             catch (Exception ex)

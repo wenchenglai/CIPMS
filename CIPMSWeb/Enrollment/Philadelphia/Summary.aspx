@@ -28,11 +28,9 @@
                         <li>First time camper must be entering grades 1-11 (after camp).</li>
                         <li>Live in Bucks, Chester, Delaware, Montgomery or Philadelphia counties.</li>
                         <li>Attend a Jewish overnight camp that is listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.</li>
                     </ul>
-				</p> 
-                <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.
-                </p>
+				</p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
                     please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, 

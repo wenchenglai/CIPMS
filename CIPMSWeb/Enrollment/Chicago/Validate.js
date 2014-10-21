@@ -37,7 +37,7 @@
 
         // Grade
         if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
         }
 
         // School Type
