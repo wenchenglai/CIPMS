@@ -64,10 +64,11 @@
             </tr>
             <tr>
                 <td valign="top"><span class="InfoText">*</span>6</td>
-                <td valign="top" style="padding-bottom: 20px;">Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
-                <div class="QuestionsLeaveSomeUpperSpace">
-                    <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
-                </div>
+                <td valign="top" style="padding-bottom: 20px;">
+                    Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
+                    <div class="QuestionsLeaveSomeUpperSpace">
+                        <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
+                    </div>
                 </td>
             </tr>
             

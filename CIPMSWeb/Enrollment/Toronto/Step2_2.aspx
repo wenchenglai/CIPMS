@@ -115,6 +115,63 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>6</td>
             <td valign="top" style="padding-bottom:20px;">
+                <div>Does your child attend a secondary school? (Enrollment not required for this grant)</div>
+                <div>
+                    <asp:RadioButton ID="rdoSecondarySchoolYes" value="1" GroupName="Secondary" runat="server" Text="Yes" onclick="PageValidator.OnSecondarySchoolRadioChange(this);" />
+                    <asp:RadioButton ID="rdoSecondarySchoolNo" value="2" GroupName="Secondary" runat="server" Text="No" onclick="PageValidator.OnSecondarySchoolRadioChange(this);" />
+                </div>
+            </td>
+        </tr>
+        <tr id="6a">
+            <td valign="top"><span class="InfoText">*</span>6a</td>
+            <td valign="top" style="padding-bottom:20px;">
+                <div>Please select the secondary school:</div>
+                <div>
+                    <asp:DropDownList ID="ddlSecondarySchool" CssClass="dropdown" Width="300px" runat="server" onChange="PageValidator.OnSecondarySchoolDropDownChange(this);">
+                        <asp:ListItem Value="-- Select --"></asp:ListItem>
+                        <asp:ListItem Value="Adath Israel Congregational School" />
+                        <asp:ListItem Value="Ahavat Yisrael Hebrew Schools" />
+                        <asp:ListItem Value="Beit Rayim Hebrew School" />
+                        <asp:ListItem Value="Bet Sefer Solel" />
+                        <asp:ListItem Value="Beth Radom Congregation Hebrew School" />
+                        <asp:ListItem Value="Beth Sholom Hebrew School" />
+                        <asp:ListItem Value="Beth Torah Hebrews' Cool" />
+                        <asp:ListItem Value="Beth Tzedec Congregational School" />
+                        <asp:ListItem Value="CCCS Congregational High School / Adath Israel" />
+                        <asp:ListItem Value="Chabad Hebrew School (Green Lane)" />
+                        <asp:ListItem Value="Chabad of Richmond Hill Hebrew School (Chabad Romano)" />
+                        <asp:ListItem Value="CHAI School: Toronto" />
+                        <asp:ListItem Value="Danforth Jewish Circle - Children's Jewish" />
+                        <asp:ListItem Value="Darchei Noam Hebrew School" />
+                        <asp:ListItem Value="Downtown Jewish Community School" />
+                        <asp:ListItem Value="EdToronto" />
+                        <asp:ListItem Value="Hebrew Academy Of North York" />
+                        <asp:ListItem Value="Holy Blossom Temple Religious School" />
+                        <asp:ListItem Value="Jewish Heritage School at Beth Habonim" />
+                        <asp:ListItem Value="JRCC Hebrew School" />
+                        <asp:ListItem Value="J. Roots Supplementary Jewish School" />
+                        <asp:ListItem Value="Kachol Lavan/The Centre for Hebrew & Israel Studies" />
+                        <asp:ListItem Value="Kol Ami Religious School " />
+                        <asp:ListItem Value="Morris Winchevsky School: Toronto’s Secular Jewish Community School" />
+                        <asp:ListItem Value="Neshamah Congregation of York Reigion" />
+                        <asp:ListItem Value="Oraynu Children's School" />
+                        <asp:ListItem Value="Or Hadash" />
+                        <asp:ListItem Value="PJ Plus" />
+                        <asp:ListItem Value="Shaarei-Beth El Religious School" />
+                        <asp:ListItem Value="Temple Har Zion Religious School" />
+                        <asp:ListItem Value="Temple Sinai Religious School" />
+                        <asp:ListItem Value="The Centre for Jewish Living and Learning @ Temple Emanu-EL" />
+                        <asp:ListItem Value="The City Shul Nightingale School" />
+                        <asp:ListItem Value="Torah High" />
+                        <asp:ListItem Value="Other" />
+                    </asp:DropDownList>
+                     If "Other": <asp:TextBox ID="txtSecondarySchool" runat="server" MaxLength="200" Width="160px" CssClass="txtbox" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top"><span class="InfoText">*</span>7</td>
+            <td valign="top" style="padding-bottom:20px;">
                 <div>Are any members of your family members or alumni of a youth movement? If Yes, which one?</div>
                 <div>
                     <asp:RadioButton ID="rdoMemberOfYouthYes" value="1" GroupName="MemberOfYouth" runat="server" Text="Yes" onclick="PageValidator.OnYouthMovementRadioChange(this);" />
@@ -124,7 +181,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>7</td>
+            <td valign="top"><span class="InfoText">*</span>8</td>
             <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in March of the Living?"
                 <asp:CheckBoxList ID="rdolistParticipateMarchLiving" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
@@ -136,7 +193,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>8</td>
+            <td valign="top"><span class="InfoText">*</span>9</td>
             <td valign="top" style="padding-bottom:20px;">
                 Has anyone in your family participated in Taglit-Birthright Israel?
                 <asp:CheckBoxList ID="rdolistParticipateTaglit" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
@@ -148,7 +205,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>9</td>
+            <td valign="top"><span class="InfoText">*</span>10</td>
             <td valign="top" style="padding-bottom:20px;">
                 <div>
                     Has anyone in your family been to Israel? If yes, how many times collectively?

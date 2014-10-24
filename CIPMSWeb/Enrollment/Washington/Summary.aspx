@@ -1,6 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs"
     Inherits="Enrollment_Washington_Summary" %>
-
+<%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="Washington_Summary" ContentPlaceHolderID="Content" runat="Server">
 	<script language="javascript" type="text/javascript">
 // <!CDATA[
@@ -69,10 +69,18 @@ function Img1_onclick() {
 			<td colspan="2">
                 <asp:Label ID="Label2" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-                        The Jewish Federation of Greater Washington One Happy Camper program has reached its capacity for summer 2014. To be put on the waitlist, please contact Steffanie Jackson at <a href="mailto:onehappycamper@shalomdc.org">onehappycamper@shalomdc.org</a>.
-						<br /><br />
-						Click ‘NEXT’ to see if your camp is sponsoring its own One Happy Camper program.						
+                        Thank you for applying for the One Happy Camper program through The Jewish Federation of Greater Washington.  As a community, we allocated over $45,000 for this program.  As of now, all the incentives have been given out to other families.  Below is a list of other forms of support for parents who would like to send their children to camp: 
+												
 					</p>
+                    <ul style="list-style-type:decimal">
+                        <li>Visit <a href="http://www.jewishcamp.org/camper-scholarships" target="_blank">www.jewishcamp.org/camper-scholarships</a> and search for potential scholarships</li>
+                        <li>Contact your camp of choice directly to determine if they are offering scholarships</li>
+                        <li>If your child is enrolled in PJ Library, please visit the PJ Goes to Camp website for directions on how to apply for a PJ Goes To Camp Incentive <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> </li>
+                        <li>Often local congregations offer scholarships for campers so consider speaking with a local rabbi.</li>
+                    </ul>
+                    <p>
+                        Please be in touch with Steffanie Jackson steffanie.jackson@shalomdc.org with additional questions.
+                    </p>
 				</asp:Label>			
 			</td>
         </tr>

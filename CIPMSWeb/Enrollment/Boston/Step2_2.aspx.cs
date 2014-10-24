@@ -479,7 +479,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                     txtOtherJCC.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.WhoYouSpeakToInSynagogue) // Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
+            else if (qID == QuestionId.Q1044_WhoYouSpeakToInSynagogue) // Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
@@ -497,7 +497,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                     ddlWho.Enabled = false;
                 }
             }
-            else if (qID == QuestionId.ProfessionalOrCongregate) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            else if (qID == QuestionId.Q1045_ProfessionalOrCongregate) // If a professional or fellow congregant is selected, offer this list as a check all that apply
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;

@@ -288,10 +288,10 @@ public partial class TorontoPage2 : System.Web.UI.Page
 
     private void getCamperAnswersFromDB()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1040,1041,1042,1043,1044,1045,1046");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1040,1041,1042,1043,1044,1045,1046,1068");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
-		{
+		{   
             int qID = Convert.ToInt32(dr["QuestionId"]);
 
             if (qID == 3) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
@@ -485,6 +485,37 @@ public partial class TorontoPage2 : System.Web.UI.Page
                     rdoTasteOfCampNo.Checked = true;
                 }
             }
+            else if (qID == (int)QuestionId.Q1068_AttendSecondarySchool) // secondary school?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                {
+                    rdoSecondarySchoolYes.Checked = true;
+                }
+                else
+                {
+                    rdoSecondarySchoolNo.Checked = true;
+                }
+
+                if (rdoSecondarySchoolYes.Checked)
+                {
+                    if (dr["Answer"].Equals(DBNull.Value))
+                        continue;
+
+                    var answer = dr["Answer"].ToString();
+                    ddlSecondarySchool.SelectedValue = answer;
+                    if (ddlSecondarySchool.SelectedIndex == 0)
+                    {
+                        txtSecondarySchool.Text = answer;
+                        txtSecondarySchool.Enabled = true;
+                        ddlSecondarySchool.SelectedValue = "Other";
+                    }
+                    else
+                        txtSecondarySchool.Enabled = false;
+                }
+            }
 		}
 	}
 
@@ -653,6 +684,20 @@ public partial class TorontoPage2 : System.Web.UI.Page
             strQID = ((int)Questions.Q1043BeenToIsrael).ToString();
             strTablevalues += strQID + strFSeparator + (rdoBeenToIsraelYes.Checked ? "1" : rdoBeenToIsraelNo.Checked ? "2" : "") + strFSeparator + txtBeenToIsrael.Text + strQSeparator;
         }
+
+        // secodary school
+        string secondarySchoolName = "";
+        if (rdoSecondarySchoolYes.Checked)
+        {
+            secondarySchoolName = ddlSecondarySchool.SelectedItem.Value;
+            if (secondarySchoolName == "Other")
+            {
+                secondarySchoolName = txtSecondarySchool.Text;
+            }
+        }
+        strQID = ((int)QuestionId.Q1068_AttendSecondarySchool).ToString();
+        strTablevalues += strQID + strFSeparator + (rdoSecondarySchoolYes.Checked ? "1" : rdoSecondarySchoolNo.Checked ? "2" : "") + strFSeparator + secondarySchoolName + strQSeparator;
+
 		//to remove the extra character at the end of the string, if any
 		char[] chartoRemove = { Convert.ToChar(strQSeparator) };
 		strTablevalues = strTablevalues.TrimEnd(chartoRemove);

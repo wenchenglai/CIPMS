@@ -50,7 +50,8 @@ public enum QuestionId
     Q1016_AttendedDayCamp = 1016,
     Q1017_DayCampName = 1017,
     Q1021_PJLNames = 1021,
-    WhoYouSpeakToInSynagogue = 1044,
-    ProfessionalOrCongregate = 1045,
-    GrandfatherPolicySessionLength = 1063
+    Q1044_WhoYouSpeakToInSynagogue = 1044,
+    Q1045_ProfessionalOrCongregate = 1045,
+    GrandfatherPolicySessionLength = 1063,
+    Q1068_AttendSecondarySchool = 1068
 }

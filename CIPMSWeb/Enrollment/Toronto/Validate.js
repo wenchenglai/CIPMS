@@ -17,6 +17,25 @@
         }
     },
 
+    OnSecondarySchoolRadioChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoSecondarySchoolYes').is(':checked')) {
+            $("#6a").show();
+        } else {
+            $("#6a").hide();
+        }
+    },
+
+    OnSecondarySchoolDropDownChange: function (ddlObject) {
+        var $ddl = $('#ctl00_Content_ddlSecondarySchool'),
+            $txt = $('#ctl00_Content_txtSecondarySchool');
+
+        if ($ddl.val() == "Other") {
+            $txt.attr('disabled', false);
+        } else {
+            $txt.attr('disabled', true);
+        }
+    },
+
     OnSynagogueCheckboxChange: function (chkboxObject) {
         var $ddlSynagogue = $('#ctl00_Content_ddlSynagogue');
 
@@ -367,14 +386,31 @@
             }
         }
 
+        // Secondary School
+        if (!$('#ctl00_Content_rdoSecondarySchoolYes').is(':checked') && !$('#ctl00_Content_rdoSecondarySchoolNo').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
+        }
+
+        if ($('#ctl00_Content_rdoSecondarySchoolYes').is(':checked')) {
+            if ($('#ctl00_Content_ddlSecondarySchool>option:selected').text() === "-- Select --") {
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 6a - please select a seconadary school.</li></ul>";
+            }
+
+            if ($('#ctl00_Content_ddlSecondarySchool>option:selected').text().toLowerCase() === "other") {
+                if ($('#ctl00_Content_txtSecondarySchool').val() === "") {
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 6a - please enter the secondary school name.</li></ul>";
+                }
+            }
+        }
+
         // Any memebers are Youth Movement?
         if (!$('#ctl00_Content_rdoMemberOfYouthYes').is(':checked') && !$('#ctl00_Content_rdoMemberOfYouthNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 7</li></ul>";
         }
 
         if ($('#ctl00_Content_rdoMemberOfYouthYes').is(':checked')) {
             if ($('#ctl00_Content_txtMemberOfYouth').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 6 - please enter your family member.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please enter your family member.</li></ul>";
             }
         }
 
@@ -383,7 +419,7 @@
             !$('#ctl00_Content_rdolistParticipateMarchLiving_1').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateMarchLiving_2').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 7</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 8</li></ul>";
         }
 
         // Participated in Taglit?
@@ -391,17 +427,17 @@
             !$('#ctl00_Content_rdolistParticipateTaglit_1').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateTaglit_2').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateTaglit_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 8</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 9</li></ul>";
         }
 
         // been to Israel?
         if (!$('#ctl00_Content_rdoBeenToIsraelYes').is(':checked') && !$('#ctl00_Content_rdoBeenToIsraelNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 9</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 10</li></ul>";
         }
 
         if ($('#ctl00_Content_rdoBeenToIsraelYes').is(':checked')) {
             if ($('#ctl00_Content_txtBeenToIsrael').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 9 - please enter your family member.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 10 - please enter your family member.</li></ul>";
             }
         }
 
@@ -420,8 +456,11 @@ $(function () {
     PageValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
     PageValidator.OnFirstTimerChange(null);
     PageValidator.OnYouthMovementRadioChange(null);
+    PageValidator.OnSecondarySchoolRadioChange(null);
+    PageValidator.OnSecondarySchoolDropDownChange(null);
     PageValidator.OnBeenToIsraelRadioChange(null);
     PageValidator.OnSynagogueDropDownChange(null);
+
     if ($('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
         PageValidator.OnParticipateMarchLivingCheckboxChange($('#ctl00_Content_rdolistParticipateMarchLiving_3')[0]);
     } else if ($('#ctl00_Content_rdolistParticipateMarchLiving_0').is(':checked')) {

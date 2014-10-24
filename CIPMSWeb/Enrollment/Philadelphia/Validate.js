@@ -1,63 +1,60 @@
 ﻿var PageValidator = {
+    OnFirstTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            this._toggleSecondTimer(false);
+            this._toggleReceivedGrant(false);
+        } else {
+            this._toggleSecondTimer(true);
+            this._toggleReceivedGrant(true);
+        }
+    },
+
+    OnSecondTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoSecondTimerYes').is(':checked')) {
+            this._toggleReceivedGrant(false);
+        } else {
+            this._toggleReceivedGrant(true);
+        }
+    },
+
+    _toggleSecondTimer: function (flag) {
+        $('#ctl00_Content_rdoSecondTimerYes').attr('disabled', flag);
+        $('#ctl00_Content_rdoSecondTimerNo').attr('disabled', flag);
+    },
+
+    _toggleReceivedGrant: function (flag) {
+        $('#ctl00_Content_rdoReceivedGrantYes').attr('disabled', flag);
+        $('#ctl00_Content_rdoReceivedGrantNo').attr('disabled', flag);
+    },
+
+    OnSchoolDropDownChange: function (ddlObject) {
+        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
+            $('#ctl00_Content_txtSchoolName').attr('disabled', true);
+        } else {
+            $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
+        }
+    },
+
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        var inputobjs = document.getElementsByTagName("input");
-        var selectobjs = document.getElementsByTagName("select");
-        var Q3_1, Q3_2, Q4_1, Q4_2, Q5_1, Q5_2, Q6, Q7_1, Q7_2, Q8_1, Q8_2, Q9, Q10;
-        Q9 = new Array();
-        var j = 0;
-        var valobj = document.getElementById(sender.id);
-        var hdnYearCount;
-        for (var i = 0; i < inputobjs.length - 1; i++) {
-            //for Q3_1
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_0") >= 0) {
-                Q3_1 = inputobjs[i];
+        // First Timer camper or not
+        if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
+        }
+
+        // Second Timer
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+            if (!$('#ctl00_Content_rdoSecondTimerYes').is(':checked') && !$('#ctl00_Content_rdoSecondTimerNo').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Please answer Question 2</li></ul>";
             }
-            //for Q3_2
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_1") >= 0) {
-                Q3_2 = inputobjs[i];
-            }
+        }
 
-            //for Q4_1
-            if (inputobjs[i].id.indexOf("RadioBtnQ4_0") >= 0) {
-                Q4_1 = inputobjs[i];
-            }
-
-            //for Q4_2
-            if (inputobjs[i].id.indexOf("RadioBtnQ4_1") >= 0) {
-                Q4_2 = inputobjs[i];
-            }
-
-            //for Q5_1
-            if (inputobjs[i].id.indexOf("RadioBtnQ5_0") >= 0) {
-                Q5_1 = inputobjs[i];
-            }
-
-            //for Q5_2
-            if (inputobjs[i].id.indexOf("RadioBtnQ5_1") >= 0) {
-                Q5_2 = inputobjs[i];
-            } 
-
-            //for Q9
-            if (inputobjs[i].id.indexOf("RadioBtnQ9") >= 0) {
-                Q9[j] = inputobjs[i];
-                j = j + 1;
-            }
-
-            //for Q10
-            if (inputobjs[i].id.indexOf("txtCamperSchool") >= 0) {
-                Q10 = inputobjs[i];
-            }
-
-        }  //end of for loop
-
-        //to get the <select> objects for Q8 and Q10
-        for (var i = 0; i <= selectobjs.length - 1; i++) {
-            //for Q6
-            if (selectobjs[i].id.indexOf("ddlGrade") >= 0) {
-                Q6 = selectobjs[i];
+        // Received Grant before
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked') && $('#ctl00_Content_rdoSecondTimerYes').is(':checked')) {
+            if (!$('#ctl00_Content_rdoReceivedGrantYes').is(':checked') && !$('#ctl00_Content_rdoReceivedGrantNo').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Please answer Question 3</li></ul>";
             }
         }
 
@@ -104,35 +101,24 @@
                 errorMsg.innerHTML += "<ul><li>Error in Question No. 4 - please enter the JCC name.</li></ul>";
             }
         }
-        //validate Q6
-        if (Q6.selectedIndex == 0) {
-            valobj.innerHTML = "<li>Please select the Grade</li>";
-            args.IsValid = false;
-            return;
+
+        // Grade
+        if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5</li></ul>";
         }
 
-        //for Question 9
-        var bQ9Checked = false;
-        for (var j = 0 ; j <= Q9.length - 1; j++) {
-            if (Q9[j].checked) //Q9 has been answered
-            {
-                bQ9Checked = true;
-                //for Question 11
-                if (trim(Q10.value) == "" && Q9[j].value != 3) {
-                    valobj.innerHTML = "<li>Please enter Name of the School</li>";
-                    args.IsValid = false;
-                    return;
-                }
-            }
+        // School Type
+        if (!$('#ctl00_Content_rdoSchoolType_0').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
+            !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
         }
 
-        //if Q9 is not answered
-        if (!bQ9Checked) {
-            valobj.innerHTML = "<li>Please answer Question No. 6</li>";
-            args.IsValid = false;
-            return;
+        // School Name
+        if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 7</li></ul>";
         }
-
 
         args.IsValid = true;
 

@@ -9,14 +9,7 @@
     </tr>
     <tr>
       <td>
-        <div style="font-weight:bold;">
-            <br />
-            One Happy Camper payment is starting in the Spring - make sure all approved campers are in the status of “Campership Approved; Payment Pending.”
-            <br /><br />
-            Please remember to approve all new “Eligible” applications within two weeks and send an email confirmation to parents. You may find a confirmation email template in the OHC Basic User Guide.
-            <br /><br />
-            Please contact <a href="mailto:Valentina@JewishCamp.org"><u>Valentina@JewishCamp.org</u></a> if you have any questions.
-        </div>
+
       </td>
     </tr>
     <tr>

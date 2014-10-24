@@ -303,7 +303,13 @@ public partial class Step1 : System.Web.UI.Page
 
 		if (IsFromCanada())
 		{
-			if (objGeneral.GetCanadianZipCode(Info.ZipCode).Trim() != "")
+            string fedId = objGeneral.GetCanadianZipCode(Info.ZipCode).Trim();
+			
+            if (fedId == "65")
+            {
+
+            }
+            else if (fedId != "")
 			{
 				iCount = 1;
 			}
@@ -384,7 +390,7 @@ public partial class Step1 : System.Web.UI.Page
 				strNextURL = "ThankYou.aspx";
 			}
 
-			if (strNextURL == "" || dsFed.Tables.Count == 0)
+			if (strNextURL == "")
 			{
 				lblMessage.Visible = true;
 				lblMessage.Text = "No Federation exists for the given Zip Code";
@@ -393,18 +399,18 @@ public partial class Step1 : System.Web.UI.Page
 			{
 				Session["FJCID"] = hdnFJCID.Value;
 				//added by sreevani for closed federations redirection                        
+                if (dsFed.Tables.Count > 0) 
+                {
+                    if ((dsFed.Tables[0].Rows.Count > 0) && (dsFed.Tables[0].Rows[0]["Federation"].ToString() != ""))
+                    {
+                        if (dsFed.Tables[0].Rows[0]["Federation"].ToString() == "39" || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "49")//|| dsFed.Tables[0].Rows[0]["Federation"].ToString() == "40")//dsFed.Tables[0].Rows[0]["Federation"].ToString() == "24" ||  || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "12"
+                            Response.Redirect("ClosedFedRedirection.aspx");
+                        else
+                            Response.Redirect(strNextURL);
+                    }
+                }
 
-				if ((dsFed.Tables[0].Rows.Count > 0) && (dsFed.Tables[0].Rows[0]["Federation"].ToString() != ""))
-				{
-					if (dsFed.Tables[0].Rows[0]["Federation"].ToString() == "39" || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "49")//|| dsFed.Tables[0].Rows[0]["Federation"].ToString() == "40")//dsFed.Tables[0].Rows[0]["Federation"].ToString() == "24" ||  || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "12"
-						Response.Redirect("ClosedFedRedirection.aspx");
-					else
-						Response.Redirect(strNextURL);
-				}
-				else
-				{
-					Response.Redirect(strNextURL);
-				}
+				Response.Redirect(strNextURL);
 			}
 		}
 	}

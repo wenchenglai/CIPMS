@@ -27,22 +27,22 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
             int FedID = Convert.ToInt32(FederationEnum.WashingtonDC);
             string FED_ID = FedID.ToString();
 
-			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+            bool isDisabled = false;
+            string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
+            for (int i = 0; i < FedIDs.Length; i++)
+            {
+                if (FedIDs[i] == FED_ID)
+                {
+                    isDisabled = true;
+                    break;
+                }
+            }
 
-			if (isDisabled)
-			{
-				tblDisable.Visible = true;
-				tblRegular.Visible = false;
-				btnSaveandExit.Visible = false;
+            if (isDisabled && Session["UsrID"] == null)
+            {
+                tblDisable.Visible = true;
+                tblRegular.Visible = false;
+                btnSaveandExit.Visible = false;
 
                 if (Session["SpecialCodeValue"] != null)
                 {
@@ -63,39 +63,14 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                         }
                     }
                 }
-			}
-			else
-			{
-				tblDisable.Visible = false;
-				tblRegular.Visible = true;
-				btnSaveandExit.Visible = true;
-			}
+            }
+            else
+            {
+                tblDisable.Visible = false;
+                tblRegular.Visible = true;
+                btnSaveandExit.Visible = true;
+            }
 		}
-
-
-		//if (Session["FedId"] != null && Session["FJCID"]!= null)
-		//{
-		//    if (Session["FedId"].ToString() == "49")
-		//    {
-		//        DataSet dsForCodeEntered = new DataSet();
-		//        CamperAppl = new CamperApplication();
-		//        string questionID = "", codeEntered = "";
-		//        questionID = "1031";
-		//        dsForCodeEntered = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), questionID, questionID, "N");
-		//        string ConfigDCCode = ConfigurationManager.AppSettings["DCCode"];
-		//        if (dsForCodeEntered.Tables[0].Rows.Count > 0)
-		//        {
-		//            codeEntered = dsForCodeEntered.Tables[0].Rows[0]["Answer"].ToString();
-		//            codeEntered = codeEntered.ToUpper();
-		//            if (codeEntered == ConfigDCCode)
-		//                btnNext.Enabled = true;
-		//        }
-		//        else
-		//        {
-		//            //btnNext.Enabled = false;
-		//        }
-		//    }    
-		//}
     }
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
     {
