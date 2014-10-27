@@ -36,7 +36,7 @@ public partial class Administration_ManageUser : System.Web.UI.Page
             ddlFed.DataBind();
             if ((ddlFed.Items.Count != 0))
                 ddlFed.Items.Insert(0, new ListItem("--Select--", "-1"));
-            ddlFed.SelectedIndex = 13;
+            //ddlFed.SelectedIndex = 13;
 
         }
         else
@@ -75,7 +75,9 @@ public partial class Administration_ManageUser : System.Web.UI.Page
         _objUsrAdmin.LastName = txtLastNm.Text.Trim();
         _objUsrAdmin.Email = txtEmail.Text.Trim();
         _objUsrAdmin.FederationID = Convert.ToInt16(ddlFed.SelectedValue);
-        _objUsrAdmin.CampID = Convert.ToInt16(ddlCamps.SelectedValue);
+
+        if (ddlCamps.SelectedValue != "")
+            _objUsrAdmin.CampID = Convert.ToInt16(ddlCamps.SelectedValue);
     }
 
     private void PopulateGrid()

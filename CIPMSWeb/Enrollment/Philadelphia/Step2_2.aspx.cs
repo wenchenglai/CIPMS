@@ -309,7 +309,7 @@ public partial class Step2_NY_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,13,30,31,33,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,28,29,30,31,1044,1045");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -330,7 +330,7 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                     }
                     break;
 
-                case QuestionId.Q13_SecondTime:
+                case QuestionId.Q28_IsSecondTimer:
                     if (dr["OptionID"].Equals(DBNull.Value))
                         continue;
                     if (dr["OptionID"].ToString() == "1")
@@ -343,7 +343,7 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                     }
                     break;
 
-                case QuestionId.Q33_ReceivedGrant:
+                case QuestionId.Q29_ReceivedGrant:
                     if (dr["OptionID"].Equals(DBNull.Value))
                         continue;
                     if (dr["OptionID"].ToString() == "1")
@@ -483,11 +483,11 @@ public partial class Step2_NY_2 : System.Web.UI.Page
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Second Timer or not
-        strQId = ((int)QuestionId.Q13_SecondTime).ToString();
+        strQId = ((int)QuestionId.Q28_IsSecondTimer).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoSecondTimerYes.Checked ? "1" : rdoSecondTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Received Grant or not
-        strQId = ((int)QuestionId.Q33_ReceivedGrant).ToString();
+        strQId = ((int)QuestionId.Q29_ReceivedGrant).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         if (chkNo.Checked)

@@ -33,5 +33,6 @@ namespace CIPMSBC
         public string CMART_MiiP_ReferalCode;
         public string PJLCode;
         public string NLCode;
+        public string SpecialCode;
     }
 }

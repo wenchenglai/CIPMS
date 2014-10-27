@@ -19,7 +19,7 @@ namespace CIPMSBC
 		{
 			var codes = GetAvailableCodes(CampYearID, FedID);
 
-		    return codes.Any(code => code == Code);
+		    return codes.Any(code => code.ToLower() == Code.ToLower());
 		}
 
         // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what

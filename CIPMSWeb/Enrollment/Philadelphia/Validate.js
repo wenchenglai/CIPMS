@@ -133,6 +133,7 @@
 };
 
 $(function () {
+    PageValidator.OnFirstTimerChange();
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));

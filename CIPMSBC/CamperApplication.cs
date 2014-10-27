@@ -124,47 +124,6 @@ namespace CIPMSBC
         }
 
         //to Insert the parent info (step 3 of camper application)
-        public int InsertCamperInfo(UserDetails UserInfo, out string OutValue)
-        {
-            CIPDataAccess dal = new CIPDataAccess();
-            int rowsaffected;
-            try
-            {
-                SqlParameter[] param = new SqlParameter[17];
-                param[0] = new SqlParameter("@First_Name", UserInfo.FirstName);
-                param[1] = new SqlParameter("@Last_Name", UserInfo.LastName);
-                param[2] = new SqlParameter("@Street_Address", UserInfo.Address);
-                param[3] = new SqlParameter("@City", UserInfo.City);
-                param[4] = new SqlParameter("@State", UserInfo.State);
-                param[5] = new SqlParameter("@Country", UserInfo.Country);
-                param[6] = new SqlParameter("@Zip_Code", UserInfo.ZipCode);
-                param[7] = new SqlParameter("@Home_Phone", UserInfo.HomePhone);
-                param[8] = new SqlParameter("@Email", UserInfo.PersonalEmail);
-                param[9] = new SqlParameter("@DAte_Of_Birth", UserInfo.DateofBirth);
-                param[10] = new SqlParameter("@Age", UserInfo.Age);
-                param[11] = new SqlParameter("@OFJCID", SqlDbType.NVarChar, 50);
-                param[11].Direction = ParameterDirection.Output;
-                param[12] = new SqlParameter("@Gender", UserInfo.Gender);
-                param[13] = new SqlParameter("@IsJewish", UserInfo.IsJewish);
-                param[14] = new SqlParameter("@CMART_MiiP_ReferalCode", UserInfo.CMART_MiiP_ReferalCode);
-                param[15] = new SqlParameter("@PJLCode", UserInfo.PJLCode);
-                param[16] = new SqlParameter("@NLCode", UserInfo.NLCode);
-
-                rowsaffected = dal.ExecuteNonQuery("[USP_InsertCamperApplication]", out OutValue, param);
-                //rowsaffected = 0;
-                return rowsaffected;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dal = null;
-            }
-        }
-
-        //to Insert the parent info (step 3 of camper application)
         public int UpdateFederationId(string FJCID, string FEDID)
         {
             CIPDataAccess dal = new CIPDataAccess();
@@ -189,6 +148,47 @@ namespace CIPMSBC
             }
         }
 
+        public int InsertCamperInfo(UserDetails UserInfo, out string OutValue)
+        {
+            CIPDataAccess dal = new CIPDataAccess();
+            int rowsaffected;
+            try
+            {
+                SqlParameter[] param = new SqlParameter[18];
+                param[0] = new SqlParameter("@First_Name", UserInfo.FirstName);
+                param[1] = new SqlParameter("@Last_Name", UserInfo.LastName);
+                param[2] = new SqlParameter("@Street_Address", UserInfo.Address);
+                param[3] = new SqlParameter("@City", UserInfo.City);
+                param[4] = new SqlParameter("@State", UserInfo.State);
+                param[5] = new SqlParameter("@Country", UserInfo.Country);
+                param[6] = new SqlParameter("@Zip_Code", UserInfo.ZipCode);
+                param[7] = new SqlParameter("@Home_Phone", UserInfo.HomePhone);
+                param[8] = new SqlParameter("@Email", UserInfo.PersonalEmail);
+                param[9] = new SqlParameter("@DAte_Of_Birth", UserInfo.DateofBirth);
+                param[10] = new SqlParameter("@Age", UserInfo.Age);
+                param[11] = new SqlParameter("@OFJCID", SqlDbType.NVarChar, 50);
+                param[11].Direction = ParameterDirection.Output;
+                param[12] = new SqlParameter("@Gender", UserInfo.Gender);
+                param[13] = new SqlParameter("@IsJewish", UserInfo.IsJewish);
+                param[14] = new SqlParameter("@CMART_MiiP_ReferalCode", UserInfo.CMART_MiiP_ReferalCode);
+                param[15] = new SqlParameter("@PJLCode", UserInfo.PJLCode);
+                param[16] = new SqlParameter("@NLCode", UserInfo.NLCode);
+                param[17] = new SqlParameter("@SpecialCode", UserInfo.SpecialCode);
+
+                rowsaffected = dal.ExecuteNonQuery("[USP_InsertCamperApplication]", out OutValue, param);
+                //rowsaffected = 0;
+                return rowsaffected;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dal = null;
+            }
+        }
+
         //to Insert the parent info (step 3 of camper application)
         public int UpdateCamperInfo(UserDetails CamperInfo)
         {
@@ -196,7 +196,7 @@ namespace CIPMSBC
             int rowsaffected;
             try
             {
-                SqlParameter[] param = new SqlParameter[19];
+                SqlParameter[] param = new SqlParameter[20];
                 param[0] = new SqlParameter("@First_Name", CamperInfo.FirstName);
                 param[1] = new SqlParameter("@Last_Name", CamperInfo.LastName);
                 param[2] = new SqlParameter("@Street_Address", CamperInfo.Address);
@@ -216,6 +216,7 @@ namespace CIPMSBC
                 param[16] = new SqlParameter("@CMART_MiiP_ReferalCode", CamperInfo.CMART_MiiP_ReferalCode);
                 param[17] = new SqlParameter("@PJLCode", CamperInfo.PJLCode);
                 param[18] = new SqlParameter("@NLCode", CamperInfo.NLCode);
+                param[19] = new SqlParameter("@SpecialCode", CamperInfo.SpecialCode);
                
 
                 rowsaffected = dal.ExecuteNonQuery("[usp_UpadteCamperApplication]", param);
@@ -266,6 +267,7 @@ namespace CIPMSBC
                     UserInfo.CMART_MiiP_ReferalCode = dr["CMART_MiiP_ReferalCode"].ToString();
                     UserInfo.PJLCode= dr["PJLCode"].ToString();
                     UserInfo.NLCode = dr["NLCode"].ToString();
+                    UserInfo.SpecialCode = dr["SpecialCode"].ToString();
                 }
                 return UserInfo;
             }
@@ -1237,7 +1239,7 @@ namespace CIPMSBC
             int rowsaffected;
             try
             {
-                SqlParameter[] param = new SqlParameter[18];
+                SqlParameter[] param = new SqlParameter[19];
                 param[0] = new SqlParameter("@First_Name", UserInfo.FirstName);
                 param[1] = new SqlParameter("@Last_Name", UserInfo.LastName);
                 param[2] = new SqlParameter("@Street_Address", UserInfo.Address);
@@ -1257,6 +1259,7 @@ namespace CIPMSBC
                 param[15] = new SqlParameter("@CMART_MiiP_ReferalCode", UserInfo.CMART_MiiP_ReferalCode);
                 param[16] = new SqlParameter("@PJLCode", UserInfo.PJLCode);
                 param[17] = new SqlParameter("@NLCode", UserInfo.NLCode);
+                param[18] = new SqlParameter("@SpecialCode", UserInfo.SpecialCode);
                 rowsaffected = dal.ExecuteNonQuery("[usp_IsCamperApplicationUpdated]", out OutValue, param);
                 //rowsaffected = 0;
                 return rowsaffected;

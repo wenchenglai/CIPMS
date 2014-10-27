@@ -44,6 +44,8 @@ public enum QuestionId
     SchoolName = 8,
     Q13_SecondTime = 13,
     SelectJewishDaySchool = 17,
+    Q28_IsSecondTimer = 28,
+    Q29_ReceivedGrant = 29,
     Q30_ReferredBySynagogueOrJCC = 30,
     Q31_SelectYourSynagogueOrJCC = 31,
     Q33_ReceivedGrant = 33,

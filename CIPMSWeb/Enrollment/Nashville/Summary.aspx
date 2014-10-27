@@ -36,7 +36,7 @@
                 </p>
                 <p>
                     If your child is not eligible and/or you are interested in learning about financial-needs based grants or other needs based funding options please visit 
-                    <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>, contact your camp, and contact Kristi Pearson, Jewish Federation of Nashville and Middle Tennessee, Controller, Michelle@jewishnashville.org.
+                    <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>, contact your camp, and contact Michelle Faulkner, Jewish Federation of Nashville and Middle Tennessee, Controller, Michelle@jewishnashville.org.
                 </p>
 			</td>
 		</tr>

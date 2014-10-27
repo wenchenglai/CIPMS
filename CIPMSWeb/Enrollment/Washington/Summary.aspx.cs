@@ -3,6 +3,7 @@ using System.Data;
 using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -26,41 +27,31 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 		{
             int FedID = Convert.ToInt32(FederationEnum.WashingtonDC);
             string FED_ID = FedID.ToString();
+            bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
-            bool isDisabled = false;
-            string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-            for (int i = 0; i < FedIDs.Length; i++)
-            {
-                if (FedIDs[i] == FED_ID)
-                {
-                    isDisabled = true;
-                    break;
-                }
-            }
-
+            // Session UserID == null means current logged user is regular camper, not admin.  We don't want to block admins from accessing the application even if the program is in closed state.
             if (isDisabled && Session["UsrID"] == null)
             {
                 tblDisable.Visible = true;
                 tblRegular.Visible = false;
-                btnSaveandExit.Visible = false;
 
                 if (Session["SpecialCodeValue"] != null)
                 {
-                    // 2013-03-15 Now Adamah use tblSpecialCodes table
                     string currentCode = Session["SpecialCodeValue"].ToString();
                     int CampYearID = Convert.ToInt32(Application["CampYearID"]);
-                    List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
 
-                    // when moved to .NET 3.5 or above, remember to use lamda expression
-                    foreach (string code in specialCodes)
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
                     {
-                        if (code == currentCode)
-                        {
-                            tblDisable.Visible = false;
-                            tblRegular.Visible = true;
-                            btnNext.Visible = true;
-                            break;
-                        }
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                    }
+                    else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2015")
+                    {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = false;
+                        tblPJLottery.Visible = true;
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "replacePageHeaderText", "replacePageHeaderText();", true);
                     }
                 }
             }
@@ -68,7 +59,6 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
             {
                 tblDisable.Visible = false;
                 tblRegular.Visible = true;
-                btnSaveandExit.Visible = true;
             }
 		}
     }
@@ -87,11 +77,22 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-		string Next_URL = "Step2_2.aspx";
-
-		if (tblDisable.Visible)
-			Next_URL = "../Step1_NL.aspx";
-
-		Response.Redirect(Next_URL);
+        if (tblPJLottery.Visible)
+        {
+            if (rdoYes.Checked)
+            {
+                Session["STATUS"] = (int)StatusInfo.PendingPJLottery;
+                var url = "../PJL/Step2_2_route_info.aspx?prev=" + HttpContext.Current.Request.Url.AbsolutePath;
+                Response.Redirect(url);
+            }
+            else
+            {
+                tblDisable.Visible = true;
+                tblRegular.Visible = false;
+                tblPJLottery.Visible = false;
+            }
+        }
+        else 
+            Response.Redirect(tblRegular.Visible ? "Step2_2.aspx" : "../Step1_NL.aspx");
     }
 }

@@ -115,7 +115,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>6</td>
             <td valign="top" style="padding-bottom:20px;">
-                <div>Does your child attend a secondary school? (Enrollment not required for this grant)</div>
+                <div>Is the camper currently enrolled in a congregational or religious school? (Enrollment not required for this grant)</div>
                 <div>
                     <asp:RadioButton ID="rdoSecondarySchoolYes" value="1" GroupName="Secondary" runat="server" Text="Yes" onclick="PageValidator.OnSecondarySchoolRadioChange(this);" />
                     <asp:RadioButton ID="rdoSecondarySchoolNo" value="2" GroupName="Secondary" runat="server" Text="No" onclick="PageValidator.OnSecondarySchoolRadioChange(this);" />

@@ -1450,6 +1450,8 @@ public partial class Step1 : System.Web.UI.Page
 		else if (Convert.ToInt32(Session["codeValue"]) == 3 || (Convert.ToInt32(Session["codeValue"]) == 5))
 			UserInfo.NLCode = txtSplCode.Text.Trim();
 
+        UserInfo.SpecialCode = txtSplCode.Text.Trim();
+
 		return UserInfo;
 	}
 
@@ -1497,6 +1499,10 @@ public partial class Step1 : System.Web.UI.Page
 					txtSplCode.Text = UserInfo.PJLCode;
 				if (!(UserInfo.NLCode).Equals(string.Empty))
 					txtSplCode.Text = UserInfo.NLCode;
+
+                if (txtSplCode.Text == "")
+                    txtSplCode.Text = UserInfo.SpecialCode;
+
 				//AG: 10/15/2009
 				txtHomePhone1.Text = UserInfo.HomePhone;
 				if (UserInfo.IsJewish == "2")

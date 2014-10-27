@@ -3,13 +3,19 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="Washington_Summary" ContentPlaceHolderID="Content" runat="Server">
 	<script language="javascript" type="text/javascript">
-// <!CDATA[
+	    function replacePageHeaderText() {
+	        $('#ctl00_lblHeading').text('PJ Lottery Routing');
+	    }
 
-function Img1_onclick() {
-
-}
-
-// ]]>
+	    function check() {
+	        $('#errorspan').text("")
+	        if ($('#ctl00_lblHeading').text() != "Section II:  Program Description" && !$('#ctl00_Content_rdoYes').is(':checked') && !$('#ctl00_Content_rdoNo').is(':checked')) {
+	            $('#errorspan').text("Please answer Question No. 1");
+	            return false;
+	        }
+	        else
+	            return true;
+	    }
 	</script>
 	
     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
@@ -85,7 +91,24 @@ function Img1_onclick() {
 			</td>
         </tr>
     </table>
-        
+    <table id="tblPJLottery" runat="server" width="100%" cellpadding="5" cellspacing="0" visible="false" class="infotext3">
+        <tbody class="QuestionText">
+            <tr>
+                <td>
+                    <span style="color:red" id="errorspan"></span>
+                </td>
+            </tr>
+        <tr>
+            <td valign="top">1. Does the camper attend Jewish day school?
+                <div>
+                    <asp:RadioButton ID="rdoYes" value="1" runat="server" GroupName="g" Text="Yes" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoNo" value="2" GroupName="g" runat="server" Text="No" CssClass="QuestionText" />
+                </div>
+                
+            </td>
+        </tr>
+        </tbody>
+    </table>  
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>
@@ -106,8 +129,7 @@ function Img1_onclick() {
                                     CssClass="submitbtn1" />
                             </td>
                             <td align="right">
-                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> "
-                                    CssClass="submitbtn" OnClick="btnNext_Click" /></td>
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " OnClientClick="return check();" CssClass="submitbtn" OnClick="btnNext_Click" /></td>
                         </tr>
                     </table>
                 </td>
