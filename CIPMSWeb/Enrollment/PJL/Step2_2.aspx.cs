@@ -39,6 +39,18 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 				hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
 				PopulateAnswers();
 
+
+                var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
+
+                // if this page's iStatus is ineligible, we don't even allow it to have PendingLottery
+                if (checkStatus == StatusInfo.PendingPJLottery)
+                {
+                    
+                    //rdoSchoolType.Enable = false;
+                    rdoSchoolType.Enabled = false;
+                }
+                    
+
 			}
 		}
 

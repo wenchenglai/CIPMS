@@ -81,6 +81,9 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
         {
             if (rdoYes.Checked)
             {
+                var fjcid = Session["FJCID"].ToString();
+                var camperApp = new CamperApplication();
+                camperApp.InsertCamperAnswers(fjcid, "7~4~", Master.UserId, "PJL Lottery - Set JDS");
                 Session["STATUS"] = (int)StatusInfo.PendingPJLottery;
                 var url = "../PJL/Step2_2_route_info.aspx?prev=" + HttpContext.Current.Request.Url.AbsolutePath;
                 Response.Redirect(url);
