@@ -4,17 +4,71 @@
 
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     
+            <script type="text/javascript">
+                var flag = false;
+                $(function() {
+                    $("#dialog-modal").dialog({
+                        autoOpen: false,
+                        width: 800,
+                        buttons: [
+                            {
+                                text: "Yes",
+                                click: function () {
+                                    $(this).dialog("close");
+                                    SimulateClick("ctl00_Content_btnChkEligibility");
+                                    return true;
+                                }
+                            },
+                            {
+                                text: "No",
+                                click: function () {
+                                    $(this).dialog("close");
+                                    return false;
+                                }
+                            }
+                        ]
+                    });
+
+                });
+
+                function update_click() {
+                    if (flag) {
+                        return true;
+                    } else {
+                        if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
+                            $("#dialog-modal").dialog("open");
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    }
+                };
+
+                // Simulate a button click on asp.net form from Javascript
+                function SimulateClick(buttonId) {
+                    flag = true;
+                    var button = document.getElementById(buttonId);
+                    if (button) {
+                        if (button.click) {
+                            button.click();
+                        }
+                        else if (button.onclick) {
+                            button.onclick();
+                        }
+                        else {
+                            alert("DEBUG: button '" + buttonId + "' is not clickable");
+                        }
+                    } else {
+                        alert("DEBUG: button with ID '" + buttonId + "' does not exist");
+                    }
+                }
+            </script>
+            <div id="dialog-modal" class="ui-dialog-content ui-widget-content" title="Basic modal dialog">
+                <p>You chose "Other" in the camp list.  This means you don't qualify for this incentive program.  You will be routed to our natinal landing page.  Are you sure?</p>
+            </div>
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
-         <!--to display the validation summary (error messages)-->
         <table width="50%" cellpadding="0" cellspacing="0" align="center">
             <tr>
                 <td>
@@ -157,7 +211,8 @@
                 <td valign="top"  colspan="2">
                     <table width="100%" cellspacing="0" cellpadding="5" border="0">
                         <tr>
-                            <td  align="left"><asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
+                            <td  align="left">
+                                <asp:Button Visible="false" ValidationGroup="CommentsGroup" ID="btnReturnAdmin" runat="server" Text="Exit To Camper Summary" CssClass="submitbtn1" /></td>
                             <td >
                                 <asp:Button ID="btnPrevious"  ValidationGroup="CommentsGroup" runat="server" Text=" << Previous" CssClass="submitbtn" />
                             </td>
@@ -165,7 +220,7 @@
                                 <asp:Button  ID="btnSaveandExit" ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                             </td>
                             <td align="right">
-                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" runat="server" />
+                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" OnClientClick="return update_click()" runat="server" />
                             </td>
                         </tr>
                      </table>

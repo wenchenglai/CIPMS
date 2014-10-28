@@ -148,6 +148,11 @@ public partial class Step2_Cleveland_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        if (ddlCamp.SelectedValue == "-1")
+        {
+            Response.Redirect("../Step1_NL.aspx");
+        }
+
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
         EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Cleveland);
@@ -364,17 +369,14 @@ public partial class Step2_Cleveland_3 : Page
     //if state is not selected then all the camps are populated
     private void getCamps(string StateId,String CampYear)
     {
-        DataSet dsCamps;
-
-     
-            dsCamps = objGeneral.GetFedCamps(FederationID, CampYear);
+        DataSet dsCamps = objGeneral.GetFedCamps(FederationID, CampYear);
       
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
         ddlCamp.DataValueField = "CampID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-
+        ddlCamp.Items.Insert(ddlCamp.Items.Count - 2, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()
