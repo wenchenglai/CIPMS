@@ -216,9 +216,9 @@ namespace CIPMSBC.Eligibility
 			if (daysInCamp > 0)
 			{
                 string q1 = "", q1a = "", q1b = "", q1c = "";
-
+                string campID = "";
                 var CamperAppl = new CamperApplication();
-                DataSet dsAnswers = CamperAppl.getCamperAnswers(FJCID, "", "", "3,1063,1066,1067");
+                DataSet dsAnswers = CamperAppl.getCamperAnswers(FJCID, "", "", "3,10,1063,1066,1067");
 
                 foreach (DataRow dr in dsAnswers.Tables[0].Rows)
                 {
@@ -237,6 +237,13 @@ namespace CIPMSBC.Eligibility
                         {
                             q1 = "no";
                         }
+                    }
+                    if (qID == 10) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
+                    {
+                        if (dr["Answer"].Equals(DBNull.Value))
+                            continue;
+
+                        campID = dr["Answer"].ToString();
                     }
                     else if (qID == 1063)
                     {
@@ -276,6 +283,13 @@ namespace CIPMSBC.Eligibility
                     {
                         if (daysInCamp >= 19)
                             Amount = 1000;
+                        else if (daysInCamp == 18 && campID == "6147") // 2015/10/28 temporary code used ONLY in 2015
+                        {
+                            var userInfo = CamperAppl.getCamperInfo(FJCID);
+                            var code = userInfo.SpecialCode;
+                            if (code == "AA2015ATL159" || code == "AA2015ATL357" || code == "AA2015ATL963" || code == "AA2015ATL784" || code == "AA2015ATL658" || code == "AA2015ATL224")
+                                Amount = 1000;
+                        }
                     }
                     else if (q1a == "19")
                     {
