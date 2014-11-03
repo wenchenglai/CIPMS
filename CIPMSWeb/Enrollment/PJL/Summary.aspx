@@ -85,7 +85,7 @@
             <td colspan="2">
                 <asp:Label ID="Label10" runat="server" CssClass="infotext3">
                 <p style="text-align:justify; color:Red;">
-					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2014 camp session have been awarded both for Non – Day School & Day School Families
+					At this time all of the PJ Goes To Camp / One Happy Camper incentive grants for the 2014 camp session have been awarded both for Non ?Day School & Day School Families
 				</p>	                
                 <p style="text-align:justify">
 					If your child does not attend camp this summer and you would like to be notified of opening times of the 2015 One Happy Camper program registration, send an email to pjgtc@hgf.org in August of 2014 to be placed on the email distribution list that will contain all the information needed to apply for the 2015 camp session. 

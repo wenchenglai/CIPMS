@@ -25,6 +25,12 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
+            var fjcid = Session["FJCID"].ToString();
+            var camperApp = new CamperApplication();
+            camperApp.UpdateFederationId(fjcid, ((int)FederationEnum.WashingtonDC).ToString());
+            Session["FedId"] = (int)FederationEnum.WashingtonDC;
+
+
             int FedID = Convert.ToInt32(FederationEnum.WashingtonDC);
             string FED_ID = FedID.ToString();
             bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
@@ -71,29 +77,46 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
-        Response.Redirect("../Step1_WDC_CAL.aspx");
-        //Response.Redirect("../Step1.aspx");
+        if (tblPJLottery.Visible)
+        {
+            Response.Redirect("../Step1.aspx");
+        }
+        else
+            Response.Redirect("../Step1_WDC_CAL.aspx");
+        
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
         if (tblPJLottery.Visible)
         {
+            var fjcid = Session["FJCID"].ToString();
+            var camperApp = new CamperApplication();
+
+            camperApp.UpdateFederationId(fjcid, ((int)FederationEnum.PJL).ToString());
+            var previousFedID = Session["FedId"].ToString();
+            Session["FedId"] = (int)FederationEnum.PJL;
+
+            var url = "../PJL/Summary.aspx?prev=" + HttpContext.Current.Request.Url.AbsolutePath + "&prevfedid=" + previousFedID;
             if (rdoYes.Checked)
             {
-                var fjcid = Session["FJCID"].ToString();
-                var camperApp = new CamperApplication();
                 camperApp.InsertCamperAnswers(fjcid, "7~4~", Master.UserId, "PJL Lottery - Set JDS");
                 Session["STATUS"] = (int)StatusInfo.PendingPJLottery;
-                var url = "../PJL/Step2_2_route_info.aspx?prev=" + HttpContext.Current.Request.Url.AbsolutePath;
-                Response.Redirect(url);
             }
             else
             {
-                tblDisable.Visible = true;
-                tblRegular.Visible = false;
-                tblPJLottery.Visible = false;
+                camperApp.InsertCamperAnswers(fjcid, "7~999~", Master.UserId, "PJL Lottery - delete JDS");
+                //url = "../PJL/Step2_2.aspx?prev=" + HttpContext.Current.Request.Url.AbsolutePath;
             }
+
+            
+            Response.Redirect(url);
+            //else
+            //{
+            //    tblDisable.Visible = true;
+            //    tblRegular.Visible = false;
+            //    tblPJLottery.Visible = false;
+            //}
         }
         else 
             Response.Redirect(tblRegular.Visible ? "Step2_2.aspx" : "../Step1_NL.aspx");

@@ -43,7 +43,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                 var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
 
                 // if this page's iStatus is ineligible, we don't even allow it to have PendingLottery
-                if (checkStatus == StatusInfo.PendingPJLottery)
+                if (checkStatus == StatusInfo.PendingPJLottery && rdoSchoolType.SelectedValue == "4")
                 {
                     
                     //rdoSchoolType.Enable = false;
@@ -207,16 +207,34 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
             if (Request.QueryString["prev"] != null)
             {
-                nextUrl = "Step2_2_route_info.aspx";
-                nextUrl += "?prev=" + Request.QueryString["prev"];
+                var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
+                var preUrl = Request.QueryString["prev"];
+                bool isWashington = false;
+
+                if (preUrl.IndexOf("Washington") != -1)
+                {
+                    isWashington = true;
+                }
+
+                if (isWashington)
+                {
+                    nextUrl = "summary.aspx?prev=" + preUrl;
+                }
+                else if (checkStatus == StatusInfo.PendingPJLottery && !isWashington)
+                {
+                    nextUrl = "Step2_2_route_info.aspx";
+                    nextUrl += "?prev=" + Request.QueryString["prev"];
+                }
+                else
+                    nextUrl = Request.QueryString["prev"];
+
+                
 
                 if (Request.QueryString["prevfedid"] != null)
                 {
                     nextUrl += "&prevfedid=" + Request.QueryString["prevfedid"];
                 }
             }
-
-
 
             Response.Redirect(nextUrl);
 		}

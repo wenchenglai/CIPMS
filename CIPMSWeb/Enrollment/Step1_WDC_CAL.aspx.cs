@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -32,6 +33,13 @@ public partial class Step1_WDC_CAL : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
+        int FedID = Convert.ToInt32(FederationEnum.WashingtonDC);
+        string FED_ID = FedID.ToString();
+        bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
+
+        if (isDisabled)
+            Response.Redirect("~/Enrollment/Washington/Summary.aspx");
+
         CamperAppl = new CamperApplication();
         objGeneral = new General();
         SetSubmittedAdminUserFlags();

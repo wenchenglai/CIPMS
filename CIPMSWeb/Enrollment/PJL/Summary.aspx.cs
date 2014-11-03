@@ -63,7 +63,19 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 
     protected void btnPrevious_Click(object sender, EventArgs e)
     {
-        Response.Redirect("../Step1.aspx");
+        var nextUrl = "../Step1.aspx";
+
+        if (Request.QueryString["prev"] != null)
+        {
+            nextUrl = Request.QueryString["prev"];
+
+            if (Request.QueryString["prevfedid"] != null)
+            {
+                nextUrl += "?prevfedid=" + Request.QueryString["prevfedid"];
+            }
+        }
+
+        Response.Redirect(nextUrl);
     }
 
     protected void btnNext_Click(object sender, EventArgs e)
@@ -82,6 +94,17 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
 			}
 			Next_URL = "../Step1_NL.aspx";
 		}
+
+        if (Request.QueryString["prev"] != null)
+        {
+            Next_URL += "?prev=" + Request.QueryString["prev"];
+
+            if (Request.QueryString["prevfedid"] != null)
+            {
+                Next_URL += "&prevfedid=" + Request.QueryString["prevfedid"];
+            }
+        }
+
 		Response.Redirect(Next_URL);
     }
 }

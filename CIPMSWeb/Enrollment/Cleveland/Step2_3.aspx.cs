@@ -376,7 +376,7 @@ public partial class Step2_Cleveland_3 : Page
         ddlCamp.DataValueField = "CampID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-        ddlCamp.Items.Insert(ddlCamp.Items.Count - 2, new ListItem("Other", "-1"));
+        ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()

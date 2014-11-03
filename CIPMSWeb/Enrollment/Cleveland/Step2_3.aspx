@@ -63,9 +63,13 @@
                     }
                 }
             </script>
-            <div id="dialog-modal" class="ui-dialog-content ui-widget-content" title="Basic modal dialog">
-                <p>You chose "Other" in the camp list.  This means you don't qualify for this incentive program.  You will be routed to our natinal landing page.  Are you sure?</p>
+            <div id="dialog-modal" title="Basic modal dialog">
+                <p>It appears that your camp is not listed in the drop down menu, therefore it is not eligible for your community's One Happy Camper program.  Click yes to see a list of camp sponsored One Happy Camper programs. </p>
+                <p>Please note by clicking yes, this application will no longer be available to you.  Don¡¦t worry, your answers will come with you!</p>
+                <p>Are you sure you want to continue?</p>
             </div>
+
+
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
