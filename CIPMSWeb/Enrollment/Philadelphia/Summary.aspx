@@ -29,6 +29,7 @@
                         <li>Live in Bucks, Chester, Delaware, Montgomery or Philadelphia counties.</li>
                         <li>Attend a Jewish overnight camp that is listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                         <li>This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.</li>
+                        <li><span style="color:red">Attention 2nd time campers:</span> For information on how to apply for the grant, please contact Shannon Greenstein at sgreenstein@jfgp.org or 215-832-0530.</li>
                     </ul>
 				</p>
                 <p>
@@ -52,7 +53,7 @@
                     <p style="text-align:justify">
 						The  The Jewish Federation of Greater Philadelphia One Happy Camper program is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.
                         <br /><br />
-                        Click “NEXT” to see if your camp is sponsoring its own One Happy Camper program.
+                        Click “NEXT?to see if your camp is sponsoring its own One Happy Camper program.
 					</p>
 				</asp:Label>
 			</td>
