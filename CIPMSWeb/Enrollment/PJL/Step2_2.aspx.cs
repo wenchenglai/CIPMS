@@ -112,6 +112,13 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 					iStatus = (int)checkStatus;
 			}
 
+            var isOn = false;
+            if (ConfigurationManager.AppSettings["PJLottery"] == "On")
+                isOn = true;
+
+            if (!isOn && iStatus == (int)StatusInfo.PendingPJLottery)
+                iStatus = (int)StatusInfo.SystemInEligible;
+
 			Session["STATUS"] = iStatus.ToString();
 		}
 		Session["FJCID"] = hdnFJCIDStep2_2.Value;

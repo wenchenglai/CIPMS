@@ -18,7 +18,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
+                    The One Happy Camper Program, sponsored by the Jewish Federation of New Hampshire and the Foundation for Jewish Camp, provides incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days.
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -27,9 +27,12 @@
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
                         <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
-                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending a camp listed on the Foundation for Jewish Camp's website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
+                <p>
+                    <span style="color:red">* Note: Families residing in towns served by the Seacoast UJA are not eligible for a Jewish Federation of NH grant.</span>
+                </p>
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
                 </p> 
@@ -55,7 +58,7 @@
                     <p style="text-align:justify">
 					The New Hampshire One Happy Camper application is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.                
 						<br /><br />
-						Click ‘NEXT’ to see if your camp is sponsoring its own One Happy Camper program.
+						Click ‘NEXT?to see if your camp is sponsoring its own One Happy Camper program.
                     </p>
 				</asp:Label>
 			</td>

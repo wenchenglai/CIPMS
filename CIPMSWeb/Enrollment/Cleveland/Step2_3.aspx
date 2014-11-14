@@ -9,7 +9,9 @@
                 $(function() {
                     $("#dialog-modal").dialog({
                         autoOpen: false,
-                        width: 800,
+                        width: 400,
+                        title: "Warning",
+                        modal: true,
                         buttons: [
                             {
                                 text: "Yes",
@@ -64,9 +66,9 @@
                 }
             </script>
             <div id="dialog-modal" title="Basic modal dialog">
-                <p>It appears that your camp is not listed in the drop down menu, therefore it is not eligible for your community's One Happy Camper program.  Click yes to see a list of camp sponsored One Happy Camper programs. </p>
-                <p>Please note by clicking yes, this application will no longer be available to you.  Don¡¦t worry, your answers will come with you!</p>
-                <p>Are you sure you want to continue?</p>
+                <p>Are you sure your camp is not on the list?</p>
+                <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
+                <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
             </div>
 
 

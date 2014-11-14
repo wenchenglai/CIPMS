@@ -17,7 +17,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?</asp:Label><br />
+                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?</asp:Label><br />
                 <asp:RadioButtonList AutoPostBack="true" ID="RadioBtnQ3" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal" >
                     <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                     <asp:ListItem Text="No" Value="2"></asp:ListItem>

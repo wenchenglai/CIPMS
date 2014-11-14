@@ -19,10 +19,10 @@
         <tr>
 			<td colspan="2">
 			    <p>
-			        The Dor l’ Dor incentive grant, administered by B'nai B'rith Camp (Lincoln City, Oregon), provides financial incentives of up to $1,000 to first-time campers who attend B'nai B'rith Camp. 
+			        The Dor l?Dor incentive grant, administered by B'nai B'rith Camp (Lincoln City, Oregon), provides financial incentives of up to $1,000 to first-time campers who attend B'nai B'rith Camp. 
 			    </p>
 				<p>
-				    The following outlines the eligibility criteria for this program:
+				    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please contact our Operations Director at 503-535-3514.
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>First-time campers must be entering grades 1-12 (after camp).</li>
