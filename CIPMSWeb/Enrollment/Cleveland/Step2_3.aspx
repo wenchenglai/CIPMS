@@ -4,75 +4,73 @@
 
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     
-            <script type="text/javascript">
-                var flag = false;
-                $(function() {
-                    $("#dialog-modal").dialog({
-                        autoOpen: false,
-                        width: 400,
-                        title: "Warning",
-                        modal: true,
-                        buttons: [
-                            {
-                                text: "Yes",
-                                click: function () {
-                                    $(this).dialog("close");
-                                    SimulateClick("ctl00_Content_btnChkEligibility");
-                                    return true;
-                                }
-                            },
-                            {
-                                text: "No",
-                                click: function () {
-                                    $(this).dialog("close");
-                                    return false;
-                                }
-                            }
-                        ]
-                    });
-
-                });
-
-                function update_click() {
-                    if (flag) {
-                        return true;
-                    } else {
-                        if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
-                            $("#dialog-modal").dialog("open");
-                            return false;
-                        } else {
+    <script type="text/javascript">
+        var flag = false;
+        $(function() {
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                width: 400,
+                title: "Warning",
+                modal: true,
+                buttons: [
+                    {
+                        text: "Yes",
+                        click: function () {
+                            $(this).dialog("close");
+                            SimulateClick("ctl00_Content_btnChkEligibility");
                             return true;
                         }
+                    },
+                    {
+                        text: "No",
+                        click: function () {
+                            $(this).dialog("close");
+                            return false;
+                        }
                     }
-                };
+                ]
+            });
 
-                // Simulate a button click on asp.net form from Javascript
-                function SimulateClick(buttonId) {
-                    flag = true;
-                    var button = document.getElementById(buttonId);
-                    if (button) {
-                        if (button.click) {
-                            button.click();
-                        }
-                        else if (button.onclick) {
-                            button.onclick();
-                        }
-                        else {
-                            alert("DEBUG: button '" + buttonId + "' is not clickable");
-                        }
-                    } else {
-                        alert("DEBUG: button with ID '" + buttonId + "' does not exist");
-                    }
+        });
+
+        function update_click() {
+            if (flag) {
+                return true;
+            } else {
+                if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
+                    $("#dialog-modal").dialog("open");
+                    return false;
+                } else {
+                    return true;
                 }
-            </script>
-            <div id="dialog-modal" title="Basic modal dialog">
-                <p>Are you sure your camp is not on the list?</p>
-                <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
-                <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
-            </div>
+            }
+        };
 
+        // Simulate a button click on asp.net form from Javascript
+        function SimulateClick(buttonId) {
+            flag = true;
+            var button = document.getElementById(buttonId);
+            if (button) {
+                if (button.click) {
+                    button.click();
+                }
+                else if (button.onclick) {
+                    button.onclick();
+                }
+                else {
+                    alert("DEBUG: button '" + buttonId + "' is not clickable");
+                }
+            } else {
+                alert("DEBUG: button with ID '" + buttonId + "' does not exist");
+            }
+        }
+    </script>
+    <div id="dialog-modal" title="Basic modal dialog">
+        <p>Are you sure your camp is not on the list?</p>
+        <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
+        <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
+    </div>
 
-    
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
         <table width="50%" cellpadding="0" cellspacing="0" align="center">

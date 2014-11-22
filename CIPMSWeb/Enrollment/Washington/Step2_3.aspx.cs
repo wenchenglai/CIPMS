@@ -158,23 +158,6 @@ public partial class Step2_Washington_3 : Page
         }
     }
 
-    //to fill the camp dropdown based on the state selected
-    //void ddlState_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    string strStateId;
-    //    try
-    //    {
-    //        strStateId = ddlState.SelectedValue;
-    //        getCamps(strStateId);
-    //        ddlCamp.Enabled = true;
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Response.Write(ex.Message);
-    //    }
-    //}
-
-
     void btnPrevious_Click(object sender, EventArgs e)
     {
         try
@@ -198,6 +181,11 @@ public partial class Step2_Washington_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        if (ddlCamp.SelectedValue == "-1")
+        {
+            Response.Redirect("../Step1_NL.aspx");
+        }
+
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
         EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.WashingtonDC);
@@ -383,36 +371,12 @@ public partial class Step2_Washington_3 : Page
 
     }
 
-    //to get all the states and bind it to the dropdownlist
-    //protected void get_FederationStates(int FederationID)
-    //{
-    //    DataSet dsStates = new DataSet();
-    //    try
-    //    {
-    //        dsStates = CamperAppl.get_FederationStates(FederationID);
-    //        ddlState.DataSource = dsStates;
-    //        ddlState.DataTextField = "Name";
-    //        ddlState.DataValueField = "ID";
-    //        ddlState.DataBind();
-    //        ddlState.Items.Insert(0, new ListItem("-- All --", "0"));
-    //    }
-    //    finally
-    //    {
-    //        dsStates.Clear();
-    //        dsStates.Dispose();
-    //        dsStates = null;
-    //    }
-    //}
-
     //to enable or disable the question panels based on the radio button selected
     protected void SetPanelStates()
     {
         if (RadioButtonQ7Option1.Checked == true)
         {
             PnlQ8.Enabled = false;
-            //PnlQ8_1_1.Enabled = false;
-            //PnlQ8_1_2.Enabled = false;
-            ///ddlState.SelectedIndex = 0;
             PnlQ8_2_1.Enabled = false;
             PnlQ8_2_2.Enabled = false;
             ddlCamp.SelectedIndex = 0;
@@ -425,8 +389,6 @@ public partial class Step2_Washington_3 : Page
         else
         {
             PnlQ8.Enabled = true;
-            //PnlQ8_1_1.Enabled = true;
-            //PnlQ8_1_2.Enabled = true;
             PnlQ8_2_1.Enabled = true;
             PnlQ8_2_2.Enabled = true;
             PnlQ9.Enabled = true;
@@ -440,21 +402,14 @@ public partial class Step2_Washington_3 : Page
     {
         DataSet dsCamps = new DataSet();
 
-        //if (StateId == "0")
-        //{
         dsCamps = objGeneral.GetFedCamps(FederationID, Master.CampYear);
-        //}
-        //else
-        //{
-        //    dsCamps = objGeneral.get_CampsForFederationState(FederationID,StateId);
-        //}
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
         ddlCamp.DataValueField = "CampID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-
+        ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()

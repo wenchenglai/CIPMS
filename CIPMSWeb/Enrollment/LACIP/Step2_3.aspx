@@ -4,6 +4,73 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="ContentStep2_LACIP_1" ContentPlaceHolderID="Content" runat="Server">
 
+    <script type="text/javascript">
+        var flag = false;
+        $(function () {
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                width: 400,
+                title: "Warning",
+                modal: true,
+                buttons: [
+                    {
+                        text: "Yes",
+                        click: function () {
+                            $(this).dialog("close");
+                            SimulateClick("ctl00_Content_btnChkEligibility");
+                            return true;
+                        }
+                    },
+                    {
+                        text: "No",
+                        click: function () {
+                            $(this).dialog("close");
+                            return false;
+                        }
+                    }
+                ]
+            });
+
+        });
+
+        function update_click() {
+            if (flag) {
+                return true;
+            } else {
+                if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
+                    $("#dialog-modal").dialog("open");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        };
+
+        // Simulate a button click on asp.net form from Javascript
+        function SimulateClick(buttonId) {
+            flag = true;
+            var button = document.getElementById(buttonId);
+            if (button) {
+                if (button.click) {
+                    button.click();
+                }
+                else if (button.onclick) {
+                    button.onclick();
+                }
+                else {
+                    alert("DEBUG: button '" + buttonId + "' is not clickable");
+                }
+            } else {
+                alert("DEBUG: button with ID '" + buttonId + "' does not exist");
+            }
+        }
+    </script>
+    <div id="dialog-modal" title="Basic modal dialog">
+        <p>Are you sure your camp is not on the list?</p>
+        <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
+        <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
+    </div>
+
     <script type="text/javascript" language="javascript">
         function windowopener(){
         	window.open('Jewish Federation Los Angeles  Release 2015 (Summer Camp).pdf', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
@@ -179,7 +246,7 @@
                 <td colspan="2">
 					<asp:Label ID="lblChkText" CssClass="headertext1" runat="server">
 						<p style="text-align:justify">
-                            I have read the Jewish Federation of Greater Los Angeles’ release form for the One Happy Camper Program 2015. 
+                            I have read the Jewish Federation of Greater Los Angeles?release form for the One Happy Camper Program 2015. 
                             By filling in this box, I acknowledge agreement with the aforementioned release form. 
                             Furthermore, the box I fill in represents my signature on all signature lines in the 
                             One Happy Camper Program 2015 release.
@@ -226,7 +293,7 @@
                                     CssClass="submitbtn1" />
                             </td>
                             <td align="right">
-                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" runat="server" />
+                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" OnClientClick="return update_click()" runat="server" />
                             </td>
                         </tr>
                     </table>

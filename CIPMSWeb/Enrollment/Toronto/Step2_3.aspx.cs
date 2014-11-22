@@ -143,6 +143,11 @@ public partial class Step2_Adamah_3 : Page
         if (!Page.IsValid)
             return;
 
+        if (ddlCamp.SelectedValue == "-1")
+        {
+            Response.Redirect("../Step1_NL.aspx");
+        }
+
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
 
@@ -334,6 +339,7 @@ public partial class Step2_Adamah_3 : Page
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataBind();
         //ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
+        ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()

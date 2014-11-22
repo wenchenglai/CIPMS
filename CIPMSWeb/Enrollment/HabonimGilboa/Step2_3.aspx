@@ -1,75 +1,9 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Washington_3" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Chi_3" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
 <%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     
-    <script type="text/javascript">
-        var flag = false;
-        $(function() {
-            $("#dialog-modal").dialog({
-                autoOpen: false,
-                width: 400,
-                title: "Warning",
-                modal: true,
-                buttons: [
-                    {
-                        text: "Yes",
-                        click: function () {
-                            $(this).dialog("close");
-                            SimulateClick("ctl00_Content_btnChkEligibility");
-                            return true;
-                        }
-                    },
-                    {
-                        text: "No",
-                        click: function () {
-                            $(this).dialog("close");
-                            return false;
-                        }
-                    }
-                ]
-            });
-
-        });
-
-        function update_click() {
-            if (flag) {
-                return true;
-            } else {
-                if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
-                    $("#dialog-modal").dialog("open");
-                    return false;
-                } else {
-                    return true;
-                }
-            }
-        };
-
-        // Simulate a button click on asp.net form from Javascript
-        function SimulateClick(buttonId) {
-            flag = true;
-            var button = document.getElementById(buttonId);
-            if (button) {
-                if (button.click) {
-                    button.click();
-                }
-                else if (button.onclick) {
-                    button.onclick();
-                }
-                else {
-                    alert("DEBUG: button '" + buttonId + "' is not clickable");
-                }
-            } else {
-                alert("DEBUG: button with ID '" + buttonId + "' does not exist");
-            }
-        }
-    </script>
-    <div id="dialog-modal" title="Basic modal dialog">
-        <p>Are you sure your camp is not on the list?</p>
-        <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
-        <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
-    </div>
- 
+    
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
         <%--<table width="100%" cellpadding="5" cellspacing="0">
@@ -83,7 +17,7 @@
         <table width="50%" cellpadding="0" cellspacing="0" align="center">
             <tr>
                 <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Washington"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_CampAvoda"></asp:CustomValidator>
                     <!--this summary will be used only for Comments field (only for Admin user)-->
                     <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
                     <!--to vaidate the comments text box for admin user-->
@@ -92,7 +26,7 @@
             </tr>
         </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
-            <tr>
+        <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
                         <p style="text-align:justify"><b>
@@ -102,78 +36,57 @@
         </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Have you registered for camp yet?</asp:Label><br />
+                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for Camp yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
-                            The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="#" onclick="javascript:window.open('http://www.JewishCamp.org/camps','search','toolbar=no,status=no,scrollbars=yes,width=800,height=400,resizable=yes')">camp</a>?</p></asp:Label>                                        
-                    <uc1:RegControls ID="RegControls1" runat="server" />
-                   <%--  <asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist1" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist1" /><br />                    --%>
-                   
-                   <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />
-               --%> </td>
+                          The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                                       
+                          <uc1:RegControls ID="RegControls1" runat="server" /> 
+                   <%--<asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist" /><br />
+                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist" /><br />                    --%>
+                    
+                    <%--<asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
+                    <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />--%>
+                </td>
             </tr>
-            
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Panel ID="PnlQ8" runat="server" width="100%">
-                        <asp:Label ID="Label19" runat="server" CssClass="QuestionText">In order to tell us the camp that the camper wishes to attend this summer, please select the camp.</asp:Label><br />
+                    <asp:Panel ID="PnlQ8"  Enabled="false" runat="server" width="100%">
+                        <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Select the camp that the camper wishes to attend this summer:</asp:Label><br />
                     </asp:Panel>
                 </td>
-             </tr>
-            <!--<tr>
-                <td valign="top"><asp:Label ID="Label20" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" >
-                    <asp:Panel ID="PnlQ8_1_1" runat="server" width="100%">
-                        <asp:Label ID="Label21" runat="server" CssClass="QuestionText">State</asp:Label><br />
-                    </asp:Panel>
-                </td>
-                <td>
-                    <asp:Panel ID="PnlQ8_1_2" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlState" runat="server" CssClass="dropdown" AutoPostBack="true"></asp:DropDownList>
-                    </asp:Panel>
-                </td>
-            </tr>-->
+             </tr>   
             <tr>
                 <td valign="top"><asp:Label ID="Label1" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" style="width:20%" >
-                    <asp:Panel ID="PnlQ8_2_1" runat="server">
+                    <asp:Panel ID="PnlQ8_2_1" Enabled="false" runat="server">
                         <asp:Label ID="Label2" runat="server" CssClass="QuestionText">Camp</asp:Label><br />
                     </asp:Panel>
                 </td>
                 <td>
-                    <asp:Panel ID="PnlQ8_2_2" runat="server" width="100%">
+                    <asp:Panel ID="PnlQ8_2_2" Enabled="false" runat="server" width="100%">
                         <asp:DropDownList ID="ddlCamp" runat="server" CssClass="dropdown">
                         </asp:DropDownList>
                     </asp:Panel>
                 </td>
             </tr>
             <tr>
-                <td></td>
-                <td colspan="2">
-                    <asp:Label ID="Label10" runat="server" CssClass="InfoText2">Note: If you would like to attend a camp that is not on this list, please contact One Happy Camper at 301-348-7330 or <a href="mailto:OneHappyCamper@shalomdc.org">OneHappyCamper@shalomdc.org</a>.</asp:Label>
-                
-                </td>
-            </tr>
-            <tr>
-                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
-                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please enter the name of the session that the camper will be attending this summer.</asp:Label><br />
+                          <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
                     </asp:Panel>
                 </td>
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
-                    <asp:Panel ID="PnlQ10" runat="server" Width="100%">
+                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                         <asp:Label ID="lbl" runat="server" CssClass="QuestionText"><font color="red"><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is ONLY eligible for the grant if attending camp for 19 or more consecutive days in summer 2015.</b></font></asp:Label><br />
                         <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
@@ -238,7 +151,7 @@
                                 <asp:Button  ID="btnSaveandExit" ValidationGroup="CommentsGroup" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                             </td>
                             <td align="right">
-                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" OnClientClick="return update_click()" runat="server" />
+                                <asp:Button ID="btnChkEligibility" Text="Next >>" CssClass="submitbtn" runat="server" />
                             </td>
                         </tr>
                      </table>
@@ -264,3 +177,4 @@
     <asp:HiddenField ID="hdnQ9Id" runat="server" Value="11" />
     <asp:HiddenField ID="hdnQ10Id" runat="server" Value="12" />    
 </asp:Content>
+

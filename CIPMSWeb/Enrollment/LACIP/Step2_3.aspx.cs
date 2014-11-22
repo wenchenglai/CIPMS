@@ -122,6 +122,11 @@ public partial class Step2_LACIP_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        if (ddlCamp.SelectedValue == "-1")
+        {
+            Response.Redirect("../Step1_NL.aspx");
+        }
+
         int iStatus, iCampId;
         string strComments, strFJCID, strModifiedBy;
         EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.LACIP);
@@ -458,6 +463,7 @@ public partial class Step2_LACIP_3 : Page
         ddlCamp.DataValueField = "CampID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
+        ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()
