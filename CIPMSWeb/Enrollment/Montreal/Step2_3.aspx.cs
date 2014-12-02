@@ -463,7 +463,7 @@ public partial class Step2_Calgary_3 : Page
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
 
-        if (!isJDS)
+        //if (!isJDS)
             ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
