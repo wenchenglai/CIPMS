@@ -92,7 +92,7 @@ namespace CIPMSBC.Eligibility
                         if (specialCode == "PJGTC2015")
                             StatusValue = (int)StatusInfo.SystemInEligible;
                         else
-                            StatusValue = (int)StatusInfo.SystemInEligible;
+                            StatusValue = (int)StatusInfo.SystemEligible;
                     }
                     else
                     {
