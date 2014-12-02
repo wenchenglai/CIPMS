@@ -431,26 +431,11 @@ public partial class Step2_Calgary_3 : Page
     //if state is not selected then all the camps are populated
     private void getCamps(string StateId,string CampYear)
     {
-        var isJDS = false;
-        CamperApplication oCA = new CamperApplication();
-
-        var dsJewishSchool = oCA.getCamperAnswers(Session["FJCID"].ToString(), "7", "7", "N");
-
-        if (dsJewishSchool.Tables[0].Rows.Count > 0)
-        {
-            var drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
-            if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
-            {
-                int JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
-
-                if (JewishSchoolOption == 4)
-                    isJDS = true;
-            }
-        }
+        DataSet dsCamps;
 
         //if (StateId == "0")
         //{
-        var dsCamps = objGeneral.GetFedCamps(intFederationID,CampYear,isJDS);
+            dsCamps = objGeneral.GetFedCamps(intFederationID,CampYear);
         //}
         //else
         //{
@@ -462,9 +447,7 @@ public partial class Step2_Calgary_3 : Page
         ddlCamp.DataValueField = "CampID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-
-        if (!isJDS)
-            ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
+        ddlCamp.Items.Insert(ddlCamp.Items.Count, new ListItem("Other", "-1"));
     }
 
     private string ConstructCamperAnswers()

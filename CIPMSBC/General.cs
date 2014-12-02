@@ -268,9 +268,9 @@ namespace CIPMSBC
         //to keep all of the logic in one place - the overloaded function will provide the
         //same functionality as this function, plus allow the ability to handle a comma
         //delimited list of FederationIDs
-        public DataSet GetFedCamps(int FedID,string CampYear,bool isJDS = false)
+        public DataSet GetFedCamps(int FedID,string CampYear)
         {
-            return GetFedCamps(FedID.ToString(),CampYear, isJDS);
+            return GetFedCamps(FedID.ToString(),CampYear);
         }
 
         //*********************************************************************************************
@@ -282,7 +282,7 @@ namespace CIPMSBC
         // Returns:         DataSet - will contain the list of Camp records
         // History:         02/2009 - TV: Initial coding. Originally added for Issue # 4-002
         //*********************************************************************************************
-        public DataSet GetFedCamps(string sFedIDs,string CampYear, bool isJDS = false)
+        public DataSet GetFedCamps(string sFedIDs,string CampYear)
         {
             CIPDataAccess dal = new CIPDataAccess();
             try
@@ -305,10 +305,9 @@ namespace CIPMSBC
                     sParamName = "@FedID";
                 }
 
-                SqlParameter[] param = new SqlParameter[3];
+                SqlParameter[] param = new SqlParameter[2];
                 param[0] = new SqlParameter(sParamName, sFedIDs);
                 param[1] = new SqlParameter("@CampYear", CampYear);
-                param[2] = new SqlParameter("@isJDS", isJDS);
                 DataSet dsFederationsCamps;
 
                 dsFederationsCamps = dal.getDataset(sProcName, param);
