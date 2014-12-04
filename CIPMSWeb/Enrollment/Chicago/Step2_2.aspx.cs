@@ -84,26 +84,26 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		// Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
 		if (ddlJewishDaySchool.SelectedValue == "3")
 		{
-            // 2014-10-10 Disable Chicaog coupon for early 2105 fall
-			//Response.Redirect("Step2_coupon.aspx");
+            // 2014-10-10 Disable Chicaog coupon for early 2105 fall by commenting the code below
+			Response.Redirect("Step2_coupon.aspx");
 
             // 2014-10-10 In the early fall of 2015, we should use PJ lottery
-			var url = "Step2_camp_coupon_holding.aspx?prev=";
+            //var url = "Step2_camp_coupon_holding.aspx?prev=";
 
-			var session = HttpContext.Current.Session;
-			if (session["SpecialCodeValue"] != null)
-			{
-				var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
-				var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
+            //var session = HttpContext.Current.Session;
+            //if (session["SpecialCodeValue"] != null)
+            //{
+            //    var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
+            //    var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
 
-				if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
-				{
-					url = "../PJL/Step2_2_route_info.aspx?prev=";
-				}
-			}
+            //    if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
+            //    {
+            //        url = "../PJL/Step2_2_route_info.aspx?prev=";
+            //    }
+            //}
 
-			Session["STATUS"] = ((int)StatusInfo.PendingPJLottery).ToString();
-			Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
+            //Session["STATUS"] = ((int)StatusInfo.PendingPJLottery).ToString();
+            //Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
 		}
 		else
 			Response.Redirect("Step2_3.aspx");
