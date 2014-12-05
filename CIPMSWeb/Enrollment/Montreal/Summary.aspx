@@ -8,7 +8,7 @@
 				<a href="http://www.federationcja.org/jewishcamp" target="_blank"></a>
 			</td>
 			<td>
-				<p><strong>Good news! You may be eligible for a One Happy Camper grant.</strong></p>    
+				<p>Good news! You may be eligible for a One Happy Camper grant.</p>    
 				<p>
 					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants now open to Montreal children attending both Jewish and non-Jewish day schools!
 				</p>
@@ -17,7 +17,7 @@
 		<tr>
 			<td colspan="2">
 				<p>
-                    Federation CJA's Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, is offering a one-time grant of up to $1,000 to eligible Montreal children.
+                    Federation CJA¡¦s Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, is offering a one-time grant of up to $1,000 to eligible Montreal children.
 				</p>
 				<p>
 					The following outlines the eligibility criteria for this program:
@@ -28,7 +28,6 @@
 						<li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
 						<li>Attending one of our eligible Montreal area non-profit Jewish overnight camps.</li>
                         <li>Before your child can qualify for a grant, s/he must first be enrolled at one of our eligible camps.</li>
-                        <li>One Happy Camper for Jewish day school students is currently open only to campers registered at the following camps: Camp B’nai Brith Montreal, Harry Bronfman Y Country Camp, Camp Kinneret-Biluim, and Camp Massad.</li>
                         <li>This is not a scholarship program. Grants are not based on financial need.</li>
 					</ul>
 				</p>  
