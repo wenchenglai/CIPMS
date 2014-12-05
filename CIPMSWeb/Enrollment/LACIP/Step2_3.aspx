@@ -67,7 +67,7 @@
     </script>
     <div id="dialog-modal" title="Basic modal dialog">
         <p>Are you sure your camp is not on the list?</p>
-        <p>If your camp is not listed, that means it is not eligible for your community's One Happy Camper program.</p>
+        <p>If your camp is not listed, that means it is not eligible for your community¡¦s One Happy Camper program.</p>
         <p>Before you click YES to continue to see a list of camp-sponsored One Happy Camper programs, we recommend double checking.</p>
     </div>
 
