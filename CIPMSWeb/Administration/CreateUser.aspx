@@ -7,56 +7,45 @@
             var reqRole = document.getElementById('<%=rfvRole.ClientID %>');
             var FedLst = document.getElementById('<%=lstFed.ClientID %>');
             var reqFed = document.getElementById('<%=rfvFed.ClientID %>');
-            var CampLst = document.getElementById('<%=lstCamps.ClientID %>');
-            var reqCamp = document.getElementById('<%=rfvCamps.ClientID %>');
-            
+            var MovementsLst = document.getElementById('<%=lstMovements.ClientID %>');
+
             if (Role.value == '-1') // Nothing
             {
                 FedLst.value = '';
-                CampLst.value = '';
                 reqRole.enabled = true;
                 reqRole.enabled = true;
                 FedLst.disabled = false;
                 reqFed.enabled = true;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;  
+
+                MovementsLst.disabled = false;
             }
 
             if (Role.value == '1' || Role.value == '5') //FJC Admin
             {
                 FedLst.value = '';
-                CampLst.value = '';
                 FedLst.disabled = true;
                 reqFed.enabled = false;
-                CampLst.disabled = true;
-                reqCamp.enabled = false;                
+                MovementsLst.value = '';
+                MovementsLst.disabled = true;
             }
             
             if (Role.value == '2') //Federation Admin
             {
-                CampLst.value = '';
+
                 FedLst.disabled = false;
                 reqFed.enabled = true;
-                CampLst.disabled = true;
-                reqCamp.enabled = false;                
+                MovementsLst.value = '';
+                MovementsLst.disabled = true;
             }
             
-            if (Role.value == '3') //Camp Director
-            {
-                FedLst.value = '';
+            // Movements Admin
+            if (Role.value == '6') {
+
                 FedLst.disabled = true;
-                reqFed.enabled = false;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;                
-            }
-            
-            if (Role.value == '4') //Fed/Camp Admin
-            {
-                FedLst.disabled = false;
                 reqFed.enabled = true;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;                
-            }                            
+
+                MovementsLst.disabled = false;
+            }                        
         }
     </script>  
     <table class="text" width="100%">
@@ -149,13 +138,13 @@
                         <td>
                             <asp:RequiredFieldValidator ID="rfvRole" runat="server" ControlToValidate="ddlRole"
                                 Display="None" ErrorMessage="Please select a Role" Enabled="False" /></td></tr>
-                    <!--<tr>
+                    <tr>
                         <td class="headertext1">Camp Movements</td>
                         <td style="width:5px"></td>
                         <td colspan="5">
                             <asp:ListBox ID="lstMovements" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
                         </td>
-                    </tr>-->
+                    </tr>
                     <tr>
                         <td class="headertext1">Federation</td>
                         <td style="width:5px"></td>
@@ -163,13 +152,13 @@
                             <asp:ListBox ID="lstFed" runat="server" Width="500px" CssClass="text" /></td></tr> 
                     <tr>
                         <td colspan="7" style="height: 10px"></td></tr>
-                    <tr>
+                 <!--   <tr>
                         <td class="headertext1">Camps</td>
                         <td style="width:5px"></td>
                         <td colspan="5">
                             <asp:ListBox ID="lstCamps" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
                         </td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td colspan="2"></td>
                         <td>

@@ -84,22 +84,22 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         lstFed.DataBind();
 
         //Populate Camp List with all the Camps
-        DataSet dsCamps;
-        _objGen = new General();
-        dsCamps = _objGen.get_AllCamps(Master.CampYear);
-        lstCamps.DataSource = dsCamps;
-        lstCamps.DataTextField = "Camp";
-        lstCamps.DataValueField = "ID";
-        lstCamps.DataBind();
+        //DataSet dsCamps;
+        //_objGen = new General();
+        //dsCamps = _objGen.get_AllCamps(Master.CampYear);
+        //lstCamps.DataSource = dsCamps;
+        //lstCamps.DataTextField = "Camp";
+        //lstCamps.DataValueField = "ID";
+        //lstCamps.DataBind();
 
         // 
-        //var list = new List<string>()
-        //{
-        //    "Habonim Dror",
-        //    "Ramah"
-        //};
-        //lstMovements.DataSource = list;
-        //lstMovements.DataBind();
+        var list = new List<string>()
+        {
+            "Habonim Dror",
+            "Ramah"
+        };
+        lstMovements.DataSource = list;
+        lstMovements.DataBind();
     }
 
     //Populate controls for update mode
