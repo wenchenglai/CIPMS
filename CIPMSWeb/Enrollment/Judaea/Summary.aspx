@@ -47,18 +47,21 @@
             </td>
         </tr>
     </table>
-    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblDisable" runat="server" width="100%"  cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img src="../../images/judaeacamp.jpg" /></td>
             <td>
-                
+
 			</td>
         </tr>
         <tr>
            <td colspan="2">
                <br />
-               <asp:Label ID="lblDisable" runat="server" CssClass="infotext3" Font-Bold="true" Font-Size="Small" />
+               <asp:Label ID="lblDisable" runat="server" />
+               <br/>
+               <br/>
+               Click “NEXT” to see if your camp is sponsoring its own One Happy Camper program.
            </td> 
         </tr>        
     </table>    

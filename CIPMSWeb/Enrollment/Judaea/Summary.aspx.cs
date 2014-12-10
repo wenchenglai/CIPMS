@@ -70,33 +70,33 @@ public partial class Enrollment_Judaea_Summary : Page
             //    }
             //}
 
-            //int resultCampId = 0;
-            //Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
+            int resultCampId = 0;
+            Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
 
-            //string campID = Session["CampID"].ToString();
-            //string last3Digits = campID.Substring(campID.Length - 3);
-            //// Disable camps will overwrite above code
-            //switch (last3Digits)
-            //{
-            //    case "107":
-            //        lblDisable.Text = "The Young Judaea-Texas One Happy Camper application is now closed for the summer of 2014. For information about a waiting list, please contact the camp professional listed at the bottom of the screen.";
-            //        tblDisable.Visible = true;
-            //        tblRegular.Visible = false;
+            string campID = Session["CampID"].ToString();
+            string last3Digits = campID.Substring(campID.Length - 3);
+            // Disable camps will overwrite above code
+            switch (last3Digits)
+            {
+                case "044":
+                    lblDisable.Text = "The Camp Judaea One Happy Camper program is now closed for the summer of 2015. For more information, please contact the camp professional listed at the bottom of this page.";
+                    tblDisable.Visible = true;
+                    tblRegular.Visible = false;
 
-            //        if (Session["SpecialCodeValue"] != null)
-            //        {
-            //            string currentCode = Session["SpecialCodeValue"].ToString();
-            //            int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+                    //if (Session["SpecialCodeValue"] != null)
+                    //{
+                    //    string currentCode = Session["SpecialCodeValue"].ToString();
+                    //    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-            //            if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))
-            //            {
-            //                tblDisable.Visible = false;
-            //                tblRegular.Visible = true;
-            //            }
-            //        }
+                    //    if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))
+                    //    {
+                    //        tblDisable.Visible = false;
+                    //        tblRegular.Visible = true;
+                    //    }
+                    //}
 
-            //        break;
-            //}
+                    break;
+            }
         }
     }
 
