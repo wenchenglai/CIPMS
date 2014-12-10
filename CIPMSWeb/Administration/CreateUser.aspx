@@ -149,6 +149,13 @@
                         <td>
                             <asp:RequiredFieldValidator ID="rfvRole" runat="server" ControlToValidate="ddlRole"
                                 Display="None" ErrorMessage="Please select a Role" Enabled="False" /></td></tr>
+                    <!--<tr>
+                        <td class="headertext1">Camp Movements</td>
+                        <td style="width:5px"></td>
+                        <td colspan="5">
+                            <asp:ListBox ID="lstMovements" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
+                        </td>
+                    </tr>-->
                     <tr>
                         <td class="headertext1">Federation</td>
                         <td style="width:5px"></td>
@@ -160,7 +167,9 @@
                         <td class="headertext1">Camps</td>
                         <td style="width:5px"></td>
                         <td colspan="5">
-                            <asp:ListBox ID="lstCamps" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" /></td></tr>
+                            <asp:ListBox ID="lstCamps" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
+                        </td>
+                    </tr>
                     <tr>
                         <td colspan="2"></td>
                         <td>

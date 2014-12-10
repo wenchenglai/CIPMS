@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using CIPMSBC;
+using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 public partial class Administration_CreateUser : System.Web.UI.Page
 {
@@ -89,6 +91,15 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         lstCamps.DataTextField = "Camp";
         lstCamps.DataValueField = "ID";
         lstCamps.DataBind();
+
+        // 
+        //var list = new List<string>()
+        //{
+        //    "Habonim Dror",
+        //    "Ramah"
+        //};
+        //lstMovements.DataSource = list;
+        //lstMovements.DataBind();
     }
 
     //Populate controls for update mode

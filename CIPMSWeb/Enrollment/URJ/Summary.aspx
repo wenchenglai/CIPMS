@@ -46,10 +46,7 @@
 						<li>URJ Kutz Camp Institute (Warwick, NY) - <a href="http://kutz.urjcamps.org/" target="_blank">www.kutz.urjcamps.org</a></li>	
 						<li>URJ Olin-Sang-Ruby Union Institute (Oconomowoc, WI) - <a href="http://osrui.urjcamps.org/" target="_blank">www.osrui.urjcamps.org</a></li>																																															
 					</ul>                       
-                </p>
-                <p>
-                    If you need immediate assistance, please contact Abram Koester at the Union for Reform Judaism at akoester@urj.org
-                </p>    
+                </p>  
             </td>
         </tr>            
     </table>
