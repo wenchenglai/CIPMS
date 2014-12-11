@@ -61,6 +61,9 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                 rdoFirstTimerYes.Attributes.Remove("onclick");
                 rdoFirstTimerNo.Attributes.Remove("onclick");
             }
+
+            if (campIDLast3Digits == "133")
+                lblDays.Text = "5";
         }
     }
 
