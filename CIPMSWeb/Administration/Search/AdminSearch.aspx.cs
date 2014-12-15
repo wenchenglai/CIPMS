@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -24,6 +25,7 @@ public partial class AdminSearch : System.Web.UI.Page
     private string _strFedAdmin;
     private string _strCampDir;
     private string _strFed_CampAdmin;
+    private string _strMovementAdmin;
     private string _strApprover;
     private string _CampYear;
     private string _strJWestFed = ConfigurationManager.AppSettings["JWest"];
@@ -50,6 +52,7 @@ public partial class AdminSearch : System.Web.UI.Page
         _strCampDir = ConfigurationManager.AppSettings["CAMPDIRECTOR"].ToString();
         _strFed_CampAdmin = ConfigurationManager.AppSettings["FED_CAMPADMIN"].ToString();
         _strApprover = ConfigurationManager.AppSettings["APPROVER"].ToString();
+        _strMovementAdmin = "6";
         
         revZip.Enabled = false;
         revZipFRM.Enabled = false;
@@ -551,7 +554,7 @@ public partial class AdminSearch : System.Web.UI.Page
                 ddlModifiedBy.Items.Insert(0, new ListItem("--Select--", "-1"));
         }
 
-        if (_strRoleID == _strFedAdmin || _strRoleID == _strFed_CampAdmin) //Federation Admin OR Fed/Camp Admin
+        else if (_strRoleID == _strFedAdmin || _strRoleID == _strFed_CampAdmin) //Federation Admin OR Fed/Camp Admin
         {
             //***********
             //TV: 02/2009 - Issue # 4-002: changed Federation from DropDownList to multi-select ListBox
@@ -626,7 +629,7 @@ public partial class AdminSearch : System.Web.UI.Page
                 ddlModifiedBy.Items.Insert(0, new ListItem("--Select--", "-1"));
         }
 
-        if (_strRoleID == _strCampDir) //Camp Director
+        else if (_strRoleID == _strCampDir) //Camp Director
         {
             //***********
             //TV: 02/2009 - Issue # 4-002: changed Federation from DropDownList to multi-select ListBox
@@ -653,6 +656,40 @@ public partial class AdminSearch : System.Web.UI.Page
             ddlModifiedBy.Items.Insert(0, new ListItem("--Select--", "-1"));
             ddlModifiedBy.Enabled = false;
         }
+        else if (_strRoleID == _strMovementAdmin) //Movement Camps admin
+        {
+            var dt = MovementDAL.GetMovementFedIDsByUserID(Convert.ToInt32(Session["UsrID"]));
+            lstFederations.Items.Clear();
+            lstFederations.DataSource = dt;
+            lstFederations.DataTextField = "Federation";
+            lstFederations.DataValueField = "ID";
+            lstFederations.DataBind();
+            if ((lstFederations.Items.Count != 0))
+                lstFederations.Items.Insert(0, new ListItem("--Select--", "-1"));
+
+            var result = (from myRow in dt.AsEnumerable()
+                          select myRow.ItemArray[0].ToString()).ToArray();
+            string fedIds = string.Join(",", result);
+
+            var dsFedCamps = _objGen.GetFedCamps(fedIds, ddlCampYear.SelectedItem.Text);
+            lstCamps.DataSource = dsFedCamps;
+            lstCamps.DataTextField = "Camp";
+            lstCamps.DataValueField = "CampID";
+
+            lstCamps.DataBind();
+            if ((lstCamps.Items.Count != 0))
+                lstCamps.Items.Insert(0, new ListItem("--Select--", "-1"));
+
+            //Populate Users dropdown with users associated with the Federation
+            _objGen = new General();
+            var dsModifiedBy = _objGen.GetUsersByFederation(_strFedID);
+            ddlModifiedBy.DataSource = dsModifiedBy;
+            ddlModifiedBy.DataTextField = "Name";
+            ddlModifiedBy.DataValueField = "ID";
+            ddlModifiedBy.DataBind();
+            if ((ddlModifiedBy.Items.Count != 0))
+                ddlModifiedBy.Items.Insert(0, new ListItem("--Select--", "-1"));
+        }
 
         //Populate Status List
         DataSet dsStatus;
@@ -664,8 +701,6 @@ public partial class AdminSearch : System.Web.UI.Page
         lstStatus.DataBind();
         if ((lstStatus.Items.Count != 0))
             lstStatus.Items.Insert(0, new ListItem("--Select--", "-1"));
-
-       
 
         //Populate Sort Column Names Dropdown
         ddlColums.Items.Insert(0, new ListItem("--Select--", "-1"));

@@ -3,22 +3,11 @@
 <asp:Content ID="CreateUsr" ContentPlaceHolderID="Content" runat="server" >
     <script type="text/javascript" language="javascript">
         function ValidateControls(){
-            var Role = document.getElementById('<%=ddlRole.ClientID %>');
-            var reqRole = document.getElementById('<%=rfvRole.ClientID %>');
-            var FedLst = document.getElementById('<%=lstFed.ClientID %>');
-            var reqFed = document.getElementById('<%=rfvFed.ClientID %>');
-            var MovementsLst = document.getElementById('<%=lstMovements.ClientID %>');
-
-            if (Role.value == '-1') // Nothing
-            {
-                FedLst.value = '';
-                reqRole.enabled = true;
-                reqRole.enabled = true;
-                FedLst.disabled = false;
-                reqFed.enabled = true;
-
-                MovementsLst.disabled = false;
-            }
+            var Role = document.getElementById('<%=ddlRole.ClientID %>'),
+                reqRole = document.getElementById('<%=rfvRole.ClientID %>'),
+                FedLst = document.getElementById('<%=lstFed.ClientID %>'),
+                reqFed = document.getElementById('<%=rfvFed.ClientID %>'),
+                MovementsLst = document.getElementById('<%=lstMovements.ClientID %>');
 
             if (Role.value == '1' || Role.value == '5') //FJC Admin
             {
@@ -27,25 +16,25 @@
                 reqFed.enabled = false;
                 MovementsLst.value = '';
                 MovementsLst.disabled = true;
-            }
-            
-            if (Role.value == '2') //Federation Admin
-            {
-
+            } else if (Role.value == '2') {
+                //Federation Admin
                 FedLst.disabled = false;
                 reqFed.enabled = true;
                 MovementsLst.value = '';
                 MovementsLst.disabled = true;
-            }
-            
-            // Movements Admin
-            if (Role.value == '6') {
-
+            } else if (Role.value == '6') {
+                // Movements Admin
+                FedLst.disabled = true;
+                reqFed.enabled = false;
+                MovementsLst.disabled = false;
+            } else {
+                FedLst.value = '';
+                reqRole.enabled = true;
+                reqRole.enabled = true;
                 FedLst.disabled = true;
                 reqFed.enabled = true;
-
-                MovementsLst.disabled = false;
-            }                        
+                MovementsLst.disabled = true;
+            }
         }
     </script>  
     <table class="text" width="100%">
@@ -142,7 +131,7 @@
                         <td class="headertext1">Camp Movements</td>
                         <td style="width:5px"></td>
                         <td colspan="5">
-                            <asp:ListBox ID="lstMovements" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
+                            <asp:ListBox ID="lstMovements" runat="server" DataTextField="name" DataValueField="id" CssClass="text" Width="500px" />
                         </td>
                     </tr>
                     <tr>
@@ -152,13 +141,6 @@
                             <asp:ListBox ID="lstFed" runat="server" Width="500px" CssClass="text" /></td></tr> 
                     <tr>
                         <td colspan="7" style="height: 10px"></td></tr>
-                 <!--   <tr>
-                        <td class="headertext1">Camps</td>
-                        <td style="width:5px"></td>
-                        <td colspan="5">
-                            <asp:ListBox ID="lstCamps" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
-                        </td>
-                    </tr>-->
                     <tr>
                         <td colspan="2"></td>
                         <td>
@@ -167,8 +149,8 @@
                         <td colspan="3"></td>
                         <td>
                             <asp:TextBox ID="txtHidCamps" runat="server" Height="0px" Width="0px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvCamps" runat="server" ControlToValidate="lstCamps"
-                                Display="None" ErrorMessage="Please select at least one Camp" Enabled="False" /></td></tr>
+                        </td>
+                    </tr>
                     <tr>
                         <td colspan="3">
                        <td align="right" colspan="4">

@@ -2,15 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using DocumentFormat.OpenXml.Office2010.ExcelAc;
 
 public partial class Administration_CreateUser : System.Web.UI.Page
 {
@@ -18,8 +12,7 @@ public partial class Administration_CreateUser : System.Web.UI.Page
     private General _objGen;
     private string _strFJCAdmin;
     private string _strFedAdmin;
-    private string _strCampDir;
-    private string _strFed_CampAdmin;
+    private string _strMovementCampsAdmin;
     private Label _lbl;
     private string _strApprover;
 
@@ -29,11 +22,10 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         lblMsg.Text = "";
 
         //Get roles from config
-        _strFJCAdmin = ConfigurationManager.AppSettings["FJCADMIN"].ToString();
-        _strFedAdmin = ConfigurationManager.AppSettings["FEDADMIN"].ToString();
-        _strCampDir = ConfigurationManager.AppSettings["CAMPDIRECTOR"].ToString();
-        _strFed_CampAdmin = ConfigurationManager.AppSettings["FED_CAMPADMIN"].ToString();
-        _strApprover = ConfigurationManager.AppSettings["APPROVER"].ToString();
+        _strFJCAdmin = ConfigurationManager.AppSettings["FJCADMIN"];
+        _strFedAdmin = ConfigurationManager.AppSettings["FEDADMIN"];
+        _strApprover = ConfigurationManager.AppSettings["APPROVER"];
+        _strMovementCampsAdmin = "6";
 
         if (!IsPostBack)
         {
@@ -55,9 +47,44 @@ public partial class Administration_CreateUser : System.Web.UI.Page
             }
         }
 
-        HtmlGenericControl pageBody = (HtmlGenericControl)this.Master.FindControl("objMasterBody");
+        var pageBody = (HtmlGenericControl)this.Master.FindControl("objMasterBody");
         pageBody.Attributes.Add("onLoad", "javascript:ValidateControls();");
         ddlRole.Attributes.Add("onChange", "javascript:ValidateControls();");
+    }
+
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+        SetVals();
+        if ((string)Session["Mode"] == "I")
+        {
+
+            try
+            {
+                Session["User"] = _objUsrAdmin.CreateUser();
+
+                Session["Mode"] = "U";
+                _lbl.Text = "Update User";
+                btnSubmit.Text = "Update";
+                lblMsg.Text = "User created successfully";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        else if ((string)Session["Mode"] == "U")
+        {
+            _objUsrAdmin.UserId = Convert.ToInt16(Session["User"]);
+            try
+            {
+                _objUsrAdmin.UpdateUser();
+                lblMsg.Text = "User updated successfully";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
     //Fill the dropdowns & lists with values
@@ -92,13 +119,9 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         //lstCamps.DataValueField = "ID";
         //lstCamps.DataBind();
 
-        // 
-        var list = new List<string>()
-        {
-            "Habonim Dror",
-            "Ramah"
-        };
-        lstMovements.DataSource = list;
+        // 2014-12-10 Movement Camps Admin
+
+        lstMovements.DataSource = MovementDAL.GetAllMovement();
         lstMovements.DataBind();
     }
 
@@ -115,57 +138,12 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         txtPhNo.Text = dsUsrDetails.Tables[0].Rows[0]["PhoneNumber"].ToString();
         txtPwd.Text = dsUsrDetails.Tables[0].Rows[0]["Password"].ToString();
         ddlRole.SelectedValue = dsUsrDetails.Tables[0].Rows[0]["UserRole"].ToString();
-        lstFed.SelectedValue = dsUsrDetails.Tables[0].Rows[0]["Federation"].ToString();
 
-        string strCamps;
-        strCamps = dsUsrDetails.Tables[0].Rows[0]["Camps"].ToString();
-        if (strCamps != string.Empty)
-        {
-            Array arrCamps = strCamps.Split(',');
-
-            for (int i = 0; i <= arrCamps.Length - 1; i++)
-            {
-                int idx;
-                idx = Convert.ToInt16(((string[])(arrCamps))[i]);
-                lstCamps.Items.FindByValue(idx.ToString()).Selected = true;
-            }
-        }
-
-    }
-
-    protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        SetVals();
-        if ((string)Session["Mode"] == "I")
-        {
-            
-            try
-            {
-                Session["User"] = _objUsrAdmin.CreateUser();
-              
-                Session["Mode"] = "U";
-                _lbl.Text = "Update User";
-                btnSubmit.Text = "Update";
-                lblMsg.Text = "User created successfully";
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        else if ((string)Session["Mode"] == "U")
-        {
-            _objUsrAdmin.UserId = Convert.ToInt16(Session["User"]);
-            try
-            {
-                _objUsrAdmin.UpdateUser();
-                lblMsg.Text = "User updated successfully";
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        if (ddlRole.SelectedValue == _strMovementCampsAdmin)
+            lstMovements.SelectedValue = dsUsrDetails.Tables[0].Rows[0]["MovementID"].ToString();
+        else
+            lstFed.SelectedValue = dsUsrDetails.Tables[0].Rows[0]["Federation"].ToString();
+       
     }
 
     //Set properties for save/update
@@ -180,58 +158,37 @@ public partial class Administration_CreateUser : System.Web.UI.Page
             iFedId = -1;
             txtHidCamps.Text = string.Empty;
         }
-
         else if (ddlRole.SelectedValue == _strApprover) //if Approver, Federation & Camp not reqd, set it to -1
         {
             iRoleId = Convert.ToInt16(_strApprover);
             iFedId = -1;
             txtHidCamps.Text = string.Empty;
         }
-
         else if (ddlRole.SelectedValue == _strFedAdmin) //if Federation Admin, Camp not reqd, set it to -1
         {
             iRoleId = Convert.ToInt16(_strFedAdmin);
             iFedId = Convert.ToInt16(lstFed.SelectedValue);
             txtHidCamps.Text = string.Empty;
         }
-        else if (ddlRole.SelectedValue == _strCampDir) //if Camp Director, Federation not reqd, set it to -1
+        else if (ddlRole.SelectedValue == _strMovementCampsAdmin)
         {
-            iRoleId = Convert.ToInt16(_strCampDir);
-            iFedId = -1;
+            iRoleId = Convert.ToInt16(_strMovementCampsAdmin);
+            iFedId = Convert.ToInt16(lstMovements.SelectedValue);
             txtHidCamps.Text = string.Empty;
-            GetCamps();
         }
-        else if (ddlRole.SelectedValue == _strFed_CampAdmin) //if Federation/Camp Admin, pass both Federation and Camps
-        {
-            iRoleId = Convert.ToInt16(_strFed_CampAdmin);
-            iFedId = Convert.ToInt16(lstFed.SelectedValue); ;
-            txtHidCamps.Text = string.Empty;
-            GetCamps();
-        }
-        //}
 
         _objUsrAdmin.Password = txtPwd.Text.Trim();
         _objUsrAdmin.FirstName = txtFirstNm.Text.Trim();
         _objUsrAdmin.LastName = txtLastNm.Text.Trim();
         _objUsrAdmin.PhoneNumber = txtPhNo.Text.Trim();
         _objUsrAdmin.Email = txtEmail.Text.Trim();
-        _objUsrAdmin.FederationID = iFedId;
         _objUsrAdmin.RoleId = iRoleId;
-        _objUsrAdmin.CampList = txtHidCamps.Text;
-    }
 
-    //Get a comma separated list of selected Camps
-    private void GetCamps()
-    {
-        for (int i = 0; i <= lstCamps.Items.Count - 1; i++)
-        {
-            if (lstCamps.Items[i].Selected == true)
-            {
-                if (txtHidCamps.Text == string.Empty)
-                    txtHidCamps.Text = lstCamps.Items[i].Value;
-                else
-                    txtHidCamps.Text = txtHidCamps.Text + "," + lstCamps.Items[i].Value;
-            }
-        }
+        if (ddlRole.SelectedValue == _strMovementCampsAdmin)
+            _objUsrAdmin.MovementID = iFedId;
+        else
+            _objUsrAdmin.FederationID = iFedId;
+
+        _objUsrAdmin.CampList = txtHidCamps.Text;
     }
 }

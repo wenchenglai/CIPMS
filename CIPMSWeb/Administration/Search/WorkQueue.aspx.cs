@@ -1,13 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 
 public partial class Administration_Search_WorkQueue : System.Web.UI.Page
@@ -21,7 +17,7 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Set Page Heading
-        Label lbl = (Label)this.Master.FindControl("lblPageHeading");
+        var lbl = (Label)this.Master.FindControl("lblPageHeading");
 
         lbl.Text = "";
         gvWrkQ.Visible = true;
@@ -56,14 +52,13 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
         if(Session["RoleID"] != null)
             strUserRole = Session["RoleID"].ToString();
 
-        if (String.IsNullOrEmpty(strUserRole) || strUserRole != ConfigurationManager.AppSettings["FJCADMIN"])
-            dsCamper = _objCamperDet.SearchCamperDetails();
-
         if (!String.IsNullOrEmpty(strUserRole) && strUserRole == ConfigurationManager.AppSettings["FJCADMIN"])
             dsCamper = _objCamperDet.SearchCamperDetails(strUserRole);
+        else if (String.IsNullOrEmpty(strUserRole) || strUserRole != ConfigurationManager.AppSettings["FJCADMIN"])
+            dsCamper = _objCamperDet.SearchCamperDetails();
 
 
-        DataView dv = new DataView();
+        var dv = new DataView();
         dv.Table = dsCamper.Tables[0];
         //added newly for sroting by given statuses
         DataView Sorteddv = SortByStatus(dv);
@@ -78,16 +73,15 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
     }
 
     private void SetVals()
-    {
-        int iUserId = Convert.ToInt16(Session["UsrID"]);
-        string strRole = (string)Session["RoleID"];
-        string strUserCamps = string.Empty;
-        string strStatus = string.Empty;
+    {      
+        var strRole = (string)Session["RoleID"];
+        var userId = Convert.ToInt16(Session["UsrID"]);
 
-        //If logged in role is Camp Director show records for his camp(s) with status Elligible by Staff
         if (strRole == ConfigurationManager.AppSettings["CAMPDIRECTOR"])
         {
-            DataSet dsUserCamps = _objGen.GetUserCamps(iUserId, Convert.ToInt16(Session["CampYear"].ToString()));
+            //If logged in role is Camp Director show records for his camp(s) with status Elligible by Staff
+            var strUserCamps = string.Empty;
+            DataSet dsUserCamps = _objGen.GetUserCamps(userId, Convert.ToInt16(Session["CampYear"].ToString()));
             for (int i = 0; i <= dsUserCamps.Tables[0].Rows.Count - 1; i++)
             {
                 if (strUserCamps == string.Empty)
@@ -100,32 +94,42 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
             _objCamperDet.FederationID = (string)ConfigurationManager.AppSettings["JWest"] + "," + (string)ConfigurationManager.AppSettings["JWestLA"];
             _objCamperDet.Status = "7,10";
         }
-
-        //If logged in role is Federation Admin, show records for his federation with status - 
-        //Elligible, Pending School Eligibility, Not Registered, Being Researched, Camp Full, Payment Review
         else if (strRole == ConfigurationManager.AppSettings["FEDADMIN"])
         {
+            //If logged in role is Federation Admin, show records for his federation with status - 
+            //Elligible, Pending School Eligibility, Not Registered, Being Researched, Camp Full, Payment Review
             _objCamperDet.FederationID = (string)Session["FedId"];
             _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43,45";
             if (_objCamperDet.FederationID == ((int)FederationEnum.PJL).ToString())
                 _objCamperDet.Status += ",46,47,48,49";
         }
-
-        //If logged in role is FJC Admin, show records for his federation with status - 
-        //Elligible, Pending School Eligibility, Not Registered, Being Researched, Camp Full, Payment Review
         else if (strRole == ConfigurationManager.AppSettings["FJCADMIN"])
         {
+            //If logged in role is FJC Admin, show records for his federation with status - 
+            //Elligible, Pending School Eligibility, Not Registered, Being Researched, Camp Full, Payment Review
             _objCamperDet.FederationID = (string)ConfigurationManager.AppSettings["JWest"] + "," + (string)ConfigurationManager.AppSettings["JWestLA"];
             _objCamperDet.Status = "1,2,6,9,12,14,20,21,27,43,45";
         }
-
-        //if logged in role is Approver, show records with status - Second Approval
         else if (strRole == ConfigurationManager.AppSettings["APPROVER"])
+        {
+            //if logged in role is Approver, show records with status - Second Approval
             _objCamperDet.Status = "15,16";
+        }
+        else if (strRole == "6") // Movement Camp Admin is 6
+        {
+            DataTable dt = MovementDAL.GetMovementFedIDsByUserID(userId);
+            var result = (from myRow in dt.AsEnumerable()
+                select myRow.ItemArray[0].ToString()).ToArray();
+            string fedIds = string.Join(",", result);
+
+            _objCamperDet.FederationID = fedIds;
+            _objCamperDet.Status = "1,2,6,7,9,12,14,20,21,42,43,45";
+        }
 
         //Show only items with WorkQueue Flag as true
         _objCamperDet.WorkQueue = true;
     }
+
     protected void gvWrkQ_OnSort(object sender, GridViewSortEventArgs e)
     {
         SetVals();
