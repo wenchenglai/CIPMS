@@ -9,7 +9,6 @@ public partial class Enrollment_Columbus_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			// 2012-04-01 Two possible scenarios - either the regular summary page, or then camp is full, show the close message
 			int FedID = Convert.ToInt32(FederationEnum.Columbus);
 			string FED_ID = FedID.ToString();
 		    bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
