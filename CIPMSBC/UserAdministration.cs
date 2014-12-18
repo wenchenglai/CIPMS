@@ -23,6 +23,7 @@ namespace CIPMSBC
         private CIPDataAccess _objDAL;
         private int _iUsrId;
         private string _strOldPwd;
+        public int MovementID { get; set; }
 
         #endregion
 
@@ -189,13 +190,14 @@ namespace CIPMSBC
         //Gets user details based on FirstName, LastName, Email, Federation and/or Camp
         public DataSet GetUserDetails()
         {
-            SqlParameter[] sparams = new SqlParameter[5];
+            SqlParameter[] sparams = new SqlParameter[6];
 
             sparams[0] = new SqlParameter("@FirstName", (FirstName == string.Empty ? null : FirstName));
             sparams[1] = new SqlParameter("@LastName", (LastName == string.Empty ? null : LastName));
             sparams[2] = new SqlParameter("@Email", (Email == string.Empty ? null : Email));            
             sparams[3] = new SqlParameter("@Federation", (FederationID == 0 ? -1 : FederationID));
             sparams[4] = new SqlParameter("@CampID", (CampID == 0 ? -1 : CampID));
+            sparams[5] = new SqlParameter("@MovementID", (MovementID == 0 ? -1 : MovementID));
 
             _objDAL = new CIPDataAccess();
             DataSet dsUsrDetails;
@@ -261,26 +263,27 @@ namespace CIPMSBC
         //Creates a user
         public int CreateUser()
         {
-            SqlParameter[] sparams = new SqlParameter[10];
+            SqlParameter[] sparams = new SqlParameter[11];
 
             sparams[0] = new SqlParameter("@Password", Password);
             sparams[1] = new SqlParameter("@FirstName", FirstName);
             sparams[2] = new SqlParameter("@LastName", LastName);
             sparams[3] = new SqlParameter("@PhoneNUmber", PhoneNumber);
             sparams[4] = new SqlParameter("@Email", Email);
-            sparams[5] = new SqlParameter("@FederationID", FederationID);
-            sparams[6] = new SqlParameter("@RoleID", RoleId);
-            sparams[7] = new SqlParameter("@superAdmin", null);
-            sparams[8] = new SqlParameter("@camps", CampList);
-            sparams[9] = new SqlParameter("@UsrId", SqlDbType.Int);
-            sparams[9].Direction = ParameterDirection.Output;
+            sparams[5] = new SqlParameter("@MovementID", MovementID);
+            sparams[6] = new SqlParameter("@FederationID", FederationID);
+            sparams[7] = new SqlParameter("@RoleID", RoleId);
+            sparams[8] = new SqlParameter("@superAdmin", null);
+            sparams[9] = new SqlParameter("@camps", CampList);
+            sparams[10] = new SqlParameter("@UsrId", SqlDbType.Int);
+            sparams[10].Direction = ParameterDirection.Output;
 
             _objDAL = new CIPDataAccess();
             int iUsrId;
             try
             {
                 _objDAL.ExecuteNonQuery("[usp_InsertAdminUser]", sparams);
-                iUsrId = Convert.ToInt16(sparams[9].Value);
+                iUsrId = Convert.ToInt16(sparams[10].Value);
                 return iUsrId;
             }
             catch (Exception ex)
@@ -296,7 +299,7 @@ namespace CIPMSBC
         //Update a user
         public void UpdateUser()
         {
-            SqlParameter[] sparams = new SqlParameter[10];
+            SqlParameter[] sparams = new SqlParameter[11];
 
             sparams[0] = new SqlParameter("@UserId", UserId);
             sparams[1] = new SqlParameter("@Password", Password);
@@ -304,10 +307,11 @@ namespace CIPMSBC
             sparams[3] = new SqlParameter("@LastName", LastName);
             sparams[4] = new SqlParameter("@PhoneNUmber", PhoneNumber);
             sparams[5] = new SqlParameter("@Email", Email);
-            sparams[6] = new SqlParameter("@FederationID", FederationID);
-            sparams[7] = new SqlParameter("@RoleID", RoleId);
-            sparams[8] = new SqlParameter("@superAdmin", null);
-            sparams[9] = new SqlParameter("@camps", CampList);
+            sparams[6] = new SqlParameter("@MovementID", MovementID);
+            sparams[7] = new SqlParameter("@FederationID", FederationID);
+            sparams[8] = new SqlParameter("@RoleID", RoleId);
+            sparams[9] = new SqlParameter("@superAdmin", null);
+            sparams[10] = new SqlParameter("@camps", CampList);
 
             _objDAL = new CIPDataAccess();
             try

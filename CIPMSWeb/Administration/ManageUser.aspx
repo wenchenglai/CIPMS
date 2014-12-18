@@ -87,10 +87,10 @@
                             <td colspan="11" style="height:10px"></td>
                        </tr> 
                        <tr>
-                        <td class="headertext1">Camp</td>
+                        <td class="headertext1">Movement</td>
                         <td></td>
                         <td colspan="5">
-                            <asp:DropDownList ID="ddlCamps" runat="server" CssClass="dropdown" Width="300px" /></td>
+                            <asp:DropDownList ID="ddlMovement" runat="server" DataTextField="name" DataValueField="id" CssClass="dropdown" Width="300px" /></td>
                         <td colspan="4"></td>
                         </tr>
                     <tr align="right">
@@ -113,20 +113,24 @@
                         <asp:BoundField HeaderText="Last Name" DataField="LastName" />
                         <asp:BoundField HeaderText="Phone Number" DataField="PhoneNumber" />
                         <asp:BoundField HeaderText="Email ID" DataField="Email" />
+                        <asp:BoundField HeaderText="Movement" DataField="Movement" /> 
                         <asp:BoundField HeaderText="Federation" DataField="FedName" />                        
                         <asp:BoundField HeaderText="Role" DataField="RoleName" />
-                        <asp:TemplateField HeaderText="Edit">
+                        <asp:TemplateField HeaderText="Action">
                             <ItemTemplate>
                                 <asp:Button ID="btnEdit" runat="server" Text="Edit User" CommandName="Edit" CommandArgument='<%# Eval("UserID") %>' CssClass="gridbtn" Width="58px" />
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" />
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Delete">
-                            <ItemTemplate>
+                                <br />
+                                <br />
                                 <asp:Button ID="btnDelete" OnClientClick=<%# "return ConfirmDelete('" + DataBinder.Eval(Container.DataItem, "FirstName").ToString().Replace("'", "\\'") + "','" + DataBinder.Eval(Container.DataItem, "LastName").ToString().Replace("'", "\\'") + "');" %> runat="server" Text="Delete" CommandName="Delete" CommandArgument='<%# Eval("UserID") %>' CssClass="gridbtn" Width="45px" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
+<%--                        <asp:TemplateField HeaderText="Delete">
+                            <ItemTemplate>
+                                
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>--%>
                     </Columns>
                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />

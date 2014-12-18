@@ -24,7 +24,7 @@ public partial class Administration_ManageUser : System.Web.UI.Page
         //TV: 04/2009 - added message Label to display informative (non-error) messages to the user
         lblMsg.Text = "";
 
-        if (IsPostBack != true)
+        if (!IsPostBack)
         {
             //Populate Federation dropdown
             DataSet dsFed;
@@ -36,8 +36,10 @@ public partial class Administration_ManageUser : System.Web.UI.Page
             ddlFed.DataBind();
             if ((ddlFed.Items.Count != 0))
                 ddlFed.Items.Insert(0, new ListItem("--Select--", "-1"));
-            //ddlFed.SelectedIndex = 13;
 
+            ddlMovement.DataSource = MovementDAL.GetAllMovement();
+            ddlMovement.DataBind();
+            ddlMovement.Items.Insert(0, new ListItem("--Select--", "-1"));
         }
         else
         {
@@ -75,9 +77,7 @@ public partial class Administration_ManageUser : System.Web.UI.Page
         _objUsrAdmin.LastName = txtLastNm.Text.Trim();
         _objUsrAdmin.Email = txtEmail.Text.Trim();
         _objUsrAdmin.FederationID = Convert.ToInt16(ddlFed.SelectedValue);
-
-        if (ddlCamps.SelectedValue != "")
-            _objUsrAdmin.CampID = Convert.ToInt16(ddlCamps.SelectedValue);
+        _objUsrAdmin.MovementID = Convert.ToInt16(ddlMovement.SelectedValue);
     }
 
     private void PopulateGrid()

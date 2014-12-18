@@ -2,15 +2,8 @@ using System;
 using System.IO;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using Microsoft.Reporting.WebForms;
 using System.Data.SqlClient;
@@ -48,7 +41,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 
 
 
-		// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
+		// 2013-01-03 Temporarily allow a few fedadmin to do payment processing
 		string FedID = (string)Session["FedId"];
 
         //DataRow[] drsss = dsFed.Tables[0].Select("ID = " + FedID);
@@ -57,7 +50,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 
         if (FedID == "35" || FedID == "5" || FedID == "37" || FedID == "23" || FedID == "89" || FedID == "49" || FedID == "11" || FedID == "12" || FedID == "32" || FedID == "36" || FedID == "26")
 		{
-			Dictionary<string, string> dict = new Dictionary<string, string>();
+			var dict = new Dictionary<string, string>();
 			DataRow[] drs = dsFed.Tables[0].Select("ID = " + FedID);
 
 			dict.Add(FedID, drs[0]["Federation"].ToString());
@@ -67,7 +60,17 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 			lstFederations.DataValueField = "Key";
 			lstFederations.DataBind();
 		}
-		else
+        else if (Session["RoleID"].ToString() == "6")
+        {
+            // Movement Camps Admin
+            lstFederations.DataSource = MovementDAL.GetMovementFedIDsByUserID(Convert.ToInt32(Session["UsrID"]));
+            lstFederations.DataTextField = "Federation";
+            lstFederations.DataValueField = "ID";
+            lstFederations.DataBind();
+            if ((lstFederations.Items.Count != 0))
+                lstFederations.Items.Insert(0, new ListItem("--Select--", "-1"));
+        }
+        else
 		{
 			lstFederations.DataSource = dsFed;
 			lstFederations.DataTextField = "Federation";

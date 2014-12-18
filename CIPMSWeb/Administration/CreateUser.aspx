@@ -3,60 +3,38 @@
 <asp:Content ID="CreateUsr" ContentPlaceHolderID="Content" runat="server" >
     <script type="text/javascript" language="javascript">
         function ValidateControls(){
-            var Role = document.getElementById('<%=ddlRole.ClientID %>');
-            var reqRole = document.getElementById('<%=rfvRole.ClientID %>');
-            var FedLst = document.getElementById('<%=lstFed.ClientID %>');
-            var reqFed = document.getElementById('<%=rfvFed.ClientID %>');
-            var CampLst = document.getElementById('<%=lstCamps.ClientID %>');
-            var reqCamp = document.getElementById('<%=rfvCamps.ClientID %>');
-            
-            if (Role.value == '-1') // Nothing
-            {
-                FedLst.value = '';
-                CampLst.value = '';
-                reqRole.enabled = true;
-                reqRole.enabled = true;
-                FedLst.disabled = false;
-                reqFed.enabled = true;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;  
-            }
+            var Role = document.getElementById('<%=ddlRole.ClientID %>'),
+                reqRole = document.getElementById('<%=rfvRole.ClientID %>'),
+                FedLst = document.getElementById('<%=lstFed.ClientID %>'),
+                reqFed = document.getElementById('<%=rfvFed.ClientID %>'),
+                MovementsLst = document.getElementById('<%=lstMovements.ClientID %>');
 
             if (Role.value == '1' || Role.value == '5') //FJC Admin
             {
                 FedLst.value = '';
-                CampLst.value = '';
                 FedLst.disabled = true;
                 reqFed.enabled = false;
-                CampLst.disabled = true;
-                reqCamp.enabled = false;                
-            }
-            
-            if (Role.value == '2') //Federation Admin
-            {
-                CampLst.value = '';
+                MovementsLst.value = '';
+                MovementsLst.disabled = true;
+            } else if (Role.value == '2') {
+                //Federation Admin
                 FedLst.disabled = false;
                 reqFed.enabled = true;
-                CampLst.disabled = true;
-                reqCamp.enabled = false;                
-            }
-            
-            if (Role.value == '3') //Camp Director
-            {
+                MovementsLst.value = '';
+                MovementsLst.disabled = true;
+            } else if (Role.value == '6') {
+                // Movements Admin
+                FedLst.disabled = true;
+                reqFed.enabled = false;
+                MovementsLst.disabled = false;
+            } else {
                 FedLst.value = '';
+                reqRole.enabled = true;
+                reqRole.enabled = true;
                 FedLst.disabled = true;
-                reqFed.enabled = false;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;                
-            }
-            
-            if (Role.value == '4') //Fed/Camp Admin
-            {
-                FedLst.disabled = false;
                 reqFed.enabled = true;
-                CampLst.disabled = false;
-                reqCamp.enabled = true;                
-            }                            
+                MovementsLst.disabled = true;
+            }
         }
     </script>  
     <table class="text" width="100%">
@@ -149,13 +127,13 @@
                         <td>
                             <asp:RequiredFieldValidator ID="rfvRole" runat="server" ControlToValidate="ddlRole"
                                 Display="None" ErrorMessage="Please select a Role" Enabled="False" /></td></tr>
-                    <!--<tr>
+                    <tr>
                         <td class="headertext1">Camp Movements</td>
                         <td style="width:5px"></td>
                         <td colspan="5">
-                            <asp:ListBox ID="lstMovements" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
+                            <asp:ListBox ID="lstMovements" runat="server" DataTextField="name" DataValueField="id" CssClass="text" Width="500px" />
                         </td>
-                    </tr>-->
+                    </tr>
                     <tr>
                         <td class="headertext1">Federation</td>
                         <td style="width:5px"></td>
@@ -164,13 +142,6 @@
                     <tr>
                         <td colspan="7" style="height: 10px"></td></tr>
                     <tr>
-                        <td class="headertext1">Camps</td>
-                        <td style="width:5px"></td>
-                        <td colspan="5">
-                            <asp:ListBox ID="lstCamps" runat="server" SelectionMode="Multiple" CssClass="text" Width="500px" />
-                        </td>
-                    </tr>
-                    <tr>
                         <td colspan="2"></td>
                         <td>
                             <asp:RequiredFieldValidator ID="rfvFed" runat="server" ControlToValidate="lstFed"
@@ -178,8 +149,8 @@
                         <td colspan="3"></td>
                         <td>
                             <asp:TextBox ID="txtHidCamps" runat="server" Height="0px" Width="0px"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvCamps" runat="server" ControlToValidate="lstCamps"
-                                Display="None" ErrorMessage="Please select at least one Camp" Enabled="False" /></td></tr>
+                        </td>
+                    </tr>
                     <tr>
                         <td colspan="3">
                        <td align="right" colspan="4">
