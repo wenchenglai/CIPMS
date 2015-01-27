@@ -93,7 +93,9 @@ namespace CIPMSBC
 		Nashville = 108,
 		Portland = 112,
 		RamahBerkshires = 115,
-		RamahCanada = 117
+		RamahCanada = 117,
+		RamahOutdoorAdventure = 119,
+		HabonimMoshava = 124
 		//if you are adding new federation enter a value in FedFolderName, FedDaySchoolEligibility & FedGradeEligibility 
 		//enums too FedFolderName with the folder name created for the federation, FedDaySchoolEligibility (JewishDaySchool) and FedGradeEligibility (eligible Grade) in the description attribute
 		//and federationid assigned to all 3 enums--- these enums are used by the word project to generate report

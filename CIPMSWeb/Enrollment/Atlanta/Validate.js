@@ -2,6 +2,7 @@
     OnFirstTimerChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
             $("#1a").show();
+            $("#1b").show();
             PageValidator.OnGrandfatherRuleChange();
             PageValidator.OnLastYearChange();
         } else {
@@ -13,16 +14,16 @@
 
     OnGrandfatherRuleChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoDays19').is(':checked')) {
-            $("#1b").show();
+            
             PageValidator.OnLastYearChange();
         } else {
-            $("#1b").hide();
+
             $("#1c").hide();
         }
     },
 
     OnLastYearChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoLastYearYes').is(':checked') && $('#ctl00_Content_rdoDays19').is(':checked')) {
+        if ($('#ctl00_Content_rdoLastYearYes').is(':checked') ) {
             $("#1c").show();
         } else {
             $("#1c").hide();

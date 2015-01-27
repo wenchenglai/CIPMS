@@ -142,13 +142,13 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
-        General objGen = new General();
-        int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
-        if (ZipCodeCount == 0)
-        {
-            Session["STATUS"] = "3";
-            Response.Redirect("Step2_3.aspx");
-        }
+        //General objGen = new General();
+        //int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
+        //if (ZipCodeCount == 0)
+        //{
+        //    Session["STATUS"] = "3";
+        //    Response.Redirect("Step2_3.aspx");
+        //}
 
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
         if (!isReadOnly)

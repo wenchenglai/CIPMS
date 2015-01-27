@@ -167,12 +167,17 @@ public partial class HartfordPage2 : System.Web.UI.Page
                 {
                     iStatus = (int)StatusInfo.SystemInEligible;
                 }
+                else if (rdoNo160.Checked)
+                {
+                    // 2015-01-07 If Income is not less thant $160K, we make them ineligible.
+                    iStatus = (int)StatusInfo.SystemInEligible;
+                }
                 else
                 {
-                    iStatus = (int)StatusInfo.SystemEligible;
+                    iStatus = (int) StatusInfo.SystemEligible;
                 }
 
-                if (iStatus == (int)StatusInfo.SystemEligible)
+			    if (iStatus == (int)StatusInfo.SystemEligible)
                 {
                     if (rdoFirstTimerNo.Checked)
                     {

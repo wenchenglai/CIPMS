@@ -13,16 +13,36 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack) return;
+        if (!IsPostBack)
+        {
+            int FedID = Convert.ToInt32(FederationEnum.RamahOutdoorAdventure);
+            string FED_ID = FedID.ToString();
+            bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
-        var strCampID = Session["CampID"].ToString();
-        var last3Digits = strCampID.Substring(strCampID.Length - 3);
+            if (isDisabled)
+            {
+                tblDisable.Visible = true;
+                tblRegular.Visible = false;
 
-        if (ConfigurationManager.AppSettings["ClosedRamah"].Split(',').Any(id => id == last3Digits))
-            Response.Redirect("~/NLIntermediate.aspx");
+                if (Session["SpecialCodeValue"] != null)
+                {
+                    string currentCode = Session["SpecialCodeValue"].ToString();
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
+                    {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                tblDisable.Visible = false;
+                tblRegular.Visible = true;
+            }
+        }
     }
-
-
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -38,7 +58,9 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        var CampID = Convert.ToInt32(Session["CampID"]);
-        Response.Redirect(CampID == 5082 ? "../Step1_NL.aspx" : "Step2_2.aspx");
+        if (tblRegular.Visible)
+            Response.Redirect("Step2_2.aspx");
+        else
+            Response.Redirect("../Step1_NL.aspx");     
     }
 }

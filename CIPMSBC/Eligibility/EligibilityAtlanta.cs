@@ -281,14 +281,24 @@ namespace CIPMSBC.Eligibility
                 {
                     if (q1a == "12")
                     {
-                        if (daysInCamp >= 19)
-                            Amount = 1000;
-                        else if (daysInCamp == 18 && campID == "6147") // 2015/10/28 temporary code used ONLY in 2015
+                        if (q1b == "yes")
                         {
-                            var userInfo = CamperAppl.getCamperInfo(FJCID);
-                            var code = userInfo.SpecialCode;
-                            if (code == "AA2015ATL159" || code == "AA2015ATL357" || code == "AA2015ATL963" || code == "AA2015ATL784" || code == "AA2015ATL658" || code == "AA2015ATL224")
+                            if (q1c == "yes")
+                            {
+                                Amount = 500;
+                            }                            
+                        }
+                        else
+                        {
+                            if (daysInCamp >= 19)
                                 Amount = 1000;
+                            else if (daysInCamp == 18 && campID == "6147") // 2015/10/28 temporary code used ONLY in 2015
+                            {
+                                var userInfo = CamperAppl.getCamperInfo(FJCID);
+                                var code = userInfo.SpecialCode;
+                                if (code == "AA2015ATL159" || code == "AA2015ATL357" || code == "AA2015ATL963" || code == "AA2015ATL784" || code == "AA2015ATL658" || code == "AA2015ATL224")
+                                    Amount = 1000;
+                            }                            
                         }
                     }
                     else if (q1a == "19")

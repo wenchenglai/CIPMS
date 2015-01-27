@@ -228,13 +228,13 @@ public partial class Step2_Chi_3 : Page
                         Session["STATUS"] = iStatus;
 
 
-                    General objGen = new General();
-                    int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
-                    if (ZipCodeCount == 0)
-                    {
-                        iStatus = 3;
-                        Session["STATUS"] = "3";
-                    }
+                    //General objGen = new General();
+                    //int ZipCodeCount = objGen.ValidateNYZipCode(Session["ZIPCODE"].ToString());
+                    //if (ZipCodeCount == 0)
+                    //{
+                    //    iStatus = 3;
+                    //    Session["STATUS"] = "3";
+                    //}
 
                     if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
                     {

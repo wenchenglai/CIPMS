@@ -44,6 +44,21 @@
 			</td>
         </tr>    
     </table>
+    
+    <table id="tblDisable" runat="server" visible="false" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
+            </td>
+        </tr>
+        <tr>
+           <td>
+               <p>
+                   For further information on how to apply for the Ramah Outdoor Adventure One Happy Camper program, please contact the professional listed at the bottom of the screen.
+               </p>
+           </td> 
+        </tr>
+    </table>     
 
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
