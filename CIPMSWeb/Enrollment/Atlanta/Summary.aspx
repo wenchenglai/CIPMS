@@ -56,7 +56,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+						For further information on how to apply for the Jewish Federation of Greater Atlanta One Happy Camper program, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

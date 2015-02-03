@@ -61,6 +61,37 @@
                 </div>
                 </td>
             </tr>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>5</td>
+                <td valign="top">
+                    Are you a member of any of the following? Membership not required for this grant. (Check all that apply)
+                    <div ID="pnlSynagogue" class="questionrows" runat="server">
+                        <div class="column1" style="float:left; width: 100px;">
+                            <input type="checkbox" value="1" runat="server" id="chkSynagogue" onclick="SJValidator.OnSynagogueCheckboxChange(this);" />&nbsp;Synagogue
+                        </div> 
+                        <div class="column1" style="float:left; width: 200px;">
+                            <asp:DropDownList ID="ddlSynagogue" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnSynagogueDropDownChange(this);" />
+                        </div> 
+                        <div class="column1" style="float:left; width: 250px;">
+                            If "Other": <asp:TextBox ID="txtOtherSynagogue" runat="server" MaxLength="200" Width="160px" CssClass="txtbox" />
+                        </div> 
+                    </div>
+                    <div id="pnlJCC" class="questionrows" runat="server" Width="100%">
+                        <div class="column1" style="float:left; width: 100px;">
+                            <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="SJValidator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
+                        </div>
+                        <div ID="divDDLJCC" class="column1" style="float:left; width: 200px;" runat="server">
+                            <asp:DropDownList ID="ddlJCC" runat="server" CssClass="dropdown" Width="180px" onChange="SJValidator.OnJCCDropDownChange(this);" />
+                        </div>
+                        <div ID="divOtherJCC" class="column1" style="float:left; width: 250px;" runat="server">
+                            <asp:TextBox ID="txtOtherJCC" runat="server" MaxLength="200" CssClass="txtbox" Width="160px" />
+                        </div>
+                    </div>
+                    <div class="questionrows">
+                        <input type="checkbox" value="2" runat="server" id="chkNo" onclick="SJValidator.OnOtherChekboxChange(this);" />&nbsp;None of the Above
+                    </div>
+                </td>
+            </tr>
             <!-- Admin Panel-->
             <tr>
                 <td colspan="2" align="center">
@@ -108,5 +139,8 @@
     <asp:HiddenField ID="hdnQ4Id" runat="server" Value="6" />
     <asp:HiddenField ID="hdnQ5Id" runat="server" Value="7" />
     <asp:HiddenField ID="hdnQ6Id" runat="server" Value="8" />
+    <asp:HiddenField ID="hdnQ25Id" runat="server" Value="30" />
+    <asp:HiddenField ID="hdnQ26Id" runat="server" Value="31" /> 
+    <asp:HiddenField ID="hdnQ2Id" runat="server" Value="1002" /> 
 </asp:Content>
 

@@ -238,7 +238,7 @@ namespace CIPMSBC.Eligibility
                             q1 = "no";
                         }
                     }
-                    if (qID == 10) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
+                    if (qID == 10)
                     {
                         if (dr["Answer"].Equals(DBNull.Value))
                             continue;
@@ -316,6 +316,17 @@ namespace CIPMSBC.Eligibility
                 {
                     Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
                 }
+
+                // 2015-01-27  Kibbutz Max Straus and Gesher at Kibbutz Max Straus must be 250 no matter what
+                // a candidate for global grant rule
+			    if (Amount > 0)
+			    {
+                    string last3Digits = campID.Substring(campID.Length - 3);
+			        if (last3Digits == "211" || last3Digits == "218")
+			        {
+			            Amount = 250;
+			        }
+			    }
 
 				if (Amount <= 0)
                     StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);

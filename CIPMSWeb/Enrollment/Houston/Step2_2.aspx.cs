@@ -3,6 +3,7 @@ using System.Data;
 using System.Configuration;
 using System.Web.UI.WebControls;
 using CIPMSBC;
+using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
 using System.Web;
 
@@ -22,24 +23,6 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
 
-    void btnReturnAdmin_Click(object sender, EventArgs e)
-    {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                ProcessCamperAnswers();
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -50,12 +33,32 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
             {
                 //to fill the grades in the dropdown
                 getGrades();
+                getSynagogues();
+                getJCCList(Master.CampYear);
                 //to get the FJCID which is stored in session
                 if (Session["FJCID"] != null)
                 {
                     hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
                     PopulateAnswers();
                 }
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
+    void btnReturnAdmin_Click(object sender, EventArgs e)
+    {
+        string strRedirURL;
+        try
+        {
+            if (Page.IsValid)
+            {
+                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+                ProcessCamperAnswers();
+                Response.Redirect(strRedirURL);
             }
         }
         catch (Exception ex)
@@ -171,6 +174,35 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         }
     }
 
+    private void getSynagogues()
+    {
+        DataSet dsSynagogue;
+        DataView dvSynagogue = new DataView();
+        int FedID;
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
+        dsSynagogue = objGeneral.GetSynagogueListByFederation(FedID, Master.CampYear);
+
+        ddlSynagogue.DataSource = dsSynagogue.Tables[0];
+        ddlSynagogue.DataTextField = "Name";
+        ddlSynagogue.DataValueField = "ID";
+        ddlSynagogue.DataBind();
+        ddlSynagogue.Items.Insert(0, new ListItem("-- Select --", "0"));
+        ListItem otherListItem = new ListItem();
+        foreach (ListItem item in ddlSynagogue.Items)
+        {
+            item.Attributes.Add("title", item.Text);
+            if (item.Text.ToLower().Contains("other (please specify)") && ddlSynagogue.Items.IndexOf(item) < ddlSynagogue.Items.Count)
+            {
+                otherListItem = item;
+            }
+        }
+        if (otherListItem != null && otherListItem.Text != string.Empty)
+        {
+            ddlSynagogue.Items.Remove(otherListItem);
+            ddlSynagogue.Items.Insert(ddlSynagogue.Items.Count, otherListItem);
+        }
+    }
+
     private void ProcessCamperAnswers()
     {
         string strFJCID;
@@ -234,9 +266,51 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
 
+    private void getJCCList(string CampYear)
+    {
+        DataSet dsJCC;
+        DataView dvJCC = new DataView();
+        int FedID;
+        FedID = Convert.ToInt32(Session["FedId"].ToString());
+        dsJCC = objGeneral.GetJCCListByFederation(FedID, CampYear);
+        if (dsJCC.Tables[0].Rows.Count > 0)
+        {
+
+            ddlJCC.DataSource = dsJCC.Tables[0];
+            ddlJCC.DataTextField = "Name";
+            ddlJCC.DataValueField = "ID";
+            ddlJCC.DataBind();
+            ddlJCC.Items.Insert(0, new ListItem("-- Select --", "0"));
+            ddlJCC.SelectedValue = "0";
+            ListItem otherListItem = new ListItem();
+            foreach (ListItem item in ddlJCC.Items)
+            {
+                item.Attributes.Add("title", item.Text);
+                if (item.Text.ToLower().Contains("other (please specify)") && ddlJCC.Items.IndexOf(item) < ddlJCC.Items.Count)
+                {
+                    otherListItem = item;
+                }
+            }
+            if (otherListItem != null && otherListItem.Text != string.Empty)
+            {
+                ddlJCC.Items.Remove(otherListItem);
+                ddlJCC.Items.Insert(ddlJCC.Items.Count, otherListItem);
+            }
+            txtOtherJCC.Width = Unit.Pixel(160);
+            txtOtherJCC.Enabled = true;
+        }
+        else
+        {
+            divOtherJCC.Style["width"] = "450px";
+            divDDLJCC.Visible = false;
+            txtOtherJCC.Width = Unit.Pixel(240); ;
+            txtOtherJCC.Enabled = true;
+        }
+    }
+
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,1063");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1063");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -277,6 +351,59 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
                     txtSchoolName.Text = dr["Answer"].ToString();
+                }
+            }
+            if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                SynagogueJCCOther value = (SynagogueJCCOther)Convert.ToInt32(dr["OptionID"]);
+                switch (value)
+                {
+                    case SynagogueJCCOther.Synagogue:
+                        chkSynagogue.Checked = true;
+                        break;
+
+                    case SynagogueJCCOther.JCC:
+                        chkJCC.Checked = true;
+                        break;
+
+                    case SynagogueJCCOther.Other:
+                        chkNo.Checked = true;
+                        break;
+
+                    default:
+                        chkNo.Checked = false;
+                        break;
+                }
+            }
+            else if (qID == QuestionId.Q31_SelectYourSynagogueOrJCC) // Please select your synagogue or JCC
+            {
+                if (dr["OptionID"].Equals(DBNull.Value) || dr["Answer"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                {
+                    chkSynagogue.Checked = true;
+                    ddlSynagogue.SelectedValue = dr["Answer"].ToString();
+                    if (ddlSynagogue.SelectedItem.Text != "Other (please specify)")
+                        txtOtherSynagogue.Enabled = false;
+                }
+                else if (dr["OptionID"].ToString() == "2")
+                {
+                    txtOtherSynagogue.Text = dr["Answer"].ToString();
+                }
+                else if (dr["OptionID"].ToString().Equals("3"))
+                {
+                    chkJCC.Checked = true;
+                    ddlJCC.SelectedValue = dr["Answer"].ToString();
+                    if (ddlJCC.SelectedItem.Text != "Other (please specify)")
+                        ddlJCC.Enabled = false;
+                }
+                else if (dr["OptionID"].ToString().Equals("4"))
+                {
+                    txtOtherJCC.Text = dr["Answer"].ToString();
                 }
             }
             else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
@@ -327,6 +454,74 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         strQId = ((int)QuestionId.SchoolName).ToString();
         strTablevalues += strQId + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
 
+        // 2012-09-13 Synagogue/JCC question
+        if (chkNo.Checked)
+        {
+            strQId = hdnQ25Id.Value;
+            strTablevalues += strQId + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
+            strQId = hdnQ26Id.Value;
+            strTablevalues += strQId + strFSeparator + "" + strFSeparator + "" + strQSeparator;
+        }
+        else
+        {
+            if (chkSynagogue.Checked)
+            {
+                strQId = hdnQ25Id.Value;
+                strTablevalues += strQId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
+            }
+
+            if (chkJCC.Checked)
+            {
+                strQId = hdnQ25Id.Value;
+                strTablevalues += strQId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
+            }
+
+            //This redundant condition is used to insert records in questionid sequence
+            strQId = hdnQ26Id.Value;
+            if (chkSynagogue.Checked)
+            {
+                if (ddlSynagogue.SelectedValue != "0")
+                {
+                    strTablevalues += strQId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
+                    if (txtOtherSynagogue.Text.Trim() != String.Empty)
+                        strTablevalues += strQId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+                    if (txtOtherSynagogue.Text.Trim() != String.Empty)
+                    {
+                        strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+                    }
+                    else
+                    {
+                        strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + ddlSynagogue.SelectedItem.Text + strQSeparator;
+                    }
+                }
+            }
+            else
+            {
+                strTablevalues += strQId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
+                strTablevalues += strQId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
+            }
+
+            if (chkJCC.Checked)
+            {
+                if (ddlJCC.Items.Count > 0)
+                {
+                    if (ddlJCC.SelectedValue != "0")
+                    {
+                        strTablevalues += strQId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
+                        if (txtOtherJCC.Text.Trim() != String.Empty)
+                            strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+                    }
+                }
+                else
+                    strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
+            }
+            else
+            {
+                strTablevalues += strQId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
+                strTablevalues += strQId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
+            }
+        }
+
         //to remove the extra character at the end of the string, if any
         char[] chartoRemove = { Convert.ToChar(strQSeparator) };
         strTablevalues = strTablevalues.TrimEnd(chartoRemove);
@@ -354,6 +549,4 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-
-
 }
