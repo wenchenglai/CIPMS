@@ -50,8 +50,7 @@
             <td>                  
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p>
-						The Jewish Federation of Greater Middlesex County One Happy Camper Program is closed for Summer 2012. Have a happy camp season.<br /><br />
-						Please click “Next” to see if you are eligible for a different One Happy Camper program.
+						The Jewish Federation of Greater Middlesex County One Happy Camper program is now closed for the summer of 2015.
                     </p>
                 </asp:Label>
             </td>

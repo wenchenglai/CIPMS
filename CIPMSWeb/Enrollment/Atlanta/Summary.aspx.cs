@@ -32,6 +32,7 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
 				btnSaveandExit.Visible = false;
+			    btnNext.Visible = false;
 
 				if (Session["SpecialCodeValue"] != null)
 				{
@@ -42,6 +43,8 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
+                        btnSaveandExit.Visible = true;
+                        btnNext.Visible = true;
                     }
 				}
 			}
@@ -50,6 +53,7 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
 				tblDisable.Visible = false;
 				tblRegular.Visible = true;
 				btnSaveandExit.Visible = true;
+                btnNext.Visible = true;
 			}
 		}
     }

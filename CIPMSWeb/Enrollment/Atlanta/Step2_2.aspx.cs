@@ -277,8 +277,8 @@ public partial class HartfordPage2 : System.Web.UI.Page
 			CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
 		}
 		
-		CamperAppl = new CamperApplication();
-		CamperAppl.UpdateTimeInCampInApplication(strFJCID);
+        //CamperAppl = new CamperApplication();
+        //CamperAppl.UpdateTimeInCampInApplication(strFJCID);
 	}
 
 	void PopulateAnswers()

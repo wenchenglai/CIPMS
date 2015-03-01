@@ -173,7 +173,7 @@ public partial class Step2_Adamah_3 : Page
             else //if he/she is eligible
             {
                 Session["FJCID"] = hdnFJCIDStep2_3.Value;
-                       
+                CamperAppl.UpdateTimeInCampInApplication(strFJCID);                       
                 Response.Redirect("../Step2_1.aspx");
             }
         }

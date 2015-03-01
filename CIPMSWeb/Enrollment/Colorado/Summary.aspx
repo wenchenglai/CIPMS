@@ -51,7 +51,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						For further information on how to apply for the Colorado One Happy Camper program, please contact the professional listed at the bottom of the screen.
+						The Jewish Community Foundation of Colorado One Happy Camper program is now closed for the summer of 2015.
 						<br /><br />
 						
 					</p>

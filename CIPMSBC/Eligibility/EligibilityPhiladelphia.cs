@@ -182,6 +182,8 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
+            // 2014-10-27 Temporary exception code for 2015 ONLY.  Delete it after 2015
+            // Philadelphia allows 2nd time camper ONLY if they have special codes.  It's handled in [fnGetGrantAmount]
             daysInCamp = DaysInCamp(FJCID);
             if (daysInCamp > 0)
             {

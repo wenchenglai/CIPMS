@@ -291,7 +291,9 @@ namespace CIPMSBC.Eligibility
                         else
                         {
                             if (daysInCamp >= 19)
+                            {
                                 Amount = 1000;
+                            }
                             else if (daysInCamp == 18 && campID == "6147") // 2015/10/28 temporary code used ONLY in 2015
                             {
                                 var userInfo = CamperAppl.getCamperInfo(FJCID);

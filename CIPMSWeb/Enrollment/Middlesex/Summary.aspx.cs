@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -16,31 +17,32 @@ public partial class Enrollment_Middlesex_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			// 2012-04-01 Two possible scenarios - either the regular summary page, or then camp is full, show the close message
-			const string FED_ID = "2";
-			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+            int FedID = Convert.ToInt32(FederationEnum.Middlesex);
+            string FED_ID = FedID.ToString();
+            bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
-			if (isDisabled)
-			{
-				tblDisable.Visible = true;
-				tblRegular.Visible = false;
-				btnSaveandExit.Visible = false;
-			}
-			else
-			{
-				tblDisable.Visible = false;
-				tblRegular.Visible = true;
-				btnSaveandExit.Visible = true;
-			}
+            if (isDisabled)
+            {
+                tblDisable.Visible = true;
+                tblRegular.Visible = false;
+
+                if (Session["SpecialCodeValue"] != null)
+                {
+                    string currentCode = Session["SpecialCodeValue"].ToString();
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+
+                    if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
+                    {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                    }
+                }
+            }
+            else
+            {
+                tblDisable.Visible = false;
+                tblRegular.Visible = true;
+            }
 		}
     }
 
@@ -58,23 +60,6 @@ public partial class Enrollment_Middlesex_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-		if (btnSaveandExit.Visible)
-			Response.Redirect("Step2_2.aspx");
-		else
-		{
-			// camp is closed
-			// Check if PJ code is used.  If not, we go to the last option NL.
-			if (Session["codeValue"] != null)
-			{
-				if (Session["codeValue"].ToString() == "1")
-				{
-					CamperApplication CamperAppl = new CamperApplication();
-					Session["FedId"] = ConfigurationManager.AppSettings["PJL"].ToString();
-					CamperAppl.UpdateFederationId(Session["FJCID"].ToString(), "63");
-					Response.Redirect("../PJL/Summary.aspx");
-				}
-			}
-			Response.Redirect("../Step1_NL.aspx");
-		}
+        Response.Redirect(tblRegular.Visible ? "Step2_2.aspx" : "../Step1_NL.aspx");
     }
 }

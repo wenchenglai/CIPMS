@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img src="logo.jpg" />
@@ -38,6 +38,16 @@
             </td>
         </tr>
     </table>
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" class="infotext3" cellspacing="0">
+        <tr>
+            <td>
+                <img src="logo.jpg" />
+            </td>
+            <td>
+                The Jewish Federation of Madison  One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
+			</td>
+        </tr>
+    </table> 
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>

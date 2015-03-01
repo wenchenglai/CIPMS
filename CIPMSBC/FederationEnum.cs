@@ -95,6 +95,7 @@ namespace CIPMSBC
 		RamahBerkshires = 115,
 		RamahCanada = 117,
 		RamahOutdoorAdventure = 119,
+        Madison = 121,
 		HabonimMoshava = 124
 		//if you are adding new federation enter a value in FedFolderName, FedDaySchoolEligibility & FedGradeEligibility 
 		//enums too FedFolderName with the folder name created for the federation, FedDaySchoolEligibility (JewishDaySchool) and FedGradeEligibility (eligible Grade) in the description attribute
