@@ -1,5 +1,5 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Admah_Summary" %>
-
+<%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
 	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>

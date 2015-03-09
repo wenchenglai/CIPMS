@@ -23,21 +23,21 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			int FedID = Convert.ToInt32(FederationEnum.Atlanta);
-			string FED_ID = FedID.ToString();
+            int FedID = Convert.ToInt32(FederationEnum.Atlanta);
+            string FED_ID = FedID.ToString();
             bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
-			if (isDisabled)
-			{
-				tblDisable.Visible = true;
-				tblRegular.Visible = false;
-				btnSaveandExit.Visible = false;
-			    btnNext.Visible = false;
+            if (isDisabled && Session["UsrID"] == null)
+            {
+                tblDisable.Visible = true;
+                tblRegular.Visible = false;
+                btnSaveandExit.Visible = false;
+                btnNext.Visible = false;
 
-				if (Session["SpecialCodeValue"] != null)
-				{
-					string currentCode = Session["SpecialCodeValue"].ToString();
-					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+                if (Session["SpecialCodeValue"] != null)
+                {
+                    string currentCode = Session["SpecialCodeValue"].ToString();
+                    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
                     if (SpecialCodeManager.GetAvailableCodes(CampYearID, FedID).Any(x => x == currentCode))
                     {
@@ -46,15 +46,15 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
                         btnSaveandExit.Visible = true;
                         btnNext.Visible = true;
                     }
-				}
-			}
-			else
-			{
-				tblDisable.Visible = false;
-				tblRegular.Visible = true;
-				btnSaveandExit.Visible = true;
+                }
+            }
+            else
+            {
+                tblDisable.Visible = false;
+                tblRegular.Visible = true;
+                btnSaveandExit.Visible = true;
                 btnNext.Visible = true;
-			}
+            }		        
 		}
     }
 
