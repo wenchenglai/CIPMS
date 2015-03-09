@@ -42,10 +42,12 @@ public partial class AdminMenu : System.Web.UI.UserControl
 			if ( localIP != prodIP )
 			{
                 hylCIPRS.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/Default.aspx", localIP);
+                hylSelfFunding.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/PaymentProcessing.aspx", localIP);
 			}
 			else
 			{
 				hylCIPRS.NavigateUrl = "https://www.onehappycamper.org/CIPRS/Default.aspx";
+                hylSelfFunding.NavigateUrl = "https://www.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
 			}
 
             var oCam = new CamperApplication();
