@@ -75,11 +75,11 @@
                     </td>
                     <td>
                         <div id="divCheckRequest" runat="server">
-                            <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment processing" CausesValidation="false"
+                            <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment - FJC" CausesValidation="false"
                                 OnClick="lnkPayment_Click" />
                         </div>
                         <div id="disSelfFunding" runat="server">
-                            <asp:HyperLink ID="hylSelfFunding" runat="server" Text="Run Payments - Self Funding Partners Only" Target="_blank"></asp:HyperLink>
+                            <asp:HyperLink ID="hylSelfFunding" runat="server" Text="Payment - Self Funding" Target="_blank"></asp:HyperLink>
                         </div>
                     </td>
                 </tr>
