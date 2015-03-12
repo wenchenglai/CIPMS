@@ -13,7 +13,7 @@ public partial class Enrollment_Columbus_Summary : System.Web.UI.Page
 			string FED_ID = FedID.ToString();
 		    bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 
-		    if (isDisabled)
+            if (isDisabled && Session["UsrID"] == null)
 			{
 				tblDisable.Visible = true;
 				tblRegular.Visible = false;
