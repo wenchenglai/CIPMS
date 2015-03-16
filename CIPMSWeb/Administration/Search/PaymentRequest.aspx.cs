@@ -32,7 +32,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
     private void PopulateFederations()
     {
         _objGen = new General();
-        DataSet dsFed = _objGen.get_AllFederations();
+        DataSet dsFed = _objGen.get_AllFederationsFJCFunding();
 
 
         //var results = from myRow in dsFed.Tables[0].AsEnumerable()
