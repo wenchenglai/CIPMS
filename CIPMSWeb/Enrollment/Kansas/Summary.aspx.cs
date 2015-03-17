@@ -17,49 +17,49 @@ public partial class Enrollment_Columbus_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			// 2013-02-13 Two possible scenarios - either the regular summary page, or then camp is full, show the close message
-			int FedID = Convert.ToInt32(FederationEnum.Kansas);
-			string FED_ID = FedID.ToString();
-			bool isDisabled = false;
-			string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
-			for (int i = 0; i < FedIDs.Length; i++)
-			{
-				if (FedIDs[i] == FED_ID)
-				{
-					isDisabled = true;
-					break;
-				}
-			}
+            //// 2013-02-13 Two possible scenarios - either the regular summary page, or then camp is full, show the close message
+            //int FedID = Convert.ToInt32(FederationEnum.Kansas);
+            //string FED_ID = FedID.ToString();
+            //bool isDisabled = false;
+            //string[] FedIDs = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',');
+            //for (int i = 0; i < FedIDs.Length; i++)
+            //{
+            //    if (FedIDs[i] == FED_ID)
+            //    {
+            //        isDisabled = true;
+            //        break;
+            //    }
+            //}
 
-			if (isDisabled)
-			{
-				tblDisable.Visible = true;
-				tblRegular.Visible = false;
+            //if (isDisabled)
+            //{
+            //    tblDisable.Visible = true;
+            //    tblRegular.Visible = false;
 
-				if (Session["SpecialCodeValue"] != null)
-				{
-					string currentCode = Session["SpecialCodeValue"].ToString();
-					int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+            //    if (Session["SpecialCodeValue"] != null)
+            //    {
+            //        string currentCode = Session["SpecialCodeValue"].ToString();
+            //        int CampYearID = Convert.ToInt32(Application["CampYearID"]);
 
-					List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
+            //        List<string> specialCodes = SpecialCodeManager.GetAvailableCodes(CampYearID, FedID);
 
-					// when moved to .NET 3.5 or above, remember to use lamda expression
-					foreach (string code in specialCodes)
-					{
-						if (code == currentCode)
-						{
-							tblDisable.Visible = false;
-							tblRegular.Visible = true;
-							break;
-						}
-					}
-				}
-			}
-			else
-			{
-				tblDisable.Visible = false;
-				tblRegular.Visible = true;
-			}
+            //        // when moved to .NET 3.5 or above, remember to use lamda expression
+            //        foreach (string code in specialCodes)
+            //        {
+            //            if (code == currentCode)
+            //            {
+            //                tblDisable.Visible = false;
+            //                tblRegular.Visible = true;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    tblDisable.Visible = false;
+            //    tblRegular.Visible = true;
+            //}
 		}
     }
 
@@ -77,9 +77,10 @@ public partial class Enrollment_Columbus_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-		if (tblDisable.Visible)
-			Response.Redirect("../Step1_NL.aspx");
-		else
-			Response.Redirect("Step2_2.aspx");
+        Response.Redirect("../Step1_NL.aspx");
+        //if (tblDisable.Visible)
+        //    Response.Redirect("../Step1_NL.aspx");
+        //else
+        //    Response.Redirect("Step2_2.aspx");
     }
 }

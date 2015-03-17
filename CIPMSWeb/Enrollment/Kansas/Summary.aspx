@@ -1,10 +1,10 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Columbus_Summary" %>
 
 <asp:Content ID="Columbus_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" Visible="false">
         <tr>
             <td>
-                <img id="logo" src="../../images/Kansas City_logo.jpg" width="270" /></td>
+                <img id="logo" src="logo.jpg" width="270" /></td>
             <td>
                 <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
                     <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
@@ -58,10 +58,10 @@
             </td>
         </tr>
     </table>
-    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" Visible="false">
         <tr>
             <td>
-                <img id="Img1" src="../../images/Kansas City_logo.jpg" width="270" /></td>
+                <img id="Img1" src="logo.jpg" width="270" /></td>
             <td>
 
 			</td>
@@ -78,6 +78,31 @@
 			</td>
         </tr>
     </table>    
+    <table id="Table1" runat="server" width="100%" cellpadding="5" cellspacing="0">
+        <tr>
+            <td>
+                <img id="Img1" src="logo.jpg" width="270" />
+            </td>
+        </tr>
+        <tr>
+			<td>
+				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
+					<p style="text-align:justify">
+						The Jewish Federation of Greater Kansas, through its Rabbi Gershon Hadas Guardian Society camp/Israel scholarship program, provides grants to encourage children to attend overnight Jewish camp.				
+					</p>   
+					<p style="text-align:justify">
+						The First Time Campers Fund is not a scholarship and is not need-based. The "grant" is a gift of $1,000 from the Jewish Federation of Greater Kansas City to encourage attendance at a Jewish summer residential camp.			
+					</p>   
+					<p style="text-align:justify">
+						To learn more about the Jewish Federation's First Time Campers fund contact Alyssa Dinberg at (913) 327-8019 or alyssad@jewishkc.org.			
+					</p>   
+					<p style="text-align:justify; color:red;">
+					    Please contact the Federation before pressing the next button.			
+					</p>                                                                        
+				</asp:Label>
+			</td>
+        </tr>
+    </table>   
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
