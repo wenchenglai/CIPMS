@@ -69,7 +69,7 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
             }
             else
             {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Milwaukee);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Greensboro);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
                 if (result.SchoolType == StatusInfo.PendingPJLottery)
