@@ -9,7 +9,17 @@
     </tr>
     <tr>
       <td>
-
+          <h3>
+              Important To- Do
+          </h3>
+          <p>
+              Payment Processing will begin at the end of March. Only campers who are in the status of “Campership Approved; Payment Pending” can be processed through payment. 
+              If you haven’t done so already, please move campers along in the approval process from the status of 
+              “Eligible” or “Eligible by Staff” to “Campership Approved; Payment Pending”.
+          </p>
+          <p>
+              If you have any question please call Staci at 646-278-4572
+          </p>
       </td>
     </tr>
     <tr>

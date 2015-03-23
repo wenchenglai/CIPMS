@@ -43,6 +43,19 @@
 			</td>
         </tr>    
     </table>
+    
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />    
+            </td>
+            <td>
+                <p>
+                    The Camp Ramah in the Berkshire’s One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
+                </p>
+			</td>
+        </tr>
+    </table>   
 
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
