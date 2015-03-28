@@ -129,11 +129,11 @@
                         <asp:ListItem Text="Raquel Estrade" Value="23"></asp:ListItem>
 						<asp:ListItem Text="Larry Katz" Value="6"></asp:ListItem>							
 						<asp:ListItem Text="Beth Koritz" Value="8"></asp:ListItem>													
+						<asp:ListItem Text="Melissa Levine" Value="29"></asp:ListItem>
 						<asp:ListItem Text="Tracy Levine" Value="10"></asp:ListItem>
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>	
 						<asp:ListItem Text="Nina Patchak" Value="12"></asp:ListItem>	
-						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>	
-						<asp:ListItem Text="Nancy Perlman" Value="14"></asp:ListItem>	
+						<asp:ListItem Text="Lisa Pavlovsky" Value="13"></asp:ListItem>		
 						<asp:ListItem Text="Ricci Postan" Value="24"></asp:ListItem>                                                																		
 						<asp:ListItem Text="Alyssa Russell" Value="15"></asp:ListItem>
                         <asp:ListItem Text="Harriet Schiftan" Value="25"></asp:ListItem>
