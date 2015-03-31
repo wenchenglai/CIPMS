@@ -86,9 +86,7 @@
             <td>
                 <asp:Label ID="Label4" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						The  Combined Jewish Philanthropies of Greater Boston One Happy Camper program is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.
-						<br /><br />
-						Click “NEXT” to see if your camp is sponsoring its own One Happy Camper program.
+						For further information on how to apply for the Combined Jewish Philanthropies of Greater Boston One Happy Camper program, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>
