@@ -33,7 +33,7 @@
                     <td>
                     </td>
                     <td>
-						<asp:HyperLink ID="hylCIPRS" runat="server" Text="OHC Reporting System" Target="_blank"></asp:HyperLink>
+						<asp:HyperLink ID="hylCIPRS" runat="server" Text="Reports" Target="_blank"></asp:HyperLink>
                 </tr>
                 <tr>
                     <td>
@@ -75,8 +75,11 @@
                     </td>
                     <td>
                         <div id="divCheckRequest" runat="server">
-                            <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment processing" CausesValidation="false"
+                            <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment - FJC" CausesValidation="false"
                                 OnClick="lnkPayment_Click" />
+                        </div>
+                        <div id="disSelfFunding" runat="server">
+                            <asp:HyperLink ID="hylSelfFunding" runat="server" Text="Payment - Self Funding" Target="_blank"></asp:HyperLink>
                         </div>
                     </td>
                 </tr>

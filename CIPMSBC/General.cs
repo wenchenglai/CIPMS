@@ -19,7 +19,31 @@ namespace CIPMSBC
             try
             {
                 DataSet dsFederations;
-                dsFederations = dal.getDataset("usp_GetAllFederations", null);
+                var param = new SqlParameter[1];
+                param[0] = new SqlParameter("@Action", "All");
+                dsFederations = dal.getDataset("usp_GetAllFederations", param);
+                return dsFederations;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                dal = null;
+            }
+        }
+
+        public DataSet get_AllFederationsFJCFunding()
+        {
+            CIPDataAccess dal = new CIPDataAccess();
+
+            try
+            {
+                DataSet dsFederations;
+                var param = new SqlParameter[1];
+                param[0] = new SqlParameter("@Action", "FJCFunding");
+                dsFederations = dal.getDataset("usp_GetAllFederations", param);
                 return dsFederations;
             }
             catch (Exception ex)
