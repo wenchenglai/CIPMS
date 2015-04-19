@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -191,6 +186,27 @@ public partial class Step2_Chi_3 : Page
                 strModifiedBy = Master.UserId;
                 if (!isReadOnly)
                 {
+                    DateTime startDate, endDate;
+                    try
+                    {
+                        startDate = Convert.ToDateTime(txtStartDate.Text);
+                        endDate = Convert.ToDateTime(txtEndDate.Text);
+                    }
+                    catch (Exception)
+                    {
+                        lblMsg.Text = "Error: The dates are wrong format.";
+                        return;
+                    }
+
+                    if (startDate > endDate)
+                    {
+                        lblMsg.Text = "Error: Start date must be earlier than end date.";
+                        return;
+                    }
+
+                    txtStartDate.Text = startDate.ToShortDateString();
+                    txtEndDate.Text = endDate.ToShortDateString();
+
                     InsertCamperAnswers();
                 }
                 iCampId = Convert.ToInt16(ddlCamp.SelectedValue);

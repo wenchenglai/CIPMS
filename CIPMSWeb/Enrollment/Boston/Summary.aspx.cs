@@ -19,9 +19,9 @@ public partial class Enrollment_Boston_Summary : System.Web.UI.Page
                 tblDisable.Visible = true;
                 tblRegular.Visible = false;
 
-                if (Session["UsedCode"] != null)
+                if (Session["SpecialCodeValue"] != null)
                 {
-                    var currentCode = Session["UsedCode"].ToString();
+                    var currentCode = Session["SpecialCodeValue"].ToString();
                     var campYearId = Convert.ToInt32(Application["CampYearID"]);
 
                     if (SpecialCodeManager.GetAvailableCodes(campYearId, FedID).Any(x => x == currentCode))

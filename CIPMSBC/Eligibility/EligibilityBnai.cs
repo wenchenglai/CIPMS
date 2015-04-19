@@ -86,10 +86,11 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2015")
-                            StatusValue = (int)StatusInfo.SystemInEligible;
-                        else
-                            StatusValue = (int)StatusInfo.SystemInEligible;
+                        //if (specialCode == "PJGTC2015")
+                        //    StatusValue = (int)StatusInfo.SystemInEligible;
+                        //else
+                        //    StatusValue = (int)StatusInfo.SystemInEligible;
+                        StatusValue = (int)StatusInfo.SystemEligible;
                     }
                     else
                     {

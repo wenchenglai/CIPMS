@@ -240,6 +240,27 @@ public partial class Step2_PJL_3 : Page
 
     protected void InsertCamperAnswers()
     {
+        DateTime startDate, endDate;
+        try
+        {
+            startDate = Convert.ToDateTime(txtStartDate.Text);
+            endDate = Convert.ToDateTime(txtEndDate.Text);
+        }
+        catch (Exception)
+        {
+            lblMsg.Text = "Error: The dates are wrong format.";
+            return;
+        }
+
+        if (startDate > endDate)
+        {
+            lblMsg.Text = "Error: Start date must be earlier than end date.";
+            return;
+        }
+
+        txtStartDate.Text = startDate.ToShortDateString();
+        txtEndDate.Text = endDate.ToShortDateString();
+
         string strFJCID, strComments;
         int RowsAffected;
         string strModifiedBy, strCamperAnswers;

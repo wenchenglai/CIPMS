@@ -138,6 +138,11 @@
                 </table>
             </td>
         </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Label runat="server" ID="lblMsg" CssClass="QuestionText" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>
         </tbody>
     </table>
 

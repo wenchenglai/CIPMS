@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -133,6 +128,14 @@ public partial class Step2_Adamah_3 : Page
         bool isReadOnly = objGeneral.IsApplicationReadOnly(strFJCID, Master.CamperUserId);
         if (!isReadOnly)
         {
+            var startDate = Convert.ToDateTime(txtStartDate.Text);
+            var endDate = Convert.ToDateTime(txtEndDate.Text);
+
+            if (startDate > endDate)
+            {
+                lblMsg.Text = "Error: Start date must be earlier than end date.";
+                return;
+            }
             InsertCamperAnswers();
         }
 

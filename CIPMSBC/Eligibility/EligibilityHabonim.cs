@@ -197,28 +197,6 @@ namespace CIPMSBC.Eligibility
                 Amount = 0;
             }
 
-            string strCampID = CampID.ToString();
-            string last3digits = strCampID.Substring(strCampID.Length - 3);
-            if (Amount > 0 && (last3digits == "095" || last3digits == "029" || last3digits == "060"))
-            {
-                double OriginalAmount = Amount;
-                // 2013-07-23 Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days
-                // of camping, the amount is only 500.
-                Amount = 500;
-                DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
-                if (dsSchoolOption.Tables[0].Rows.Count > 0)
-                {
-                    DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
-                    if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
-                    {
-                        if ("2" == drSchoolOption["OptionID"].ToString())
-                        {
-                            Amount = OriginalAmount;
-                        }
-                    }
-                }
-            }
-
             oCA.UpdateAmount(FJCID, Amount, 0, "");
             return true;
         }

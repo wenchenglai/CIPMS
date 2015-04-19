@@ -138,7 +138,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
                 strHTMLContent.Append("<tr ><td ><b>Second Time Camper Definition : </b></td><td ><span style='color: Red;'>Eligible as long as applicant received a grant through the Jewish Federation of Greater Philadelphia One Happy Camper Program for the first time last year.</span></td></tr>");
             }
 
-            strHTMLContent.Append("<tr ><td ><b>Minimum Length of Stay at Camp to be Eligible:</b></td><td><span style='color: Red;'>At least ____ consecutive days.</span><br /><br /><span style='color: Red;'>At least ____ consecutive days if attended camp for 12-18 days in summer 2014 and was therefore ineligible for the grant.</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Minimum Length of Stay at Camp to be Eligible:</b></td><td><span style='color: Red;'>At least ____ consecutive days.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;First-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;Second-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Eligible Camps:</b></td><td><span style='color: Red;'>All camps FJC supports as listed on <a href='http://www.OneHappyCamper.org/FindaCamp'>http://www.OneHappyCamper.org/FindaCamp</a>. See list on accompanying spread sheet.  (Tab = Camps)</span></td></tr>");
@@ -155,7 +155,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             //    strHTMLContent.Append("<tr width='100%'><td>" + dsDocData.Tables[3].Rows[m][1].ToString() + "</td></tr>");
             //}
 
-            strHTMLContent.Append("<tr ><td ><b>Synagogue/JCC list</b></td><td><span style='color: Red;'>See attached spread sheet in tab 2.  If you have revisions to this list, please submit a new spread sheet with ALL synagogues/JCCs to be listed.<br /><br />Learn more about FJC&#39;s work with engaging synagogues in the camp conversation &#45; contact RebeccaK@JewishCamp.org.</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Synagogue/JCC list</b></td><td><span style='color: Red;'>See attached spread sheet in tab 2.  If you have revisions to this list, please submit a new spread sheet with ALL synagogues/JCCs to be listed.<br /><br /></span></td></tr>");
             strHTMLContent.Append(@"<tr ><td ><b>""How Did You Hear about OHC"" Question</b></td><td><span style='color: Red;'>Would you like to list the professional who manages/administers the program (the parent-face of your OHC program)? Insert name of professional here: _____________ (limit one per program).</span></td></tr>");
 
             strHTMLContent.Append("</table>");
@@ -170,12 +170,13 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
 			strHTMLContent.Append("</table>");
         }
 
-		string header = @"<html><body><h1 align='Center'style='font-family: verdana; font-size:16;color: black'><u>One Happy Camper Program Profile Report</u></h1>
-                        <h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + DateTime.Now.ToShortDateString() + "</h4>";
+	    string header = @"<html><body><h1 align='Center'style='font-family: verdana; font-size:16;color: black'><u>One Happy Camper Program Profile Report</u></h1>
+                        <h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + FederationName;
+        header += "</h4><h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + DateTime.Now.ToShortDateString() + "</h4>";
 
 		string instruction = @"<div><strong>Instructions: <br /><br />The information below (and on the accompanying spread sheet) is how your 
-One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2015 campaign 
-and submit prior to August 4<sup>th</sup>, 2014.  Revisions received prior to Aug 4<sup>th</sup> will be ready to be launched the week of October 20<sup>th</sup>, 2014.
+One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2016 campaign 
+and submit prior to August 3<sup>th</sup>, 2015.  Revisions received prior to Aug 3<sup>th</sup> will be ready to be launched the week of October 19<sup>th</sup>, 2015.
 <br /><br /><ul><li>Please make any edits in <span style='color: Red;'>RED</span></li>
 <li>Submit form to Staci at <a href='mailto:staci@JewishCamp.org'>Staci@JewishCamp.org</a></li></ul><br />
 <u>Please confirm the following:</u></strong><br /><br />Payee Name (e.g. name of agency that checks should be made out to):  ____________________<br /><br />
@@ -246,7 +247,7 @@ the accompanying spread sheet)<br /><br />Name of person submitting these docume
             var gen = new General();
             drDocData["GradeEligibility"] = gen.GetGradeEligibilityRange(iFederationId);
 
-            FedName = ((FedFolderName)iFederationId).ToString();
+            FedName = ((FederationEnum)iFederationId).ToString();
             var fedDaySchoolEligibility = (FedDaySchoolEligibility)iFederationId;
             drDocData["DaySchoolEligibility"] = General.GetEnumDescription(fedDaySchoolEligibility);
 

@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -38,6 +33,7 @@ public partial class Step2_LACIP_3 : Page
         {
             if (Page.IsValid)
             {
+                lblMsg.Text = "";
                 strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
                 InsertCamperAnswers();
                 //Session["FJCID"] = null;
@@ -59,6 +55,7 @@ public partial class Step2_LACIP_3 : Page
         {
             if (Page.IsValid)
             {
+                lblMsg.Text = "";
                 //strRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
                 strRedirURL = Master.SaveandExitURL;
                 if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
@@ -105,6 +102,7 @@ public partial class Step2_LACIP_3 : Page
         {
             if (Page.IsValid)
             {
+                lblMsg.Text = "";
                 if (!objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId))
                 {
                     InsertCamperAnswers();
@@ -122,6 +120,7 @@ public partial class Step2_LACIP_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        lblMsg.Text = "";
         if (ddlCamp.SelectedValue == "-1")
         {
             Response.Redirect("../Step1_NL.aspx");
@@ -129,81 +128,91 @@ public partial class Step2_LACIP_3 : Page
 
         int iStatus, iCampId;
         string strComments, strFJCID, strModifiedBy;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.LACIP);
-        try
+        
+        if (Page.IsValid)
         {
-            if (Page.IsValid)
+            bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+            if (!isReadOnly)
             {
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-                if (!isReadOnly)
+                DateTime startDate, endDate;
+                try
                 {
-                    InsertCamperAnswers();
+                    startDate = Convert.ToDateTime(txtStartDate.Text);
+                    endDate = Convert.ToDateTime(txtEndDate.Text);
                 }
-                if (RadioBtnQ7.Items[1].Selected)
+                catch (Exception)
                 {
-                    lblMsg.Visible = true;
+                    lblMsg.Text = "Error: The dates are wrong format.";
                     return;
                 }
-                else
-                    lblMsg.Visible = false;
-                iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
 
-                //to get the comments (used only by the Admin user);
-                strComments = txtComments.Text.Trim();
-
-                strFJCID = hdnFJCID.Value;
-                strModifiedBy = Master.UserId;
-
-                if (strFJCID != "" & strModifiedBy != "")
+                if (startDate > endDate)
                 {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-                        //to update the camp value to the database (to be used for search functionality)
-                        CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibility(strFJCID, out iStatus);
-                    }
+                    lblMsg.Text = "Error: Start date must be earlier than end date.";
+                    return;
+                }
 
-                    var checkStatus = Convert.ToInt32(Session["STATUS"]);
-                    if (checkStatus == (int)StatusInfo.SystemInEligible)
-                        iStatus = checkStatus;
-                    else
-                        Session["STATUS"] = iStatus;
+                txtStartDate.Text = startDate.ToShortDateString();
+                txtEndDate.Text = endDate.ToShortDateString();
 
-                    if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
+                InsertCamperAnswers();
+            }
+            if (RadioBtnQ7.Items[1].Selected)
+            {
+                lblMsgCA.Visible = true;
+                return;
+            }
+            else
+                lblMsgCA.Visible = false;
+            iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
+
+            //to get the comments (used only by the Admin user);
+            strComments = txtComments.Text.Trim();
+
+            strFJCID = hdnFJCID.Value;
+            strModifiedBy = Master.UserId;
+
+            if (strFJCID != "" & strModifiedBy != "")
+            {
+                if (isReadOnly)
+                {
+                    DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                    iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                }
+                else
+                {
+                    //to update the camp value to the database (to be used for search functionality)
+                    CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
+                    var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.LACIP); 
+                    objEligibility.checkEligibility(strFJCID, out iStatus);
+                }
+
+                var checkStatus = Convert.ToInt32(Session["STATUS"]);
+                if (checkStatus == (int)StatusInfo.SystemInEligible)
+                    iStatus = checkStatus;
+                else
+                    Session["STATUS"] = iStatus;
+
+                if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
+                {
+                    string strRedirURL;
+                    if (Master.UserId != Master.CamperUserId) //then the user is admin
+                        strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
+                    else //the user is Camper
+                        strRedirURL = "../ThankYou.aspx";
+                    //to update the status to the database                  
+                    if (!isReadOnly)
                     {
-                        string strRedirURL;
-                        if (Master.UserId != Master.CamperUserId) //then the user is admin
-                            strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"];
-                        else //the user is Camper
-                            strRedirURL = "../ThankYou.aspx";
-                        //to update the status to the database                  
-                        if (!isReadOnly)
-                        {
-                            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
-                        }
-                        Response.Redirect(strRedirURL, false);
+                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
                     }
-                    else //if he/she is eligible
-                    {
-                        Session["FJCID"] = strFJCID;
-                        Response.Redirect("../Step2_1.aspx");
-                    }
+                    Response.Redirect(strRedirURL, false);
+                }
+                else //if he/she is eligible
+                {
+                    Session["FJCID"] = strFJCID;
+                    Response.Redirect("../Step2_1.aspx");
                 }
             }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-        finally
-        {
-            objEligibility = null;
         }
     }
 
@@ -262,7 +271,7 @@ public partial class Step2_LACIP_3 : Page
             }
             //to enable / disable the panel states based on the radio button selected
             SetPanelStates();
-            lblMsg.Visible = false;
+            lblMsgCA.Visible = false;
         }
         catch (Exception ex)
         {

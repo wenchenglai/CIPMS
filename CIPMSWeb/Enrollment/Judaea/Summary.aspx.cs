@@ -78,8 +78,27 @@ public partial class Enrollment_Judaea_Summary : Page
             // Disable camps will overwrite above code
             switch (last3Digits)
             {
-                case "044":
+                case "044": // Judaea One Happy Camper
                     lblDisable.Text = "The Camp Judaea One Happy Camper program is now closed for the summer of 2015. For more information, please contact the camp professional listed at the bottom of this page.";
+                    tblDisable.Visible = true;
+                    tblRegular.Visible = false;
+
+                    //if (Session["SpecialCodeValue"] != null)
+                    //{
+                    //    string currentCode = Session["SpecialCodeValue"].ToString();
+                    //    int CampYearID = Convert.ToInt32(Application["CampYearID"]);
+
+                    //    if (SpecialCodeManager.GetAvailableCodesPerCamp(CampYearID, FedID, Int32.Parse(campID)).Any(x => x == currentCode))
+                    //    {
+                    //        tblDisable.Visible = false;
+                    //        tblRegular.Visible = true;
+                    //    }
+                    //}
+
+                    break;
+
+                case "105": // Srout Lake
+                    lblDisable.Text = "Camp Young Judaea Sprout Lake’s One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.";
                     tblDisable.Visible = true;
                     tblRegular.Visible = false;
 

@@ -50,13 +50,11 @@
     <table id="tblDisable" runat="server" width="100%"  cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
-                <img src="../../images/judaeacamp.jpg" /></td>
-            <td>
-
-			</td>
+                <img src="../../images/judaeacamp.jpg" />
+            </td>
         </tr>
         <tr>
-           <td colspan="2">
+           <td>
                <br />
                <asp:Label ID="lblDisable" runat="server" />
                <br/>

@@ -296,6 +296,9 @@ public partial class Step1 : System.Web.UI.Page
 		if (IsDirectPass(FederationEnum.MetroWest))
 			Response.Redirect("~/Enrollment/MetroWest/Summary.aspx");
 
+        if (IsDirectPass(FederationEnum.HabonimMoshava))
+            Response.Redirect("~/Enrollment/HabonimMoshava/Summary.aspx");
+
 		//2014-08-03 PJL - if the status is in Pending PJ Lottery, we go to the PJ Program (because this user might have zip code from a community program, but failed to pass due to DS)
 
 

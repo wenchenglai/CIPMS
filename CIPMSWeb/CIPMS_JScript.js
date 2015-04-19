@@ -1750,6 +1750,7 @@ function ValidatePage2Step2_LACIP(sender,args)
 //to validate the Step2 (Page 3) of LA CIP Questionaire/////////////////////////
 function VaildatePage3Step2_LACIP(sender,args)
 {
+    debugger;
     var Q7, Q8, Q9, Q10_StartDate, Q10_EndDate, chkAcknowledge;
     Q7 = new Array();
     var k=0;
@@ -1820,6 +1821,7 @@ function VaildatePage3Step2_LACIP(sender,args)
 //    else if (bOptionRest) //one among other 3 option is selected
     if (bRadioOption1)
     {
+
         if(document.getElementById("ctl00_Content_lblMsg") !=null)
            document.getElementById("ctl00_Content_lblMsg").style.display = 'none'; 
         //validation for the rest of the questions
@@ -1843,7 +1845,8 @@ function VaildatePage3Step2_LACIP(sender,args)
 //        {
 //            strErrorMsg="<li>Please select a Camp Session</li>";
 //            bValid = false;
-//        }
+            //        }
+
         else if (Q10_StartDate.value=="" || Q10_EndDate.value=="") //for Question 10
         {
             strErrorMsg="<li>Please enter dates in the mm/dd/yyyy format, or select the dates by clicking the calendar icons.</li>";

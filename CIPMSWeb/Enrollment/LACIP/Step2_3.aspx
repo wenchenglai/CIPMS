@@ -33,11 +33,12 @@
 
         });
 
+        // This function will bypass VaildatePage3Step2_LACIP, thus making client side validation inactivated.  Need FIX.
         function update_click() {
             if (flag) {
                 return true;
             } else {
-                if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1") {
+                if ($('#ctl00_Content_ddlCamp>option:selected').val() === "-1" || !$('#ctl00_Content_ddlCamp>option:selected').val()) {
                     $("#dialog-modal").dialog("open");
                     return false;
                 } else {
@@ -79,27 +80,17 @@
 
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" Width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">
-                        Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
         <!--to display the validation summary (error messages)-->
         <table width="60%" cellpadding="0" cellspacing="0" align="center" border="0">
             <tr>
                 <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"
-                        ClientValidationFunction="VaildatePage3Step2_LACIP"></asp:CustomValidator>
+                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="VaildatePage3Step2_LACIP"></asp:CustomValidator>
                     <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server"
-                        ShowSummary="true" CssClass="InfoText" />
+                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
                     <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" runat="server" Display="dynamic" CssClass="InfoText"
-                        ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                    <asp:Label ID="lblMsg" runat="server" Visible="false" CssClass="QuestionText"><p style="text-align: justify; color:Red;"><b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
+                    <asp:CustomValidator ID="CusValComments1" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
+                    <asp:Label ID="lblMsgCA" runat="server" Visible="false" CssClass="QuestionText"><p style="text-align: justify; color:Red;"><b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
+                    
                 </td>
             </tr>
         </table>
@@ -297,6 +288,11 @@
                             </td>
                         </tr>
                     </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <asp:Label runat="server" ID="lblMsg" CssClass="QuestionText" ForeColor="Red"></asp:Label>
                 </td>
             </tr>
         </table>
