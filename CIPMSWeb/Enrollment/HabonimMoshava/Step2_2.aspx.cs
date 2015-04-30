@@ -48,15 +48,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             {
                 Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
             }
-            string campID = resultCampId.ToString();
-            string last3digits = campID.Substring(campID.Length - 3);
-
-            trSibling2.Visible = true;
-            trSibling3.Visible = true;
-            lblGrade.Text = "4";
-            lblSchoolType.Text = "5";
-            lblSchoolName.Text = "6";
-
         }
     }   
 
@@ -127,12 +118,13 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
     {
         int iStatus;
         string strModifiedBy, strFJCID;
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
 
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+        if (!isReadOnly)
         {
             ProcessCamperAnswers();
         }
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+
         //Modified by id taken from the Master Id
         strModifiedBy = Master.UserId;
         strFJCID = hdnFJCIDStep2_2.Value;
@@ -145,7 +137,7 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             }
             else
             {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
 
@@ -266,21 +258,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == 1032) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
-            {
-                if (!dr["OptionID"].Equals(DBNull.Value))
-                    rdolistSiblingAttended.SelectedValue = dr["OptionID"].ToString();
-            }
-            else if (qID == 1033) // First Name of Sibling
-            {
-                if (!dr["Answer"].Equals(DBNull.Value))
-                    txtSiblingFirstName.Text = dr["Answer"].ToString();
-            }
-            else if (qID == 1034) // Last Name of Sibling
-            {
-                if (!dr["Answer"].Equals(DBNull.Value))
-                    txtSiblingLastName.Text = dr["Answer"].ToString();
-            }
             else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
@@ -310,20 +287,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
         strQID = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
         strTablevalues += strQID + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        if (rdolistSiblingAttended.Visible)
-        {
-            //Did sibling attend before?
-            strQID = ((int)Questions.Q1032SiblingAttended).ToString();
-            strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
-
-            //Sibling First Name
-            strQID = ((int)Questions.Q1033SiblingFirstName).ToString();
-            strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
-
-            //Sibling Last Name
-            strQID = ((int)Questions.Q1034SiblingLastName).ToString();
-            strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
-        }
         // Grade
         strQID = hdnQ4Id.Value;
         strTablevalues += strQID + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;

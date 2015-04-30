@@ -50,7 +50,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Hartford One Happy Camper application is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.
+						For further information on how to apply for the Jewish Federation of Greater Hartford One Happy Camper program, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

@@ -39,7 +39,14 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         {
             var gen = new General();
             var fedId = gen.GetCanadianZipCode(txtZipCode.Text);
-            fed = FederationsDA.GetFederationByZipCode("", Int32.Parse(fedId));
+            if (fedId != "")
+            {
+                fed = FederationsDA.GetFederationByZipCode("", Int32.Parse(fedId));
+            }
+            else
+            {
+                fed = new Dictionary<string, string>();
+            }
         }
         else
         {

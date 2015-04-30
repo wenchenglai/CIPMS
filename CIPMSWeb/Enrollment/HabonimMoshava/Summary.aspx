@@ -68,14 +68,6 @@
                <p>
                    The Habonim Dror Camp Moshava One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
                </p>
-              <p>
-                  This program is now closed; please take the following steps to disable the application for new applicants:
-              </p>
-                <ul style="list-style:decimal">
-                    <li>Change the language in the program description page to the following: (use language above)</li>
-                    <li>Keep the logo as is</li>
-                    <li>The “Next” button should take applicant to the National Landing Page or to the PJ Library application if an appropriate code was entered in Section I</li>
-                </ul>
            </td> 
         </tr>
     </table> 
