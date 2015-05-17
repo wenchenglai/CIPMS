@@ -53,7 +53,7 @@
             <td>
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						For further information on how to apply for the Jewish Federation of Columbus One Happy Camper program, please contact the professional listed at the bottom of the screen.
+						The Jewish Federation of Columbus One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

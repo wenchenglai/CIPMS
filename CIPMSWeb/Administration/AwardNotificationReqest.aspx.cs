@@ -1,16 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Data.SqlClient;
 using System.IO;
-using System.Text;
 using CIPMSBC;
 
 public partial class AwardNotificationReqest : System.Web.UI.Page
@@ -42,11 +35,6 @@ public partial class AwardNotificationReqest : System.Web.UI.Page
         }
     }
 
-    private DataSet GetAnReportCampers(string recordCount, string campyear, int ANReportID, string type)
-    {
-        return _objCamperApplication.usp_GetANReport(Int32.Parse(recordCount), campyear, ANReportID, type);        
-    }
-
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
         string strMode = rdbtnlstMode.SelectedItem.Value;
@@ -62,7 +50,8 @@ public partial class AwardNotificationReqest : System.Web.UI.Page
         if (strMode == "0") //Preliminary Mode
         {
 			dsANReportCampers = GetAnReportCampers(ddlRecCount.SelectedValue, Application["CampYear"].ToString(), 0, type);
-            grdANReport.DataSource = UpdateDays(dsANReportCampers.Tables[0]);//Wil calculate no. of days from startdate and enddate columns
+            //grdANReport.DataSource = UpdateDays(dsANReportCampers.Tables[0]);//Wil calculate no. of days from startdate and enddate columns
+            grdANReport.DataSource = dsANReportCampers.Tables[0];
             grdANReport.PageIndex = 0;
             grdANReport.DataBind();            
             ddlRecCount.Enabled = false;
@@ -71,10 +60,12 @@ public partial class AwardNotificationReqest : System.Web.UI.Page
         else if (strMode == "1" && chkFinal.Checked)//Final Mode
         {
 			dsANReportCampers = _objCamperApplication.RunFinalMode(Application["CampYear"].ToString(), type);
-            grdANReport.DataSource = UpdateDays(dsANReportCampers.Tables[0]);//Wil calculate no. of days from startdate and enddate columns
+            //grdANReport.DataSource = UpdateDays(dsANReportCampers.Tables[0]);//Wil calculate no. of days from startdate and enddate columns
+            grdANReport.DataSource = dsANReportCampers.Tables[0];
             grdANReport.PageIndex = 0;
             grdANReport.DataBind();
             ddlRecCount.Enabled = true;
+
             string strFolder = Request.MapPath(ConfigurationManager.AppSettings["AwardNotificationFolderPath"], Request.ApplicationPath, false);
             string strANReportID = string.Empty;
             if (dsANReportCampers.Tables[1].Rows.Count>0)
@@ -117,6 +108,11 @@ public partial class AwardNotificationReqest : System.Web.UI.Page
         lblReqTime.Text = DateTime.Now.ToString();
         tblReportDetails.Visible = grdANReport.Visible = true;
 
+    }
+
+    private DataSet GetAnReportCampers(string recordCount, string campyear, int ANReportID, string type)
+    {
+        return _objCamperApplication.usp_GetANReport(Int32.Parse(recordCount), campyear, ANReportID, type);
     }
 
     private DataTable UpdateDays(DataTable dt)
@@ -209,32 +205,28 @@ public partial class AwardNotificationReqest : System.Web.UI.Page
             {
                 if (dsANFinalCamperNotificationList.Tables[0].Rows.Count > 0)
                 {
-                    DataTable dtANFinalCamperNotificationList = UpdateDays(dsANFinalCamperNotificationList.Tables[0]);
-                    dtANFinalCamperNotificationList.Columns.Remove("StartDate");
-                    dtANFinalCamperNotificationList.Columns.Remove("EndDate");
-                    dtANFinalCamperNotificationList.Columns["Days"].ColumnName = "Number of days";
+                    DataTable dtANFinalCamperNotificationList = dsANFinalCamperNotificationList.Tables[0];
+                    //DataTable dtANFinalCamperNotificationList = UpdateDays(dsANFinalCamperNotificationList.Tables[0]);
+                    //dtANFinalCamperNotificationList.Columns.Remove("StartDate");
+                    //dtANFinalCamperNotificationList.Columns.Remove("EndDate");
+                    //dtANFinalCamperNotificationList.Columns["Days"].ColumnName = "Number of days";
                     for (int i = 0; i < dtANFinalCamperNotificationList.Rows.Count; i++)
                     {
-                        if (dtANFinalCamperNotificationList.Rows[i]["ProgramID"].ToString().Length == 1)
-                            dtANFinalCamperNotificationList.Rows[i]["ProgramID"] = dtANFinalCamperNotificationList.Rows[i]["ProgramID"].ToString().Insert(0, "00");
-                        else if (dtANFinalCamperNotificationList.Rows[i]["ProgramID"].ToString().Length == 2)
-                            dtANFinalCamperNotificationList.Rows[i]["ProgramID"] = dtANFinalCamperNotificationList.Rows[i]["ProgramID"].ToString().Insert(0, "0");
+                        if (dtANFinalCamperNotificationList.Rows[i]["Federation ID"].ToString().Length == 1)
+                            dtANFinalCamperNotificationList.Rows[i]["Federation ID"] = dtANFinalCamperNotificationList.Rows[i]["Federation ID"].ToString().Insert(0, "00");
+                        else if (dtANFinalCamperNotificationList.Rows[i]["Federation ID"].ToString().Length == 2)
+                            dtANFinalCamperNotificationList.Rows[i]["Federation ID"] = dtANFinalCamperNotificationList.Rows[i]["Federation ID"].ToString().Insert(0, "0");
                     }
+
                     if (File.Exists(strFilePath))
                     {
-                        StreamWriter strmWriterFile = new StreamWriter(strFilePath, false);  //true defines append to the file if exists
-                        //if file does not exists creates new and header (true) if file exists writeheader to be set as false
-                        _objGen.ProduceTabDelimitedFile(dtANFinalCamperNotificationList, strmWriterFile, false,0);
-
-                        
+                        File.Delete(strFilePath);                       
                     }
-                    else
-                    {
-                       StreamWriter strmWriterFile = new StreamWriter(strFilePath, false); //true defines append to the file if exists
-                        //if file does not exists creates new and header (true) if file exists writeheader to be set as false
-                        _objGen.ProduceTabDelimitedFile(dtANFinalCamperNotificationList, strmWriterFile, true, 0);
 
-                    }
+                    StreamWriter strmWriterFile = new StreamWriter(strFilePath, false); //true defines append to the file if exists
+                    //if file does not exists creates new and header (true) if file exists writeheader to be set as false
+                    _objGen.ProduceTabDelimitedFile(dtANFinalCamperNotificationList, strmWriterFile, true, 0);
+
                   }
             }
             string localpath = Request.ApplicationPath + "/" + ConfigurationManager.AppSettings["AwardNotificationFolderPath"].Replace('\\', '/');

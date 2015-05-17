@@ -25,6 +25,7 @@
                         <td colspan="3" align="left" style="width:100%">
                             No of Records:
                             <asp:DropDownList ID="ddlRecCount" runat="Server" CssClass="text">
+                                <asp:ListItem Text="100 Records" Value="100"></asp:ListItem>
 								<asp:ListItem Text="250 Records" Value="250"></asp:ListItem>
                                 <asp:ListItem Text="500 Records" Value="500"></asp:ListItem>
                                 <asp:ListItem Text="1000 Records" Value="1000"></asp:ListItem>
@@ -141,61 +142,46 @@
                     OnPageIndexChanging="OnPaging" Visible="False" Width="100%">                    
                     <AlternatingRowStyle CssClass="alt" BackColor="#CCCCCC" />
                     <Columns>
+                        <asp:TemplateField HeaderText="FJCID">
+                            <ItemTemplate>
+                                <div>
+                                <asp:Label ID="lblFJCID" runat="server" Width="100px" Text='<%#Eval("FJCID")%>'></asp:Label></div>
+                            </ItemTemplate>
+                        </asp:TemplateField>                        
                         <asp:TemplateField HeaderText="Camper Last Name">
-                        <ItemTemplate>
-                        <div style="word-wrap: break-word;">
-                            <asp:Label ID="lblCamperName" runat="server" Text='<%#Eval("CamperLName")%>'></asp:Label>
-                            </div>
-                        </ItemTemplate>
+                            <ItemTemplate>
+                                <div style="word-wrap: break-word;">
+                                    <asp:Label ID="lblCamperName" runat="server" Text='<%#Eval("Last Name")%>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Camper First Name">
-                        <ItemTemplate>
-                        <div style="word-wrap: break-word;">
-                            <asp:Label ID="lblCamperName" runat="server" Text='<%#Eval("CamperFName")%>'></asp:Label>
-                            </div>
-                        </ItemTemplate>
+                            <ItemTemplate>
+                                <div style="word-wrap: break-word;">
+                                    <asp:Label ID="lblCamperName" runat="server" Text='<%#Eval("First Name")%>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>                        
                         <asp:TemplateField HeaderText="Parent Email">
-                        <ItemTemplate>
-                            <div style="word-wrap: break-word;">
-                            <asp:Label ID="lblParentEmail" runat="server" Text='<%#Eval("Email")%>'></asp:Label>
-                            </div>
-                        </ItemTemplate>
+                            <ItemTemplate>
+                                <div style="word-wrap: break-word;">
+                                <asp:Label ID="lblParentEmail" runat="server" Text='<%#Eval("Email")%>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Camp Name">
-                        <ItemTemplate>
-                        <div style="word-wrap: break-word;">
-                            <asp:Label ID="lblCampName" runat="server" Text='<%#Eval("CampName")%>'></asp:Label>
-                            </div>
-                        </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="No. Of Days">
-                        <ItemTemplate>
-                            <asp:Label ID="lblDays" runat="server" Text='<%#Eval("Days")%>'></asp:Label>
-                        </ItemTemplate>
+                            <ItemTemplate>
+                            <div style="word-wrap: break-word;">
+                                <asp:Label ID="lblCampName" runat="server" Text='<%#Eval("Camp Name")%>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Program">
-                        <ItemTemplate>
-                        <div style="word-wrap: break-word;">
-                            <asp:Label ID="lblFedName" runat="server" Text='<%#Eval("ProgramName")%>'></asp:Label>
-                            </div>
-                        </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Grant Amount">
-                        <ItemTemplate>
-                            <asp:Label ID="lblAmount" runat="server" Text='<%#Eval("Amount")%>'></asp:Label>
-                        </ItemTemplate>
-                        </asp:TemplateField>                        
-                        <asp:TemplateField HeaderText="Time In Camp">
-                        <ItemTemplate>
-                            <asp:Label ID="lblTimeInCamp" runat="server" Text='<%#Eval("TimeInCamp")%>'></asp:Label>
-                        </ItemTemplate> 
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="FJCID">
-                        <ItemTemplate>
-                            <div>
-                            <asp:Label ID="lblFJCID" runat="server" Width="100px" Text='<%#Eval("FJCID")%>'></asp:Label></div>
-                        </ItemTemplate>
+                            <ItemTemplate>
+                            <div style="word-wrap: break-word;">
+                                <asp:Label ID="lblFedName" runat="server" Text='<%#Eval("Federation Name")%>'></asp:Label>
+                                </div>
+                            </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />

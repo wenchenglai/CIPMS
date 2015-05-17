@@ -1300,11 +1300,12 @@ namespace CIPMSBC
                     if (i < dt.Columns.Count - 1)
                         sb.AppendFormat("{0}\t", GetWriteableValue(dt.Columns[i].ColumnName));
                     else if(i == dt.Columns.Count - 1)
-                        sb.AppendFormat("{0}\r\n",GetWriteableValue(dt.Columns[i].ColumnName));
+                        sb.AppendFormat("{0}\n",GetWriteableValue(dt.Columns[i].ColumnName));
                 }
                 //file.WriteLine(string.Join(",",arr);                
                 file.WriteLine(sb.ToString());
             }
+
             for (int j = 0; j < dt.Rows.Count; j++)
             {
                 //string[] dataArr = new String[dt.Columns.Count];
@@ -1317,7 +1318,7 @@ namespace CIPMSBC
                     if (i < dt.Columns.Count - 1)
                         sb.AppendFormat("{0}\t", GetWriteableValue(o));
                     else if (i == dt.Columns.Count - 1)
-                        sb.AppendFormat("{0}\r\n", GetWriteableValue(o));
+                        sb.AppendFormat("{0}\n", GetWriteableValue(o));
                     //dataArr[i] = GetWriteableValue(o);
                 }
                 //file.WriteLine(string.Join(",", dataArr));                
