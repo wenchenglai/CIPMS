@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Memphis_Summary" %>
 
 <asp:Content ID="Memphis_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
 				<img id="logo" src="../../images/Logo Horiz.jpg" alt="" width="360px" height="100px"/></td>
@@ -43,6 +43,21 @@
 				</p>    
 			</td>
         </tr>    
+    </table>
+	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+		<tr>
+			<td>
+				<img id="logo" src="../../images/Logo Horiz.jpg" alt="" width="360px" height="100px"/>
+			</td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>
+			</td>
+       </tr>  
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
