@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Chi_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img src="logo.gif" width="290" /></td>
@@ -32,6 +32,20 @@
                 <p>
                     <span style="font-weight:bold;">Note:</span> If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities, please contact The Jewish Federation of Greater Houston at pwalden@houstonjewish.org or 713-729-7000 ext. 309.
                 </p>         
+            </td>
+        </tr>
+    </table>
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img src="logo.gif" width="290" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    For further information on how to apply for the Jewish Federation of Greater Houston One Happy Camper program, please contact the professional listed at the bottom of the screen.
+                </p>
             </td>
         </tr>
     </table>
