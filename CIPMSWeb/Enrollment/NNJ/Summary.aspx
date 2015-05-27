@@ -52,17 +52,13 @@
             <td>
                 <img id="img1" src="../../images/jewish nnj.jpg" alt="" runat="server" />
             </td>
-            <td>
-
-            </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td>
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-                        The Jewish Federation of Northern New Jersey One Happy Camper application is now closed for the summer of 2014. Please click "Next" to see if your camp sponsors a One Happy Camper grant. If your camp is not listed, please contact the professional listed at the bottom of the screen to get on a waiting list.					
+                        For further information on how to apply for the Jewish Federation of Northern New Jersey’s One Happy Camper program, please Melissa Levine at melissal@jfnnj.org.					
 					</p>
-					<br />
 				</asp:Label>
             </td>
         </tr>

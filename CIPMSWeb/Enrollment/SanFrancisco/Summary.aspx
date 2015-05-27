@@ -53,10 +53,12 @@
 			<td>
 				<img src="../../images/SanFrancisco.jpg" width="280" alt=""  />
 			</td>
+        </tr>
+        <tr>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+						For further information on how to apply for the Jewish Community Federation of San Francisco, the Peninsula, Marin and Sonoma Counties One Happy Camper program, please contact Lisa Pavlovsky at lisap@sfjcf.org.
 					</p>
 				</asp:Label>
 			</td>
