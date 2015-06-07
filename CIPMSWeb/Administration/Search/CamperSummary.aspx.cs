@@ -33,7 +33,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //Set Page Heading
-        Label lbl = (Label)this.Master.FindControl("lblPageHeading");
+        var lbl = (Label)this.Master.FindControl("lblPageHeading");
         lbl.Text = "Camper Summary";
 
         _strFedId = Session["FedId"].ToString();
@@ -41,16 +41,12 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         rgvAmt.ErrorMessage = "Amount can not be greater than " + strMaxAmt;
         rgvAmt.MaximumValue = strMaxAmt;
 
-        string strRole = (string)Session["RoleID"];
-
-        int iCurrentStatus = 0;
-        DataSet dsCamprDetails = new DataSet();
+        var strRole = (string)Session["RoleID"];
 
         CamperApplication objCamperApplication = new CamperApplication();
 
         if (Session["FJCID"] != null)
             isPaymentDone = objCamperApplication.IsPaymentDone((string)Session["FJCID"]).ToString();
-
         
         //Only Camp Director can change no. of Days, but he/she cannot change the camp
         if (strRole == strCampDir)
@@ -60,32 +56,24 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
             btnCancelChangeRequest.Visible = ddlAdjustmentType.Visible = btnViewCancelChangeRequest.Visible = false;
         }
         //Approver cannot change the camp; but Only Approver can change the Amt
-        else if (strRole == strApprover)
-        {
 
-            ddlCamp.Enabled = false;
-            txtAmt.Enabled = true;            
-        }
         //Added by Ram (18 Feb 2010) Change/Cancel Request
         //Fed Admin can raise request for cancel application and change camp, federation & session
-        else if (strRole == strFedAdmin)
+        if (strRole == strFedAdmin)
         {
-            //           
-        } 
-     
-        //Added by Ram on 14th Apr 2010 on Ariel's request to allow FJC Admin's to update days for JWest and JWestLA campers
-        if (strRole == strFJCAdmin || strRole == strApprover)
-        {
-            if(_strFedId == "3" || _strFedId == "4")
-            txtDays.Enabled = true; //FJC Admin and Approver can change the days for JWest and JwestLA campers
+            txtAmt.Enabled = true;
+            ddlCampYear.Enabled = true;
         }
-        if (strRole != strApprover)
+        else if (strRole == strApprover)
         {
-            ddlCampYear.Enabled = false;
+            ddlCamp.Enabled = false;
+            txtAmt.Enabled = true;
+            ddlCampYear.Enabled = true;
         }
+
         if (!IsPostBack)
         {
-            dsCamprDetails = GetValues();
+            DataSet dsCamprDetails = GetValues();
 
             // 2013-11-12 After 2013, Camps can contact campers directly 
             if (Convert.ToInt32(dsCamprDetails.Tables[0].Rows[0]["CampYearID"]) >= 6)
@@ -106,7 +94,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 }                
             }
 
-            iCurrentStatus = Convert.ToInt16(dsCamprDetails.Tables[0].Rows[0]["StatusID"]);
+            int iCurrentStatus = Convert.ToInt16(dsCamprDetails.Tables[0].Rows[0]["StatusID"]);
             
             if (dsCamprDetails.Tables[0].Rows[0]["FedID"] != DBNull.Value)
             {

@@ -273,8 +273,7 @@
                         <td align="center" style="width: 10px">
                         </td>
                         <td>
-                            <asp:DropDownList ID="ddlCampYear" runat="server" CssClass="text" AutoPostBack="true"
-                                OnSelectedIndexChanged="ddlCampYear_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlCampYear" runat="server" CssClass="text" AutoPostBack="true" OnSelectedIndexChanged="ddlCampYear_SelectedIndexChanged" Enabled="false">
                                 <asp:ListItem Text="N/A" Value="-1"></asp:ListItem>
                                 <asp:ListItem Text="1styear" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="2ndyear" Value="2"></asp:ListItem>
@@ -344,12 +343,6 @@
                                 Type="Double" /></td>
                         <td colspan="2" style="height: 13px">
                         </td>
-                        <%--<td colspan="4" style="height: 13px">
-                            <asp:RangeValidator ID="rgvDays" runat="server" ControlToValidate="txtDays" Display="None"
-                                ErrorMessage="Please enter numbers for days" MinimumValue="1" MaximumValue="999"
-                                Type="Integer" />
-                            <asp:RequiredFieldValidator ID="rfvDays" runat="server" ControlToValidate="txtDays"
-                                Display="None" Enabled="False" ErrorMessage="Please enter number of days"></asp:RequiredFieldValidator></td>--%>
                     </tr>
                     <tr>
                         <td style="height: 10px" colspan="13">

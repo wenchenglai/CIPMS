@@ -57,7 +57,7 @@
             <td>
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-                        For further information on how to apply for the Jewish Federation of Northern New Jersey’s One Happy Camper program, please Melissa Levine at melissal@jfnnj.org.					
+                        For further information on how to apply for the Jewish Federation of Northern New Jersey’s One Happy Camper program, please e-mail Melissa Levine at melissal@jfnnj.org.					
 					</p>
 				</asp:Label>
             </td>
