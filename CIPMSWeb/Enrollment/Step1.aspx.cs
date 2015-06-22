@@ -210,6 +210,9 @@ public partial class Step1 : System.Web.UI.Page
 
 	void btnNext_Click(object sender, EventArgs e)
 	{
+        lblMessage.Visible = false; // 
+        lblMessage.Text = "";
+
 		// There are currently two places that could route to Camper Holding Page.  
 		// 1. When the CIPM is shut-down, typically from July to September
 		// 2. When CIPMS is open for registration, typically in mid-October
@@ -238,7 +241,6 @@ public partial class Step1 : System.Web.UI.Page
 
 		string strNextURL = string.Empty, strCheckUpdate, strFedId = string.Empty;
 		
-		int iCount = 0;
 		int check = 0;
 
 		// 2012-01-24 If special code is empty, make sure we clean up the session variables
@@ -303,6 +305,7 @@ public partial class Step1 : System.Web.UI.Page
 
 
 		var dsFed = new DataSet();
+        int iCount = 0;
 
 		if (IsFromCanada())
 		{
@@ -330,11 +333,19 @@ public partial class Step1 : System.Web.UI.Page
 			}
 		}
 
+	    if (iCount > 1)
+	    {
+	        // we cannot allow duplicate zip codes shared by more than one program
+            lblMessage.Visible = true; // 
+            lblMessage.Text = "We've encountered an error.  Please contact One Happy Camper at OneHappyCamper@JewishCamper.org for more information.";
+            return;
+	    }
+
 		var redirectionLogic = new Redirection_Logic();
 		redirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
 
 		// if iCount == 0, it means the zip code has no federation associated
-		if (iCount > 0)
+		if (iCount == 1)
 		{
 			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 			NewCamper(Info);
@@ -1084,6 +1095,7 @@ public partial class Step1 : System.Web.UI.Page
 				strFJCIDFedId = drCA["FederationId"] != null ? drCA["FederationId"].ToString().ToLower() : string.Empty;
 				strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
 			}
+
 			if (iCount == 1)
 			{
 				if (dsFed == null)
@@ -1161,46 +1173,6 @@ public partial class Step1 : System.Web.UI.Page
 					}
 				}
 			}
-			else if (iCount > 1)  //the zip code is applicable for both Jwest /Orange/jwest la / la cip
-			{
-				//Ram 8 Nov'10
-
-				dr = dsFed.Tables[0].Rows[0];
-				string federationID = dr["Federation"].ToString();
-				strFedId = federationID;
-				//Ram
-				DataSet ds;
-				ds = objGeneral.GetFederationDetails(strFJCIDFedId);
-				if (strFJCIDFedId == strSanDiegoFedId && (strAppType != string.Empty && strAppType == "c"))
-				{
-					strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
-				}
-				else if (strFJCIDFedId == "93" && (strAppType != string.Empty && strAppType == "c"))
-				{
-					strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
-				}
-				else if (strFJCIDFedId == strPJLFedId && (strAppType != string.Empty && strAppType == "c"))
-				{
-					strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
-				}
-				else if (strFJCIDFedId == strCMARTFedId && (strAppType != string.Empty && strAppType == "c"))
-				{
-					strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
-				}
-				else if (doStep1_WD_CAL_Page(federationID))
-				{
-					strNextURL = strWashingtonCampAiryLouiseURL;
-				}
-				else
-				{
-					strNextURL = strStep1QuestionsURL;
-
-				}
-				Session["ZIPCODE"] = Info.ZipCode; //zip code will be used in step1_questions.aspx 
-
-			}
-
-
 		}
 
 		int codeValue = Convert.ToInt32(Session["codeValue"]);
