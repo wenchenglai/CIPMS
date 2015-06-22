@@ -55,37 +55,78 @@ public partial class Administration_BulkStatusUpdate : Page
         }
 
         bool e_flag = true;
-        foreach (ListItem li in chklistCamp.Items)
+        string campIdList = "";
+        //2014-05-12 current from status is always 
+        var fromStatusId = -1;
+        var toStatusId = -1;
+        if (ddlStatusTransition.SelectedValue == "25")
         {
-            if (li.Selected)
-                e_flag = false;
+            foreach (ListItem li in chklistCamp.Items)
+            {
+                if (li.Selected)
+                    e_flag = false;
 
+            }
+
+            if (e_flag)
+            {
+                lblMsg.Text = "You must select at least one camp";
+                return;
+            }
+            else
+            {
+                fromStatusId = 25;
+                toStatusId = 28;
+                foreach (ListItem li in chklistCamp.Items)
+                {
+                    if (li.Selected)
+                    {
+                        if (campIdList == "")
+                            campIdList = li.Value;
+                        else
+                            campIdList += ", " + li.Value;
+                    }
+                }                
+            }
+        } 
+        else if (ddlStatusTransition.SelectedValue == "7")
+        {
+            foreach (ListItem li in rdolistCamp.Items)
+            {
+                if (li.Selected)
+                    e_flag = false;
+
+            }
+
+            if (e_flag)
+            {
+                lblMsg.Text = "You must select at least one camp";
+                return;
+            }
+            else
+            {
+                fromStatusId = 7;
+                toStatusId = 14;
+                foreach (ListItem li in rdolistCamp.Items)
+                {
+                    if (li.Selected)
+                    {
+                        if (campIdList == "")
+                            campIdList = li.Value;
+                        else
+                            campIdList += ", " + li.Value;
+                    }
+                }                
+            }
         }
-
-        if (e_flag)
+        else
         {
-            lblMsg.Text = "You must select at least one camp";
             return;
         }
 
+
         int campYearId = int.Parse(ddlCampYear.SelectedValue);
         int fedId = int.Parse(ddlFed.SelectedValue);
-
-        string campIdList = "";
-        foreach (ListItem li in chklistCamp.Items)
-        {
-            if (li.Selected)
-            {
-                if (campIdList == "")
-                    campIdList = li.Value;
-                else
-                    campIdList += ", " + li.Value;
-            }
-        }
-
-        //2014-05-12 current from status is always 
-        var fromStatusId = 25;
-        var toStatusId = 28;
         int userId = int.Parse(Session["UsrID"].ToString());
 
         bool ret = CamperAppDA.BulkUpdateStatus(campYearId, fedId, campIdList, userId, fromStatusId, toStatusId);
@@ -114,6 +155,23 @@ public partial class Administration_BulkStatusUpdate : Page
         }
     }
 
+    protected void chkrdoCamp_DataBound(object sender, EventArgs e)
+    {
+        if (rdolistCamp.Items.Count == 0)
+        {
+            if (lblMsg.Text == "")
+                lblMsg.Text = "The federation has no camp that has the status of Payment Requested";
+            chkAllCamps.Enabled = false;
+            btnUpdate.Enabled = false;
+        }
+        else
+        {
+            lblMsg.Text = "";
+            chkAllCamps.Enabled = true;
+            btnUpdate.Enabled = true;
+        }
+    }
+
     protected void chkAll_CheckedChanged(object sender, EventArgs e)
     {
         if (chkAllCamps.Checked)
@@ -126,5 +184,20 @@ public partial class Administration_BulkStatusUpdate : Page
             {
                 li.Selected = false;
             }
+    }
+    protected void ddlStatusTransition_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlStatusTransition.SelectedValue == "25")
+        {
+            pnllistCamps.Visible = true;
+            pnlrdoCamps.Visible = false;
+            chkboxYes.Text = "Yes, I have cancelled all applications for the selected camps that are no longer eligible for the grant.";
+        }
+        else
+        {
+            pnllistCamps.Visible = false;
+            pnlrdoCamps.Visible = true;
+            chkboxYes.Text = "Yes, I understand that consequence of changing the status from Eligible by Staff to Campership Approved; Payment Pending";
+        }
     }
 }
