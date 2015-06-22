@@ -311,11 +311,7 @@ public partial class Step1 : System.Web.UI.Page
 		{
             string fedId = objGeneral.GetCanadianZipCode(Info.ZipCode).Trim();
 			
-            if (fedId == "65")
-            {
-
-            }
-            else if (fedId != "")
+            if (fedId != "")
 			{
 				iCount = 1;
 			}

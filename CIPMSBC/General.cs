@@ -1592,7 +1592,16 @@ namespace CIPMSBC
             }
             else if (Toronto.IndexOf(strZip.Substring(0, 1)) >= 0)
             {
-                FedId = "89";
+                FedId = "";
+                //2015-05-17 Toronto has its own zip codes list now
+                DataSet dsFed = this.GetFederationForZipCode(strZip.Substring(0, 3));
+                if (dsFed.Tables.Count > 0)
+                {
+                    if (dsFed.Tables[0].Rows.Count > 0)
+                    {
+                        FedId = dsFed.Tables[0].Rows[0][0].ToString();
+                    }
+                }
             }
             else if (strZip.Substring(0, 1) == "T")
                 FedId = "59";
