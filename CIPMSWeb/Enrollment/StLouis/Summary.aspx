@@ -53,8 +53,7 @@
         <tr>
             <td>
                 <p>
-					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-					please proceed by clicking the "next" button below.
+					The Jewish Federation of St. Louis One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
 				</p>
 			</td>
        </tr>  
