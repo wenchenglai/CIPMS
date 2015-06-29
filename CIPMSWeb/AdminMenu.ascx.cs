@@ -15,6 +15,7 @@ using CIPMSBC.DAL;
 
 public partial class AdminMenu : System.Web.UI.UserControl
 {
+    private string FED_ADMIN = "2";
     private SrchCamperDetails _objCamperDet = new SrchCamperDetails();
     private bool _IsMenuVisible = true;
     protected string strUserID;
@@ -61,8 +62,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 lnkBulkStatusUpdate.Visible = true;
                 divProgramFinder.Visible = true;
             }
-         
-            if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"])
+            else if ((string)Session["RoleID"] == FED_ADMIN)
             {
                 dvAdmin.Visible = false;
                 dvRpts.Visible = false;
@@ -71,6 +71,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 divANReport.Visible = false;
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
+                lnkBulkStatusUpdate.Visible = true;
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing

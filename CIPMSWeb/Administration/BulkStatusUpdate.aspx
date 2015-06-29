@@ -89,29 +89,24 @@
                 <asp:DropDownList ID="ddlCampYear" DataValueField="id" DataTextField="text" AutoPostBack="true" runat="server" Enabled="false" />
                 <br /><br /> 
                 <strong>Status Transitions:</strong>&nbsp;&nbsp;
-                <asp:DropDownList ID="ddlStatusTransition" DataValueField="id" DataTextField="text" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlStatusTransition_SelectedIndexChanged">
+                <asp:DropDownList ID="ddlStatusTransition" DataValueField="id" DataTextField="text" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlStatusTransition_SelectedIndexChanged" OnDataBound="ddlStatusTransition_DataBound">
                     <asp:ListItem Text="Eligible by Staff -> Campership Approved; Payment Pending" Value="7"></asp:ListItem>                    
                     <asp:ListItem Text="Payment Requested -> Camper Attended Camp" Value="25"></asp:ListItem>
                 </asp:DropDownList>
                 <br /><br/>
                 <asp:DropDownList runat="server" ID="ddlFed" AutoPostBack="True" DataSourceID="odsFed" DataValueField="ID" DataTextField="Name" Visible="True" />
-                <asp:ObjectDataSource ID="odsFed" runat="server" TypeName="FederationsDA" SelectMethod="GetAllFederations">
+                <asp:ObjectDataSource ID="odsFed" runat="server" TypeName="FederationsDA" SelectMethod="GetAllFederationsByUserRole">
                     <SelectParameters>
                         <asp:ControlParameter ControlID="ddlCampYear" Name="CampYearID" PropertyName="SelectedValue" Type="Int32" />
+                        <asp:SessionParameter SessionField="RoleID" Name="UserRole" Type="Int32" />
+                        <asp:SessionParameter SessionField="FedID" Name="FedID" Type="Int32" />
                     </SelectParameters>     
                 </asp:ObjectDataSource>
                 <br /><br />
-                <asp:Panel runat="server" ID="pnllistCamps">
-                    <asp:CheckBox ID="chkAllCamps" runat="server" Text="Select all camps" oncheckedchanged="chkAll_CheckedChanged" AutoPostBack="true" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <br /><br />
-                    <asp:CheckBoxList ID="chklistCamp" runat="server" DataSourceID="odsCamp" DataTextField="Name" DataValueField="ID" RepeatDirection="Vertical" 
-                        RepeatColumns="2" ondatabound="chklistCamp_DataBound" />                    
-                </asp:Panel>
-                <asp:Panel ID="pnlrdoCamps" runat="server">
+
                     <asp:RadioButtonList ID="rdolistCamp" DataSourceID="odsCamp" DataTextField="Name" DataValueField="ID" RepeatDirection="Vertical" 
                         RepeatColumns="2"  runat="server" ondatabound="chkrdoCamp_DataBound" />
-                </asp:Panel>
+
 
                 <asp:ObjectDataSource ID="odsCamp" runat="server" TypeName="CampsDA" SelectMethod="GetAllCampsFilterByStatusMinimumOneCamper">
                     <SelectParameters>
@@ -133,6 +128,7 @@
                 <br/>
                 <br/>
                 <div><asp:Label runat="server" ID="lblMsg" ForeColor="Red"></asp:Label></div>
+                <div><asp:Label runat="server" ID="lbl" ForeColor="Red"></asp:Label></div>
             </div>
             <div style="margin-left: 20px;">
                 <asp:GridView ID="gv" Visible="False" runat="server"></asp:GridView>
