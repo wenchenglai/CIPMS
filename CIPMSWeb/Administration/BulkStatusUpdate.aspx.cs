@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Data;
 using System.Web.UI.WebControls;
-using CIPMSBC;
-using DocumentFormat.OpenXml.Math;
 
 public partial class Administration_BulkStatusUpdate : Page
 {
@@ -15,20 +9,26 @@ public partial class Administration_BulkStatusUpdate : Page
     {
         if (!IsPostBack)
         {
-            var msg = Request.QueryString["result"];
+            string msg = Request.QueryString["result"];
 
-            if (msg != "")
-                lblMsg.Text = msg;
+            if (!string.IsNullOrEmpty(msg))
+            {
+                lbl.Text = msg;
+            }
             else
-                lblMsg.Text = "";
+            {
+                lbl.Text = "";
+            }
 
             var campYearId = (int)Application["CampYearID"];
             var fedId = (string)Session["FedId"];
 
             if (fedId != "") {
-                lblMsg.Text = "This feature is still under development.";
-                btnUpdate.Visible = false;
-                return;
+            //    lblMsg.Text = "This feature is still under development.";
+            //    btnUpdate.Visible = false;
+            //    return;
+
+                ddlStatusTransition.Items.RemoveAt(0);
             }
 
             using (var ctx = new CIPMSEntities())
@@ -37,8 +37,9 @@ public partial class Administration_BulkStatusUpdate : Page
                 ddlCampYear.DataSource = data.ToList();
                 ddlCampYear.SelectedValue = Application["CampYearID"].ToString();
                 ddlCampYear.DataBind();
-            }     
+            }
         }
+
     }
     protected void btnUpdate_Click(object sender, EventArgs e) 
     {
@@ -55,7 +56,12 @@ public partial class Administration_BulkStatusUpdate : Page
         }
 
         bool e_flag = true;
-        foreach (ListItem li in chklistCamp.Items)
+        string campIdList = "";
+        //2014-05-12 current from status is always 
+        var fromStatusId = -1;
+        var toStatusId = -1;
+
+        foreach (ListItem li in rdolistCamp.Items)
         {
             if (li.Selected)
                 e_flag = false;
@@ -67,25 +73,34 @@ public partial class Administration_BulkStatusUpdate : Page
             lblMsg.Text = "You must select at least one camp";
             return;
         }
+        else
+        {
+            foreach (ListItem li in rdolistCamp.Items)
+            {
+                if (li.Selected)
+                {
+                    if (campIdList == "")
+                        campIdList = li.Value;
+                    else
+                        campIdList += ", " + li.Value;
+                }
+            }                
+        }
+
+        if (ddlStatusTransition.SelectedValue == "7")
+        {
+            fromStatusId = 7;
+            toStatusId = 14;            
+        }
+        else if (ddlStatusTransition.SelectedValue == "25")
+        {
+            fromStatusId = 25;
+            toStatusId = 28;            
+        }
+
 
         int campYearId = int.Parse(ddlCampYear.SelectedValue);
         int fedId = int.Parse(ddlFed.SelectedValue);
-
-        string campIdList = "";
-        foreach (ListItem li in chklistCamp.Items)
-        {
-            if (li.Selected)
-            {
-                if (campIdList == "")
-                    campIdList = li.Value;
-                else
-                    campIdList += ", " + li.Value;
-            }
-        }
-
-        //2014-05-12 current from status is always 
-        var fromStatusId = 25;
-        var toStatusId = 28;
         int userId = int.Parse(Session["UsrID"].ToString());
 
         bool ret = CamperAppDA.BulkUpdateStatus(campYearId, fedId, campIdList, userId, fromStatusId, toStatusId);
@@ -97,34 +112,39 @@ public partial class Administration_BulkStatusUpdate : Page
     {
         gv.Visible = false;
     }
-    protected void chklistCamp_DataBound(object sender, EventArgs e)
+
+    protected void chkrdoCamp_DataBound(object sender, EventArgs e)
     {
-        if (chklistCamp.Items.Count == 0)
+        if (rdolistCamp.Items.Count == 0)
         {
             if (lblMsg.Text == "")
                 lblMsg.Text = "The federation has no camp that has the status of Payment Requested";
-            chkAllCamps.Enabled = false;
             btnUpdate.Enabled = false;
         }
         else
         {
             lblMsg.Text = "";
-            chkAllCamps.Enabled = true;
             btnUpdate.Enabled = true;
         }
     }
 
-    protected void chkAll_CheckedChanged(object sender, EventArgs e)
+    protected void ddlStatusTransition_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (chkAllCamps.Checked)
-            foreach (ListItem li in chklistCamp.Items)
-            {
-                li.Selected = true;
-            }
+        if (ddlStatusTransition.SelectedValue == "25")
+        {
+            chkboxYes.Text = "Yes, I have cancelled all applications that are no longer eligible for the grant, for the selected camp. All remaining campers attended camp for the indicated session length.";
+        }
         else
-            foreach (ListItem li in chklistCamp.Items)
-            {
-                li.Selected = false;
-            }
+        {
+            chkboxYes.Text = "Yes, I understand that consequence of changing the status from Eligible by Staff to Campership Approved; Payment Pending";
+        }
+    }
+    protected void ddlStatusTransition_DataBound(object sender, EventArgs e)
+    {
+        var fedId = (string)Session["FedId"];
+
+        if (fedId != "") {
+            ddlStatusTransition.Items.RemoveAt(0);
+        }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Configuration;
 using System.Collections;
@@ -15,6 +16,7 @@ using CIPMSBC.DAL;
 
 public partial class AdminMenu : System.Web.UI.UserControl
 {
+    private string FED_ADMIN = "2";
     private SrchCamperDetails _objCamperDet = new SrchCamperDetails();
     private bool _IsMenuVisible = true;
     protected string strUserID;
@@ -53,6 +55,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
             var oCam = new CamperApplication();
 
             this.Visible = IsMenuVisible;
+            var fedId = (string)Session["FedId"];
             
             if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"])
             {
@@ -61,8 +64,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 lnkBulkStatusUpdate.Visible = true;
                 divProgramFinder.Visible = true;
             }
-         
-            if ((string)Session["RoleID"] != ConfigurationManager.AppSettings["FJCADMIN"])
+            else if ((string)Session["RoleID"] == FED_ADMIN)
             {
                 dvAdmin.Visible = false;
                 dvRpts.Visible = false;
@@ -71,10 +73,13 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 divANReport.Visible = false;
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
+
+                var allowedFeds = new List<string>() {"5", "9", "10", "23", "35", "63", "69", "89", "98", "107"};
+                if (allowedFeds.Exists(x => x == fedId))
+                    lnkBulkStatusUpdate.Visible = true;
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing
-			var fedId = (string)Session["FedId"];
             int allowFedId = SchedulerDA.GetPaymentAccessFedID(DateTime.Now);
             if (fedId == allowFedId.ToString())
 			{
