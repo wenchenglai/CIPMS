@@ -132,7 +132,7 @@ public partial class Administration_BulkStatusUpdate : Page
     {
         if (ddlStatusTransition.SelectedValue == "25")
         {
-            chkboxYes.Text = "Yes, I have cancelled all applications for the selected camps that are no longer eligible for the grant.";
+            chkboxYes.Text = "Yes, I have cancelled all applications that are no longer eligible for the grant, for the selected camp. All remaining campers attended camp for the indicated session length.";
         }
         else
         {
