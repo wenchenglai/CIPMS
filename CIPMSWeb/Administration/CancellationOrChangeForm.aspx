@@ -65,8 +65,8 @@
                                         grant amount switches due to session date changes, we need you to provide us with
                                         some basic information. Once we review this information, we will process payment
                                         accordingly to reflect the adjustments. Thank you for your cooperation! If you have
-                                        any questions regarding this process, please contact Ariel Page (ariel@jewishcamp.org/
-                                        646 278 4520).
+                                        any questions regarding this process, please contact Staci Myer-Klein (staci@jewishcamp.org/
+                                        646-278-4572).
                                     </p>
                                 </td>
                             </tr>
