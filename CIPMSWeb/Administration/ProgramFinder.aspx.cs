@@ -41,7 +41,7 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             var fedId = gen.GetCanadianZipCode(txtZipCode.Text);
             if (fedId != "")
             {
-                fed = FederationsDA.GetFederationByZipCode("", Int32.Parse(fedId));
+                fed = FederationsDA.GetFederationByIdOrZipCode("", Int32.Parse(fedId));
             }
             else
             {
@@ -50,7 +50,7 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         }
         else
         {
-            fed = FederationsDA.GetFederationByZipCode(txtZipCode.Text, 0);
+            fed = FederationsDA.GetFederationByIdOrZipCode(txtZipCode.Text, 0);
         }
 
         if (fed.Count == 0)

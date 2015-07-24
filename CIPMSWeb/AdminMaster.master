@@ -38,8 +38,10 @@
                 &nbsp;<uc1:AdminMenu ID="AdminMenu1" runat="server" />
             </td>
             <td style="width:77%" valign="top">
+                <div style="margin-left: 20px">
                 <asp:contentplaceholder id="Content" runat="server">
-                </asp:contentplaceholder>
+                </asp:contentplaceholder>                    
+                </div>
             </td>
         </tr>                    
     </table>

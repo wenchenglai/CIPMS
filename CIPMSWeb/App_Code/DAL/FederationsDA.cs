@@ -9,15 +9,24 @@ public class FederationsDA
 {
     public static DataTable GetAllFederations(int CampYearID)
     {
-        SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+        var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "All");
         db.AddParameter("@CampYearID", CampYearID);
         return db.FillDataTable("usprsFederations_Select");
     }
 
+    public static DataTable GetAllActiveFederations(Role UserRole, int FedID)
+    {
+        var db = new SQLDBAccess("CIPConnectionString");
+        db.AddParameter("@Action", "AllActive");
+        if (UserRole != Role.FJCAdmin)
+            db.AddParameter("@FedID", FedID);
+        return db.FillDataTable("usprsFederations_Select");
+    }
+
     public static DataTable GetAllFederationsByUserRole(int CampYearID, Role UserRole, int FedID)
     {
-        SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+        var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "All");
         db.AddParameter("@CampYearID", CampYearID);
         if (UserRole != Role.FJCAdmin)
@@ -27,7 +36,7 @@ public class FederationsDA
 
     public static DataTable GetAllFederationsByMultipleCampYearsAndUserRole(string CampYearID_String, Role UserRole, int FedID)
     {
-        SQLDBAccess db = new SQLDBAccess("CIPConnectionString");
+        var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "ByMultipleYears");
         db.AddParameter("@CampYearID_String", CampYearID_String);
         if (UserRole != Role.FJCAdmin)
@@ -35,7 +44,7 @@ public class FederationsDA
         return db.FillDataTable("usprsFederations_Select");
     }
 
-    public static Dictionary<string, string> GetFederationByZipCode(string zipCode, int fedId)
+    public static Dictionary<string, string> GetFederationByIdOrZipCode(string zipCode, int fedId)
     {
         var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "GetFedByZipCode");
@@ -62,5 +71,16 @@ public class FederationsDA
             ret.Add("isJDSOnline", dr["isJDSOnline"].ToString());
         }
         return ret;
+    }
+
+    public static void SaveFederationContact(int fedId, string contactName, string phone, string email)
+    {
+        var db = new SQLDBAccess("CIPConnectionString");
+        db.AddParameter("@Action", "UpdateContactInfo");
+        db.AddParameter("@FedID", fedId);
+        db.AddParameter("@Contact", contactName);
+        db.AddParameter("@Phone", phone);
+        db.AddParameter("@Email", email);
+        db.ExecuteNonQuery("usp_Federation_Update");        
     }
 }

@@ -1,18 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Net;
-using System.Web;
 using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.DAL;
-
 
 public partial class AdminMenu : System.Web.UI.UserControl
 {
@@ -63,6 +55,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 lnkStatsReport.Visible = true;
                 lnkBulkStatusUpdate.Visible = true;
                 divProgramFinder.Visible = true;
+                divMaintenanceModule.Visible = true;
             }
             else if ((string)Session["RoleID"] == FED_ADMIN)
             {
@@ -300,10 +293,6 @@ public partial class AdminMenu : System.Web.UI.UserControl
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Search/ExecSummary.aspx");
     }
-    //protected void lnkExcel2_Click(object sender, EventArgs e)
-    //{
-    //    Response.Redirect("~/ExcelExport.aspx?prior=1");
-    //}
 
     protected void lnkUpload_Click(object sender, EventArgs e)
     {
