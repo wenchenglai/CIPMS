@@ -15,6 +15,10 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        // There are currently two places that could route to Camper Holding Page.  
+        // 1. When the CIPM is shut-down, typically from August to September
+        // 2. When CIPMS is open for registration, typically in mid-October
+        // The code below fulfills the scenario #1
         if (ConfigurationManager.AppSettings["OpenFederations"] == "None")
         {
             Response.Redirect("~/CamperHolding.aspx");        

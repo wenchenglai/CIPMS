@@ -214,7 +214,7 @@ public partial class Step1 : System.Web.UI.Page
         lblMessage.Text = "";
 
 		// There are currently two places that could route to Camper Holding Page.  
-		// 1. When the CIPM is shut-down, typically from July to September
+		// 1. When the CIPM is shut-down, typically from August to September
 		// 2. When CIPMS is open for registration, typically in mid-October
 		// The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
 		if (ZipCodeHasClosedProgram())
