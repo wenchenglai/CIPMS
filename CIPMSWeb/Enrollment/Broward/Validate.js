@@ -1,10 +1,11 @@
 ﻿var PageValidator = {
     OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
+        //if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+        //    $("#1a").show();
+        //} else {
+        //    $("#1a").hide();
+        //}
+        $("#1a").hide();
     },
 
     OnSchoolDropDownChange: function (ddlObject) {
