@@ -248,7 +248,7 @@ the accompanying spread sheet)<br /><br />Name of person submitting these docume
             drDocData["GradeEligibility"] = gen.GetGradeEligibilityRange(iFederationId);
 
             FedName = ((FederationEnum)iFederationId).ToString();
-            var fedDaySchoolEligibility = (FedDaySchoolEligibility)iFederationId;
+            var fedDaySchoolEligibility = (FederationEnum)iFederationId;
             drDocData["DaySchoolEligibility"] = General.GetEnumDescription(fedDaySchoolEligibility);
 
             drDocData["FederationName"] = FedName.Trim();

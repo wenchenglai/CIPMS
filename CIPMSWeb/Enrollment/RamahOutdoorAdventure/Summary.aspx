@@ -4,15 +4,14 @@
     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
-                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
+                <img src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
             </td>
             <td>
                 <p>
 					Good news! You may be eligible for an incentive.
 				</p>
                 <p>
-					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
-					please proceed by clicking the "next" button below.
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
 				</p>
             </td>
         </tr>
