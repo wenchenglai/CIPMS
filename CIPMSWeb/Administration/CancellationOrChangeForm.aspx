@@ -330,13 +330,11 @@
                             <tr>
                                 <td align="center" style="width: 50%">
                                     &nbsp;
-                                    <asp:Button runat="server" ID="btnClear" CssClass="submitbtn" Text="Reset" OnClick="btnClear_Click"
-                                        CausesValidation="false" />
+                                    <asp:Button runat="server" ID="btnClear" CssClass="submitbtn" Text="Reset" OnClick="btnClear_Click" CausesValidation="false" />
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    <asp:Button runat="server" ID="btnSaveExit" CssClass="submitbtn" Text="Save & Exit"
-                                        OnClick="btnSaveExit_Click1" Visible="false"/>
-                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:Button runat="server" ID="btnSubmit"
-                                        CssClass="submitbtn" Text="Submit Request" OnClick="btnSubmit_Click" />
+                                    <asp:Button runat="server" ID="btnSaveExit" CssClass="submitbtn" Text="Save & Exit" OnClick="btnSaveExit_Click1" Visible="false"/>
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <asp:Button runat="server" ID="btnSubmit" CssClass="submitbtn" Text="Submit Request" OnClick="btnSubmit_Click" />
                                 </td>
                             </tr>
                             <tr>

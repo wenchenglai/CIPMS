@@ -81,8 +81,7 @@ function ValidateDate(DateString)
 
 
 //to compare start date and end date and return true if end date is greater than start date, else false
-function CompareDates(StartDate, EndDate)
-{
+function CompareDates(StartDate, EndDate) {
     var startDate = new Date(StartDate);
     var endDate = new Date(EndDate);
     //alert(startDate +" ,"+ endDate);
@@ -4749,7 +4748,7 @@ function ValidateForm(isSubmit) {
     var valobj = document.getElementById("valobj"); 
     var dateValidationMessage;    
     var lblAdjustmentType;
-   
+
     var bValid = true;
     for (var i = 0; i<= inputobjs.length-1; i++) {
         //for request/adjustment type
@@ -4802,7 +4801,7 @@ function ValidateForm(isSubmit) {
 
     // 2013-11-20 We need to change the startDate and endDate (both are hard coded from web.config file) if admin is changing for last calendar year's data
     var appDate = $('#lblStartDate').text();
-    var appYear = appDate.substring(appDate.length - 4);
+    var appYear = appDate.substring(appDate.length - 2);
     var currentYear = startDate.value.substring(startDate.value.length - 4);
     if (appYear != currentYear) {
         startDate.value = startDate.value.substring(0, startDate.value.length - 4) + appYear;
