@@ -17,7 +17,7 @@ public partial class Step2_Columbus_3 : Page
     protected void Page_Init(object sender, EventArgs e)
     {
         bool isClosed = !(from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-            where id == ((int)FederationEnum.Broward).ToString()
+            where id == ((int)FederationEnum.Rochester).ToString()
             select id).Any();
 
         if (isClosed)
@@ -184,7 +184,7 @@ public partial class Step2_Columbus_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Broward);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Rochester);
         try
         {
             if (Page.IsValid)

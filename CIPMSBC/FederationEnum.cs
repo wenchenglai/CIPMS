@@ -119,7 +119,8 @@ namespace CIPMSBC
         HabonimGesher = 128,
         RamahDarom = 129,
         RamahNewEngland = 130,
-        Broward = 131
+        Broward = 131,
+        Rochester = 132
 	}
 
     ///// <summary>

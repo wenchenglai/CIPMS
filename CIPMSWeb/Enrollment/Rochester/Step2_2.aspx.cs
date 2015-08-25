@@ -88,7 +88,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
             }
             else
             {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Broward);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Rochester);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
                 if (result.SchoolType == StatusInfo.PendingPJLottery)

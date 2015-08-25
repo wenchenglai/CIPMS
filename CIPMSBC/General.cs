@@ -968,10 +968,10 @@ namespace CIPMSBC
         // to get the federation details for given fjcid
         public DataSet GetFedDetailsForFJCID(string FJCID)
         {
-            CIPDataAccess dal = new CIPDataAccess();
+            var dal = new CIPDataAccess();
             try
             {
-                SqlParameter[] param = new SqlParameter[1];
+                var param = new SqlParameter[1];
                 param[0] = new SqlParameter("@FJCID", FJCID);
 
                 DataSet dsFedDetails;
