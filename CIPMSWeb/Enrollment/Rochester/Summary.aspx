@@ -13,10 +13,7 @@
                 <p>
 					To determine if you are eligible, continue reading and if your camper meets the eligibility criteria, please proceed by clicking the “next” button below.
 				</p>
-            </td>
-        </tr>        
-        <tr>
-			<td colspan="2">
+                
 			    <p>
 			        The One Happy Camper-Rochester grant program, sponsored by the Farash Institute for Jewish Education and the Foundation for Jewish Camp, offers incentive grants of up to $1800 to all first-time campers attending a Jewish not-for-profit overnight camp.
 			    </p>
@@ -27,8 +24,13 @@
                     <li>Camper must reside in one of the following New York counties: Monroe, Wayne, Ontario, Yates, Seneca, Livingston, Wyoming, Genesee, Orleans.</li>
                     <li>Camper must be attending Jewish overnight camp for the first time.</li>
                     <li>Camper must attend Jewish overnight camp for 12 days or more.</li>
-                    <li>Camper must choose a camp from the Foundation for Jewish Camp approved camp list which includes over 155 non-profit, Jewish overnight camps. This can be found at <a href="http://www.farashinstitute.org/findacamp" target="_blank">www.farashinstitute.org/findacamp</a>.</li>
+                    <li>Camper must choose a camp from the Foundation for Jewish Camp approved camp list which includes over 155+ non-profit, Jewish overnight camps. This can be found at <a href="http://www.farashinstitute.org/findacamp" target="_blank">www.farashinstitute.org/findacamp</a>.</li>
                 </ul>
+            </td>
+        </tr>        
+        <tr>
+			<td colspan="2">
+
               
 				<p>
 				    If you meet the above criteria, you may be eligible for:

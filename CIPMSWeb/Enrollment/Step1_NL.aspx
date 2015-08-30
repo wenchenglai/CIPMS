@@ -26,21 +26,21 @@
                 <td>
                     <p style="text-align:justify">
                         Your community does not appear to be a sponsor of the One Happy Camper program or you did not meet their eligibility criteria. 
-                        To see which communities sponsor One Happy Camper and/or to contact your local program, click <a href="http://www.jewishcamp.org/contact-us" target="_blank">here</a>.
+                        If you have questions about your community’s One Happy Camper program and/or want to contact your local program, click <a href="http://www.jewishcamp.org/contact-us" target="_blank">here</a>.
                     </p>
                     <p>
-                        Many camps partner with us to sponsor a One Happy Camper grant.   (If you do not see your camp they do not sponsor a One Happy Camper grant.)
+                        Additionally, many camps sponsor a One Happy Camper grant. If you do not see your camp they do not sponsor a One Happy Camper grant. Please select your camp:
                     </p>
                     <div style="margin: auto; width: 60%; border-width: 3px solid">
                         <asp:DropDownList ID="ddlCamp" runat="server" CssClass="dropdown"></asp:DropDownList>
                     </div>
                     <p>
-                        We believe that every child deserves an opportunity to go to camp, but recognize that some families might require a little help. 
-                        Visit our <a href="http://www.jewishcamp.org/camper-scholarships" target="_blank">scholarship</a>  
-                        directory and speak to your local organizations and camp to see what financial assistance may be available.
+                        We believe that every child deserves an opportunity to go to camp, but recognize that some families might require assistance . Visit our 
+                        <a href="http://www.jewishcamp.org/camper-scholarships" target="_blank">scholarship</a>  
+                        directory and/or speak to your camp and local organizations to see what resources may be available.
                     </p>
                     <p>
-                        You are only eligible to receive one grant.
+                        Please note: You are only eligible to receive one One Happy Camper grant.
                     </p>
                     <p>
                         Questions?  Give us a call at 1-888-888-4819

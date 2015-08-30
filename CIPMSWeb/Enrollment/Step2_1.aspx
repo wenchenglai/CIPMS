@@ -89,9 +89,6 @@
 							<asp:CheckBox ID="chk17" runat="server" Text="PJ Library" />
 						</li>	
 						<li>
-							<asp:CheckBox ID="chkBunkConnect" runat="server" Text="BunkConnect" />
-						</li>	
-						<li>
 							<asp:CheckBox ID="chk18" runat="server" Text="Another child in our family previously received a grant" />
 						</li>	
 						<li>

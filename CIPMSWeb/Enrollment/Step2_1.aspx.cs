@@ -276,8 +276,8 @@ public partial class Step2_1 : System.Web.UI.Page
 					chkHearFromAd.Checked = true;
 				if (dr["OptionID"].ToString() == "10")
 					chk21.Checked = true;
-                if (dr["OptionID"].ToString() == "11")
-                    chkBunkConnect.Checked = true;
+                //if (dr["OptionID"].ToString() == "11")
+                //    chkBunkConnect.Checked = true;
 			}
 
 			//Question 3a
@@ -403,10 +403,10 @@ public partial class Step2_1 : System.Web.UI.Page
 			strTablevalues += strQuestionId + strFSeparator + "10" + strFSeparator + "Other/Don't remember" + strQSeparator;
 		}
 
-        if (chkBunkConnect.Checked)
-        {
-            strTablevalues += strQuestionId + strFSeparator + "11" + strFSeparator + "BunkConnect" + strQSeparator;
-        }
+        //if (chkBunkConnect.Checked)
+        //{
+        //    strTablevalues += strQuestionId + strFSeparator + "11" + strFSeparator + "BunkConnect" + strQSeparator;
+        //}
 
 		// Question 3a
 		if (chkStaff1.Checked || chkStaff2.Checked || chkStaff3.Checked)
