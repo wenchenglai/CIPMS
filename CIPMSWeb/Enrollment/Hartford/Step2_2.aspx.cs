@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
@@ -401,16 +396,6 @@ public partial class HartfordPage2 : System.Web.UI.Page
 				else
 					txtWhoInSynagogue.Enabled = false;
 			}
-			else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-			{
-				if (dr["OptionID"].Equals(DBNull.Value))
-					continue;
-
-				if (dr["OptionID"].ToString() == "1")
-					rdoDays12.Checked = true;
-				else
-					rdoDays19.Checked = true;
-			}
 		}
 	}
 
@@ -425,10 +410,6 @@ public partial class HartfordPage2 : System.Web.UI.Page
 		//for question FirstTimerOrNot
 		strQId = ((int)QuestionId.FirstTime).ToString();
 		strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-		//Grandfaother question
-		strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-		strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
 		//for question Grade
 		strQId = ((int)QuestionId.Grade).ToString();

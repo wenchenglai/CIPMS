@@ -20,14 +20,13 @@
         <tr>
             <td colspan="2">
                 <p>
-                    JFNNJ’s One Happy Camper program is made possible by the Jewish Federation of Northern New Jersey (JFNNJ) and the Foundation for Jewish Camp. The program provides a limited number of grants to encourage children to attend overnight Jewish camp for the first-time.
+                    The Jewish Federation of Northern New Jersey’s One Happy Camper program is made possible by the Jewish Federation of Northern New Jersey and the Foundation for Jewish Camp. The program provides a limited number of grants to encourage children to attend overnight Jewish camp for the first-time.                     
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                         <li>First time camper must be entering grades 3-12 (after camp).</li>
                         <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>

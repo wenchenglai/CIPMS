@@ -6,13 +6,6 @@
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
          <!--to display the validation summary (error messages)-->
         <table width="50%" cellpadding="0" cellspacing="0" align="center">
             <tr>
@@ -77,7 +70,7 @@
                 <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please enter the name of the session that the camper will be attending this summer.</asp:Label><br />
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
                           <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
                     </asp:Panel>
                 </td>

@@ -72,5 +72,5 @@
 
 $(function () {
     PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

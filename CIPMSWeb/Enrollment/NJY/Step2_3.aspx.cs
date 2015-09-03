@@ -339,9 +339,9 @@ public partial class Step2_NJY_3 : Page
                                     {
                                             case "2": //for camp
                                             ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
-                                            if (ddlCamp.SelectedItem != null)
-                                                if (ddlCamp.SelectedItem.Value == "1132" || ddlCamp.SelectedItem.Value == "1133")
-                                                    lbl.Text = "<font color='red'><b>If the camper attends a session that is 19 days or more, he/she is eligible for a $1,000 grant. If the camper attends a session that is 12-18 days, he/she is eligible for a pro-rated grant of $700.</b></font>";
+                                            //if (ddlCamp.SelectedItem != null)
+                                            //    if (ddlCamp.SelectedItem.Value == "1132" || ddlCamp.SelectedItem.Value == "1133")
+                                            //        lbl.Text = "<font color='red'><b>If the camper attends a session that is 19 days or more, he/she is eligible for a $1,000 grant. If the camper attends a session that is 12-18 days, he/she is eligible for a pro-rated grant of $700.</b></font>";
                                             break;
                                     }
                                 }

@@ -47,10 +47,10 @@
             <td valign="top">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="SchoolValidator.OnSchoolDropDownChange(this);" >
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Public" Value="2" />
+                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Private (secular) School" Value="1" />
+                    <asp:ListItem Text="Home School" Value="3" />
                 </asp:RadioButtonList>
             </td>
         </tr>

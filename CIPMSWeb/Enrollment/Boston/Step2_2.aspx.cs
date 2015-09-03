@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
@@ -100,18 +95,6 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         var status = (StatusInfo)iStatus;
         Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
     }    
-    
-    void RadioButtionQ5_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        try
-        {
-            setTextBoxStatus();
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
     
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -293,6 +276,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
             ddlSynagogue.Items.Insert(ddlSynagogue.Items.Count, otherListItem);
         }
     }
+
     private void getJCCList(string CampYear)
     {
         DataSet dsJCC;
@@ -337,50 +321,7 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
             tdJCCOther.Attributes.Remove("align");
         }
     }
-    //to set the school text box status to enable / disable based on the school type selected
-    private void setTextBoxStatus()
-    {
-        chkJCC.Disabled = chkSynagogue.Disabled = chkNo.Disabled = false;
-        if (chkSynagogue.Checked)
-            if (ddlSynagogue.Items.Count > 0) { chkSynagogue.Disabled = false; ddlSynagogue.Enabled = Pnl9a.Enabled = true; }
-            
-        if (chkJCC.Checked)
-        {
-            Pnl10a.Enabled = true;
-            chkJCC.Disabled = false;
-            if (ddlJCC.Items.Count > 0) ddlJCC.Enabled = true;
-            else txtOtherJCC.Enabled = true;
-        }
 
-        if (chkNo.Checked)
-        { Pnl9a.Enabled = Pnl10a.Enabled = false; chkJCC.Disabled = chkSynagogue.Disabled = true; ddlSynagogue.SelectedIndex = ddlJCC.SelectedIndex = -1; txtOtherSynagogue.Text = txtOtherJCC.Text = string.Empty; }
-
-        if (ddlSynagogue.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-        {           
-            lblOtherSynogogueQues.Enabled = true;
-            txtOtherSynagogue.Enabled = true;
-        }
-        else
-        {
-            txtOtherSynagogue.Enabled = false;
-            txtOtherSynagogue.Text = string.Empty;
-        }
-        if (ddlJCC.Items.Count > 0)
-        {
-            if (ddlJCC.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-            {
-                lblJCC.Enabled = true;
-                txtOtherJCC.Enabled = true;
-            }
-            else
-            {
-                txtOtherJCC.Enabled = false;
-                txtOtherJCC.Text = string.Empty;
-            }
-        }       
-    }
-
-    //to get the camper answers from the database
     void GetAnswers()
     {
         DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1044,1045,1063");
@@ -511,16 +452,6 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
                 else
                     txtWhoInSynagogue.Enabled = false;
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
-                else
-                    rdoDays19.Checked = true;
-            }
         }
     }
 
@@ -535,10 +466,6 @@ public partial class Step2_Boston_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

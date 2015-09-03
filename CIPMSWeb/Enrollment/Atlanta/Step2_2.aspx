@@ -24,26 +24,17 @@
                 </div>
             </td>
         </tr>
-        <tr id="1a">
-            <td valign="top"><span class="InfoText">*</span>1a</td>
-            <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
-            <div>
-                <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" onclick="PageValidator.OnGrandfatherRuleChange(this);" />
-                <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" onclick="PageValidator.OnGrandfatherRuleChange(this);" />
-            </div>
-            </td>
-        </tr>
         <tr id="1b">
-            <td valign="top"><span class="InfoText">*</span>1b</td>
+            <td valign="top"><span class="InfoText">*</span>1a</td>
             <td valign="top">Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta? 
             <div>
-                <asp:RadioButton ID="rdoLastYearYes" value="1" GroupName="rdoLastYear" runat="server" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnLastYearChange(this);" />
-                <asp:RadioButton ID="rdoLastYearNo" value="2" GroupName="rdoLastYear" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnLastYearChange(this);" />
+                <asp:RadioButton ID="rdoLastYearYes" value="1" GroupName="rdoLastYear" runat="server" Text="Yes" onclick="PageValidator.OnLastYearChange(this);" />
+                <asp:RadioButton ID="rdoLastYearNo" value="2" GroupName="rdoLastYear" runat="server" Text="No" onclick="PageValidator.OnLastYearChange(this);" />
             </div>
             </td>
         </tr>
         <tr id="1c">
-            <td valign="top"><span class="InfoText">*</span>1c</td>
+            <td valign="top"><span class="InfoText">*</span>1b</td>
             <td valign="top">Is your combined gross household income $160,000 or less? 
             <div>
                 <asp:RadioButton ID="rdoYes160" value="1" GroupName="rdo160" runat="server" Text="Yes" CssClass="QuestionText" />
@@ -65,10 +56,10 @@
             <td valign="top">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="SchoolValidator.OnSchoolDropDownChange(this);" >
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>

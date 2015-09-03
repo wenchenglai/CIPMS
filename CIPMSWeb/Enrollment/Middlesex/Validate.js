@@ -1,12 +1,4 @@
 ﻿var PageValidator = {
-    OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
-    },
-
     OnSchoolDropDownChange: function (ddlObject) {
         if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
@@ -22,13 +14,6 @@
         // First Timer camper or not
         if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
             errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
-        }
-
-        // 1a Grandfather rule
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
-            }
         }
 
         // Grade
@@ -62,6 +47,5 @@
 };
 
 $(function () {
-    PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

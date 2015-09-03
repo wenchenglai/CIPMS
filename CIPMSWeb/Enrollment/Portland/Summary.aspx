@@ -24,12 +24,13 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p> 
                 <p>
-                    <span style="color:red; font-weight: bold">Attention Jewish day school families:</span> 
-                    Currently there is a wait list for camp incentive grants for Jewish day school campers. Please send an email to Rachel Halupowski at rachel@jewishportland.org indicating your interest in this camp incentive grant. Funding decisions will be made in late May of 2015.
+                    Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are typically not eligible for this program (grants for Jewish day school children may be available through the Jewish Federation of Greater Portland). However, if your child attends a Jewish day school, PLEASE PROCEED WITH FILLING OUT THIS FORM. 
+                    <span style="color:red;">Applications for Jewish day school students must be submitted by May 15 of each year.</span> 
+
                 </p>  
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit 

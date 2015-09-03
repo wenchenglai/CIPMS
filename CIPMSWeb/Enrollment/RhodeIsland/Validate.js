@@ -111,5 +111,5 @@ $(function () {
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
 
     PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

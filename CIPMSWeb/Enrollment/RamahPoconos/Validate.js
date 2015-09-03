@@ -100,5 +100,5 @@
 $(function () {
     PageValidator.OnFirstTimerChange();
     PageValidator.OnSecondTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

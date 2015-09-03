@@ -342,7 +342,7 @@ public partial class Step2_URJ_3 : Page
                                             string campIDLast3Digits = ddlCamp.SelectedItem.Value.Substring(ddlCamp.SelectedItem.Value.Length - 3);
                                             if (campIDLast3Digits == "132" || campIDLast3Digits == "133" || campIDLast3Digits == "190")
                                             {
-												lblSessionDays.Text = "<font color='red'><b>In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.</b></font>";
+                                                //lblSessionDays.Text = "<font color='red'><b>In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.</b></font>";
                                             }
                                         }
                                         break;

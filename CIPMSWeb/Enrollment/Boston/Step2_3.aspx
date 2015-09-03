@@ -75,13 +75,16 @@
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="9" CssClass="QuestionText"></asp:Label>
+
+                </td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                    <p class="InfoText">
-					    In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
-                    </p>
-                    <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
+                        <p class="InfoText">
+					        In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
+                        </p>
+                        <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
+                    
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
                         <asp:Panel ID="pnlCalStartDt" runat="server" Visible="false">

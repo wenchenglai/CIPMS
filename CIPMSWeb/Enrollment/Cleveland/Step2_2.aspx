@@ -17,11 +17,11 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                <asp:Label ID="Label5" runat="server" CssClass="QuestionText">Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?</asp:Label><br />
-                <asp:RadioButtonList AutoPostBack="true" ID="RadioBtnQ3" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal" >
-                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                </asp:RadioButtonList>
+                Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?
+                <div>
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" />                    
+                </div>                
             </td>
         </tr>          
         <tr>
@@ -124,38 +124,34 @@
                 </div>
             </td>
         </tr>
-        <tr>            
+        <tr>
             <td valign="top"><span class="InfoText">*</span>3</td>
             <td valign="top">
-                <asp:Panel id="PnlQ6" runat="server">
-                    <asp:Label ID="Label10" runat="server" CssClass="QuestionText">What grade will the camper enter AFTER camp?</asp:Label><br />
-                    <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown"></asp:DropDownList>
-                    <asp:RequiredFieldValidator Enabled="false" ID="reqvalgrade" ControlToValidate="ddlGrade" runat="server" ErrorMessage="Please enter the Grade" Display="none"></asp:RequiredFieldValidator>
-                    <asp:RangeValidator Enabled="false" runat="server" ID="rangeValGrade" ErrorMessage="Please enter a valid Grade"  Display="none" ControlToValidate="ddlGrade" Type="Integer" MaximumValue="100" MinimumValue="0"></asp:RangeValidator>
-                </asp:Panel>
+                What grade will the camper enter AFTER camp?
+                <div class="QuestionsLeaveSomeUpperSpace">
+                    <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />
+                </div>
             </td>
         </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span>4</td>
             <td valign="top">
-                <asp:Label ID="Label14" runat="server" CssClass="QuestionText">What kind of school does the camper <u><b>CURRENTLY</b></u> attend?</asp:Label><br />
-                <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="RadioBtnQ9" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Private (secular) school" Value="1"></asp:ListItem>
+                What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="SchoolValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home school" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day school" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
-                <asp:RequiredFieldValidator ID="reqval" ControlToValidate="RadioBtnQ9" runat="server"  Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
             </td>
-        </tr>            
+        </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span>5</td>
-            <td valign="top">
-                <asp:Panel ID="PnlCamperSchool" runat="server">
-                    <asp:Label ID="Label16" runat="server" CssClass="QuestionText">Name of the school camper attends:</asp:Label>
-                    <asp:TextBox ID="txtCamperSchool" runat="server" CssClass="txtbox" MaxLength="200"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="reqvalSchool"  Display="none" ControlToValidate="txtCamperSchool" runat="server" ErrorMessage="Please enter the Name of the School"></asp:RequiredFieldValidator>
-                </asp:Panel>
+            <td valign="top" colspan="2">
+                Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
+                <div class="QuestionsLeaveSomeUpperSpace">
+                    <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
+                </div> 
             </td>
         </tr>
             

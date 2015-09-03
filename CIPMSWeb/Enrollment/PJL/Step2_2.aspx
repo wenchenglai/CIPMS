@@ -56,11 +56,11 @@
             <tr>
                 <td valign="top"><span class="InfoText">*</span>4</td>
                 <td valign="top" style="padding-bottom: 20px;">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
-                <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="SchoolValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
+                    <asp:ListItem Text="Public" Value="2" />
+                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Private (secular) School" Value="1" />
+                    <asp:ListItem Text="Home School" Value="3" />
                 </asp:RadioButtonList>
                 </td>
             </tr>

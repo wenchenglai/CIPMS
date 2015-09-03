@@ -43,10 +43,10 @@
                 <td valign="top">
                     <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?</asp:Label><br />
                     <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="RadioButtionQ5" runat="server" RepeatDirection="Horizontal">
-                        <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     </asp:RadioButtonList>
                     <asp:RequiredFieldValidator ID="reqval" ControlToValidate="RadioButtionQ5" runat="server"  Display="none" ErrorMessage="Please select the type of School"></asp:RequiredFieldValidator>
                 </td>

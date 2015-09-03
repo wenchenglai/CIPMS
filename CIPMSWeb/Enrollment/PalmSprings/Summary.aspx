@@ -28,13 +28,12 @@
                 <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                 <li>First time camper must be entering grades 1-12 (after camp).</li>
                 <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                <li>This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program. </li>
             </ul>
 		</p>                
-		<p>
-		    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
-		</p>
         <p>
-            <span style="font-weight: bold; color:red;">Attention Jewish day school families:</span>  If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application and instead please contact Sandy Durham at Sandy.Durham@jfedps.org or 760-324-4737.
+            <span style="font-weight: bold; color:red;">Attention Jewish day school families:</span>  
+            If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application and instead please contact Sandy Durham at Sandy.Durham@jfedps.org or 760-324-4737.
         </p>
         <p>
             If you need additional assistance, please call your community professional listed at the bottom of this page.

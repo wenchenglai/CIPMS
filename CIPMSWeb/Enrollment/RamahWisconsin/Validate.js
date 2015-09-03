@@ -47,5 +47,5 @@
 };
 
 $(function () {
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

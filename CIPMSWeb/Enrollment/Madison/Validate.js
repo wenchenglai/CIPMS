@@ -1,12 +1,4 @@
 ﻿var PageValidator = {
-    OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
-    },
-
     OnSchoolDropDownChange: function (ddlObject) {
         if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
@@ -62,6 +54,5 @@
 };
 
 $(function () {
-    PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

@@ -23,13 +23,13 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12 or more consecutive days</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                         <li>First time camper must be entering grades 2-12 (after camp).</li>
                         <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p> 
                 <p>
-                    <strong>Note:</strong> This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for program. If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper funding opportunities please visit 
+                    <strong>Note:</strong> 
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for program. If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper funding opportunities please visit 
                     <a href="http://JewishCamp.org/Scholarships" target="_blank">JewishCamp.org/Scholarships</a>, contact your camp, or the contact person listed at the bottom of this page.
                 </p>  
                 <p>

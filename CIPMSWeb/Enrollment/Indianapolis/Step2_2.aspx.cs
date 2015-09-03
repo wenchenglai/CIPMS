@@ -9,7 +9,6 @@ using System.Web;
 
 public partial class Step2_Indianapolis_2 : System.Web.UI.Page
 {
-
 	private CamperApplication CamperAppl;
 	private General objGeneral;
 	private Boolean bPerformUpdate;
@@ -348,16 +347,6 @@ public partial class Step2_Indianapolis_2 : System.Web.UI.Page
 					txtSchoolName.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-			{
-				if (dr["OptionID"].Equals(DBNull.Value))
-					continue;
-
-				if (dr["OptionID"].ToString() == "1")
-					rdoDays12.Checked = true;
-				else
-					rdoDays19.Checked = true;
-			}
 			else if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
 			{
 				if (dr["OptionID"].Equals(DBNull.Value))
@@ -426,10 +415,6 @@ public partial class Step2_Indianapolis_2 : System.Web.UI.Page
 		//for question FirstTimerOrNot
 		strQId = ((int)QuestionId.FirstTime).ToString();
 		strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-		//Grandfaother question
-		strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-		strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
 		//for question Grade
 		strQId = ((int)QuestionId.Grade).ToString();

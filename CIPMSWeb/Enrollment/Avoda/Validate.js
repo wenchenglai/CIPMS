@@ -7,14 +7,6 @@
         }
     },
 
-    OnSchoolDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
-            $('#ctl00_Content_txtSchoolName').attr('disabled', true);
-        } else {
-            $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
-        }
-    },
-
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
@@ -63,5 +55,5 @@
 
 $(function () {
     PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
+    SchoolValidator.OnSchoolDropDownChange();
 })

@@ -20,25 +20,21 @@
                     If you believe that your camper meets the criteria please proceed with the application by clicking the “Next” button below.
                 </p>
 				<p>
-                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> 
-                    If your child is currently enrolled in a Jewish day school, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org .
-				</p>
-                <p>
-                    All other families, to determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-                </p>
-				<p>
 				    The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                         <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p> 
                 <p>
                     Funds that are awarded will be paid directly to the camp.
                 </p>  
+				<p>
+                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> 
+                    If your child is currently enrolled in a Jewish day school, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org.
+				</p>
                 <p>
                     If your child is not eligible for this particular program and you are interested in learning about financial-needs based grants or other camper funding opportunities 
                     please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp.               

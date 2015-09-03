@@ -65,10 +65,10 @@
             <td valign="top">
                 What kind of school does the camper <u><b>CURRENTLY</b></u> attend?<br />
                 <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Private (secular) school" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home school" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day school" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>

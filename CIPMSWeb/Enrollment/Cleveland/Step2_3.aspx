@@ -102,11 +102,7 @@
                         <p style="text-align:justify">
                           The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                                     
                     <uc1:RegControls ID="RegControls1" runat="server" />
-                    <%--<asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist" /><br />                    
-                    --%>
-                   <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />--%>
+
                 </td>
             </tr>
             <tr>
@@ -118,19 +114,7 @@
                     </asp:Panel>
                 </td>
              </tr>
-            <%--<tr>
-                <td valign="top"><asp:Label ID="Label20" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" >
-                    <asp:Panel ID="PnlQ8_1_1" runat="server" width="100%">
-                        <asp:Label ID="Label21" runat="server" CssClass="QuestionText">State</asp:Label><br />
-                    </asp:Panel>
-                </td>
-                <td>
-                    <asp:Panel ID="PnlQ8_1_2" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlState" runat="server" CssClass="dropdown" AutoPostBack="true"></asp:DropDownList>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
+
             <tr>
                 <td valign="top"><asp:Label ID="Label1" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" style="width:20%" >
