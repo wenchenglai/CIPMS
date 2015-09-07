@@ -1,12 +1,4 @@
 ﻿var PageValidator = {
-    OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
-    },
-
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
@@ -53,7 +45,6 @@
     }
 };
 
-$(function () {
-    PageValidator.OnFirstTimerChange();
+$(function() {
     SchoolValidator.OnSchoolDropDownChange();
-})
+});

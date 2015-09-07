@@ -313,7 +313,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
 	void PopulateAnswers()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,1021,1063");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,1021");
 
 		foreach (DataRow dr in dsAnswers.Tables[0].Rows)
 		{
@@ -370,16 +370,6 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 					txtLastName.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-			{
-				if (dr["OptionID"].Equals(DBNull.Value))
-					continue;
-
-				if (dr["OptionID"].ToString() == "1")
-					rdoDays12.Checked = true;
-				else
-					rdoDays19.Checked = true;
-			}
 		}
 	}
 
@@ -396,10 +386,6 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 		//for question FirstTimerOrNot
 		strQId = ((int)QuestionId.FirstTime).ToString();
 		strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-		//Grandfaother question
-		strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-		strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
 		// First name and Last Name
 		strQId = hdnQ1021Id.Value;

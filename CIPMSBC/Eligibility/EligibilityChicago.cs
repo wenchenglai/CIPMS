@@ -236,7 +236,7 @@ namespace CIPMSBC.Eligibility
 
             if (Amount > 0)
             {
-                double OriginalAmount = Amount;
+                double originalAmount = Amount;
                 // 2013-07-23 Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days
                 // of camping, the amount is only 500.
                 Amount = 500;
@@ -248,7 +248,7 @@ namespace CIPMSBC.Eligibility
                     {
                         if ("2" == drSchoolOption["OptionID"].ToString())
                         {
-                            Amount = OriginalAmount;
+                            Amount = originalAmount;
                         }
                     }
                 }

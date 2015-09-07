@@ -21,7 +21,7 @@
     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
-				<img id="logo" src="../../images/DC logo.jpg" alt="" height="100" width="320" />
+				<img id="logo" src="logo.jpg" alt="" />
             </td>
             <td>
                 <p>
@@ -39,7 +39,7 @@
                     The Greater Washington DC area One Happy Camper Program, sponsored by The Jewish Federation of Greater Washington and the Foundation for Jewish Camp, provides limited grants to encourage children to attend overnight Jewish camp for the first-time. 
                 </p>
                 <p>
-                    This is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000 off their camp fee to try a Jewish one.
+This is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000  or $700 off their camp fee to try a Jewish one.                     
                 </p>
 		        <p>
 			        The following outlines the eligibility criteria for this program:

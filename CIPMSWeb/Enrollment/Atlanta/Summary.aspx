@@ -29,7 +29,7 @@
                         <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 12-18 consecutive days.</li>
                         <li>Eligible campers must be entering grades 1-12 (after camp).</li>
-                        <li>Attend one of the 150+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
+                        <li>Attend one of the 155+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
                     </ul>
 		        </p>
                 <p>

@@ -28,7 +28,7 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
                 <p>
@@ -41,7 +41,7 @@
                     contact your camp, or the contact person listed at the bottom of this page.                     
                 </p>
                 <p>
-                    If you need additional assistance, please contact Mary Jean Timmel at 502-238-2739 or mjtimmel@jewishlouisville.org
+                    If you need additional assistance, please contact Mary Jean Timmel at 502-238-2722 or mjtimmel@jewishlouisville.org
                 </p>
 			</td>
         </tr>        

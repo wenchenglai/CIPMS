@@ -1,6 +1,5 @@
 ﻿var PageValidator = {
     OnSubmitClick: function (sender, args) {
-        // Make sure everything must be selected
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
@@ -11,6 +10,6 @@
     }
 };
 
-$(function() {
+$(function () {
 
 });

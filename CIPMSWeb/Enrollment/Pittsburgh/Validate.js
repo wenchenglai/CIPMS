@@ -24,20 +24,6 @@
                     errorMsg.innerHTML += "<ul><li>Error in Question No. 2 - please enter the synagogue name.</li></ul>";
                 }
             }
-
-            if (!$rdoCongregant.is(':checked') && !$('#ctl00_Content_rdoNoOne').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - please select who did you speak to in your synagogue.</li></ul>";
-            }
-
-            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - please select one person from your synagogue.</li></ul>";
-            }
-
-            if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
-                if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 2a - please enter the person's name from your synagogue.</li></ul>";
-                }
-            }
         }
 
         // JCC - when it's checked, some error checking
@@ -61,7 +47,7 @@
     }
 };
 
-$(function() {
+$(function () {
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));

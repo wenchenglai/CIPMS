@@ -109,12 +109,6 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			Response.Redirect("Step2_3.aspx");
 	}
 
-	void Page_Unload(object sender, EventArgs e)
-	{
-		CamperAppl = null;
-		objGeneral = null;
-	}
-
 	void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
 	{
 		setPanelStatus();

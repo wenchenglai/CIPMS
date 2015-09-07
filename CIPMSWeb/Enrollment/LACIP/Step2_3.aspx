@@ -168,19 +168,6 @@
                 </td>
             </tr>
             <tr>
-                <td style="height: 64px">
-                </td>
-                <td style="height: 64px">
-                    <asp:Panel ID="PnlNote" runat="server">
-                        <asp:Label ID="lblNote" runat="server" CssClass="QuestionText">
-                            <p style="text-align: justify" id="pNote" runat="server">
-                                <font color="red"><b>In order to be eligible for the incentive grant,
-                                the camper must attend camp for at least 12 consecutive days.</b></font></p>
-                        </asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
                 <td valign="top">
                     <asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">

@@ -33,7 +33,7 @@
 		</p>                
         <p>
             <span style="font-weight: bold; color:red;">Attention Jewish day school families:</span>  
-            If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application and instead please contact Sandy Durham at Sandy.Durham@jfedps.org or 760-324-4737.
+            If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application.  Please contact Rebecca Hope at Rebecca.Hope@jfedps.org or 760-324-4737.
         </p>
         <p>
             If you need additional assistance, please call your community professional listed at the bottom of this page.

@@ -260,7 +260,7 @@ public partial class Step2_LACIP_3 : Page
                 int timeInCamp = new CamperApplication().getTimeInCamp(Session["FJCID"].ToString());
                 if (timeInCamp == 1)
                 {
-                    pNote.InnerHtml = "<font color='red'><b>In order to be eligible</b></font> for the incentive grant, the camper must attend camp for at least 12 consecutive days.";
+                    //pNote.InnerHtml = "<font color='red'><b>In order to be eligible</b></font> for the incentive grant, the camper must attend camp for at least 12 consecutive days.";
                 }
             }
             foreach (ListItem li in RadioBtnQ7.Items)
@@ -442,7 +442,6 @@ public partial class Step2_LACIP_3 : Page
             PnlQ10.Enabled = false;
             txtStartDate.Text = "";
             txtEndDate.Text = "";
-            PnlNote.Enabled = false;
         }
         else
         {
@@ -450,8 +449,6 @@ public partial class Step2_LACIP_3 : Page
             PnlQ10.Enabled = true;
             PnlQ7.Enabled = true;
             PnlQ8.Enabled = true;
-            //PnlQ9.Enabled = true;
-            PnlNote.Enabled = true;
         }
     }
 

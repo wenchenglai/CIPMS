@@ -47,35 +47,6 @@
                     </asp:Panel>
                 </td>
             </tr>
-<%--            <tr>
-                <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label35"
-                        runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="PnlQ3" runat="server">
-                        <asp:Label ID="lblQ4" runat="server" CssClass="QuestionText">Will this be the camper’s second time attending JCC Ranch camp?</asp:Label><br />
-                        <asp:RadioButtonList ID="RadioBtnQ3" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal"
-                            AutoPostBack="true">
-                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top">
-                    <asp:Label ID="Label13" Text="*" runat="server" CssClass="InfoText" /><asp:Label
-                        ID="Label17" runat="server" Text="3" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Panel ID="PnlQ4" runat="server">
-                        <asp:Label ID="Label18" runat="server" CssClass="QuestionText">Did the camper receive an incentive grant through JCC Ranch’s Campership Incentive Program last summer?</asp:Label><br />
-                        <asp:RadioButtonList ID="RadioBtnQ4" runat="server" CssClass="QuestionText" RepeatDirection="Horizontal" >
-                            <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                        </asp:RadioButtonList>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label2" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label8"
