@@ -26,12 +26,8 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-12 (after camp).</li>
-                        <li>If your child attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                     </ul>
 		        </p>                
-                <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend a Jewish day school are not eligible for program. Please contact the camp office directly to learn more about opportunities for your child.                    
-                </p>
                 <p>
                     Camp JRF fills the summer with fun, friendships, and Jewish living. Our summer camp is a joyful, creative, and inclusive Reconstructionist community. Campers swim, play soccer, basketball, baseball, volleyball, and other sports. They sing and explore other arts. They learn from visiting artists, scholars, and rabbis, as well from talented specialists and dedicated college-age counselors. Our campers make lasting friendships, experience a safe and fun summer, explore Jewish tradition, forge their own Jewish identity, and participate in creating a Jewish culture in which our values are lived each day.
                 </p>

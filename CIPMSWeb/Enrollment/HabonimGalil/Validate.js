@@ -52,13 +52,7 @@
             }
         }
 
-        args.IsValid = true;
-
-        if (errorMsg.innerHTML === "") {
-            args.IsValid = true;
-        } else {
-            args.IsValid = false;
-        }
+        args.IsValid = errorMsg.innerHTML === "";
 
         return;
     }

@@ -28,14 +28,13 @@
                     </ul>
 				</p>   
                 <p>
-                    This incentive cannot be combined with other discounts or promotions offered by Moshava Malibu. It is only available to children who do not attend Jewish day school. These funds are limited and may run out at any time without notice. 
+                    This incentive cannot be combined with other discounts or promotions offered by Moshava Malibu. <strong>It is only available to children who do not attend Jewish day school</strong>. These funds are limited and may run out at any time without notice. 
                 </p> 
                 <p>
-                    Moshava Malibu is a Modern Orthodox and religious Zionist overnight camp for coed children entering grades 3 through 10. As a proud member of Bnei Akiva's Camp Moshava family, our mission is to inspire and empower Jewish youth with a deep commitment to our people, Am Yisrael, our land, Eretz Yisrael, and our Torah, Torat Yisrael.
+                    Moshava Malibu is a Modern Orthodox and religious Zionist overnight camp for coed children entering grades 3 through 10. As a proud member of Bnei Akiva's Camp Moshava family, our mission is to inspire and empower Jewish youth with a deep commitment to our people -- <span style="font-style: italic;">Am Yisrael</span>, our land -- <span style="font-style: italic;">Eretz Yisrael</span>, and our Torah -- <span style="font-style: italic;">Torat Yisrael</span>.
                 </p>
                 <p>
-                    In a warm, caring and safe environment, we offer a rich program of sports, arts, swimming and nature infused with Jewish identity development and learning. For Summer Session 2015, we are excited to be moving to our permanent home in Running Springs, located in the beautiful mountains of San Bernardino County, less than 2 hours from Los Angeles.
-                </p>
+                    Now located in Running Springs, CA in the beautiful San Bernardino mountains, Moshava Malibu offers a rich program of sports, arts, swimming and nature infused with Jewish identity development and learning in a warm, caring and safe environment.                 </p>
                 <p>
                     If you are interested in learning more about our camp, please visit us at: <a href="http://www.moshavamalibu.org" target="_blank">www.moshavamalibu.org</a> or send us an email at <a href="mailto:info@moshavamalibu.org">info@moshavamalibu.org</a>.  You may also call us at 1.855.MOSHAVA.
                 </p>        

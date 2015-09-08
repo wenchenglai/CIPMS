@@ -100,7 +100,13 @@ namespace CIPMSBC.Eligibility
                         if (specialCode == "PJGTC2015")
                             iStatusValue = (int)StatusInfo.PendingPJLottery;
                         else
-                            iStatusValue = (int)StatusInfo.SystemInEligible;
+                        {
+                            var gen = new General();
+                            DataSet fed = gen.GetFedDetailsForFJCID(FJCID);
+                            var allowJDS = (bool)fed.Tables[0].Rows[0]["isJDSAvailable"];
+
+                            iStatusValue = allowJDS ? (int)StatusInfo.SystemEligible : (int)StatusInfo.SystemInEligible;
+                        }
                     }
                     else
                     {

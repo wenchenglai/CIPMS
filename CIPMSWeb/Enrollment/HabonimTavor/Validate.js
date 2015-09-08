@@ -18,24 +18,9 @@
 
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0],
-            $rdolistSiblingAttended = $('#ctl00_Content_rdolistSiblingAttended_0'),
-            qGradeNo = "",
-            qSchoolTypeNo = "";
+            $rdolistSiblingAttended = $('#ctl00_Content_rdolistSiblingAttended_0');
 
         errorMsg.innerHTML = "";
-
-        if ($rdolistSiblingAttended.length) {
-            qGradeNo = "4";
-            qSchoolTypeNo = "5";
-        } else {
-            qGradeNo = "2";
-            qSchoolTypeNo = "3";
-        }
-
-        CommonValidator.OnSubmitClick(sender, args, qGradeNo, qSchoolTypeNo);
-
-        if (!args.IsValid)
-            return;
 
         // Siblings
         if ($rdolistSiblingAttended.length) {
@@ -52,13 +37,9 @@
             }
         }
 
-        args.IsValid = true;
+        errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 4, 5, 6);
 
-        if (errorMsg.innerHTML === "") {
-            args.IsValid = true;
-        } else {
-            args.IsValid = false;
-        }
+        args.IsValid = errorMsg.innerHTML === "";
 
         return;
     }

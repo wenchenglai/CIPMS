@@ -22,12 +22,12 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>First time camper must be entering grades 4-11 (after camp).</li>
                         <li>Children currently enrolled in a Jewish day school <span style="text-decoration: underline">are</span> eligible for the JCC Maccabi Sports Camp One Happy Camper program.</li>
                     </ul>
 		        </p>                
 		        <p>
-		            JCC Maccabi Sports Camp is an overnight Jewish sports summer camp located just outside of San Francisco in Atherton, California. Our camp welcomes kids and teens in grades 4 through 10 from around the world. During our two-week camp sessions, campers learn more about their favorite sport of choice baseball, basketball, soccer, or tennis. There are also plenty of other sports and activities mixed in with the core values of a Jewish summer camp experience.
+                    JCC Maccabi Sports Camp is an overnight Jewish sports summer camp located just outside of San Francisco in Atherton, California. Our camp welcomes kids and teens in grades 4 through 11 from around the world. During our two-week camp sessions, campers learn more about their favorite sport of choice baseball, basketball, soccer, or tennis. There are also plenty of other sports and activities mixed in with the core values of a Jewish summer camp experience. 		            
 		        </p>
                 <p>
                     JCC Maccabi Sports Camp is the newest addition to the JCC Movement’s immensely successful programs for teens and youth - JCC Maccabi Games, JCC Maccabi ArtsFest, and JCC Maccabi Israel. Now your young athlete can enjoy all the excitement, community, and character building of the Games in a two-week summer camp where they get serious, individual instruction in their core sport plus all the fun and friendship they love about overnight camp.

@@ -27,7 +27,6 @@
                         <li>$700 to campers who attend camp for 12-18 consecutive days for the first time.</li>
                         <li>Eligible campers must be entering grades 3-12 (after camp).</li>
                         <li>You must be already signed up for Mini Session 1, Mini Session 2, Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs.</li>
-                        <li>If your child attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                     </ul>
 		        </p>                
 		        <p>

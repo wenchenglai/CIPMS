@@ -23,12 +23,14 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                     </ul>
 		        </p>                
 		        <p>
 		            Camp Zeke is the first Jewish overnight camp where 7 to 17 year-olds celebrate healthy living while eating local, organic foods and cooking kosher, gourmet meals. In addition to traditional sports, campers choose from alternative fitness activities like dance, krav maga, running, strength training, yoga, and sailing. We also offer a culinary arts program in which kids can throw on an apron and cook with a professional chef. To learn more, visit www.campzeke.org or email questions@campzeke.org! 
 		        </p>
+                <p>
+                    If you need additional assistance, please call the camp professional listed at the bottom of this page.
+                </p>
 			</td>
         </tr>
     </table>

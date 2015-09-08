@@ -38,7 +38,8 @@
                     Now that we told you our philosophy, please see our website for how we put it into action. <a href="http://www.Campnageela.org" target="_blank">Campnageela.org</a>.                
                 </p>
                 <p>
-                    If you are interested in learning more about our camps and other available grants, and our many and varied year-round programs, please contact Rivki Cherrick at (516) 374-1528 Ext 109 or rivki@nageela.org.
+If you are interested in learning more about our camps and other available grants, and our many and varied year-round programs, please contact Rabbi David Shenker at (516) 374-1528 Ext 103 or rds@campnageela.org.                 
+
                 </p>
 			</td>
         </tr>

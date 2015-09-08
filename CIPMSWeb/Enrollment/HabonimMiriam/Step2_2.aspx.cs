@@ -1,15 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
 
 public partial class Step2_Habonim_2 : System.Web.UI.Page
@@ -48,13 +41,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             {
                 Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
             }
-            string campID = resultCampId.ToString();
-            string last3digits = campID.Substring(campID.Length - 3);
-
-            lblGrade.Text = "4";
-            lblSchoolType.Text = "5";
-            lblSchoolName.Text = "6";
-
         }
     }   
 
@@ -67,8 +53,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             {
                 strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
                 ProcessCamperAnswers();
-                //Session["FJCID"] = null;
-                //Session["ZIPCODE"] = null;
                 Response.Redirect(strRedirURL);
             }
         }
