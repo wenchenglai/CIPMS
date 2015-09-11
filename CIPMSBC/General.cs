@@ -1597,9 +1597,13 @@ namespace CIPMSBC
                 DataSet dsFed = this.GetFederationForZipCode(strZip.Substring(0, 3));
                 if (dsFed.Tables.Count > 0)
                 {
-                    if (dsFed.Tables[0].Rows.Count > 0)
+                    if (dsFed.Tables[0].Rows.Count == 1)
                     {
                         FedId = dsFed.Tables[0].Rows[0][0].ToString();
+                    }
+                    else if (dsFed.Tables[0].Rows.Count > 1)
+                    {
+                        FedId = "Duplicate";
                     }
                 }
             }

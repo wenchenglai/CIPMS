@@ -33,8 +33,8 @@ namespace CIPMSBC
 		EligibleContactParentsAagain = 42,
         EligiblePendingNumberOfDays = 43,
         EligibleCampCoupon = 45,
-        PendingPJLottery = 46, // added 2014-07-28 For PJL routing - PJL will accept campers not eligible for DS from other community programs.  So we need to attach this status to routing app
-        EligiblePJLottery = 47,
+        //EligiblePJLottery = 46,
+        EligiblePJLottery = 47, // added 2014-07-28 For PJL routing - PJL will accept campers not eligible for DS from other community programs.  So we need to attach this status to routing app
         IneligiblePJLottery = 48,
         WinnerPJLottery = 49,
         NonJewish = 9999

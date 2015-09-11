@@ -51,7 +51,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
                     }
-                    else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2015")
+                    else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2016")
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = false;
@@ -101,7 +101,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
             if (rdoYes.Checked)
             {
                 camperApp.InsertCamperAnswers(fjcid, "7~4~", Master.UserId, "PJL Lottery - Set JDS");
-                Session["STATUS"] = (int)StatusInfo.PendingPJLottery;
+                Session["STATUS"] = (int)StatusInfo.EligiblePJLottery;
             }
             else
             {

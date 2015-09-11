@@ -127,10 +127,10 @@ namespace CIPMSBC.Eligibility
                         //StatusValue = (int)StatusInfo.SystemInEligible;
                         
                         // 2014-10-14 if regular PJ program user chooses JDS (typically from zip code with no community program), we automatically mark it PendingLottery
-                        StatusValue = (int)StatusInfo.PendingPJLottery;
+                        StatusValue = (int)StatusInfo.EligiblePJLottery;
 
-                        //2014-08-20 If it's PendingPJLottery, we temporarily make it eligible, so the process can still keep the PendingPJLottery on Step2_2
-                        if (currentStatus == StatusInfo.PendingPJLottery)
+                        //2014-08-20 If it's EligiblePJLottery, we temporarily make it eligible, so the process can still keep the EligiblePJLottery on Step2_2
+                        if (currentStatus == StatusInfo.EligiblePJLottery)
                             StatusValue = (int)StatusInfo.SystemEligible;
                     }
                     else

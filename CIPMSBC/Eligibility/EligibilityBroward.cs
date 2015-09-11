@@ -89,15 +89,11 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2015")
-                            iStatusValue = (int)StatusInfo.PendingPJLottery;
+                        if (specialCode == "PJGTC2016")
+                            iStatusValue = (int)StatusInfo.EligiblePJLottery;
                         else
                         {
-                            var gen = new General();
-                            DataSet fed = gen.GetFedDetailsForFJCID(FJCID);
-                            var allowJDS = (bool)fed.Tables[0].Rows[0]["isJDSAvailable"];
-
-                            iStatusValue = allowJDS ? (int)StatusInfo.SystemEligible : (int)StatusInfo.SystemInEligible;
+                            iStatusValue = (int)AllowDaySchool(FJCID);
                         }
                     }
                     else

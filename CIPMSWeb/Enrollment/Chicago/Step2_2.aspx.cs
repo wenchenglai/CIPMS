@@ -102,7 +102,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
             //    }
             //}
 
-            //Session["STATUS"] = ((int)StatusInfo.PendingPJLottery).ToString();
+            //Session["STATUS"] = ((int)StatusInfo.EligiblePJLottery).ToString();
             //Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
 		}
 		else

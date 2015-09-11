@@ -9,6 +9,8 @@
                 <div>
                     <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
                     <asp:Button runat="server" Text="Find Program" ID="btnFind" OnClick="btnFind_Click"/>
+                </div>
+                <div>
                     <asp:Label runat="server" ID="lblError" ForeColor="Red"></asp:Label>
                 </div>
                 <asp:Panel runat="server" ID="pnlResult" Visible="false">

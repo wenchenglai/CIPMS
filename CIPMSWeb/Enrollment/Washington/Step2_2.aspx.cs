@@ -80,8 +80,8 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.WashingtonDC);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
-                if (result.SchoolType == StatusInfo.PendingPJLottery)
-                    iStatus = (int)StatusInfo.PendingPJLottery;
+                if (result.SchoolType == StatusInfo.EligiblePJLottery)
+                    iStatus = (int)StatusInfo.EligiblePJLottery;
                 else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
                     result.Grade == StatusInfo.SystemInEligible ||
                     result.SchoolType == StatusInfo.SystemInEligible ||

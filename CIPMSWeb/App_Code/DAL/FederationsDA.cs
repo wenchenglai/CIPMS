@@ -56,7 +56,7 @@ public class FederationsDA
         var dr = db.ExecuteReader("usprsFederations_Select");
 
         var ret = new Dictionary<string, string>();
-
+       
         if (dr.Read())
         {
             ret.Add("ID", dr["ID"].ToString());
@@ -70,6 +70,18 @@ public class FederationsDA
             ret.Add("isJDSAvailable", dr["isJDSAvailable"].ToString());
             ret.Add("isJDSOnline", dr["isJDSOnline"].ToString());
         }
+
+        if (dr.Read())
+        {
+            if (!ret.ContainsKey("Error"))
+            {
+                ret.Add("Error", "Duplicate");
+            }
+
+            ret.Add("NameForSecondProgram", dr["Name"].ToString());
+        }
+
+        dr.Close();
         return ret;
     }
 

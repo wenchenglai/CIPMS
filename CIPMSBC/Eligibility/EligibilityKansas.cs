@@ -96,8 +96,7 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-						//iStatusValue = (int)StatusInfo.SystemEligible;
-						iStatusValue = (int)StatusInfo.SystemInEligible;
+                        iStatusValue = (int)AllowDaySchool(FJCID);
                     }
                     else
                     {

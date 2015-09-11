@@ -95,12 +95,12 @@ public partial class Step2_PJL_3 : Page
 				}
 
                 var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
-                if ((checkStatus == StatusInfo.SystemInEligible || checkStatus == StatusInfo.PendingPJLottery) && (StatusInfo)iStatus != StatusInfo.SystemInEligible)
+                if ((checkStatus == StatusInfo.SystemInEligible || checkStatus == StatusInfo.EligiblePJLottery) && (StatusInfo)iStatus != StatusInfo.SystemInEligible)
                     iStatus = (int)checkStatus;
 
                 Session["STATUS"] = iStatus;
 
-                if (iStatus == Convert.ToInt32(StatusInfo.PendingPJLottery))
+                if (iStatus == Convert.ToInt32(StatusInfo.EligiblePJLottery))
 				{
                     var strRedirUrl = "EnterLotteryInfo.aspx";
 
