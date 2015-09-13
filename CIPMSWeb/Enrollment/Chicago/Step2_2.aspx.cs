@@ -2,13 +2,11 @@ using System;
 using System.Data;
 using System.Configuration;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 using CIPMSBC.ApplicationQuestions;
-
 
 public partial class Step2_Chicago_2 : System.Web.UI.Page
 {
@@ -18,13 +16,10 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 	
 	protected void Page_Init(object sender, EventArgs e)
 	{
-
 		btnNext.Click += new EventHandler(btnNext_Click);
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);
 		btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
 		btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
-		rdolistSiblingAttended.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-		rdoSchoolType.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
 		CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
 		CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
 	}
@@ -44,11 +39,9 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			if (Session["FJCID"] != null)
 			{
 				hdnFJCID.Value = (string)Session["FJCID"]; ;
-				getCamperAnswers();
+                PopulateAnswers();
 			}
-			ddlJewishDaySchool_SelectedIndexChanged(null, null);
 		}
-		SetSyangogueJCCEnableDisable();
 	}
 
 	void btnNext_Click(object sender, EventArgs e)
@@ -84,34 +77,29 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		// Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
 		if (ddlJewishDaySchool.SelectedValue == "3")
 		{
-            // 2014-10-10 Disable Chicaog coupon for early 2105 fall by commenting the code below
-			Response.Redirect("Step2_coupon.aspx");
+            // 2014-10-10 Enable Chicaog coupon for in winter every year after PJ Lottery is closed below by commenting the code below
+			//Response.Redirect("Step2_coupon.aspx");
 
-            // 2014-10-10 In the early fall of 2015, we should use PJ lottery
-            //var url = "Step2_camp_coupon_holding.aspx?prev=";
+            // 2014-10-10 In the early fall of every year, we should use PJ lottery
+            var url = "Step2_camp_coupon_holding.aspx?prev=";
 
-            //var session = HttpContext.Current.Session;
-            //if (session["SpecialCodeValue"] != null)
-            //{
-            //    var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
-            //    var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
+            var session = HttpContext.Current.Session;
+            if (session["SpecialCodeValue"] != null)
+            {
+                var currentCode = session["SpecialCodeValue"].ToString().Substring(0, 9);
+                var campYearId = Convert.ToInt32(HttpContext.Current.Application["CampYearID"]);
 
-            //    if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
-            //    {
-            //        url = "../PJL/Step2_2_route_info.aspx?prev=";
-            //    }
-            //}
+                if (SpecialCodeManager.IsValidCode(campYearId, (int)FederationEnum.PJL, currentCode))
+                {
+                    url = "../PJL/Step2_2_route_info.aspx?prev=";
+                }
+            }
 
-            //Session["STATUS"] = ((int)StatusInfo.EligiblePJLottery).ToString();
-            //Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
+            Session["STATUS"] = ((int)StatusInfo.EligiblePJLottery).ToString();
+            Response.Redirect(url + HttpContext.Current.Request.Url.AbsolutePath);
 		}
 		else
 			Response.Redirect("Step2_3.aspx");
-	}
-
-	void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		setPanelStatus();
 	}
 
 	void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -319,7 +307,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 	}
 
 	//to get the camper answers from the database
-	void getCamperAnswers()
+	void PopulateAnswers()
 	{
 		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,13,17,30,31,1032,1033,1034");
 
@@ -441,78 +429,12 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 					txtSiblingLastName.Text = dr["Answer"].ToString();
 			}
 		}
-
-		//to set the status of the panel based on the radio button selected
-		setPanelStatus();
-	}
-
-	protected void RadioBtn_CheckedChanged(object sender, EventArgs e)
-	{
-		setPanelStatus();
-	}
-
-	//to set the panels and controls to be disabled based on the radio button selected
-	void setPanelStatus()
-	{
-		//for Question 9
-		if (rdoSchoolType.SelectedIndex == 3) //Jewish school is selected
-		{
-			PnlQ10.Enabled = true;
-			pnlJewishSchool.Enabled = true;
-			pnlCamperSchool.Enabled = false;
-			txtSchoolName.Text = "";
-		}
-		else if (rdoSchoolType.SelectedIndex != -1)  //for the rest of the options disable it
-		{
-			PnlQ10.Enabled = false;
-			pnlJewishSchool.Enabled = false;
-			if (rdoSchoolType.SelectedIndex == 2)
-			{
-				pnlCamperSchool.Enabled = false;
-				txtSchoolName.Text = "";
-			}
-			else
-			{
-				pnlCamperSchool.Enabled = true;
-			}
-
-			ddlJewishDaySchool.SelectedIndex = 0;
-			txtJewishSchool.Text = "";
-			btnNext.Visible = true;
-		}
-
-		if (ddlJewishDaySchool.SelectedValue == "3")
-		{
-			pnlJewishSchool.Enabled = true;
-		}
-		else
-		{
-			pnlJewishSchool.Enabled = false;
-		}
-
-		SetSyangogueJCCEnableDisable();
-	}
-
-	private void SetSyangogueJCCEnableDisable()
-	{
-		if (chkSynagogue.Checked == false) 
-			ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
-		else
-			ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = true;
-		if (chkJCC.Checked == false)
-			ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = false;
-		else
-			ddlJCC.Enabled = lblJCC.Enabled = txtOtherJCC.Enabled = true;
-		
-		if (ddlJCC.Visible == false) 
-			tdJCCOther.Attributes.Remove("align");
 	}
 
 	private string ConstructCamperAnswers()
 	{
 		string strQID = "";
 		string strTablevalues = "";
-		string strQ4Value = string.Empty;
 		string strGrade, strSchool, strJewishSchool;
 		
 		//to get the Question separator from Web.config
@@ -650,90 +572,5 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
 		args.IsValid = bArgsValid;
 		bPerformUpdate = bPerform;
-	}
-
-	private bool hasValidCodeOld()
-	{
-		if (Session["SpecialCodeValue"] != null)
-		{
-			Dictionary<string, string> codes = new Dictionary<string, string>();
-			codes.Add("CHI2553", "CHI2553");
-			codes.Add("CHI3228", "CHI3228");
-			codes.Add("CHI1239", "CHI1239");
-			codes.Add("CHI4613", "CHI4613");
-			codes.Add("CHI4710", "CHI4710");
-			codes.Add("CHI3929", "CHI3929");
-			codes.Add("CHI3279", "CHI3279");
-			codes.Add("CHI1210", "CHI1210");
-			codes.Add("CHI2271", "CHI2271");
-			codes.Add("CHI3129", "CHI3129");
-			codes.Add("CHI3485", "CHI3485");
-			codes.Add("CHI3444", "CHI3444");
-			codes.Add("CHI1220", "CHI1220");
-			codes.Add("CHI3865", "CHI3865");
-			codes.Add("CHI4041", "CHI4041");
-			codes.Add("CHI3854", "CHI3854");
-			codes.Add("CHI4749", "CHI4749");
-			codes.Add("CHI1964", "CHI1964");
-			codes.Add("CHI2760", "CHI2760");
-			codes.Add("CHI3877", "CHI3877");
-			codes.Add("CHI4503", "CHI4503");
-			codes.Add("CHI3861", "CHI3861");
-			codes.Add("CHI2785", "CHI2785");
-			codes.Add("CHI4498", "CHI4498");
-			codes.Add("CHI4100", "CHI4100");
-			codes.Add("CHI3479", "CHI3479");
-			codes.Add("CHI2137", "CHI2137");
-			codes.Add("CHI1712", "CHI1712");
-			codes.Add("CHI2915", "CHI2915");
-			codes.Add("CHI1434", "CHI1434");
-			codes.Add("CHI1888", "CHI1888");
-			codes.Add("CHI1112", "CHI1112");
-			codes.Add("CHI3807", "CHI3807");
-			codes.Add("CHI1672", "CHI1672");
-			codes.Add("CHI3528", "CHI3528");
-			codes.Add("CHI1935", "CHI1935");
-			codes.Add("CHI4699", "CHI4699");
-			codes.Add("CHI3724", "CHI3724");
-			codes.Add("CHI1053", "CHI1053");
-			codes.Add("CHI2559", "CHI2559");
-			codes.Add("CHI3863", "CHI3863");
-			codes.Add("CHI3491", "CHI3491");
-			codes.Add("CHI1091", "CHI1091");
-			codes.Add("CHI2991", "CHI2991");
-			codes.Add("CHI3060", "CHI3060");
-			codes.Add("CHI2025", "CHI2025");
-			codes.Add("CHI1163", "CHI1163");
-			codes.Add("CHI4426", "CHI4426");
-			codes.Add("CHI3201", "CHI3201");
-			codes.Add("CHI3165", "CHI3165");
-
-			return codes.ContainsKey(Session["SpecialCodeValue"].ToString());
-		}
-		return false;
-	}
-
-	protected void ddlJewishDaySchool_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		if (ddlJewishDaySchool.SelectedValue == "3") // Other
-		{
-			pnlJewishSchool.Enabled = true;
-		}
-		else
-		{
-			btnNext.Visible = true;
-			if (rdoSchoolType.SelectedIndex == 4)
-			{
-				pnlCamperSchool.Enabled = true;
-			}
-			else
-			{
-				//pnlCamperSchool.Enabled = false;
-				//txtCamperSchool.Text = "";
-			}
-
-			pnlJewishSchool.Enabled = false;
-			txtJewishSchool.Text = "";
-		}
 	}
 }

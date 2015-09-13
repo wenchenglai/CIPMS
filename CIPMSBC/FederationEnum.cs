@@ -120,7 +120,19 @@ namespace CIPMSBC
         RamahDarom = 129,
         RamahNewEngland = 130,
         Broward = 131,
-        Rochester = 132
+        Rochester = 132,
+        JudaeaMidwest = 133,
+        JudaeaTelYehudah = 134,
+        URJColeman = 135,
+        URJGeorge = 136,
+        URJHarlam = 137,
+        URJKalsman = 138,
+        URJNewman = 139,
+        URJGoldman = 140,
+        URJHenry = 141,
+        URJKutz = 142,
+        URJOlin = 143,
+        URJSciTech = 144
 	}
 
     ///// <summary>

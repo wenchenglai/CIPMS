@@ -25,7 +25,7 @@
 			        The following outlines the eligibility criteria for this One Happy Camper program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
-                        <li>First-time campers must be entering grades 2-12 (after camp).</li>
+                        <li>First-time campers must be entering grades 9-12 (after camp).</li>
                     </ul>
 		        </p>                
 		        <p>

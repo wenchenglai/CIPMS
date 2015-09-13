@@ -26,21 +26,22 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-8 (after camp).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
                     </ul>
 				</p>    
                 <p>
-                    At our Habonim Dror camps young people learn the values and skills needed for community building and leadership, independent thinking, a strong connection to Israel, and lifelong Jewish identity.  Campers are embedded in a 24/7 experiential Jewish education environment that blurs the boundary between learning and having fun so that both can occur simultaneously.
+                    At our 7 Habonim Dror camps young people learn the values and skills needed for community building and leadership, independent thinking, a strong connection to Israel, and lifelong Jewish identity. Campers are embedded in a 24/7 experiential Jewish education environment that blurs the boundary between learning and having fun so that both can occur simultaneously.                 
+
                 </p>        
                 <p>
-                    Habonim Dror campers become legendary Israeli dancers and revel in singing Israeli songs from every generation. We have creative Shabbat observances, conversational Hebrew and delicious kosher meals (supplemented by camper-grown food from each camp's organic gardens). Habonim Dror campers are known for their daily avodah (work periods) in their organic gardens and in other camp maintenance chores and they enjoy such traditional camp activities as swimming, ultimate, basketball, hiking, drama, climbing and ropes course.
+                    Habonim Dror campers become legendary Israeli dancers and revel in singing Israeli songs from every generation. We have creative Shabbat observances, conversational Hebrew and delicious kosher meals (supplemented by camper-grown food from each camp's organic gardens). Habonim Dror campers are known for their daily avodah (work periods) in their organic gardens and in other camp maintenance chores and they enjoy such traditional camp activities as swimming, ultimate, basketball, hiking, drama, climbing and ropes course. 
+
                 </p>     
                 <p>
-                    Campers may begin attending camp following second or third grade.  Habonim Dror is the Zionist Youth Movement affiliated with the Kibbutz Movement of Israel.  Habonim Dror campers come from all streams of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated.
+                    Campers may begin attending camp following second or third grade. Habonim Dror is the Zionist Youth Movement affiliated with the Kibbutz Movement of Israel. Habonim Dror campers come from all streams of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated. 
+
                 </p>     
                 <p>
-                    If you are interested in learning more about our camps and available grants at a specific camp, please visit the individual camp websites by clicking on the camp names above.
-                </p>     
+                    If you are interested in learning more about our camps and available grants at a specific camp, please visit the individual camp websites by clicking on the camp names above.                 </p>     
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page.
                 </p>                                                                               

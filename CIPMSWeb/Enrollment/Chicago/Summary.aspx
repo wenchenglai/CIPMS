@@ -28,7 +28,7 @@
                         <li>First time camper must be entering grades 3-9 (after camp).</li>
                         <li>Live in the six-county Illinois area served by JUF.</li>
                         <li>Siblings of campers who previously received a $1,000 grant are eligible to receive $500 when they attend camp for the first time for at least 19 consecutive days.</li>
-                        <li>Campers must attend a Jewish overnight camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>                
 				<p>
@@ -36,7 +36,7 @@
 				</p>
                 <p>
                     <span style="font-weight: bold; color:red;">Students at Orthodox Day Schools </span>
-                    who are ineligible for a One Happy Camper grant may still be eligible for Camp Coupons. Continue filling out this application and you will be directed to the Camp Coupon section. If you have problems or questions, please email JewishCamp@juf.org, or contact Lyndsey Yeary at 312-357-4798.                    
+                    who are ineligible for a One Happy Camper grant may still be eligible for Camp Coupons. Continue filling out this application and you will be directed to the Camp Coupon section. If you have problems or questions, please email JewishCamp@juf.org, or contact Rachel White at 312-357-4995.                    
                 </p>
                 <p>
 					If you need additional assistance, please call your community professional listed at the bottom of this page.

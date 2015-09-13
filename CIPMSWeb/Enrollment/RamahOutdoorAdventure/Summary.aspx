@@ -18,7 +18,7 @@
         <tr>          
 			<td colspan="2">
 			    <p>
-			        Ramah is the camping arm of Conservative Judaism. With seven overnight camps, three day camps, one specialty camp and Ramah Programs in Israel, Ramah impacts over 10,000 campers and staff every summer. A summer at Ramah is spent immersed in Jewish living - highlighted by dynamic and innovative programming. Traditional camp and outdoor activities, including swimming, sports, dance and art, are enhanced by Ramah's dedication to excellence in informal Jewish education. Combining a love for camping with meaningful Jewish experiences, Ramah instills in its campers and staff a love of Judaism, the Jewish people, Israel and the outdoors. The Ramah Camping Movement is guided by seven core values: self-esteem of every individual; character development; Jewish learning; Jewish identity and community; Jewish observance; Zionism; and Hebrew.
+                    Ramah is the camping arm of Conservative Judaism. With seven overnight camps, <span style="color: red; text-decoration: underline">four</span> day camps, one specialty camp and Ramah Programs in Israel, Ramah impacts over 10,000 campers and staff every summer. A summer at Ramah is spent immersed in Jewish living - highlighted by dynamic and innovative programming. Traditional camp and outdoor activities, including swimming, sports, dance and art, are enhanced by Ramah's dedication to excellence in informal Jewish education. Combining a love for camping with meaningful Jewish experiences, Ramah instills in its campers and staff a love of Judaism, the Jewish people, Israel and the outdoors. The Ramah Camping Movement is guided by seven core values: self-esteem of every individual; character development; Jewish learning; Jewish identity and community; Jewish observance; Zionism;and Hebrew. 			        
 			    </p>
                 <p>
                     The Ramah One Happy Camper Program, sponsored by the National Ramah Commission and Camp Ramah Outdoor Adventure, awards incentive grants up to $1,000 to first time campers.
@@ -29,13 +29,10 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-12 (after camp).</li>
-                        <li>$750 grants awarded to eligible second-time campers returning to camp for a second year for 19 or more consecutive days. </li>
-                        <li>$500 grants awarded to eligible second-time campers returning to camp for a second yea for 12-18 consecutive days.</li>
-                        <li>To receive a second year grant, campers MUST have received a grant through the Ramah One Happy Camper program for summer 2014.</li>
                     </ul>
 				</p>                
 				<p>
-				    If you are interested in learning more about our camps and available grants, please visit us at www.campramah.org. 
+				    If you are interested in learning more about our camps and available grants, please visit us at <a href="http://www.campramah.org" target="_blank">www.campramah.org</a> or <a href="http://ramahoutdoors.org" target="_blank">ramahoutdoors.org</a>.
 				</p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page. 

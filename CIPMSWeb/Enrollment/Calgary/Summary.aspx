@@ -31,7 +31,7 @@
                     <strong>Note:</strong> This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend <span style="text-decoration: underline">Jewish day school or yeshiva are not eligible</span> for this incentive program.
                 </p>  
                 <p>
-                    The One Happy Camper Program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program. If you do not think that you are eligible for this program and are in need of financial assistance to attend the Federation affiliated camp (Camp BB-Riback), please contact the Calgary Jewish Federation directly at 403-444-3153 or visit the website at <a href="http://www.jewishcalgary.org" target="_blank">www.jewishcalgary.org</a> to learn about / apply for the Integrated Bursary Program.            
+                    If you do not think that you are eligible for this program and are in need of financial assistance to attend the Federation affiliated camp (Camp BB-Riback), please contact the Calgary Jewish Federation directly at 403-444-3153 or visit the website at <a href="http://www.jewishcalgary.org" target="_blank">www.jewishcalgary.org</a> to learn about / apply for the Integrated Bursary Program.            
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

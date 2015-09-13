@@ -26,9 +26,8 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p> 
                 <p>
@@ -36,7 +35,8 @@
                 </p>
                 <p>
                     If your child is not eligible and/or you are interested in learning about financial-needs based grants or other needs based funding options please visit 
-                    <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>, contact your camp, and contact Michelle Faulkner, Jewish Federation of Nashville and Middle Tennessee, Controller, Michelle@jewishnashville.org.
+                    <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.jewishcamp.org/scholarships</a>, 
+                    contact your camp, and contact Harriet Schiftan, Jewish Federation of Nashville and Middle Tennessee, Director of Planning, harriet@jewishnashville.org. 
                 </p>
 			</td>
 		</tr>

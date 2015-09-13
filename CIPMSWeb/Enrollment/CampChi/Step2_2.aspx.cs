@@ -6,7 +6,6 @@ using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
-
 public partial class Step2_Chi_2 : System.Web.UI.Page
 {
     private CamperApplication CamperAppl;

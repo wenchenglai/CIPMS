@@ -670,29 +670,18 @@ namespace CIPMSBC
         }
 
         //to get the Grade values to be displayed in the Questionnaire
-        public DataTable getGrades(string FederationId,string CampYear)
+        public DataTable getGrades(string fedId, string campYear)
         {
-            CIPDataAccess dal = new CIPDataAccess();
-            try
-            {
-               DataTable  dtGrades = new DataTable();
-               DataRow dr;
-                dtGrades.Columns.Add(new DataColumn("EligibleGrade"));
-                //dtGrades.Columns.Add(new DataColumn("GradeValue"));
+            var dtGrades = new DataTable();
+            dtGrades.Columns.Add(new DataColumn("EligibleGrade"));
 
-                for (int i = 1; i <= 12; i++)
-                {
-                    dr = dtGrades.NewRow();
-                    dr["EligibleGrade"] = i.ToString();
-                    dtGrades.Rows.Add(dr);
-                }
-                return dtGrades;
-            }
-         
-            catch (Exception ex)
+            for (int i = 1; i <= 12; i++)
             {
-                throw ex;
+                DataRow dr = dtGrades.NewRow();
+                dr["EligibleGrade"] = i.ToString();
+                dtGrades.Rows.Add(dr);
             }
+            return dtGrades;
         }
 
         //to get the Synagogue list.

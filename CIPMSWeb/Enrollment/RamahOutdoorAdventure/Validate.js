@@ -9,14 +9,6 @@
         }
     },
 
-    OnSecondTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoSecondTimerYes').is(':checked')) {
-            this._toggleReceivedGrant(false);
-        } else {
-            this._toggleReceivedGrant(true);
-        }
-    },
-
     _toggleSecondTimer: function (flag) {
         $('#ctl00_Content_rdoSecondTimerYes').attr('disabled', flag);
         $('#ctl00_Content_rdoSecondTimerNo').attr('disabled', flag);
@@ -39,11 +31,6 @@
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        // First Timer camper or not
-        if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
-        }
-
         // Second Timer
         if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
             if (!$('#ctl00_Content_rdoSecondTimerYes').is(':checked') && !$('#ctl00_Content_rdoSecondTimerNo').is(':checked')) {
@@ -58,38 +45,15 @@
             }
         }
 
-        // Grade
-        if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
-        }
+        errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 4, 5, 6);
 
-        // School Type
-        if (!$('#ctl00_Content_rdoSchoolType_0').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5</li></ul>";
-        }
-
-        // School Name
-        if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
-        }
-
-        args.IsValid = true;
-
-        if (errorMsg.innerHTML === "") {
-            args.IsValid = true;
-        } else {
-            args.IsValid = false;
-        }
-
+        args.IsValid = errorMsg.innerHTML === "";
         return;
     }
 };
 
-$(function () {
+$(function() {
     PageValidator.OnFirstTimerChange();
     PageValidator.OnSecondTimerChange();
     SchoolValidator.OnSchoolDropDownChange();
-})
+});
