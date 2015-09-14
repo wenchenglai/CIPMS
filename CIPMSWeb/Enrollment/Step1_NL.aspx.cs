@@ -49,6 +49,53 @@ public partial class Step1_NL : System.Web.UI.Page
         }
     }
 
+    protected void btnNext_Click(object sender, EventArgs e)
+    {
+        if (Session["FJCID"] != null)
+        {
+            General oGen = new General();
+            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
+            {
+                SubmittedApplicationRedirection();
+            }
+        }
+
+        string strURL = GetNationalProgramForCamp(); //2013-09-14 this crazy function will set the hdnFEDID and Session["FedId"] as well, bad programming
+
+        string strFEDID = hdnFEDID.Value;
+        string strFJCID = hdnFJCIDStep1_NL.Value;
+
+        //to update the Federation Id for the particular FJCID
+        //this will take care of federation changes for a particular application
+        //(Fed Id which were not be identified in step1.aspx will be identified here and updated
+        if (strFEDID != string.Empty)
+            CamperAppl.UpdateFederationId(strFJCID, strFEDID);
+
+        InsertCamperAnswers();
+
+        // 2013-10-08 CampID session must be set here, if we have to redirect to holding page in the next part of code
+        string campID = ddlCamp.SelectedValue;
+        Session["CampID"] = campID;
+        Session["FJCID"] = strFJCID;
+
+        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
+                         where id == strFEDID
+                         select id).Count() < 1;
+
+        if (isClosed)
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+
+        if (ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
+        {
+            if (strURL.ToUpper().Contains("URJ/"))
+                strURL = strURL.Replace("URJ/", "URJ/Acadamy");
+        }
+
+        Response.Redirect(strURL, false);
+    }
+
 	void btnReturnAdmin_Click(object sender, EventArgs e)
 	{
 		string strRedirURL;
@@ -156,53 +203,6 @@ public partial class Step1_NL : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
-    }
-
-    protected void btnNext_Click(object sender, EventArgs e)
-    {
-        if (Session["FJCID"] != null)
-        {
-            General oGen = new General();
-            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
-            {
-                SubmittedApplicationRedirection();
-            }
-        }
-
-        string strURL = GetNationalProgramForCamp(); //2013-09-14 this crazy function will set the hdnFEDID and Session["FedId"] as well, bad programming
-
-        string strFEDID = hdnFEDID.Value;
-        string strFJCID = hdnFJCIDStep1_NL.Value;
-
-        //to update the Federation Id for the particular FJCID
-        //this will take care of federation changes for a particular application
-        //(Fed Id which were not be identified in step1.aspx will be identified here and updated
-        if (strFEDID != string.Empty)
-            CamperAppl.UpdateFederationId(strFJCID, strFEDID);
-
-        InsertCamperAnswers();
-
-        // 2013-10-08 CampID session must be set here, if we have to redirect to holding page in the next part of code
-        string campID = ddlCamp.SelectedValue;
-        Session["CampID"] = campID;
-        Session["FJCID"] = strFJCID;
-
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                      where id == strFEDID
-                      select id).Count() < 1;
-
-        if (isClosed)
-        {
-            Response.Redirect("~/NLIntermediate.aspx");
-        }
-
-        if (ddlCamp.SelectedItem.Text == "URJ Six Points Sports Academy")
-        {
-            if (strURL.ToUpper().Contains("URJ/"))
-                strURL = strURL.Replace("URJ/", "URJ/Acadamy");
-        }
-
-        Response.Redirect(strURL, false);
     }
 
     protected void InsertCamperAnswers()

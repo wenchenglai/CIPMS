@@ -132,7 +132,9 @@ namespace CIPMSBC
         URJHenry = 141,
         URJKutz = 142,
         URJOlin = 143,
-        URJSciTech = 144
+        URJSciTech = 144,
+        RamahNorthernCalifornia = 145,
+        Wbt = 146
 	}
 
     ///// <summary>

@@ -123,7 +123,6 @@
         </tbody>
     </table>
 
-    <!--End of Panel 2 -->
     <asp:HiddenField ID="hdnFJCIDStep2_2" runat="server" />
     <asp:HiddenField ID="hdnAddMoreYearCount" runat="server" />
     <asp:HiddenField ID="hdnQ3Id" runat="server" Value="3" />

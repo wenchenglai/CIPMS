@@ -25,19 +25,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        CamperAppl = new CamperApplication();
-        objGeneral = new General();
-
-        if (!IsPostBack)
-        {
-            getGrades();
-            hdnFJCID.Value = (string)Session["FJCID"]; 
-            PopulateAnswers();
-        }
-    }
-
     void btnNext_Click(object sender, EventArgs e)
     {
         if (!Page.IsValid)
@@ -63,7 +50,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             }
             else
             {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
 
@@ -71,6 +58,19 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         }
         Session["FJCID"] = hdnFJCID.Value;
         Response.Redirect("Step2_3.aspx");
+    }
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        CamperAppl = new CamperApplication();
+        objGeneral = new General();
+
+        if (!IsPostBack)
+        {
+            getGrades();
+            hdnFJCID.Value = (string)Session["FJCID"]; 
+            PopulateAnswers();
+        }
     }
   
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -214,7 +214,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,1063");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {

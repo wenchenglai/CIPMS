@@ -17,7 +17,7 @@ public partial class Step2_Ramah_3 : Page
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
-    private int FederationID = (int)FederationEnum.Ramah;
+    private int FederationID = (int)FederationEnum.Wbt;
     private int Qincrement = 0;
     private string campID = string.Empty;
     private RadioButton RadioButtonQ7Option1; // Rajesh
@@ -141,8 +141,8 @@ public partial class Step2_Ramah_3 : Page
                 //to update the camp value to the database (to be used for search functionality)
                 CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
-                objEligibility.checkEligibility(strFJCID, out iStatus);                    
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
+                objEligibility.checkEligibility(strFJCID, out iStatus);
             }
 
             var checkStatus = Convert.ToInt32(Session["STATUS"]);
