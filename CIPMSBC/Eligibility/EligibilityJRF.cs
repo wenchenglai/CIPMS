@@ -93,7 +93,7 @@ namespace CIPMSBC.Eligibility
                         if (specialCode == "PJGTC2016")
                             StatusValue = (int)StatusInfo.SystemInEligible;
                         else
-                            StatusValue = (int)StatusInfo.SystemInEligible;
+                            StatusValue = (int)AllowDaySchool(FJCID);
                     }
                     else
                     {

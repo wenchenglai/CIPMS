@@ -235,31 +235,31 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     }
                     break;
 
-                case QuestionId.Q13_SecondTime:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoSecondTimerYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoSecondTimerNo.Checked = true;
-                    }
-                    break;
+                //case QuestionId.Q13_SecondTime:
+                //    if (dr["OptionID"].Equals(DBNull.Value))
+                //        continue;
+                //    if (dr["OptionID"].ToString() == "1")
+                //    {
+                //        rdoSecondTimerYes.Checked = true;
+                //    }
+                //    else if (dr["OptionID"].ToString() == "2")
+                //    {
+                //        rdoSecondTimerNo.Checked = true;
+                //    }
+                //    break;
 
-                case QuestionId.Q33_ReceivedGrant:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoReceivedGrantYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoReceivedGrantNo.Checked = true;
-                    }
-                    break;
+                //case QuestionId.Q33_ReceivedGrant:
+                //    if (dr["OptionID"].Equals(DBNull.Value))
+                //        continue;
+                //    if (dr["OptionID"].ToString() == "1")
+                //    {
+                //        rdoReceivedGrantYes.Checked = true;
+                //    }
+                //    else if (dr["OptionID"].ToString() == "2")
+                //    {
+                //        rdoReceivedGrantNo.Checked = true;
+                //    }
+                //    break;
 
                 case QuestionId.Grade:
                     if (!dr["Answer"].Equals(DBNull.Value))
@@ -298,13 +298,13 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        //for question Second Timer or not
-        strQId = ((int)QuestionId.Q13_SecondTime).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoSecondTimerYes.Checked ? "1" : rdoSecondTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        ////for question Second Timer or not
+        //strQId = ((int)QuestionId.Q13_SecondTime).ToString();
+        //strTablevalues += strQId + strFSeparator + Convert.ToString(rdoSecondTimerYes.Checked ? "1" : rdoSecondTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        //for question Received Grant or not
-        strQId = ((int)QuestionId.Q33_ReceivedGrant).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        ////for question Received Grant or not
+        //strQId = ((int)QuestionId.Q33_ReceivedGrant).ToString();
+        //strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

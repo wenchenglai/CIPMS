@@ -12,13 +12,14 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The Union for Reform Judaism, in partnership with the Foundation for Jewish Camp, offers incentive grants of up to $1000 through the One Happy Camper program for first-time campers who attend URJ Camp George.                      
+                    The Union for Reform Judaism, in partnership with the Foundation for Jewish Camp, offers incentive grants of up to $1000 through 
+                    the One Happy Camper program for first-time campers who attend URJ Jacobs Camp.                      
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this One Happy Camper program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
-                        <li>First-time campers must be entering grades 2-12 (after camp).</li>
+                        <li>First-time campers must be entering grades 3-10 (after camp).</li>
                     </ul>
 				</p> 
                 <p>

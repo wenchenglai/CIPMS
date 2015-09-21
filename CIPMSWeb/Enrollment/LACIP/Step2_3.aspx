@@ -228,10 +228,9 @@
                 <td colspan="2">
 					<asp:Label ID="lblChkText" CssClass="headertext1" runat="server">
 						<p style="text-align:justify">
-                            I have read the Jewish Federation of Greater Los Angeles?release form for the One Happy Camper Program 2015. 
-                            By filling in this box, I acknowledge agreement with the aforementioned release form. 
-                            Furthermore, the box I fill in represents my signature on all signature lines in the 
-                            One Happy Camper Program 2015 release.
+                            I have read the Jewish Federation of Greater Los Angeles release form for the One Happy Camper Program 2015. 
+                            By filling in this box, I acknowledge agreement with the aforementioned release form. Furthermore, 
+                            the box I fill in represents my signature on all signature lines in the One Happy Camper Program 2015 release.
                         </p>
                     </asp:Label>
 					<asp:CustomValidator Enabled="false" ID="CusVal2" ErrorMessage="testing" CssClass="InfoText"

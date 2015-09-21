@@ -13,7 +13,7 @@
             <td colspan="2">
                 <p>
                     The Union for Reform Judaism, in partnership with the Foundation for Jewish Camp, offers incentive grants of up to $1000 through the One Happy Camper program 
-                    for first-time campers who attend URJ Camp Coleman.                      
+                    for first-time campers who attend URJ Goldman Union Camp (GUCI).                      
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this One Happy Camper program:

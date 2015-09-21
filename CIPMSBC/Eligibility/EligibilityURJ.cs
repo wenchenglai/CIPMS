@@ -102,11 +102,6 @@ namespace CIPMSBC.Eligibility
                     {
                         iStatusValue = (int)StatusInfo.SystemEligible;
                     }
-
-                    if (last3digits == "190") // URJ Six Points Sci-Tech
-                    {
-                        iStatusValue = (int)StatusInfo.SystemEligible;
-                    }
                 }
             }
 

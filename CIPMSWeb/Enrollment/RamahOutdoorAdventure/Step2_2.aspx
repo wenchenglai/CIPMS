@@ -20,31 +20,13 @@
                 <td valign="top"><span class="InfoText">*</span>1</td>
                 <td valign="top">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
                     <div>
-                        <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
-                        <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                        <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" />
+                        <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td valign="top"><span class="InfoText">*</span>2</td>
-                <td valign="top">Will this be the camper’s second time attending a nonprofit Jewish overnight summer camp for 12 days or longer?
-                     <div>
-                        <asp:RadioButton ID="rdoSecondTimerYes" value="1" runat="server" GroupName="sec" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnSecondTimerChange(this);" />
-                        <asp:RadioButton ID="rdoSecondTimerNo" value="2" GroupName="sec" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnSecondTimerChange(this);" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top"><span class="InfoText">*</span>3</td>
-                <td valign="top">Did the camper receive an incentive grant through the Ramah One Happy Camper program last summer?
-                     <div>
-                        <asp:RadioButton ID="rdoReceivedGrantYes" value="1" runat="server" GroupName="gra" Text="Yes" CssClass="QuestionText" />
-                        <asp:RadioButton ID="rdoReceivedGrantNo" value="2" GroupName="gra" runat="server" Text="No" CssClass="QuestionText" />
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td valign="top"><span class="InfoText">*</span>4</td>
                 <td valign="top" style="padding-bottom: 20px;">What grade will the camper enter AFTER camp?
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />
@@ -52,7 +34,7 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><span class="InfoText">*</span>5</td>
+                <td valign="top"><span class="InfoText">*</span>3</td>
                 <td valign="top" style="padding-bottom: 20px;">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList ID="rdoSchoolType" onclick="SchoolValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Public" Value="2" />
@@ -63,7 +45,7 @@
                 </td>
             </tr>
             <tr>
-                <td valign="top"><span class="InfoText">*</span>6</td>
+                <td valign="top"><span class="InfoText">*</span>4</td>
                 <td valign="top" style="padding-bottom: 20px;">
                     Please enter the name of the school that the camper <b><u>CURRENTLY</u></b> attends:
                     <div class="QuestionsLeaveSomeUpperSpace">
