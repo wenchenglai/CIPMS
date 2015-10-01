@@ -4,14 +4,14 @@
 	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
-				<img src="../../images/El Paso.jpg" width="280" alt=""  />
+				<img src="logo.jpg" width="280" alt=""  />
 			</td>
 			<td>
                 <p>
 					Good news! You may be eligible for an incentive.
 				</p>
                 <p>
-					The Foundation for Jewish Camp, in partnership with Jewish Federation of El Paso, offers funding to children in our community who wish to attended Jewish overnight camp for the first-time. 
+					The Foundation for Jewish Camp, in partnership with Jewish Federation Greater of El Paso, offers funding to children in our community who wish to attended Jewish overnight camp for the first-time. 
 				</p>
 			</td>
 		</tr>
@@ -35,10 +35,7 @@
                 </p> 
                 <p>
                     For questions please contact the professional listed at the bottom of this page.
-                </p>
-                <p>
-                    For additional assistance, please contact your community professional: Megan Kennedy, Manager of JCF Scholarship Programs, megank@sfjcf.org.
-                </p>           
+                </p>        
             </td>
         </tr>  
 	</table>

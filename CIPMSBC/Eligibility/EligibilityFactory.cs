@@ -287,6 +287,9 @@ namespace CIPMSBC.Eligibility
                 case FederationEnum.Rochester:
                     elig = new EligibilityRochester(fed);
                     break;
+                case FederationEnum.HabonimTavor:
+                    elig = new EligibilityHabonimTavor(fed);
+                    break;
 			}
 			return elig;
 		}

@@ -12,7 +12,8 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The One Happy Camper program, funded by The Jewish Federation in the Heart of New Jersey and the Foundation for Jewish Camp, provides grants of up to $1,000 to any first-time Jewish overnight camper residing in Greater Middlesex County, as defined by the Jewish Federation service area. 
+                    The One Happy Camper program, funded by The Jewish Federation in the Heart of New Jersey and the Foundation for Jewish Camp, 
+                    provides grants of up to $1,000 to any first-time Jewish overnight camper residing in Monmouth or Middlesex County, as defined by the Jewish Federation service area. 
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -33,7 +34,7 @@
                     Those in receipt of full scholarships from other sources are NOT eligible.
                 </p>
                 <p>
-                    All One Happy Camper related questions should be directed to the Jewish Federation of Greater Middlesex County.  
+                    All One Happy Camper related questions should be directed to the Jewish Federation in the Heart of New Jersey.   
                     Please find contact information at the bottom of this page.
                 </p>            
             </td>

@@ -208,7 +208,7 @@ public partial class Step2_Habonim_3 : Page
                 //to update the camp value to the database (to be used for search functionality)
                 CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim, iCampId);
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.HabonimTavor);
                 objEligibility.checkEligibility(strFJCID, out iStatus);
             }
 

@@ -7,8 +7,6 @@ using CIPMSBC.Eligibility;
 using CIPMSBC.ApplicationQuestions;
 using System.Web;
 
-
-
 public partial class Step2_GreensBoro_2 : System.Web.UI.Page
 {
 
@@ -228,7 +226,7 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,17,30,31,1063");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,17,30,31");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -270,16 +268,6 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
                 {
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
-            }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
-                else
-                    rdoDays19.Checked = true;
             }
             else if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
             {
@@ -363,10 +351,6 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

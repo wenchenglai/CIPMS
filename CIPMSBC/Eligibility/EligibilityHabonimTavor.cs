@@ -1,38 +1,29 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace CIPMSBC.Eligibility
 {
-    class EligibilityToronto : EligibilityBase
+    class EligibilityHabonimTavor : EligibilityBase
     {
-        private int intCampID = 0;
-        private int intSynagogueID = 0;
-
-		public EligibilityToronto(FederationEnum fed)
+        public EligibilityHabonimTavor(FederationEnum fed)
             : base(fed)
         {
+
         }
 
         public override bool checkEligibilityforStep2(string FJCID, out int StatusValue)
         {
-            bool isEligiblePendingNumberOfDays = false;
             if (checkEligibilityCommon(FJCID, out StatusValue))
             {
                 return true;
             }
 
             StatusBasedOnCamperTimeInCampWithOutCamp(FJCID, out StatusValue);
-            if (StatusValue == (int)StatusInfo.SystemInEligible)
+            if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
             }
-            else if (StatusValue == (int)StatusInfo.EligiblePendingNumberOfDays)
-            {
-                isEligiblePendingNumberOfDays = true;
-            }
- 
+
             StatusValue = StatusBasedOnGrade(FJCID, StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
@@ -44,11 +35,6 @@ namespace CIPMSBC.Eligibility
             {
                 return true;
             }
-
-            // 2013-08-26 We have to keep this PendingNumberOfDays status to the next page, and the final Thank you page can pick up
-            if (isEligiblePendingNumberOfDays)
-                StatusValue = (int)StatusInfo.EligiblePendingNumberOfDays;
-
             return true;
         }
 
@@ -64,7 +50,6 @@ namespace CIPMSBC.Eligibility
 
             if (dsCamp.Tables[0].Rows.Count > 0)
             {
-
                 int i;
                 for (i = 0; i < dsCamp.Tables[0].Rows.Count; i++)
                 {
@@ -76,7 +61,6 @@ namespace CIPMSBC.Eligibility
                     if (CampOption == 2)
                     {
                         CampID = Convert.ToInt32(drCamp["Answer"]);
-                        intCampID = CampID;
                         if (CampID == 0)
                         {
                             iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoCamp);
@@ -88,6 +72,7 @@ namespace CIPMSBC.Eligibility
                     }
                 }
             }
+
             if (iStatusValue == -1)
             {
                 iStatusValue = StatusValue;
@@ -99,6 +84,7 @@ namespace CIPMSBC.Eligibility
         {
             CamperApplication oCA = new CamperApplication();
             int iStatusValue = -1;
+
             DataSet dsJewishSchool;
             dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
             DataRow drJewishSchool;
@@ -122,54 +108,21 @@ namespace CIPMSBC.Eligibility
                 }
             }
 
-
             if (iStatusValue == -1)
                 iStatusValue = StatusValue;
 
             return iStatusValue;
         }
-        
-        private int StatusBasedOnSynagogue(string FJCID, int StatusValue)
-        {
-            CamperApplication oCA = new CamperApplication();
-            DataSet dsSynagogue;
-            dsSynagogue = oCA.getCamperAnswers(FJCID, "31", "31", "N");
-            DataRow drSynagogue;
-            string Synagogue;
-            if (dsSynagogue.Tables[0].Rows.Count > 0)
-            {
-                drSynagogue = dsSynagogue.Tables[0].Rows[0];
-                if (DBNull.Value.Equals(drSynagogue["Answer"]))
-                {
-                    intSynagogueID = 0;
-                }
-                else
-                {
-                    if (!drSynagogue["OptionID"].Equals(DBNull.Value))
-                        if (drSynagogue["OptionID"].ToString() == "1")
-                            if (!drSynagogue["Answer"].Equals(DBNull.Value))
-                            {
-                                Synagogue = drSynagogue["Answer"].ToString();
-                                intSynagogueID = Convert.ToInt32(Synagogue);
-                            }
-                }
-            }
-
-            return intSynagogueID;
-        }
 
         private int StatusBasedOnGrade(string FJCID, int StatusValue)
         {
             CamperApplication oCA = new CamperApplication();
-            DataSet dsGrade;
-            dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
-            DataRow drGrade;
+            DataSet dsGrade = oCA.getCamperAnswers(FJCID, "6", "6", "N");
             int iStatusValue = -1;
-            int Grade;
 
             if (dsGrade.Tables[0].Rows.Count > 0)
             {
-                drGrade = dsGrade.Tables[0].Rows[0];
+                DataRow drGrade = dsGrade.Tables[0].Rows[0];
                 if (DBNull.Value.Equals(drGrade["Answer"]))
                 {
                     iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
@@ -177,20 +130,22 @@ namespace CIPMSBC.Eligibility
                 else
                 {
                     General objGeneral = new General();
-                    Grade = Convert.ToInt32(drGrade["Answer"]);
+                    int Grade = Convert.ToInt32(drGrade["Answer"]);
+
                     if (objGeneral.GetEligiblityForGrades(FJCID, Grade.ToString()) == "1")
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+                        iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
                     }
                     else
                     {
-                        StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+                        iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
                     }
                 }
             }
-            if (iStatusValue == -1)
-                iStatusValue = StatusValue;
-
+            else
+            {
+                iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
+            }
             return iStatusValue;
         }
 
@@ -227,7 +182,7 @@ namespace CIPMSBC.Eligibility
                 oCA.UpdateAmount(FJCID, 0.00, 0, "");
                 return true;
             }
-            intSynagogueID = StatusBasedOnSynagogue(FJCID, StatusValue);
+
             daysInCamp = DaysInCamp(FJCID);
             if (daysInCamp > 0)
             {
@@ -236,7 +191,7 @@ namespace CIPMSBC.Eligibility
                 if (Amount > 0)
                 {
                     double originalAmount = Amount;
-                    // 2015-09-23 Toroton Sibling Rule (copied from Chicago)- if this camper has sibling attended before, no matter how many days
+                    // 2013-07-23 copied Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days
                     // of camping, the amount is only 500.
                     Amount = 500;
                     DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
@@ -252,15 +207,15 @@ namespace CIPMSBC.Eligibility
                         }
                     }
                 }
-                oCA.UpdateAmount(FJCID, Amount, 0, "");
             }
             else
             {
                 StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
                 Amount = 0;
-                oCA.UpdateAmount(FJCID, Amount, 0, "");
             }
-            return true;            
+
+            oCA.UpdateAmount(FJCID, Amount, 0, "");
+            return true;
         }
     }
 }

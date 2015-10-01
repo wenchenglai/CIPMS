@@ -76,6 +76,7 @@
     <Compile Include="DAL\SynagogueDA.cs" />
     <Compile Include="Eligibility\EligibilityAtlanta.cs" />
     <Compile Include="Eligibility\EligibilityBroward.cs" />
+    <Compile Include="Eligibility\EligibilityHabonimTavor.cs" />
     <Compile Include="Eligibility\EligibilityPortland.cs" />
     <Compile Include="Eligibility\EligibilityRamahBerkshires.cs" />
     <Compile Include="Eligibility\EligibilityRamahCanada.cs" />

@@ -27,6 +27,31 @@
             </tr>
             <tr>
                 <td valign="top"><span class="InfoText">*</span>2</td>
+                <td valign="top">
+    			    Did the camper’s sibling previously receive an incentive grant through the Camp Ramah Canada One Happy Camper Program ?
+                    <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
+                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
+                    </asp:RadioButtonList>
+                    <span id="siblingContact" style="color:red;">
+
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>3</td>
+                <td valign="top">
+                    Name of Sibling
+                    <div class="QuestionsLeaveSomeUpperSpace">
+					    <span>First Name:</span> <asp:TextBox ID="txtSiblingFirstName" runat="server" CssClass="txtbox" MaxLength="200" />
+					    <br />
+					    <span>Last Name:</span>  <asp:TextBox ID="txtSiblingLastName" runat="server" CssClass="txtbox" MaxLength="200" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>2</td>
                 <td valign="top" style="padding-bottom: 20px;">What grade will the camper enter AFTER camp?
                 <div class="QuestionsLeaveSomeUpperSpace">
                     <asp:DropDownList ID="ddlGrade" runat="server" CssClass="dropdown" />

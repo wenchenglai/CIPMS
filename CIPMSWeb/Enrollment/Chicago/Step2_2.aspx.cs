@@ -1,7 +1,6 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.UI.WebControls;
 using CIPMSBC;
@@ -446,17 +445,17 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		strQID = ((int)Questions.Q0003IsFirtTimer).ToString();
 		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-		//Did sibling attend before?
-		strQID = hdnQ1032Id.Value;
-		strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
+        //Did sibling attend before?
+        strQID = ((int)QuestionId.Q1032_SiblingAttended).ToString();
+        strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
 
-		//Sibling First Name
-		strQID = hdnQFirstNameOfSibling.Value;
-		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
+        //Sibling First Name
+        strQID = ((int)QuestionId.Q1033_SiblingFirstName).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
 
-		//Sibling Last Name
-		strQID = hdnQLastNameOfSibling.Value;
-		strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
+        //Sibling Last Name
+        strQID = ((int)QuestionId.Q1034_SiblingLastName).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
 
 		//Grade
 		strQID = hdnQ6Id.Value;

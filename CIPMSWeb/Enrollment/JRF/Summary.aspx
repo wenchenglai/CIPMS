@@ -11,7 +11,7 @@
 					Good news! You may be eligible for a One Happy Camper grant.
 				</p>
                 <p>
-                    The Foundation for Jewish Camp, in partnership with Camp JRF, offers an incentive program that is open to campers who live anywhere in North America! 
+                    Camp JRF, in partnership with The Foundation for Jewish Camp, offers an incentive program that is open to campers who live anywhere in North America!
 				</p>
             </td>
         </tr>
@@ -25,7 +25,7 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 3-12 (after camp).</li>
+                        <li>First time camper must be entering grades 2-10 (after camp).</li>
                     </ul>
 		        </p>                
                 <p>

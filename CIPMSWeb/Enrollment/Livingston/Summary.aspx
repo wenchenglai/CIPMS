@@ -26,7 +26,7 @@
                         <li>$1,000 to campers who attend camp for at least 19 consecutive days for the first time.</li>
                         <li>$700 to campers who attend camp for 12-18 consecutive days for the first time.</li>
                         <li>Eligible campers must be entering grades 3-12 (after camp).</li>
-                        <li>You must be already signed up for Mini Session 1, Mini Session 2, Session 1, Session 2, Adventures Unlimited, Hadracha or Yisrael programs.</li>
+                        <li>You must be already signed up for Mini Session 1, Mini Session 2, Session 1, Session 2, Adventures Unlimited, Hadracha or Gesher programs.</li>
                     </ul>
 		        </p>                
 		        <p>

@@ -91,7 +91,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>10</td>
+            <td valign="top"><span class="InfoText">*</span>12</td>
             <td valign="top" style="padding-bottom:20px;">
                 <p>Have you registered for camp yet?</p>
                 <p>
@@ -104,7 +104,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>11</td>
+            <td valign="top"><span class="InfoText">*</span>13</td>
             <td valign="top" style="padding-bottom:20px;">
                 Select the camp that the camper wishes to attend this summer:
                 <div class="QuestionsLeaveSomeUpperSpace">
@@ -115,7 +115,7 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>12</td>
+            <td valign="top"><span class="InfoText">*</span>14</td>
             <td valign="top" style="padding-bottom:20px;">
                 Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown".
                 <asp:Panel ID="PnlQ9" runat="server" width="100%" CssClass="QuestionsLeaveSomeUpperSpace">
@@ -124,11 +124,12 @@
             </td>
         </tr>
         <tr>
-            <td valign="top"><span class="InfoText">*</span>13</td>
+            <td valign="top"><span class="InfoText">*</span>15</td>
             <td valign="top" style="padding-bottom:20px;">
                 <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                     <p class="InfoText">
-					    In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days. 
+                        					        In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days. 
+
                     </p>
                     <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
                     <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />

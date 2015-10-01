@@ -7,16 +7,17 @@
                 <img src="logo.png" alt="logo" />
             </td>
             <td>
-                <p>
-					Good news! You may be eligible for an incentive grant.
-				</p>
-                <p>
-					To determine if you are eligible, continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-				</p>
+                <img src="logo2.jpg" alt="logo" />
             </td>
         </tr>        
         <tr>
 			<td colspan="2">
+			    <p>
+			        Good news! You may be eligible for an incentive grant.
+			    </p>
+                <p>
+                    To determine if you are eligible, continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
+                </p>
 			    <p>
                     The 2016 One Happy Camper Grant program, sponsored by the Jewish Federation of Broward County and the Foundation for Jewish Camp, offers incentive grants of up to $1,000 to first-time campers.			    
 			    </p>
@@ -32,7 +33,7 @@
               
 				<p>
 				    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program. If your child is currently a Jewish day school student, please contact the community professional listed at the bottom of the page for information about potential grant opportunities that may be available.
-If you are interested in learning about additional financial resources for camp, please visitwww.JewishCamp.org/Scholarships for needs-based scholarship opportunities or contact your camp or synagogue directly.
+If you are interested in learning about additional financial resources for camp, please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> for needs-based scholarship opportunities or contact your camp or synagogue directly.
 				</p>
                 <p>
                     If you need additional assistance, including free guidance on finding a camp, please call your community professional listed at the bottom of this page. 

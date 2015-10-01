@@ -1,14 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Linq;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.BLL;
 using CIPMSBC.Eligibility;
@@ -46,12 +39,6 @@ public partial class TorontoPage2 : System.Web.UI.Page
                 getCamperAnswersFromDB();
 			}
 		}
-	}
-
-	void Page_Unload(object sender, EventArgs e)
-	{
-		CamperAppl = null;
-		objGeneral = null;
 	}
     #endregion
 
@@ -288,7 +275,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
 
     private void getCamperAnswersFromDB()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1040,1041,1042,1043,1044,1045,1046,1068");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1032,1033,1034,1040,1041,1042,1043,1044,1045,1046,1068");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
 		{   
@@ -386,6 +373,21 @@ public partial class TorontoPage2 : System.Web.UI.Page
                     txtOtherJCC.Text = dr["Answer"].ToString();
 				}
 			}
+            else if (qID == 1032) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
+            {
+                if (!dr["OptionID"].Equals(DBNull.Value))
+                    rdolistSiblingAttended.SelectedValue = dr["OptionID"].ToString();
+            }
+            else if (qID == 1033) // First Name of Sibling
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                    txtSiblingFirstName.Text = dr["Answer"].ToString();
+            }
+            else if (qID == 1034) // Last Name of Sibling
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                    txtSiblingLastName.Text = dr["Answer"].ToString();
+            }
             else if (qID == 1040) // Are any members of your family members or alumni of a youth movement? If Yes, which one?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
@@ -534,7 +536,19 @@ public partial class TorontoPage2 : System.Web.UI.Page
 
         // Q1046 Taste of Camp
         strQID = ((int)Questions.Q1046TasteOfCamp).ToString();
-        strTablevalues += strQID + strFSeparator + (rdoTasteOfCampYes.Checked ? "1" : rdoTasteOfCampNo.Checked ? "2" : "") + strFSeparator + (rdoTasteOfCampYes.Checked ? "Attended Taste of Camp" : rdoTasteOfCampNo.Checked ? "Did not attend Taste of Camp" : "") + strQSeparator;        
+        strTablevalues += strQID + strFSeparator + (rdoTasteOfCampYes.Checked ? "1" : rdoTasteOfCampNo.Checked ? "2" : "") + strFSeparator + (rdoTasteOfCampYes.Checked ? "Attended Taste of Camp" : rdoTasteOfCampNo.Checked ? "Did not attend Taste of Camp" : "") + strQSeparator;
+
+        //Did sibling attend before?
+        strQID = ((int)Questions.Q1032SiblingAttended).ToString();
+        strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
+
+        //Sibling First Name
+        strQID = ((int)Questions.Q1033SiblingFirstName).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
+
+        //Sibling Last Name
+        strQID = ((int)Questions.Q1034SiblingLastName).ToString();
+        strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
 
 		//for question Grade
         strQID = ((int)Questions.Q0006Grade).ToString();

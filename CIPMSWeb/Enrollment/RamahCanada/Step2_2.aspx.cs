@@ -214,7 +214,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,1032,1033,1034");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -257,6 +257,21 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
+            else if (qID == QuestionId.Q1032_SiblingAttended) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
+            {
+                if (!dr["OptionID"].Equals(DBNull.Value))
+                    rdolistSiblingAttended.SelectedValue = dr["OptionID"].ToString();
+            }
+            else if (qID == QuestionId.Q1033_SiblingFirstName) // First Name of Sibling
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                    txtSiblingFirstName.Text = dr["Answer"].ToString();
+            }
+            else if (qID == QuestionId.Q1034_SiblingLastName) // Last Name of Sibling
+            {
+                if (!dr["Answer"].Equals(DBNull.Value))
+                    txtSiblingLastName.Text = dr["Answer"].ToString();
+            }
         }
     }
 
@@ -273,6 +288,18 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //Did sibling attend before?
+        strQId = ((int)QuestionId.Q1032_SiblingAttended).ToString();
+        strTablevalues += strQId + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
+
+        //Sibling First Name
+        strQId = ((int)QuestionId.Q1033_SiblingFirstName).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
+
+        //Sibling Last Name
+        strQId = ((int)QuestionId.Q1034_SiblingLastName).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();
