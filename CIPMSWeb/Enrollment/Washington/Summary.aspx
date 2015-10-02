@@ -36,24 +36,26 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The Greater Washington DC area One Happy Camper Program, sponsored by The Jewish Federation of Greater Washington and the Foundation for Jewish Camp, provides limited grants to encourage children to attend overnight Jewish camp for the first-time. 
+                    The Greater Washington DC area One Happy Camper Program, sponsored by The Jewish Federation of Greater Washington and the Foundation for Jewish Camp, provides grants to encourage children to attend overnight Jewish camp for the first-time.
                 </p>
                 <p>
-This is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000  or $700 off their camp fee to try a Jewish one.                     
+                    This is not a scholarship fund and is not needs-based. Our goal is to encourage families who are considering sending their children to camp and provide $1,000 or $700 incentive grant toward their camp tuition to try a Jewish one.
                 </p>
 		        <p>
 			        The following outlines the eligibility criteria for this program:
-                    <ul style="font-weight: bold">
-                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
-                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First-time campers must be entering grades 1-12 (after camp).</li>
-                    </ul>
-		        </p>                
+                </p>
+                <ul style="font-weight: bold">
+                    <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
+                    <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                    <li>First-time campers must be entering grades 1-12 (after camp).</li>
+                </ul>             
 		        <p>
 		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
 		        </p>
                 <p>
-                    <u>Note:</u> If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.JewishCamp.org/Scholarships</a>,  or contact your camp. 
+                    <u>Note:</u> 
+                    The number of One Happy Camper Grants are limited, so we encourage you to apply early. If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities please visit
+                    <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.JewishCamp.org/Scholarships</a>,  or contact your camp. 
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

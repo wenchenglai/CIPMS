@@ -331,7 +331,7 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
 
                 if (dr["OptionID"].ToString() == "3")
                 {
-                    if (dr["Answer"].Equals(DBNull.Value))
+                    if (!dr["Answer"].Equals(DBNull.Value))
                         txtJewishSchool.Text = dr["Answer"].ToString();
                 }
             }

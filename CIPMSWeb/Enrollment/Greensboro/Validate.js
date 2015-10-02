@@ -1,12 +1,14 @@
 ﻿var PageValidator = {
-    OnSchoolDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
+    OnSchoolDropDownChange: function () {
+        // home school is selected
+        if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
         } else {
             $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
         }
 
-        if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+        // JDS is selected
+        if ($('#ctl00_Content_rdoSchoolType_1').is(':checked')) {
             $('#ctl00_Content_ddlQ10').removeAttr('disabled');
             $('#ctl00_Content_txtJewishSchool').removeAttr('disabled');
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
@@ -88,7 +90,7 @@
         }
 
         // School Name
-        if (!($('#ctl00_Content_rdoSchoolType_2').is(':checked') || $('#ctl00_Content_rdoSchoolType_3').is(':checked')) && $('#ctl00_Content_txtSchoolName').val() === "") {
+        if (!($('#ctl00_Content_rdoSchoolType_1').is(':checked') || $('#ctl00_Content_rdoSchoolType_3').is(':checked')) && $('#ctl00_Content_txtSchoolName').val() === "") {
             errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
         }
 
@@ -105,6 +107,5 @@ $(function () {
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
-    PageValidator.OnFirstTimerChange();
-    SchoolValidator.OnSchoolDropDownChange();
+    PageValidator.OnSchoolDropDownChange();
 })
