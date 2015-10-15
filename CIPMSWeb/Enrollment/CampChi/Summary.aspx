@@ -30,7 +30,8 @@
                     </ul>
 		        </p>                
 		        <p>
-		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend a Jewish day school are not eligible for program. Please contact the camp office directly to learn more about opportunities for your child.
+		            <strong>ATTENTION JEWISH DAY SCHOOL FAMILIES: </strong>
+                    If the camper currently attends Jewish day school, please do NOT continue with this application and instead, contact Camp Chi directly
 		        </p>
                 <p>
                     There is no better camp for first time campers than JCC Camp Chi. Girls and boys ages 9 -16 make life-long friendships and form lasting memories under the leadership of nurturing staff. Our programs are tailored to the age-specific needs of campers who thrive and grow in an atmosphere of warmth and fun. Campers choose from over 40 different activities, including waterskiing, horseback riding, high ropes, art, radio broadcasting, sailing and much more. Campers enjoy special Shabbat celebrations, Israel education programs and are exposed to Jewish values, such as kavod (respect) and chesed (kindness). Camp Chi is located on 600 wooded acres with unmatched facilities -- two heated pools, six tennis courts, air-conditioned gym, private lake, lighted athletic field and basketball courts, climbing tower and Israeli village.

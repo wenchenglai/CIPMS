@@ -334,9 +334,9 @@ public partial class Step2_Habonim_3 : Page
                                     {
                                             case "2": //for camp
                                             ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
-                                            if (ddlCamp.SelectedItem != null)
-                                                if (ddlCamp.SelectedItem.Value == "1037" || ddlCamp.SelectedItem.Value == "1057")
-                                                    lbl.Text = "<font color='red'><b>In order to be eligible for the incentive grant, the camper must attend camp for at least 12 days.</b></font>";
+                                            //if (ddlCamp.SelectedItem != null)
+                                            //    if (ddlCamp.SelectedItem.Value == "1037" || ddlCamp.SelectedItem.Value == "1057")
+                                            //        lbl.Text = "<font color='red'><b>In order to be eligible for the incentive grant, the camper must attend camp for at least 12 days.</b></font>";
                                             break;
                                     }
                                 }

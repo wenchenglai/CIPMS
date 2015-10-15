@@ -3,49 +3,10 @@
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        var inputobjs = document.getElementsByTagName("input");
-        var selectobjs = document.getElementsByTagName("select");
-        var Q3_1, Q3_2, Q4_1, Q4_2, Q5_1, Q5_2, Q6, Q7_1, Q7_2, Q8_1, Q8_2, Q9, Q10;
-        Q9 = new Array();
-        var j = 0;
-        var valobj = document.getElementById(sender.id);
-        var hdnYearCount;
-        for (var i = 0; i < inputobjs.length - 1; i++) {
-            //for Q3_1
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_0") >= 0) {
-                Q3_1 = inputobjs[i];
-            }
-            //for Q3_2
-            if (inputobjs[i].id.indexOf("RadioBtnQ3_1") >= 0) {
-                Q3_2 = inputobjs[i];
-            }
-
-            //for Q9
-            if (inputobjs[i].id.indexOf("RadioBtnQ9") >= 0) {
-                Q9[j] = inputobjs[i];
-                j = j + 1;
-            }
-
-            //for Q10
-            if (inputobjs[i].id.indexOf("txtCamperSchool") >= 0) {
-                Q10 = inputobjs[i];
-            }
-        }  //end of for loop
-
-        //to get the <select> objects for Q8 and Q10
-        for (var i = 0; i <= selectobjs.length - 1; i++) {
-            //for Q6
-            if (selectobjs[i].id.indexOf("ddlGrade") >= 0) {
-                Q6 = selectobjs[i];
-            }
-        }
-
-        //validate Q3
-        if (Q3_1.checked == false && Q3_2.checked == false) {
-            valobj.innerHTML = "<ul><li>Please answer Question No. 1</li></ul>";
-            args.IsValid = false;
-            return;
-        }
+        //// First Timer camper or not
+        //if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+        //    errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
+        //}
 
         // Synagogue/JCC
         var $chkSynagogue = $('#ctl00_Content_chkSynagogue'),
@@ -91,42 +52,9 @@
             }
         }
 
-        //validate Q6
-        if (Q6.selectedIndex == 0) {
-            valobj.innerHTML = "<li>Please select the Grade</li>";
-            args.IsValid = false;
-            return;
-        }
+        errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 3, 4, 5);
 
-        //for Question 9
-        var bQ9Checked = false;
-        for (var j = 0 ; j <= Q9.length - 1; j++) {
-            if (Q9[j].checked) //Q9 has been answered
-            {
-                bQ9Checked = true;
-                //for Question 11
-                if (trim(Q10.value) == "" && Q9[j].value != 3) {
-                    valobj.innerHTML = "<li>Please enter Name of the School</li>";
-                    args.IsValid = false;
-                    return;
-                }
-            }
-        }
-
-        //if Q9 is not answered
-        if (!bQ9Checked) {
-            valobj.innerHTML = "<li>Please answer Question No. 4</li>";
-            args.IsValid = false;
-            return;
-        }
-
-        args.IsValid = true;
-
-        if (errorMsg.innerHTML === "") {
-            args.IsValid = true;
-        } else {
-            args.IsValid = false;
-        }
+        args.IsValid = errorMsg.innerHTML === "";
 
         return;
     }

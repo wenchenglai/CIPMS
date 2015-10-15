@@ -64,29 +64,27 @@
             <td valign="top"><span class="InfoText">*</span>5</td>
             <td valign="top">
                 What kind of school does the camper <u><b>CURRENTLY</b></u> attend?<br />
-                <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Private (secular) school" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home school" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day school" Value="4"></asp:ListItem>
+                <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="PageValidator.OnSchoolDropDownChange(this);">
+                    <asp:ListItem Text="Public" Value="2" />
+                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Private (secular) School" Value="1" />
+                    <asp:ListItem Text="Home School" Value="3" />
                 </asp:RadioButtonList>
             </td>
         </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span>6</td>
             <td valign="top">
-                <asp:Panel ID="PnlQ10" runat="server">
-                    Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u>attends:<br />
-                    <asp:DropDownList AutoPostBack="true" ID="ddlJewishDaySchool" runat="server" CssClass="dropdown" OnSelectedIndexChanged="ddlJewishDaySchool_SelectedIndexChanged">
-                        <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>                            
-                        <asp:ListItem Text="Bernard Zell Anshe Emet Day School" Value="4"></asp:ListItem>
-                        <asp:ListItem Text="Akiba Schechter Jewish Day School" Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Chicago Jewish Day School" Value="9"></asp:ListItem>
-                        <asp:ListItem Text="Chicagoland Jewish High School" Value="6"></asp:ListItem>                            
-                        <asp:ListItem Text="Solomon Schechter Jewish Day School" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="other (please specify)" Value="3"></asp:ListItem>
-                    </asp:DropDownList>
-                </asp:Panel>
+                Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u>attends:<br />
+                <asp:DropDownList ID="ddlJewishDaySchool" runat="server" CssClass="dropdown" onclick="PageValidator.OnJDSchoolDropDownChange(this);">
+                    <asp:ListItem Text="-- Select --" Value="0" />                            
+                    <asp:ListItem Text="Bernard Zell Anshe Emet Day School" Value="4" />
+                    <asp:ListItem Text="Akiba Schechter Jewish Day School" Value="5" />
+                    <asp:ListItem Text="Chicago Jewish Day School" Value="9" />
+                    <asp:ListItem Text="Chicagoland Jewish High School" Value="6" />                            
+                    <asp:ListItem Text="Solomon Schechter Jewish Day School" Value="1" />
+                    <asp:ListItem Text="other (please specify)" Value="3" />
+                </asp:DropDownList>
             </td>
         </tr>
 		<tr>
@@ -94,21 +92,17 @@
 				
 			</td>  
 			<td valign="top" >
-				<asp:Panel ID="pnlJewishSchool" runat="server"> 
 					If other, enter the name of the Jewish day school the camper currently attends: 
 					<asp:TextBox ID="txtJewishSchool" runat="server" CssClass="txtbox" />
-				</asp:Panel>
             </td>
         </tr> 
-        <asp:Panel ID="pnlCamperSchool" runat="server">
         <tr>
             <td valign="top"><span class="InfoText">*</span>7</td>
             <td valign="top">
                 Name of the school camper attends:
-                <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200"></asp:TextBox>
+                <asp:TextBox ID="txtSchoolName" runat="server" CssClass="txtbox" MaxLength="200" />
             </td>
         </tr>
-        </asp:Panel>
         <tr>
             <td valign="top"><span class="InfoText">*</span>8</td>
             <td valign="top">

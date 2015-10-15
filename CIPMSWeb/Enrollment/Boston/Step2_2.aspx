@@ -3,24 +3,12 @@
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">
     <script type="text/javascript" src="../CommonValidate.js"></script>
     <script type="text/javascript" src="Validate.js"></script>
-       
-    <table width="50%" cellpadding="0" cellspacing="0" align="center" border="0">
-        <tr>
-            <td>
-                <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText"
-                    runat="server" Display="Dynamic" ClientValidationFunction="PageValidator.OnSubmitClick"></asp:CustomValidator>
-                <!--to vaidate the comments text box for admin user-->
-                <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server"
-                    Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>"
-                    EnableClientScript="false"></asp:CustomValidator>
-                <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server"
-                    ShowSummary="true" ValidationGroup="GroupAddMore" />
-                <!--this summary will be used only for Comments field (only for Admin user)-->
-                <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server"
-                    ShowSummary="true" CssClass="InfoText" />
-            </td>
-        </tr>
-    </table>
+    <div>
+        <asp:CustomValidator ValidationGroup="OtherValidation" ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="PageValidator.OnSubmitClick" />
+        <asp:CustomValidator ID="CusValComments1" ValidationGroup="OtherValidation" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false" />
+        <asp:ValidationSummary Enabled="false" ID="valSummary" CssClass="InfoText" runat="server" ShowSummary="true" ValidationGroup="GroupAddMore" />
+        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+    </div>
     <table width="100%">
         <tbody class="QuestionText">
         <tr>
@@ -28,25 +16,15 @@
             <td valign="top">
                 Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />                    
-                </div>
-            </td>
-        </tr>
-        <tr id="1a">
-            <td valign="top"><span class="InfoText">*</span>1a</td>
-            <td valign="top">
-                How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
-                <div id="divGrandfatherRule" runat="server">
-                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
-                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />                    
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" />                    
                 </div>
             </td>
         </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span>2</td>
             <td valign="top">
-                <asp:Label ID="lblSynagogueQuestionText" runat="server" CssClass="QuestionText">Are you a member of any of the following? Membership <u>not</u> required for this grant. (Check all that apply)</asp:Label>
+                <asp:Label ID="lblSynagogueQuestionText" runat="server">Are you a member of any of the following? Membership <u>not</u> required for this grant. (Check all that apply)</asp:Label>
             </td>
         </tr>
         <tr>
@@ -156,11 +134,11 @@
             <td valign="top"><span class="InfoText">*</span>4</td>
             <td valign="top">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
-                <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="SchoolValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>

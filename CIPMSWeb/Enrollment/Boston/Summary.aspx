@@ -16,8 +16,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-					The Boston One Happy Camper program, sponsored by the Combined Jewish Philanthropies of Greater Boston and the Foundation for Jewish Camp, 
-                    provides financial incentives to first-time campers to attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days.
+					The Boston One Happy Camper program, sponsored by the Combined Jewish Philanthropies of Greater Boston and the Foundation for Jewish Camp, provides financial incentives to first-time campers to attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -25,16 +24,15 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 2-11 (after camp).</li>
-                        <li>Attending a camp listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
                 <p>
                     This program has two components, one of which is for participants that belong to a congregation and one for those who don’t.
                     <ul style="font-weight: bold">
-                        <li>1) If you are a member of any of the synagogues listed below, please contact your congregation liaison to inform them that you are applying for
+                        <li>If you are a member of any of the synagogues listed below, please contact your congregation liaison to inform them that you are applying for
                          a One Happy Camper grant and continue to fill out the following application.</li>
-                        <li>2) If you are not a member of any of the congregations, listed below please begin the application.</li>
+                        <li>If you are not a member of any of the congregations, listed below please begin the application.</li>
                     </ul>
                 </p>
                 <p>

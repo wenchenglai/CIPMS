@@ -1,22 +1,15 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
 using CIPMSBC.Eligibility;
 
-
 public partial class Step2_Cleveland_2 : System.Web.UI.Page
 {
-
 	private CamperApplication CamperAppl;
 	private General objGeneral;
 	private Boolean bPerformUpdate;
@@ -27,8 +20,6 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);
 		btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
 		btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
-		RadioBtnQ3.SelectedIndexChanged += new EventHandler(RadioBtn_SelectedIndexChanged);
-		RadioBtnQ9.SelectedIndexChanged += new EventHandler(RadioBtn9_SelectedIndexChanged);
 		CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
 		CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);        
 	}
@@ -51,7 +42,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 			if (Session["FJCID"] != null)
 			{
 				hdnFJCID.Value = (string)Session["FJCID"]; ;
-				getCamperAnswers();
+				GetAnswers();
 			}
 		}
 		if (chkSynagogue.Checked == false) ddlSynagogue.Enabled = lblOtherSynogogueQues.Enabled = txtOtherSynagogue.Enabled = false;
@@ -81,21 +72,21 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 			else
 			{
 				var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Cleveland);
-                EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
+				EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
-                if (result.SchoolType == StatusInfo.PendingPJLottery)
-                    iStatus = (int)StatusInfo.PendingPJLottery;
-                else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
-                    result.Grade == StatusInfo.SystemInEligible ||
-                    result.SchoolType == StatusInfo.SystemInEligible ||
-                    result.TimeInCamp == StatusInfo.SystemInEligible)
-                {
-                    iStatus = (int)StatusInfo.SystemInEligible;
-                }
-                else
-                {
-                    iStatus = (int)StatusInfo.SystemEligible;
-                }
+				if (result.SchoolType == StatusInfo.EligiblePJLottery)
+					iStatus = (int)StatusInfo.EligiblePJLottery;
+				else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
+					result.Grade == StatusInfo.SystemInEligible ||
+					result.SchoolType == StatusInfo.SystemInEligible ||
+					result.TimeInCamp == StatusInfo.SystemInEligible)
+				{
+					iStatus = (int)StatusInfo.SystemInEligible;
+				}
+				else
+				{
+					iStatus = (int)StatusInfo.SystemEligible;
+				}
 			}
 			Session["STATUS"] = iStatus.ToString();
 		}
@@ -103,30 +94,6 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 
 		var status = (StatusInfo)iStatus;
 		Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
-	}
-
-	private void PopulateWhoIsInSynagogue()
-	{
-		ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
-		ddlWho.DataBind();
-		ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
-	}
-
-	//page unload
-	void Page_Unload(object sender, EventArgs e)
-	{
-		CamperAppl = null;
-		objGeneral = null;
-	}
-
-	void RadioBtn_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		setPanelStatus(false);
-	}
-
-	void RadioBtn9_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		setPanelStatus(false);
 	}
 
 	void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -145,6 +112,13 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 		{
 			Response.Write(ex.Message);
 		}
+	}
+
+	private void PopulateWhoIsInSynagogue()
+	{
+		ddlWho.DataSource = SynagogueManager.GetWhoIsInSynagogue(FederationEnum.Cleveland);
+		ddlWho.DataBind();
+		ddlWho.Items.Insert(0, new ListItem("-- Select --", "0"));
 	}
 
 	void btnSaveandExit_Click(object sender, EventArgs e)
@@ -224,7 +198,6 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 		}
 	}
 
-
 	protected void InsertCamperAnswers()
 	{
 		string strFJCID, strModifiedBy, strComments, strCamperAnswers;
@@ -255,360 +228,6 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 		ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
 	}
 
-	//to get the camper answers from the database
-	void getCamperAnswers()
-	{
-		string strFilter, strFJCID, strModifiedBy;
-		DataSet dsAnswers;
-		DataView dv;
-		RadioButtonList rb;
-		//DataRow dr;
-		DataRow[] drows;
-		HiddenField hdnval;
-		DropDownList ddl;
-		TextBox tb;
-		strFJCID = hdnFJCID.Value;
-		strModifiedBy = Master.UserId;
-		if (!strFJCID.Equals(string.Empty))
-		{
-			dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "3", "32", "N");
-			if (dsAnswers.Tables[0].Rows.Count > 0) //if there are records for the current FJCID
-			{
-				dv = dsAnswers.Tables[0].DefaultView;
-				//to display answers for the Questions 3 -11
-				for (int i = 3; i <= 11; i++)
-				{
-					//to get the QuestionId for the Questions
-					hdnval = (HiddenField)this.Master.FindControl("Content").FindControl("hdnQ" + i.ToString() + "Id");
-					strFilter = "QuestionId = '" + hdnval.Value + "'";
-					tb = null;
-					ddl = null;
-					rb = null;
-
-					switch (i)
-					{
-						case 3:  //assigning the answer for question 3
-							rb = (RadioButtonList)this.Master.FindControl("Content").FindControl("RadioBtnQ" + i.ToString());
-							goto default;
-						case 4:// assigning the answer for question 4
-						  
-						case 5:// assigning the answer for question 5
-						  
-						case 6: // assigning the answer for question 6
-								ddl = ddlGrade;
-							goto default;
-						
-						case 9: // assigning the answer for question 11
-						   
-							goto default;
-						case 10: // assigning the answer for question 9
-							rb = (RadioButtonList)this.Master.FindControl("Content").FindControl("RadioBtnQ9");
-							goto default;
-						case 11: // assigning the answer for question 11
-							tb = txtCamperSchool;
-							goto default;
-						default:  //to implement the common logic
-							drows = dv.Table.Select(strFilter);
-							if (drows.Length > 0) //if there are rows for the filter
-							{
-								foreach (DataRow dr in drows)
-								
-								{
-									//for dropdownlist
-									if (ddl != null)
-									{
-										if (ddl == ddlGrade)  //for the grade question the value is stored in "Answer"
-										{
-											if (!dr["Answer"].Equals(DBNull.Value))
-												ddl.SelectedValue = dr["Answer"].ToString();
-										}
-										else if (ddl == ddlSynagogue)
-										{
-											if (!dr["OptionID"].Equals(DBNull.Value))
-											{
-												if (dr["OptionID"].ToString() == "1")
-												{
-													if (!dr["Answer"].Equals(DBNull.Value))
-													{
-														ddlSynagogue.SelectedValue = dr["Answer"].ToString();
-													}
-												}
-											}
-										}
-										else
-											if (!dr["OptionID"].Equals(DBNull.Value))
-												ddl.SelectedValue = dr["OptionID"].ToString();
-
-									}
-									//for text box
-									if (tb != null)
-									{
-										if (dr["OptionID"].ToString() == "2")
-										{
-											if (!dr["Answer"].Equals(DBNull.Value))
-											{
-												txtOtherSynagogue.Text = dr["Answer"].ToString();
-											}
-										}
-										else
-										{
-											if (!dr["Answer"].Equals(DBNull.Value) && tb.ClientID != "txtOtherSynagogue")
-											{
-												tb.Text = dr["Answer"].ToString();
-											}
-										}
-									}
-									//for radio buttonlist
-									if (rb != null)
-									{
-										if (!dr["OptionID"].Equals(DBNull.Value))
-											rb.SelectedValue = dr["OptionID"].ToString();
-									}
-								}
-							}
-							//if (RadioBtnQ3.SelectedIndex == 0)
-								getSynagogueAnswers();
-							
-							break;
-					}
-				}
-			}
-			//to set the status of the panel based on the radio button selected
-			setPanelStatus(false);
-		} //end if for null check of fjcid
-
-	}   
-
-
-	//to set the panels and controls to be disabled based on the radio button selected
-	void setPanelStatus(bool reset)
-	{
-		if (RadioBtnQ9.SelectedIndex == 2)
-		{
-			PnlCamperSchool.Enabled = false;
-			txtCamperSchool.Text = "";
-		}
-		else
-		{
-			PnlCamperSchool.Enabled = true;
-		}
-
-		//if (RadioBtnQ3.SelectedIndex.Equals(0)) //Yes is selected
-		//{
-			Pnl9a.Enabled = Pnl10a.Enabled = pnl11Q.Enabled = true;
-			chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Disabled = false;
-			if (reset)//As the same function used (to differentiate whether it is called by radio button change event or getcamperanswer function
-			{
-				ddlJCC.SelectedIndex = -1;
-				txtOtherSynagogue.Text = string.Empty;
-				txtOtherJCC.Text = string.Empty;
-				ddlSynagogue.SelectedIndex = -1;
-				chkSynagogue.Checked = chkJCC.Checked = chkNo.Checked = false;
-				txtOtherJCC.Enabled = false;
-			}
-			else
-			{
-				if (chkNo.Checked)
-				{
-					chkSynagogue.Checked = chkJCC.Checked = !chkNo.Checked;
-					chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Checked;
-				}                               
-			}
-			ddlSynagogue.Enabled = chkSynagogue.Checked;
-			ddlJCC.Enabled = chkJCC.Checked;
-		//}
-		//else
-		//{
-		//    Pnl9a.Enabled = Pnl10a.Enabled = pnl11Q.Enabled = false;
-		//    ddlSynagogue.SelectedIndex = -1;
-		//    ddlJCC.SelectedIndex = -1;
-		//    txtOtherSynagogue.Text = string.Empty;
-		//    txtJCC.Text = string.Empty;
-		//    chkSynagogue.Checked = chkJCC.Checked = chkNo.Checked = false;
-		//    chkSynagogue.Disabled = chkJCC.Disabled = chkNo.Disabled = true;
-		//}
-		//for Question 9_a
-		if (ddlSynagogue.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-		{         
-			lblOtherSynogogueQues.Enabled = true;
-			txtOtherSynagogue.Enabled = true;
-		}
-		else
-		{            
-			txtOtherSynagogue.Enabled = false;
-			txtOtherSynagogue.Text = string.Empty;
-		}
-		if (ddlJCC.Items.Count > 0)
-		{
-			if (ddlJCC.SelectedItem.Text.ToLower().IndexOf("other (please specify)") != -1)
-			{
-				txtOtherJCC.Enabled = true;
-				txtOtherJCC.Enabled = true;
-			}
-			else
-			{
-				txtOtherJCC.Enabled = false;
-				txtOtherJCC.Text = string.Empty;
-			}
-		}
-		else if(ddlJCC.Visible == false && chkJCC.Checked)
-		{
-			txtOtherJCC.Enabled = true;
-		}
-	}
-
-	private string ConstructCamperAnswers()
-	{
-		string strQuestionId = "";
-		string strTablevalues = "";
-		string strFSeparator;
-		string strQSeparator;
-		string strQ4Value = string.Empty;
-		string strGrade, strSchool;
-
-		//to get the Question separator from Web.config
-		strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
-		//to get the Field separator from Web.config
-		strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-
-		//for question 3
-		strQuestionId = hdnQ3Id.Value;
-		strTablevalues += strQuestionId + strFSeparator + RadioBtnQ3.SelectedValue + strFSeparator + strQSeparator;
-
-		//for grade question 
-		strQuestionId = hdnQ6Id.Value;
-		strGrade = ddlGrade.SelectedValue;
-		strTablevalues += strQuestionId + strFSeparator + strFSeparator + strGrade + strQSeparator;
-
-		//for question 7        
-
-		if (chkNo.Checked)
-		{
-			strQuestionId = hdnQ7Id.Value;
-			strTablevalues += strQuestionId + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
-			strQuestionId = hdnQ8Id.Value;
-			strTablevalues += strQuestionId + strFSeparator + "" + strFSeparator + "" + strQSeparator;
-		}
-		else
-		{
-			if (chkSynagogue.Checked)
-			{
-				strQuestionId = hdnQ7Id.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
-			}
-			if (chkJCC.Checked)
-			{
-				strQuestionId = hdnQ7Id.Value;
-				strTablevalues += strQuestionId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
-			}
-
-			//This redundant condition is used to insert records in questionid sequence
-			strQuestionId = hdnQ8Id.Value;
-			if (chkSynagogue.Checked)
-			{
-				if (ddlSynagogue.SelectedValue != "0")
-				{
-					strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
-					if (txtOtherSynagogue.Text.Trim() != String.Empty)
-						strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
-					if (txtOtherSynagogue.Text.Trim() != String.Empty)
-					{
-						strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
-					}
-					else
-					{
-						strTablevalues += hdnQ2Id.Value + strFSeparator + strFSeparator + ddlSynagogue.SelectedItem.Text + strQSeparator;
-					}
-
-					// 2013-08-23 New Synagogue questions
-					// Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
-					// If professional or fellow congregant selected, offer this list as a check all that apply
-					if (rdoCongregant.Checked)
-					{
-						// A professional or fellow congregant radio button is checked
-						strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "1" + strFSeparator + rdoCongregant.Text + strQSeparator;
-					}
-					else
-					{
-						// No one from my synagogue radio button is checked
-						strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "2" + strFSeparator + rdoNoOne.Text + strQSeparator;
-					}
-
-					if (txtWhoInSynagogue.Text.Trim() != String.Empty)
-					{
-						strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + txtWhoInSynagogue.Text.Trim() + strQSeparator;
-					}
-					else
-					{
-						strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + ddlWho.SelectedItem.Text + strQSeparator;
-					}
-				}
-			}
-			else
-			{
-				strTablevalues += strQuestionId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
-			}
-			if (chkJCC.Checked)
-			{
-			   
-				if (ddlJCC.Items.Count > 0)
-				{
-					if (ddlJCC.SelectedValue != "0")
-					{
-						strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
-						if (txtOtherJCC.Text.Trim() != String.Empty)
-							strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
-					}
-				}
-				else
-					strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text.Trim() + strQSeparator;
-			}
-			else
-			{
-				strTablevalues += strQuestionId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
-				strTablevalues += strQuestionId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
-			}
-		}                
-
-		//for question School option
-		strQuestionId = hdnQ10Id.Value;
-		strTablevalues += strQuestionId + strFSeparator + RadioBtnQ9.SelectedValue + strFSeparator + strQSeparator;
-
-		//for question school name
-		strQuestionId = hdnQ11Id.Value;
-		strSchool = txtCamperSchool.Text.Trim();
-		strTablevalues += strQuestionId + strFSeparator + strFSeparator + strSchool + strQSeparator;
-
-		//to remove the extra character at the end of the string, if any
-		char[] chartoRemove = { Convert.ToChar(strQSeparator) };
-		strTablevalues = strTablevalues.TrimEnd(chartoRemove);
-
-		return strTablevalues;
-	}
-
-	//to validate the comments field for Admin
-	void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
-	{
-		try
-		{
-			string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
-			Boolean bArgsValid, bPerform;
-			strUserId = Master.UserId;
-			strCamperUserId = Master.CamperUserId;
-			strComments = txtComments.Text.Trim();
-			strFJCID = hdnFJCID.Value;
-			strCamperAnswers = ConstructCamperAnswers();
-			CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
-			args.IsValid = bArgsValid;
-			bPerformUpdate = bPerform;
-		}
-		catch (Exception ex)
-		{
-			Response.Write(ex.Message);
-		}
-	}
-	
 	//to fill the grade values to the grade dropdown
 	private void getSynagogues()
 	{
@@ -684,20 +303,58 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 		}
 	}
 
-	void getSynagogueAnswers()
+	//to get the camper answers from the database
+	void GetAnswers()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "30,31,1044,1045");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,30,31,1044,1045,1063");
 
 		foreach (DataRow dr in dsAnswers.Tables[0].Rows)
 		{
-			int qID = Convert.ToInt32(dr["QuestionId"]);
+			var qID = (QuestionId)dr["QuestionId"];
 
-			if (qID == 30) //Were you referred to this application through a synagogue or JCC liaison?
+			if (qID == QuestionId.FirstTime) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
 			{
 				if (dr["OptionID"].Equals(DBNull.Value))
 					continue;
 
-				SynagogueJCCOther value = (SynagogueJCCOther)Convert.ToInt32(dr["OptionID"]);
+				if (dr["OptionID"].ToString() == "1")
+				{
+					rdoFirstTimerYes.Checked = true;
+				}
+				else
+				{
+					rdoFirstTimerNo.Checked = true;
+				}
+			}
+			else if (qID == QuestionId.Grade) // Grade (Mention the grade of the camper after he/she attends the camp session):
+			{
+				if (!dr["Answer"].Equals(DBNull.Value))
+				{
+					ddlGrade.SelectedValue = dr["Answer"].ToString();
+				}
+			}
+			else if (qID == QuestionId.SchoolType) // What kind of the school the camper go to
+			{
+				if (dr["OptionID"].Equals(DBNull.Value))
+					continue;
+
+				rdoSchoolType.SelectedValue = dr["OptionID"].ToString();
+				if (dr["OptionID"].ToString() == "3")
+					txtSchoolName.Enabled = false;
+			}
+			else if (qID == QuestionId.SchoolName) // Name of the school Camper attends:
+			{
+				if (!dr["Answer"].Equals(DBNull.Value))
+				{
+					txtSchoolName.Text = dr["Answer"].ToString();
+				}
+			}
+			else if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
+			{
+				if (dr["OptionID"].Equals(DBNull.Value))
+					continue;
+
+				var value = (SynagogueJCCOther)Convert.ToInt32(dr["OptionID"]);
 				switch (value)
 				{
 					case SynagogueJCCOther.Synagogue:
@@ -713,11 +370,11 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 						break;
 
 					default:
-						chkNo.Checked = false; 
+						chkNo.Checked = false;
 						break;
 				}
 			}
-			else if (qID == 31) // Please select your synagogue or JCC
+			else if (qID == QuestionId.Q31_SelectYourSynagogueOrJCC) // Please select your synagogue or JCC
 			{
 				if (dr["OptionID"].Equals(DBNull.Value) || dr["Answer"].Equals(DBNull.Value))
 					continue;
@@ -745,7 +402,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 					txtOtherJCC.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == 1044) // Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
+			else if (qID == QuestionId.Q1044_WhoYouSpeakToInSynagogue) // Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
 			{
 				if (dr["OptionID"].Equals(DBNull.Value))
 					continue;
@@ -763,7 +420,7 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 					ddlWho.Enabled = false;
 				}
 			}
-			else if (qID == 1045) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+			else if (qID == QuestionId.Q1045_ProfessionalOrCongregate) // If a professional or fellow congregant is selected, offer this list as a check all that apply
 			{
 				if (dr["OptionID"].Equals(DBNull.Value))
 					continue;
@@ -777,6 +434,159 @@ public partial class Step2_Cleveland_2 : System.Web.UI.Page
 				else
 					txtWhoInSynagogue.Enabled = false;
 			}
+		}
+	}
+
+	private string ConstructCamperAnswers()
+	{
+		var strQId = "";
+		string strTablevalues = "";
+
+		string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"];
+		string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"];
+
+		string strQuestionId = "";
+		string strQ4Value = string.Empty;
+		string strGrade, strSchool;
+
+		//for question FirstTimerOrNot
+		strQId = ((int)QuestionId.FirstTime).ToString();
+		strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+		//for question Grade
+		strQId = ((int)QuestionId.Grade).ToString();
+		strTablevalues += strQId + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
+
+		//for question School Type
+		if (rdoSchoolType.SelectedValue != "")
+		{
+			strQId = ((int)QuestionId.SchoolType).ToString();
+			strTablevalues += strQId + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
+		}
+
+		//for question School Name
+		strQId = ((int)QuestionId.SchoolName).ToString();
+		strTablevalues += strQId + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
+
+		//Synagogue/JCC question
+		if (chkNo.Checked)
+		{
+			// Non of Above is selected, so no JCC nor Synagogue
+			strQId = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
+			strTablevalues += strQId + strFSeparator + chkNo.Value + strFSeparator + chkNo.Value + strQSeparator;
+
+			strQId = ((int)Questions.Q0031SelectSynaJcc).ToString();
+			strTablevalues += strQId + strFSeparator + "5" + strFSeparator + "NonOfAbove" + strQSeparator;
+		}
+		else
+		{
+			if (chkSynagogue.Checked)
+			{
+				strQId = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
+				strTablevalues += strQId + strFSeparator + chkSynagogue.Value + strFSeparator + chkSynagogue.Value + strQSeparator;
+			}
+
+			if (chkJCC.Checked)
+			{
+				strQId = ((int)Questions.Q0030WereYouReferredBySynOrJcc).ToString();
+				strTablevalues += strQId + strFSeparator + chkJCC.Value + strFSeparator + chkJCC.Value + strQSeparator;
+			}
+
+			//Insert Syna and JCC dropdowns and text boxes (if others is specified)
+			strQId = ((int)Questions.Q0031SelectSynaJcc).ToString();
+			if (chkSynagogue.Checked)
+			{
+				if (ddlSynagogue.SelectedValue != "0")
+				{
+					strTablevalues += strQId + strFSeparator + "1" + strFSeparator + ddlSynagogue.SelectedValue + strQSeparator;
+					if (txtOtherSynagogue.Text.Trim() != String.Empty)
+						strTablevalues += strQId + strFSeparator + "2" + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+
+					if (txtOtherSynagogue.Text.Trim() != String.Empty)
+					{
+						strTablevalues += ((int)Questions.Q1002SynagogueName).ToString() + strFSeparator + strFSeparator + txtOtherSynagogue.Text.Trim() + strQSeparator;
+					}
+					else
+					{
+						strTablevalues += ((int)Questions.Q1002SynagogueName).ToString() + strFSeparator + strFSeparator + ddlSynagogue.SelectedItem.Text + strQSeparator;
+					}
+
+					// 2013-08-23 New Synagogue questions
+					// Who, if anyone, from your synagogue, did you speak to about Jewish overnight camp?
+					// If ¡®a professional or fellow congregant¡¯ selected, offer this list as a check all that apply
+					if (rdoCongregant.Checked)
+					{
+						// A professional or fellow congregant radio button is checked
+						strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "1" + strFSeparator + rdoCongregant.Text + strQSeparator;
+					}
+					else
+					{
+						// No one from my synagogue radio button is checked
+						strTablevalues += ((int)Questions.Q1044ReferByType).ToString() + strFSeparator + "2" + strFSeparator + rdoNoOne.Text + strQSeparator;
+					}
+
+					if (txtWhoInSynagogue.Text.Trim() != String.Empty)
+					{
+						strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + txtWhoInSynagogue.Text.Trim() + strQSeparator;
+					}
+					else
+					{
+						strTablevalues += ((int)Questions.Q1045ReferBy).ToString() + strFSeparator + ddlWho.SelectedItem.Value + strFSeparator + ddlWho.SelectedItem.Text + strQSeparator;
+					}
+				}
+			}
+			else
+			{
+				strTablevalues += strQId + strFSeparator + "1" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "2" + strFSeparator + "" + strQSeparator;
+			}
+
+			if (chkJCC.Checked)
+			{
+				if (ddlJCC.Items.Count > 0)
+				{
+					if (ddlJCC.SelectedValue != "0")
+					{
+						strTablevalues += strQId + strFSeparator + "3" + strFSeparator + ddlJCC.SelectedValue + strQSeparator;
+						if (txtOtherJCC.Text != String.Empty)
+							strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text + strQSeparator;
+					}
+				}
+				else
+					strTablevalues += strQId + strFSeparator + "4" + strFSeparator + txtOtherJCC.Text + strQSeparator;
+			}
+			else
+			{
+				strTablevalues += strQId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
+				strTablevalues += strQId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
+			}
+		}
+
+		//to remove the extra character at the end of the string, if any
+		char[] chartoRemove = { Convert.ToChar(strQSeparator) };
+		strTablevalues = strTablevalues.TrimEnd(chartoRemove);
+
+		return strTablevalues;
+	}
+
+	void CusValComments_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		try
+		{
+			string strCamperAnswers, strUserId, strCamperUserId, strComments, strFJCID;
+			Boolean bArgsValid, bPerform;
+			strUserId = Master.UserId;
+			strCamperUserId = Master.CamperUserId;
+			strComments = txtComments.Text.Trim();
+			strFJCID = hdnFJCID.Value;
+			strCamperAnswers = ConstructCamperAnswers();
+			CamperAppl.CamperAnswersServerValidation(strCamperAnswers, strComments, strFJCID, strUserId, (Convert.ToInt32(Redirection_Logic.PageNames.Step2_2)).ToString(), strCamperUserId, out bArgsValid, out bPerform);
+			args.IsValid = bArgsValid;
+			bPerformUpdate = bPerform;
+		}
+		catch (Exception ex)
+		{
+			Response.Write(ex.Message);
 		}
 	}
 }

@@ -37,6 +37,41 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             PopulateAnswers();
         }
     }
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        if (!Page.IsValid)
+            return;
+
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        var strModifiedBy = Master.UserId;
+        var strFJCID = hdnFJCID.Value;
+
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCID.Value;
+        Response.Redirect("Step2_3.aspx");
+    }
   
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -118,41 +153,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         {
             Response.Write(ex.Message);
         }
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        if (!Page.IsValid)
-            return;
-
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-
-        if (!isReadOnly)
-        {
-            ProcessCamperAnswers();
-        }
-
-        var strModifiedBy = Master.UserId;
-        var strFJCID = hdnFJCID.Value;
-
-        if (strFJCID != "" && strModifiedBy != "")
-        {
-            int iStatus;
-            if (isReadOnly)
-            {
-                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-            }
-            else
-            {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Ramah);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-            }
-
-            Session["STATUS"] = iStatus.ToString();
-        }
-        Session["FJCID"] = hdnFJCID.Value;
-        Response.Redirect("Step2_3.aspx");
     }
 
     private void ProcessCamperAnswers()

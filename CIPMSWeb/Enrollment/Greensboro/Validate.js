@@ -1,20 +1,14 @@
 ﻿var PageValidator = {
-    OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
-    },
-
-    OnSchoolDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
+    OnSchoolDropDownChange: function () {
+        // home school is selected
+        if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
         } else {
             $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
         }
 
-        if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+        // JDS is selected
+        if ($('#ctl00_Content_rdoSchoolType_1').is(':checked')) {
             $('#ctl00_Content_ddlQ10').removeAttr('disabled');
             $('#ctl00_Content_txtJewishSchool').removeAttr('disabled');
             $('#ctl00_Content_txtSchoolName').attr('disabled', true);
@@ -40,13 +34,6 @@
         // First Timer camper or not
         if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
             errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
-        }
-
-        // 1a Grandfather rule
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
-            }
         }
 
         // Synagogue/JCC
@@ -92,7 +79,7 @@
         }
 
         // Jewish Day School selection
-        if ($('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
+        if ($('#ctl00_Content_rdoSchoolType_1').is(':checked')) {
             if ($('#ctl00_Content_ddlQ10>option:selected').val() === "0")
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 5 - Please select a jewish day school from the dropdown</li></ul>";
 
@@ -103,7 +90,7 @@
         }
 
         // School Name
-        if (!($('#ctl00_Content_rdoSchoolType_2').is(':checked') || $('#ctl00_Content_rdoSchoolType_3').is(':checked')) && $('#ctl00_Content_txtSchoolName').val() === "") {
+        if (!($('#ctl00_Content_rdoSchoolType_1').is(':checked') || $('#ctl00_Content_rdoSchoolType_3').is(':checked')) && $('#ctl00_Content_txtSchoolName').val() === "") {
             errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
         }
 
@@ -120,6 +107,5 @@ $(function () {
     SJValidator.OnSynagogueCheckboxChange($('#ctl00_Content_chkSynagogue'));
     SJValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     SJValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
-    PageValidator.OnFirstTimerChange();
     PageValidator.OnSchoolDropDownChange();
 })

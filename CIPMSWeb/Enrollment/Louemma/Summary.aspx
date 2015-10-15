@@ -37,8 +37,12 @@
                     At Camp Louemma we offer an exciting and dynamic program with a wide variety of elective and scheduled activities. Our incredibly friendly, nurturing and talented staff members give each camper the opportunity to explore his or her interests, enhance existing talents and learn new skills. Whether it’s on our athletic fields, tennis or basketball courts, private lake, swimming pool, at our theatre, mini golf course; atop our climbing tower and zip line, ropes courses, or at arts & crafts/ceramics, the game room, bake shop, or radio station, our instructors focus on each camper’s personal achievement while offering encouragement at the same time.
                 </p>
                 <p>
-                    Evenings are also a blast with pool parties (in our new heated swimming pool with water slides), Hawaiian Luaus, treasure and scavenger hunts, game show nights, talent shows, theater productions, concerts and so much more!! Most of all, while we are not a religious camp, Jewish culture and identity are integrated into the program in a manner that is fun, creative and entertaining.
+                    Evenings are also a blast with pool parties (in our new heated swimming pool with water slides), Hawaiian Luaus, treasure and scavenger hunts, game show nights, talent shows, theater productions, concerts and so much more!! 
                 </p>
+                <p>
+                                        Most of all, while we are not a religious camp, Jewish culture and identity are integrated into the program in a manner that is fun, creative and entertaining.
+
+                </p>    
 			</td>
         </tr>
     </table>

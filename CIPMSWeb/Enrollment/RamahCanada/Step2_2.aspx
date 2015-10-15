@@ -18,20 +18,36 @@
         <tbody class="QuestionText">
             <tr>
                 <td valign="top"><span class="InfoText">*</span>1</td>
-                <td valign="top">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
+                <td valign="top">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" />
                 </div>
                 </td>
             </tr>
-            <tr id="1a">
-                <td valign="top"><span class="InfoText">*</span>1a</td>
-                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
-                <div id="divGrandfatherRule" runat="server">
-                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
-                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />
-                </div>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>2</td>
+                <td valign="top">
+    			    Did the camper’s sibling previously receive an incentive grant through the Camp Ramah Canada One Happy Camper Program ?
+                    <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
+                        <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="No" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
+                    </asp:RadioButtonList>
+                    <span id="siblingContact" style="color:red;">
+
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top"><span class="InfoText">*</span>3</td>
+                <td valign="top">
+                    Name of Sibling
+                    <div class="QuestionsLeaveSomeUpperSpace">
+					    <span>First Name:</span> <asp:TextBox ID="txtSiblingFirstName" runat="server" CssClass="txtbox" MaxLength="200" />
+					    <br />
+					    <span>Last Name:</span>  <asp:TextBox ID="txtSiblingLastName" runat="server" CssClass="txtbox" MaxLength="200" />
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -45,11 +61,11 @@
             <tr>
                 <td valign="top"><span class="InfoText">*</span>3</td>
                 <td valign="top" style="padding-bottom: 20px;">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
-                <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                <asp:RadioButtonList ID="rdoSchoolType" onclick="SchoolValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
+                    <asp:ListItem Text="Public" Value="2" />
+                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Private (secular) School" Value="1" />
+                    <asp:ListItem Text="Home School" Value="3" />
                 </asp:RadioButtonList>
                 </td>
             </tr>

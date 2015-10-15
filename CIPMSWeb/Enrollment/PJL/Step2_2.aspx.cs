@@ -43,7 +43,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                 var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
 
                 // if this page's iStatus is ineligible, we don't even allow it to have PendingLottery
-                if (checkStatus == StatusInfo.PendingPJLottery && rdoSchoolType.SelectedValue == "4")
+                if (checkStatus == StatusInfo.EligiblePJLottery && rdoSchoolType.SelectedValue == "4")
                 {
                     
                     //rdoSchoolType.Enable = false;
@@ -102,13 +102,13 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 				pjl.checkEligibilityforStep2(strFJCID, out iStatus, (StatusInfo)Convert.ToInt32(Session["STATUS"]));
 			}
 
-			// 2014-07-28 Starting for Year 2015, PJL has lottery system that campers failed through other community program could land this page with PendingPJLottery status
+			// 2014-07-28 Starting for Year 2015, PJL has lottery system that campers failed through other community program could land this page with EligiblePJLottery status
 			if (Session["STATUS"] != null)
 			{
 				var checkStatus = (StatusInfo)Convert.ToInt32(Session["STATUS"]);
 
 				// if this page's iStatus is ineligible, we don't even allow it to have PendingLottery
-				if ((checkStatus == StatusInfo.PendingPJLottery || checkStatus == StatusInfo.SystemInEligible) && (StatusInfo)iStatus != StatusInfo.SystemInEligible )
+				if ((checkStatus == StatusInfo.EligiblePJLottery || checkStatus == StatusInfo.SystemInEligible) && (StatusInfo)iStatus != StatusInfo.SystemInEligible )
 					iStatus = (int)checkStatus;
 			}
 
@@ -116,7 +116,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
             if (ConfigurationManager.AppSettings["PJLottery"] == "On")
                 isOn = true;
 
-            if (!isOn && iStatus == (int)StatusInfo.PendingPJLottery)
+            if (!isOn && iStatus == (int)StatusInfo.EligiblePJLottery)
                 iStatus = (int)StatusInfo.SystemInEligible;
 
 			Session["STATUS"] = iStatus.ToString();
@@ -227,7 +227,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
                 {
                     nextUrl = "summary.aspx?prev=" + preUrl;
                 }
-                else if (checkStatus == StatusInfo.PendingPJLottery && !isWashington)
+                else if (checkStatus == StatusInfo.EligiblePJLottery && !isWashington)
                 {
                     nextUrl = "Step2_2_route_info.aspx";
                     nextUrl += "?prev=" + Request.QueryString["prev"];
@@ -313,7 +313,7 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 
 	void PopulateAnswers()
 	{
-		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,1021,1063");
+		DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,1021");
 
 		foreach (DataRow dr in dsAnswers.Tables[0].Rows)
 		{
@@ -370,16 +370,6 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 					txtLastName.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-			{
-				if (dr["OptionID"].Equals(DBNull.Value))
-					continue;
-
-				if (dr["OptionID"].ToString() == "1")
-					rdoDays12.Checked = true;
-				else
-					rdoDays19.Checked = true;
-			}
 		}
 	}
 
@@ -396,10 +386,6 @@ public partial class Step2_PJL_2 : System.Web.UI.Page
 		//for question FirstTimerOrNot
 		strQId = ((int)QuestionId.FirstTime).ToString();
 		strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-		//Grandfaother question
-		strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-		strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
 		// First name and Last Name
 		strQId = hdnQ1021Id.Value;

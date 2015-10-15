@@ -16,7 +16,7 @@
 				<p>
                     <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> <span style="font-weight:bold">
                             If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click    
-                            </span><a href="http://www.jecc.org/YouthOpportunities/CampFundingl.htm" target="_blank">here</a>.
+                            </span><a href="https://goi.jecc.org/CampForm.aspx" target="_blank">here</a>.
 				</p>
                 <p>
                     All other families, to determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.

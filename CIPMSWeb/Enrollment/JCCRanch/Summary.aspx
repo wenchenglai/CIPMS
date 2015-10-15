@@ -30,7 +30,7 @@
                     </ul>
 				</p>   
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva should contact us at 303-316-6384 for additional scholarship and grant opportunities.                    
                 </p> 
                 <p>
                     Since 1953, the Ranch Camp has served thousands of campers. The camp, which is owned and operated by the Robert E. Loup Jewish Community Center in Denver, CO, is open to children entering grades 2 through 10 with special programs designed for each age. Campers reside in log cabins in groups of ten to twelve with three to four counselors. All buildings are within a central area surrounded by hundreds of pine-shaded spots for hiking, climbing, camping, and exploring. The facility includes a corral that houses over 40 horses during the summer, providing for one of the best equestrian programs to be found in a Jewish camp setting nationwide. JCC Ranch Camp also offers a heated outdoor swimming pool, a technical rock climbing wall, a low-elements ropes course, a high-elements challenge course and zip line, a sports field and basketball court, nature and crafts center, and miles and miles of beautiful trails on a 400-acre ranch.

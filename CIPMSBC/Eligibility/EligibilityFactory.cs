@@ -281,6 +281,15 @@ namespace CIPMSBC.Eligibility
                 case FederationEnum.RamahCanada:
                     elig = new EligibilityRamahCanada(fed);
                     break;
+                case FederationEnum.Broward:
+                    elig = new EligibilityBroward(fed);
+                    break;
+                case FederationEnum.Rochester:
+                    elig = new EligibilityRochester(fed);
+                    break;
+                case FederationEnum.HabonimTavor:
+                    elig = new EligibilityHabonimTavor(fed);
+                    break;
 			}
 			return elig;
 		}

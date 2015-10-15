@@ -67,14 +67,8 @@
                 <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please select the name of the session that the camper will be attending this summer.</asp:Label><br />
-                        <asp:DropDownList ID="ddlCampSession"  runat="server" CssClass="dropdown">
-                            <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Session 1" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Session 2" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Session 1 and 2" Value="3"></asp:ListItem>
-                        
-                        </asp:DropDownList>
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
+                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
                     </asp:Panel>
                 </td>
             </tr>
@@ -83,8 +77,11 @@
                     <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                        <asp:Label ID="lbl" runat="server" CssClass="QuestionText"><font color="red"><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days.</b></font></asp:Label><br />
-                        <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
+                        <p class="InfoText">
+					        In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
+                        </p>
+                        <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
+
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
                         <asp:Panel ID="pnlCalStartDt" runat="server" Visible="false">

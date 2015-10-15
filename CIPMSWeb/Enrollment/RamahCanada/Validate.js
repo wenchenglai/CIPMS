@@ -1,17 +1,15 @@
 ﻿var PageValidator = {
-    OnFirstTimerChange: function (rdoObject) {
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            $("#1a").show();
-        } else {
-            $("#1a").hide();
-        }
-    },
-
-    OnSchoolDropDownChange: function (ddlObject) {
-        if ($('#ctl00_Content_rdoSchoolType_2').is(':checked')) {
-            $('#ctl00_Content_txtSchoolName').attr('disabled', true);
-        } else {
-            $('#ctl00_Content_txtSchoolName').removeAttr('disabled');
+    OnSiblingRadioChanged: function (rdoObject) {
+        $('#siblingContact').hide();
+        if ($('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')) {
+            $('#ctl00_Content_txtSiblingFirstName').removeAttr('disabled');
+            $('#ctl00_Content_txtSiblingLastName').removeAttr('disabled');
+        } else if ($('#ctl00_Content_rdolistSiblingAttended_1').is(':checked') || $('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+            $('#ctl00_Content_txtSiblingFirstName').attr('disabled', true);
+            $('#ctl00_Content_txtSiblingLastName').attr('disabled', true);
+            if ($('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+                $('#siblingContact').show();
+            }
         }
     },
 
@@ -19,49 +17,26 @@
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
 
-        // First Timer camper or not
-        if (!$('#ctl00_Content_rdoFirstTimerYes').is(':checked') && !$('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 1</li></ul>";
+        // Siblings
+        if (!$('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')
+            && !$('#ctl00_Content_rdolistSiblingAttended_1').is(':checked')
+            && !$('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer question No. 2</li></ul>";
         }
 
-        // 1a Grandfather rule
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
+        if ($('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')) {
+            if ($('#ctl00_Content_txtSiblingFirstName').val() === "" || $('#ctl00_Content_txtSiblingLastName').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer question No. 3</li></ul>";
             }
         }
 
-        // Grade
-        if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2</li></ul>";
-        }
+        errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 2, 3, 4);
 
-        // School Type
-        if (!$('#ctl00_Content_rdoSchoolType_0').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
-            !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 3</li></ul>";
-        }
-
-        // School Name
-        if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
-        }
-
-        args.IsValid = true;
-
-        if (errorMsg.innerHTML === "") {
-            args.IsValid = true;
-        } else {
-            args.IsValid = false;
-        }
-
+        args.IsValid = errorMsg.innerHTML === "";
         return;
     }
 };
 
 $(function () {
-    PageValidator.OnFirstTimerChange();
-    PageValidator.OnSchoolDropDownChange();
-})
+    PageValidator.OnSiblingRadioChanged(null);
+});

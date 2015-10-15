@@ -21,69 +21,32 @@
                 </td>
             </tr>
         </table>
-        <table width="100%" cellpadding="1" cellspacing="0" border="0">
+        <table width="100%" cellpadding="1" cellspacing="0" border="0" class="QuestionText">
              <tr>            
                 <td>
-                <asp:Label ID="Label3" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">
-                        See if your camp is a One Happy Camper partner. (Select camp and click ‘continue application’):
+                        Your community does not appear to be a sponsor of the One Happy Camper program or you did not meet their eligibility criteria. 
+                        If you have questions about your community’s One Happy Camper program and/or want to contact your local program, click <a href="http://www.jewishcamp.org/contact-us" target="_blank">here</a>.
                     </p>
-                       
-                </asp:Label>
+                    <p>
+                        Additionally, many camps sponsor a One Happy Camper grant. If you do not see your camp they do not sponsor a One Happy Camper grant. Please select your camp:
+                    </p>
+                    <div style="margin: auto; width: 60%; border-width: 3px solid">
+                        <asp:DropDownList ID="ddlCamp" runat="server" CssClass="dropdown"></asp:DropDownList>
+                    </div>
+                    <p>
+                        We believe that every child deserves an opportunity to go to camp, but recognize that some families might require assistance . Visit our 
+                        <a href="http://www.jewishcamp.org/camper-scholarships" target="_blank">scholarship</a>  
+                        directory and/or speak to your camp and local organizations to see what resources may be available.
+                    </p>
+                    <p>
+                        Please note: You are only eligible to receive one One Happy Camper grant.
+                    </p>
+                    <p>
+                        Questions?  Give us a call at 1-888-888-4819
+                    </p>
                 </td>
              </tr>
-             <tr>                
-                <td >&nbsp;                    
-                </td>
-            </tr>
-            <tr>                
-                <td valign="top" align="center"> 
-                    <asp:DropDownList ID="ddlCamp" runat="server" CssClass="dropdown"></asp:DropDownList>
-                </td>
-            </tr>
-            <tr>                
-                <td valign="top" align="center">&nbsp;</td>
-            </tr>
-            <tr>            
-                <td>
-                <asp:Label ID="Label1" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">
-                        If you do not see your camp it may mean that they are not sponsoring their own One Happy Camper program. <strong>It is possible that your community or camp is not using this registration system, or the application is not yet available.</strong>
-                    </p>
-                </asp:Label>
-                </td>
-             </tr>
-            <tr>                
-                <td >&nbsp;                    
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Label ID="lbl125" runat="server" CssClass="QuestionText">
-						<p style="text-align:justify">
-						<b>
-							To contact a One Happy Camper program partner please  
-							<a href="http://www.jewishcamp.org/contact-us%23OHC#OHC" target="_blank" style="color:Black;">click here</a>.
-						</b>
-						</p>
-					</asp:Label>
-                </td>
-            </tr>
-            <tr>                
-                <td >&nbsp;                    
-                </td>
-            </tr>
-            <tr>
-				<td>
-					<asp:Label ID="Label124" runat="server" CssClass="QuestionText">
-						Browse the Foundation for Jewish Camp’s online directory of <span style="color:red; font-weight:bold">needs-based scholarship</span> at 
-                        <a href="http://www.jewishcamp.org/scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
-					</asp:Label>
-                </td>
-            </tr>
-            <tr>                
-                <td valign="top" align="center">&nbsp;</td>
-            </tr>
                 
             <!--admin panel-->
             <tr>

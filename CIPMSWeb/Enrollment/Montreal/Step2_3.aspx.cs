@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -28,24 +23,6 @@ public partial class Step2_Calgary_3 : Page
         btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-    }
-
-    void btnReturnAdmin_Click(object sender, EventArgs e)
-    {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                InsertCamperAnswers();
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -87,98 +64,7 @@ public partial class Step2_Calgary_3 : Page
             }
             RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
             RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
-            //RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:disablePopup();");
-            //RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:disablePopup();");
-            //RadioButtonQ7Option3.Attributes.Add("onclick", "windowopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-            //RadioButtonQ7Option4.Attributes.Add("onclick", "windowopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-            //to enable / disable the panel states based on the radio button selected
             SetPanelStates();
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-    //page unload
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
-    void btnSaveandExit_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            if (Page.IsValid)
-            {
-                string strRedirURL;
-                //strRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
-                strRedirURL = Master.SaveandExitURL;
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-                {
-                    InsertCamperAnswers();
-                }
-                if (Master.IsCamperUser == "Yes")
-                {
-
-                    General oGen = new General();
-                    if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
-                    {
-                        Response.Redirect(strRedirURL);
-                    }
-                    else
-                    {
-                        string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
-                        if (!ClientScript.IsStartupScriptRegistered("clientScript"))
-                        {
-                            ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
-                        }
-                    }
-                }
-                else
-                {
-                    Response.Redirect(strRedirURL);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-    //to fill the camp dropdown based on the state selected
-    //void ddlState_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    string strStateId;
-    //    try
-    //    {
-    //        strStateId = ddlState.SelectedValue;
-    //        //getCamps(strStateId);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Response.Write(ex.Message);
-    //    }
-    //}
-
-
-    void btnPrevious_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-                {
-                    InsertCamperAnswers();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_3.Value;
-                Session["STATUS"] = null;
-                Response.Redirect("Step2_2.aspx");
-            }
         }
         catch (Exception ex)
         {
@@ -267,6 +153,86 @@ public partial class Step2_Calgary_3 : Page
         }
     }
 
+    void btnReturnAdmin_Click(object sender, EventArgs e)
+    {
+        string strRedirURL;
+        try
+        {
+            if (Page.IsValid)
+            {
+                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+                InsertCamperAnswers();
+                Response.Redirect(strRedirURL);
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
+    void btnSaveandExit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Page.IsValid)
+            {
+                string strRedirURL;
+                //strRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
+                strRedirURL = Master.SaveandExitURL;
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+                {
+                    InsertCamperAnswers();
+                }
+                if (Master.IsCamperUser == "Yes")
+                {
+
+                    General oGen = new General();
+                    if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
+                    {
+                        Response.Redirect(strRedirURL);
+                    }
+                    else
+                    {
+                        string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
+                        if (!ClientScript.IsStartupScriptRegistered("clientScript"))
+                        {
+                            ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect(strRedirURL);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
+    void btnPrevious_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+                {
+                    InsertCamperAnswers();
+                }
+                Session["FJCID"] = hdnFJCIDStep2_3.Value;
+                Session["STATUS"] = null;
+                Response.Redirect("Step2_2.aspx");
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
 
     //to insert the Camper Answers
     protected void InsertCamperAnswers()

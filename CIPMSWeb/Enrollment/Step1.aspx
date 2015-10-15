@@ -66,10 +66,16 @@
 
 </script>
     
-    <div id="popupContact" class="text" style="overflow: auto; height:130px;">
-		Code may apply to:<br /><br />
-		<strong>PJ Library Goes to Camp</strong> Incentive Program. <br /> Please click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.<br /><br />
-		<br /> 
+    <div id="popupContact" class="text" style="overflow: auto; padding:10px; height:180px;">
+		An access code is only required for the following reasons:
+        <ul style="list-style: disc outside none;">
+            <li style="">
+                You are a PJ library member and have received a PJ library access code.  To learn more about the PJ Goes to Camp One Happy Camper program and how to apply for an access code, click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.
+            </li>
+            <li>
+                An OHC partner has provided you with a code with specific instruction to enter it here, in order to access the application. 
+            </li>
+        </ul>
 		<a href="Javascript:disablePopup();" style="float:right">Close</a>
     </div>
     

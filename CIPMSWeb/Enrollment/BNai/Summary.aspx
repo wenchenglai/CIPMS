@@ -19,17 +19,16 @@
         <tr>
 			<td colspan="2">
 			    <p>
-			        The Dor l?Dor incentive grant, administered by B'nai B'rith Camp (Lincoln City, Oregon), provides financial incentives of up to $1,000 to first-time campers who attend B'nai B'rith Camp. 
+			        The Dor l'Dor incentive grant, administered by B'nai B'rith Camp (Lincoln City, Oregon), 
+                    provides financial incentives of up to $1,000 to first-time campers who attend B'nai B'rith Camp. 
 			    </p>
+                <ul style="font-weight: bold">
+                    <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                    <li>$700 grants awarded to first-time campers attending camp for 12 -18 consecutive days.</li>
+                    <li>First-time campers must be entering grades 1-12 (after camp).</li>
+                </ul>              
 				<p>
-				    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please contact our Operations Director at 503-535-3514.
-                    <ul style="font-weight: bold">
-                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
-                        <li>First-time campers must be entering grades 1-12 (after camp).</li>
-                    </ul>
-				</p>                
-				<p>
-				    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please contact our Camp Registrar at 503-452-3429.
+                    If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please contact our Operations Director at 503-535-3514. 
 				</p>
                 <p>
                     For more information on B’nai B’rith Camp and/or to access a camp application, visit <a href="http://www.bbcamp.org" target="_blank">www.bbcamp.org</a>.  If you need additional assistance, please call the camp professional listed at the bottom of this page.

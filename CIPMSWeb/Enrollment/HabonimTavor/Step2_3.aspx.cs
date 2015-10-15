@@ -96,8 +96,8 @@ public partial class Step2_Habonim_3 : Page
 		string strCampID = Session["CampID"].ToString();
         string last3digits = strCampID.Substring(strCampID.Length - 3);
 
-        if (last3digits == "057") // Miriam
-			lblSessionDays.Text = "In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.";
+        //if (last3digits == "057") // Miriam
+        //    lblSessionDays.Text = "In order to be eligible for the incentive grant, camper must attend camp for at least 12 consecutive days.";
     }
 
     //page unload
@@ -208,7 +208,7 @@ public partial class Step2_Habonim_3 : Page
                 //to update the camp value to the database (to be used for search functionality)
                 CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim, iCampId);
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.HabonimTavor);
                 objEligibility.checkEligibility(strFJCID, out iStatus);
             }
 

@@ -142,22 +142,7 @@ public partial class Step2_Ramah_3 : Page
                 CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
-                objEligibility.checkEligibility(strFJCID, out iStatus);
-
-                // 2014-10-14 must have 19 days checking
-                if (Session["MustHave19Days"] != null)
-                {
-                    bool flag = (bool)Session["MustHave19Days"];
-                    if (flag)
-                    {
-                        CamperApplication oCA = new CamperApplication();
-                        int days = oCA.getDaysInCamp(strFJCID);
-                        if (days < 19)
-                            iStatus = (int)StatusInfo.SystemInEligible;
-                    }
-
-                }
-                    
+                objEligibility.checkEligibility(strFJCID, out iStatus);                    
             }
 
             var checkStatus = Convert.ToInt32(Session["STATUS"]);

@@ -1,61 +1,26 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Columbus_Summary" %>
 
 <asp:Content ID="Columbus_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" Visible="false">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="logo.jpg" width="270" /></td>
             <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server" ForeColor="Black">
-                    <p style="text-align:justify">Good news! You may be eligible for an incentive.</p>
-                </asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-						To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-					</p>
-				</asp:Label>
+                Good news! You may be eligible for an incentive.
 			</td>
         </tr>
         <tr>
 			<td colspan="2">
-				<asp:Label ID="Label1" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						<b>The Kansas City One Happy Camper Program, sponsored by The Jewish Federation of Greater Kansas City and the Foundation for Jewish Camp and 
-						generously funded by The Lowenstein Brothers Foundation of The Jewish Community Foundation, 
-						provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. 
-						Eligible campers must attend a camp listed on the Foundation for Jewish Camp’s website 
-						(<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>)and be entering grades 2-12 (after camp).</b>
-					</p>            
-				</asp:Label>
+                <p>
+                    The Kansas City One Happy Camper Program, sponsored by The Jewish Federation of Greater Kansas City and the Foundation for Jewish Camp and generously funded by The Lowenstein Brothers Foundation of The Jewish Community Foundation, provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must attend a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>)and be entering grades 2-12 (after camp). 
+                </p>
+                <p>
+                    The program is available to the first ten first-time campers who apply. 
+                </p>
+                <p>
+                    To learn more about the Jewish Federation's First Time Campers fund contact Alan Edelman at (913) 327-8104 or alane@jewishkc.org
+                </p>
 			</td>
-        </tr>   
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label3" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-						As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program. 
-						<b>If the camper currently attends Jewish day school or Yeshiva and will be going on a 19 day or longer 1st Time Camp experience, 
-						please contact directly for information (<a href="mailto:kareng@jewishkc.org" target="_blank">kareng@jewishkc.org</a>).</b>
-					</p>            
-				</asp:Label>
-			</td>
-        </tr>   
-        <tr>
-			<td colspan="2">
-				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
-						please contact Amy Rosenfeld at 913.327.8145 or <a href="mailto:amyr@jewishkc.org" target="_blank">amyr@jewishkc.org</a> regarding the Gershon Hadas Scholarship Fund which is due in late February 2013.</p>            
-				</asp:Label>
-			</td>
-        </tr>   
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance, please call your community professional listed at the bottom of this page.</p>
-                </asp:Label>
-            </td>
         </tr>
     </table>
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" Visible="false">
@@ -78,31 +43,6 @@
 			</td>
         </tr>
     </table>    
-    <table id="Table1" runat="server" width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td>
-                <img id="Img1" src="logo.jpg" width="270" />
-            </td>
-        </tr>
-        <tr>
-			<td>
-				<asp:Label ID="Label4" CssClass="infotext3" runat="server">
-					<p style="text-align:justify">
-						The Jewish Federation of Greater Kansas, through its Rabbi Gershon Hadas Guardian Society camp/Israel scholarship program, provides grants to encourage children to attend overnight Jewish camp.				
-					</p>   
-					<p style="text-align:justify">
-						The First Time Campers Fund is not a scholarship and is not need-based. The "grant" is a gift of $1,000 from the Jewish Federation of Greater Kansas City to encourage attendance at a Jewish summer residential camp.			
-					</p>   
-					<p style="text-align:justify">
-						To learn more about the Jewish Federation's First Time Campers fund contact Alyssa Dinberg at (913) 327-8019 or alyssad@jewishkc.org.			
-					</p>   
-					<p style="text-align:justify; color:red;">
-					    Please contact the Federation before pressing the next button.			
-					</p>                                                                        
-				</asp:Label>
-			</td>
-        </tr>
-    </table>   
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
@@ -117,7 +57,7 @@
                             <asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                                 </td>
                             <td align="right">
-                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn"  OnClick="btnNext_Click" /></td>                            
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" Visible="False"  OnClick="btnNext_Click" /></td>                            
                         </tr>
                      </table>
                 </td>

@@ -11,12 +11,16 @@ input, select {
     font-size:11;
 }
 
-ul {
+/*ul {
     list-style-type: none;
-}
+}*/
 
 .fed-ddl {
     margin-bottom: 20px;
+}
+
+.red-text {
+    color: red;
 }
 
 .questionrows

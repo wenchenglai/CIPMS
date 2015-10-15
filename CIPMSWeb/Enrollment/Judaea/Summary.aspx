@@ -26,7 +26,6 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days. </li>
                         <li>First-time campers must be entering grades 2-12 (after camp).</li>
-                        <li>Attending one of our camps, including Camp Judaea (Hendersonville, NC), Camp Young Judaea Midwest (Waupaca, WI), Camp Young Judaea Sprout Lake (Verbank, NY), Camp Young Judaea Texas (Wimberley, TX), and our senior leadership camp, Camp Tel Yehudah (Barryville, NY).</li>
                     </ul>
 		        </p>                
 		        <p>

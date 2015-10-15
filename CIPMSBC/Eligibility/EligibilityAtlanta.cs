@@ -95,10 +95,10 @@ namespace CIPMSBC.Eligibility
 
 					if (JewishSchoolOption == 4)
 					{
-						if (specialCode == "PJGTC2015")
-							iStatusValue = (int)StatusInfo.PendingPJLottery;
+						if (specialCode == "PJGTC2016")
+							iStatusValue = (int)StatusInfo.EligiblePJLottery;
 						else
-							iStatusValue = (int)StatusInfo.SystemInEligible;
+                            iStatusValue = (int)AllowDaySchool(FJCID);
 					}
 					else
 					{
@@ -211,11 +211,12 @@ namespace CIPMSBC.Eligibility
 				oCA.UpdateAmount(FJCID, 0.00, 0, "");
 				return true;
 			}
+
 			intSynagogueID = StatusBasedOnSynagogue(FJCID, StatusValue);
 			daysInCamp = DaysInCamp(FJCID);
 			if (daysInCamp > 0)
 			{
-                string q1 = "", q1a = "", q1b = "", q1c = "";
+                string q1 = "", q1ReceivedGrantLastYear = "", q1LessThan160 = "";
                 string campID = "";
                 var CamperAppl = new CamperApplication();
                 DataSet dsAnswers = CamperAppl.getCamperAnswers(FJCID, "", "", "3,10,1063,1066,1067");
@@ -245,25 +246,15 @@ namespace CIPMSBC.Eligibility
 
                         campID = dr["Answer"].ToString();
                     }
-                    else if (qID == 1063)
-                    {
-                        if (dr["OptionID"].Equals(DBNull.Value))
-                            continue;
-
-                        if (dr["OptionID"].ToString() == "1")
-                            q1a = "12";
-                        else if (dr["OptionID"].ToString() == "2")
-                            q1a = "19";
-                    }
                     else if (qID == 1066) // Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta?
                     {
                         if (dr["OptionID"].Equals(DBNull.Value))
                             continue;
 
                         if (dr["OptionID"].ToString() == "1")
-                            q1b = "yes";
+                            q1ReceivedGrantLastYear = "yes";
                         else if (dr["OptionID"].ToString() == "2")
-                            q1b = "no";
+                            q1ReceivedGrantLastYear = "no";
                     }
                     else if (qID == 1067) // Is your combined gross household income $160,000 or less?
                     {
@@ -271,78 +262,53 @@ namespace CIPMSBC.Eligibility
                             continue;
 
                         if (dr["OptionID"].ToString() == "1")
-                            q1c = "yes";
+                            q1LessThan160 = "yes";
                         else if (dr["OptionID"].ToString() == "2")
-                            q1c = "no";
+                            q1LessThan160 = "no";
                     }
                 }
 
-                if (q1 == "no")
+                if (q1 == "no") // Firt time camper?
                 {
-                    if (q1a == "12")
+                    if (q1ReceivedGrantLastYear == "yes") // Receive grant last year?
                     {
-                        if (q1b == "yes")
-                        {
-                            if (q1c == "yes")
-                            {
-                                Amount = 500;
-                            }                            
-                        }
-                        else
+                        if (q1LessThan160 == "yes") // income less than $160,000?
                         {
                             if (daysInCamp >= 19)
-                            {
-                                Amount = 1000;
-                            }
-                            else if (daysInCamp == 18 && campID == "6147") // 2015/10/28 temporary code used ONLY in 2015
-                            {
-                                var userInfo = CamperAppl.getCamperInfo(FJCID);
-                                var code = userInfo.SpecialCode;
-                                if (code == "AA2015ATL159" || code == "AA2015ATL357" || code == "AA2015ATL963" || code == "AA2015ATL784" || code == "AA2015ATL658" || code == "AA2015ATL224")
-                                    Amount = 1000;
-                            }                            
-                        }
-                    }
-                    else if (q1a == "19")
-                    {
-                        if (q1b == "yes")
-                        {
-                            if (q1c == "yes")
-                            {
                                 Amount = 500;
-                            }
+                            else if (daysInCamp >= 12)
+                                Amount = 350;
+                            else
+                                Amount = 0;
                         }
                     }
                 }
                 else
                 {
+                    // normal route, this is the first time camper
                     Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
                 }
 
                 // 2015-01-27  Kibbutz Max Straus and Gesher at Kibbutz Max Straus must be 250 no matter what
                 // a candidate for global grant rule
-			    if (Amount > 0)
-			    {
-                    string last3Digits = campID.Substring(campID.Length - 3);
-			        if (last3Digits == "211" || last3Digits == "218")
-			        {
-			            Amount = 250;
-			        }
-			    }
+                //if (Amount > 0)
+                //{
+                //    string last3Digits = campID.Substring(campID.Length - 3);
+                //    if (last3Digits == "211" || last3Digits == "218")
+                //    {
+                //        Amount = 250;
+                //    }
+                //}
 
 				if (Amount <= 0)
                     StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
-				
-                oCA.UpdateAmount(FJCID, Amount, 0, "");
-
 			}
 			else
 			{
 				StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
 				Amount = 0;
-				oCA.UpdateAmount(FJCID, Amount, 0, "");
 			}
-
+            oCA.UpdateAmount(FJCID, Amount, 0, "");
 			
 			return true;
 						

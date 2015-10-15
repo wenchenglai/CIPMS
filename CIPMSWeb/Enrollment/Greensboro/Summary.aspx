@@ -16,7 +16,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The Greensboro One Happy Camper program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, Temple Emanuel, and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers.
+				    The Greensboro One Happy Camper program, sponsored by the Greensboro Jewish Federation, Beth David Synagogue, Temple Emanuel, and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -24,12 +24,13 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-12 (after camp).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2015 for 19 or more consecutive days.</li>
-                        <li>Attending one of the 150+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
                 <p>
-                    <span style="font-weight: bold">Note:</span> Multiple children from a single family are eligible to receive separate grants. At least one parent or guardian must be a member in good standing and contribute to the Greensboro Jewish Federation in the year the grant is awarded. Members of Beth David Synagogue and Temple Emanuel are eligible to receive full incentives. Unaffiliated members may apply to the Federation and will be reviewed on a case-by-case basis.  
+                    <span style="font-weight: bold">Note:</span> 
+                    Multiple children from a single family are eligible to receive separate grants. At least one parent or guardian must be a member in good standing and contribute to the Greensboro Jewish Federation in the year the grant is awarded. Members of Beth David Synagogue and Temple Emanuel are eligible to receive full incentives. Unaffiliated members may apply to the Federation and will be reviewed on a case-by-case basis.                 
+
                 </p>
                 <p>
                     If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 

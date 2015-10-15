@@ -39,6 +39,13 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         {
             var gen = new General();
             var fedId = gen.GetCanadianZipCode(txtZipCode.Text);
+            if (fedId == "Duplicate")
+            {
+                pnlResult.Visible = false;
+                lblError.Text = "Duplicates programs found for this zip code.  Please contact the FJC admin immediately";
+                return;
+            }
+            
             if (fedId != "")
             {
                 fed = FederationsDA.GetFederationByIdOrZipCode("", Int32.Parse(fedId));
@@ -57,6 +64,16 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             lblProgram.Text = "None";
         else
         {
+            if (fed.ContainsKey("Error"))
+            {
+                if (fed["Error"] == "Duplicate")
+                {
+                    pnlResult.Visible = false;
+                    lblError.Text = string.Format("Duplicates programs found for this zip code.  Please contact the FJC admin immediately.  The programs are {0} and {1}.", fed["Name"], fed["NameForSecondProgram"]);
+                    return;   
+                }
+            }
+
             lblProgram.Text = fed["Name"];
             lblContact.Text = fed["Contact"];
             lblEmail.Text = fed["Email"];
@@ -126,22 +143,6 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
                 lblJDSProcessing.Text = "Offline, contact community directly";
             else if (isJDSOnline == "")
                 lblJDSProcessing.Text = "N/A";
-
-            //var jds = fed["isGrantAvailable"];
-            //if (jds == "1")
-            //{
-            //    if (fed["ID"] == "9")
-            //        lblJDS.Text = "Yes (only specific day schools permitted, contact community directly)";
-            //    else
-            //    {
-            //        if (lblStatus.Text == "Inactive")
-            //            lblJDS.Text = "Yes (Offline, contact community directly).";
-            //        else
-            //            lblJDS.Text = "Yes";
-            //    }
-            //}
-            //else
-            //    lblJDS.Text = "No";
         }
     }
 }

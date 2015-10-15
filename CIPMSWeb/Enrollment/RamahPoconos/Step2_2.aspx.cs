@@ -148,17 +148,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
-
-            // 2014-10-14 If No for both firsttime and secondtime questions (1 and 2), it's inelibigle
-            if (rdoFirstTimerNo.Checked && rdoSecondTimerNo.Checked)
-                iStatus = (int)StatusInfo.SystemInEligible;
-
-            // 2014-10-14 if the condition below is met, camper must pick 19 days or more on next page.
-            if (rdoFirstTimerNo.Checked && rdoSecondTimerYes.Checked && rdoReceivedGrantNo.Checked)
-                Session["MustHave19Days"] = true;
-            else
-                Session["MustHave19Days"] = false;
-
             Session["STATUS"] = iStatus.ToString();
         }
         Session["FJCID"] = hdnFJCID.Value;
@@ -224,7 +213,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,13,33,1063");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -242,32 +231,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     else if (dr["OptionID"].ToString() == "2")
                     {
                         rdoFirstTimerNo.Checked = true;
-                    }
-                    break;
-
-                case QuestionId.Q13_SecondTime:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoSecondTimerYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoSecondTimerNo.Checked = true;
-                    }
-                    break;
-
-                case QuestionId.Q33_ReceivedGrant:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoReceivedGrantYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoReceivedGrantNo.Checked = true;
                     }
                     break;
 
@@ -290,14 +253,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                         txtSchoolName.Text = dr["Answer"].ToString();
                     }
                     break;
-                case QuestionId.GrandfatherPolicySessionLength:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                        rdoDays12.Checked = true;
-                    else
-                        rdoDays19.Checked = true;
-                    break;
             }
         }
     }
@@ -315,18 +270,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //for question Second Timer or not
-        strQId = ((int)QuestionId.Q13_SecondTime).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoSecondTimerYes.Checked ? "1" : rdoSecondTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //for question Received Grant or not
-        strQId = ((int)QuestionId.Q33_ReceivedGrant).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

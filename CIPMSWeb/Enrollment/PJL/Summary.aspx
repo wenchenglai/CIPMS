@@ -21,24 +21,30 @@
                     A total of 350 GRANTS are available on a first-come, first-serve basis through PJ Goes to Camp. These grants of up to $1,000 will help subscribing families of The <a href="http://www.pjlibrary.org" target="_blank">PJ Library</a> to pay for summer camp tuition for first-time campers at nonprofit Jewish overnight camps.
 				</p>                
 				<p>
-				    <span style="font-weight: bold; color:red;">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> All PJ Goes To Camp Incentive Grants for students currently enrolled in day school  for the summer of 2015 will be distributed through a lottery that will take place on November 10, 2014. To place your name in this lottery you MUST be a PJ Library recipient family (or alumnus).  To receive the PJ Library day school lottery referral code, e-mail your name, camper name and address, camp, and camp dates AFTER August 15, 2014 but prior to November 7, 2014 to pjgtc@hgf.org. See <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> for full details and eligibility.
+				    <span style="font-weight: bold; color:red;">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> 
+                    All PJ Goes To Camp Incentive Grants for students currently enrolled in day school for the summer of 2016 will be distributed through a lottery that will take place on November 10, 2015. To place your name in this lottery you MUST be a PJ Library recipient family (or alumnus) prior to September 1, 2015. To apply for the PJ Library day school lottery referral code, complete an application at: 
+                    <a href="http://www.pjlibrary.org/pjgtc/referralcode" target="_blank">www.pjlibrary.org/pjgtc/referralcode</a> AFTER August 15, 2015 but prior to November 8, 2015 to pjgtc@hgf.org. See 
+                    <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> for full details and eligibility.
 				</p>
                 <p>
-                    In case of dispute, the Harold Grinspoon Foundation reserves the right to resolve issues about PJ Goes to Camp incentive awards and the day school camper lottery.
+                    Families of campers who do not attend a Jewish day school should request a PJ Goes to Camp referral code by completing the referral code application at the website:  www.pjlibrary.org/pjgtc/referralcode         AFTER October 1, 2015.  
 				</p>  
+                <p>
+                    In case of dispute, the Harold Grinspoon Foundation reserves the right to resolve issues about PJ Goes to Camp incentive awards and the day school camper lottery. 
+                </p>
 			    <p>
 			        <span style="font-weight: bold">WHO IS ELIGIBLE?</span><br />
                     First-time campers at nonprofit Jewish overnight camps are those that are: 
                     <ul>
-                        <li>Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2014)</li>
-                        <li>Siblings of currently eligible PJ Library subscribers (enrolled in the program on or before Sept. 1, 2014) </li>
+                        <li>Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2015)</li>
+                        <li>Siblings of currently eligible PJ Library subscribers (enrolled in the program on or before Sept. 1, 2015) </li>
                         <li>PJ Library alumni</li>
                     </ul>
 
 			    </p>
 				<p>
                     <span style="font-weight: bold">FOR WHAT TIME PERIOD?</span> <br />
-                    These opportunities apply only to Summer 2015 experiences.
+                    These opportunities apply only to Summer 2016 experiences.
 
 				</p>                
 				<p>
@@ -51,7 +57,7 @@
 				</p>
                 <p>
                     <span style="font-weight: bold">WHICH CAMPS ARE INCLUDED?</span> <br />
-                    All 150+ nonprofit overnight Jewish camps in North America listed on the <a href="http://www.jewishcamp.org/camps" target="_blank">Foundation for Jewish Camp</a>  are included.
+                    All 155+ nonprofit overnight Jewish camps in North America listed on the <a href="http://www.jewishcamp.org/camps" target="_blank">Foundation for Jewish Camp</a>  are included.
 
 				</p>  
 			    <p>
@@ -65,7 +71,7 @@
                     See the attached list of zip codes for locating residents who are are eligible for these incentive grants.
 			    </p>
 			    <p>
-			        For answers to questions regarding PJ Goes to Camp or its online process, please e-mail Maddie Ramos at <a href='mailto:pjgtc@hgf.org'>pjgtc@hgf.org</a>
+			        For answers to questions regarding PJ Goes to Camp or its online process, please e-mail the PJ Goes to Camp administrator at <a href='mailto:pjgtc@hgf.org'>pjgtc@hgf.org</a>
 			    </p>
 			    <p>
 			        To learn more about the PJ Library or the Harold Grinspoon Foundation, please visit <a href="http://www.pjlibrary.org" target=_blank>www.pjlibrary.org</a>

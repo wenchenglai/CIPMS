@@ -82,8 +82,8 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Philadelphia);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
-                if (result.SchoolType == StatusInfo.PendingPJLottery)
-                    iStatus = (int)StatusInfo.PendingPJLottery;
+                if (result.SchoolType == StatusInfo.EligiblePJLottery)
+                    iStatus = (int)StatusInfo.EligiblePJLottery;
                 else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
                     result.Grade == StatusInfo.SystemInEligible ||
                     result.SchoolType == StatusInfo.SystemInEligible ||
@@ -309,7 +309,7 @@ public partial class Step2_NY_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,28,29,30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,30,31,1044,1045");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -327,32 +327,6 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                     else if (dr["OptionID"].ToString() == "2")
                     {
                         rdoFirstTimerNo.Checked = true;
-                    }
-                    break;
-
-                case QuestionId.Q28_IsSecondTimer:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoSecondTimerYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoSecondTimerNo.Checked = true;
-                    }
-                    break;
-
-                case QuestionId.Q29_ReceivedGrant:
-                    if (dr["OptionID"].Equals(DBNull.Value))
-                        continue;
-                    if (dr["OptionID"].ToString() == "1")
-                    {
-                        rdoReceivedGrantYes.Checked = true;
-                    }
-                    else if (dr["OptionID"].ToString() == "2")
-                    {
-                        rdoReceivedGrantNo.Checked = true;
                     }
                     break;
 
@@ -481,14 +455,6 @@ public partial class Step2_NY_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //for question Second Timer or not
-        strQId = ((int)QuestionId.Q28_IsSecondTimer).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoSecondTimerYes.Checked ? "1" : rdoSecondTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //for question Received Grant or not
-        strQId = ((int)QuestionId.Q29_ReceivedGrant).ToString();
-        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoReceivedGrantYes.Checked ? "1" : rdoReceivedGrantNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         if (chkNo.Checked)
         {

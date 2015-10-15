@@ -526,5 +526,13 @@ namespace CIPMSBC.Eligibility
                 }
             }
         }
+
+        protected StatusInfo AllowDaySchool(string FJCID)
+        {
+            var gen = new General();
+            var fed = gen.GetFedDetailsForFJCID(FJCID);
+
+            return (bool)fed.Tables[0].Rows[0]["isJDSAvailable"] ? StatusInfo.SystemEligible : StatusInfo.SystemInEligible;
+        }
     }
 }

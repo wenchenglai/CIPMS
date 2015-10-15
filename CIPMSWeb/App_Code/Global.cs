@@ -55,5 +55,8 @@ public enum QuestionId
     Q1044_WhoYouSpeakToInSynagogue = 1044,
     Q1045_ProfessionalOrCongregate = 1045,
     GrandfatherPolicySessionLength = 1063,
-    Q1068_AttendSecondarySchool = 1068
+    Q1068_AttendSecondarySchool = 1068,
+    Q1032_SiblingAttended = 1032,
+    Q1033_SiblingFirstName = 1033,
+    Q1034_SiblingLastName = 1034
 }

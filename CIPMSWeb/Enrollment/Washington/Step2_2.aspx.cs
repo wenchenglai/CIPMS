@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
@@ -85,8 +80,8 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
                 var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.WashingtonDC);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
-                if (result.SchoolType == StatusInfo.PendingPJLottery)
-                    iStatus = (int)StatusInfo.PendingPJLottery;
+                if (result.SchoolType == StatusInfo.EligiblePJLottery)
+                    iStatus = (int)StatusInfo.EligiblePJLottery;
                 else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
                     result.Grade == StatusInfo.SystemInEligible ||
                     result.SchoolType == StatusInfo.SystemInEligible ||
@@ -313,16 +308,6 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
                     txtDayCamp.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
-                else
-                    rdoDays19.Checked = true;
-            }
             else if (qID == QuestionId.Q30_ReferredBySynagogueOrJCC) //Were you referred to this application through a synagogue or JCC liaison?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
@@ -393,10 +378,6 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         if (chkNo.Checked)
         {

@@ -21,24 +21,6 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
     
-    void btnReturnAdmin_Click(object sender, EventArgs e)
-    {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                ProcessCamperAnswers();
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         try
@@ -55,6 +37,50 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
                     hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
                     PopulateAnswers();
                 }
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        int iStatus;
+        string strModifiedBy, strFJCID;
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Zeke);
+
+        try
+        {
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+                {
+                    ProcessCamperAnswers();
+                }
+                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+                //Modified by id taken from the Master Id
+                strModifiedBy = Master.UserId;
+                strFJCID = hdnFJCIDStep2_2.Value;
+                if (strFJCID != "" && strModifiedBy != "")
+                {
+                    if (isReadOnly)
+                    {
+                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                    }
+                    else
+                    {
+
+                        //to check whether the camper is eligible 
+                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+                    }
+
+                    Session["STATUS"] = iStatus.ToString();
+                }
+                Session["FJCID"] = hdnFJCIDStep2_2.Value;
+                Response.Redirect("Step2_3.aspx");
             }
         }
         catch (Exception ex)
@@ -126,42 +152,16 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
         }
     }
 
-    void btnNext_Click(object sender, EventArgs e)
+    void btnReturnAdmin_Click(object sender, EventArgs e)
     {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Zeke);
-        
+        string strRedirURL;
         try
         {
             if (Page.IsValid)
             {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-                {
-                    ProcessCamperAnswers();
-                }
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-                //Modified by id taken from the Master Id
-                strModifiedBy = Master.UserId;
-                strFJCID = hdnFJCIDStep2_2.Value;
-                if (strFJCID != "" && strModifiedBy != "")
-                {
-                    if (isReadOnly)
-                    {
-                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-                    }
-                    else
-                    {
-
-                        //to check whether the camper is eligible 
-                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-                    }
-
-                    Session["STATUS"] = iStatus.ToString();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_2.Value;
-                Response.Redirect("Step2_3.aspx");
+                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+                ProcessCamperAnswers();
+                Response.Redirect(strRedirURL);
             }
         }
         catch (Exception ex)
@@ -169,7 +169,7 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-
+    
     private void ProcessCamperAnswers()
     {
         string strFJCID;
@@ -279,16 +279,6 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
-                else
-                    rdoDays19.Checked = true;
-            }
         }
     }
 
@@ -305,10 +295,6 @@ public partial class Step2_Nageela_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

@@ -95,10 +95,10 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2015")
-                            iStatusValue = (int)StatusInfo.PendingPJLottery;
+                        if (specialCode == "PJGTC2016")
+                            iStatusValue = (int)StatusInfo.EligiblePJLottery;
                         else
-                            iStatusValue = (int)StatusInfo.SystemInEligible;
+                            iStatusValue = (int)AllowDaySchool(FJCID);
                     }
                     else
                     {
@@ -180,7 +180,6 @@ namespace CIPMSBC.Eligibility
 
         public override bool checkEligibility(string FJCID, out int StatusValue)
         {
-            StatusValue = 0;
             int daysInCamp;
             double Amount = 0.00;
 
@@ -215,24 +214,35 @@ namespace CIPMSBC.Eligibility
             daysInCamp = DaysInCamp(FJCID);
             if (daysInCamp > 0)
             {
-                // Commented by Rajesh
-                //if (intCampID == 1138 && intSynagogueID == 1221)
-                //{
                 Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
-                oCA.UpdateAmount(FJCID, Amount, 0, "");
-                //}
-                //else
-            
-                    //Amount = getCamperDefaultAmount(FJCID, daysInCamp);                       
-                    //oCA.UpdateAmount(FJCID, Amount, 0, "");
             }
             else
             {
                 StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
                 Amount = 0;
-                oCA.UpdateAmount(FJCID, Amount, 0, "");
             }
 
+            if (Amount > 0)
+            {
+                var originalAmount = Amount;
+                // 2015-09-07 San Diego Sibling Rule - if this camper has sibling attended before, no matter how many days
+                // of camping, the amount is only 500.
+                Amount = 500;
+                DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
+                if (dsSchoolOption.Tables[0].Rows.Count > 0)
+                {
+                    DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
+                    if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
+                    {
+                        if ("2" == drSchoolOption["OptionID"].ToString())
+                        {
+                            Amount = originalAmount;
+                        }
+                    }
+                }
+            }
+
+            oCA.UpdateAmount(FJCID, Amount, 0, "");
             
             return true;
                         

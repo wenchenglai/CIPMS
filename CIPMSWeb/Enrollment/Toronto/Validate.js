@@ -1,6 +1,20 @@
 ﻿var PageValidator = {
     OtherOption: "other (please specify)",
 
+    OnSiblingRadioChanged: function (rdoObject) {
+        $('#siblingContact').hide();
+        if ($('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')) {
+            $('#ctl00_Content_txtSiblingFirstName').removeAttr('disabled');
+            $('#ctl00_Content_txtSiblingLastName').removeAttr('disabled');
+        } else if ($('#ctl00_Content_rdolistSiblingAttended_1').is(':checked') || $('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+            $('#ctl00_Content_txtSiblingFirstName').attr('disabled', true);
+            $('#ctl00_Content_txtSiblingLastName').attr('disabled', true);
+            if ($('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+                $('#siblingContact').show();
+            }
+        }
+    },
+
     OnFirstTimerChange: function (rdoObject) {
         if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
             $('#ctl00_Content_divTaste :input').removeAttr('disabled');
@@ -317,10 +331,23 @@
                 errorMsg.innerHTML += "<ul><li>Please answer Question No. 1 - Taste of Camp.</li></ul>";
             }
         }
+
+        // Siblings
+        if (!$('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')
+            && !$('#ctl00_Content_rdolistSiblingAttended_1').is(':checked')
+            && !$('#ctl00_Content_rdolistSiblingAttended_2').is(':checked')) {
+            errorMsg.innerHTML += "<ul><li>Please answer question No. 2</li></ul>";
+        }
+
+        if ($('#ctl00_Content_rdolistSiblingAttended_0').is(':checked')) {
+            if ($('#ctl00_Content_txtSiblingFirstName').val() === "" || $('#ctl00_Content_txtSiblingLastName').val() === "") {
+                errorMsg.innerHTML += "<ul><li>Please answer question No. 3</li></ul>";
+            }
+        }
         
         // Grade
         if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 2</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
         }
 
         // School Type
@@ -328,12 +355,12 @@
             !$('#ctl00_Content_rdoSchoolType_1').is(':checked') &&
             !$('#ctl00_Content_rdoSchoolType_2').is(':checked') &&
             !$('#ctl00_Content_rdoSchoolType_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 3</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5</li></ul>";
         }
         
         // School Name
         if (!$('#ctl00_Content_rdoSchoolType_2').is(':checked') && $('#ctl00_Content_txtSchoolName').val() === "") {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 4</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
         }
 
         // Synagogue/JCC
@@ -343,32 +370,32 @@
             $rdoCongregant = $('#ctl00_Content_rdoCongregant');
 
         if (!$chkSynagogue.is(':checked') && !$chkJCC.is(':checked') && !$chkNo.is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 5 - at least check one of three options</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 7 - at least check one of three options</li></ul>";
         }
 
         // Synagogue - when it's checked, some error checking
         if ($chkSynagogue.is(':checked') && !$chkSynagogue.is(':disabled')) {
             if ($('#ctl00_Content_ddlSynagogue>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - please select one synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please select one synagogue.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlSynagogue>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - please enter the synagogue name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please enter the synagogue name.</li></ul>";
                 }
             }
 
             if (!$rdoCongregant.is(':checked') && !$('#ctl00_Content_rdoNoOne').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - please select who did you speak to in your synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 7a - please select who did you speak to in your synagogue.</li></ul>";
             }
 
             if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - please select one person from your synagogue.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 7a - please select one person from your synagogue.</li></ul>";
             }
 
             if ($rdoCongregant.is(':checked') && $('#ctl00_Content_ddlWho>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtWhoInSynagogue').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5a - please enter the person's name from your synagogue.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 7a - please enter the person's name from your synagogue.</li></ul>";
                 }
             }
         }
@@ -376,41 +403,41 @@
         // JCC - when it's checked, some error checking
         if ($chkJCC.is(':checked') && !$chkJCC.is(':disabled')) {
             if ($('#ctl00_Content_ddlJCC>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - please select one JCC.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please select one JCC.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlJCC>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtOtherJCC').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 5 - please enter the JCC name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please enter the JCC name.</li></ul>";
                 }
             }
         }
 
         // Secondary School
         if (!$('#ctl00_Content_rdoSecondarySchoolYes').is(':checked') && !$('#ctl00_Content_rdoSecondarySchoolNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 6</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 8</li></ul>";
         }
 
         if ($('#ctl00_Content_rdoSecondarySchoolYes').is(':checked')) {
             if ($('#ctl00_Content_ddlSecondarySchool>option:selected').text() === "-- Select --") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 6a - please select a seconadary school.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 8a - please select a seconadary school.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlSecondarySchool>option:selected').text().toLowerCase() === "other") {
                 if ($('#ctl00_Content_txtSecondarySchool').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Error in Question No. 6a - please enter the secondary school name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Error in Question No. 8a - please enter the secondary school name.</li></ul>";
                 }
             }
         }
 
         // Any memebers are Youth Movement?
         if (!$('#ctl00_Content_rdoMemberOfYouthYes').is(':checked') && !$('#ctl00_Content_rdoMemberOfYouthNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 7</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 9</li></ul>";
         }
 
         if ($('#ctl00_Content_rdoMemberOfYouthYes').is(':checked')) {
             if ($('#ctl00_Content_txtMemberOfYouth').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 7 - please enter your family member.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 9 - please enter your family member.</li></ul>";
             }
         }
 
@@ -419,7 +446,7 @@
             !$('#ctl00_Content_rdolistParticipateMarchLiving_1').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateMarchLiving_2').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateMarchLiving_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 8</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 10</li></ul>";
         }
 
         // Participated in Taglit?
@@ -427,17 +454,17 @@
             !$('#ctl00_Content_rdolistParticipateTaglit_1').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateTaglit_2').is(':checked') &&
             !$('#ctl00_Content_rdolistParticipateTaglit_3').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 9</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 11</li></ul>";
         }
 
         // been to Israel?
         if (!$('#ctl00_Content_rdoBeenToIsraelYes').is(':checked') && !$('#ctl00_Content_rdoBeenToIsraelNo').is(':checked')) {
-            errorMsg.innerHTML += "<ul><li>Please answer Question No. 10</li></ul>";
+            errorMsg.innerHTML += "<ul><li>Please answer Question No. 12</li></ul>";
         }
 
         if ($('#ctl00_Content_rdoBeenToIsraelYes').is(':checked')) {
             if ($('#ctl00_Content_txtBeenToIsrael').val() === "") {
-                errorMsg.innerHTML += "<ul><li>Error in Question No. 10 - please enter your family member.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Error in Question No. 12 - please enter your family member.</li></ul>";
             }
         }
 
@@ -455,6 +482,7 @@ $(function () {
     PageValidator.OnJCCChekboxChange($('#ctl00_Content_chkJCC'));
     PageValidator.OnOtherChekboxChange($('#ctl00_Content_chkNo'));
     PageValidator.OnFirstTimerChange(null);
+    PageValidator.OnSiblingRadioChanged(null);
     PageValidator.OnYouthMovementRadioChange(null);
     PageValidator.OnSecondarySchoolRadioChange(null);
     PageValidator.OnSecondarySchoolDropDownChange(null);

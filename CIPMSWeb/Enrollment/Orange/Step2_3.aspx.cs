@@ -86,7 +86,7 @@ public partial class Step2_Orange_3 : Page
                     int timeInCamp = new CamperApplication().getTimeInCamp(Session["FJCID"].ToString());
                     if (timeInCamp > 1)
                     {
-                        lbl.Text = "<font color='red'><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days.</b></font>";
+                        //lbl.Text = "<font color='red'><b>In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days.</b></font>";
                     }
                   
 

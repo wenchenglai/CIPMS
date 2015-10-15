@@ -239,6 +239,12 @@ public partial class Step1 : System.Web.UI.Page
 		if (!bPerformUpdate)
 			return;
 
+        if (rdbJewish.Items[0].Selected == false && rdbJewish.Items[1].Selected == false)
+        {
+            lblJ.Visible = true; // Prompt the message "please answer the question - identify as Jewish?
+            return;
+        }
+
 		string strNextURL = string.Empty, strCheckUpdate, strFedId = string.Empty;
 		
 		int check = 0;
@@ -249,23 +255,6 @@ public partial class Step1 : System.Web.UI.Page
 			Session["SpecialCodeValue"] = null;
 			Session["codeValue"] = 0;
 		}
-
-		string strFJCID = hdnFJCID.Value;
-
-		// What is this?
-		if ((Session["CamperLoginID"] != null) && (string.IsNullOrEmpty(strFJCID)))
-		{
-			if (rdbJewish.Items[0].Selected == false && rdbJewish.Items[1].Selected == false)
-			{
-				lblJ.Visible = true; // Prompt the message "please answer the question - identify as Jewish?
-				return;
-			}
-		}
-
-		// Siva - 12/03/2008 - start change to fix the age calculation problem when enter key is pressed 
-		//DateTime CamperBirthDate = Convert.ToDateTime(txtDOB.Text);
-		//txtAge.Text = calculateAge(CamperBirthDate).ToString();
-		// Siva - 12/03/2008 - end change
 
 		//to get the user input values as struct object
 		UserDetails Info = getUserInfoStructwithValues();
@@ -303,17 +292,15 @@ public partial class Step1 : System.Web.UI.Page
 
 		//2014-08-03 PJL - if the status is in Pending PJ Lottery, we go to the PJ Program (because this user might have zip code from a community program, but failed to pass due to DS)
 
-
-		var dsFed = new DataSet();
-        int iCount = 0;
-
+        int fedCount = 0;
+	    DataSet dsFed;
 		if (IsFromCanada())
 		{
             string fedId = objGeneral.GetCanadianZipCode(Info.ZipCode).Trim();
 			
             if (fedId != "")
 			{
-				iCount = 1;
+                fedCount = 1;
 			}
 		}
 		else
@@ -323,25 +310,24 @@ public partial class Step1 : System.Web.UI.Page
 			{
 				if (dsFed.Tables[0].Rows.Count > 0)
 				{
-					iCount = dsFed.Tables[0].Rows.Count;
+                    fedCount = dsFed.Tables[0].Rows.Count;
 					Session["FedId"] = dsFed.Tables[0].Rows[0][0];
 				}
 			}
 		}
 
-	    if (iCount > 1)
+        if (fedCount > 1)
 	    {
 	        // we cannot allow duplicate zip codes shared by more than one program
             lblMessage.Visible = true; // 
-            lblMessage.Text = "We've encountered an error.  Please contact One Happy Camper at OneHappyCamper@JewishCamper.org for more information.";
+            lblMessage.Text = "Error: Duplicated zip code detected.  Please contact One Happy Camper at OneHappyCamper@jewishcamp.org for more information.";
             return;
 	    }
 
 		var redirectionLogic = new Redirection_Logic();
 		redirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
 
-		// if iCount == 0, it means the zip code has no federation associated
-		if (iCount == 1)
+        if (fedCount == 1)
 		{
 			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 			NewCamper(Info);
@@ -408,18 +394,6 @@ public partial class Step1 : System.Web.UI.Page
 			else
 			{
 				Session["FJCID"] = hdnFJCID.Value;
-				//added by sreevani for closed federations redirection                        
-                if (dsFed.Tables.Count > 0) 
-                {
-                    if ((dsFed.Tables[0].Rows.Count > 0) && (dsFed.Tables[0].Rows[0]["Federation"].ToString() != ""))
-                    {
-                        if (dsFed.Tables[0].Rows[0]["Federation"].ToString() == "39" || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "49")//|| dsFed.Tables[0].Rows[0]["Federation"].ToString() == "40")//dsFed.Tables[0].Rows[0]["Federation"].ToString() == "24" ||  || dsFed.Tables[0].Rows[0]["Federation"].ToString() == "12"
-                            Response.Redirect("ClosedFedRedirection.aspx");
-                        else
-                            Response.Redirect(strNextURL);
-                    }
-                }
-
 				Response.Redirect(strNextURL);
 			}
 		}

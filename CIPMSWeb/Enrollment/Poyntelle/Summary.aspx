@@ -18,7 +18,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-				    The Camp Poyntelle Lewis Village One Happy Camper program, sponsored by CPLV, the UJA Federation of New York and the Foundation for Jewish Camp provides financial incentives of $1,000 to first-time campers who attend first session, second session, or the full summer. 
+                    The Camp Poyntelle Lewis Village One Happy Camper program, sponsored by CPLV, the UJA Federation of New York and the Foundation for Jewish Camp provides financial incentives to first-time campers who attend first session, second session, or the full summer. 				    
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -26,14 +26,19 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-10 (after camp).</li>
-                        <li>If camper attended camp in the summer of 2014 for 12-18 days as a first time camper and was NOT eligible for an incentive grant, s/he is still eligible for the grant if attending camp for 19 or more consecutive days.</li>
                     </ul>
 				</p>   
                 <p>
-                    At Camp Poyntelle Lewis Village (CPLV), we pride ourselves on providing a warm, welcoming, fun and safe Jewish environment for your child. Children leave for camp looking to have fun, and return home from camp with a sense of independence, a greater understanding of kindness towards others, advanced skills in their favorite activities, a healthy attitude towards competition, and a lifetime full of memories and friendships. Located in Wayne County, PA, we are less than 150 miles from New York City. The camp features a 70 acre private lake that separates the camp into two sections; Poyntelle for boys and girls entering second grade through seventh grade, and Lewis Village for teens entering eighth grade through eleventh grade - perfect for appropriate programing and staffing. Our campers and staff love to say "we wait 10 months for 2!"
+                    At CPLV, we pride ourselves on providing a warm and nurturing environment for your child, complete with a wide array of sports, 
+                    activities and embedded Jewish values and culture.  Our campers come to CPLV excited for a fun and exciting summer, 
+                    filled with learning and growth that comes from new experiences and compassionate staff.  
+                    When their summer is complete, campers return home with a sense of independence, advanced life skills and new lifelong friends.  
+                    Located in Wayne County, PA, we are less than 150 miles from New York City. The camp features a 70 acre private lake that separates the camp into two sections.  
+                    Our Poyntelle campus is for children from 2nd-7th grades and the Lewis Village campus is for teenagers from 8th-11th grades.  
+                    Our campers and staff bleed blue and white and live "10 months for 2!" 
                 </p> 
                 <p>
-                    For any further questions, feel free to contact Sarah Raful Whinston, Executive Director, at sarah@poyntelle.com.
+                    For any further questions, feel free to contact our Director, Ryan Peters at ryan@poyntelle.com.
                 </p>          
             </td>
         </tr>  

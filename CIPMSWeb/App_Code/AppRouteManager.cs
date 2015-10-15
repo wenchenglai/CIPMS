@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Web;
 using CIPMSBC;
 
@@ -10,15 +8,13 @@ using CIPMSBC;
 /// </summary>
 public class AppRouteManager
 {
-    // 2014-07-28 The first routing rule is for PJL - if the user is in PendingPJLottery (used PJ special code, failed at community due to DS
+    // 2014-07-28 The first routing rule is for PJL - if the user is in EligiblePJLottery (used PJ special code, failed at community due to DS
     public static string GetNextRouteBasedOnStatus(StatusInfo status, string option)
     {
         var url = "Step2_3.aspx";
-        var isOn = false;
-        if (ConfigurationManager.AppSettings["PJLottery"] == "On")
-            isOn = true;
+        bool isOn = ConfigurationManager.AppSettings["PJLottery"] == "On";
 
-        if (status == StatusInfo.PendingPJLottery && isOn)
+        if (status == StatusInfo.EligiblePJLottery && isOn)
         {
             var specialCode = SessionSpecialCode.GetPJLotterySpecialCode();
             if (specialCode != "")
@@ -30,7 +26,7 @@ public class AppRouteManager
                 }                
             }
         }
-        else if (status == StatusInfo.PendingPJLottery && !isOn) 
+        else if (status == StatusInfo.EligiblePJLottery && !isOn) 
         {
             HttpContext.Current.Session["STATUS"] = (int)StatusInfo.SystemInEligible;
         }

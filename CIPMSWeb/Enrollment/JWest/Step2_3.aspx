@@ -119,8 +119,11 @@
                         <asp:Label Font-Bold="true" ID="lblEndDate" runat="server" CssClass="QuestionText"></asp:Label>
                     </asp:Panel>--%>
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                       
-                        <asp:Label ID="Label7" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />
+                        <p class="InfoText">
+					        In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
+                        </p>
+                        <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
+
                         <asp:Label ID="Label8" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
                         <asp:Panel ID="pnlCalStartDt" runat="server" Visible="false">

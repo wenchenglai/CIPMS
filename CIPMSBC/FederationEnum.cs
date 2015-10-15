@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace CIPMSBC
 {
 	public enum FederationEnum
@@ -120,286 +118,302 @@ namespace CIPMSBC
         HabonimNaaleh = 127,
         HabonimGesher = 128,
         RamahDarom = 129,
-        RamahNewEngland = 130
+        RamahNewEngland = 130,
+        Broward = 131,
+        Rochester = 132,
+        JudaeaMidwest = 133,
+        JudaeaTelYehudah = 134,
+        URJColeman = 135,
+        URJGeorge = 136,
+        URJHarlam = 137,
+        URJKalsman = 138,
+        URJNewman = 139,
+        URJGoldman = 140,
+        URJHenry = 141,
+        URJKutz = 142,
+        URJOlin = 143,
+        URJSciTech = 144,
+        RamahNorthernCalifornia = 145,
+        Wbt = 146
 	}
 
-	/// <summary>
-	/// FedDaySchoolEligibility
-	/// To get the day school eligiblilyt for a federation use description (example General.GetEnumDescription(FedGradeEligibility.Cincinnati))
-	/// </summary>
-	public enum FedDaySchoolEligibility
-	{
-		[Description("false")]
-		Cincinnati = 1,
-		[Description("false")]
-		Middlesex = 2,
-		[Description("false")]
-		JWest = 3,
-		[Description("false")]
-		JWestLA = 4,
-		[Description("false")]
-		Boston = 5,
-		[Description("false")]
-		BNai = 6,
-		[Description("false")]
-		URJ = 7,
-		[Description("false")]
-		NY = 8,
-		[Description("true")]
-		Chicago = 9,
-		[Description("false")]
-		MetroWest = 10,
-		[Description("true")]
-		Greensboro = 11,
-		[Description("false")]
-		Indianapolis = 12,
-		[Description("false")]
-		Orange = 22,
-		[Description("false")]
-		LACIP = 23,
-		[Description("false")]
-		Columbus = 24,
-		[Description("false")]
-		Dallas = 25,
-		[Description("false")]
-		Judaea = 26,
-		[Description("false")]
-		Arkansas = 27,
-		[Description("false")]
-		Kansas = 28,
-		[Description("false")]
-		Memphis = 29,
-		//[Description("false")]
-		//Montreal = 31,
-		[Description("false")]
-		NH = 32,
-		[Description("false")]
-		NorthShore = 33,
-		[Description("false")]
-		Philadelphia = 35,
-		[Description("false")]
-		Pittsburgh = 36,
-		[Description("true")]
-		Ramah = 37,
-		[Description("false")]
-		PalmBeach = 39,
-		[Description("false")]
-		Miami = 40,
-		[Description("false")]
-		AiryLouise = 41,
-		[Description("false")]
-		JCCRanch = 42,
-		[Description("false")]
-		Sabra = 43,
-		[Description("false")]
-		CampChi = 44,
-		[Description("false")]
-		Capital = 45,
-		[Description("true")]
-		NJY = 46,
-		[Description("false")]
-		Adamah = 47,
-		[Description("true")]
-		CMART_MIIP = 48,
-		[Description("false")]
-		Washington = 49,
-		[Description("false")]
-		Nageela = 50,
-		[Description("false")]
-		Solomon = 52,
-		[Description("false")]
-		Baltimore = 53,
-		[Description("false")]
-		Cleveland = 54,
-		[Description("false")]
-		Louemma = 55,
-		[Description("false")]
-		BBOttawa = 56,
-		[Description("false")]
-		LMAN = 57,
-		[Description("false")]
-		CampBarney = 58,
-		[Description("false")]
-		Calgary = 59,
-		[Description("false")]
-		Habonim = 60,
-		[Description("false")]
-		NNJ = 61,
-		[Description("false")]
-		Eden = 62,
-		[Description("false")]
-		PJL = 63,
-		[Description("false")]
-		Berkshire = 64,
-		[Description("false")]
-		CJA = 65,
-		[Description("false")]
-		BIMA = 66,
-		[Description("false")]
-		Avoda = 67,
-		[Description("false")]
-		Laurelwood = 68,
-		[Description("false")]
-		Montreal = 69,
-		[Description("false")]
-		RhodeIsland = 70,
-		[Description("false")]
-		Livingston = 71,
-		[Description("false")]
-		SanDiego = 72,
-		[Description("false")]
-		MountainChai = 73,
-		[Description("false")]
-		CNJ = 74,
-		[Description("false")]
-		Hatikvah = 75,
-		[Description("false")]
-		JRF = 76,
-		[Description("false")]
-		Charles = 77,
-		[Description("false")]
-		Omaha = 78,
-		[Description("false")]
-		SurpriseLake = 79,
-		[Description("false")]
-		Poyntelle = 80,
-		[Description("false")]
-		StLouis = 82,
-		[Description("false")]
-		NageelaEast = 83,
-		[Description("false")]
-		PassportNYC = 84,
-		[Description("false")]
-		CNY = 85,
-		[Description("false")]
-		Delaware = 97,
-		[Description("false")]
-		SanFrancisco = 98,
-		[Description("false")]
-		Seattle = 99,
-		[Description("false")]
-		Milwaukee = 100,
-		[Description("false")]
-		Hartford = 101,
-		[Description("false")]
-		ElPaso = 101
-	}
+    ///// <summary>
+    ///// FedDaySchoolEligibility
+    ///// To get the day school eligiblilyt for a federation use description (example General.GetEnumDescription(FedGradeEligibility.Cincinnati))
+    ///// </summary>
+    //public enum FedDaySchoolEligibility
+    //{
+    //    [Description("false")]
+    //    Cincinnati = 1,
+    //    [Description("false")]
+    //    Middlesex = 2,
+    //    [Description("false")]
+    //    JWest = 3,
+    //    [Description("false")]
+    //    JWestLA = 4,
+    //    [Description("false")]
+    //    Boston = 5,
+    //    [Description("false")]
+    //    BNai = 6,
+    //    [Description("false")]
+    //    URJ = 7,
+    //    [Description("false")]
+    //    NY = 8,
+    //    [Description("true")]
+    //    Chicago = 9,
+    //    [Description("false")]
+    //    MetroWest = 10,
+    //    [Description("true")]
+    //    Greensboro = 11,
+    //    [Description("false")]
+    //    Indianapolis = 12,
+    //    [Description("false")]
+    //    Orange = 22,
+    //    [Description("false")]
+    //    LACIP = 23,
+    //    [Description("false")]
+    //    Columbus = 24,
+    //    [Description("false")]
+    //    Dallas = 25,
+    //    [Description("false")]
+    //    Judaea = 26,
+    //    [Description("false")]
+    //    Arkansas = 27,
+    //    [Description("false")]
+    //    Kansas = 28,
+    //    [Description("false")]
+    //    Memphis = 29,
+    //    //[Description("false")]
+    //    //Montreal = 31,
+    //    [Description("false")]
+    //    NH = 32,
+    //    [Description("false")]
+    //    NorthShore = 33,
+    //    [Description("false")]
+    //    Philadelphia = 35,
+    //    [Description("false")]
+    //    Pittsburgh = 36,
+    //    [Description("true")]
+    //    Ramah = 37,
+    //    [Description("false")]
+    //    PalmBeach = 39,
+    //    [Description("false")]
+    //    Miami = 40,
+    //    [Description("false")]
+    //    AiryLouise = 41,
+    //    [Description("false")]
+    //    JCCRanch = 42,
+    //    [Description("false")]
+    //    Sabra = 43,
+    //    [Description("false")]
+    //    CampChi = 44,
+    //    [Description("false")]
+    //    Capital = 45,
+    //    [Description("true")]
+    //    NJY = 46,
+    //    [Description("false")]
+    //    Adamah = 47,
+    //    [Description("true")]
+    //    CMART_MIIP = 48,
+    //    [Description("false")]
+    //    Washington = 49,
+    //    [Description("false")]
+    //    Nageela = 50,
+    //    [Description("false")]
+    //    Solomon = 52,
+    //    [Description("false")]
+    //    Baltimore = 53,
+    //    [Description("false")]
+    //    Cleveland = 54,
+    //    [Description("false")]
+    //    Louemma = 55,
+    //    [Description("false")]
+    //    BBOttawa = 56,
+    //    [Description("false")]
+    //    LMAN = 57,
+    //    [Description("false")]
+    //    CampBarney = 58,
+    //    [Description("false")]
+    //    Calgary = 59,
+    //    [Description("false")]
+    //    Habonim = 60,
+    //    [Description("false")]
+    //    NNJ = 61,
+    //    [Description("false")]
+    //    Eden = 62,
+    //    [Description("false")]
+    //    PJL = 63,
+    //    [Description("false")]
+    //    Berkshire = 64,
+    //    [Description("false")]
+    //    CJA = 65,
+    //    [Description("false")]
+    //    BIMA = 66,
+    //    [Description("false")]
+    //    Avoda = 67,
+    //    [Description("false")]
+    //    Laurelwood = 68,
+    //    [Description("false")]
+    //    Montreal = 69,
+    //    [Description("false")]
+    //    RhodeIsland = 70,
+    //    [Description("false")]
+    //    Livingston = 71,
+    //    [Description("false")]
+    //    SanDiego = 72,
+    //    [Description("false")]
+    //    MountainChai = 73,
+    //    [Description("false")]
+    //    CNJ = 74,
+    //    [Description("false")]
+    //    Hatikvah = 75,
+    //    [Description("false")]
+    //    JRF = 76,
+    //    [Description("false")]
+    //    Charles = 77,
+    //    [Description("false")]
+    //    Omaha = 78,
+    //    [Description("false")]
+    //    SurpriseLake = 79,
+    //    [Description("false")]
+    //    Poyntelle = 80,
+    //    [Description("false")]
+    //    StLouis = 82,
+    //    [Description("false")]
+    //    NageelaEast = 83,
+    //    [Description("false")]
+    //    PassportNYC = 84,
+    //    [Description("false")]
+    //    CNY = 85,
+    //    [Description("false")]
+    //    Delaware = 97,
+    //    [Description("false")]
+    //    SanFrancisco = 98,
+    //    [Description("false")]
+    //    Seattle = 99,
+    //    [Description("false")]
+    //    Milwaukee = 100,
+    //    [Description("false")]
+    //    Hartford = 101,
+    //    [Description("false")]
+    //    ElPaso = 101
+    //}
 
-	/// <summary>
-	/// FedGradeEligibility
-	/// To get the eligible grade for a federation use description (example General.GetEnumDescription(FedGradeEligibility.Cincinnati))
-	/// </summary>
-	public enum FedGradeEligibility
-	{
-		[Description("3-11")]
-		Cincinnati = 1,
-		[Description("3-11")]
-		Middlesex = 2,
-		[Description("6-8")]
-		JWest = 3,
-		[Description("6-8")]
-		JWestLA = 4,
-		[Description("2-11")]
-		Boston = 5,
-		[Description("4-11")]
-		BNai = 6,
-		[Description("1-12")]
-		URJ = 7,
-		[Description("3-11")]
-		NY = 8,
-		[Description("2-12")]
-		Chicago = 9,
-		[Description("1-12")]
-		MetroWest = 10,
-		[Description("3-11")]
-		Greensboro = 11,
-		[Description("3-11")]
-		Indianapolis = 12,
-		[Description("Need to Check")]
-		Orange = 22,
-		[Description("3-5 & 9-11 for 1st Timer and 3-12 for 2nd Timer")]
-		LACIP = 23,
-		[Description("2-10")]
-		Columbus = 24,
-		[Description("3-10")]
-		Dallas = 25,
-		[Description("2-11")]
-		Judaea = 26,
-		[Description("2-10")]
-		Arkansas = 27,
-		[Description("2-12")]
-		Kansas = 28,
-		[Description("3-10")]
-		Memphis = 29,
-		[Description("0")]
-		Montreal = 31,
-		[Description("1-12")]
-		NH = 32,
-		[Description("3-12")]
-		NorthShore = 33,
-		[Description("3-11")]
-		Philadelphia = 35,
-		[Description("2-12")]
-		Pittsburgh = 36,
-		[Description("3-11")]
-		Ramah = 37,
-		[Description("2-11")]
-		PalmBeach = 39,
-		[Description("3-12")]
-		Miami = 40,
-		[Description("2-11")]
-		AiryLouise = 41,
-		[Description("3-10")]
-		JCCRanch = 42,
-		[Description("3-9")]
-		Sabra = 43,
-		[Description("4-11")]
-		CampChi = 44,
-		[Description("3-9")]
-		Capital = 45,
-		[Description("1-12")]
-		NJY = 46,
-		[Description("8-12")]
-		Adamah = 47,
-		[Description("2-11")]
-		CMART_MIIP = 48,
-		[Description("3-8")]
-		Washington = 49,
-		[Description("4-11")]
-		Nageela = 50,
-		[Description("5-10")]
-		Solomon = 52,
-		[Description("2-12")]
-		Baltimore = 53,
-		[Description("4-12")]
-		Cleveland = 54,
-		[Description("2-10")]
-		Louemma = 55,
-		[Description("2-11")]
-		BBOttawa = 56,
-		[Description("3-11")]
-		LMAN = 57,
-		[Description("3-10")]
-		CampBarney = 58,
-		[Description("2-10")]
-		Calgary = 59,
-		[Description("3-10")]
-		Habonim = 60,
-		[Description("4-12")]
-		NNJ = 61,
-		[Description("3-12")]
-		Eden = 62,
-		[Description("3-12")]
-		PJL = 63,
-		[Description("1-12")]
-		Berkshire = 64,
-		[Description("1-12")]
-		CJA = 65
-	}
+    ///// <summary>
+    ///// FedGradeEligibility
+    ///// To get the eligible grade for a federation use description (example General.GetEnumDescription(FedGradeEligibility.Cincinnati))
+    ///// </summary>
+    //public enum FedGradeEligibility
+    //{
+    //    [Description("3-11")]
+    //    Cincinnati = 1,
+    //    [Description("3-11")]
+    //    Middlesex = 2,
+    //    [Description("6-8")]
+    //    JWest = 3,
+    //    [Description("6-8")]
+    //    JWestLA = 4,
+    //    [Description("2-11")]
+    //    Boston = 5,
+    //    [Description("4-11")]
+    //    BNai = 6,
+    //    [Description("1-12")]
+    //    URJ = 7,
+    //    [Description("3-11")]
+    //    NY = 8,
+    //    [Description("2-12")]
+    //    Chicago = 9,
+    //    [Description("1-12")]
+    //    MetroWest = 10,
+    //    [Description("3-11")]
+    //    Greensboro = 11,
+    //    [Description("3-11")]
+    //    Indianapolis = 12,
+    //    [Description("Need to Check")]
+    //    Orange = 22,
+    //    [Description("3-5 & 9-11 for 1st Timer and 3-12 for 2nd Timer")]
+    //    LACIP = 23,
+    //    [Description("2-10")]
+    //    Columbus = 24,
+    //    [Description("3-10")]
+    //    Dallas = 25,
+    //    [Description("2-11")]
+    //    Judaea = 26,
+    //    [Description("2-10")]
+    //    Arkansas = 27,
+    //    [Description("2-12")]
+    //    Kansas = 28,
+    //    [Description("3-10")]
+    //    Memphis = 29,
+    //    [Description("0")]
+    //    Montreal = 31,
+    //    [Description("1-12")]
+    //    NH = 32,
+    //    [Description("3-12")]
+    //    NorthShore = 33,
+    //    [Description("3-11")]
+    //    Philadelphia = 35,
+    //    [Description("2-12")]
+    //    Pittsburgh = 36,
+    //    [Description("3-11")]
+    //    Ramah = 37,
+    //    [Description("2-11")]
+    //    PalmBeach = 39,
+    //    [Description("3-12")]
+    //    Miami = 40,
+    //    [Description("2-11")]
+    //    AiryLouise = 41,
+    //    [Description("3-10")]
+    //    JCCRanch = 42,
+    //    [Description("3-9")]
+    //    Sabra = 43,
+    //    [Description("4-11")]
+    //    CampChi = 44,
+    //    [Description("3-9")]
+    //    Capital = 45,
+    //    [Description("1-12")]
+    //    NJY = 46,
+    //    [Description("8-12")]
+    //    Adamah = 47,
+    //    [Description("2-11")]
+    //    CMART_MIIP = 48,
+    //    [Description("3-8")]
+    //    Washington = 49,
+    //    [Description("4-11")]
+    //    Nageela = 50,
+    //    [Description("5-10")]
+    //    Solomon = 52,
+    //    [Description("2-12")]
+    //    Baltimore = 53,
+    //    [Description("4-12")]
+    //    Cleveland = 54,
+    //    [Description("2-10")]
+    //    Louemma = 55,
+    //    [Description("2-11")]
+    //    BBOttawa = 56,
+    //    [Description("3-11")]
+    //    LMAN = 57,
+    //    [Description("3-10")]
+    //    CampBarney = 58,
+    //    [Description("2-10")]
+    //    Calgary = 59,
+    //    [Description("3-10")]
+    //    Habonim = 60,
+    //    [Description("4-12")]
+    //    NNJ = 61,
+    //    [Description("3-12")]
+    //    Eden = 62,
+    //    [Description("3-12")]
+    //    PJL = 63,
+    //    [Description("1-12")]
+    //    Berkshire = 64,
+    //    [Description("1-12")]
+    //    CJA = 65
+    //}
 
-	public enum FirstTimerQuestion
-	{ 
+    //public enum FirstTimerQuestion
+    //{ 
 		
 	
-	}
+    //}
 }

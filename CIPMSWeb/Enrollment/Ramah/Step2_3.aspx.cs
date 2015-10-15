@@ -100,16 +100,16 @@ public partial class Step2_Ramah_3 : Page
             var strCampId = Session["CampID"].ToString();
             var last3Digits = strCampId.Substring(strCampId.Length - 3);
 
-			if (last3Digits == "079" || last3Digits == "150") // California
-            {
-                lblMinimunDays.Text = "12";
+            //if (last3Digits == "079" || last3Digits == "150") // California
+            //{
+            //    lblMinimunDays.Text = "12";
                    
-            }
-            else
-            {
-                lblMinimunDays.Text = "19";
+            //}
+            //else
+            //{
+            //    lblMinimunDays.Text = "19";
                     
-            }
+            //}
             //get_States();
             getCamps("0"); //to get all the camps and fill in
             //to get the FJCID which is stored in session

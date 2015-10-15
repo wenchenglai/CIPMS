@@ -158,8 +158,8 @@ public partial class HartfordPage2 : System.Web.UI.Page
 				var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Atlanta);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
-                if (result.SchoolType == StatusInfo.PendingPJLottery)
-                    iStatus = (int)StatusInfo.PendingPJLottery;
+                if (result.SchoolType == StatusInfo.EligiblePJLottery)
+                    iStatus = (int)StatusInfo.EligiblePJLottery;
                 else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
                     result.Grade == StatusInfo.SystemInEligible ||
                     result.SchoolType == StatusInfo.SystemInEligible ||
@@ -177,20 +177,16 @@ public partial class HartfordPage2 : System.Web.UI.Page
                     iStatus = (int) StatusInfo.SystemEligible;
                 }
 
-			    if (iStatus == (int)StatusInfo.SystemEligible)
+                if (iStatus == (int)StatusInfo.SystemEligible)
                 {
                     if (rdoFirstTimerNo.Checked)
                     {
-                        if (rdoDays19.Checked)
-                        { 
-                            if (rdoLastYearNo.Checked)
+                        if (rdoLastYearNo.Checked)
+                            iStatus = (int)StatusInfo.SystemInEligible;
+                        else if (rdoLastYearYes.Checked)
+                        {
+                            if (rdoNo160.Checked)
                                 iStatus = (int)StatusInfo.SystemInEligible;
-                            else if (rdoLastYearYes.Checked)
-                            {
-                                if (rdoNo160.Checked)
-                                    iStatus = (int)StatusInfo.SystemInEligible;
-                            }
-
                         }
                     }
                 }
@@ -379,16 +375,6 @@ public partial class HartfordPage2 : System.Web.UI.Page
 					txtOtherJCC.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == (int)QuestionId.GrandfatherPolicySessionLength) 
-			{
-				if (dr["OptionID"].Equals(DBNull.Value))
-					continue;
-
-				if (dr["OptionID"].ToString() == "1")
-					rdoDays12.Checked = true;
-				else
-					rdoDays19.Checked = true;
-			}
 			else if (qID == 1066) // Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta?
 			{
 				if (dr["OptionID"].Equals(DBNull.Value))
@@ -423,10 +409,6 @@ public partial class HartfordPage2 : System.Web.UI.Page
 		//for question 3
 		strQID = hdnQ3Id.Value;
 		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-		//Grandfaother question
-		strQID = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-		strTablevalues += strQID + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
 		//Grandfaother question
 		strQID = "1066";

@@ -19,38 +19,28 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The Habonim Dror One Happy Camper Program, sponsored by the Habonim Dror Camp Association and the Foundation for Jewish Camp, provides grants of up to a $1,000 to first-time campers Habonim Dror Camp Miriam in the summer of 2015
+                    The Habonim Dror One Happy Camper Program, sponsored by the Habonim Dror Camp Association, the Foundation for Jewish Camp and Camp Miriam, provides grants of up to a $1,000 to first-time campers attending Habonim Dror Camp Miriam in the summer of 2016. 				    
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 4-9 (after camp).</li>
+                        <li>First time camper must be entering grades 4-10 (after camp).</li>
                     </ul>
-				</p> 
+				</p>   
                 <p>
-					<ul>
-						<li>Philadelphia, New Jersey, New York, and Delaware - <a href="http://www.campgalil.org" target="_blank">Habonim Dror Camp Galil</a></li>
-						<li>Eastern Canada and upstate New York - <a href="http://www.campgesher.com" target="_blank">Habonim Dror Camp Gesher</a></li>
-						<li>California and the Southwest - <a href="http://www.campgilboa.org" target="_blank">Habonim Dror Camp Gilboa</a></li>
-						<li>Greater Vancouver, Western Canada and the Northwest U.S. - <a href="http://campmiriam.org" target="_blank">Habonim Dror Camp Miriam</a></li>
-						<li>The Baltimore-Washington region and the Southeastern U.S. - <a href="http://campmosh.org/page.php?id=2" target="_blank">Habonim Dror Camp Moshava</a></li>
-						<li>The Greater New York region and New England - <a href="http://www.naaleh.org" target="_blank">Habonim Dror Camp Naleeh</a></li>
-						<li>Chicago, Detroit and the Greater Midwest - <a href="http://www.camptavor.org" target="_blank">Habonim Dror Camp Tavor</a></li>                                           
-					</ul>  
-                </p>    
-                <p>
-                    At our Habonim Dror camps young people learn the values and skills needed for community building and leadership, independent thinking, a strong connection to Israel, and lifelong Jewish identity.  Campers are embedded in a 24/7 experiential Jewish education environment that blurs the boundary between learning and having fun so that both can occur simultaneously.
+At our 7 Habonim Dror camps young people learn the values and skills needed for community building and leadership, independent thinking, a strong connection to Israel, and lifelong Jewish identity. Campers are embedded in a 24/7 experiential Jewish education environment that blurs the boundary between learning and having fun so that both can occur simultaneously.                 
+
                 </p>        
                 <p>
-                    Habonim Dror campers become legendary Israeli dancers and revel in singing Israeli songs from every generation. We have creative Shabbat observances, conversational Hebrew and delicious kosher meals (supplemented by camper-grown food from each camp's organic gardens). Habonim Dror campers are known for their daily avodah (work periods) in their organic gardens and in other camp maintenance chores and they enjoy such traditional camp activities as swimming, ultimate, basketball, hiking, drama, climbing and ropes course.
+Habonim Dror campers become legendary Israeli dancers and revel in singing Israeli songs from every generation. We have creative Shabbat observances, conversational Hebrew and delicious kosher meals (supplemented by camper-grown food from each camp's organic gardens). Habonim Dror campers are known for their daily avodah (work periods) in maintenance chores such as tending to the chickens and veggie gardens, as well as such traditional camp activities as swimming, music, arts and crafts, boating, hiking, gaga and other sports.                       
                 </p>     
                 <p>
-                    Campers may begin attending camp following second or third grade.  Habonim Dror is the Zionist Youth Movement affiliated with the Kibbutz Movement of Israel.  Habonim Dror campers come from all streams of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated.
+Campers may begin attending camp following second or third grade. Habonim Dror is the Zionist Youth Movement affiliated with the Hanoar Haoved and Dror Israel movements in Israel.  Habonim Dror campers come from all streams of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, and unaffiliated.                     
                 </p>     
                 <p>
-                    If you are interested in learning more about our camps and available grants at a specific camp, please visit the individual camp websites by clicking on the camp names above.
+If you are interested in learning more about our camps and available grants at a specific camp, please visit the individual camp websites by clicking on the camp names above.                     
                 </p>     
                 <p>
-                    If you need additional assistance, please call the camp professional listed at the bottom of this page.
+If you need additional assistance, please call the camp professional listed at the bottom of this page.                     
                 </p>                                                                               
             </td>
         </tr>

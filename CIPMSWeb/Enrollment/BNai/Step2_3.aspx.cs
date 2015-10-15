@@ -321,7 +321,7 @@ public partial class Step2_URJ_3 : Page
                             {
                                 if (!dr["Answer"].Equals(DBNull.Value))
                                 {
-                                    ddlCampSession.SelectedValue = dr["Answer"].ToString();
+                                    txtCampSession.Text = dr["Answer"].ToString();
                                 } 
                             }
                             break;
@@ -357,7 +357,7 @@ public partial class Step2_URJ_3 : Page
         {
            
             PnlQ9.Enabled = false;
-            ddlCampSession.SelectedIndex = 0;
+            txtCampSession.Text = "";
           
             PnlQ10.Enabled = false;
             txtStartDate.Text = "";
@@ -405,7 +405,7 @@ public partial class Step2_URJ_3 : Page
         //for question 7
         strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" : "");
         strCamp = ddlCamp.SelectedValue;
-        strCampSession = ddlCampSession.SelectedValue;
+        strCampSession = txtCampSession.Text;
         strStartDate = txtStartDate.Text.Trim();
         strEndDate = txtEndDate.Text.Trim();
 

@@ -1,15 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
-using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
 
 public partial class Step2_Habonim_2 : System.Web.UI.Page
@@ -40,25 +33,45 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             if (Session["FJCID"] != null)
             {
                 hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
-                getCamperAnswers();
+                PopulateAnswers();
             }
-
-            int resultCampId = 0; //long resultFedID;
-            if (Session["CampID"] != null)
-            {
-                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
-            }
-            string campID = resultCampId.ToString();
-            string last3digits = campID.Substring(campID.Length - 3);
-
-            trSibling2.Visible = true;
-            trSibling3.Visible = true;
-            lblGrade.Text = "4";
-            lblSchoolType.Text = "5";
-            lblSchoolName.Text = "6";
-
         }
     }   
+    
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        int iStatus;
+        string strModifiedBy, strFJCID;
+
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+        {
+            ProcessCamperAnswers();
+        }
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        //Modified by id taken from the Master Id
+        strModifiedBy = Master.UserId;
+        strFJCID = hdnFJCIDStep2_2.Value;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+        if (Request.QueryString["camp"] == "tavor")
+            Response.Redirect("Step2_3.aspx?camp=tavor");
+        else
+            Response.Redirect("Step2_3.aspx");
+    }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -79,7 +92,7 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-  
+
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
         string strRedirURL = Master.SaveandExitURL;
@@ -123,40 +136,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             Response.Redirect("Summary.aspx");
     }
 
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-        {
-            ProcessCamperAnswers();
-        }
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-        //Modified by id taken from the Master Id
-        strModifiedBy = Master.UserId;
-        strFJCID = hdnFJCIDStep2_2.Value;
-        if (strFJCID != "" && strModifiedBy != "")
-        {
-            if (isReadOnly)
-            {
-                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-            }
-            else
-            {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-            }
-
-            Session["STATUS"] = iStatus.ToString();
-        }
-        Session["FJCID"] = hdnFJCIDStep2_2.Value;
-        if (Request.QueryString["camp"] == "tavor")
-            Response.Redirect("Step2_3.aspx?camp=tavor");
-        else
-            Response.Redirect("Step2_3.aspx");
-    }
 
     private void ProcessCamperAnswers()
     {
@@ -222,35 +201,36 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
         ddlGrade.Items.Insert(0, new ListItem("-- Select --", "0"));
     }
 
-    //to get the camper answers from the database
-    void getCamperAnswers()
+    void PopulateAnswers()
     {
-        string strFJCID = hdnFJCIDStep2_2.Value;
-
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "", "", "3,6,7,8,1032,1033,1034");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
-            int qID = Convert.ToInt32(dr["QuestionId"]);
+            var qID = (QuestionId)dr["QuestionId"];
 
-            if (qID == 3) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
+            if (qID == QuestionId.FirstTime) // Is this your first time to attend a Non-profit Jewish overnight camp, for 3 weeks or longer:
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
 
                 if (dr["OptionID"].ToString() == "1")
+                {
                     rdoFirstTimerYes.Checked = true;
+                }
                 else
+                {
                     rdoFirstTimerNo.Checked = true;
+                }
             }
-            else if (qID == 6) // Grade
+            else if (qID == QuestionId.Grade) // Grade (Mention the grade of the camper after he/she attends the camp session):
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
                     ddlGrade.SelectedValue = dr["Answer"].ToString();
                 }
             }
-            else if (qID == 7) //What kind of the school the camper go to
+            else if (qID == QuestionId.SchoolType) // What kind of the school the camper go to
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
@@ -259,68 +239,48 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
                 if (dr["OptionID"].ToString() == "3")
                     txtSchoolName.Enabled = false;
             }
-            else if (qID == 8) // Name of the school Camper attends:
+            else if (qID == QuestionId.SchoolName) // Name of the school Camper attends:
             {
                 if (!dr["Answer"].Equals(DBNull.Value))
                 {
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == 1032) // Did the camper’s sibling  previously receive an incentive grant through the Chicago One Happy Camper Program?
-            {
-                if (!dr["OptionID"].Equals(DBNull.Value))
-                    rdolistSiblingAttended.SelectedValue = dr["OptionID"].ToString();
-            }
-            else if (qID == 1033) // First Name of Sibling
-            {
-                if (!dr["Answer"].Equals(DBNull.Value))
-                    txtSiblingFirstName.Text = dr["Answer"].ToString();
-            }
-            else if (qID == 1034) // Last Name of Sibling
-            {
-                if (!dr["Answer"].Equals(DBNull.Value))
-                    txtSiblingLastName.Text = dr["Answer"].ToString();
-            }
         }
-      }
+    }
 
     private string ConstructCamperAnswers()
     {
-        string strQID = "";
+        var strQId = "";
         string strTablevalues = "";
 
-        string strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
-        string strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-        
-        //for question 3
-        strQID = hdnQ3Id.Value;
-        strTablevalues += strQID + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        //to get the Question separator from Web.config
+        var strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"];
+        //to get the Field separator from Web.config
+        var strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"];
 
-        if (rdolistSiblingAttended.Visible)
+        //for question FirstTimerOrNot
+        strQId = ((int)QuestionId.FirstTime).ToString();
+        strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //for question Grade
+        strQId = ((int)QuestionId.Grade).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
+
+        //for question School Type
+        if (rdoSchoolType.SelectedValue != "")
         {
-            //Did sibling attend before?
-            strQID = ((int)Questions.Q1032SiblingAttended).ToString();
-            strTablevalues += strQID + strFSeparator + rdolistSiblingAttended.SelectedValue + strFSeparator + strQSeparator;
-
-            //Sibling First Name
-            strQID = ((int)Questions.Q1033SiblingFirstName).ToString();
-            strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingFirstName.Text + strQSeparator;
-
-            //Sibling Last Name
-            strQID = ((int)Questions.Q1034SiblingLastName).ToString();
-            strTablevalues += strQID + strFSeparator + strFSeparator + txtSiblingLastName.Text + strQSeparator;
+            strQId = ((int)QuestionId.SchoolType).ToString();
+            strTablevalues += strQId + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
         }
-        // Grade
-        strQID = hdnQ4Id.Value;
-        strTablevalues += strQID + strFSeparator + strFSeparator + ddlGrade.SelectedValue + strQSeparator;
 
-        // SchoolType
-        strQID = hdnQ5Id.Value;
-        strTablevalues += strQID + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + strQSeparator;
+        //for question School Name
+        strQId = ((int)QuestionId.SchoolName).ToString();
+        strTablevalues += strQId + strFSeparator + strFSeparator + txtSchoolName.Text + strQSeparator;
 
-        // SchoolName
-        strQID = hdnQ6Id.Value;
-        strTablevalues += strQID + strFSeparator + strFSeparator + txtSchoolName.Text.Trim();
+        //to remove the extra character at the end of the string, if any
+        char[] chartoRemove = { Convert.ToChar(strQSeparator) };
+        strTablevalues = strTablevalues.TrimEnd(chartoRemove);
 
         return strTablevalues;
     }

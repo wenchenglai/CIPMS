@@ -97,7 +97,7 @@ namespace CIPMSBC.Eligibility
                     {
                         if (SchoolOption == 4)
                         {
-                            iStatusValue = (int)StatusInfo.SystemInEligible;
+                            iStatusValue = (int)AllowDaySchool(FJCID);
                         }
                         else
                         {

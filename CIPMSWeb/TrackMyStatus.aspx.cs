@@ -65,9 +65,8 @@ public partial class TrackMyStatus : System.Web.UI.Page
                         var status = (StatusInfo)dsCamperTrackdetails.Tables[0].Rows[0]["StatusID"];
                         switch (status)
                         {
-                            case StatusInfo.EligiblePJLottery:
                             case StatusInfo.WinnerPJLottery:
-                            case StatusInfo.PendingPJLottery:
+                            case StatusInfo.EligiblePJLottery:
                                 lblGrnatAmount.Text = "Pending";
                                 break;
                             case StatusInfo.IneligiblePJLottery:

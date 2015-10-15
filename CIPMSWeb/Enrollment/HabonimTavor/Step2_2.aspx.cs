@@ -1,13 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.Eligibility;
@@ -42,23 +36,43 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
                 hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
                 getCamperAnswers();
             }
-
-            int resultCampId = 0; //long resultFedID;
-            if (Session["CampID"] != null)
-            {
-                Int32.TryParse(Session["CampID"].ToString(), out resultCampId);
-            }
-            string campID = resultCampId.ToString();
-            string last3digits = campID.Substring(campID.Length - 3);
-
-            trSibling2.Visible = true;
-            trSibling3.Visible = true;
-            lblGrade.Text = "4";
-            lblSchoolType.Text = "5";
-            lblSchoolName.Text = "6";
-
         }
     }   
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        int iStatus;
+        string strModifiedBy, strFJCID;
+
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+        {
+            ProcessCamperAnswers();
+        }
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+        //Modified by id taken from the Master Id
+        strModifiedBy = Master.UserId;
+        strFJCID = hdnFJCIDStep2_2.Value;
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.HabonimTavor);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_2.Value;
+        if (Request.QueryString["camp"] == "tavor")
+            Response.Redirect("Step2_3.aspx?camp=tavor");
+        else
+            Response.Redirect("Step2_3.aspx");
+    }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -79,7 +93,7 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-  
+
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
         string strRedirURL = Master.SaveandExitURL;
@@ -121,41 +135,6 @@ public partial class Step2_Habonim_2 : System.Web.UI.Page
             Response.Redirect("SummaryTavor.aspx");
         else
             Response.Redirect("Summary.aspx");
-    }
-
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        int iStatus;
-        string strModifiedBy, strFJCID;
-
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
-        {
-            ProcessCamperAnswers();
-        }
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-        //Modified by id taken from the Master Id
-        strModifiedBy = Master.UserId;
-        strFJCID = hdnFJCIDStep2_2.Value;
-        if (strFJCID != "" && strModifiedBy != "")
-        {
-            if (isReadOnly)
-            {
-                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-            }
-            else
-            {
-                EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Habonim);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-            }
-
-            Session["STATUS"] = iStatus.ToString();
-        }
-        Session["FJCID"] = hdnFJCIDStep2_2.Value;
-        if (Request.QueryString["camp"] == "tavor")
-            Response.Redirect("Step2_3.aspx?camp=tavor");
-        else
-            Response.Redirect("Step2_3.aspx");
     }
 
     private void ProcessCamperAnswers()

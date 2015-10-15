@@ -1,72 +1,31 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Memphis_Summary" %>
 
 <asp:Content ID="Memphis_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0">
-        <tr>
-            <td> 
-                <img id="logo" src="../../images/Omaha Logo.jpg" alt="" /></td>
-            <td>
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="lblPopup1">Good news! You may be eligible for an incentive.</p></asp:Label>
-                <asp:Label ID="lblInstructions" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below.
-                    </p><%--<p style="text-align:justify"><b>The Greater Rhode Island One Happy Camper Program provides grants to encourage children to attend overnight Jewish camp for the first time.  It is not a scholarship fund and is not needs-based.  Our goal is to promote a Jewish camping experience with a grant of $1,000.00.</b></p>--%></asp:Label></td>
-        </tr>
-       <tr>
-          <td colspan="2">
-              <asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                  <p style="text-align:justify">
-                      The Omaha One Happy Camper Program, sponsored by the Jewish Federation of Omaha, the Jewish Federation of Lincoln and the Foundation for Jewish Camp, 
-                      provides grants to encourage children to attend overnight Jewish camp for the first-time.
-
-                  </p>            
-              </asp:Label>
-
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><asp:Label ID="Label2" CssClass="infotext3" runat="server">
-          <p style="text-align:justify">It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them $1,000 off their camp fee to try a Jewish one.</p>
-                  <p style="text-align:justify">One Happy Camper grants are awarded to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must be entering grades 3-11 (after camp) and be attending one of the 150+ non-profit, Jewish, overnight summer camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.jewishcamp.org/camps" target= "_blank">www.jewishcamp.org/camps</a>). </b></p>            
-            </asp:Label></td>
-        </tr>  
-        <tr>
-          <td colspan="2"><asp:Label ID="Label4" CssClass="infotext3" runat="server">
-                  <p style="text-align: center">A NOTE TO JEWISH EXPERIENCE GRANT RECIPIENTS!</p>            
-                  <p style="text-align: center">If you have <u>previously</u> received a Jewish Experience Grant from the Jewish Federation of Omaha, do not proceed with this application. Instead, please contact Mary Sue Grossman at 402-334-6445 or <a href="mailto:mgrossman@jewishomaha.org">mgrossman@jewishomaha.org</a></p>   
-            </asp:Label></td>
-        </tr>           
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="lblAdditionalInfo" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you are currently enrolled in Jewish day school or yeshiva, please contact the Jewish Federation of Omaha directly to learn about incentive grant opportunities. Please do not proceed with this application.</p>
-                </asp:Label></td></tr>
-                 <tr>
-                <td colspan="2">
-                <asp:Label ID="Label3" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">If you need additional assistance or are interested in learning about financial-need based scholarship - please call your community professional listed at the bottom of this page.</p>
-                </asp:Label></td></tr>
-               
-    </table>
-    <table id="tblOffline" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td> 
                 <img id="logo" src="../../images/Omaha Logo.jpg" alt="" />
             </td>
-        </tr>
-        <tr>
             <td>
                 <p>
-                    The Jewish Federation of Omaha, through its Jewish Experience Grant program, provides grants to encourage children to attend overnight Jewish camp.
-                </p>
-				<p>
-                    It is not a scholarship fund and is not need-based.  The Jewish Experience Grant is a gift of $1,000 from the Jewish Federation of Omaha to encourage attendance at a Jewish summer residential camp and continued attendance at religious school.  
-				</p> 
+					Good news! You may be eligible for an incentive.
+				</p>
                 <p>
-                    To learn more about Omaha’s Jewish Experience Grants visit <a href="http://www.jewishomaha.org/education/scholarships-and-grants/" target="_blank">www.jewishomaha.org/education/scholarships-and-grants</a> or contact Mary Sue Grossman at (402) 334-6445 or mgrossman@jewishomaha.org.
-                </p>         
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, 
+					please proceed by clicking the "next" button below.
+				</p>                
             </td>
-        </tr>          
+        </tr>
+       <tr>
+			<td colspan="2">
+			    <p>
+                    The Omaha Jewish Experience Grant Program, sponsored by the Jewish Federation of Omaha, and promoted by the Foundation for Jewish Camp, provides grants to encourage children to attend overnight Jewish camp. 			        
+			    </p>
+                <p>
+                    It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, provide $1,000 in funding to help. For Omaha’s Jewish Experience Grant application, please visit <a href="http://www.jewishomaha.org" target="_blank">www.jewishomaha.org</a> and visit the “Scholarships and Grants” section of the Center for Jewish Life.                    
+                </p> 
+			</td>
+        </tr>               
     </table>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
@@ -82,7 +41,7 @@
                             <asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                                 </td>
                             <td align="right">
-                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn"  OnClick="btnNext_Click" /></td>                            
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" Visible="false"  OnClick="btnNext_Click" /></td>                            
                         </tr>
                      </table>
                 </td>

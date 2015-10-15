@@ -23,33 +23,6 @@
                 <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" />
             </td>
         </tr>
-        <tr id="trSibling2" runat="server" visible="false">
-            <td valign="top"><span class="InfoText">*</span>2</td>
-            <td valign="top">
-    			Did the camper’s sibling previously receive an incentive grant through the Habonim Dror Camp Galil’s One Happy Camper Program?
-                <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
-                    <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="No" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
-                </asp:RadioButtonList>
-                <span id="siblingContact" style="color:red;">
-                    Please contact Jenn Reiss at Jenn@campgalil.org or 215-832-0677 <br />
-                    Siblings of first-time campers who previously/or are currently receiving a $1,000 grant are eligible <br />
-                    to receive $500 when they attend camp for the first time for at least 19 consecutive days.
-                </span>
-            </td>
-        </tr>
-        <tr id="trSibling3" runat="server" visible="false">
-            <td valign="top"><span class="InfoText">*</span>3</td>
-            <td valign="top">
-                Name of Sibling
-                <div class="QuestionsLeaveSomeUpperSpace">
-					<span>First Name:</span> <asp:TextBox ID="txtSiblingFirstName" runat="server" CssClass="txtbox" MaxLength="200" />
-					<br />
-					<span>Last Name:</span>  <asp:TextBox ID="txtSiblingLastName" runat="server" CssClass="txtbox" MaxLength="200" />
-                </div>
-            </td>
-        </tr>
         <tr>
             <td valign="top"><span class="InfoText">*</span><asp:Label ID="lblGrade" runat="server" Text="2" CssClass="QuestionText"></asp:Label></td>
             <td valign="top">
@@ -64,10 +37,10 @@
             <td valign="top">
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?<br />
                 <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="SchoolValidator.OnSchoolDropDownChange(this);" >
-                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                     <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
             </td>
         </tr>

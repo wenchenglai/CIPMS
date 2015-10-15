@@ -37,6 +37,41 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             PopulateAnswers();
         }
     }
+
+    void btnNext_Click(object sender, EventArgs e)
+    {
+        if (!Page.IsValid)
+            return;
+
+        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
+
+        if (!isReadOnly)
+        {
+            ProcessCamperAnswers();
+        }
+
+        var strModifiedBy = Master.UserId;
+        var strFJCID = hdnFJCID.Value;
+
+        if (strFJCID != "" && strModifiedBy != "")
+        {
+            int iStatus;
+            if (isReadOnly)
+            {
+                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            }
+            else
+            {
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahBerkshires);
+                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+            }
+
+            Session["STATUS"] = iStatus.ToString();
+        }
+        Session["FJCID"] = hdnFJCID.Value;
+        Response.Redirect("Step2_3.aspx");
+    }
   
     void btnReturnAdmin_Click(object sender, EventArgs e)
     {
@@ -120,41 +155,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         }
     }
 
-    void btnNext_Click(object sender, EventArgs e)
-    {
-        if (!Page.IsValid)
-            return;
-
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
-
-        if (!isReadOnly)
-        {
-            ProcessCamperAnswers();
-        }
-
-        var strModifiedBy = Master.UserId;
-        var strFJCID = hdnFJCID.Value;
-
-        if (strFJCID != "" && strModifiedBy != "")
-        {
-            int iStatus;
-            if (isReadOnly)
-            {
-                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
-            }
-            else
-            {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahBerkshires);
-                objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
-            }
-
-            Session["STATUS"] = iStatus.ToString();
-        }
-        Session["FJCID"] = hdnFJCID.Value;
-        Response.Redirect("Step2_3.aspx");
-    }
-
     private void ProcessCamperAnswers()
     {
         string strComments, strFJCID, strModifiedBy;
@@ -214,7 +214,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,1063");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -257,18 +257,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
-            {
-                if (dr["OptionID"].Equals(DBNull.Value))
-                    continue;
-
-                if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
-                else
-                    rdoDays19.Checked = true;
-            }
-
-
         }
     }
 
@@ -285,10 +273,6 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
         //for question FirstTimerOrNot
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
-
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

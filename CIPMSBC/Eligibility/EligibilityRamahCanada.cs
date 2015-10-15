@@ -193,6 +193,26 @@ namespace CIPMSBC.Eligibility
                 amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
             }
 
+            if (amount > 0)
+            {
+                double originalAmount = amount;
+                // 2015-09-27 Sibling Rule - if this camper has sibling attended before, no matter how many days
+                // of camping, the amount is only 500.
+                amount = 500;
+                DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
+                if (dsSchoolOption.Tables[0].Rows.Count > 0)
+                {
+                    DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
+                    if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
+                    {
+                        if ("2" == drSchoolOption["OptionID"].ToString())
+                        {
+                            amount = originalAmount;
+                        }
+                    }
+                }
+            }
+
             oCA.UpdateAmount(FJCID, amount, 0, "");
 
             if (amount == 0.00)

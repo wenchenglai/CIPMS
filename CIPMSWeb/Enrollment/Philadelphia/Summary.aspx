@@ -18,18 +18,14 @@
                 <p>
                     The One Happy Camper program sponsored by the Neubauer Family Foundation, the Jewish Federation of Greater Philadelphia and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days.
                 </p>
-                <p>
-                    The program also offers a limited number of $500 grants to returning campers who received our incentive grant for their first year at camp, and who attend camp the following year for a second time for at least 19 consecutive days.
-                </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
                         <li>First time attending camp for 19 or more consecutive days.</li>
                         <li>First time camper must be entering grades 1-11 (after camp).</li>
                         <li>Live in Bucks, Chester, Delaware, Montgomery or Philadelphia counties.</li>
-                        <li>Attend a Jewish overnight camp that is listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
+                        <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                         <li>This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.</li>
-                        <li><span style="color:red">Attention 2nd time campers:</span> For information on how to apply for the grant, please contact Shannon Greenstein at sgreenstein@jfgp.org or 215-832-0530.</li>
                     </ul>
 				</p>
                 <p>

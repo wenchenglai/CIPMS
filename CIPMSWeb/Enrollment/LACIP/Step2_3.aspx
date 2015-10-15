@@ -74,7 +74,7 @@
 
     <script type="text/javascript" language="javascript">
         function windowopener(){
-        	window.open('Jewish Federation Los Angeles  Release 2015 (Summer Camp).pdf', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
+        	window.open('Jewish Federation Los Angeles  Release 2016 (Summer Camp).doc', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
         }
     </script>
 
@@ -168,24 +168,15 @@
                 </td>
             </tr>
             <tr>
-                <td style="height: 64px">
-                </td>
-                <td style="height: 64px">
-                    <asp:Panel ID="PnlNote" runat="server">
-                        <asp:Label ID="lblNote" runat="server" CssClass="QuestionText">
-                            <p style="text-align: justify" id="pNote" runat="server">
-                                <font color="red"><b>In order to be eligible for the incentive grant,
-                                the camper must attend camp for at least 12 consecutive days.</b></font></p>
-                        </asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>
-            <tr>
                 <td valign="top">
                     <asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
-                        <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Select the dates of the camp session you will be attending</asp:Label><br />                                                                        
+                        <p class="InfoText">
+					        In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
+                        </p>
+                        <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
+                                                                       
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" MaxLength="10" runat="server" CssClass="txtbox1"  />
                         <asp:Imagebutton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
                         <asp:Panel ID="pnlCalStartDt" runat="server" Visible="false">
@@ -223,9 +214,8 @@
                 <td colspan="3">
                     <asp:Label ID="lblCert" runat="server" CssClass="headertext1">
                         <p style="text-align:justify">
-							All grant recipients of the One Happy Camper Program are required to sign a release form provided by the 
-							Jewish Federation of Greater Los Angeles. 
-							To review this release form, <a href="javascript:windowopener()">click here</a>.
+							All grant recipients of the One Happy Camper Program are required to sign a release form provided by the Jewish Federation of Greater Los Angeles. 
+                            To review this release form, <a href="javascript:windowopener()">click here</a>.
                         </p>
                     </asp:Label>
                 </td>
@@ -237,10 +227,9 @@
                 <td colspan="2">
 					<asp:Label ID="lblChkText" CssClass="headertext1" runat="server">
 						<p style="text-align:justify">
-                            I have read the Jewish Federation of Greater Los Angeles?release form for the One Happy Camper Program 2015. 
-                            By filling in this box, I acknowledge agreement with the aforementioned release form. 
-                            Furthermore, the box I fill in represents my signature on all signature lines in the 
-                            One Happy Camper Program 2015 release.
+                            I have read the Jewish Federation of Greater Los Angeles release form for the One Happy Camper Program 2016. By filling in this box, 
+                            I acknowledge agreement with the aforementioned release form. Furthermore, 
+                            the box I fill in represents my signature on all signature lines in the One Happy Camper Program 2016 release.
                         </p>
                     </asp:Label>
 					<asp:CustomValidator Enabled="false" ID="CusVal2" ErrorMessage="testing" CssClass="InfoText"

@@ -670,29 +670,18 @@ namespace CIPMSBC
         }
 
         //to get the Grade values to be displayed in the Questionnaire
-        public DataTable getGrades(string FederationId,string CampYear)
+        public DataTable getGrades(string fedId, string campYear)
         {
-            CIPDataAccess dal = new CIPDataAccess();
-            try
-            {
-               DataTable  dtGrades = new DataTable();
-               DataRow dr;
-                dtGrades.Columns.Add(new DataColumn("EligibleGrade"));
-                //dtGrades.Columns.Add(new DataColumn("GradeValue"));
+            var dtGrades = new DataTable();
+            dtGrades.Columns.Add(new DataColumn("EligibleGrade"));
 
-                for (int i = 1; i <= 12; i++)
-                {
-                    dr = dtGrades.NewRow();
-                    dr["EligibleGrade"] = i.ToString();
-                    dtGrades.Rows.Add(dr);
-                }
-                return dtGrades;
-            }
-         
-            catch (Exception ex)
+            for (int i = 1; i <= 12; i++)
             {
-                throw ex;
+                DataRow dr = dtGrades.NewRow();
+                dr["EligibleGrade"] = i.ToString();
+                dtGrades.Rows.Add(dr);
             }
+            return dtGrades;
         }
 
         //to get the Synagogue list.
@@ -968,10 +957,10 @@ namespace CIPMSBC
         // to get the federation details for given fjcid
         public DataSet GetFedDetailsForFJCID(string FJCID)
         {
-            CIPDataAccess dal = new CIPDataAccess();
+            var dal = new CIPDataAccess();
             try
             {
-                SqlParameter[] param = new SqlParameter[1];
+                var param = new SqlParameter[1];
                 param[0] = new SqlParameter("@FJCID", FJCID);
 
                 DataSet dsFedDetails;
@@ -1597,9 +1586,13 @@ namespace CIPMSBC
                 DataSet dsFed = this.GetFederationForZipCode(strZip.Substring(0, 3));
                 if (dsFed.Tables.Count > 0)
                 {
-                    if (dsFed.Tables[0].Rows.Count > 0)
+                    if (dsFed.Tables[0].Rows.Count == 1)
                     {
                         FedId = dsFed.Tables[0].Rows[0][0].ToString();
+                    }
+                    else if (dsFed.Tables[0].Rows.Count > 1)
+                    {
+                        FedId = "Duplicate";
                     }
                 }
             }
