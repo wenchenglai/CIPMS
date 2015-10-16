@@ -11,11 +11,12 @@
 					Good News!  You may be eligible for an incentive grant from the Farash Institute for Jewish Education.
 				</p>
                 <p>
-					To determine if you are eligible, continue reading and if your camper meets the eligibility criteria, please proceed by clicking the “next” button below.
+					To determine if you are eligible, continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "Next" button below.
 				</p>
                 
 			    <p>
-			        The One Happy Camper-Rochester grant program, sponsored by the Farash Institute for Jewish Education and the Foundation for Jewish Camp, offers incentive grants of up to $1800 to all first-time campers attending a Jewish not-for-profit overnight camp.
+			        The One Happy Camper-Rochester grant program, sponsored by the Farash Institute for Jewish Education and the Foundation for Jewish Camp, offers incentive grants 
+                    of up to $1800 to all first-time campers attending a Jewish not-for-profit overnight camp.
 			    </p>
 
 				The following are the eligibility criteria for this program:

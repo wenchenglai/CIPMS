@@ -33,7 +33,7 @@
                 <p>
                     Campers may begin attending camp following second or third grade. Habonim Dror is the Zionist Youth Movement affiliated with the Kibbutz Movement of Israel. Habonim Dror campers come from all streams of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated.                 </p>     
                 <p>
-                    If you are interested in learning more about our camps and available grants at a specific camp, please visit the individual camp websites by clicking on the camp names above.                 
+                    For more information go here <a href="http://www.camptavor.org/sign-up-for-camp-tavor/" target="_blank">www.camptavor.org/sign-up-for-camp-tavor</a>.                  
                 </p>                                                              
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page. 

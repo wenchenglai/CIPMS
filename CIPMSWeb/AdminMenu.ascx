@@ -69,7 +69,7 @@
                             <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment - FJC" CausesValidation="false"
                                 OnClick="lnkPayment_Click" />
                         </div>
-                        <div id="disSelfFunding" runat="server">
+                        <div id="divSelfFunding" runat="server">
                             <asp:HyperLink ID="hylSelfFunding" runat="server" Text="Payment - Self Funding" Target="_blank"></asp:HyperLink>
                         </div>
                     </td>
@@ -141,13 +141,8 @@
                 <tr>
                     <td></td>
                     <td>
-                        Maintenance Modules
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
                         <div id="divMaintenanceModule" runat="server" visible="false">
+                            Maintenance Modules
                             <ul style="padding-left:10px" >
                                 <li>
                                     <asp:HyperLink runat="server" Text="Program Contact" NavigateUrl="Administration/ProgramContact.aspx"></asp:HyperLink>

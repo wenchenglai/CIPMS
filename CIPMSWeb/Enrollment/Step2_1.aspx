@@ -70,7 +70,7 @@
 					<ul style="list-style-type: none;" class="QuestionText">
 						<li>
 							<asp:CheckBox ID="chkStaff1" runat="server" AutoPostBack="true" 
-								Text="Jewish Federation/agency staff member or communication (i.e. e-mail)" 
+								Text="Jewish federation/foundation/agency staff member or communication (i.e. e-mail)" 
 								oncheckedchanged="chkStaff_CheckedChanged" />
 						</li>
 						<li>

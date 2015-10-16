@@ -2,36 +2,19 @@
     Inherits="Enrollment_JCC_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0">
+    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
-           <%-- <td>
-                <img id="logo" src="" /></td>--%>
-            <td colspan="2">
-                <asp:Label ID="lblHeading" CssClass="SummaryHeading" runat="server">
-                    <p style="text-align:justify" class="infotext3"><b>Send your child to camp this summer for the first time through an exciting program underwritten by your local Jewish community, in partnership with the Foundation for Jewish Camp’s One Happy Camper program.</b></p>
-                </asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label2" CssClass="infotext3" runat="server">
-                <p style="text-align:justify">
-                <br />
-                 If you live in Cincinnati and your child is attending camp for the first time this coming summer, s/he may be eligible to receive a grant of up to $1800 through the Cincinnati Jewish Overnight Camping Program.</p>
-                 
-                </asp:Label>
-                <p class="infotext3">To learn more about the program and to obtain an application please <asp:LinkButton ID="goldringlink" runat="server" OnClick="cincinnatilink_Click" Text="[CLICK HERE]" ></asp:LinkButton>.
-                 </p>
+            <td>
+                <p>
+                    Cincinnati residents may be eligible for overnight Jewish camping grants of up to $2800 over the course of two years through the Cincy Journeys Grant program funded by The Jewish Foundation of Cincinnati and administered by the Jewish Federation of Cincinnati. 
+                </p>
+                <p>
+                    To learn more about the program and for an application form please visit the website <a href="http://www.cincyjourneys.org" target="_blank">www.cincyjourneys.org</a> or contact Karyn Zimerman at kzimerman@jfedcin.org or 513-985-1534. 
+                </p>
             </td>
         </tr>        
-                
-        <tr>
-            <td colspan="2">
-                <asp:Label ID="Label4" runat="server" CssClass="QuestionText">
-                    <p style="text-align:justify">For more information on this program please contact Karyn Zimerman at <a href="mailto:kzimerman@jfedcin.org" target="_blank">kzimerman@jfedcin.org</a>, 513-985-1534. </p>
-                </asp:Label></td>
-        </tr>
     </table>
+    <a href="../Charles/">../Charles/</a>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>

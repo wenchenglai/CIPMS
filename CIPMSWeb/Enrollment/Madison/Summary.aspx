@@ -33,6 +33,9 @@
                     <a href="http://JewishCamp.org/Scholarships" target="_blank">JewishCamp.org/Scholarships</a>, contact your camp, or the contact person listed at the bottom of this page.
                 </p>  
                 <p>
+                    We have a limited number of OHC Grants to give to Madison area campers.  Grants are distributed on a first-come-first-serve basis.  Applicants MUST register for camp before filling out the One Happy Camper application.
+                </p>
+                <p>
                     If you need additional assistance, please call Ellen Weismer (608)278-1808.
                 </p>            
             </td>

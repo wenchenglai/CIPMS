@@ -22,7 +22,9 @@
                     The Omaha Jewish Experience Grant Program, sponsored by the Jewish Federation of Omaha, and promoted by the Foundation for Jewish Camp, provides grants to encourage children to attend overnight Jewish camp. 			        
 			    </p>
                 <p>
-                    It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, provide $1,000 in funding to help. For Omaha’s Jewish Experience Grant application, please visit <a href="http://www.jewishomaha.org" target="_blank">www.jewishomaha.org</a> and visit the “Scholarships and Grants” section of the Center for Jewish Life.                    
+                    It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, 
+                    provide $1,000 in funding to help. For Omaha’s Jewish Experience Grant application, 
+                    please visit <a href="http://www.jewishomaha.org" target="_blank">www.jewishomaha.org</a> and visit the "Scholarships and Grants" section of the Center for Jewish Life.                    
                 </p> 
 			</td>
         </tr>               

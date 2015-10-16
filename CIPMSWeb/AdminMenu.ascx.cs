@@ -62,13 +62,14 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 dvAdmin.Visible = false;
                 dvRpts.Visible = false;
                 divCheckRequest.Visible = false;
+                divSelfFunding.Visible = false;
                 divAudit.Visible = false;
                 divANReport.Visible = false;
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
 
-                var allowedFeds = new List<string>() {"5", "9", "10", "23", "35", "63", "69", "89", "98", "107"};
-                if (allowedFeds.Exists(x => x == fedId))
+                //var allowedFeds = new List<string>() {"5", "9", "10", "23", "35", "63", "69", "89", "98", "107"};
+                //if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
             }
 
