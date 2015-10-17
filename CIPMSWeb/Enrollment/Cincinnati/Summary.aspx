@@ -14,7 +14,6 @@
             </td>
         </tr>        
     </table>
-    <a href="../Charles/">../Charles/</a>
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>
