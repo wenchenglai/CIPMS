@@ -50,7 +50,7 @@
         <tr>
            <td>
                <p>
-                   For further information on how to apply for the Ramah Outdoor Adventure One Happy Camper program, please contact the professional listed at the bottom of the screen.
+                   Your camp's One Happy Camper Application is not yet available for summer 2016. Please call the camp professional listed at the bottom of this page for more information.
                </p>
            </td> 
         </tr>

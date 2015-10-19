@@ -1,13 +1,9 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
 using System.Web.Security;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using System.Net;
 using CIPMSBC;
 
@@ -71,9 +67,9 @@ public partial class Home : System.Web.UI.Page
 		string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
 		if (isTestMode == "Yes")
 		{
-			if (strEmail != "wenchenglai@gmail.com" && strEmail != "valentina@jewishcamp.org" && strEmail != "seth@jewishcamp.org")
+			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org")
 			{
-				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 16th, 2012.";
+				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
 				return;
 			}
 		}

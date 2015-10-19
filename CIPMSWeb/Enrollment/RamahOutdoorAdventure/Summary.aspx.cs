@@ -58,9 +58,6 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        if (tblRegular.Visible)
-            Response.Redirect("Step2_2.aspx");
-        else
-            Response.Redirect("../Step1_NL.aspx");     
+        Response.Redirect(tblRegular.Visible ? "Step2_2.aspx" : "../Step1_NL.aspx");
     }
 }

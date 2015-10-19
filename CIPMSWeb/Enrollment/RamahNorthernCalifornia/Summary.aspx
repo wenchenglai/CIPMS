@@ -42,6 +42,21 @@
         </tr>    
     </table>
 
+        <table id="tblDisable" runat="server" visible="false" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />
+            </td>
+        </tr>
+        <tr>
+           <td>
+               <p>
+                   Your camp's One Happy Camper Application is not yet available for summer 2016. Please call the camp professional listed at the bottom of this page for more information.
+               </p>
+           </td> 
+        </tr>
+    </table>  
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">
             <tr>

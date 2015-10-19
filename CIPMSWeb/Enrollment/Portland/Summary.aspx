@@ -51,7 +51,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+						The program is now closed.	Please click “Next?to see if you are eligible for a different One Happy Camper program
 					</p>
 				</asp:Label>
 			</td>
