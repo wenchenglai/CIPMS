@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
+using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI.WebControls;
@@ -15,9 +16,13 @@ public partial class Home : System.Web.UI.Page
         // 1. When the CIPM is shut-down, typically from August to September
         // 2. When CIPMS is open for registration, typically in mid-October
         // The code below fulfills the scenario #1
-        if (ConfigurationManager.AppSettings["OpenFederations"] == "None")
+        if (ConfigurationManager.AppSettings["CamperHoldingPageSwithYesNo"] == "Yes")
         {
-            Response.Redirect("~/CamperHolding.aspx");        
+            var clientIp = Request.ServerVariables["REMOTE_ADDR"];
+            bool allowForTesting = ConfigurationManager.AppSettings["TestingModeIPs"].Split(',').Any(x => x == clientIp);
+
+            if (!allowForTesting)
+                Response.Redirect("~/CamperHolding.aspx");        
         }
 
         //Just incase the user did not hit the logout button.
@@ -133,9 +138,9 @@ public partial class Home : System.Web.UI.Page
 		string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
 		if (isTestMode == "Yes")
 		{
-			if (strEmail != "wenchenglai@gmail.com" && strEmail != "valentina@jewishcamp.org" && strEmail != "seth@jewishcamp.org")
+			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org")
 			{
-				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 16th, 2012.";
+				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
 				return;
 			}
 		}

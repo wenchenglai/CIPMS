@@ -33,7 +33,7 @@
                     Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program and/or you are interested in learning about other scholarship opportunities, please contact your camp and Ricci Postan at UJA’s Silber Family Centre for Jewish Camping at OHCToronto@ujafed.org.
                 </p>  
                 <p>
-                    If you have determined that your camper is eligible, based on the criteria above, proceed by clicking on the ‘Next’ button. 
+                    If you have determined that your camper is eligible, based on the criteria above, proceed by clicking on the ‘Next?button. 
                 </p>            
             </td>
         </tr>            

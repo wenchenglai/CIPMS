@@ -528,6 +528,10 @@ namespace CIPMSBC
             try
             {
                 SqlParameter[] param = new SqlParameter[1];
+                // in clase if the zip code is Canadian
+                if (strZipcode.Length > 6)
+                    strZipcode = strZipcode.Substring(0, 3);
+
                 param[0] = new SqlParameter("@Zipcode", strZipcode);
                 DataSet dsFedDetails;
                 dsFedDetails = dal.getDataset("[usp_GetFederationForZipCode]", param);
