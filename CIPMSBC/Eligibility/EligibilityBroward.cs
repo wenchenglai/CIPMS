@@ -89,11 +89,11 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2016")
-                            iStatusValue = (int)StatusInfo.EligiblePJLottery;
-                        else
+                        iStatusValue = (int)AllowDaySchool(FJCID);
+                        if (iStatusValue == (int)StatusInfo.SystemInEligible)
                         {
-                            iStatusValue = (int)AllowDaySchool(FJCID);
+                            if (specialCode == "PJGTC2016")
+                                iStatusValue = (int)StatusInfo.EligiblePJLottery;
                         }
                     }
                     else

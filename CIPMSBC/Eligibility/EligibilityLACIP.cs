@@ -135,11 +135,13 @@ namespace CIPMSBC.Eligibility
                    
                         if (SchoolOption == 4) 
                         {
+                        iStatusValue = (int)AllowDaySchool(FJCID);
+                        if (iStatusValue == (int)StatusInfo.SystemInEligible)
+                        {
                             if (specialCode == "PJGTC2016")
                                 iStatusValue = (int)StatusInfo.EligiblePJLottery;
-                            else
-                                iStatusValue = (int)AllowDaySchool(FJCID);
                         }
+                    }
                         else
                         {
                             iStatusValue = (int)StatusInfo.SystemEligible;

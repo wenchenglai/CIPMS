@@ -72,7 +72,7 @@ public partial class Home : System.Web.UI.Page
 		string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
 		if (isTestMode == "Yes")
 		{
-			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org")
+			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org" && strEmail != "s.myerklein@gmail.com" && strEmail != "Tamar@jewishcamp.org")
 			{
 				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
 				return;
@@ -135,15 +135,15 @@ public partial class Home : System.Web.UI.Page
     protected void btnSubmit1_Click(object sender, EventArgs e)
     {
 		string strEmail = txtEmail1.Text.Trim();
-		string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
-		if (isTestMode == "Yes")
-		{
-			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org")
-			{
-				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
-				return;
-			}
-		}
+		//string isTestMode = ConfigurationManager.AppSettings["TestingMode"];
+		//if (isTestMode == "Yes")
+		//{
+		//	if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org")
+		//	{
+		//		lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
+		//		return;
+		//	}
+		//}
 
         Administration objAdmin = new Administration();
         string strPwd = txtPwd1.Text.Trim();

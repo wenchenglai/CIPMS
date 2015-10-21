@@ -529,7 +529,7 @@ namespace CIPMSBC
             {
                 SqlParameter[] param = new SqlParameter[1];
                 // in clase if the zip code is Canadian
-                if (strZipcode.Length > 6)
+                if (strZipcode.Length > 6 && !strZipcode.StartsWith("T"))
                     strZipcode = strZipcode.Substring(0, 3);
 
                 param[0] = new SqlParameter("@Zipcode", strZipcode);
