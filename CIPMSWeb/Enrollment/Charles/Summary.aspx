@@ -5,7 +5,7 @@
 		<tr>
 			<td>
                 <p>
-                    Thank you for your interest in the Camp Daisy and Harry Stein¡¦s One Happy Camper Program. For more information on how to apply, 
+                    Thank you for your interest in the Camp Daisy and Harry Stein's One Happy Camper Program. For more information on how to apply, 
                     please visit <a href="http://campstein.org/about-camp/for-first-timers/" target="_blank">http://campstein.org/about-camp/for-first-timers</a> or contact Brian Mitchell at campdirector@cbiaz.org or (480) 951-0323.
                 </p>
 			</td>

@@ -9,17 +9,11 @@
     </tr>
     <tr>
       <td>
-          <h3>
-              Important To- Do
-          </h3>
           <p>
-              Payment Processing will begin at the end of March. Only campers who are in the status of “Campership Approved; Payment Pending” can be processed through payment. 
-              If you haven’t done so already, please move campers along in the approval process from the status of 
-              “Eligible” or “Eligible by Staff” to “Campership Approved; Payment Pending”.
+                Welcome to One Happy Camper 2016.  Please remember to review applications thoroughly and contact us with any questions. 
+              If you would like to make changes to your application please fill out this <a href="https://docs.google.com/forms/d/1yygKMK-CRZi_F_WzeLKb1aojcbWglFD_2npi32pDGxU/viewform" target="_blank">form</a> and the OHC Team will be in contact with you within two business days.
           </p>
-          <p>
-              If you have any question please call Staci at 646-278-4572
-          </p>
+
       </td>
     </tr>
     <tr>

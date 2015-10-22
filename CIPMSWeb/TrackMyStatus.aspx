@@ -66,14 +66,18 @@
                         <asp:Label ID="lblAppicationStatus" runat="server" /></td>
                 </tr>
                 <tr style="height:10px"><td></td></tr>
-                <tr height="15px">
+                <tr height="15px" style="visibility:collapse">
                     <td style="width:5px"></td>
                     <td class="headertext1" nowrap valign="top">Contact Information:</td>
                     <td style="width: 10px" align="center"></td>
                     <td valign="top">
-                        <asp:Label ID="lblContactInfo" runat="server" /><a id="lnkcamper" href="https://www.onehappycamper.org/eligibility_jwest.html" target="_blank" visible="false" runat="server">here</a>
-                        <br /><asp:Label ID="lblPhone" runat="server" Visible="false" /><br /><asp:Label ID="lblEmail" Visible="false" runat="server" />
-                        </td>
+                        <asp:Label ID="lblContactInfo" runat="server" />
+                        <a id="lnkcamper" href="https://www.onehappycamper.org/eligibility_jwest.html" target="_blank" visible="false" runat="server">here</a>
+                        <br />
+                        <asp:Label ID="lblPhone" runat="server" Visible="false" />
+                        <br />
+                        <asp:Label ID="lblEmail" Visible="false" runat="server" />
+                    </td>
                 </tr>
                 <tr height="20px"><td></td></tr>
                 <tr>

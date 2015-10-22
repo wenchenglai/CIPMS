@@ -17,7 +17,7 @@
                     offers funding to children in our community who wish to attend Jewish overnight camp for the first-time.
 				</p>
                 <p>
-                    To determine if you are eligible for this special “One Happy Camper” grant, please read below. 
+                    To determine if you are eligible for this special One Happy Camper grant, please read below. 
                     If you believe that your camper meets the criteria, please proceed with the application by clicking the next button below.                    
                 </p>
                 <p>

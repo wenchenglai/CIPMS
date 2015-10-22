@@ -13,13 +13,6 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (IsPostBack) return;
-
-        var strCampID = Session["CampID"].ToString();
-        var last3Digits = strCampID.Substring(strCampID.Length - 3);
-
-        if (ConfigurationManager.AppSettings["ClosedRamah"].Split(',').Any(id => id == last3Digits))
-            Response.Redirect("~/NLIntermediate.aspx");
     }
 
 
@@ -38,7 +31,6 @@ public partial class Enrollment_Ramah_Summary : System.Web.UI.Page
 
     protected void btnNext_Click(object sender, EventArgs e)
     {
-        var CampID = Convert.ToInt32(Session["CampID"]);
-        Response.Redirect(CampID == 5082 ? "../Step1_NL.aspx" : "Step2_2.aspx");
+        Response.Redirect("Step2_2.aspx");
     }
 }

@@ -21,9 +21,6 @@
                         <li>First-time campers must be entering grades 2-12 (after camp).</li>
                     </ul>
 				</p> 
-                <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
-                </p>
                 <p style="font-style: italic">
                     Children who have received a One Happy Camper grant in a previous year for any number of days are not eligible to receive one again.
                 </p>

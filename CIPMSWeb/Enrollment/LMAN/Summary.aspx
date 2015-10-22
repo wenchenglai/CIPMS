@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Lman_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-     <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
             <tr>
             <td>
                 <img src="../../images/color logo.gif" /></td>
@@ -18,7 +18,7 @@
         <tr>
 			<td colspan="2">
                 <p>
-                    The Camp L’man Achai One Happy Camper program, sponsored by Camp L’man Achai and the Foundation for Jewish Camp provides financial incentives of up to $1,000 to first-time campers.
+                    The Camp L'man Achai One Happy Camper program, sponsored by Camp L’man Achai and the Foundation for Jewish Camp provides financial incentives of up to $1,000 to first-time campers.
 				</p>
 		        <p>
 			        The following outlines the eligibility criteria for this program:
@@ -40,6 +40,21 @@
 			</td>
         </tr> 
     </table>
+
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img id="img1" src="../../images/color logo.gif" alt="" runat="server" />
+            </td>
+            <td>
+                <p>
+                    Your camp's One Happy Camper Application is not yet available for summer 2016. Please call the camp professional listed at the bottom of this page for more information.
+
+                </p>
+            </td>
+        </tr>
+    </table>
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
