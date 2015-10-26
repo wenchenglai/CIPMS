@@ -293,16 +293,16 @@ namespace CIPMSBC.Eligibility
 
                 // 2015-01-27  Kibbutz Max Straus and Gesher at Kibbutz Max Straus must be 250 no matter what
                 // a candidate for global grant rule
-                //if (Amount > 0)
-                //{
-                //    string last3Digits = campID.Substring(campID.Length - 3);
-                //    if (last3Digits == "211" || last3Digits == "218")
-                //    {
-                //        Amount = 250;
-                //    }
-                //}
+                if (Amount > 0)
+                {
+                    string last3Digits = campID.Substring(campID.Length - 3);
+                    if (last3Digits == "211" || last3Digits == "218")
+                    {
+                        Amount = 250;
+                    }
+                }
 
-				if (Amount <= 0)
+                if (Amount <= 0)
                     StatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
 			}
 			else

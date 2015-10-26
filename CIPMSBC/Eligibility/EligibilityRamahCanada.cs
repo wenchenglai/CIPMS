@@ -195,19 +195,23 @@ namespace CIPMSBC.Eligibility
 
             if (amount > 0)
             {
-                double originalAmount = amount;
-                // 2015-09-27 Sibling Rule - if this camper has sibling attended before, no matter how many days
-                // of camping, the amount is only 500.
-                amount = 500;
-                DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
-                if (dsSchoolOption.Tables[0].Rows.Count > 0)
+                // 2015 Kibbutz Bob Waldorf or Camp Gesher is always $250
+                if (amount != 250)
                 {
-                    DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
-                    if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
+                    double originalAmount = amount;
+                    // 2015-09-27 Sibling Rule - if this camper has sibling attended before, no matter how many days
+                    // of camping, the amount is only 500.
+                    amount = 500;
+                    DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
+                    if (dsSchoolOption.Tables[0].Rows.Count > 0)
                     {
-                        if ("2" == drSchoolOption["OptionID"].ToString())
+                        DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
+                        if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
                         {
-                            amount = originalAmount;
+                            if ("2" == drSchoolOption["OptionID"].ToString())
+                            {
+                                amount = originalAmount;
+                            }
                         }
                     }
                 }
