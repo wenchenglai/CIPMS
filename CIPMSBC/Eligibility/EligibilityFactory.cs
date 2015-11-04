@@ -278,6 +278,9 @@ namespace CIPMSBC.Eligibility
 				case FederationEnum.RamahBerkshires:
 					elig = new EligibilityRamahBerkshires(fed);
 					break;
+                case FederationEnum.RamahPoconos:
+                    elig = new EligibilityRamahPoconos(fed);
+                    break;
                 case FederationEnum.RamahCanada:
                     elig = new EligibilityRamahCanada(fed);
                     break;

@@ -90,7 +90,7 @@
                 <br /><br /> 
                 <strong>Status Transitions:</strong>&nbsp;&nbsp;
                 <asp:DropDownList ID="ddlStatusTransition" DataValueField="id" DataTextField="text" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlStatusTransition_SelectedIndexChanged" OnDataBound="ddlStatusTransition_DataBound">
-                    <asp:ListItem Text="Eligible by Staff -> Campership Approved; Payment Pending" Value="7"></asp:ListItem>                    
+                    <asp:ListItem Text="Eligible: Admin Approved -> Enrollment Confirmed; Payment Pending" Value="7"></asp:ListItem>                    
                     <asp:ListItem Text="Payment Requested -> Camper Attended Camp" Value="25"></asp:ListItem>
                 </asp:DropDownList>
                 <br /><br/>

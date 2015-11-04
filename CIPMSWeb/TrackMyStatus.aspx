@@ -22,7 +22,7 @@
                 <tr><td></td></tr>
                 <tr>
                     <td colspan="11">
-                        <p class="lblPopup1" style="text-align:justify">Welcome parent! This page will allow you to track the status of your camper’s application. If you have questions at any point, please contact the staff member listed below. Thank you!</p>
+                        <p class="lblPopup1" style="text-align:justify">Welcome parent! This page will allow you to track the status of your camper's application. If you have questions at any point, please contact the staff member listed below. Thank you!</p>
                     </td>
                 </tr>
                 <tr height="20px"><td></td></tr>

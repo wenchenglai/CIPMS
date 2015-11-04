@@ -292,6 +292,7 @@ public partial class Step1 : System.Web.UI.Page
 
 		//2014-08-03 PJL - if the status is in Pending PJ Lottery, we go to the PJ Program (because this user might have zip code from a community program, but failed to pass due to DS)
 
+
         int fedCount = 0;
 	    DataSet dsFed;
 		if (IsFromCanada())
@@ -1063,7 +1064,17 @@ public partial class Step1 : System.Web.UI.Page
 				DataSet dsCamperApplication = oCA.getCamperApplication(strFJCID);
 				DataRow drCA = dsCamperApplication.Tables[0].Rows[0];
 				strFJCIDFedId = drCA["FederationId"] != null ? drCA["FederationId"].ToString().ToLower() : string.Empty;
-				strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
+
+
+
+                var StatusID = Convert.ToInt16(drCA["Status"]);
+
+                if (StatusID == (int)StatusInfo.EligiblePJLottery)
+                {
+                    Response.Redirect("~/TrackMyStatus.aspx");
+                }
+
+                strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
 			}
 
 			if (iCount == 1)
@@ -1077,6 +1088,9 @@ public partial class Step1 : System.Web.UI.Page
 					dr = dsFed.Tables[0].Rows[0];
 					strFedId = dr["Federation"].ToString();
 				}
+
+
+
 				//to check if the FedId is in the FedIds array declared above
 				if (doStep1questions(strFedId) && strAppType != "c")
 				{

@@ -17,7 +17,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top" style="padding-bottom:20px;">
-                Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 19 consecutive days or longer?
+                Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 19+ consecutive days? (If your child is enrolled in a "Taste of Camp" session for their first-time camp experience, please select "No" and continue to question 1A)
                 <div>
                     <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
                     <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
@@ -27,7 +27,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1a</td>
             <td valign="top" style="padding-bottom:20px;">
-                Is the first-time camper attending a "Taste of Camp" session?
+                Is the first-time camper attending a "Taste of Camp" session (less than 19 days, with the option to extend to an eligible session)?
                 <div id="divTaste" runat="server">
                     <asp:RadioButton ID="rdoTasteOfCampYes" value="1" runat="server" GroupName="TasteGroup" Text="Yes" />
                     <asp:RadioButton ID="rdoTasteOfCampNo" value="2" GroupName="TasteGroup" runat="server" Text="No" />
@@ -37,7 +37,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>2</td>
             <td valign="top">
-    			Did the camper’s sibling previously receive an incentive grant through the UJA Federation of Greater Toronto One Happy Camper Program or TopBunk?
+    			Did the camper's sibling previously receive an incentive grant through the One Happy Camper Toronto or TopBunk?
                 <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                     <asp:ListItem Text="No" Value="2"></asp:ListItem>
@@ -208,7 +208,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>10</td>
             <td valign="top" style="padding-bottom:20px;">
-                Has anyone in your family participated in March of the Living?"
+                Has anyone in your family participated in March of the Living?
                 <asp:CheckBoxList ID="rdolistParticipateMarchLiving" runat="server" RepeatDirection="Vertical" CssClass="QuestionText">
                     <asp:ListItem Text="One of the camper's parents/guardians" Value="1" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
                     <asp:ListItem Text="Both of the camper's parents/guardians" Value="2" onclick="PageValidator.OnParticipateMarchLivingCheckboxChange(this);" ></asp:ListItem>
