@@ -136,7 +136,7 @@ public partial class Administration_BulkStatusUpdate : Page
         }
         else
         {
-            chkboxYes.Text = "Yes, I understand that consequence of changing the status from Eligible by Staff to Campership Approved; Payment Pending";
+            chkboxYes.Text = "Yes, I have confirmed all the campers in “Eligible; Admin Approved” are registered at the camp indicated above for the indicated session length.";
         }
     }
     protected void ddlStatusTransition_DataBound(object sender, EventArgs e)

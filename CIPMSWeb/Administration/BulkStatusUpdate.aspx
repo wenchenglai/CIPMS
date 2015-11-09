@@ -119,7 +119,7 @@
             <div style="margin-left: 20px;">
                 <br/>
                 <div style="border-width: 2px; border-style: solid; width: 350px; padding: 8px">
-                    <asp:CheckBox runat="server" ID="chkboxYes" Text="Yes, I have cancelled all applications that are no longer eligible for the grant, for the selected camp. All remaining campers attended camp for the indicated session length." />
+                    <asp:CheckBox runat="server" ID="chkboxYes" Text="Yes, I have confirmed all the campers in “Eligible; Admin Approved” are registered at the camp indicated above for the indicated session length." />
                     <br />
                     <asp:TextBox ID="txtInitials" Width="35" runat="server"></asp:TextBox> Enter initials here
                 </div>

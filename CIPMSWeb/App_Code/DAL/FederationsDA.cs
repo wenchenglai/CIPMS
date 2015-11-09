@@ -69,6 +69,7 @@ public class FederationsDA
             ret.Add("isOnlineProcessing", dr["isOnlineProcessing"].ToString());
             ret.Add("isJDSAvailable", dr["isJDSAvailable"].ToString());
             ret.Add("isJDSOnline", dr["isJDSOnline"].ToString());
+            ret.Add("is19DaysOnly", dr["is19DaysOnly"].ToString());
         }
 
         if (dr.Read())

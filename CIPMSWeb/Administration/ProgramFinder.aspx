@@ -19,7 +19,10 @@
                         <li><strong>Contact:</strong> <asp:Label runat="server" ID="lblContact"></asp:Label></li>
                         <li><strong>Email:</strong> <asp:Label runat="server" ID="lblEmail"></asp:Label></li>
                         <li><strong>Phone:</strong> <asp:Label runat="server" ID="lblPhone"></asp:Label></li>
-                        <li><br /><strong>Status:</strong> <asp:Label runat="server" ID="lblStatus"></asp:Label></li>
+                        <li>
+                            <br /><strong>Status:</strong> <asp:Label runat="server" ID="lblStatus"></asp:Label>
+                            <br /><asp:Label ID="lbl19Only" runat="server" Visible="false" ForeColor="Red" Text="Eligibility: 19+ ONLY" />
+                        </li>
                         <li><br /><strong>Availability:</strong> <asp:Label runat="server" ID="lblAvail"></asp:Label></li>
                         <li><strong>General Processing:</strong> <asp:Label runat="server" ID="lblGeneralProcessing"></asp:Label></li>
                         <li><br /><strong>Offers grants for JDS kids:</strong> <asp:Label runat="server" ID="lblJDS"></asp:Label></li>
