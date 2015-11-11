@@ -1577,7 +1577,9 @@ namespace CIPMSBC
 
             if (CJA.IndexOf(strZip.Substring(0, 1)) >= 0)
             {
-                FedId = "65";
+                // A, B, C, E
+                // 2015-11-11 temporarily disable the code below, so AJC zip codes won't be used since it's still using special case zip codes, not fedZipCodes table like Toronto.
+                //FedId = "65";
             }
             else if (Montreal.IndexOf(strZip.Substring(0, 1)) >= 0)
             {

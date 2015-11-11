@@ -213,6 +213,9 @@ public partial class Step1 : System.Web.UI.Page
         lblMessage.Visible = false; // 
         lblMessage.Text = "";
 
+        // When a program is closed, it could be
+        // 1.  The program is closed for good, like the whole year and won't come back online at all
+        // 2.  The program is closed becuase it's not ready, but will open during the year when it's ready - typically we'll redirect them to camper holding page
 		// There are currently two places that could route to Camper Holding Page.  
 		// 1. When the CIPM is shut-down, typically from August to September
 		// 2. When CIPMS is open for registration, typically in mid-October
@@ -348,6 +351,7 @@ public partial class Step1 : System.Web.UI.Page
 		}
 		else if (strNextURL.Trim() == "")
 		{
+            // when the zip code has no any program associated with, and has no PJL special code, we come here e.g. 48105
 			strNextURL = strNationalURL;
 		}
 
