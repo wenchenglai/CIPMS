@@ -80,6 +80,7 @@
     <Compile Include="Eligibility\EligibilityPortland.cs" />
     <Compile Include="Eligibility\EligibilityRamahBerkshires.cs" />
     <Compile Include="Eligibility\EligibilityRamahCanada.cs" />
+    <Compile Include="Eligibility\EligibilityRamahOutdoorAdventure.cs" />
     <Compile Include="Eligibility\EligibilityRamahPoconos.cs" />
     <Compile Include="Eligibility\EligibilityRochester.cs" />
     <Compile Include="Eligibility\EligibilityToronto.cs" />

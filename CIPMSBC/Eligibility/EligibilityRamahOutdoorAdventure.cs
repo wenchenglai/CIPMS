@@ -5,9 +5,9 @@ using System.Text;
 
 namespace CIPMSBC.Eligibility
 {
-    class EligibilityRamahPoconos : EligibilityBase
+    class EligibilityRamahOutdoorAdventure : EligibilityBase
     {
-        public EligibilityRamahPoconos(FederationEnum fed)
+        public EligibilityRamahOutdoorAdventure(FederationEnum fed)
             : base(fed)
         {
         }

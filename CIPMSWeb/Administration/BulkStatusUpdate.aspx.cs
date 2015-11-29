@@ -23,13 +23,13 @@ public partial class Administration_BulkStatusUpdate : Page
             var campYearId = (int)Application["CampYearID"];
             var fedId = (string)Session["FedId"];
 
-            if (fedId != "") {
-            //    lblMsg.Text = "This feature is still under development.";
-            //    btnUpdate.Visible = false;
-            //    return;
+            //if (fedId != "") {
+            ////    lblMsg.Text = "This feature is still under development.";
+            ////    btnUpdate.Visible = false;
+            ////    return;
 
-                ddlStatusTransition.Items.RemoveAt(0);
-            }
+            //    ddlStatusTransition.Items.RemoveAt(0);
+            //}
 
             using (var ctx = new CIPMSEntities())
             {

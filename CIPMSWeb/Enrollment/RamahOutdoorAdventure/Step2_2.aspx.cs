@@ -145,7 +145,7 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
             }
             else
             {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahOutdoorAdventure);
                 objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
             }
 

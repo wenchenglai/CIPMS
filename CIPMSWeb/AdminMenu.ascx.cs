@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Web.Security;
@@ -67,8 +68,8 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
 
-                //var allowedFeds = new List<string>() {"5", "9", "10", "23", "35", "63", "69", "89", "98", "107"};
-                //if (allowedFeds.Exists(x => x == fedId))
+                var allowedFeds = new List<string>() {"5", "6", "9", "10", "11", "23", "24", "35", "36", "42", "43", "45", "54", "55", "61", "62", "67", "70", "71", "73", "80", "83", "89", "93", "103", "106", "107", "108", "111", "112", "114", "115", "116", "118", "119", "120", "121", "122", "123", "124", "126", "131", "132", "133", "134", "135", "136", "137", "139", "140", "143", "144", "145", "147", "148", "149", "150", "151"};
+                if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
             }
 

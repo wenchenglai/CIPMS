@@ -141,7 +141,7 @@ public partial class Step2_Ramah_3 : Page
                 //to update the camp value to the database (to be used for search functionality)
                 CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
 
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahCanada);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.RamahOutdoorAdventure);
                 objEligibility.checkEligibility(strFJCID, out iStatus);
             }
 
