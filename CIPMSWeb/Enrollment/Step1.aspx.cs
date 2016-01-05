@@ -1022,7 +1022,7 @@ public partial class Step1 : System.Web.UI.Page
 
 	protected void NewCamper(UserDetails Info)
 	{
-		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = string.Empty;
+		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = "", strFJCIDFedId = "";
 		DataSet dsFed = null;
 		DataRow dr;
 		int iCount;
@@ -1055,10 +1055,11 @@ public partial class Step1 : System.Web.UI.Page
 			iCount = dsFed.Tables[0].Rows.Count;
 		}
 
-		if (iCount > 0)
+        int sizeOfDS = 0;
+        if (iCount > 0)
 		{
 
-			string strFJCID, strAppType, strFJCIDFedId;
+			string strFJCID, strAppType;
 			strFJCID = Session["FJCID"] != null ? Session["FJCID"].ToString() : string.Empty;
 			strAppType = strFJCIDFedId = string.Empty;
 
@@ -1069,7 +1070,7 @@ public partial class Step1 : System.Web.UI.Page
 				DataRow drCA = dsCamperApplication.Tables[0].Rows[0];
 				strFJCIDFedId = drCA["FederationId"] != null ? drCA["FederationId"].ToString().ToLower() : string.Empty;
 
-
+                
 
                 var StatusID = Convert.ToInt16(drCA["Status"]);
 
@@ -1081,7 +1082,9 @@ public partial class Step1 : System.Web.UI.Page
                 strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
 			}
 
-			if (iCount == 1)
+
+
+            if (iCount == 1)
 			{
 				if (dsFed == null)
 				{
@@ -1093,6 +1096,13 @@ public partial class Step1 : System.Web.UI.Page
 					strFedId = dr["Federation"].ToString();
 				}
 
+                // 2015-12-04 It's possible that the current zip code resides on Program A, but existing (not new) Camper Application has differetn Program
+                // e.g. WashingtonDC zip code, but Washington DC closed due to funding issue, so this camper had to pick a National Camp Program.
+                // if this happens, we actually care about strFJCIDFedID
+                if (strFJCIDFedId != string.Empty && strFJCIDFedId != strFedId)
+                {
+                    strFedId = strFJCIDFedId;
+                }
 
 
 				//to check if the FedId is in the FedIds array declared above
@@ -1145,10 +1155,11 @@ public partial class Step1 : System.Web.UI.Page
 					else
 					{
 						ds = objGeneral.GetFederationDetails(strFedId);
-					}
+                    }
 
 					if (ds.Tables[0].Rows.Count > 0)
 					{
+                        sizeOfDS = ds.Tables[0].Rows.Count;
 						strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
 						//sesion[fedid] will be set only if it is not jwest or orange county
 						//for jwest and orange county it will be set in step1_questions.aspx
@@ -1158,6 +1169,7 @@ public partial class Step1 : System.Web.UI.Page
 					{
 						// 2014-02-06 If come here, it means the FederationID field of CamperApplication is NULL.  This will have catastrophic consequence because the redirect will fail
 						strNextURL = "";
+                        sizeOfDS = 0;
 					}
 				}
 			}
@@ -1185,7 +1197,10 @@ public partial class Step1 : System.Web.UI.Page
 		//to update the Federation Id for the particular FJCID
 		//this will take care of federation changes for a particular application
 		if (strFedId != string.Empty && strNextURL != strStep1QuestionsURL)
-			CamperAppl.UpdateFederationId(hdnFJCID.Value, strFedId);
+        {
+            CamperAppl.UpdateFederationId(hdnFJCID.Value, strFedId);
+        }
+			
 		//added by sreevani as because when fedid is updated camper answers are cleared and even special codes are cleared from tblcamperanswers.
 		if (txtSplCode.Text != "" && Convert.ToInt32(Session["codeValue"]) == 6)
 			InsertCamperAnswers();
@@ -1203,7 +1218,7 @@ public partial class Step1 : System.Web.UI.Page
 		if (strNextURL == "")
 		{
 			lblMessage.Visible = true;
-			lblMessage.Text = "No Federation exists for the given Zip Code";
+			lblMessage.Text = "No Federation exists for the given Zip Code with fedid = " + strFedId.ToString() + " and size of return fed = " + sizeOfDS.ToString() + " and " + iCount.ToString();
 		}
 		else
 		{

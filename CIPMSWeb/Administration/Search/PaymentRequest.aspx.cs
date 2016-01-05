@@ -94,7 +94,7 @@ public partial class Administration_Search_PaymentRequest : System.Web.UI.Page
 			lstYear.Items.Insert(0, new ListItem("--Select--", "-1"));
 
 		lstYear.ClearSelection();
-		lstYear.Items.FindByText(DateTime.Now.Year.ToString()).Selected = true;
+		lstYear.Items.FindByText(Session["CampYear"].ToString()).Selected = true;
     }
 
     private void SetFinalAlert()

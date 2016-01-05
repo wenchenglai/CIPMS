@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Net;
 using System.Web.Security;
 using CIPMSBC;
@@ -47,9 +48,9 @@ public partial class AdminMenu : System.Web.UI.UserControl
             var oCam = new CamperApplication();
 
             this.Visible = IsMenuVisible;
-            var fedId = (string)Session["FedId"];
+            var fedId = (Session["FedId"] != null) ? Session["FedId"].ToString() : "";
             
-            if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["FJCADMIN"])
+            if ((string)Session["RoleID"] == System.Configuration.ConfigurationManager.AppSettings["FJCADMIN"])
             {
                 dvRpts.Visible = false;
                 lnkStatsReport.Visible = true;
@@ -68,9 +69,13 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
 
-                var allowedFeds = new List<string>() {"5", "6", "9", "10", "11", "23", "24", "35", "36", "42", "43", "45", "54", "55", "61", "62", "67", "70", "71", "73", "80", "83", "89", "93", "103", "106", "107", "108", "111", "112", "114", "115", "116", "118", "119", "120", "121", "122", "123", "124", "126", "131", "132", "133", "134", "135", "136", "137", "139", "140", "143", "144", "145", "147", "148", "149", "150", "151"};
+                //if (System.Configuration.ConfigurationManager.AppSettings["AllowMassUpdate"].Split(',').Any(id => id == fedId))
+                //    lnkBulkStatusUpdate.Visible = true;
+
+                var allowedFeds = new List<string>() { "5", "6", "9", "10", "11", "23", "24", "35", "36", "42", "43", "45", "54", "55", "61", "62", "67", "70", "71", "73", "80", "83", "89", "93", "98", "103", "106", "107", "108", "111", "112", "114", "115", "116", "118", "119", "120", "121", "122", "123", "124", "126", "131", "132", "133", "134", "135", "136", "137", "139", "140", "143", "144", "145", "147", "148", "149", "150", "151" };
                 if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
+
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing

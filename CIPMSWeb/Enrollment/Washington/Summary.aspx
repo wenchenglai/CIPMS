@@ -66,7 +66,7 @@
     <table id="tblDisable" runat="server"  width="100%" cellpadding="5" cellspacing="0">
         <tr>
             <td>
-				<img id="Img1" src="../../images/DC logo.jpg" alt="" height="100" width="320" />
+				<img id="Img1" src="logo.jpg" alt="" height="100" width="320" />
             </td>
             <td>
 
