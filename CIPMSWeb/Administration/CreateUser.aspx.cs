@@ -39,7 +39,7 @@ public partial class Administration_CreateUser : System.Web.UI.Page
             }
             else
             {
-                Session["User"] = Convert.ToInt16(Request.QueryString["UsrId"]);
+                Session["User"] = Convert.ToInt32(Request.QueryString["UsrId"]);
                 Session["Mode"] = "U"; //Update Mode
                 PopulateCtrls();
                 _lbl.Text = "Update User";
@@ -74,7 +74,7 @@ public partial class Administration_CreateUser : System.Web.UI.Page
         }
         else if ((string)Session["Mode"] == "U")
         {
-            _objUsrAdmin.UserId = Convert.ToInt16(Session["User"]);
+            _objUsrAdmin.UserId = Convert.ToInt32(Session["User"]);
             try
             {
                 _objUsrAdmin.UpdateUser();
@@ -130,7 +130,7 @@ public partial class Administration_CreateUser : System.Web.UI.Page
     {
         string strUsrId = Request.QueryString["UsrId"];
         DataSet dsUsrDetails;
-        dsUsrDetails = _objUsrAdmin.GetUserById(Convert.ToInt16(strUsrId));
+        dsUsrDetails = _objUsrAdmin.GetUserById(Convert.ToInt32(strUsrId));
 
         txtFirstNm.Text = dsUsrDetails.Tables[0].Rows[0]["FirstName"].ToString();
         txtLastNm.Text = dsUsrDetails.Tables[0].Rows[0]["LastName"].ToString();
@@ -154,26 +154,26 @@ public partial class Administration_CreateUser : System.Web.UI.Page
 
         if (ddlRole.SelectedValue == _strFJCAdmin) //if FJC Admin , Federation & Camp not reqd, set it to -1
         {
-            iRoleId = Convert.ToInt16(_strFJCAdmin);
+            iRoleId = Convert.ToInt32(_strFJCAdmin);
             iFedId = -1;
             txtHidCamps.Text = string.Empty;
         }
         else if (ddlRole.SelectedValue == _strApprover) //if Approver, Federation & Camp not reqd, set it to -1
         {
-            iRoleId = Convert.ToInt16(_strApprover);
+            iRoleId = Convert.ToInt32(_strApprover);
             iFedId = -1;
             txtHidCamps.Text = string.Empty;
         }
         else if (ddlRole.SelectedValue == _strFedAdmin) //if Federation Admin, Camp not reqd, set it to -1
         {
-            iRoleId = Convert.ToInt16(_strFedAdmin);
-            iFedId = Convert.ToInt16(lstFed.SelectedValue);
+            iRoleId = Convert.ToInt32(_strFedAdmin);
+            iFedId = Convert.ToInt32(lstFed.SelectedValue);
             txtHidCamps.Text = string.Empty;
         }
         else if (ddlRole.SelectedValue == _strMovementCampsAdmin)
         {
-            iRoleId = Convert.ToInt16(_strMovementCampsAdmin);
-            iFedId = Convert.ToInt16(lstMovements.SelectedValue);
+            iRoleId = Convert.ToInt32(_strMovementCampsAdmin);
+            iFedId = Convert.ToInt32(lstMovements.SelectedValue);
             txtHidCamps.Text = string.Empty;
         }
 

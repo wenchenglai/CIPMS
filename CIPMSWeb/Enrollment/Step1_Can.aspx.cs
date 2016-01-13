@@ -233,12 +233,12 @@ public partial class Step1_Can : System.Web.UI.Page
                     //to get the modified by user6
                     int iModifiedBy;
                     string CamperUserId = ConfigurationManager.AppSettings["CamperModifiedBy"].ToString();
-                    iModifiedBy = Convert.ToInt16(CamperUserId);
+                    iModifiedBy = Convert.ToInt32(CamperUserId);
                     if (!dr["MODIFIEDUSER"].Equals(DBNull.Value))
-                        iModifiedBy = Convert.ToInt16(dr["MODIFIEDUSER"]);
+                        iModifiedBy = Convert.ToInt32(dr["MODIFIEDUSER"]);
                     
                     //Camper Application has been submitted (or) the Application has been modified by a Admin
-                    if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt16(CamperUserId) && iModifiedBy > 0))
+                    if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt32(CamperUserId) && iModifiedBy > 0))
                     {
                         ddlGender.Items.Insert(0, new ListItem("", "-1"));
                         lblStarGender.Text = "&nbsp;&nbsp;";

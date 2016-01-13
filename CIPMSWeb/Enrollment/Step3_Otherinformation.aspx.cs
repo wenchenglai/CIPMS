@@ -495,7 +495,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 
         //the status value will be set in session once btncheckeligibility_click is fired in step2_3.aspx for any questionnaire
         if (Session["STATUS"] != null)
-            iStatus = Convert.ToInt16(Session["STATUS"]);
+            iStatus = Convert.ToInt32(Session["STATUS"]);
 
         if (strFJCID != "" && strModifiedBy != "" && chkAgreement.Enabled)
         {
@@ -507,7 +507,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 			}
 
             //to submit the application
-            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), iStatus);
             //this will be called only if the logged in user is admin
             if (strModifiedBy != Master.CamperUserId) //session values are not cleared if the user is admin
             {
@@ -554,7 +554,7 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 
         //the status value will be set in session once btncheckeligibility_click is fired in step2_3.aspx for any questionnaire
         if (Session["STATUS"] != null)
-            iStatus = Convert.ToInt16(Session["STATUS"]);
+            iStatus = Convert.ToInt32(Session["STATUS"]);
 
         if (strFJCID != "" && strTablevalues != "" && strModifiedBy != "" && bPerformUpdate)
             RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strTablevalues, strModifiedBy, strComments);

@@ -370,13 +370,13 @@ public partial class AdminSearch : System.Web.UI.Page
         if (txtAge.Text.Trim() == string.Empty)
             iAge = 0;
         else
-            iAge = Convert.ToInt16(txtAge.Text.Trim());
+            iAge = Convert.ToInt32(txtAge.Text.Trim());
 
         int iGrade;
         if (txtGrade.Text.Trim() == string.Empty)
             iGrade = 0;
         else
-            iGrade = Convert.ToInt16(txtGrade.Text.Trim());
+            iGrade = Convert.ToInt32(txtGrade.Text.Trim());
 
         //Set properties/parameters for the stored procedure
         string strFNm = txtCamperNm.Text.Trim();
@@ -389,7 +389,7 @@ public partial class AdminSearch : System.Web.UI.Page
         _objCamperDet.Camplist = txtHidCamps.Text;
         _objCamperDet.Age = iAge;
         _objCamperDet.Grade = iGrade;
-        _objCamperDet.ModifiedBy = Convert.ToInt16(ddlModifiedBy.SelectedValue);
+        _objCamperDet.ModifiedBy = Convert.ToInt32(ddlModifiedBy.SelectedValue);
         _objCamperDet.Status = txtHidStatus.Text;
         _objCamperDet.CampYear = ddlCampYear.SelectedItem.Text;
         if ((string)Session["RoleID"] == ConfigurationManager.AppSettings["CAMPDIRECTOR"].ToString())
@@ -403,7 +403,7 @@ public partial class AdminSearch : System.Web.UI.Page
                 string strUserCamps = "";
                 DataSet dsUsrCamps;
                 _objGen = new General();
-                dsUsrCamps = _objGen.GetUserCamps(Convert.ToInt16(_strUsrID), Convert.ToInt32(Session["CampYear"]));
+                dsUsrCamps = _objGen.GetUserCamps(Convert.ToInt32(_strUsrID), Convert.ToInt32(Session["CampYear"]));
 
                 for (int i = 0; i <= dsUsrCamps.Tables[0].Rows.Count - 1; i++)
                 {
@@ -604,7 +604,7 @@ public partial class AdminSearch : System.Web.UI.Page
                 //TV: 02/2009 - Issue # 4-002: changed Federation from DropDownList to multi-select ListBox,
                 //call new overloaded method in the General class which accepts a comma delimted list of FedIDs
 
-                //dsFedCamps = _objGen.GetFedCamps(Convert.ToInt16(_strFedID));
+                //dsFedCamps = _objGen.GetFedCamps(Convert.ToInt32(_strFedID));
                 dsFedCamps = _objGen.GetFedCamps(_strFedID, ddlCampYear.SelectedItem.Text);
                 //***********
 
@@ -643,7 +643,7 @@ public partial class AdminSearch : System.Web.UI.Page
             //Populate Camp List with Camps associated with the Camp Director
             DataSet dsUsrCamps;
             _objGen = new General();
-            dsUsrCamps = _objGen.GetUserCamps(Convert.ToInt16(_strUsrID),Convert.ToInt32(Session["CampYear"]));
+            dsUsrCamps = _objGen.GetUserCamps(Convert.ToInt32(_strUsrID),Convert.ToInt32(Session["CampYear"]));
             lstCamps.Items.Clear();
             lstCamps.DataSource = dsUsrCamps;
             lstCamps.DataTextField = "Camp";
@@ -885,7 +885,7 @@ public partial class AdminSearch : System.Web.UI.Page
             //TV: 02/2009 - Issue # 4-002: changed Federation from DropDownList to multi-select ListBox,
             //call new overloaded method in the General class which accepts a comma delimted list of FedIDs
 
-            //dsFedCamps = _objGen.GetFedCamps(Convert.ToInt16(_strFedID));
+            //dsFedCamps = _objGen.GetFedCamps(Convert.ToInt32(_strFedID));
             //dsFedCamps = _objGen.GetFedCamps(_strFedID, ddlCampYear.SelectedItem.Text);
             //lstCamps.DataSource = dsFedCamps;
             //lstCamps.DataTextField = "Camp";
@@ -951,7 +951,7 @@ public partial class AdminSearch : System.Web.UI.Page
 
         if (_strRoleID == _strCampDir)
         {
-            dsCamps = _objGen.GetUserCamps(Convert.ToInt16(_strUsrID), Convert.ToInt32(ddlCampYear.SelectedItem.Text));
+            dsCamps = _objGen.GetUserCamps(Convert.ToInt32(_strUsrID), Convert.ToInt32(ddlCampYear.SelectedItem.Text));
             lstCamps.DataSource = dsCamps;
             lstCamps.DataTextField = "Camp";
             lstCamps.DataValueField = "ID";

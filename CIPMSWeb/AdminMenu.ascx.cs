@@ -100,7 +100,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
             {
                 divUpload.Visible = true;
             }
-            _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+            _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
  
             string strUrl = Request.AppRelativeCurrentExecutionFilePath;
 
@@ -181,7 +181,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
     protected void lnkLogOut_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Session.Clear();
         Session.RemoveAll();
@@ -196,14 +196,14 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
     protected void lnkWrkQ_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Search/WorkQueue.aspx");
     }
 
     protected void lnkSearch_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         //TV: 04/2009 - Task # A-052 - fix Search/Manage user bug - replaced
         //Server.Transfer with Response.Redirect to fix problems with the link
@@ -214,21 +214,21 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
     protected void lnkRpts_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         //Server.Transfer("");
     }
 
     protected void lnkAdmin_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/ManageUser.aspx");
     }
 
     protected void lnkCreateUsr_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         //TV: 04/2009 - Task # A-051 - fix Create User/ Update User bug - the QueryString does not
         //get cleared out properly with Server.Transfer, so use Response.Redirect instead
@@ -237,7 +237,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
     protected void lnkManageUsr_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         //TV: 04/2009 - Task # A-052 - fix Search/Manage user bug - replaced
         //Server.Transfer with Response.Redirect to fix problems with the link
@@ -247,21 +247,21 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
     protected void lnkChangePwd_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/ChangePwd.aspx");
     }
 
     protected void lnkSumByCamps_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Reports/Rpt_SummaryReport.aspx?rpt=camps");
     }
 
     protected void lnkSumByStatus_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Reports/Rpt_SummaryReport.aspx?rpt=status");
     }
@@ -283,19 +283,19 @@ public partial class AdminMenu : System.Web.UI.UserControl
     }
     protected void lnkPayment_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Search/PaymentRequest.aspx");
     }
     protected void lnkAudit_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Search/AuditReport.aspx");
     }
     protected void lnkSummary_Click(object sender, EventArgs e)
     {
-        _objCamperDet.UserId = Convert.ToInt16(Session["UsrID"]);
+        _objCamperDet.UserId = Convert.ToInt32(Session["UsrID"]);
         _objCamperDet.LockUnlockRecord("UnLock");
         Response.Redirect("~/Administration/Search/ExecSummary.aspx");
     }

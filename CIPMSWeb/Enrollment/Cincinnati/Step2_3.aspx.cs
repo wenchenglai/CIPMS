@@ -55,7 +55,7 @@ public partial class Step2_Cincinnati_3 : Page
             imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
             if (Session["STATUS"] != null)
             {
-                if (Convert.ToInt16(Session["STATUS"].ToString()) == Convert.ToInt16(StatusInfo.SystemInEligible))
+                if (Convert.ToInt32(Session["STATUS"].ToString()) == Convert.ToInt32(StatusInfo.SystemInEligible))
                 {
                     lblEligibility.Visible = false;
                 }
@@ -190,7 +190,7 @@ public partial class Step2_Cincinnati_3 : Page
                     }
                     InsertCamperAnswers();
                 }
-                iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
+                iCampId = Convert.ToInt32(ddlCamp.SelectedValue);
                 strFJCID = hdnFJCIDStep2_3.Value;
                 //comments used only by the Admin user
                 strComments = txtComments.Text.Trim();
@@ -200,12 +200,12 @@ public partial class Step2_Cincinnati_3 : Page
                     if (isReadOnly)
                     {
                         DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                        iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
                     }
                     else
                     {
                         //to update the camp value to the database (to be used for search functionality)
-                        CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
+                        CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt32(Master.CamperUserId));
 
                         //to check whether the camper is eligible 
                         objEligibility.checkEligibility(strFJCID, out iStatus);
@@ -217,7 +217,7 @@ public partial class Step2_Cincinnati_3 : Page
                     else
                         Session["STATUS"] = iStatus;
 
-                    if (iStatus == Convert.ToInt16(StatusInfo.SystemInEligible))
+                    if (iStatus == Convert.ToInt32(StatusInfo.SystemInEligible))
                     {
                         string strRedirURL;
                         if (Master.UserId != Master.CamperUserId) //then the user is admin
@@ -227,7 +227,7 @@ public partial class Step2_Cincinnati_3 : Page
                         //to update the status to the database    
                         if (!isReadOnly)
                         {
-                            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+                            CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), iStatus);
                         }
                         Response.Redirect(strRedirURL, false);
                     }

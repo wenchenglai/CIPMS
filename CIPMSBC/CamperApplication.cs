@@ -708,7 +708,7 @@ namespace CIPMSBC
                 if (dsDaysInCamp.Tables[0].Rows.Count > 0)
                 {
                     if (!Convert.IsDBNull(dsDaysInCamp.Tables[0].Rows[0]["Days"]))
-                        days = Convert.ToInt16(dsDaysInCamp.Tables[0].Rows[0]["Days"]);
+                        days = Convert.ToInt32(dsDaysInCamp.Tables[0].Rows[0]["Days"]);
                 }
                 return days;
             }
@@ -738,7 +738,7 @@ namespace CIPMSBC
                 if (dsTimeInCamp.Tables[0].Rows.Count > 0)
                 {
                     if (!Convert.IsDBNull(dsTimeInCamp.Tables[0].Rows[0]["TimeInCamp"]))
-                        timeInCamp = Convert.ToInt16(dsTimeInCamp.Tables[0].Rows[0]["TimeInCamp"]);
+                        timeInCamp = Convert.ToInt32(dsTimeInCamp.Tables[0].Rows[0]["TimeInCamp"]);
                 }
                 return timeInCamp;
             }
@@ -853,10 +853,10 @@ namespace CIPMSBC
                 dsThresholdInfo = dal.getDataset("[usp_GetFedThresholdInfo]", param);
 
                 if (!Convert.IsDBNull(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested1"]))
-                    structThresholdInfo.NbrOfPmtRequested1 = Convert.ToInt16(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested1"]);
+                    structThresholdInfo.NbrOfPmtRequested1 = Convert.ToInt32(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested1"]);
 
                 if (!Convert.IsDBNull(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested2"]))
-                    structThresholdInfo.NbrOfPmtRequested2 = Convert.ToInt16(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested2"]);
+                    structThresholdInfo.NbrOfPmtRequested2 = Convert.ToInt32(dsThresholdInfo.Tables[0].Rows[0]["NbrOfPmtRequested2"]);
 
                 if (!Convert.IsDBNull(dsThresholdInfo.Tables[0].Rows[0]["ThresholdType"]))
                     structThresholdInfo.ThresholdType = Convert.ToString(dsThresholdInfo.Tables[0].Rows[0]["ThresholdType"]);
@@ -865,10 +865,10 @@ namespace CIPMSBC
                     structThresholdInfo.ThresholdTypeDescription = Convert.ToString(dsThresholdInfo.Tables[0].Rows[0]["ThresholdTypeDescription"]);
 
                 if (!Convert.IsDBNull(dsThresholdInfo.Tables[0].Rows[0]["Threshold1"]))
-                    structThresholdInfo.Threshold1 = Convert.ToInt16(dsThresholdInfo.Tables[0].Rows[0]["Threshold1"]);
+                    structThresholdInfo.Threshold1 = Convert.ToInt32(dsThresholdInfo.Tables[0].Rows[0]["Threshold1"]);
 
                 if (!Convert.IsDBNull(dsThresholdInfo.Tables[0].Rows[0]["Threshold2"]))
-                    structThresholdInfo.Threshold2 = Convert.ToInt16(dsThresholdInfo.Tables[0].Rows[0]["Threshold2"]);
+                    structThresholdInfo.Threshold2 = Convert.ToInt32(dsThresholdInfo.Tables[0].Rows[0]["Threshold2"]);
                 
                 return structThresholdInfo;
             }
@@ -2229,7 +2229,7 @@ namespace CIPMSBC
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     if (!Convert.IsDBNull(ds.Tables[0].Rows[0]["jwestcount"]))
-                        jwestcount = Convert.ToInt16(ds.Tables[0].Rows[0]["jwestcount"]);
+                        jwestcount = Convert.ToInt32(ds.Tables[0].Rows[0]["jwestcount"]);
                 }
                 return jwestcount;               
             }
@@ -2258,34 +2258,34 @@ namespace CIPMSBC
                 dsJWestReportInfo = dal.getDataset(sp, null);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010Campers"]))
-                    structJWestReportInfo.NoOf2010Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010Campers"]);
+                    structJWestReportInfo.NoOf2010Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012Campers"]))
-                    structJWestReportInfo.NoOf201012Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012Campers"]);
+                    structJWestReportInfo.NoOf201012Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["Noof201018Campers"]))
-                    structJWestReportInfo.Noof201018Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["Noof201018Campers"]);
+                    structJWestReportInfo.Noof201018Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["Noof201018Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2011Campers"]))
-                    structJWestReportInfo.NoOf2011Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2011Campers"]);
+                    structJWestReportInfo.NoOf2011Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2011Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010notreturnedCampers"]))
-                    structJWestReportInfo.NoOf2010notreturnedCampers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010notreturnedCampers"]);
+                    structJWestReportInfo.NoOf2010notreturnedCampers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010notreturnedCampers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201112Campers"]))
-                    structJWestReportInfo.NoOf201012returned201112Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201112Campers"]);
+                    structJWestReportInfo.NoOf201012returned201112Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201112Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201118Campers"]))
-                    structJWestReportInfo.NoOf201012returned201118Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201118Campers"]);
+                    structJWestReportInfo.NoOf201012returned201118Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201012returned201118Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201112Campers"]))
-                    structJWestReportInfo.NoOf201018returned201112Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201112Campers"]);
+                    structJWestReportInfo.NoOf201018returned201112Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201112Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201118Campers"]))
-                    structJWestReportInfo.NoOf201018returned201118Campers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201118Campers"]);
+                    structJWestReportInfo.NoOf201018returned201118Campers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf201018returned201118Campers"]);
 
                 if (!Convert.IsDBNull(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010returnedCampers"]))
-                    structJWestReportInfo.NoOf2010returnedCampers = Convert.ToInt16(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010returnedCampers"]);
+                    structJWestReportInfo.NoOf2010returnedCampers = Convert.ToInt32(dsJWestReportInfo.Tables[0].Rows[0]["NoOf2010returnedCampers"]);
 
                 return structJWestReportInfo;
             }

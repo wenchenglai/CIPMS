@@ -177,7 +177,7 @@ public partial class Enrollment_NorthShore_Step2_2 : System.Web.UI.Page
                     if (isReadOnly)
                     {
                         DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                        iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                        iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
                     }
                     else
                     {
@@ -224,7 +224,7 @@ public partial class Enrollment_NorthShore_Step2_2 : System.Web.UI.Page
             else
                 iGrade = iResult;
 
-            iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
+            iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt32(strModifiedBy));
         }
     }
 

@@ -73,7 +73,7 @@ public partial class Step2_PJL_3 : Page
 				InsertCamperAnswers();
 			}
 
-			iCampId = Convert.ToInt16(ddlCamp.SelectedValue);
+			iCampId = Convert.ToInt32(ddlCamp.SelectedValue);
 			strFJCID = hdnFJCIDStep2_3.Value;
 			//comments used only by the Admin user
 			strComments = txtComments.Text.Trim();
@@ -83,12 +83,12 @@ public partial class Step2_PJL_3 : Page
 				if (isReadOnly)
 				{
 					DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-					iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+					iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
 				}
 				else
 				{
 					//to update the camp value to the database (to be used for search functionality)
-					CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt16(Master.CamperUserId));
+					CamperAppl.updateCamp(strFJCID, iCampId, strComments, Convert.ToInt32(Master.CamperUserId));
 
                     var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.PJL);
 					objEligibility.checkEligibility(strFJCID, out iStatus);
@@ -110,7 +110,7 @@ public partial class Step2_PJL_3 : Page
                     //to update the status to the database                  
 				    if (!isReadOnly)
 				    {
-                        //CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+                        //CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), iStatus);
 				        CamperAppl.UpdateStatus(strFJCID, iStatus, "", 0);
 				    }
 						
@@ -126,7 +126,7 @@ public partial class Step2_PJL_3 : Page
                 {
                     if (!isReadOnly)
                     {
-                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), iStatus);
+                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), iStatus);
                     }
                     Response.Redirect("../ThankYou.aspx", false);
                 }

@@ -55,7 +55,7 @@ public partial class Step2_LACIP_2 : System.Web.UI.Page
 			if (isReadOnly)
 			{
 				DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-				iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+				iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
 			}
 			else
 			{
@@ -186,7 +186,7 @@ public partial class Step2_LACIP_2 : System.Web.UI.Page
 			else
 				iGrade = iResult;
 
-			CamperAppl.updateGrade(strFJCID, iGrade, "", Convert.ToInt16(strModifiedBy));
+			CamperAppl.updateGrade(strFJCID, iGrade, "", Convert.ToInt32(strModifiedBy));
 		}
 	}
 

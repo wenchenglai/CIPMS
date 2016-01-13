@@ -61,14 +61,14 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         //Fed Admin can raise request for cancel application and change camp, federation & session
         if (strRole == strFedAdmin)
         {
-            txtAmt.Enabled = true;
-            ddlCampYear.Enabled = true;
+            //txtAmt.Enabled = true;
+            //ddlCampYear.Enabled = true;
         }
         else if (strRole == strApprover)
         {
             ddlCamp.Enabled = false;
-            txtAmt.Enabled = true;
-            ddlCampYear.Enabled = true;
+            //txtAmt.Enabled = true;
+            //ddlCampYear.Enabled = true;
         }
 
         if (!IsPostBack)
@@ -94,11 +94,11 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 }                
             }
 
-            int iCurrentStatus = Convert.ToInt16(dsCamprDetails.Tables[0].Rows[0]["StatusID"]);
+            int iCurrentStatus = Convert.ToInt32(dsCamprDetails.Tables[0].Rows[0]["StatusID"]);
             
             if (dsCamprDetails.Tables[0].Rows[0]["FedID"] != DBNull.Value)
             {
-                iFedID = Convert.ToInt16(dsCamprDetails.Tables[0].Rows[0]["FedID"]);
+                iFedID = Convert.ToInt32(dsCamprDetails.Tables[0].Rows[0]["FedID"]);
             }
 
             string strCurrentStatus = dsCamprDetails.Tables[0].Rows[0]["Status"].ToString();
@@ -243,7 +243,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         if ((ddlCamp.Items.Count != 0))
             ddlCamp.Items.Insert(0, new ListItem("--Select--", "-1"));
 
-        int iRoleId = Convert.ToInt16(Session["RoleID"]);
+        int iRoleId = Convert.ToInt32(Session["RoleID"]);
 
         //Populate Status dropdown
         DataSet dsStatus;
@@ -419,7 +419,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         ///If all of this data has been selected, the system should allow the state transition. 
         ///If any of this data is missing, the system should display a msg indicating that this data must first be supplied, 
         ///and the transistion should be state rejected returned back to the previous state)
-        if ( Convert.ToInt16(ddlStatus.SelectedItem.Value) == 7)
+        if ( Convert.ToInt32(ddlStatus.SelectedItem.Value) == 7)
             if (!CampDaysExist())
             {
                 lblErr.Font.Bold = true;
@@ -448,7 +448,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         if (strRole == strCampDir)
         {
             //blnDaysUpdated = UpdateDays();
-            iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+            iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
             blnStatusUpdated = UpdateStatus(iStatus);
 
         }
@@ -456,7 +456,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         //If Role is Fed Admin or FJC Admin, update Status and/or Camp and/or Amount
         else if (strRole == strFedAdmin)
         {
-            iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+            iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
             blnStatusUpdated = UpdateStatus(iStatus);
             blnCampUpdated = UpdateCamp();
             blnAmtUpdated = UpdateAmount();
@@ -464,7 +464,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         }
         else if (strRole == strFJCAdmin)
         {
-            iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+            iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
             blnStatusUpdated = UpdateStatus(iStatus);
             blnCampUpdated = UpdateCamp();
            
@@ -481,13 +481,13 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             if (hdnConfirm.Value == "true")
             {
-				iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+				iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
 				blnStatusUpdated = UpdateStatus(iStatus);
 
 				blnCampUpdated = UpdateCamp();
 				blnDaysUpdated = UpdateDays();
 
-				int iCampyear = Convert.ToInt16(ddlCampYear.SelectedItem.Value);
+				int iCampyear = Convert.ToInt32(ddlCampYear.SelectedItem.Value);
 				blnCampYearUpdated = UpdateCampYear(iCampyear);
 
 				blnAmtUpdated = UpdateAmount();
@@ -506,14 +506,14 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
 
         //AG: A-048
         //Not only for Under Review - allow It universally.
-        //if (!blnStatusUpdated && !blnCampUpdated && !blnAmtUpdated && Convert.ToInt16(ddlStatus.SelectedItem.Value) == Convert.ToInt16(StatusInfo.BeingResearched))
+        //if (!blnStatusUpdated && !blnCampUpdated && !blnAmtUpdated && Convert.ToInt32(ddlStatus.SelectedItem.Value) == Convert.ToInt32(StatusInfo.BeingResearched))
         //{ 
             string FJCID = (string)Session["FJCID"];
 		    string OriginalValue = "";
 		    string ChangedValue = "";
 		    string Comment = txtReason.Text.Trim();
 		    string Type = "Review Comments";
-		    int ModifiedBy = Convert.ToInt16(Session["UsrID"]);
+		    int ModifiedBy = Convert.ToInt32(Session["UsrID"]);
             if (Comment.Length > 0)
             {
                 _objCamperApp.InsertApplicationChangeHistory(FJCID, OriginalValue, ChangedValue, Comment, Type, ModifiedBy);
@@ -558,7 +558,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             string strReason = txtReason.Text.Trim();
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
             if (strReason == string.Empty)
             {
                 lblErr.Font.Bold = true;
@@ -583,7 +583,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             string strReason = txtReason.Text.Trim();
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
 
             if (strReason == string.Empty && (iStatus == 15 || iStatus == 9))//only ask for comments when the status is changed to second approval, under review
             {
@@ -610,8 +610,8 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             string strReason = txtReason.Text.Trim();
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
-            int iCamp = Convert.ToInt16(ddlCamp.SelectedItem.Value);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
+            int iCamp = Convert.ToInt32(ddlCamp.SelectedItem.Value);
 
             if (strReason == string.Empty)
             {
@@ -639,7 +639,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
 
             //AG: A-028
             //The system should not ask for reason if the user changes the status 
@@ -657,7 +657,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
 
                 if (txtDays.Text.Trim() != "")
                 {
-                    iDays = Convert.ToInt16(txtDays.Text.Trim());
+                    iDays = Convert.ToInt32(txtDays.Text.Trim());
                     _objCamperApp.UpdateDays(strFJCID, iDays, iUserId, strReason);
                     EligibilityBase.checkEligibilityDays2(strFJCID, iDays, out iStatus);
                     if (iStatus == 15)
@@ -669,7 +669,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 else
                 {
                     iDays = -1;
-                    iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+                    iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
                     UpdateStatus(iStatus);
                 }
 
@@ -701,7 +701,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 }
                 else
                 {
-                    iStatus = Convert.ToInt16(ddlStatus.SelectedItem.Value);
+                    iStatus = Convert.ToInt32(ddlStatus.SelectedItem.Value);
                 }
                 UpdateStatus(iStatus);
                 return true;
@@ -724,7 +724,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             string strReason = txtReason.Text.Trim();
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
 
             if (strReason == string.Empty)
             {
@@ -764,7 +764,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         {
             string strReason = txtReason.Text.Trim();
             string strFJCID = (string)Session["FJCID"];
-            int iUserId = Convert.ToInt16(Session["UsrID"]);
+            int iUserId = Convert.ToInt32(Session["UsrID"]);
 
             if (strReason == string.Empty)
             {
@@ -790,7 +790,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
 
     protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (Convert.ToInt16(ddlStatus.SelectedItem.Value) == 15)
+        if (Convert.ToInt32(ddlStatus.SelectedItem.Value) == 15)
         {
             lblErr.Font.Bold = false;
             lblErr.Text = " You must include the following information in your reason for explaining why this camper " +
@@ -846,7 +846,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
                 structChangeDetails ChangeDetails = new structChangeDetails();
                 int requestID = 0;
                 string strFJCID = Session["FJCID"].ToString();
-                int iUserId = Convert.ToInt16(Session["UsrID"]);
+                int iUserId = Convert.ToInt32(Session["UsrID"]);
                 ChangeDetails.FJCID = long.Parse(strFJCID);
                 ChangeDetails.RequestType = ddlAdjustmentType.SelectedItem != null ? Int32.Parse(ddlAdjustmentType.SelectedValue) : 0;
 

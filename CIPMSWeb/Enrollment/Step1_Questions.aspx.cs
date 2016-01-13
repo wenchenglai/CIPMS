@@ -659,7 +659,7 @@ public partial class Step1_Questions : System.Web.UI.Page
                     }
                     else
                     {
-                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt16(strModifiedBy), (int)StatusInfo.SystemInEligible);
+                        CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), (int)StatusInfo.SystemInEligible);
                         Panel2.Visible = false;
                         Session["STATUS"] = (int)StatusInfo.SystemInEligible;
                         Response.Redirect("ThankYou.aspx", false);
@@ -951,7 +951,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             else
                 iGrade = iResult;
 
-            iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
+            iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt32(strModifiedBy));
         }
     }
 
@@ -1993,8 +1993,8 @@ public partial class Step1_Questions : System.Web.UI.Page
             //strFedId = hdnFEDID.Value;
             //if (!string.IsNullOrEmpty(strFedId))
             //{
-                //dsSchools = objGeneral.GetSchoolListByFederation(Convert.ToInt16(strFedId));
-        dsSchools = objGeneral.GetSchoolListByFederation(Convert.ToInt16(_strJWestFedId), Master.CampYear);                
+                //dsSchools = objGeneral.GetSchoolListByFederation(Convert.ToInt32(strFedId));
+        dsSchools = objGeneral.GetSchoolListByFederation(Convert.ToInt32(_strJWestFedId), Master.CampYear);                
                 if (dsSchools.Tables[0].Rows.Count > 0)
                 {
                     ddlCamperSchool.DataSource = dsSchools;

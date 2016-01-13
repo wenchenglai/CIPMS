@@ -927,7 +927,7 @@ namespace CIPMSBC
             CamperApplication oCamperAppl = new CamperApplication();
             DataRow dr;
 
-            int iModifiedBy = Convert.ToInt16(sCamperUserID);
+            int iModifiedBy = Convert.ToInt32(sCamperUserID);
 
             dsApplSubmitInfo = oCamperAppl.GetApplicationSubmittedInfo(sFJCID);
             int iCount = dsApplSubmitInfo.Tables[0].Rows.Count;
@@ -943,12 +943,12 @@ namespace CIPMSBC
                 //to get the modified by user6
 				if (!dr["ModifiedUser"].Equals(DBNull.Value))
                 {
-					iModifiedBy = Convert.ToInt16(dr["ModifiedUser"]);
+					iModifiedBy = Convert.ToInt32(dr["ModifiedUser"]);
                 }
 
                 var currentStatus = (StatusInfo)dr["Status"];
 				if (currentStatus != StatusInfo.EligibleContactParentsAagain)
-					if (!string.IsNullOrEmpty(sSubmittedDate) || (iModifiedBy != Convert.ToInt16(sCamperUserID) && iModifiedBy > 0 && currentStatus != StatusInfo.WinnerPJLottery))
+					if (!string.IsNullOrEmpty(sSubmittedDate) || (iModifiedBy != Convert.ToInt32(sCamperUserID) && iModifiedBy > 0 && currentStatus != StatusInfo.WinnerPJLottery))
 					{
 						//Camper Application has been submitted (or) the Application has been modified by a Admin
 						bReturnCode = true;

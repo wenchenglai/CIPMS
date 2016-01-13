@@ -75,13 +75,13 @@ public partial class Administration_Search_WorkQueue : System.Web.UI.Page
     private void SetVals()
     {      
         var strRole = (string)Session["RoleID"];
-        var userId = Convert.ToInt16(Session["UsrID"]);
+        var userId = Convert.ToInt32(Session["UsrID"]);
 
         if (strRole == ConfigurationManager.AppSettings["CAMPDIRECTOR"])
         {
             //If logged in role is Camp Director show records for his camp(s) with status Elligible by Staff
             var strUserCamps = string.Empty;
-            DataSet dsUserCamps = _objGen.GetUserCamps(userId, Convert.ToInt16(Session["CampYear"].ToString()));
+            DataSet dsUserCamps = _objGen.GetUserCamps(userId, Convert.ToInt32(Session["CampYear"].ToString()));
             for (int i = 0; i <= dsUserCamps.Tables[0].Rows.Count - 1; i++)
             {
                 if (strUserCamps == string.Empty)

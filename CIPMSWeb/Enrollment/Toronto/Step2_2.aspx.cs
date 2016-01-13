@@ -162,7 +162,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
             if (isReadOnly)
             {
                 DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+                iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
             }
             else
             {
@@ -246,7 +246,7 @@ public partial class TorontoPage2 : System.Web.UI.Page
 		
 		if (strFJCID != "" && strModifiedBy != "" && bPerformUpdate)
 		{
-            int iRowsAffected = CamperAppl.updateGrade(strFJCID, Int32.Parse(ddlGrade.SelectedValue), txtComments.Text, Convert.ToInt16(strModifiedBy));
+            int iRowsAffected = CamperAppl.updateGrade(strFJCID, Int32.Parse(ddlGrade.SelectedValue), txtComments.Text, Convert.ToInt32(strModifiedBy));
 		}
 	}
 

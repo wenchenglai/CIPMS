@@ -151,7 +151,7 @@ public partial class Common : System.Web.UI.MasterPage
 
 				bool isEligibleContactParentsAgain = false;
 				if (Session["STATUS"] != null)
-					if (Convert.ToInt16(Session["STATUS"]) == (int)StatusInfo.EligibleContactParentsAagain)
+					if (Convert.ToInt32(Session["STATUS"]) == (int)StatusInfo.EligibleContactParentsAagain)
 						isEligibleContactParentsAgain = true;
 
 				if (!isEligibleContactParentsAgain)
@@ -362,7 +362,7 @@ public partial class Common : System.Web.UI.MasterPage
                              dr = dsApplStatus.Tables[0].Rows[0];
                              //to get the status
                              //if (!dr["STATUS"].Equals(DBNull.Value))
-                             status = Convert.ToInt16(dr["STATUS"]);
+                             status = Convert.ToInt32(dr["STATUS"]);
 
 
                              //If Status is 'Payment requested' then disable the questionnaire for Admin
@@ -471,7 +471,7 @@ public partial class Common : System.Web.UI.MasterPage
             {
                 strFJCID = Session["FJCID"].ToString();
                 strSubmittedDate = string.Empty;
-                iModifiedBy = Convert.ToInt16(CamperUserId);
+                iModifiedBy = Convert.ToInt32(CamperUserId);
                 if (!string.IsNullOrEmpty(strFJCID) && UserId == CamperUserId)
                 {
                     dsApplSubmitInfo = objCamperAppl.GetApplicationSubmittedInfo(strFJCID);
@@ -485,7 +485,7 @@ public partial class Common : System.Web.UI.MasterPage
 
                         //to get the modified by user6
                         if (!dr["MODIFIEDUSER"].Equals(DBNull.Value))
-                            iModifiedBy = Convert.ToInt16(dr["MODIFIEDUSER"]);
+                            iModifiedBy = Convert.ToInt32(dr["MODIFIEDUSER"]);
 
                         //to get the modified by user6
                         int status = 0;
@@ -493,7 +493,7 @@ public partial class Common : System.Web.UI.MasterPage
                             status = Convert.ToInt32(dr["Status"]);
 
                         //Camper Application has been submitted (or) the Application has been modified by a Admin
-                        if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt16(CamperUserId) && iModifiedBy > 0 && status != (int)StatusInfo.WinnerPJLottery ))
+                        if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt32(CamperUserId) && iModifiedBy > 0 && status != (int)StatusInfo.WinnerPJLottery ))
                         {
                             //to disable the controls in the panel (Panel1 and Panel2 in all the questionnaire)
                             for (int i = 1; i <= 2; i++)

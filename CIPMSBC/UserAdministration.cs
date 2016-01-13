@@ -283,7 +283,7 @@ namespace CIPMSBC
             try
             {
                 _objDAL.ExecuteNonQuery("[usp_InsertAdminUser]", sparams);
-                iUsrId = Convert.ToInt16(sparams[10].Value);
+                iUsrId = Convert.ToInt32(sparams[10].Value);
                 return iUsrId;
             }
             catch (Exception ex)

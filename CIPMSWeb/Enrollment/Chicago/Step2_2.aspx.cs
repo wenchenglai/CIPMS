@@ -61,7 +61,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			if (isReadOnly)
 			{
 				DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-				iStatus = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+				iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
 			}
 			else
 			{
@@ -76,8 +76,13 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		// Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
 		if (ddlJewishDaySchool.SelectedValue == "3")
 		{
-            // 2014-10-10 Enable Chicaog coupon for in winter every year after PJ Lottery is closed below by commenting the code below
-			//Response.Redirect("Step2_coupon.aspx");
+            // 2014-10-10 Enable Chicaog coupon for in winter every year after PJ Lottery is closed below by commenting the code below, usually this happens end of year or early new year
+            bool isOn = ConfigurationManager.AppSettings["ChicagoCouponProgram"] == "On";
+
+            if (isOn)
+            {
+                Response.Redirect("Step2_coupon.aspx");
+            }
 
             // 2014-10-10 In the early fall of every year, we should use PJ lottery
             var url = "Step2_camp_coupon_holding.aspx?prev=";
@@ -271,7 +276,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 			else
 				iGrade = iResult;
 
-			iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt16(strModifiedBy));
+			iRowsAffected = CamperAppl.updateGrade(strFJCID, iGrade, strComments, Convert.ToInt32(strModifiedBy));
 		}
 	}
 

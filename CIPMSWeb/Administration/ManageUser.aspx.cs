@@ -76,8 +76,8 @@ public partial class Administration_ManageUser : System.Web.UI.Page
         _objUsrAdmin.FirstName = txtFirstNm.Text.Trim();
         _objUsrAdmin.LastName = txtLastNm.Text.Trim();
         _objUsrAdmin.Email = txtEmail.Text.Trim();
-        _objUsrAdmin.FederationID = Convert.ToInt16(ddlFed.SelectedValue);
-        _objUsrAdmin.MovementID = Convert.ToInt16(ddlMovement.SelectedValue);
+        _objUsrAdmin.FederationID = Convert.ToInt32(ddlFed.SelectedValue);
+        _objUsrAdmin.MovementID = Convert.ToInt32(ddlMovement.SelectedValue);
     }
 
     private void PopulateGrid()
@@ -97,7 +97,7 @@ public partial class Administration_ManageUser : System.Web.UI.Page
 
         if (e.CommandName == "Delete")
         {
-            _objUsrAdmin.DeleteUser(Convert.ToInt16(strUsrId));
+            _objUsrAdmin.DeleteUser(Convert.ToInt32(strUsrId));
 
             //************
             //TV: 04/2009 - double check that the user was deleted (which means the Active flag was set to false)
@@ -105,7 +105,7 @@ public partial class Administration_ManageUser : System.Web.UI.Page
             string sErrMsg = "There may have been a problem with the Delete action. Please check with your system administrator for the user whose ID number is: " + strUsrId;
 
             //get user details
-            DataSet dsUsrDetails = _objUsrAdmin.GetUserById(Convert.ToInt16(strUsrId));
+            DataSet dsUsrDetails = _objUsrAdmin.GetUserById(Convert.ToInt32(strUsrId));
             if (dsUsrDetails != null && dsUsrDetails.Tables[0] != null && dsUsrDetails.Tables[0].Rows.Count > 0)
             {
                 //check the value of the Active flag - if it is false, then the user was deleted ("logically deleted")

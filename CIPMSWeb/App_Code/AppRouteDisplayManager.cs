@@ -19,7 +19,7 @@ public class AppRouteDisplayManager
         var statusObj = HttpContext.Current.Session["STATUS"];
         if (statusObj != null)
         {
-            var status = (StatusInfo)Convert.ToInt16(statusObj);
+            var status = (StatusInfo)Convert.ToInt32(statusObj);
             if (status == StatusInfo.SystemEligible || 
                 status == StatusInfo.EligibleCampCoupon || 
                 status == StatusInfo.EligiblePendingSchool ||

@@ -72,19 +72,19 @@ namespace CIPMSBC.Eligibility
                     CamperGrantInfo.FJCID = Convert.ToInt64(drCamperGrant["FJCID"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["FederationID"]))
-                    CamperGrantInfo.FederationID = Convert.ToInt16(drCamperGrant["FederationID"]);
+                    CamperGrantInfo.FederationID = Convert.ToInt32(drCamperGrant["FederationID"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["CampID"]))
-                    CamperGrantInfo.CampID = Convert.ToInt16(drCamperGrant["CampID"]);
+                    CamperGrantInfo.CampID = Convert.ToInt32(drCamperGrant["CampID"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["TimeInCamp"]))
-                    CamperGrantInfo.TimeInCamp = Convert.ToInt16(drCamperGrant["TimeInCamp"]);
+                    CamperGrantInfo.TimeInCamp = Convert.ToInt32(drCamperGrant["TimeInCamp"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["CampYearID"]))
-                    CamperGrantInfo.CampYearID = Convert.ToInt16(drCamperGrant["CampYearID"]);
+                    CamperGrantInfo.CampYearID = Convert.ToInt32(drCamperGrant["CampYearID"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["DaysInCamp"]))
-                    CamperGrantInfo.DaysInCamp = Convert.ToInt16(drCamperGrant["DaysInCamp"]);
+                    CamperGrantInfo.DaysInCamp = Convert.ToInt32(drCamperGrant["DaysInCamp"]);
 
                 if (!Convert.IsDBNull(drCamperGrant["OverProjection"]))
                     CamperGrantInfo.OverProjection = Convert.ToBoolean(drCamperGrant["OverProjection"]);
@@ -115,7 +115,7 @@ namespace CIPMSBC.Eligibility
             {
                 drCamper = dsCamperApplication.Tables[0].Rows[0];
                 if (!Convert.IsDBNull(drCamper["Camp"]))
-                    CampID = Convert.ToInt16(drCamper["Camp"]);
+                    CampID = Convert.ToInt32(drCamper["Camp"]);
             }
             return CampID;
         }
@@ -132,7 +132,7 @@ namespace CIPMSBC.Eligibility
             {
                 drCamper = dsCamperApplication.Tables[0].Rows[0];
                 if (!Convert.IsDBNull(drCamper["Days"]))
-                    Days = Convert.ToInt16(drCamper["Days"]);
+                    Days = Convert.ToInt32(drCamper["Days"]);
             }
 
             //if number of days was not entered by Camp Director
@@ -480,7 +480,7 @@ namespace CIPMSBC.Eligibility
         {
             CamperApplication CamperAppl = new CamperApplication();
             DataSet dsApp = CamperAppl.getCamperApplication(FJCID);
-            int StatusValue = Convert.ToInt16(dsApp.Tables[0].Rows[0]["Status"]);
+            int StatusValue = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
 
             CamperAppl = null;
             return StatusValue;
