@@ -248,7 +248,7 @@ public partial class Step1 : System.Web.UI.Page
             return;
         }
 
-		string strNextURL = string.Empty, strCheckUpdate, strFedId = string.Empty;
+		string strCheckUpdate, strFedId = string.Empty;
 		
 		int check = 0;
 
@@ -331,6 +331,8 @@ public partial class Step1 : System.Web.UI.Page
 		var redirectionLogic = new Redirection_Logic();
 		redirectionLogic.GetNextFederationDetails(Session["FJCID"] != null ? Session["FJCID"].ToString() : "");
 
+        string strNextURL = "";
+
         if (fedCount == 1)
 		{
 			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
@@ -404,7 +406,221 @@ public partial class Step1 : System.Web.UI.Page
 		}
 	}
 
-	void btnReturnAdmin_Click(object sender, EventArgs e)
+    protected void NewCamper(UserDetails Info)
+    {
+        string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = "", strFJCIDFedId = "";
+        DataSet dsFed = null;
+        DataRow dr;
+        int iCount;
+        DataSet dsMiiPReferalCodeDetails = new DataSet();
+        string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
+        string ConfigRamahDarom = ConfigurationManager.AppSettings["2012CRD6481"];
+        string ConfigSpecialPJLCapitalCode = "PJGTC2014B";
+        strAction = hdnPerformAction.Value;
+        strCamperUserId = Master.CamperUserId;
+
+        // BY Rajesh - Checks if ZipCode is Alphanumeric
+        if (ddlCountry.SelectedItem.Text.ToLower() == "canada" &&
+            (txtZipCode.Text.StartsWith("A")
+            || txtZipCode.Text.StartsWith("B")
+            || txtZipCode.Text.StartsWith("C")
+            || txtZipCode.Text.StartsWith("E")
+            || txtZipCode.Text.StartsWith("G")
+            || txtZipCode.Text.StartsWith("H")
+            || txtZipCode.Text.StartsWith("J")
+            || txtZipCode.Text.StartsWith("L")
+            || txtZipCode.Text.StartsWith("M")
+            || txtZipCode.Text.StartsWith("N")
+            ))
+        {
+            iCount = 1;
+        }
+        else
+        {
+            dsFed = objGeneral.GetFederationForZipCode(Info.ZipCode);
+            iCount = dsFed.Tables[0].Rows.Count;
+        }
+
+        int sizeOfDS = 0;
+        if (iCount > 0)
+        {
+
+            string strFJCID, strAppType;
+            strFJCID = Session["FJCID"] != null ? Session["FJCID"].ToString() : string.Empty;
+            strAppType = strFJCIDFedId = string.Empty;
+
+            if (strFJCID != string.Empty)
+            {
+                CamperApplication oCA = new CamperApplication();
+                DataSet dsCamperApplication = oCA.getCamperApplication(strFJCID);
+                DataRow drCA = dsCamperApplication.Tables[0].Rows[0];
+                strFJCIDFedId = drCA["FederationId"] != null ? drCA["FederationId"].ToString().ToLower() : string.Empty;
+
+
+
+                var StatusID = Convert.ToInt32(drCA["Status"]);
+
+                if (StatusID == (int)StatusInfo.EligiblePJLottery)
+                {
+                    Response.Redirect("~/TrackMyStatus.aspx");
+                }
+
+                strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
+            }
+
+
+
+            if (iCount == 1)
+            {
+                if (dsFed == null)
+                {
+                    strFedId = objGeneral.GetCanadianZipCode(Info.ZipCode);
+                }
+                else if (dsFed.Tables.Count > 0)
+                {
+                    dr = dsFed.Tables[0].Rows[0];
+                    strFedId = dr["Federation"].ToString();
+                }
+
+                // 2015-12-04 It's possible that the current zip code resides on Program A, but existing (not new) Camper Application has differetn Program
+                // e.g. WashingtonDC zip code, but Washington DC closed due to funding issue, so this camper had to pick a National Camp Program.
+                // if this happens, we actually care about strFJCIDFedID
+                if (strFJCIDFedId != string.Empty && strFJCIDFedId != "0" && strFJCIDFedId != strFedId)
+                {
+                    strFedId = strFJCIDFedId;
+                }
+
+
+                //to check if the FedId is in the FedIds array declared above
+                if (doStep1questions(strFedId) && strAppType != "c")
+                {
+                    strNextURL = strStep1QuestionsURL;
+                    Session["ZIPCODE"] = Info.ZipCode; //zip code will be used in step1_questions.aspx
+
+                }
+                else if (doStep1_WD_CAL_Page(strFedId) && strAppType != "c")
+                {
+                    strNextURL = strWashingtonCampAiryLouiseURL;
+                    Session["ZIPCODE"] = Info.ZipCode;
+                    if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
+                    {
+                        DataSet ds;
+                        if (strFJCIDFedId != "" && strFJCIDFedId != "0")
+                        {
+                            strFedId = strFJCIDFedId;
+                            ds = objGeneral.GetFederationDetails(strFJCIDFedId);
+                        }
+                        else
+                        {
+                            ds = objGeneral.GetFederationDetails(strFedId);
+                        }
+                    }
+                }
+                else //it is not jwest/orange/jwest la / la cip
+                {
+                    //to get the navigation url for the federation based on the federation id
+                    DataSet ds;
+                    if (strAppType != string.Empty && strAppType == "c")
+                    {
+                        getIntermediateRedirection(strFJCIDFedId, strFedId);
+                        strFedId = strFJCIDFedId;
+                        ds = objGeneral.GetFederationDetails(strFJCIDFedId);
+                    }
+                    else if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
+                    {
+                        if (strFJCIDFedId != "" && strFJCIDFedId != "0")
+                        {
+                            strFedId = strFJCIDFedId;
+                            ds = objGeneral.GetFederationDetails(strFJCIDFedId);
+                        }
+                        else
+                        {
+                            ds = objGeneral.GetFederationDetails(strFedId);
+                        }
+                    }
+                    else
+                    {
+                        ds = objGeneral.GetFederationDetails(strFedId);
+                    }
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        sizeOfDS = ds.Tables[0].Rows.Count;
+                        strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
+                        //sesion[fedid] will be set only if it is not jwest or orange county
+                        //for jwest and orange county it will be set in step1_questions.aspx
+                        Session["FedId"] = strFedId;
+                    }
+                    else
+                    {
+                        // 2014-02-06 If come here, it means the FederationID field of CamperApplication is NULL.  This will have catastrophic consequence because the redirect will fail
+                        strNextURL = "";
+                        sizeOfDS = 0;
+                    }
+                }
+            }
+        }
+
+        int codeValue = Convert.ToInt32(Session["codeValue"]);
+        if (strAction == "INSERT")
+        {
+            ProcessCamperInfo(Info);
+            if (codeValue == 6)
+                InsertCamperAnswers();
+            hdnPerformAction.Value = "UPDATE";
+        }
+        else if (strAction == "UPDATE")
+        {
+            strCheckUpdate = CheckforUpdate();
+            if ((Info.ModifiedBy == strCamperUserId) && (strCheckUpdate == "0")) //some modification done and user is not admin
+                ProcessCamperInfo(Info);
+        }
+
+        //PJL Day School code verification.
+        if (codeValue == 1)
+            validatePJLDaySchoolCodeRedirection();
+
+        //to update the Federation Id for the particular FJCID
+        //this will take care of federation changes for a particular application
+        if (strFedId != string.Empty && strNextURL != strStep1QuestionsURL)
+        {
+            CamperAppl.UpdateFederationId(hdnFJCID.Value, strFedId);
+        }
+
+        //added by sreevani as because when fedid is updated camper answers are cleared and even special codes are cleared from tblcamperanswers.
+        if (txtSplCode.Text != "" && Convert.ToInt32(Session["codeValue"]) == 6)
+            InsertCamperAnswers();
+        if (UserInfo.IsJewish == "2")
+        {
+            Session["STATUS"] = StatusInfo.NonJewish;
+            strNextURL = "ThankYou.aspx";
+        }
+        if (strNextURL == "" && strFedId == "" && strSplURL != "")
+        {
+            strNextURL = strSplURL;
+            Session["splCode"] = txtSplCode.Text;
+        }
+
+        if (strNextURL == "")
+        {
+            lblMessage.Visible = true;
+            lblMessage.Text = "No Federation exists for the given Zip Code with fedid = " + strFedId.ToString() + " and size of return fed = " + sizeOfDS.ToString() + " and " + iCount.ToString();
+        }
+        else
+        {
+            Session["FJCID"] = hdnFJCID.Value;
+
+            if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode || txtSplCode.Text.ToUpper() == ConfigRamahDarom)
+                Response.Redirect(strNationalURL);
+            else
+            {
+                Response.Redirect(strNextURL);
+            }
+
+        }
+    }
+
+    void btnReturnAdmin_Click(object sender, EventArgs e)
 	{
 		string strRedirURL;
 		string strCheckUpdate;
@@ -1020,219 +1236,7 @@ public partial class Step1 : System.Web.UI.Page
 		return isexceededcount;
 	}
 
-	protected void NewCamper(UserDetails Info)
-	{
-		string strNextURL = string.Empty, strAction, strCamperUserId, strCheckUpdate, strFedId = "", strFJCIDFedId = "";
-		DataSet dsFed = null;
-		DataRow dr;
-		int iCount;
-		DataSet dsMiiPReferalCodeDetails = new DataSet();
-		string ConfigSpecialPJLCode = ConfigurationManager.AppSettings["SpecialPJLCode"];
-		string ConfigRamahDarom = ConfigurationManager.AppSettings["2012CRD6481"];
-		string ConfigSpecialPJLCapitalCode = "PJGTC2014B";
-		strAction = hdnPerformAction.Value;
-		strCamperUserId = Master.CamperUserId;
 
-		// BY Rajesh - Checks if ZipCode is Alphanumeric
-		if (ddlCountry.SelectedItem.Text.ToLower() == "canada" &&
-			(txtZipCode.Text.StartsWith("A")
-			|| txtZipCode.Text.StartsWith("B")
-			|| txtZipCode.Text.StartsWith("C")
-			|| txtZipCode.Text.StartsWith("E")
-			|| txtZipCode.Text.StartsWith("G")
-			|| txtZipCode.Text.StartsWith("H")
-			|| txtZipCode.Text.StartsWith("J")
-			|| txtZipCode.Text.StartsWith("L")
-			|| txtZipCode.Text.StartsWith("M")
-			|| txtZipCode.Text.StartsWith("N")
-			))
-		{
-			iCount = 1;
-		}
-		else
-		{
-			dsFed = objGeneral.GetFederationForZipCode(Info.ZipCode);
-			iCount = dsFed.Tables[0].Rows.Count;
-		}
-
-        int sizeOfDS = 0;
-        if (iCount > 0)
-		{
-
-			string strFJCID, strAppType;
-			strFJCID = Session["FJCID"] != null ? Session["FJCID"].ToString() : string.Empty;
-			strAppType = strFJCIDFedId = string.Empty;
-
-			if (strFJCID != string.Empty)
-			{
-				CamperApplication oCA = new CamperApplication();
-				DataSet dsCamperApplication = oCA.getCamperApplication(strFJCID);
-				DataRow drCA = dsCamperApplication.Tables[0].Rows[0];
-				strFJCIDFedId = drCA["FederationId"] != null ? drCA["FederationId"].ToString().ToLower() : string.Empty;
-
-                
-
-                var StatusID = Convert.ToInt32(drCA["Status"]);
-
-                if (StatusID == (int)StatusInfo.EligiblePJLottery)
-                {
-                    Response.Redirect("~/TrackMyStatus.aspx");
-                }
-
-                strAppType = drCA["AppType"] != null ? drCA["AppType"].ToString().ToLower() : string.Empty;
-			}
-
-
-
-            if (iCount == 1)
-			{
-				if (dsFed == null)
-				{
-					strFedId = objGeneral.GetCanadianZipCode(Info.ZipCode);
-				}
-				else if (dsFed.Tables.Count > 0)
-				{
-					dr = dsFed.Tables[0].Rows[0];
-					strFedId = dr["Federation"].ToString();
-				}
-
-                // 2015-12-04 It's possible that the current zip code resides on Program A, but existing (not new) Camper Application has differetn Program
-                // e.g. WashingtonDC zip code, but Washington DC closed due to funding issue, so this camper had to pick a National Camp Program.
-                // if this happens, we actually care about strFJCIDFedID
-                if (strFJCIDFedId != string.Empty && strFJCIDFedId != strFedId)
-                {
-                    strFedId = strFJCIDFedId;
-                }
-
-
-				//to check if the FedId is in the FedIds array declared above
-				if (doStep1questions(strFedId) && strAppType != "c")
-				{
-					strNextURL = strStep1QuestionsURL;
-					Session["ZIPCODE"] = Info.ZipCode; //zip code will be used in step1_questions.aspx
-
-				}
-				else if (doStep1_WD_CAL_Page(strFedId) && strAppType != "c")
-				{
-					strNextURL = strWashingtonCampAiryLouiseURL;
-					Session["ZIPCODE"] = Info.ZipCode;
-					if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
-					{
-						DataSet ds;
-						if (strFJCIDFedId != "" && strFJCIDFedId != "0")
-						{
-							strFedId = strFJCIDFedId;
-							ds = objGeneral.GetFederationDetails(strFJCIDFedId);
-						}
-						else
-						{
-							ds = objGeneral.GetFederationDetails(strFedId);
-						}
-					}
-				}
-				else //it is not jwest/orange/jwest la / la cip
-				{
-					//to get the navigation url for the federation based on the federation id
-					DataSet ds;
-					if (strAppType != string.Empty && strAppType == "c")
-					{
-						getIntermediateRedirection(strFJCIDFedId, strFedId);
-						strFedId = strFJCIDFedId;
-						ds = objGeneral.GetFederationDetails(strFJCIDFedId);
-					}
-					else if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode)
-					{
-						if (strFJCIDFedId != "" && strFJCIDFedId != "0")
-						{
-							strFedId = strFJCIDFedId;
-							ds = objGeneral.GetFederationDetails(strFJCIDFedId);
-						}
-						else
-						{
-							ds = objGeneral.GetFederationDetails(strFedId);
-						}
-					}
-					else
-					{
-						ds = objGeneral.GetFederationDetails(strFedId);
-                    }
-
-					if (ds.Tables[0].Rows.Count > 0)
-					{
-                        sizeOfDS = ds.Tables[0].Rows.Count;
-						strNextURL = ds.Tables[0].Rows[0]["NavigationURL"].ToString();
-						//sesion[fedid] will be set only if it is not jwest or orange county
-						//for jwest and orange county it will be set in step1_questions.aspx
-						Session["FedId"] = strFedId;
-					}
-					else
-					{
-						// 2014-02-06 If come here, it means the FederationID field of CamperApplication is NULL.  This will have catastrophic consequence because the redirect will fail
-						strNextURL = "";
-                        sizeOfDS = 0;
-					}
-				}
-			}
-		}
-
-		int codeValue = Convert.ToInt32(Session["codeValue"]);
-		if (strAction == "INSERT")
-		{
-			ProcessCamperInfo(Info);
-			if (codeValue == 6)
-				InsertCamperAnswers();
-			hdnPerformAction.Value = "UPDATE";
-		}
-		else if (strAction == "UPDATE")
-		{
-			strCheckUpdate = CheckforUpdate();
-			if ((Info.ModifiedBy == strCamperUserId) && (strCheckUpdate == "0")) //some modification done and user is not admin
-				ProcessCamperInfo(Info);
-		}
-
-		//PJL Day School code verification.
-		if (codeValue == 1)
-			validatePJLDaySchoolCodeRedirection();
-
-		//to update the Federation Id for the particular FJCID
-		//this will take care of federation changes for a particular application
-		if (strFedId != string.Empty && strNextURL != strStep1QuestionsURL)
-        {
-            CamperAppl.UpdateFederationId(hdnFJCID.Value, strFedId);
-        }
-			
-		//added by sreevani as because when fedid is updated camper answers are cleared and even special codes are cleared from tblcamperanswers.
-		if (txtSplCode.Text != "" && Convert.ToInt32(Session["codeValue"]) == 6)
-			InsertCamperAnswers();
-		if (UserInfo.IsJewish == "2")
-		{
-			Session["STATUS"] = StatusInfo.NonJewish;
-			strNextURL = "ThankYou.aspx";
-		}
-		if (strNextURL == "" && strFedId == "" && strSplURL != "")
-		{
-			strNextURL = strSplURL;
-			Session["splCode"] = txtSplCode.Text;
-		}
-
-		if (strNextURL == "")
-		{
-			lblMessage.Visible = true;
-			lblMessage.Text = "No Federation exists for the given Zip Code with fedid = " + strFedId.ToString() + " and size of return fed = " + sizeOfDS.ToString() + " and " + iCount.ToString();
-		}
-		else
-		{
-			Session["FJCID"] = hdnFJCID.Value;
-
-			if (txtSplCode.Text.ToUpper() == ConfigSpecialPJLCode || txtSplCode.Text.ToUpper() == ConfigSpecialPJLCapitalCode || txtSplCode.Text.ToUpper() == ConfigRamahDarom)
-				Response.Redirect(strNationalURL);
-			else
-			{
-				Response.Redirect(strNextURL);
-			}
-
-		}
-	}
 
 	//to redirect to nycamp redirect page for special camps by sreevani.
 	protected string getIntermediateRedirection(string strFJCIDFedId, string strFedId)
