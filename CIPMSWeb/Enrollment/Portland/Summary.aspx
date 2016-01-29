@@ -16,7 +16,9 @@
 		<tr>
 			<td colspan="2">
                 <p>
-                    The Portland One Happy Camper program provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp tuition to try a Jewish one.
+                    The Portland One Happy Camper program provides grants to encourage children to attend overnight Jewish camp for the first-time. 
+                    It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, 
+                    in effect, to give them up to $1,000 off their camp tuition to try a Jewish one.
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -28,8 +30,9 @@
                     </ul>
 				</p> 
                 <p>
-                    Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are typically not eligible for this program (grants for Jewish day school children may be available through the Jewish Federation of Greater Portland). However, if your child attends a Jewish day school, PLEASE PROCEED WITH FILLING OUT THIS FORM. 
-                    <span style="color:red;">Applications for Jewish day school students must be submitted by May 15 of each year.</span> 
+                    <span style="color:red;">Attention Jewish day school families:</span> 
+                    Currently there is a wait list for camp incentive grants for Jewish day school campers. Please send an email to <a href="mailto:rachel@jewishportland.org">Rachel Halupowski</a> (rachel@jewishportland.org)
+                    indicating your interest and you will be added to the list. Funding decisions will be made in late May of 2016. Federation will do its best to provide a grant.
 
                 </p>  
                 <p>
@@ -37,7 +40,8 @@
                     <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your camp directly.                                 
                 </p>
                 <p>
-                    If you need additional assistance with registration, please call Rachel Halupowski at 503-892-7413. For eligibility requirement questions, please call Bob Horenstein, Federation Director of Community Relations and Allocations, at 503-245-6496.
+                    If you need additional assistance with registration, please call Rachel Halupowski at 503-892-7413. 
+                    For eligibility requirement questions, please call Bob Horenstein, Federation Director of Community Relations and Allocations, at 503-245-6496.
                 </p>   
 			</td>
 		</tr>
