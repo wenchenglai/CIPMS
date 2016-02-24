@@ -19,8 +19,14 @@
             <td valign="top">
                 Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" GroupName="rdoFirstTimer" runat="server" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="rdoFirstTimer" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" GroupName="rdoFirstTimer" runat="server" Text="Yes" data-onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="rdoFirstTimer" runat="server" Text="No" data-onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <!-- Every year, Atlanta would disable 2nd time campers eligibility
+                       We need the following record when eligibility is back:
+                        
+                    [tblTimeInCampMatrix]     107	2	3	1066	1067	2	1	1 
+                        
+                    -->
                 </div>
             </td>
         </tr>

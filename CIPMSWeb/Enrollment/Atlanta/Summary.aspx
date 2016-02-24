@@ -36,7 +36,7 @@
 		        
                 <p>
                     <strong>
-                        Second year grants are available! If a camper attended a Jewish overnight camp in summer 2015 and s/he received a grant from the Jewish Federation of Greater Atlanta, and will be attending a Jewish overnight camp for at least 12 consecutive days in summer 2016, they may be eligible for a second year grant. Grants are valued at $350 for 12-18 days or $500 for 19 or more days. Eligibility is dependent on combined house hold income of less than $160,000.
+If you are applying for your first-year continue with this application by clicking “next.” If you are a second time camper please contact Samantha Tanenbaum at stanenbaum@jewishatlanta.org as there are a limited number of second-year grants available.
                     </strong>
                 </p>             
 		        <p>

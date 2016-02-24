@@ -57,7 +57,7 @@
                             <asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
                                 </td>
                             <td align="right">
-                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" Visible="False"  OnClick="btnNext_Click" /></td>                            
+                                <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" Visible="True"  OnClick="btnNext_Click" /></td>                            
                         </tr>
                      </table>
                 </td>

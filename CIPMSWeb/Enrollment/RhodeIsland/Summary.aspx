@@ -45,10 +45,12 @@
             <td>
                 <img id="Img1" src="logo.png" alt="" />
             </td>
+	    </tr>
+	    <tr>
             <td>
                 <asp:Label ID="Label6" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-The Rhode Island One Happy Camper program has a limited number of grants remaining for summer of 2014. For more information on how to apply, please contact Elanah Chassen at 401-562-0979 or echassen@jewishallianceri.org.
+                    For further information on how to apply for the Jewish Alliance of Greater Rhode Island One Happy Camper program and be added to the waitlist, please contact the professional listed at the bottom of the screen. Additionally, please click “next” to see if your camp offers an OHC grant.
                     </p>
                 </asp:Label>
             </td>

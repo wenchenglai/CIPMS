@@ -50,7 +50,7 @@
         <tr>
            <td>
                <p>
-                   Your camp's One Happy Camper Application is not yet available for summer 2016. Please call the camp professional listed at the bottom of this page for more information.
+                   The  Ramah Outdoor Adventure One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
                </p>
            </td> 
         </tr>

@@ -47,7 +47,7 @@
                 <img src="logo.jpg" />
             </td>
             <td>
-                The Jewish Federation of Madison  One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
+The Madison One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
 			</td>
         </tr>
     </table> 

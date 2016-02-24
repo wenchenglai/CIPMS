@@ -485,10 +485,11 @@ public partial class Step1 : System.Web.UI.Page
                 // 2015-12-04 It's possible that the current zip code resides on Program A, but existing (not new) Camper Application has differetn Program
                 // e.g. WashingtonDC zip code, but Washington DC closed due to funding issue, so this camper had to pick a National Camp Program.
                 // if this happens, we actually care about strFJCIDFedID
-                if (strFJCIDFedId != string.Empty && strFJCIDFedId != "0" && strFJCIDFedId != strFedId)
-                {
-                    strFedId = strFJCIDFedId;
-                }
+                // 2016-02-17 I have to disable this due to now app cannot change program anymore 
+                //if (strFJCIDFedId != string.Empty && strFJCIDFedId != "0" && strFJCIDFedId != strFedId)
+                //{
+                //    strFedId = strFJCIDFedId;
+                //}
 
 
                 //to check if the FedId is in the FedIds array declared above

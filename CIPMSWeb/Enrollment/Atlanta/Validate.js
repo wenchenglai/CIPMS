@@ -29,20 +29,20 @@
         //}
 
         // 1b 
-        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
-            if (!$('#ctl00_Content_rdoLastYearYes').is(':checked') && !$('#ctl00_Content_rdoLastYearNo').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Please answer Question 1b</li></ul>";
-            }
-        }
+        //if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked')) {
+        //    if (!$('#ctl00_Content_rdoLastYearYes').is(':checked') && !$('#ctl00_Content_rdoLastYearNo').is(':checked')) {
+        //        errorMsg.innerHTML += "<ul><li>Please answer Question 1b</li></ul>";
+        //    }
+        //}
 
         // 1c
-        if ($('#ctl00_Content_rdoLastYearYes').is(':checked')) {
-            if (!$('#ctl00_Content_rdoYes160').is(':checked') && !$('#ctl00_Content_rdoNo160').is(':checked')) {
-                errorMsg.innerHTML += "<ul><li>Please answer Question 1c</li></ul>";
-            }
-        }
+        //if ($('#ctl00_Content_rdoLastYearYes').is(':checked')) {
+        //    if (!$('#ctl00_Content_rdoYes160').is(':checked') && !$('#ctl00_Content_rdoNo160').is(':checked')) {
+        //        errorMsg.innerHTML += "<ul><li>Please answer Question 1c</li></ul>";
+        //    }
+        //}
 
-        errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 2, 3, 4);
+        //errorMsg.innerHTML += CommonValidator.OnSubmitClick(1, 2, 3, 4);
 
         //// Grade
         //if ($('#ctl00_Content_ddlGrade>option:selected').val() === "0") {
