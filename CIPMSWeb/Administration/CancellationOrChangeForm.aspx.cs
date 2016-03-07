@@ -610,7 +610,10 @@ public partial class Administration_CancellationOrChangeForm : System.Web.UI.Pag
             ChangeDetails.OldSession_EndDate = lblEndDate.Text;
 
             sameAsExistingSession = IsNewSessionDetailsSameAsExisting();
-            if (sameAsExistingSession) { valobj.InnerHtml = "<ul><li>Selected existing session details, please verify and submit request.</li></ul>"; strMessage = ""; return false; }
+            if (sameAsExistingSession)
+            {
+                valobj.InnerHtml = "<ul><li>New session is the same as existing session, please change the session name or dates again.</li></ul>"; strMessage = ""; return false;
+            }
             
             ChangeDetails.NewGrantAmount = lblNewGrant.Text.TrimStart(ch) != string.Empty ? Convert.ToDouble(lblNewGrant.Text.TrimStart(ch)) : 0.0;
             ChangeDetails.OldGrantAmount = lblGrant.Text.TrimStart(ch) != string.Empty ? Convert.ToDouble(lblGrant.Text.TrimStart(ch)) : 0.0;
