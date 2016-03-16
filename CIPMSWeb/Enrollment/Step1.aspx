@@ -103,7 +103,7 @@
         </tr>
     </table>
     <asp:Panel ID="Panel1" runat="server">
-        <table width="100%" cellpadding="1" cellspacing="0" border="0">
+        <table width="100%" class="text" cellpadding="1" cellspacing="0" border="0">
             <tr>
                 <td colspan="2" align="center">
                     <!--to display the validation summary (error messages)-->
@@ -123,8 +123,9 @@
                             </td>
                         </tr>
                     </table>
-                    <asp:Label ID="lblJ" runat="server" CssClass="infotext" Text='Please, answer the question: "Does the camper identify as being Jewish?"'
-                        Visible="False"></asp:Label></td>
+                    <asp:Label ID="lblJ" runat="server" CssClass="infotext" Text='Please, answer the question: "Does the camper identify as being Jewish?"' Visible="False"></asp:Label>
+
+                </td>
             </tr>
             <tr>
                 <td width="25%" nowrap="nowrap">
@@ -252,8 +253,9 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="Label33" CssClass="InfoText" runat="server" Text="*"></asp:Label><asp:Label
-                        ID="Label3" CssClass="text" runat="server" Text="Home Phone"></asp:Label></td>
+                    <span class="InfoText">*</span>
+                    <asp:Label ID="Label3" CssClass="text" runat="server" Text="Home Phone"></asp:Label>
+                </td>
                 <td>
                     <asp:TextBox ID="txtHomePhone1" runat="server" CssClass="txtbox"></asp:TextBox><asp:Label
                         ID="Label37" CssClass="infotext" runat="server" Text="(xxx-xxx-xxxx)"></asp:Label>
@@ -265,8 +267,9 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblStarJewish" CssClass="InfoText" runat="server" Text="*"></asp:Label><asp:Label
-                        ID="lblJewish" CssClass="text" runat="server" Text="Does the camper identify as being Jewish?"></asp:Label></td>
+                    <span class="InfoText">*</span>
+                    Does the camper identify as being Jewish?"
+                </td>
                 <td>
                     <asp:RadioButtonList CssClass="QuestionText" ID="rdbJewish" runat="server" RepeatDirection="Horizontal">
                         <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
@@ -276,22 +279,14 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <table>                          
-                      <tr>
-                            <td>
-                                <asp:Label ID="lblSplCode" CssClass="InfoText" runat="server" Text=""></asp:Label>
-                                <asp:Label ID="lblSplCode_Question" CssClass="text" runat="server" Text="Enter PJ Library or other access code here: "></asp:Label>
-                            </td>
-                            <td >
-                                <asp:TextBox ID="txtSplCode" runat="server" Width="100px" CssClass="txtbox" AutoPostBack="true" AutoCompleteType="Disabled"></asp:TextBox>
-                                &nbsp;&nbsp;
-                                <span class="text"><asp:LinkButton ID="hylLearnMore" runat="server" Text="Learn More"></asp:LinkButton>.</span>
-                                <br />
-                                <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Text="INVALID CODE" Visible="false" />
-							</td>
-                        </tr>
-                     </table>
-                </td>
+                    Enter PJ Library or other access code here:
+
+                    <asp:TextBox ID="txtSplCode" runat="server" Width="100px" CssClass="txtbox" AutoPostBack="true" AutoCompleteType="Disabled" />
+                    &nbsp;&nbsp;
+                    <asp:LinkButton ID="hylLearnMore" runat="server" Text="Learn More" />
+                    <br />
+                    <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Text="INVALID CODE" Visible="false" />
+				</td>
             </tr>
             <tr>
                 <td colspan="2">

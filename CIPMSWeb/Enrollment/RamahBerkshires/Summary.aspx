@@ -49,7 +49,7 @@
             </td>
             <td>
                 <p>
-                    The Camp Ramah in the Berkshire’s One Happy Camper program is now closed for the summer of 2015. For more information, please contact the professional listed at the bottom of the screen.
+                    The  Ramah Berkshires One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
                 </p>
 			</td>
         </tr>

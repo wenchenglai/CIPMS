@@ -48,7 +48,7 @@
                         $('#toStatus').text('Camper Attended Camp');
                     } else if ($('#ctl00_Content_ddlStatusTransition>option:selected').val() === "7") {
                         $('#fromStatus').text('Eligible by Staff');
-                        $('#toStatus').text('Campership Approved; Payment Pending');
+                        $('#toStatus').text('Enrollment Confirmed; Payment Pending');
                     }
 
                     if (flag) {

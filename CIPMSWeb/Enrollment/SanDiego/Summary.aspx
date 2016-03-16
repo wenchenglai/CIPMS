@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Memphis_Summary" %>
 
 <asp:Content ID="Memphis_summary" ContentPlaceHolderID="Content" Runat="Server">
-    <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+    <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
                 <img id="logo" src="../../images/San Diego Logo.jpg" alt="" /></td>
@@ -45,6 +45,22 @@
 			</td>
         </tr>    
     </table>
+
+    <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+        <tr>
+            <td>
+                <img id="logo" src="../../images/San Diego Logo.jpg" alt="" /></td>
+
+        </tr>
+        <tr>
+			<td>
+			    <p>
+                    The San Diego One Happy Camper program is now closed for summer 2016. For information about the waitlist, please contact Brenda Silvers at bsilvers@jewishfederationsandiego.org.
+			    </p>  
+			</td>
+        </tr>    
+    </table>
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
