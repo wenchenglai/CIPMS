@@ -28,7 +28,10 @@
             <header role="banner" class="clearfix">
                 <!-- #header -->
                 <div id="header" class="clear">
-                    <a href="/" title="Foundation for Jewish Camp Home" id="logo"> <img src="FJC_files/logo_new.png" alt="Foundation for Jewish Camp" height="213" width="160" /> </a> <a href="http://www.jewishcamp.org/" title="Foundation for Jewish Camp Home" id="logo_ie6"> <img src="FJC_files/logo_8bit.png" alt="Foundation for Jewish Camp" height="180" width="137" /> </a>
+                    <a href="http://www.jewishcamp.org/one-happy-camper" title="Foundation for Jewish Camp Home" id="logo"> 
+                        <img src="FJC_files/logo_new.jpg" alt="Foundation for Jewish Camp" /> 
+
+                    </a> <a href="http://www.jewishcamp.org/" title="Foundation for Jewish Camp Home" id="logo_ie6"> <img src="FJC_files/logo_8bit.png" alt="Foundation for Jewish Camp" height="180" width="137" /> </a>
                     <!-- #nav_ohc -->
                     <div id="nav_ohc" style="display:none "> <a href="" title="One Happy Camper">One Happy Camper</a> </div>
                     <!-- /#nav_ohc -->
@@ -100,7 +103,10 @@
                 <section id="" role="main" class="clearfix">
                     <!-- #sidebar -->
                     <div id="sidebar">
-                        <div class="sidebar_content"><a href="http://www.jewishcamp.org/one-happy-camper"><img title="One Happy Camper" src="FJC_files/img/ohc-menu-logo.gif" class="OHC_logo_sidebar" /></a><ul><li class="active"><a href="http://www.jewishcamp.org/find-camp-2" title="">Find a Camp  >></a></li><li class="second_links"><a href="http://www.jewishcamp.org/why-camp" title="">Why Camp?</a></li><li class="second_links"><a href="http://www.jewishcamp.org/types-camp" title="">Types of Camp</a></li><li><a href="http://www.jewishcamp.org/one-happy-camper-2" title="">One Happy Camper  >></a></li><li><a href="http://www.jewishcamp.org/bunk-connect/index" title="">BunkConnect</a></li><li><a href="http://www.jewishcamp.org/camper-scholarships" title="">Camper Scholarships</a></li></ul></div>
+                        <div class="sidebar_content">
+                            
+                            <ul>
+                                <li class="active"><a href="http://www.jewishcamp.org/find-camp-2" title="">Find a Camp  >></a></li><li class="second_links"><a href="http://www.jewishcamp.org/why-camp" title="">Why Camp?</a></li><li class="second_links"><a href="http://www.jewishcamp.org/types-camp" title="">Types of Camp</a></li><li><a href="http://www.jewishcamp.org/one-happy-camper-2" title="">One Happy Camper  >></a></li><li><a href="http://www.jewishcamp.org/bunk-connect/index" title="">BunkConnect</a></li><li><a href="http://www.jewishcamp.org/camper-scholarships" title="">Camper Scholarships</a></li></ul></div>
                     </div><!-- /#sidebar -->	<!-- #content_main -->
                     <div id="content_main">
                         <div class="message_padding">
