@@ -76,7 +76,13 @@ public partial class Step2_JCC_3 : Page
             }
             if (!(Page.IsPostBack))
             {
-                getCamps("0", Master.CampYear); //to get all the camps and fill in
+                //if (Session["FedId"] != null)
+                //{
+                //    getCamps(Session["FedId"].ToString(), Master.CampYear); // to get all camps referred to this federation
+                //}
+                //else
+                    getCamps("0", Master.CampYear);//to get all the camps and fill in        
+
                 //to get the FJCID which is stored in session                
                 if (Session["FJCID"] != null)
                 {
@@ -405,13 +411,13 @@ public partial class Step2_JCC_3 : Page
        DataSet dsCamps;
 
        //if (StateId == "0")
-       // {
+       //{
             dsCamps = objGeneral.get_AllCamps(CampYear);
-        //}
-        //else
-        //{
-        //    dsCamps = objGeneral.get_CampsForState(StateId);
-        //}
+       //}
+       //else
+       //{
+       //    dsCamps = objGeneral.get_CampsForState(StateId);
+       //}
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
