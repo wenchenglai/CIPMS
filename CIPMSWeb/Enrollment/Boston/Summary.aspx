@@ -84,7 +84,19 @@
             <td>
                 <asp:Label ID="Label4" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						For further information on how to apply for the Combined Jewish Philanthropies of Greater Boston One Happy Camper program, please contact the professional listed at the bottom of the screen.
+						
+
+Unfortunately, due to a 15% increase in applications, CJP does not currently have available funds for the One Happy Camper grant program. If your child is going to Camp Avoda, BIMA/Genesis or a URJ Camp, 
+there may be grant funds available by continuing to apply through the camp at onehappycamper.org.
+</p>
+<p style="text-align:justify">
+Otherwise, please complete this form to be added to the Wait List for our first-time camper grant:
+</p>
+<p style="text-align:justify">
+<a href="http://goo.gl/forms/sleLpQHgia" target="_blank">http://goo.gl/forms/sleLpQHgia</a>
+</p>
+<p style="text-align:justify">
+We hope to secure additional monies and will contact you if we are able to consider your application for a $700 or $1,000 award. Thank you for your understanding and patience.
 					</p>
 				</asp:Label>
 			</td>

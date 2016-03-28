@@ -4,7 +4,7 @@
 	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
-				<img src="../../images/Colorado Logo.jpg" alt=""  />
+				<img src="logo.jpg" alt=""  />
 			</td>
 			<td>
                 <p>Good news! You may be eligible for a One Happy Camper grant.</p>    
@@ -46,7 +46,7 @@
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>
 			<td>
-				<img src="../../images/Colorado Logo.jpg" alt=""  />
+				<img src="logo.jpg" alt=""  />
 			</td>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
