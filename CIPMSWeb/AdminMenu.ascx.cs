@@ -76,7 +76,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
 
-                var fjcFundingFeds = new List<string>() { "10", "59", "61", "63", "69", "85", "98", "99", "100", "101", "102", "107", "108", "112", "113", "114", "121", "131" };
+                var fjcFundingFeds = new List<string>() {"2", "10", "59", "61", "63", "69", "85", "98", "99", "100", "101", "102", "107", "108", "112", "113", "114", "121", "131" };
                 if (fjcFundingFeds.Exists(x => x == fedId))
                     divSelfFunding.Visible = false;
 

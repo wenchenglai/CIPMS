@@ -47,7 +47,8 @@
             <td>                  
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p>
-						The Jewish Federation of Greater Middlesex County One Happy Camper program is now closed for the summer of 2015.
+						The Heart of NJ One Happy Camper program is now closed for summer 2016. For more information, please contact Sheree Boone at ShereeB@jewishheartnj.org.
+ 
                     </p>
                 </asp:Label>
             </td>
