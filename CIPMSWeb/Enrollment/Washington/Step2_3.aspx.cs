@@ -17,8 +17,8 @@ public partial class Step2_Washington_3 : Page
     private RadioButton RadioButtonQ7Option2;
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-            Response.Redirect("~/NLIntermediate.aspx");
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
+            Response.Redirect("~/Enrollment/Step1_NL.aspx");
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
