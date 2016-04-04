@@ -10,7 +10,7 @@ public partial class Enrollment_URJ_Summary : System.Web.UI.Page
     {
 		if (!IsPostBack)
 		{
-			var fedId = Convert.ToInt32(FederationEnum.Columbus);
+			var fedId = Convert.ToInt32(FederationEnum.URJColeman);
             var isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == fedId.ToString());
 
             if (isDisabled && Session["UsrID"] == null)

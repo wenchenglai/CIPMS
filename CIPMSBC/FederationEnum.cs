@@ -134,7 +134,12 @@ namespace CIPMSBC
         URJOlin = 143,
         URJSciTech = 144,
         RamahNorthernCalifornia = 145,
-        Wbt = 146
+        Wbt = 146,
+        URJCraneLake = 147,
+        URJJosephEisner = 148,
+        URJGreeneFamily = 149,
+        URJ6PointsSportsNorthCarolina = 150,
+        URJ6PointsSportsCalifornia = 151
 	}
 
     ///// <summary>

@@ -193,7 +193,7 @@ public partial class Step2_Columbus_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Columbus);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Kansas);
         try
         {
             if (Page.IsValid)
