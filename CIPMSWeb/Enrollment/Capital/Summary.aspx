@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Capital_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-     <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+     <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td colspan="2">
                 <img src="../../images/Capital Camps.jpg" alt="" />
@@ -39,6 +39,20 @@ Our campers are immersed in a nurturing community which is committed to providin
 If you need additional assistance, please call the camp professional listed at the bottom of this page.
 
                 </p>
+			</td>
+        </tr>
+    </table>
+     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+		<tr>
+            <td colspan="2">
+                <img src="../../images/Capital Camps.jpg" alt="" />
+            </td>
+        </tr>
+        <tr>
+			<td colspan="2">
+                <p>
+					For further information on how to apply for the Capital Camps One Happy Camper program and be added to the waitlist, please contact the Erin Reische at Erin@capitalcamps.org.
+				</p>
 			</td>
         </tr>
     </table>

@@ -56,7 +56,9 @@
             <td>
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
-                        Jewish Federation of Northern New Jersey’s One Happy Camper program is now closed for the summer of 2015. Please contact Melissa Levine at melissal@jfnnj.org to add your name to the waitlist in the case that additional grants do become available. Thank you.					
+
+The Northern New Jersey One Happy Camper program is now closed for summer 2016. For information about the waitlist, please contact Diana Diner at DianaD@jfnnj.org.
+
 					</p>
 				</asp:Label>
             </td>
