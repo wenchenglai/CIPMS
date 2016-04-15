@@ -50,8 +50,7 @@
 			<td>
 				<asp:Label ID="Label7" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Camp Hatikvah One Happy Camper application is not yet available for summer 2013.  
-						Please contact the person listed at the bottom of this page for more information.
+						The  Camp Hatikvah One Happy Camper program is now closed for 2016. For more information, please contact Liza Rozen-Delman at liza@camphatikvah.com.
 					</p>
 				</asp:Label>
 			</td>

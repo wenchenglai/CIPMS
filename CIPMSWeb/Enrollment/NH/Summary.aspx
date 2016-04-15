@@ -55,9 +55,8 @@
             <td>                
                 <asp:Label ID="Label4" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-					The New Hampshire One Happy Camper application is now closed for the summer of 2014. For more information, please contact the professional listed at the bottom of the screen.                
-						<br /><br />
-						Click ‘NEXT?to see if your camp is sponsoring its own One Happy Camper program.
+					The New Hampshire One Happy Camper program is now closed for summer 2016. For information please contact Nancy Frankel at corkyatcf@aol.com.<br />
+To see if your camp sponsors a One Happy Camper grant, please click next.
                     </p>
 				</asp:Label>
 			</td>
