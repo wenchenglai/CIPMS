@@ -85,7 +85,7 @@ The Northern New Jersey One Happy Camper program is now closed for summer 2016. 
                             </td>
                             <td align="right">
                                 <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> "
-                                    CssClass="submitbtn" OnClick="btnNext_Click" /></td>
+                                    CssClass="submitbtn" OnClick="btnNext_Click" Visible="false" /></td>
                         </tr>
                     </table>
                 </td>
