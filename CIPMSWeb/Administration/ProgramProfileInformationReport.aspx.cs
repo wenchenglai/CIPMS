@@ -175,11 +175,13 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
         header += "</h4><h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + DateTime.Now.ToShortDateString() + "</h4>";
 
 		string instruction = @"<div><strong>Instructions: <br /><br />The information below (and on the accompanying spread sheet) is how your 
-One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2016 campaign 
-and submit prior to August 3<sup>th</sup>, 2015.  Revisions received prior to Aug 3<sup>th</sup> will be ready to be launched the week of October 19<sup>th</sup>, 2015.
+One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2017 campaign 
+and submit prior to July 22<sup>nd</sup>, 2016.  Revisions received prior to July 22<sup>nd</sup> will be ready to be launched the week of September 26<sup>th</sup>, 2016.
 <br /><br /><ul><li>Please make any edits in <span style='color: Red;'>RED</span></li>
 <li>Submit form to Staci at <a href='mailto:staci@JewishCamp.org'>Staci@JewishCamp.org</a></li></ul><br />
-<u>Please confirm the following:</u></strong><br /><br />Payee Name (e.g. name of agency that checks should be made out to):  ____________________<br /><br />
+<u>Please confirm the following:</u></strong><br /><br />
+Payee Name (e.g. name of agency that checks should be made out to):  ____________________<br /><br />
+Name of organization as it should appear on FJC website: ______________________<br /><br />
 Address (where checks should be mailed):  ___________________________________________<br /><br />
 Employer Identification Number: __________________________________________________<div><br />";
 

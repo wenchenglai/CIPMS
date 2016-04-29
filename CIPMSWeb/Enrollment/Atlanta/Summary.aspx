@@ -31,14 +31,9 @@
                     <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
                     <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 12-18 consecutive days.</li>
                     <li>Eligible campers must be entering grades 1-12 (after camp).</li>
-                    <li>Attend one of the 155+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
+                    <li>Attend one of the 155+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp's website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
                 </ul>
-		        
-                <p>
-                    <strong>
-If you are applying for your first-year continue with this application by clicking “next.” If you are a second time camper please contact Samantha Tanenbaum at stanenbaum@jewishatlanta.org as there are a limited number of second-year grants available.
-                    </strong>
-                </p>             
+		                  
 		        <p>
 		            Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for the program. If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper funding opportunities please visit 
                      <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.jewishcamp.org/scholarships</a>, 
