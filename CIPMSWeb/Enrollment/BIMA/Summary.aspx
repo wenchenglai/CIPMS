@@ -49,7 +49,7 @@
             <td>
 				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-                    Your camp's One Happy Camper Application is not yet available for summer 2016. Please call the camp professional listed at the bottom of this page for more information.
+                    The BIMA/Genesis at Brandeis University One Happy Camper program is now closed for the summer of 2016. For more information, please contact Michael Golitsyn at golitsyn@brandeis.edu.
 					</p>  
                 </asp:Label>
             </td>

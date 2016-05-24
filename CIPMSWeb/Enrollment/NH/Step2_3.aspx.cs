@@ -22,14 +22,8 @@ public partial class Step2_Columbus_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                         where id == ((int)FederationEnum.NewHamshire).ToString()
-                         select id).Count() < 1;
-
-        if (isClosed)
-        {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.NewHamshire).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-        }
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);

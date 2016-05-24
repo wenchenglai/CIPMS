@@ -25,7 +25,7 @@ public partial class Step2_Ramah_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.RamahPoconos).ToString()))
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.RamahPoconos).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);

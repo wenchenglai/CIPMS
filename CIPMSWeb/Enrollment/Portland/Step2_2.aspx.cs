@@ -17,7 +17,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
     #region "Page events"
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Portland).ToString()))
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Portland).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
 
         btnNext.Click += new EventHandler(btnNext_Click);

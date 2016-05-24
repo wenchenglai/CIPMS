@@ -7,7 +7,7 @@
     <title>Online Cancellation/Session Switch Form</title>
     <link href="../Style/CIPStyle.css" type="text/css" rel="Stylesheet" />
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script type="text/javascript" src="../CIPMS_JScript.js"></script>
+    <script type="text/javascript" src="../CIPMS_JScript.js?v1"></script>
 
     <script type="text/javascript">
     //to open up a calendar

@@ -30,6 +30,10 @@ public partial class Enrollment_Boston_Summary : System.Web.UI.Page
                         tblRegular.Visible = true;
                         SpecialCodeManager.UseCode(campYearId, FedID, currentCode, Session["FJCID"].ToString());
                     }
+                    else if (SpecialCodeManager.IsUsedByFJCID(Session["FJCID"].ToString(), currentCode)) {
+                        tblDisable.Visible = false;
+                        tblRegular.Visible = true;
+                    }
                 }
             }
             else

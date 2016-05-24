@@ -15,11 +15,21 @@ namespace CIPMSBC
 		/// <param name="FedID">FedID = 0 means </param>
 		/// <param name="Code"></param>
 		/// <returns></returns>
-		public static bool IsValidCode(int CampYearID, int FedID, string Code)
+		public static bool IsValidCode(int CampYearID, int FedID, string Code, string FJCID = "")
 		{
 			var codes = GetAvailableCodes(CampYearID, FedID);
 
-		    return codes.Any(code => code.ToLower() == Code.ToLower());
+            bool ret = false;
+
+		    ret = codes.Any(code => code.ToLower() == Code.ToLower());
+
+            // if the camper is also the one uses the code, we return true
+            if (!ret && FJCID != "")
+            {
+                ret = IsUsedByFJCID(FJCID, Code);
+            }
+
+            return ret;
 		}
 
         // Direct Pass Code for PJL would allow user to go to PJL Summary page immediately no matter what
@@ -103,8 +113,30 @@ namespace CIPMSBC
             return codes;
         }
 
-		// This will increment 1 to tblSpecialCodes' Uses column
-		public static bool UseCode(int CampYearID, int FedID, string Code, string FJCID)
+        public static bool IsUsedByFJCID(string FJCID, string code)
+        {
+            var db = new SQLDBAccess("CIPConnectionString");
+
+            db.AddParameter("@Action", "IsUsedByFJCID");
+            db.AddParameter("@FJCID", FJCID);
+            db.AddParameter("@Code", code);
+
+
+            var dr = db.ExecuteReader("usprsSpecialCodes_Select");
+
+            bool output = false;
+            if (dr.Read())
+            {
+                output = true;
+            }
+
+            dr.Close();
+
+            return output;
+        }
+
+        // This will increment 1 to tblSpecialCodes' Uses column
+        public static bool UseCode(int CampYearID, int FedID, string Code, string FJCID)
 		{
 			var db = new SQLDBAccess("CIPConnectionString");
 

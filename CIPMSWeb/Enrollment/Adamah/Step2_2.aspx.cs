@@ -15,7 +15,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Adamahadventures).ToString()))
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Adamahadventures).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
 
         btnNext.Click += new EventHandler(btnNext_Click);

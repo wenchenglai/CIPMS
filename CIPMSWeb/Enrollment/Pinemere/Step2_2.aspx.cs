@@ -1,13 +1,11 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Linq;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
-using System.Web;
 
-public partial class Step2_Columbus_2 : System.Web.UI.Page
+public partial class Step2_Nageela_2 : System.Web.UI.Page
 {
     private CamperApplication CamperAppl;
     private General objGeneral;
@@ -15,35 +13,12 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.NewHamshire).ToString()))
-            Response.Redirect("~/NLIntermediate.aspx");
-
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-    }
-    
-    void btnReturnAdmin_Click(object sender, EventArgs e)
-    {
-        string strRedirURL;
-        try
-        {
-            if (Page.IsValid)
-            {
-                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-                ProcessCamperAnswers();
-                //Session["FJCID"] = null;
-                //Session["ZIPCODE"] = null;
-                Response.Redirect(strRedirURL);
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -62,64 +37,56 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                     hdnFJCIDStep2_2.Value = (string)Session["FJCID"];
                     PopulateAnswers();
                 }
-            }
-            //to set the client validation function for Q5
-            //foreach (ListItem li in RadioButtionQ5.Items)
-            //{
-            //    li.Attributes.Add("onclick", "setSchoolTextBoxStatus(this,'" + PnlQ6.ClientID + "')");
-            //}
-            
+            }           
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
         }
     }
-
+    
     void btnNext_Click(object sender, EventArgs e)
     {
-        bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
-        if (!isReadOnly)
+        int iStatus;
+        string strModifiedBy, strFJCID;
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Zeke);
+        
+        try
         {
-            ProcessCamperAnswers();
-        }
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId))
+                {
+                    ProcessCamperAnswers();
+                }
+                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_2.Value, Master.CamperUserId);
+                //Modified by id taken from the Master Id
+                strModifiedBy = Master.UserId;
+                strFJCID = hdnFJCIDStep2_2.Value;
+                if (strFJCID != "" && strModifiedBy != "")
+                {
+                    if (isReadOnly)
+                    {
+                        DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
+                        iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
+                    }
+                    else
+                    {
 
-        //Modified by id taken from the Master Id
-        string strModifiedBy = Master.UserId;
-        string strFJCID = hdnFJCIDStep2_2.Value;
-        int iStatus = Convert.ToInt32(StatusInfo.SystemInEligible);
-        if (strFJCID != "" && strModifiedBy != "")
+                        //to check whether the camper is eligible 
+                        objEligibility.checkEligibilityforStep2(strFJCID, out iStatus);
+                    }
+
+                    Session["STATUS"] = iStatus.ToString();
+                }
+                Session["FJCID"] = hdnFJCIDStep2_2.Value;
+                Response.Redirect("Step2_3.aspx");
+            }
+        }
+        catch (Exception ex)
         {
-            if (isReadOnly)
-            {
-                DataSet dsApp = CamperAppl.getCamperApplication(strFJCID);
-                iStatus = Convert.ToInt32(dsApp.Tables[0].Rows[0]["Status"]);
-            }
-            else
-            {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.NewHamshire);
-                EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
-
-                if (result.SchoolType == StatusInfo.EligiblePJLottery)
-                    iStatus = (int)StatusInfo.EligiblePJLottery;
-                else if (result.CurrentUserStatusFromDB == StatusInfo.SystemInEligible ||
-                    result.Grade == StatusInfo.SystemInEligible ||
-                    result.SchoolType == StatusInfo.SystemInEligible ||
-                    result.TimeInCamp == StatusInfo.SystemInEligible)
-                {
-                    iStatus = (int)StatusInfo.SystemInEligible;
-                }
-                else
-                {
-                    iStatus = (int)StatusInfo.SystemEligible;
-                }
-            }
-            Session["STATUS"] = iStatus.ToString();
+            Response.Write(ex.Message);
         }
-        Session["FJCID"] = hdnFJCIDStep2_2.Value;
-
-        var status = (StatusInfo)iStatus;
-        Response.Redirect(AppRouteManager.GetNextRouteBasedOnStatus(status, HttpContext.Current.Request.Url.AbsolutePath));
     }
 
     void btnSaveandExit_Click(object sender, EventArgs e)
@@ -138,7 +105,7 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
                 //Session["FJCID"] = null;
                 //Session["ZIPCODE"] = null;
                 //Session.Abandon();
-                //Response.Redirect(strRedirURL);
+                // Response.Redirect(strRedirURL);
                 if (Master.IsCamperUser == "Yes")
                 {
 
@@ -188,6 +155,23 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
         }
     }
 
+    void btnReturnAdmin_Click(object sender, EventArgs e)
+    {
+        string strRedirURL;
+        try
+        {
+            if (Page.IsValid)
+            {
+                strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+                ProcessCamperAnswers();
+                Response.Redirect(strRedirURL);
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
     private void ProcessCamperAnswers()
     {
         string strFJCID;
@@ -356,5 +340,4 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
             Response.Write(ex.Message);
         }
     }
-            
 }

@@ -16,16 +16,10 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
 	protected void Page_Init(object sender, EventArgs e)
 	{
-		bool isClosed = !(from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-			where id == ((int)FederationEnum.ElPaso).ToString()
-			select id).Any();
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.ElPaso).ToString()))
+            Response.Redirect("~/NLIntermediate.aspx");
 
-		if (isClosed)
-		{
-			Response.Redirect("~/NLIntermediate.aspx");
-		}
-
-		btnNext.Click += new EventHandler(btnNext_Click);
+        btnNext.Click += new EventHandler(btnNext_Click);
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);
 		btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
 		btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);

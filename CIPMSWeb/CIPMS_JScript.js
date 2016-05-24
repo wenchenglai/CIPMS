@@ -4735,6 +4735,7 @@ function VaildatePage3Step2_CampAvoda(sender,args)
 }
 
 function ValidateForm(isSubmit) {
+    debugger;
     var inputobjs = document.getElementsByTagName("input");
     var spanobjs = document.getElementsByTagName("span");
     var selectobjs = document.getElementsByTagName("select");
@@ -4800,14 +4801,15 @@ function ValidateForm(isSubmit) {
     }
 
     // 2013-11-20 We need to change the startDate and endDate (both are hard coded from web.config file) if admin is changing for last calendar year's data
-    var appDate = $('#lblStartDate').text();
+/*    var appDate = $('#lblStartDate').text();
     var appYear = appDate.substring(appDate.length - 2);
     var currentYear = startDate.value.substring(startDate.value.length - 4);
     if (appYear != currentYear) {
         startDate.value = startDate.value.substring(0, startDate.value.length - 4) + appYear;
         endDate.value = endDate.value.substring(0, endDate.value.length - 4) + appYear;
-    }
+    }*/
         
+    debugger;
     if(QtxtManualStartDate != null)
         dateValidationMessage = DateFunctions(trim(startDate.value), trim(endDate.value), trim(QtxtManualStartDate.value), trim(QtxtManualEndDate.value),campSeasonErrorMessage);
     

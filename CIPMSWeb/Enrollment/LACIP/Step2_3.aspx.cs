@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CIPMSBC;
@@ -15,6 +16,9 @@ public partial class Step2_LACIP_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.LACIP).ToString()))
+            Response.Redirect("~/NLIntermediate.aspx");
+
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);

@@ -14,14 +14,8 @@ public partial class Step2_JCC_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        bool isClosed = (from id in ConfigurationManager.AppSettings["OpenFederations"].Split(',')
-                         where id == ((int)FederationEnum.MountainChai).ToString()
-                         select id).Count() < 1;
-
-        if (isClosed)
-        {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.MountainChai).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);

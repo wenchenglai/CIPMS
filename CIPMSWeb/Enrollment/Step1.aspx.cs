@@ -803,7 +803,7 @@ public partial class Step1 : System.Web.UI.Page
 		if (code.Contains("PJGTC"))
 			code = code.Substring(0, 9);
 
-		if (!SpecialCodeManager.IsValidCode(Convert.ToInt32(Application["CampYearID"]), -1, code))
+		if (!SpecialCodeManager.IsValidCode(Convert.ToInt32(Application["CampYearID"]), -1, code, hdnFJCID.Value))
 		{
 			CusValSplCode.ErrorMessage = "Invalid Code";
 			args.IsValid = false;

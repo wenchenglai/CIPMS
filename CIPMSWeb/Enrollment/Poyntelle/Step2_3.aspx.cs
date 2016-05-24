@@ -23,12 +23,8 @@ public partial class Step2_Chi_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        string FedId = ((int)FederationEnum.Poyntelle).ToString();
-        if (!ConfigurationManager.AppSettings["OpenFederations"].Split(',').Any(id => id == ((int)FederationEnum.Poyntelle).ToString()))
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Poyntelle).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
-
-        //if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == FedId))
-        //    Response.Redirect("Summary.aspx");
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);

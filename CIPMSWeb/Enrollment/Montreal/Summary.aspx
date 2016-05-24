@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Calgary_Summary" %>
 
 <asp:Content ID="Pittsburgh_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
 				<img id="Img1" src="logo.jpg" alt=""/>
@@ -34,7 +34,24 @@
 			</td>
 		</tr> 
 	</table>
-	<asp:Panel ID="Panel1" runat="server">
+	
+	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+		<tr>
+			<td>
+				<img id="Img1" src="logo.jpg" alt=""/>
+				<a href="http://www.federationcja.org/jewishcamp" target="_blank"></a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+                <p>
+                    The Generations Fund One Happy Camper program is now closed for summer 2016. For more information, please contact Cindy Katz at cindy.katz@federationcja.org. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+                </p>
+			</td>
+		</tr> 
+	</table>
+
+    <asp:Panel ID="Panel1" runat="server">
 		<table width="100%" cellpadding="1" cellspacing="0" border="0">            
 			<tr>
 				<td valign="top" style="width:5%"><asp:Label ID="Label12" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
