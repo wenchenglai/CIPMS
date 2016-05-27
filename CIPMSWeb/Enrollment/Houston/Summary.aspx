@@ -44,7 +44,7 @@
         <tr>
             <td>
                 <p>
-                    For further information on how to apply for the Jewish Federation of Greater Houston One Happy Camper program, please contact the professional listed at the bottom of the screen.
+The Jewish Federation of Houston One Happy Camper program has a limited number of grants left for summer of 2016.  Please contact Renee Lovitt at rlovitt@houstonjewish.org to get information about how to apply for the grant.
                 </p>
             </td>
         </tr>

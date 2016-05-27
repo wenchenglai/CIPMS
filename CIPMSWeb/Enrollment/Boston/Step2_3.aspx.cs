@@ -47,6 +47,9 @@ public partial class Step2_Boston_3 : Page
     {
         try
         {
+            lblMsg.Text = "";
+            lblMsg.Visible = false;
+
             RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1");
             RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
             CamperAppl = new CamperApplication();
@@ -172,6 +175,32 @@ public partial class Step2_Boston_3 : Page
         {
             if (Page.IsValid)
             {
+                string strStartDate = txtStartDate.Text.Trim();
+
+                try
+                {
+                    DateTime.Parse(strStartDate);
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+                    lblMsg.Visible = true;
+                    return;            
+                }
+
+                string strEndDate = txtEndDate.Text.Trim();
+
+                try
+                {
+                    DateTime.Parse(strEndDate);
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+                    lblMsg.Visible = true;
+                    return;
+                }
+
                 bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
                 //Modified by id taken from the Master Id
                 strModifiedBy = Master.UserId;

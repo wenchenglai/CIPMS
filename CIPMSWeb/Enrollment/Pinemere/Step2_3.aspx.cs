@@ -1,13 +1,8 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
@@ -89,9 +84,7 @@ public partial class Step2_Nageela_3 : Page
             }
             RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
             RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
-            //RadioButtonQ7Option3.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-            //RadioButtonQ7Option4.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
-            //to enable / disable the panel states based on the radio button selected
+
             SetPanelStates();
         }
         catch (Exception ex)
@@ -100,19 +93,19 @@ public partial class Step2_Nageela_3 : Page
         }
     }
 
-    //page unload
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
     void btnSaveandExit_Click(object sender, EventArgs e)
     {
         try
         {
             if (Page.IsValid)
             {
+
+                string strStartDate = txtStartDate.Text.Trim();
+
+
+
+                string strEndDate = txtEndDate.Text.Trim();
+
                 string strRedirURL;
                 //strRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
                 strRedirURL = Master.SaveandExitURL;
