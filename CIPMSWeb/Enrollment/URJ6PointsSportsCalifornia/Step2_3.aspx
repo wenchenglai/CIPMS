@@ -8,6 +8,9 @@
         <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" />
         <asp:CustomValidator ID="CusValComments1" runat="server" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false" />        
     </div>
+    <div>
+         <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Font-Bold="true" />
+    </div>
     <div id="divStatusMessageBox" class="InfoText2" runat="server">
         <strong>
             Based on your responses thus far, you appear to be eligible for this program’s grant! All we need now is the camp and session information to confirm the camper is attending a camp that is eligible for this program.
@@ -15,6 +18,7 @@
     </div>
     <table width="100%" cellpadding="5" cellspacing="0" border="0">
         <tbody class="QuestionText">
+
             <tr>
                 <td valign="top">
                     <span class="InfoText">*</span>5

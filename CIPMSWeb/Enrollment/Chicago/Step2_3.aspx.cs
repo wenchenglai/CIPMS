@@ -76,7 +76,32 @@ public partial class Step2_Chicago_3 : Page
 
 	void btnChkEligibility_Click(object sender, EventArgs e)
 	{
-		int iStatus, iCampId;
+        string strStartDate = txtStartDate.Text.Trim();
+        try
+        {
+            DateTime.Parse(strStartDate);
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+            lblMsg.Visible = true;
+            return;
+        }
+
+        string strEndDate = txtEndDate.Text.Trim();
+
+        try
+        {
+            DateTime.Parse(strEndDate);
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+            lblMsg.Visible = true;
+            return;
+        }
+
+        int iStatus, iCampId;
 		string strModifiedBy, strFJCID, strComments;
 		
 		bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);

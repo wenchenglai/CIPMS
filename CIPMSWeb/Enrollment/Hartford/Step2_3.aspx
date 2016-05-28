@@ -13,6 +13,7 @@
 
     <table>
         <tbody class="QuestionText">
+
         <tr>
             <td></td>
             <td style="padding-bottom:20px;">

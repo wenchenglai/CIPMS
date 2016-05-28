@@ -18,6 +18,11 @@
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
             <tr>
                 <td colspan="3">
+                    <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Font-Bold="true" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
                     <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
                         <p style="text-align:justify"><b>
                            Based on your responses thus far, you appear to be eligible for this program’s grant! All we need now is the camp and session information to confirm the camper is attending a camp that is eligible for this program.</b></p></asp:Label>

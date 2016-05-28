@@ -117,6 +117,32 @@ public partial class Step2_Ramah_3 : Page
         if (!Page.IsValid)
             return;
 
+        string strStartDate = txtStartDate.Text.Trim();
+        try
+        {
+            DateTime.Parse(strStartDate);
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+            lblMsg.Visible = true;
+            return;
+        }
+
+        string strEndDate = txtEndDate.Text.Trim();
+
+        try
+        {
+            DateTime.Parse(strEndDate);
+        }
+        catch (Exception ex)
+        {
+            lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+            lblMsg.Visible = true;
+            return;
+        }
+
+
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
 
         string strModifiedBy = Master.UserId;

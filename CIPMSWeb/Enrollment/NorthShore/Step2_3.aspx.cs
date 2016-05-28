@@ -196,6 +196,31 @@ public partial class Enrollment_NorthShore_step2_3 : System.Web.UI.Page
         {
             if (Page.IsValid)
             {
+                string strStartDate = txtStartDate.Text.Trim();
+                try
+                {
+                    DateTime.Parse(strStartDate);
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+                    lblMsg.Visible = true;
+                    return;
+                }
+
+                string strEndDate = txtEndDate.Text.Trim();
+
+                try
+                {
+                    DateTime.Parse(strEndDate);
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+                    lblMsg.Visible = true;
+                    return;
+                }
+
                 bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
                 //Modified by id taken from the Master Id
                 strModifiedBy = Master.UserId;

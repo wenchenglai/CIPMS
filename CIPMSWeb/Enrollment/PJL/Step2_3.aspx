@@ -26,6 +26,11 @@
             </tr>
         </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
+            <tr>
+                <td colspan="3">
+                    <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Font-Bold="true" />
+                </td>
+            </tr>
         <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
@@ -172,12 +177,7 @@
                         </tr>
                      </table>
                 </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <asp:Label runat="server" ID="lblMsg" CssClass="QuestionText" ForeColor="Red"></asp:Label>
-                </td>
-            </tr>            
+            </tr>          
         </table>
     </asp:Panel>
      <asp:Panel ID="Panel1" runat="server" Visible="false" width="100%">

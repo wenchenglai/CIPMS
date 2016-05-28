@@ -85,6 +85,11 @@
             </tr>
         </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
+            <tr>
+                <td colspan="3">
+                    <asp:Label ID="Label10" runat="server" ForeColor="Red" Font-Bold="true" />
+                </td>
+            </tr>
          <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
