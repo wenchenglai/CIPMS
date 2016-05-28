@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
+using System.Data;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 
@@ -11,7 +9,11 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+        {
+            PopulateFederations();
+            getCampYears();
+        }
     }
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -157,5 +159,35 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         else if (isJDSOnline == "")
             lblJDSProcessing.Text = "N/A";
 
+    }
+
+    private void PopulateFederations()
+    {
+        General _objGen = new General();
+        System.Data.DataSet dsFed = _objGen.get_AllFederations();
+
+        lstFederations.DataSource = dsFed;
+        lstFederations.DataTextField = "Federation";
+        lstFederations.DataValueField = "ID";
+
+        lstFederations.DataBind();
+        //if ((lstFederations.Items.Count != 0))
+        //    lstFederations.Items.Insert(0, new ListItem("--Select--", "-1"));
+
+    }
+
+    private void getCampYears()
+    {
+        var _objGen = new General();
+        DataSet dsYears = _objGen.GetAllCampYears();
+        lstYear.DataSource = dsYears;
+        lstYear.DataTextField = "CampYear";
+        lstYear.DataValueField = "CampYear";
+        lstYear.DataBind();
+        if (lstYear.Items.Count != 0)
+            lstYear.Items.Insert(0, new ListItem("--Select--", "-1"));
+
+        lstYear.ClearSelection();
+        lstYear.Items.FindByText(Session["CampYear"].ToString()).Selected = true;
     }
 }

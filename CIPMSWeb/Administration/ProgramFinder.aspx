@@ -4,10 +4,18 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>          
-            <div style="margin-left: 20px;">
+            <div style="margin-left: 20px;" class="infotext1">
                 <h3>Program Finder</h3>
+                <div style="visibility:collapse">
+                    Program: <asp:DropDownList ID="lstFederations" runat="server" Width="375px" CssClass="text">
+					    <asp:ListItem>Please select a Federation</asp:ListItem>
+					</asp:DropDownList>
+                    <asp:DropDownList ID="lstYear" runat="server" Width="58px" CssClass="text"></asp:DropDownList>
+                </div>
                 <div>
-                    <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
+                    Zip Code: <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
+                </div>
+                <div style="margin-top:20px;">
                     <asp:Button runat="server" Text="Find Program" ID="btnFind" OnClick="btnFind_Click"/>
                 </div>
                 <div>
