@@ -6,16 +6,13 @@
         <ContentTemplate>          
             <div style="margin-left: 20px;" class="infotext1">
                 <h3>Program Finder</h3>
-                <div style="visibility:collapse">
-                    Program: <asp:DropDownList ID="lstFederations" runat="server" Width="375px" CssClass="text">
-					    <asp:ListItem>Please select a Federation</asp:ListItem>
-					</asp:DropDownList>
-                    <asp:DropDownList ID="lstYear" runat="server" Width="58px" CssClass="text"></asp:DropDownList>
+                <div>
+                    Select a program: <asp:DropDownList ID="ddlFeds" runat="server" Width="375px" CssClass="text" />
                 </div>
                 <div>
-                    Zip Code: <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
+                   Or enter zip code: <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
                 </div>
-                <div style="margin-top:20px;">
+                <div style="margin:20px;">
                     <asp:Button runat="server" Text="Find Program" ID="btnFind" OnClick="btnFind_Click"/>
                 </div>
                 <div>
@@ -36,6 +33,14 @@
                         <li><br /><strong>Offers grants for JDS kids:</strong> <asp:Label runat="server" ID="lblJDS"></asp:Label></li>
                         <li><strong>JDS Processing:</strong> <asp:Label runat="server" ID="lblJDSProcessing"></asp:Label></li>
                     </ul>
+                </asp:Panel>
+                <asp:Panel runat="server" ID="pnlEligibility">
+                    <div>Eligibility</div>
+                    <div>
+                        <asp:GridView runat="server" ID="gvEli">
+
+                        </asp:GridView>
+                    </div>
                 </asp:Panel>
             </div>
         </ContentTemplate>

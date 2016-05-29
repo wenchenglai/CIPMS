@@ -12,17 +12,52 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         if (!IsPostBack)
         {
             PopulateFederations();
-            getCampYears();
         }
     }
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        if (txtZipCode.Text.Trim() == "")
+        int fedId = 0;
+        string zipCode = "";
+        if (ddlFeds.SelectedIndex <= 0)
         {
-            lblError.Text = "Zip Code cannot be empty";
-            return;
+            if (txtZipCode.Text.Trim() == "")
+            {
+                lblError.Text = "Please select a program or enter a zip code.";
+                return;
+            }
+            else
+            {
+                zipCode = txtZipCode.Text.Trim();
+            }
+        }
+        else
+        {
+            fedId = Int32.Parse(ddlFeds.SelectedValue);
         }
 
+        PopulateFedData(fedId, zipCode);
+        PopulateEligibility(fedId);
+
+
+    }
+
+    private void PopulateFederations()
+    {
+        General _objGen = new General();
+        System.Data.DataSet dsFed = _objGen.get_AllFederations();
+
+        ddlFeds.DataSource = dsFed;
+        ddlFeds.DataTextField = "Federation";
+        ddlFeds.DataValueField = "ID";
+
+        ddlFeds.DataBind();
+        if ((ddlFeds.Items.Count != 0))
+            ddlFeds.Items.Insert(0, new ListItem("--Select--", "-1"));
+
+    }
+
+    private void PopulateFedData(int fedId, string zipCode)
+    {
         pnlResult.Visible = true;
 
         lblError.Text = "";
@@ -37,30 +72,41 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         lblJDSProcessing.Text = "";
 
         Dictionary<string, string> fed;
-        if (txtZipCode.Text.Trim().Length == 7)
+
+        if (fedId == 0)
         {
-            var gen = new General();
-            var fedId = gen.GetCanadianZipCode(txtZipCode.Text);
-            if (fedId == "Duplicate")
+            // there is no fed selected, so we use zip code
+            if (txtZipCode.Text.Trim().Length == 7)
             {
-                pnlResult.Visible = false;
-                lblError.Text = "Duplicates programs found for this zip code.  Please contact the FJC admin immediately";
-                return;
-            }
-            
-            if (fedId != "")
-            {
-                fed = FederationsDA.GetFederationByIdOrZipCode("", Int32.Parse(fedId));
+                var gen = new General();
+                var canadaFedId = gen.GetCanadianZipCode(txtZipCode.Text);
+                if (canadaFedId == "Duplicate")
+                {
+                    pnlResult.Visible = false;
+                    lblError.Text = "Duplicates programs found for this zip code.  Please contact the FJC admin immediately";
+                    return;
+                }
+
+                if (canadaFedId != "")
+                {
+                    fed = FederationsDA.GetFederationByIdOrZipCode("", Int32.Parse(canadaFedId));
+                }
+                else
+                {
+                    fed = new Dictionary<string, string>();
+                }
             }
             else
             {
-                fed = new Dictionary<string, string>();
+                fed = FederationsDA.GetFederationByIdOrZipCode(txtZipCode.Text, 0);
             }
         }
         else
         {
-            fed = FederationsDA.GetFederationByIdOrZipCode(txtZipCode.Text, 0);
+            fed = FederationsDA.GetFederationByIdOrZipCode("", fedId);
         }
+
+
 
         if (fed.Count == 0)
         {
@@ -75,7 +121,7 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             {
                 pnlResult.Visible = false;
                 lblError.Text = string.Format("Duplicates programs found for this zip code.  Please contact the FJC admin immediately.  The programs are {0} and {1}.", fed["Name"], fed["NameForSecondProgram"]);
-                return;   
+                return;
             }
         }
 
@@ -158,36 +204,12 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
             lblJDSProcessing.Text = "Offline, contact community directly";
         else if (isJDSOnline == "")
             lblJDSProcessing.Text = "N/A";
-
     }
 
-    private void PopulateFederations()
+    private void PopulateEligibility(int fedId)
     {
-        General _objGen = new General();
-        System.Data.DataSet dsFed = _objGen.get_AllFederations();
-
-        lstFederations.DataSource = dsFed;
-        lstFederations.DataTextField = "Federation";
-        lstFederations.DataValueField = "ID";
-
-        lstFederations.DataBind();
-        //if ((lstFederations.Items.Count != 0))
-        //    lstFederations.Items.Insert(0, new ListItem("--Select--", "-1"));
-
+        gvEli.DataSource = FedCampGrantDA.GetAllByFedID(Int32.Parse(Session["CampYear"].ToString()), fedId);
+        gvEli.DataBind();
     }
 
-    private void getCampYears()
-    {
-        var _objGen = new General();
-        DataSet dsYears = _objGen.GetAllCampYears();
-        lstYear.DataSource = dsYears;
-        lstYear.DataTextField = "CampYear";
-        lstYear.DataValueField = "CampYear";
-        lstYear.DataBind();
-        if (lstYear.Items.Count != 0)
-            lstYear.Items.Insert(0, new ListItem("--Select--", "-1"));
-
-        lstYear.ClearSelection();
-        lstYear.Items.FindByText(Session["CampYear"].ToString()).Selected = true;
-    }
 }
