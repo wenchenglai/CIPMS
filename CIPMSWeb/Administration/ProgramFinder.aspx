@@ -4,15 +4,15 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>          
-            <div style="margin-left: 20px;" class="infotext1">
+            <div style="margin-left: 20px;" class="infotext3">
                 <h3>Program Finder</h3>
-                <div>
+                <div style="margin-bottom:20px">
                     Select a program: <asp:DropDownList ID="ddlFeds" runat="server" Width="375px" CssClass="text" />
                 </div>
-                <div>
-                   Or enter zip code: <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox>&nbsp;&nbsp;&nbsp;
+                <div style="margin-bottom:20px">
+                   Or enter zip code: <asp:TextBox runat="server" ID="txtZipCode" MaxLength="7"></asp:TextBox><span class="infotext2">&nbsp;&nbsp;Program drop down list has higher precedence</span>
                 </div>
-                <div style="margin:20px;">
+                <div style="margin-bottom:20px;">
                     <asp:Button runat="server" Text="Find Program" ID="btnFind" OnClick="btnFind_Click"/>
                 </div>
                 <div>
@@ -34,10 +34,10 @@
                         <li><strong>JDS Processing:</strong> <asp:Label runat="server" ID="lblJDSProcessing"></asp:Label></li>
                     </ul>
                 </asp:Panel>
-                <asp:Panel runat="server" ID="pnlEligibility">
-                    <div>Eligibility</div>
+                <asp:Panel runat="server" ID="pnlEligibility" Visible="false">
+                    <div style="margin-top:30px; margin-bottom:10px"><strong>Grant Amount Eligibility Rules</strong></div>
                     <div>
-                        <asp:GridView runat="server" ID="gvEli">
+                        <asp:GridView runat="server" ID="gvEli" CssClass="InfoText3">
 
                         </asp:GridView>
                     </div>

@@ -36,7 +36,33 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         }
 
         PopulateFedData(fedId, zipCode);
-        PopulateEligibility(fedId);
+
+        if ((string)Session["RoleID"] == System.Configuration.ConfigurationManager.AppSettings["FJCADMIN"])
+        {
+            if (fedId == 0)
+            {
+                General _objGeneral = new General();
+                DataSet dsFederation = _objGeneral.GetFederationForZipCode(zipCode);
+                if (dsFederation.Tables.Count > 0)
+                {
+                    if (dsFederation.Tables[0].Rows.Count > 0)
+                    {
+                        DataRow dr = dsFederation.Tables[0].Rows[0];
+                        fedId = Int32.Parse(dr["Federation"].ToString());
+                    }
+
+                }
+            }
+
+            if (fedId > 0)
+            {
+                PopulateEligibility(fedId);
+            }
+            else
+            {
+                pnlEligibility.Visible = false;
+            }
+        }
 
 
     }
@@ -208,8 +234,9 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
 
     private void PopulateEligibility(int fedId)
     {
-        gvEli.DataSource = FedCampGrantDA.GetAllByFedID(Int32.Parse(Session["CampYear"].ToString()), fedId);
+        gvEli.DataSource = FedCampGrantDA.GetAllByFedID(Int32.Parse(Session["CampYear"].ToString()) - 2008, fedId);
         gvEli.DataBind();
+        pnlEligibility.Visible = true;
     }
 
 }
