@@ -55,7 +55,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The program is now closed.	Please click “Next?to see if you are eligible for a different One Happy Camper program
+						The Portland One Happy Camper program has a limited number of grants for summer  2016. For more information please contact Rachel Halupowski at rachel@jewishportland.org.
 					</p>
 				</asp:Label>
 			</td>

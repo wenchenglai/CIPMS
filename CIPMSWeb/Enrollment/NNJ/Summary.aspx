@@ -57,7 +57,8 @@
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
 
-The Northern New Jersey One Happy Camper program is now closed for summer 2016. For information about the waitlist, please contact Diana Diner at DianaD@jfnnj.org.
+The Northern New Jersey One Happy Camper program is now closed for summer 2016. For more information, please contact DianaD@jfnnj.org. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+
 
 					</p>
 				</asp:Label>
