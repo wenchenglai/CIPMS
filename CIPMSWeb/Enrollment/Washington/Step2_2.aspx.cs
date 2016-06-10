@@ -20,7 +20,12 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
     protected void Page_Init(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+        {
+            if (Session["AllowRegister"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
+        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -62,6 +67,9 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
 
     void btnNext_Click(object sender, EventArgs e)
     {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
+            return;
+
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
         if (!isReadOnly)
         {

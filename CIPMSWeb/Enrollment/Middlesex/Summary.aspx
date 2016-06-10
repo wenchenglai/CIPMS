@@ -42,7 +42,7 @@
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>
 			<td>
-                <img id="Img1" src="../../images/middlesex.jpg" />
+                <img id="Img1" src="logo.jpg" />
             </td>
             <td>                  
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">

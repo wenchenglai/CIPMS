@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
+using System.Linq;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
@@ -16,7 +17,10 @@ public partial class HartfordPage2 : System.Web.UI.Page
 	#region "Page events"
 	protected void Page_Init(object sender, EventArgs e)
 	{
-		btnNext.Click += new EventHandler(btnNext_Click);
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Atlanta).ToString()))
+            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+
+        btnNext.Click += new EventHandler(btnNext_Click);
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);
 		btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
 		btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);

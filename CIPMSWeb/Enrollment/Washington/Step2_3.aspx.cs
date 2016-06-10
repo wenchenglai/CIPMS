@@ -18,7 +18,12 @@ public partial class Step2_Washington_3 : Page
     protected void Page_Init(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+        {
+            if (Session["AllowRegister"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
+        }
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -180,6 +185,9 @@ public partial class Step2_Washington_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
+            return;
+
         if (ddlCamp.SelectedValue == "-1")
         {
             Response.Redirect("../Step1_NL.aspx");

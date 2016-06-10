@@ -50,6 +50,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
+                        Session["AllowRegister"] = true;
                     }
                     else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2016")
                     {

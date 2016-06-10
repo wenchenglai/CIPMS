@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Configuration;
+using System.Linq;
 using System.Web.UI.WebControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
@@ -15,6 +16,14 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Broward).ToString()))
+        {
+            if (Session["AllowRegister"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
+        }
+
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);

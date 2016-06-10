@@ -52,7 +52,7 @@
             <td>
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						The Columbus One Happy Camper program is now closed for summer 2016. For information about the waitlist, please contact Alyssa Russel1 at arussell@tcjf.org.
+						The Columbus One Happy Camper program is now closed for summer 2016. For information about the waitlist, please contact Alyssa Russell at arussell@tcjf.org.
 					</p>
 				</asp:Label>
 			</td>
