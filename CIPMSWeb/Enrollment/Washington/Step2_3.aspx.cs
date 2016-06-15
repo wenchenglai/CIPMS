@@ -186,7 +186,12 @@ public partial class Step2_Washington_3 : Page
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-            return;
+        {
+            if (Session["AllowRegister"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
+        }
 
         if (ddlCamp.SelectedValue == "-1")
         {

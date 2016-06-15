@@ -68,7 +68,12 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
     void btnNext_Click(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-            return;
+        {
+            if (Session["AllowRegister"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
+        }
 
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
         if (!isReadOnly)

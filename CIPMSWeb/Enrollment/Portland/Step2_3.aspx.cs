@@ -14,6 +14,7 @@ public partial class Step2_Adamah_3 : Page
     private Boolean bPerformUpdate;
     private RadioButton RadioButtonQ7Option1;
     private RadioButton RadioButtonQ7Option2;
+
     protected void Page_Init(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Portland).ToString()))
@@ -25,13 +26,6 @@ public partial class Step2_Adamah_3 : Page
         btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-    }
-
-    void btnReturnAdmin_Click(object sender, EventArgs e)
-    {
-        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
-        InsertCamperAnswers();
-        Response.Redirect(strRedirURL);
     }
 
     protected void Page_Load(object sender, EventArgs e)
@@ -72,80 +66,72 @@ public partial class Step2_Adamah_3 : Page
         SetPanelStates();
     }
 
-    //page unload
-    protected void Page_Unload(object sender, EventArgs e)
+    protected void ValidateDataInput(object source, ServerValidateEventArgs args)
     {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
-    void btnSaveandExit_Click(object sender, EventArgs e)
-    {
-        string strRedirURL;
-        strRedirURL = Master.SaveandExitURL;
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+        if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked)
         {
-            InsertCamperAnswers();
-        }
-
-        if (Master.IsCamperUser == "Yes")
-        {
-
-            General oGen = new General();
-            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
-            {
-                Response.Redirect(strRedirURL);
-            }
-            else
-            {
-                string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
-                if (!ClientScript.IsStartupScriptRegistered("clientScript"))
-                {
-                    ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
-                }
-            }
-        }
-        else
-        {
-            Response.Redirect(strRedirURL);
-        }
-    }
-
-    void btnPrevious_Click(object sender, EventArgs e)
-    {
-        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-        {
-            InsertCamperAnswers();
-        }
-        Session["FJCID"] = hdnFJCIDStep2_3.Value;
-        Session["STATUS"] = null;
-        Response.Redirect("Step2_2.aspx");
-    }
-
-    void btnChkEligibility_Click(object sender, EventArgs e)
-    {
-        string strStartDate = txtStartDate.Text.Trim();
-        try
-        {
-            DateTime.Parse(strStartDate);
-        }
-        catch (Exception ex)
-        {
-            lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
-            lblMsg.Visible = true;
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please answer the question: Have you registered for camp yet?";
             return;
         }
 
-        string strEndDate = txtEndDate.Text.Trim();
 
+        if (ddlCamp.SelectedValue == "0")
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please choose a camp.";
+            return;
+        }
+
+        if (txtCampSession.Text.Trim() == "")
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please enter a session name.";
+            return;
+        }
+
+        DateTime startDate;
         try
         {
-            DateTime.Parse(strEndDate);
+            startDate = DateTime.Parse(txtStartDate.Text.Trim());
         }
         catch (Exception ex)
         {
-            lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
-            lblMsg.Visible = true;
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+            return;
+        }
+
+        DateTime endDate;
+
+        try
+        {
+            endDate = DateTime.Parse(txtEndDate.Text.Trim());
+        }
+        catch (Exception ex)
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+            return;
+        }
+
+        int result = DateTime.Compare(startDate, endDate);
+
+        if (result >= 0)
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in session dates.  The start date must be prior to the end date.";
+            return;
+        }
+
+        args.IsValid = true;
+    }
+
+
+    void btnChkEligibility_Click(object sender, EventArgs e)
+    {
+        if (!Page.IsValid)
+        {
             return;
         }
 
@@ -207,6 +193,56 @@ public partial class Step2_Adamah_3 : Page
         }
     }
 
+
+    void btnSaveandExit_Click(object sender, EventArgs e)
+    {
+        string strRedirURL;
+        strRedirURL = Master.SaveandExitURL;
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+        {
+            InsertCamperAnswers();
+        }
+
+        if (Master.IsCamperUser == "Yes")
+        {
+
+            General oGen = new General();
+            if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
+            {
+                Response.Redirect(strRedirURL);
+            }
+            else
+            {
+                string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
+                if (!ClientScript.IsStartupScriptRegistered("clientScript"))
+                {
+                    ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
+                }
+            }
+        }
+        else
+        {
+            Response.Redirect(strRedirURL);
+        }
+    }
+
+    void btnPrevious_Click(object sender, EventArgs e)
+    {
+        if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+        {
+            InsertCamperAnswers();
+        }
+        Session["FJCID"] = hdnFJCIDStep2_3.Value;
+        Session["STATUS"] = null;
+        Response.Redirect("Step2_2.aspx");
+    }
+
+    void btnReturnAdmin_Click(object sender, EventArgs e)
+    {
+        string strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
+        InsertCamperAnswers();
+        Response.Redirect(strRedirURL);
+    }
 
     //to insert the Camper Answers
     protected void InsertCamperAnswers()
