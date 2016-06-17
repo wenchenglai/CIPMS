@@ -90,30 +90,22 @@ public partial class Step2_Adamah_3 : Page
             return;
         }
 
-        DateTime startDate;
-        try
-        {
-            startDate = DateTime.Parse(txtStartDate.Text.Trim());
-        }
-        catch (Exception ex)
+        if (!ValidationChecker.CheckSessionDate(txtStartDate.Text.Trim()))
         {
             args.IsValid = false;
             CusVal.ErrorMessage = "Error in start session date.  The accepted format is mm/dd/yyyy.";
             return;
         }
 
-        DateTime endDate;
-
-        try
-        {
-            endDate = DateTime.Parse(txtEndDate.Text.Trim());
-        }
-        catch (Exception ex)
+        if (!ValidationChecker.CheckSessionDate(txtEndDate.Text.Trim()))
         {
             args.IsValid = false;
             CusVal.ErrorMessage = "Error in end session date.  The accepted format is mm/dd/yyyy.";
             return;
         }
+
+        DateTime startDate = DateTime.Parse(txtStartDate.Text.Trim());
+        DateTime endDate = DateTime.Parse(txtEndDate.Text.Trim());
 
         int result = DateTime.Compare(startDate, endDate);
 
@@ -124,9 +116,16 @@ public partial class Step2_Adamah_3 : Page
             return;
         }
 
+        int currentYear = Convert.ToInt32(Session["CampYear"]);
+        if (!ValidationChecker.CheckSessionRange(startDate, endDate, currentYear))
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = String.Format("Error in session dates.  The session range must be between 05/01/{0} and 09/30/{1}", currentYear, currentYear);
+            return;
+        }
+
         args.IsValid = true;
     }
-
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {

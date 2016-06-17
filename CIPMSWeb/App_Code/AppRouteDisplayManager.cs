@@ -24,7 +24,8 @@ public class AppRouteDisplayManager
                 status == StatusInfo.EligibleCampCoupon || 
                 status == StatusInfo.EligiblePendingSchool ||
                 status == StatusInfo.Eligibledayschool ||
-                status == StatusInfo.EligiblePendingNumberOfDays)
+                status == StatusInfo.EligiblePendingNumberOfDays ||
+                status == StatusInfo.EligiblePJLottery )
             {
                 flag = true;
             }
