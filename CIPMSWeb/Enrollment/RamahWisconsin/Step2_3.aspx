@@ -6,32 +6,9 @@
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
-         <!--to display the validation summary (error messages)-->
-        <table width="50%" cellpadding="0" cellspacing="0" align="center">
-       
-            <tr>
-                <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Ramah"></asp:CustomValidator>
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                </td>
-            </tr>
-        </table>
+
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
-            <tr>
-                <td colspan="3">
-                    <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Font-Bold="true" />
-                </td>
-            </tr>
+
          <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
@@ -65,19 +42,7 @@
                     </asp:Panel>
                 </td>
              </tr>
-            <!--<tr>
-                <td valign="top"><asp:Label ID="Label20" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" >
-                    <asp:Panel ID="PnlQ8_1_1" runat="server" width="100%">
-                        <asp:Label ID="Label21" runat="server" CssClass="QuestionText">State</asp:Label><br />
-                    </asp:Panel>
-                </td>
-                <td>
-                    <asp:Panel ID="PnlQ8_1_2" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlState" runat="server" CssClass="dropdown" AutoPostBack="true"></asp:DropDownList>
-                    </asp:Panel>
-                </td>
-            </tr>-->
+
             <tr>
                 <td valign="top"><asp:Label ID="Label1" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" style="width:20%" >
@@ -98,37 +63,11 @@
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
                         <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Which session will the camper be attending (if unknown, write unknown)?</asp:Label><br />
                         <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox1"></asp:TextBox>
-                       <%-- <asp:DropDownList ID="ddlCampSession" AutoPostBack="true" runat="server" CssClass="dropdown">
-                        </asp:DropDownList>--%>
+
                     </asp:Panel>
                 </td>
             </tr>
-            <%--<tr>
-                <td>
-                </td>
-                <td   colspan="2">
-                    <asp:Panel ID="PnlNote" runat="server">
-                        <asp:Label ID="lblNote" runat="server" CssClass="QuestionText">
-                            <p style="text-align: justify" id="pNote" runat="server">
-                                <font color="red"><b>In order to be eligible</b></font> for the incentive grant,
-                                the camper must attend camp for at least 19 consecutive days.</p>
-                        </asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
-           <%-- <tr>
-                <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="11" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" colspan="2">
-                    <asp:Panel ID="Panel3" runat="server">
-                        <asp:Label ID="Label26" runat="server" CssClass="QuestionText">Dates of the Camp session</asp:Label><br />
-                        <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblStartDate" runat="server" CssClass="QuestionText"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Label ID="Label28" runat="server" CssClass="QuestionText">End Date</asp:Label>&nbsp;&nbsp;&nbsp;
-                        <asp:Label Font-Bold="true" ID="lblEndDate" runat="server" CssClass="QuestionText"></asp:Label>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
+
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
@@ -188,6 +127,16 @@
                 </td>
             </tr>
             <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+
+                </td>
+            </tr>
             <tr >
                 <td valign="top"><asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">

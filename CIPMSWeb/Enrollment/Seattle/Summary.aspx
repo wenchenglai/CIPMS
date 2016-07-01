@@ -48,7 +48,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+The Seattle One Happy Camper program is now closed for summer 2016. For more information, please contact taryno@jewishinseattle.org.  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

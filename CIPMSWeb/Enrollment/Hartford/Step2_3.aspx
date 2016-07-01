@@ -3,14 +3,6 @@
 <%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
 
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
-    <div>
-        <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_AiryLouise" />
-        <!--this summary will be used only for Comments field (only for Admin user)-->
-        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-        <!--to vaidate the comments text box for admin user-->
-        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
-    </div>
-
     <table>
         <tbody class="QuestionText">
 
@@ -118,6 +110,16 @@
             </td>
         </tr>
         <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+
+                </td>
+            </tr>
         <tr>
             <td valign="top">
                 <asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>

@@ -171,6 +171,67 @@ public partial class Step2_Columbus_3 : Page
         }
     }
 
+    protected void ValidateDataInput(object source, ServerValidateEventArgs args)
+    {
+        if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked)
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please answer the question: Have you registered for camp yet?";
+            return;
+        }
+
+
+        if (ddlCamp.SelectedValue == "0")
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please choose a camp.";
+            return;
+        }
+
+        if (txtCampSession.Text.Trim() == "")
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Please enter a session name.";
+            return;
+        }
+
+        if (!ValidationChecker.CheckSessionDate(txtStartDate.Text.Trim()))
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in start session date.  The accepted format is mm/dd/yyyy.";
+            return;
+        }
+
+        if (!ValidationChecker.CheckSessionDate(txtEndDate.Text.Trim()))
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in end session date.  The accepted format is mm/dd/yyyy.";
+            return;
+        }
+
+        DateTime startDate = DateTime.Parse(txtStartDate.Text.Trim());
+        DateTime endDate = DateTime.Parse(txtEndDate.Text.Trim());
+
+        int result = DateTime.Compare(startDate, endDate);
+
+        if (result >= 0)
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = "Error in session dates.  The start date must be prior to the end date.";
+            return;
+        }
+
+        int currentYear = Convert.ToInt32(Session["CampYear"]);
+        if (!ValidationChecker.CheckSessionRange(startDate, endDate, currentYear))
+        {
+            args.IsValid = false;
+            CusVal.ErrorMessage = String.Format("Error in session dates.  The session range must be between 05/01/{0} and 09/30/{1}", currentYear, currentYear);
+            return;
+        }
+
+        args.IsValid = true;
+    }
+
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
         int iStatus, iCampId;
@@ -180,32 +241,7 @@ public partial class Step2_Columbus_3 : Page
         {
             if (Page.IsValid)
             {
-                string strStartDate = txtStartDate.Text.Trim();
-                try
-                {
-                    DateTime.Parse(strStartDate);
-                }
-                catch (Exception ex)
-                {
-                    lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
-                    lblMsg.Visible = true;
-                    return;
-                }
-
-                string strEndDate = txtEndDate.Text.Trim();
-
-                try
-                {
-                    DateTime.Parse(strEndDate);
-                }
-                catch (Exception ex)
-                {
-                    lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
-                    lblMsg.Visible = true;
-                    return;
-                }
-
-                bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
+                 bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
                 //Modified by id taken from the Master Id
                 strModifiedBy = Master.UserId;
                 if (!isReadOnly)

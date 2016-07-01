@@ -3,11 +3,7 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" runat="Server">
-    <div class="InfoText">
-        <asp:CustomValidator ID="CusVal" runat="server" Display="Dynamic" ClientValidationFunction="VaildatePage3Step2_Midsex" />
-        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" />
-        <asp:CustomValidator ID="CusValComments1" runat="server" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false" />        
-    </div>
+
     <div id="divStatusMessageBox" class="InfoText2" runat="server">
         <strong>
             Based on your responses thus far, you appear to be eligible for this program’s grant! All we need now is the camp and session information to confirm the camper is attending a camp that is eligible for this program.
@@ -121,6 +117,16 @@
                 </td>
             </tr>
             <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+
+                </td>
+            </tr>
             <tr>
                 <td valign="top">
                     

@@ -80,26 +80,9 @@
 
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" Width="100%">
-        <!--to display the validation summary (error messages)-->
-        <table width="60%" cellpadding="0" cellspacing="0" align="center" border="0">
-            <tr>
-                <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic" ClientValidationFunction="VaildatePage3Step2_LACIP"></asp:CustomValidator>
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" runat="server" Display="dynamic" CssClass="InfoText" ErrorMessage="<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                    <asp:Label ID="lblMsgCA" runat="server" Visible="false" CssClass="QuestionText"><p style="text-align: justify; color:Red;"><b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
-                    
-                </td>
-            </tr>
-        </table>
+
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
-            <tr>
-                <td colspan="3">
-                    <asp:Label ID="Label8" runat="server" ForeColor="Red" Font-Bold="true" />
-                </td>
-            </tr>
+
         <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
@@ -144,27 +127,13 @@
                     </asp:Panel>
                 </td>
             </tr>
-            <%--<tr>
-                <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22"
-                        runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top" colspan="2">
-                    <asp:Panel ID="PnlQ9" runat="server" Width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
-                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox"></asp:TextBox>
-                    </asp:Panel>
-                </td>
-            </tr>--%>
+
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label3"
                         runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <%--<asp:Panel ID="PnlQ8" runat="server">
-                        <asp:Label ID="Label8" runat="server" CssClass="QuestionText">Please select the session that the camper wishes to attend:</asp:Label><br />
-                        <asp:DropDownList ID="ddlCampSession" AutoPostBack="true" runat="server" CssClass="dropdown">
-                        </asp:DropDownList>
-                    </asp:Panel>--%>
+
                     <asp:Panel ID="PnlQ8" runat="server">
                         <asp:Label ID="Label10" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown."</asp:Label><br />
                        
@@ -260,6 +229,17 @@
                 </td>
             </tr>
             <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+                    <asp:Label ID="lblMsgCA" runat="server" Visible="false" CssClass="QuestionText"><p style="text-align: justify; color:Red;"><b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
+                    
+                </td>
+            </tr>
             <tr>
                 <td valign="top">
                     <asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>

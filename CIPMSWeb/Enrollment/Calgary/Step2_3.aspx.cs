@@ -92,6 +92,75 @@ public partial class Step2_Calgary_3 : Page
         }
     }
 
+    protected void Page_Unload(object sender, EventArgs e)
+    {
+        CamperAppl = null;
+        objGeneral = null;
+    }
+
+    void btnSaveandExit_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Page.IsValid)
+            {
+                string strRedirURL;
+               
+                strRedirURL = Master.SaveandExitURL;
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+                {
+                    InsertCamperAnswers();
+                }
+                if (Master.IsCamperUser == "Yes")
+                {
+
+                    General oGen = new General();
+                    if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
+                    {
+                        Response.Redirect(strRedirURL);
+                    }
+                    else
+                    {
+                        string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
+                        if (!ClientScript.IsStartupScriptRegistered("clientScript"))
+                        {
+                            ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
+                        }
+                    }
+                }
+                else
+                {
+                    Response.Redirect(strRedirURL);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
+    void btnPrevious_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            if (Page.IsValid)
+            {
+                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
+                {
+                    InsertCamperAnswers();
+                }
+                Session["FJCID"] = hdnFJCIDStep2_3.Value;
+                Session["STATUS"] = null;
+                Response.Redirect("Step2_2.aspx");
+            }
+        }
+        catch (Exception ex)
+        {
+            Response.Write(ex.Message);
+        }
+    }
+
     protected void ValidateDataInput(object source, ServerValidateEventArgs args)
     {
         if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked)
@@ -153,79 +222,6 @@ public partial class Step2_Calgary_3 : Page
         args.IsValid = true;
     }
 
-    //page unload
-    protected void Page_Unload(object sender, EventArgs e)
-    {
-        CamperAppl = null;
-        objGeneral = null;
-    }
-
-    void btnSaveandExit_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            if (Page.IsValid)
-            {
-                string strRedirURL;
-               
-                strRedirURL = Master.SaveandExitURL;
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-                {
-                    InsertCamperAnswers();
-                }
-                if (Master.IsCamperUser == "Yes")
-                {
-
-                    General oGen = new General();
-                    if (oGen.IsApplicationSubmitted(Session["FJCID"].ToString()))
-                    {
-                        Response.Redirect(strRedirURL);
-                    }
-                    else
-                    {
-                        string strScript = "<script language=javascript>openThis(); window.location='" + strRedirURL + "';</script>";
-                        if (!ClientScript.IsStartupScriptRegistered("clientScript"))
-                        {
-                            ClientScript.RegisterStartupScript(Page.GetType(), "clientScript", strScript);
-                        }
-                    }
-                }
-                else
-                {
-                    Response.Redirect(strRedirURL);
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
-  
-
-
-    void btnPrevious_Click(object sender, EventArgs e)
-    {
-        try
-        {
-            if (Page.IsValid)
-            {
-                if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
-                {
-                    InsertCamperAnswers();
-                }
-                Session["FJCID"] = hdnFJCIDStep2_3.Value;
-                Session["STATUS"] = null;
-                Response.Redirect("Step2_2.aspx");
-            }
-        }
-        catch (Exception ex)
-        {
-            Response.Write(ex.Message);
-        }
-    }
-
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
         if (!Page.IsValid)
@@ -245,31 +241,6 @@ public partial class Step2_Calgary_3 : Page
         {
             if (Page.IsValid)
             {
-                string strStartDate = txtStartDate.Text.Trim();
-                try
-                {
-                    DateTime.Parse(strStartDate);
-                }
-                catch (Exception ex)
-                {
-                    lblMsg.Text = "Error in start session date.  The accepted format is mm/dd/yyyy.";
-                    lblMsg.Visible = true;
-                    return;
-                }
-
-                string strEndDate = txtEndDate.Text.Trim();
-
-                try
-                {
-                    DateTime.Parse(strEndDate);
-                }
-                catch (Exception ex)
-                {
-                    lblMsg.Text = "Error in end session date.  The accepted format is mm/dd/yyyy.";
-                    lblMsg.Visible = true;
-                    return;
-                }
-
                 bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId);
                 //Modified by id taken from the Master Id
                 strModifiedBy = Master.UserId;

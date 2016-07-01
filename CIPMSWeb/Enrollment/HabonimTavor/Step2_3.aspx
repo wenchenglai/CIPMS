@@ -7,25 +7,7 @@
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
-         <!--to display the validation summary (error messages)-->
-        <table width="50%" cellpadding="0" cellspacing="0" align="center">
-            <tr>
-                <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Midsex"></asp:CustomValidator>
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                </td>
-            </tr>
-        </table>
+
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
 
          <tr>
@@ -143,6 +125,16 @@
                 </td>
             </tr>
             <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+
+                </td>
+            </tr>
             <tr >
                 <td valign="top"><asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">

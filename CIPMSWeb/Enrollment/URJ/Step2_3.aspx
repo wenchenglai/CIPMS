@@ -6,31 +6,8 @@
     
     <!--Panel 2 - Questions displayed on page 2 of Step 2-->
     <asp:Panel ID="Panel2" runat="server" width="100%">
-        <%--<table width="100%" cellpadding="5" cellspacing="0">
-            <tr>
-                <td>
-                    <p class="headertext">Basic Camper Information: Section II continued..</p>
-                </td>
-            </tr>
-        </table>--%>
-         <!--to display the validation summary (error messages)-->
-        <table width="50%" cellpadding="0" cellspacing="0" align="center">
-            <tr>
-                <td>
-                    <asp:CustomValidator ID="CusVal" CssClass="InfoText" runat="server" Display="Dynamic"  ClientValidationFunction="VaildatePage3Step2_Midsex"></asp:CustomValidator>
-                    <!--this summary will be used only for Comments field (only for Admin user)-->
-                    <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
-                    <!--to vaidate the comments text box for admin user-->
-                    <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false"></asp:CustomValidator>
-                </td>
-            </tr>
-        </table>
         <table width="100%" cellpadding="5" cellspacing="0" border="0">
-            <tr>
-                <td colspan="3">
-                    <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Font-Bold="true" />
-                </td>
-            </tr>
+
         <tr>
         <td colspan="3">
         <asp:Label ID="lblEligibility" runat="server" CssClass="InfoText2">
@@ -48,12 +25,7 @@
                         <p style="text-align:justify">
                             The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page. Need help finding a <a href="#" onclick="javascript:window.open('http://www.JewishCamp.org/camps','search','toolbar=no,status=no,scrollbars=yes,width=800,height=400,resizable=yes')">camp</a>?</p></asp:Label> 
                      <uc1:RegControls ID="RegControls1" runat="server" />                            
-                     <%--<asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist" /><br />                    --%>
-                   
-                   <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />
-               --%> </td>
+                     </td>
             </tr>
             <tr>
                 <td valign="top">
@@ -146,6 +118,16 @@
                 </td>
             </tr>
             <!--end of admin panel-->
+            <tr>
+                <td colspan="3">
+                        <asp:CustomValidator ID="CusVal" CssClass="InfoText" Font-Size="15px" runat="server" ClientValidationFunction="ValidateStep4" Display="Dynamic" OnServerValidate="ValidateDataInput" />
+                        <!--this summary will be used only for Comments field (only for Admin user)-->
+                        <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
+                        <!--to vaidate the comments text box for admin user-->
+                        <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
+
+                </td>
+            </tr>
             <tr >
                 <td valign="top"><asp:Label ID="Label16" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
