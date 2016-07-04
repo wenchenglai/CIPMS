@@ -69,11 +69,10 @@ function doThis() {
 }
 //LOADING POPUP
 //Event!
-function popupCall(invokedObj, messageSpanID, popupTitle, isPnl8ToBeDisabled, pageName) {
-    debugger;
+function popupCall(invokedObj, messageSpanID, popupTitle, isPnl8ToBeDisabled, pageName, allowNoCamp) {
     //To give a message for JWest second timers
     if(pageName == "step1_Questions")
-    {debugger;
+    {
         if(messageSpanID == "JWestFirstTimerQuestionMessage")
         {
             
@@ -290,7 +289,7 @@ function popupCall(invokedObj, messageSpanID, popupTitle, isPnl8ToBeDisabled, pa
 	    if(isPnl8ToBeDisabled == undefined)
 	        isPnl8ToBeDisabled = false;
     	    
-	    CampRegistrationSelection(bCheckedValue,isPnl8ToBeDisabled,'PnlQ7','PnlQ8','PnlQ9','PnlQ10');
+	    CampRegistrationSelection(bCheckedValue, isPnl8ToBeDisabled, allowNoCamp, 'PnlQ7','PnlQ8','PnlQ9','PnlQ10');
 	}	
 }
 
@@ -300,7 +299,7 @@ function CampRegistrationSelection()
     var arguments = CampRegistrationSelection.arguments;
     var RadioObj, k=0;
     var divctlsid = new Array();
-    var bCheckedValue, bPnl8Disable;
+    var bCheckedValue, bPnl8Disable, allowNoCamp = false;
     
     //to get the input parameters passed to this method
     //1st parameter - Radiobutton obj
@@ -314,7 +313,10 @@ function CampRegistrationSelection()
                 break;
             case 1:
                 bPnl8Disable = arguments[j];
-                break;    
+                break;
+            case 2:
+                allowNoCamp = arguments[j];
+                break;
             default:
                 divctlsid[k] = arguments[j];
                 k=k+1;
@@ -324,8 +326,14 @@ function CampRegistrationSelection()
     
     var divobjs = new Array();
     divobjs = document.getElementsByTagName("div");
-    var nextButton = document.getElementById("ctl00_Content_btnChkEligibility");
-    nextButton.disabled = bCheckedValue;
+
+    if (!allowNoCamp) {
+        if (bCheckedValue) {
+            $("#ctl00_Content_btnChkEligibility").hide();
+        } else {
+            $("#ctl00_Content_btnChkEligibility").show();
+        }
+    }
     //to disable the child nodes
     for (var i=0; i < divobjs.length; i++)
     {
@@ -383,8 +391,14 @@ $(document).ready(function(){
 	$(document).keyup(function(e){
 	    if(e.keyCode==27 && popupStatus==1){
 			disablePopup();
-		}
+	    }
 	});
+
+	if ($("#ctl00_Content_RegControls1_RadioButtonQ7Option1").prop("checked")) {
+	    $("#ctl00_Content_btnChkEligibility").hide();
+	} else {
+	    $("#ctl00_Content_btnChkEligibility").show();
+	}
 
 });
 

@@ -88,7 +88,8 @@ namespace CIPMSBC.Eligibility
                         CampID = Convert.ToInt32(drCamp["Answer"]);
                         if (CampID == 0)
                         {
-                            iStatusValue = Convert.ToInt32(StatusInfo.EligibleNoCamp);
+                            // 2016-07-04 EligibleNoCamp is no longer existing from now on, and it's possible for PJL to have no camp selected
+                            iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
                         }
                         else
                         {

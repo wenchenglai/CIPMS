@@ -1,5 +1,5 @@
 ﻿function ValidateStep4(sender, args) {
-    var Q7_1, Q7_2, Q7_3, Q7_4, Q8_State, Q8_Camp, Q9_CampSession, Q10_StartDate, Q10_EndDate;
+    var Q7_1, Q7_2, hasRegistered_Option3, Q7_3, Q7_4, Q8_State, Q8_Camp, Q9_CampSession, Q10_StartDate, Q10_EndDate;
     var inputobjs = document.getElementsByTagName("input");
     var selectobjs = document.getElementsByTagName("select");
     var valObj = document.getElementById(sender.id);
@@ -14,13 +14,11 @@
     for (var i = 0; i < inputobjs.length - 1; i++) {
         if (inputobjs[i].id.indexOf("RadioButtonQ7Option1") >= 0)
             Q7_1 = inputobjs[i];
-        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2") >= 0)
+        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2") >= 0) {
             Q7_2 = inputobjs[i];
-            //        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3")>=0)
-            //            Q7_3 = inputobjs[i];
-            //        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option4")>=0)
-            //            Q7_4 = inputobjs[i];
-        else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2") >= 0)
+        } else if (inputobjs[i].id.indexOf("RadioButtonQ7Option3") >= 0) {
+            hasRegistered_Option3 = inputobjs[i];
+        } else if (inputobjs[i].id.indexOf("RadioButtonQ7Option2") >= 0)
             Q7_2 = inputobjs[i];
         else if (inputobjs[i].id.indexOf("txtCampSession") >= 0)
             Q9_CampSession = inputobjs[i];
@@ -39,10 +37,9 @@
     }
 
     //validation for Question 7
-    if (Q7_1.checked)
+    if (Q7_1.checked) {
         bValid = true;
-
-    else if (Q7_2.checked) {
+    } else if (Q7_2.checked || hasRegistered_Option3.checked) {
         Q9_CampSession.value = trim(Q9_CampSession.value);
         Q10_StartDate.value = trim(Q10_StartDate.value);
         Q10_EndDate.value = trim(Q10_EndDate.value);

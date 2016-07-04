@@ -57,20 +57,6 @@ public partial class Step1 : System.Web.UI.Page
 		CamperAppl = new CamperApplication();
 		objGeneral = new General();
 
-		//if (Session["CampYear"] == null)
-		//{
-		//    var _objGen = new General();
-		//    DataSet dsCampYear = _objGen.GetCurrentYear();
-		//    if (dsCampYear.Tables[0].Rows.Count > 0)
-		//    {
-		//        Session["CampYear"] = dsCampYear.Tables[0].Rows[0]["CampYear"].ToString();
-		//    }
-		//    else
-		//    {
-		//        Session["CampYear"] = Application["CampYear"].ToString();
-		//    }
-		//}
-
 		var strPrevPage = Request.QueryString["check"];
 
 		if (!Page.IsPostBack)
@@ -130,29 +116,6 @@ public partial class Step1 : System.Web.UI.Page
 					Response.Redirect("Step2_1.aspx");
 				}
 
-				//if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedId"] != null && Session["FedId"].ToString() != ""))
-				//{
-				//    if (Session["CampID"].ToString() == "3037")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1027", "1027", "N");
-				//    else if (Session["CampID"].ToString() == "3079")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1028", "1028", "N");
-				//    else if (Session["CampID"].ToString() == "3078")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1029", "1029", "N");
-				//    else if (Session["CampID"].ToString() == "3009")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1030", "1030", "N");
-				//    else if (Session["FedId"].ToString() == "49")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1031", "1031", "N");
-
-				//    if (dsSplCode.Tables.Count > 0)
-				//    {
-				//        if (dsSplCode.Tables[0].Rows.Count > 0)
-				//        {
-				//            txtSplCode.Text = dsSplCode.Tables[0].Rows[0][3].ToString();
-				//            txtSplCode.Enabled = false;
-				//        }
-				//    }
-				//}
-
 				string dallasCode = CamperAppl.validateFJCID(hdnFJCID.Value);
 				if (dallasCode != null)
 				{
@@ -165,21 +128,11 @@ public partial class Step1 : System.Web.UI.Page
 			else  //new user insert
 			{
 				hdnPerformAction.Value = "INSERT";
-				getGenders(string.Empty, string.Empty);
 				get_CountryStates(int.Parse(ddlCountry.SelectedValue));
 			}
 
 			PopulateStateCityForZIP(false);
 			txtAge.Attributes.Add("readonly", "readonly");
-
-			//dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
-
-			//for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-			//{
-			//    hdnPJLCodes.Value = hdnPJLCodes.Value + "," + dsPJLCodes.Tables[0].Rows[i][0].ToString();
-			//}
-
-			//hdnPJLCodes.Value.TrimStart(',');
 		}
 
 		if (strPrevPage == "popup")
@@ -1027,86 +980,6 @@ public partial class Step1 : System.Web.UI.Page
 		return false;
 	}
 
-	private void getGenders(string strFJCID, string Gender)
-	{
-		DataSet dtGenders;
-		dtGenders = CamperAppl.get_Genders();
-		ddlGender.DataSource = dtGenders;
-		ddlGender.DataTextField = "Description";
-		ddlGender.DataValueField = "ID";
-		ddlGender.DataBind();
-
-		MasterPage x = Page.Master; ;
-
-		if (Session["CamperLoginID"] == null)//admin user
-		{
-			if (Gender.Equals(string.Empty)) //gender was not selected
-			{
-				ddlGender.Items.Insert(0, new ListItem("", "-1"));
-				lblStarGender.Text = "&nbsp;&nbsp;";
-			}
-			else //gender was selected
-			{
-				ddlGender.Items.Insert(0, new ListItem("", "-1"));
-				ddlGender.SelectedValue = Gender;
-				lblStarGender.Text = "&nbsp;&nbsp;";
-			}
-		}
-		else // camper
-		{
-			if (string.IsNullOrEmpty(strFJCID)) //new camper
-			{
-				ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-				lblStarGender.Text = "*";
-			}
-			else if (Gender.Equals(string.Empty)) //gender was not selected
-			{
-				CamperApplication objCamperAppl = new CamperApplication();
-				DataSet dsApplSubmitInfo = objCamperAppl.GetApplicationSubmittedInfo(strFJCID);
-
-				if (dsApplSubmitInfo.Tables[0].Rows.Count > 0)
-				{
-					DataRow dr = dsApplSubmitInfo.Tables[0].Rows[0];
-
-					//get submitted date
-					string strSubmittedDate = string.Empty; ;
-					if (!dr["SUBMITTEDDATE"].Equals(DBNull.Value))
-						strSubmittedDate = dr["SUBMITTEDDATE"].ToString();
-
-					//to get the modified by user6
-					int iModifiedBy;
-					string CamperUserId = ConfigurationManager.AppSettings["CamperModifiedBy"].ToString();
-					iModifiedBy = Convert.ToInt32(CamperUserId);
-
-					if (!dr["MODIFIEDUSER"].Equals(DBNull.Value))
-						iModifiedBy = Convert.ToInt32(dr["MODIFIEDUSER"]);
-
-					//if true, Camper Application has been submitted (or) the Application has been modified by a Admin
-					if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt32(CamperUserId) && iModifiedBy > 0))
-					{
-						ddlGender.Items.Insert(0, new ListItem("", "-1"));
-						lblStarGender.Text = "&nbsp;&nbsp;";
-					}
-					else
-					{
-						ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-						lblStarGender.Text = "*";
-					}
-				}
-				else //should not happen
-				{
-					ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-					lblStarGender.Text = "*";
-				}
-			}
-			else //gender was selected
-			{
-				ddlGender.SelectedValue = Gender;
-				lblStarGender.Text = "*";
-			}
-		}
-	}
-
 	void PopulateStateCityForZIP(Boolean PopulateCity)
 	{
 		string strZip, strCountry;
@@ -1294,17 +1167,6 @@ public partial class Step1 : System.Web.UI.Page
 		Administration objAdmin = new Administration();
 		Action = hdnPerformAction.Value;
 
-		//*********************************
-		//for backward comarability purpose
-		//*********************************
-		if (UInfo.Gender != null)
-		{
-			if (Convert.ToInt32(UInfo.Gender) <= 0)
-				UInfo.Gender = null;
-		}
-		else
-			UInfo.Gender = null;
-
 		if (UInfo.CMART_MiiP_ReferalCode == string.Empty)
 			UInfo.CMART_MiiP_ReferalCode = null;
 
@@ -1407,7 +1269,7 @@ public partial class Step1 : System.Web.UI.Page
 		UserInfo.Comments = txtComments.Text.Trim();
 		UserInfo.ModifiedBy = Master.UserId;
 		UserInfo.FJCID = hdnFJCID.Value;
-		UserInfo.Gender = ddlGender.SelectedValue;
+        UserInfo.Gender = txtGender.Text;
 
 		//AG 10/15/2009
 		UserInfo.HomePhone = txtHomePhone1.Text;
@@ -1476,6 +1338,7 @@ public partial class Step1 : System.Web.UI.Page
 				//txtEmail.Text = UserInfo.PersonalEmail;
 				txtDOB.Text = strDOB;
 				txtAge.Text = strAge;
+                txtGender.Text = UserInfo.Gender;
 				if (!(UserInfo.CMART_MiiP_ReferalCode).Equals(string.Empty))
 					txtSplCode.Text = UserInfo.CMART_MiiP_ReferalCode;
 				if (!(UserInfo.PJLCode).Equals(string.Empty))
@@ -1495,9 +1358,6 @@ public partial class Step1 : System.Web.UI.Page
 
 				//populate city combo and select the value
 				getCities(UserInfo.ZipCode, UserInfo.City);
-
-				getGenders(strFJCID, UserInfo.Gender);
-
 				SetCountryValidationRules(UserInfo.Country);
 			}
 		}

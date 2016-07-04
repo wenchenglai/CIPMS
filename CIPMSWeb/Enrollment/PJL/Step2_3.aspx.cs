@@ -14,8 +14,9 @@ public partial class Step2_PJL_3 : Page
     private Boolean bPerformUpdate;
     private RadioButton RadioButtonQ7Option1; // Rajesh
     private RadioButton RadioButtonQ7Option2;
-    
-	protected void Page_Init(object sender, EventArgs e)
+    private RadioButton RadioButtonQ7Option3;
+
+    protected void Page_Init(object sender, EventArgs e)
     {
         if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.PJL).ToString()))
             Response.Redirect("~/NLIntermediate.aspx");
@@ -35,7 +36,8 @@ public partial class Step2_PJL_3 : Page
         objGeneral = new General();
 
         RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1"); // <!-- Rajesh -->
-        RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2"); 
+        RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
+        RadioButtonQ7Option3 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option3");
 
         imgbtnCalStartDt.Attributes.Add("onclick", "return ShowCalendar('" + txtStartDate.ClientID + "');");
         imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
@@ -54,13 +56,14 @@ public partial class Step2_PJL_3 : Page
         }
         RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
         RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
+        RadioButtonQ7Option3.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
 
         SetPanelStates();
     }
 
     protected void ValidateDataInput(object source, ServerValidateEventArgs args)
     {
-        if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked)
+        if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked && !RadioButtonQ7Option3.Checked)
         {
             args.IsValid = false;
             CusVal.ErrorMessage = "Please answer the question: Have you registered for camp yet?";
@@ -516,7 +519,7 @@ public partial class Step2_PJL_3 : Page
         strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
 
         //for question 7
-        strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" :  "");
+        strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" : RadioButtonQ7Option3.Checked ? "3" : "");
         //strState = ddlState.SelectedValue;
         strCamp = ddlCamp.SelectedValue;
         strCampSession = txtCampSession.Text.Trim();

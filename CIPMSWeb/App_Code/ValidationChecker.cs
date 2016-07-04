@@ -15,7 +15,7 @@ public static class ValidationChecker
         DateTime startDate;
         try
         {
-            startDate = DateTime.ParseExact(inputDate, "d", CultureInfo.InvariantCulture);
+            startDate = DateTime.ParseExact(inputDate, "d", CultureInfo.CurrentCulture);
             result = true;
         }
         catch (Exception ex)

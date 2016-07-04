@@ -506,6 +506,13 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
 				Session["STATUS"] = iStatus;
 			}
 
+            // 2016-07-04 Remove "Eligible; No Camp" - this status is marked in every fed's eligbility class, so we change the status here instead of changing every place
+            if (iStatus == (int)StatusInfo.EligibleNoCamp)
+            {
+                iStatus = (int)StatusInfo.SystemInEligible;
+                Session["STATUS"] = iStatus;
+            }
+
             //to submit the application
             CamperAppl.submitCamperApplication(strFJCID, strComments, Convert.ToInt32(strModifiedBy), iStatus);
             //this will be called only if the logged in user is admin
