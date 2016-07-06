@@ -1,7 +1,8 @@
  <%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true"
     CodeFile="Step2_3.aspx.cs" Inherits="Step2_LACIP_3" Title="Camper Enrollment Step 2" %>
-
 <%@ MasterType VirtualPath="~/Common.master" %>
+<%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
+
 <asp:Content ID="ContentStep2_LACIP_1" ContentPlaceHolderID="Content" runat="Server">
 
     <script type="text/javascript">
@@ -101,15 +102,8 @@
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
                             The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                    
-                    <asp:RadioButtonList ID="RadioBtnQ7" runat="server" CssClass="mylist" RepeatDirection="Vertical">
-                         <asp:ListItem Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)"
-                            Value="2"></asp:ListItem>
-                        <asp:ListItem Text="No, I have not yet registered for camp" Value="1"></asp:ListItem>
-                       
-                        <%--<asp:ListItem Text="I have registered for camp, but I am on the waiting list" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="I have registered for camp, but I do not know the status of my application"
-                            Value="4"></asp:ListItem>--%>
-                    </asp:RadioButtonList>
+                    <uc1:RegControls ID="RegControls1" runat="server" />
+                   
                 </td>
             </tr>
             <tr>
@@ -236,7 +230,9 @@
                         <asp:ValidationSummary ID="valSummary1" ValidationGroup="CommentsGroup" runat="server" ShowSummary="true" CssClass="InfoText" />
                         <!--to vaidate the comments text box for admin user-->
                         <asp:CustomValidator ID="CusValComments1" runat="server" CssClass="InfoText" ErrorMessage = "<li>Please enter the Comments</li>" EnableClientScript="false" />
-                    <asp:Label ID="lblMsgCA" runat="server" Visible="false" CssClass="QuestionText"><p style="text-align: justify; color:Red;"><b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
+                    <asp:Label ID="lblMsgCA" runat="server" Visible="false" CssClass="QuestionText">
+                        <p style="text-align: justify; color:Red;">
+                            <b>PLEASE NOTE: In order to proceed with this application, the camper MUST BE REGISTERED at a California-based camp. Please SAVE AND EXIT your application, and get in touch with a camp in your area to register the camper for summer 2010. Once you have registered, please return here to submit your completed application.</b> If you have additional questions, please contact Yael Green at 323-761-8320 or <a href='mailto:ygreen@jewishla.org'>ygreen@jewishla.org</a></p></asp:Label>
                     
                 </td>
             </tr>
