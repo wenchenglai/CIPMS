@@ -13,6 +13,8 @@ public partial class Step2_LACIP_3 : Page
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
+    private RadioButton RadioButtonQ7Option1;
+    private RadioButton RadioButtonQ7Option2;
 
     protected void Page_Init(object sender, EventArgs e)
     {
@@ -124,7 +126,7 @@ public partial class Step2_LACIP_3 : Page
 
     protected void ValidateDataInput(object source, ServerValidateEventArgs args)
     {
-        if (RadioBtnQ7.SelectedIndex > -1)
+        if (!RadioButtonQ7Option1.Checked && !RadioButtonQ7Option2.Checked)
         {
             args.IsValid = false;
             CusVal.ErrorMessage = "Please answer the question: Have you registered for camp yet?";
@@ -222,13 +224,13 @@ public partial class Step2_LACIP_3 : Page
 
                 InsertCamperAnswers();
             }
-            if (RadioBtnQ7.Items[1].Selected)
-            {
-                lblMsgCA.Visible = true;
-                return;
-            }
-            else
-                lblMsgCA.Visible = false;
+            //if (RadioBtnQ7.Items[1].Selected)
+            //{
+            //    lblMsgCA.Visible = true;
+            //    return;
+            //}
+            //else
+            //    lblMsgCA.Visible = false;
             iCampId = Convert.ToInt32(ddlCamp.SelectedValue);
 
             //to get the comments (used only by the Admin user);
@@ -289,6 +291,9 @@ public partial class Step2_LACIP_3 : Page
             CamperAppl = new CamperApplication();
             objGeneral = new General();
 
+            RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1");
+            RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
+
             imgbtnCalStartDt.Attributes.Add("onclick", "return ShowCalendar('" + txtStartDate.ClientID + "');");
             imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
 
@@ -328,15 +333,12 @@ public partial class Step2_LACIP_3 : Page
                     //pNote.InnerHtml = "<font color='red'><b>In order to be eligible</b></font> for the incentive grant, the camper must attend camp for at least 12 consecutive days.";
                 }
             }
-            foreach (ListItem li in RadioBtnQ7.Items)
-            {
-                li.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
-                //if (li.Value == "1") li.Attributes.Add("onclick", "JavaScript:popupCall('noCampRegistrationMsg');");
-                //else if (li.Value == "2") li.Attributes.Add("onClick", "JavaScript:disablePopup();");
-            }
+
             //to enable / disable the panel states based on the radio button selected
             SetPanelStates();
             lblMsgCA.Visible = false;
+            RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
+            RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg');");
         }
         catch (Exception ex)
         {
@@ -376,7 +378,7 @@ public partial class Step2_LACIP_3 : Page
         DataSet dsAnswers, dsAcknowledge;
         int iCount;
         DataView dv;
-        RadioButtonList rb;
+        RadioButton rb;
         TextBox tb;
         DropDownList ddl;
         HiddenField hdnval;
@@ -413,8 +415,18 @@ public partial class Step2_LACIP_3 : Page
                     switch (i)
                     {
                         case 7:  //assigning the answer for question 7
-                            rb = RadioBtnQ7;
-                            goto default;
+                            foreach (DataRow dr in dv.Table.Select(strFilter))
+                            {
+                                if (!dr["OptionID"].Equals(DBNull.Value))
+                                {
+                                    //rb = (RadioButton)Panel2.FindControl("RadioButtonQ7Option" + dr["OptionID"].ToString());
+                                    //rb.Checked = true;
+                                    
+                                    rb = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option" + dr["OptionID"].ToString());
+                                    rb.Checked = true;
+                                }
+                            }
+                            break;
                         case 8:// assigning the answer for question 8
                             ddl = ddlCamp;
                             goto default;
@@ -467,11 +479,7 @@ public partial class Step2_LACIP_3 : Page
                             if (drows.Length > 0) //if there are rows for the filter
                             {
                                 dr1 = (DataRow)drows.GetValue(0);
-                                if (rb != null)
-                                {
-                                    if (!dr1["OptionID"].Equals(DBNull.Value))
-                                        rb.SelectedValue = dr1["OptionID"].ToString();
-                                }
+
                                 if (ddl != null)
                                 {
                                     if (!dr1["OptionID"].Equals(DBNull.Value))
@@ -493,7 +501,7 @@ public partial class Step2_LACIP_3 : Page
     //to enable or disable the question panels based on the radio button selected
     protected void SetPanelStates()
     {
-        if (RadioBtnQ7.SelectedValue == "1")  //if first option is selected for Q7
+        if (RadioButtonQ7Option1.Checked == true)  //if first option is selected for Q7
         {
             PnlQ7.Enabled = false;
             ddlCamp.SelectedIndex = 0;
@@ -555,7 +563,7 @@ public partial class Step2_LACIP_3 : Page
 
         //for question 7
         strQuestionId = hdnQ7Id.Value;
-        strRadioOption = RadioBtnQ7.SelectedValue;
+        strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" : "");
 
         strCamp = ddlCamp.SelectedValue;
         strCampSession = string.Empty;// txtCampSession.Text.Trim();
