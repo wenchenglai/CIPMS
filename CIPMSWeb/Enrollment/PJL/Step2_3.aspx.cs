@@ -196,6 +196,12 @@ public partial class Step2_PJL_3 : Page
                 }
                 else //if he/she is eligible
                 {
+                    // 2016-07-06 PJL now has new status Eligible - Registration at Camp for people who ware still waiting for camp registration
+                    // in this case, admin will move the status to Eligible when campers actually reigstered for camp.
+                    if (RadioButtonQ7Option3.Checked)
+                    {
+                        Session["STATUS"] = Convert.ToInt32(StatusInfo.EligiblePendingRegistrationCamp);
+                    }
                     Session["FJCID"] = hdnFJCIDStep2_3.Value;
                     Response.Redirect("../Step2_1.aspx");
                 }
@@ -429,27 +435,6 @@ public partial class Step2_PJL_3 : Page
         } //end if for null check of fjcid
 
     }
-
-    //to get all the states and bind it to the dropdownlist
-    //protected void get_States()
-    //{
-    //    DataSet dsStates = new DataSet();
-    //    try
-    //    {
-    //        dsStates = CamperAppl.get_States();
-    //        ddlState.DataSource = dsStates;
-    //        ddlState.DataTextField = "Name";
-    //        ddlState.DataValueField = "ID";
-    //        ddlState.DataBind();
-    //        ddlState.Items.Insert(0, new ListItem("-- All --", "0"));
-    //    }
-    //    finally
-    //    {
-    //        dsStates.Clear();
-    //        dsStates.Dispose();
-    //        dsStates = null;
-    //    }
-    //}
 
     //to enable or disable the question panels based on the radio button selected
     protected void SetPanelStates()
