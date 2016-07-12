@@ -186,6 +186,13 @@ public partial class Common : System.Web.UI.MasterPage
         { return _sCamperUserId; }
     }
 
+    public bool isAdminUser
+    {
+        get {
+            return Session["UsrID"] != null;
+        }
+    }
+
     public string CampYear
     {
         get
@@ -263,14 +270,6 @@ public partial class Common : System.Web.UI.MasterPage
             _sCamperRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
             return _sCamperRedirURL;
         }
-    }
-
-    public void setUserId()
-    {
-        if (Session["UsrID"] != null)
-            _sUserId = Session["UsrID"].ToString();
-
-        _sCamperUserId = ConfigurationManager.AppSettings["CamperModifiedBy"].ToString();
     }
 
     //to enable the admin panels

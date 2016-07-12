@@ -17,8 +17,10 @@ public partial class HartfordPage2 : System.Web.UI.Page
 	#region "Page events"
 	protected void Page_Init(object sender, EventArgs e)
 	{
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Atlanta).ToString()))
-            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+        if (PageUtility.RedirectToNL((int)FederationEnum.Atlanta, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);

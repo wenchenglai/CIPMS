@@ -17,8 +17,10 @@ public partial class Step2_Adamah_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.Portland).ToString()))
+        if (PageUtility.RedirectToNL((int)FederationEnum.Portland, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
             Response.Redirect("~/NLIntermediate.aspx");
+        }
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);

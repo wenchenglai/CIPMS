@@ -17,13 +17,7 @@ public partial class Step2_Washington_3 : Page
     private RadioButton RadioButtonQ7Option2;
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-        {
-            if (Session["AllowRegister"] == null)
-            {
-                Response.Redirect("~/NLIntermediate.aspx");
-            }
-        }
+        CheckForRedirect();
 
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -32,6 +26,14 @@ public partial class Step2_Washington_3 : Page
         btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
+    }
+
+    void CheckForRedirect()
+    {
+        if (PageUtility.RedirectToNL((int)FederationEnum.WashingtonDC, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -246,13 +248,7 @@ public partial class Step2_Washington_3 : Page
 
     void btnChkEligibility_Click(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-        {
-            if (Session["AllowRegister"] == null)
-            {
-                Response.Redirect("~/NLIntermediate.aspx");
-            }
-        }
+        CheckForRedirect();
 
         if (ddlCamp.SelectedValue == "-1")
         {

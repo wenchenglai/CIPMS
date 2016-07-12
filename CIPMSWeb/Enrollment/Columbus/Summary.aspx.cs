@@ -27,6 +27,7 @@ public partial class Enrollment_Columbus_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
+                        Session["isGrantAvailable"] = true;
                     }
 				}
 			}

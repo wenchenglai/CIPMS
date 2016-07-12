@@ -36,6 +36,7 @@ public partial class Enrollment_Admah_Summary : System.Web.UI.Page
                         tblRegular.Visible = true;
                         btnSaveandExit.Visible = true;
                         btnNext.Visible = true;
+                        Session["isGrantAvailable"] = true;
                     }
                 }
             }

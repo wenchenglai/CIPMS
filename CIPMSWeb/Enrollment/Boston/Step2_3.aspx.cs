@@ -15,6 +15,11 @@ public partial class Step2_Boston_3 : Page
     private RadioButton RadioButtonQ7Option2;
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (PageUtility.RedirectToNL((int)FederationEnum.Boston, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
        
