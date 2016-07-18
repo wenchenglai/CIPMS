@@ -35,6 +35,7 @@ public partial class Enrollment_Middlesex_Summary : System.Web.UI.Page
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = true;
+                        Session["isGrantAvailable"] = true;
                     }
                 }
             }

@@ -20,6 +20,11 @@ public partial class Step2_MIDSEX_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (PageUtility.RedirectToNL((int)FederationEnum.Middlesex, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);

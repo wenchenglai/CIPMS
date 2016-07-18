@@ -19,13 +19,7 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-        {
-            if (Session["AllowRegister"] == null)
-            {
-                Response.Redirect("~/NLIntermediate.aspx");
-            }
-        }
+        CheckForRedirect();
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
@@ -65,15 +59,17 @@ public partial class Step2_Washington_2 : System.Web.UI.Page
         }
     }
 
+    void CheckForRedirect()
+    {
+        if (PageUtility.RedirectToNL((int)FederationEnum.WashingtonDC, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+    }
+
     void btnNext_Click(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.WashingtonDC).ToString()))
-        {
-            if (Session["AllowRegister"] == null)
-            {
-                Response.Redirect("~/NLIntermediate.aspx");
-            }
-        }
+        CheckForRedirect();
 
         bool isReadOnly = objGeneral.IsApplicationReadOnly(hdnFJCID.Value, Master.CamperUserId);
         if (!isReadOnly)

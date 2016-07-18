@@ -18,8 +18,14 @@ public partial class Step2_MIDSEX_3 : Page
     private Boolean bPerformUpdate;
     private RadioButton RadioButtonQ7Option1; // Rajesh
     private RadioButton RadioButtonQ7Option2;
+
     protected void Page_Init(object sender, EventArgs e)
     {
+        if (PageUtility.RedirectToNL((int)FederationEnum.Middlesex, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         //ddlState.SelectedIndexChanged += new EventHandler(ddlState_SelectedIndexChanged);

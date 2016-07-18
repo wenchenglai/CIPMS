@@ -15,7 +15,12 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
 
 	protected void Page_Init(object sender, EventArgs e)
 	{
-		btnNext.Click += new EventHandler(btnNext_Click);
+        if (PageUtility.RedirectToNL((int)FederationEnum.SanFrancisco, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
+
+        btnNext.Click += new EventHandler(btnNext_Click);
 		btnPrevious.Click += new EventHandler(btnPrevious_Click);
 		btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
 		btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);

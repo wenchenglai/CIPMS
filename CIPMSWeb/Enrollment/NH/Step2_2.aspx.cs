@@ -15,8 +15,10 @@ public partial class Step2_Columbus_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.NewHamshire).ToString()))
+        if (PageUtility.RedirectToNL((int)FederationEnum.NewHamshire, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
             Response.Redirect("~/NLIntermediate.aspx");
+        }
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
