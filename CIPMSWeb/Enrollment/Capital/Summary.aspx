@@ -51,7 +51,7 @@ If you need additional assistance, please call the camp professional listed at t
         <tr>
 			<td colspan="2">
                 <p>
-					For further information on how to apply for the Capital Camps One Happy Camper program and be added to the waitlist, please contact the Erin Reische at Erin@capitalcamps.org.
+					The Capital Camps One Happy Camper program is now closed for summer 2016. For more information, please contact Erin Reich at Erin@capitalcamps.org.
 				</p>
 			</td>
         </tr>

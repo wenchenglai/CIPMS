@@ -234,8 +234,19 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
 
     private void PopulateEligibility(int fedId)
     {
-        gvEli.DataSource = FedCampGrantDA.GetAllByFedID(Int32.Parse(Session["CampYear"].ToString()) - 2008, fedId);
+        DataSet ds = FedCampGrantDA.GetAllByFedID(Int32.Parse(Session["CampYear"].ToString()) - 2008, fedId);
+
+        gvEli.DataSource = ds.Tables[0];
         gvEli.DataBind();
+
+        gvEli2.DataSource = ds.Tables[1];
+        gvEli2.DataBind();
+
+        if (ds.Tables[1].Rows.Count == 0)
+            divEli2.Visible = false;
+        else
+            divEli2.Visible = true;
+
         pnlEligibility.Visible = true;
     }
 

@@ -37,7 +37,15 @@
                 <asp:Panel runat="server" ID="pnlEligibility" Visible="false">
                     <div style="margin-top:30px; margin-bottom:10px"><strong>Grant Amount Eligibility Rules</strong></div>
                     <div>
+                        <div>First Time Campers</div>
                         <asp:GridView runat="server" ID="gvEli" CssClass="InfoText3">
+
+                        </asp:GridView>
+                    </div>
+                    <br />
+                    <div id="divEli2" runat="server">
+                        <div>Second Time Campers</div>
+                        <asp:GridView runat="server" ID="gvEli2" CssClass="InfoText3">
 
                         </asp:GridView>
                     </div>

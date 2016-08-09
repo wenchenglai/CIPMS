@@ -5,12 +5,12 @@
 /// </summary>
 public class FedCampGrantDA
 {
-    public static DataTable GetAllByFedID(int CampYearID, int FedID)
+    public static DataSet GetAllByFedID(int CampYearID, int FedID)
     {
         var db = new SQLDBAccess("CIPConnectionString");
         db.AddParameter("@Action", "ByFedIdAndYearId");
         db.AddParameter("@CampYearID", CampYearID);
         db.AddParameter("@FedID", FedID);
-        return db.FillDataTable("usp_FedCampGrant");
+        return db.FillDataSet("usp_FedCampGrant");
     }
 }
