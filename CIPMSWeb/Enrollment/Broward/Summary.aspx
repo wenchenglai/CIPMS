@@ -39,10 +39,10 @@ If you are interested in learning about additional financial resources for camp,
                     If you need additional assistance, including free guidance on finding a camp, please call your community professional listed at the bottom of this page. 
 				</p>
                 <p>
-                    <span style="color:red">** You may also qualify for scholarship funding, for more information please contact:</span>
+                    <span style="color:black">** You may also qualify for scholarship funding, for more information please contact:</span>
                 </p>
                 <p>
-                    Rochelle Baltuch- Associate Executive Director-Orloff CAJE- 954-660-2077 or rbaltuch@aol.com
+                    Rochelle Baltuch- Associate Executive Director-Orloff CAJE- 954-660-2077 or camp@orloffcaje.org.
                 </p>
 			</td>
         </tr>     

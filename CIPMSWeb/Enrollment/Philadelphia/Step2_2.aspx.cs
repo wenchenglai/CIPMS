@@ -1,23 +1,16 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
 using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.ApplicationQuestions;
 using CIPMSBC.BLL;
 using CIPMSBC.Eligibility;
 
-
-
 public partial class Step2_NY_2 : System.Web.UI.Page
 {
-
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
@@ -31,8 +24,6 @@ public partial class Step2_NY_2 : System.Web.UI.Page
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
     }
-
-
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -309,7 +300,7 @@ public partial class Step2_NY_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,30,31,1044,1045");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCID.Value, "", "", "3,6,7,8,30,31,1044,1045,1063");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -438,6 +429,18 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                             txtWhoInSynagogue.Enabled = false;
                     }
                     break;
+
+                case QuestionId.GrandfatherPolicySessionLength: 
+                    {
+                        if (dr["OptionID"].Equals(DBNull.Value))
+                            continue;
+
+                        if (dr["OptionID"].ToString() == "1")
+                            rdoDays12.Checked = true;
+                        else
+                            rdoDays19.Checked = true;
+                    }
+                    break;
             }
         }
     }
@@ -543,7 +546,11 @@ public partial class Step2_NY_2 : System.Web.UI.Page
                 strTablevalues += strQId + strFSeparator + "3" + strFSeparator + "" + strQSeparator;
                 strTablevalues += strQId + strFSeparator + "4" + strFSeparator + "" + strQSeparator;
             }
-        } 
+        }
+
+        //Grandfaother question
+        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
+        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

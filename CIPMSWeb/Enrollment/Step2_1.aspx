@@ -28,12 +28,12 @@
 				<div>
 					<asp:DropDownList ID="ddlWhatYear" runat="server">
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>
-						<asp:ListItem Text="Before this past summer (prior to June 2015)" Value="1"></asp:ListItem>
-						<asp:ListItem Text="Last Summer (Jun - Aug of 2015)" Value="2"></asp:ListItem>
-						<asp:ListItem Text="This past Fall (Sep - Dec 2015)" Value="3"></asp:ListItem>
-						<asp:ListItem Text="This past Winter (Jan - Mar 2016)" Value="4"></asp:ListItem>
-						<asp:ListItem Text="This Spring (Apr - May 2016)" Value="5"></asp:ListItem>
-						<asp:ListItem Text="This Summer (Jun - Aug 2016)" Value="6"></asp:ListItem>
+						<asp:ListItem Text="Before this past summer (prior to June 2016)" Value="1"></asp:ListItem>
+						<asp:ListItem Text="Last Summer (Jun - Aug of 2016)" Value="2"></asp:ListItem>
+						<asp:ListItem Text="This past Fall (Sep - Dec 2016)" Value="3"></asp:ListItem>
+						<asp:ListItem Text="This past Winter (Jan - Mar 2017)" Value="4"></asp:ListItem>
+						<asp:ListItem Text="This Spring (Apr - May 2017)" Value="5"></asp:ListItem>
+						<asp:ListItem Text="This Summer (Jun - Aug 2017)" Value="6"></asp:ListItem>
 						<asp:ListItem Text="Don't know/Not sure" Value="7"></asp:ListItem>																																										
 					</asp:DropDownList>
 				</div>
@@ -118,13 +118,15 @@
 				<div>
 					<asp:DropDownList ID="ddlStaffNames" runat="server" onChange="HowDidYouHearUsValidator.OnMemberDropDownChange(this);" >
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>							                
-						<asp:ListItem Text="Gabrielle Abergel" Value="25"></asp:ListItem>	                        
+						<asp:ListItem Text="Gabrielle Abergel" Value="25"></asp:ListItem>
+                        <asp:ListItem Text="Alyssa Amabile" Value="38"></asp:ListItem>	                        
 						<asp:ListItem Text="Rochelle Baltuch" Value="6"></asp:ListItem>                                                
 						<asp:ListItem Text="Sue Bendalin" Value="15"></asp:ListItem>		                                                
 						<asp:ListItem Text="Carrie Berman" Value="17"></asp:ListItem>                        
                         <asp:ListItem Text="Dirk Bird" Value="12"></asp:ListItem>                        
                         <asp:ListItem Text="Sheree Boone" Value="18"></asp:ListItem>                        
-                        <asp:ListItem Text="Nancy Frankel" Value="27"></asp:ListItem>                        
+                        <asp:ListItem Text="Nancy Frankel" Value="27"></asp:ListItem>    
+                        <asp:ListItem Text="Taryn Goodman-Omran" Value="39"></asp:ListItem>                                             
                         <asp:ListItem Text="Sharon Gray" Value="32"></asp:ListItem>                        
                         <asp:ListItem Text="Rachel Halupowski" Value="31"></asp:ListItem>                        
                         <asp:ListItem Text="Warren Hoffman " Value="29"></asp:ListItem>	                                                
@@ -134,7 +136,8 @@
                         <asp:ListItem Text="Beth Koritz" Value="35"></asp:ListItem>
                         <asp:ListItem Text="Melissa Levine" Value="28"></asp:ListItem>	                        
 						<asp:ListItem Text="Tracy Levine" Value="16"></asp:ListItem>                                                																		
-						<asp:ListItem Text="Renee Lovitt" Value="19"></asp:ListItem>							
+						<asp:ListItem Text="Renee Lovitt" Value="19"></asp:ListItem>
+                        <asp:ListItem Text="Brandy Mahan" Value="37"></asp:ListItem>                        							
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>  
                         <asp:ListItem Text="Lisa Pavlovsky" Value="33"></asp:ListItem>	
                         <asp:ListItem Text="Ricci Postan " Value="36"></asp:ListItem>	

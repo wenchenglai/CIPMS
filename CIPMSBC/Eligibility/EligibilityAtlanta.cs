@@ -278,7 +278,7 @@ namespace CIPMSBC.Eligibility
                         {
                             if (daysInCamp >= 19)
                                 Amount = 500;
-                            else if (daysInCamp >= 12)
+                            else if (daysInCamp >= 11)
                                 Amount = 350;
                             else
                                 Amount = 0;

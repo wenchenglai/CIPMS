@@ -36,7 +36,7 @@
 				</p>
                 <p>
                     <span style="font-weight: bold; color:red;">Students at Orthodox Day Schools </span>
-                    who are ineligible for a One Happy Camper grant may still be eligible for Camp Coupons. Continue filling out this application and you will be directed to the Camp Coupon section. If you have problems or questions, please email JewishCamp@juf.org, or contact Rachel White at 312-357-4995.                    
+                    who are ineligible for a One Happy Camper grant may still be eligible for Camp Coupons. Please email JewishCamp@juf.org, or contact Rachel White at 312-357-4995 for more information.
                 </p>
                 <p>
 					If you need additional assistance, please call your community professional listed at the bottom of this page.

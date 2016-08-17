@@ -73,7 +73,7 @@
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                     <p class="InfoText">
-					    In order to be eligible for an incentive grant, the camper must attend camp for at least 19 consecutive days. 
+					    In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. If camper attended camp in the summer of 2016 for 12-18 days as a first time camper they are ONLY eligible for the grant if attending camp for 19 or more consecutive days in summer 2017.
                     </p>
                     <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
                         <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />

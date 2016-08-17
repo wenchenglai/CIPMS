@@ -13,14 +13,11 @@
 			Good news! You may be eligible for an incentive.
 		</p>
 		<p>
-            The Foundation for Jewish Camp, in partnership with the Jewish Federation of Palm Springs & Desert Area, offers funding to children in our community who wish to attended Jewish overnight camp for the first-time.
-		</p>
+The Foundation for Jewish Camp, in partnership with the Jewish Federation of the Desert (Rancho Mirage), offers funding to children in our community who wish to attended Jewish overnight camp for the first-time. 		</p>
         <p>
-            To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the next button below.
-        </p>
+To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the next button below.         </p>
         <p>
-            The Desert One Happy Camper program provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one.
-        </p>
+The Desert One Happy Camper program provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one.         </p>
 		<p>
 			The following outlines the eligibility criteria for this program:
             <ul style="font-weight: bold">
@@ -33,7 +30,7 @@
 		</p>                
         <p>
             <span style="font-weight: bold; color:red;">Attention Jewish day school families:</span>  
-            If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application.  Please contact Rebecca Hope at Rebecca.Hope@jfedps.org or 760-324-4737.
+            If the camper currently attends Jewish day school or Yeshiva, do NOT proceed with this application.  Please contact Brandy Mahan at 760-324-4737.
         </p>
         <p>
             If you need additional assistance, please call your community professional listed at the bottom of this page.

@@ -10,13 +10,14 @@
                 <p>
 					Great news! You may be eligible for an incentive grant!
 				</p>
-                <p>
-                    The Foundation for Jewish Camp, in partnership with Jewish Federation of Greater Atlanta, offers funding to children in our community who wish to attend Jewish overnight camp for the first time.
-				</p>  
+ 
 			</td>
 		</tr>
         <tr>
             <td colspan="2">
+                <p>
+                    The Foundation for Jewish Camp, in partnership with Jewish Federation of Greater Atlanta, offers funding to children in our community who wish to attend Jewish overnight camp for the first time.
+				</p> 
                 <p>
                     Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one. Please note that first year grants are needs-blind while second year grants are needs based.
                 </p>
@@ -29,17 +30,14 @@
 
                 <ul style="font-weight: bold; list-style-type: disc">
                     <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
-                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 12-18 consecutive days.</li>
+                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 11-18 consecutive days.</li>
+                    <li>$500 grant awarded to second-time campers attending a Jewish overnight camp for 19+ consecutive days (for those that make under $160,000 a year)</li>
+                    <li>$350 grant awarded to second-time campers attending a Jewish overnight camp for 11-18 consecutive days (for those that make under $160,000 a year)</li>
                     <li>Eligible campers must be entering grades 1-12 (after camp).</li>
                     <li>Attend one of the 155+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp's website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
                 </ul>
 		                  
-		        <p>
-		            Note: This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for the program. If your child is not eligible and/or are interested in learning about financial-needs based grants or other camper funding opportunities please visit 
-                     <a href="http://www.JewishCamp.org/Scholarships" target= "_blank">www.jewishcamp.org/scholarships</a>, 
-                    contact your camp, or the contact person listed at the bottom of this page.
-		        </p>
-                <p>
+               <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.
                 </p>
             </td>

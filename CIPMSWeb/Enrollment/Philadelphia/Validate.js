@@ -1,4 +1,12 @@
 ﻿var PageValidator = {
+    OnFirstTimerChange: function (rdoObject) {
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked') && $('#ctl00_Content_rdoFirstTimerNo').attr('onclick')) {
+            $("#1a").show();
+        } else {
+            $("#1a").hide();
+        }
+    },
+
     _toggleSecondTimer: function (flag) {
         $('#ctl00_Content_rdoSecondTimerYes').attr('disabled', flag);
         $('#ctl00_Content_rdoSecondTimerNo').attr('disabled', flag);
@@ -12,6 +20,16 @@
     OnSubmitClick: function (sender, args) {
         var errorMsg = $(sender)[0];
         errorMsg.innerHTML = "";
+
+        // 1a Grandfather rule
+        if ($('#ctl00_Content_rdoFirstTimerNo').is(':checked') && $('#1a').is(":visible")) {
+            if (!$('#ctl00_Content_rdoDays12').is(':checked') && !$('#ctl00_Content_rdoDays19').is(':checked')) {
+                errorMsg.innerHTML += "<ul><li>Please answer Question 1a</li></ul>";
+            }
+        } else {
+            $('#ctl00_Content_rdoDays12').attr('checked', false);
+            $('#ctl00_Content_rdoDays19').attr('checked', true);
+        }
 
         // Synagogue/JCC
         var $chkSynagogue = $('#ctl00_Content_chkSynagogue'),

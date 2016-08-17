@@ -41,7 +41,7 @@
                     contact your camp, or the contact person listed at the bottom of this page.                     
                 </p>
                 <p>
-                    If you need additional assistance, please contact Mary Jean Timmel at 502-238-2722 or mjtimmel@jewishlouisville.org
+                    If you need additional assistance, please contact Mike Steklof at 502-238-2774 or msteklof@jewishlouisville.org.
                 </p>
 			</td>
         </tr>        

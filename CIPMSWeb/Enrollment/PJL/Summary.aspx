@@ -18,46 +18,35 @@
 			        The Foundation for Jewish Camp, in partnership with the PJ Library Program, brings PJ Goes to Camp, a funding partner of FJC’s One Happy Camper program, to first-time campers who live anywhere in North America. PJ Goes to Camp offers One Happy Camper incentive grants of up to $1,000 to offset camp tuition for PJ Library participants, siblings, and alumni. 
 			    </p>
 				<p>
-                    A total of 350 GRANTS are available on a first-come, first-serve basis through PJ Goes to Camp. These grants of up to $1,000 will help subscribing families of The <a href="http://www.pjlibrary.org" target="_blank">PJ Library</a> to pay for summer camp tuition for first-time campers at nonprofit Jewish overnight camps.
+                    PJ Goes to Camp grants are available on a first-come, first-serve basis. 
+                    These grants of up to $1,000 will help subscribing families of <a href="http://www.pjlibrary.org" target="_blank">PJ Library</a> and PJ Our Way pay for summer camp tuition for 
+                    first-time campers at participating nonprofit Jewish overnight camps. Complete PJ Goes to Camp program rules can be found on the PJ Goes to Camp web page <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a>. 
 				</p>                
 				<p>
 				    <span style="font-weight: bold; color:red;">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> 
-                    All PJ Goes To Camp Incentive Grants for students currently enrolled in day school for the summer of 2016 will be distributed through a lottery that will take place on November 10, 2015. To place your name in this lottery you MUST be a PJ Library recipient family (or alumnus) prior to September 1, 2015. To apply for the PJ Library day school lottery referral code, complete an application at: 
-                    <a href="http://www.pjlibrary.org/pjgtc/referralcode" target="_blank">www.pjlibrary.org/pjgtc/referralcode</a> AFTER August 15, 2015 but prior to November 8, 2015 to pjgtc@hgf.org. See 
-                    <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> for full details and eligibility.
+                    All Summer 2017 PJ Goes To Camp Incentive Grants for students currently enrolled in day school will be distributed through a lottery that will take place on November 14, 2016. 
+                    Please send all inquiries to pjgtc@hgf.org. See <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> for full details and eligibility. 
 				</p>
                 <p>
-                    Families of campers who do not attend a Jewish day school should request a PJ Goes to Camp referral code by completing the referral code application at the website:  www.pjlibrary.org/pjgtc/referralcode         AFTER October 1, 2015.  
-				</p>  
-                <p>
-                    In case of dispute, the Harold Grinspoon Foundation reserves the right to resolve issues about PJ Goes to Camp incentive awards and the day school camper lottery. 
-                </p>
-			    <p>
-			        <span style="font-weight: bold">WHO IS ELIGIBLE?</span><br />
-                    First-time campers at nonprofit Jewish overnight camps are those that are: 
-                    <ul>
-                        <li>Current PJ Library subscribers (enrolled in the program on or before Sept. 1, 2015)</li>
-                        <li>Siblings of currently eligible PJ Library subscribers (enrolled in the program on or before Sept. 1, 2015) </li>
-                        <li>PJ Library alumni</li>
-                    </ul>
+                    In case of dispute, the Harold Grinspoon Foundation reserves the right to resolve issues about PJ Goes to Camp incentive awards and the day school camper lottery. 				
 
-			    </p>
+                </p>
 				<p>
                     <span style="font-weight: bold">FOR WHAT TIME PERIOD?</span> <br />
-                    These opportunities apply only to Summer 2016 experiences.
+                    These opportunities apply only to Summer 2017 experiences.
 
 				</p>                
 				<p>
 				    <span style="font-weight: bold">FOR WHAT AMOUNTS? </span>
                     The PJ Goes to Camp grants will be awarded as follows: 
                     <ul>
-                        <li>$1,000 for a session of at least 19 consecutive days (for all included camps</li>
-                        <li>$700 for a session of at least 12 consecutive days</li>
+                        <li>$1,000 for a session of at least 19 consecutive days (for all included camps)</li>
+                        <li>$700 for a session of at least 12 consecutive days (for all included camps)</li>
                     </ul>				    
 				</p>
                 <p>
                     <span style="font-weight: bold">WHICH CAMPS ARE INCLUDED?</span> <br />
-                    All 155+ nonprofit overnight Jewish camps in North America listed on the <a href="http://www.jewishcamp.org/camps" target="_blank">Foundation for Jewish Camp</a>  are included.
+                    All 155+ nonprofit overnight Jewish camps in North America listed on the <a href="http://www.jewishcamp.org/camps" target="_blank">Foundation for Jewish Camp</a> are included.
 
 				</p>  
 			    <p>
@@ -71,7 +60,7 @@
                     See the attached list of zip codes for locating residents who are are eligible for these incentive grants.
 			    </p>
 			    <p>
-			        For answers to questions regarding PJ Goes to Camp or its online process, please e-mail the PJ Goes to Camp administrator at <a href='mailto:pjgtc@hgf.org'>pjgtc@hgf.org</a>
+			        For answers to questions regarding PJ Goes to Camp or its online process, please visit <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> or e-mail the PJ Goes to Camp administrator at <a href='mailto:pjgtc@hgf.org'>pjgtc@hgf.org</a>
 			    </p>
 			    <p>
 			        To learn more about the PJ Library or the Harold Grinspoon Foundation, please visit <a href="http://www.pjlibrary.org" target=_blank>www.pjlibrary.org</a>
