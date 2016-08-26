@@ -10,7 +10,7 @@
 			<td>
 				<p><strong>Good news! You may be eligible for a One Happy Camper grant.</strong></p>    
 				<p>
-					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants now open to Montreal children attending both Jewish and non-Jewish day schools!
+					a.	To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants are now open to Montreal children attending both Jewish and non-Jewish day schools!
 				</p>
 			</td>
 		</tr>

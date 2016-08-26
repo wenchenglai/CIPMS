@@ -19,7 +19,9 @@
         <tr>          
 			<td colspan="2">
 			    <p>
-                    Ramah is the camping arm of Conservative Judaism. With nine overnight camps, four day camps, and Ramah Programs in Israel, Ramah impacts over 10,000 campers and staff every summer. A summer at Ramah is spent immersed in Jewish living - highlighted by dynamic and innovative programming. Traditional camp and outdoor activities, including swimming, sports, dance and art, are enhanced by Ramah's dedication to excellence in informal Jewish education. Combining a love for camping with meaningful Jewish experiences, Ramah instills in its campers and staff a love of Judaism, the Jewish people, Israel and the outdoors. The Ramah Camping Movement is guided by seven core values: self-esteem of every individual; character development; Jewish learning; Jewish identity and community; Jewish observance; Zionism; and Hebrew. 
+                    Ramah is the camping arm of Conservative Judaism. With nine overnight camps, four day camps, and Ramah Programs in Israel, 
+                    Ramah impacts over 10,000 campers and staff every summer. A summer at Ramah is spent immersed in Jewish living - highlighted by dynamic and innovative programming. 
+                    Traditional camp and outdoor activities, including swimming, sports, dance and art, are enhanced by Ramah's dedication to excellence in informal Jewish education. Combining a love for camping with meaningful Jewish experiences, Ramah instills in its campers and staff a love of Judaism, the Jewish people, Israel and the outdoors. The Ramah Camping Movement is guided by seven core values: self-esteem of every individual; character development; Jewish learning; Jewish identity and community; Jewish observance; Zionism; and Hebrew. 
 			    </p>
                 <p>
                     The Ramah One Happy Camper Program, sponsored by the National Ramah Commission, Foundation for Jewish Camp, and Camp Ramah in Northern California awards incentive grants up to $1,000 to first time campers.
@@ -33,7 +35,8 @@
                     </ul>
 				</p>                
 				<p>
-				    If you are interested in learning more about our camps and available grants, please visit us at <a href="http://www.campramah.org" target="_blank">www.campramah.org</a> or <a href="http://www.ramahnorcal.org" target="_blank">www.ramahnorcal.org/</a>. 
+				    If you are interested in learning more about our camps and available grants, please visit us at 
+                    <a href="http://www.campramah.org" target="_blank">www.campramah.org</a> or <a href="http://www.ramahnorcal.org" target="_blank">www.ramahnorcal.org/</a>. 
 				</p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page. 

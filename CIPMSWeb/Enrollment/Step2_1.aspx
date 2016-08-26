@@ -118,39 +118,29 @@
 				<div>
 					<asp:DropDownList ID="ddlStaffNames" runat="server" onChange="HowDidYouHearUsValidator.OnMemberDropDownChange(this);" >
 						<asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>							                
-						<asp:ListItem Text="Gabrielle Abergel" Value="25"></asp:ListItem>
                         <asp:ListItem Text="Alyssa Amabile" Value="38"></asp:ListItem>	                        
 						<asp:ListItem Text="Rochelle Baltuch" Value="6"></asp:ListItem>                                                
-						<asp:ListItem Text="Sue Bendalin" Value="15"></asp:ListItem>		                                                
-						<asp:ListItem Text="Carrie Berman" Value="17"></asp:ListItem>                        
-                        <asp:ListItem Text="Dirk Bird" Value="12"></asp:ListItem>                        
-                        <asp:ListItem Text="Sheree Boone" Value="18"></asp:ListItem>                        
+						<asp:ListItem Text="Sue Bendalin" Value="15"></asp:ListItem>		                                                                      
+                        <asp:ListItem Text="Dirk Bird" Value="12"></asp:ListItem>                                            
                         <asp:ListItem Text="Nancy Frankel" Value="27"></asp:ListItem>    
                         <asp:ListItem Text="Taryn Goodman-Omran" Value="39"></asp:ListItem>                                             
                         <asp:ListItem Text="Sharon Gray" Value="32"></asp:ListItem>                        
                         <asp:ListItem Text="Rachel Halupowski" Value="31"></asp:ListItem>                        
                         <asp:ListItem Text="Warren Hoffman " Value="29"></asp:ListItem>	                                                
 						<asp:ListItem Text="Steffanie Jackson" Value="14"></asp:ListItem>	                        
-						<asp:ListItem Text="Larry Katz" Value="3"></asp:ListItem>                        
-                        <asp:ListItem Text="Inna Kolesnikova-Shmukler" Value="20"></asp:ListItem>                        
-                        <asp:ListItem Text="Beth Koritz" Value="35"></asp:ListItem>
-                        <asp:ListItem Text="Melissa Levine" Value="28"></asp:ListItem>	                        
+						<asp:ListItem Text="Larry Katz" Value="3"></asp:ListItem>                                             
+                        <asp:ListItem Text="Beth Koritz" Value="35"></asp:ListItem>                       
 						<asp:ListItem Text="Tracy Levine" Value="16"></asp:ListItem>                                                																		
-						<asp:ListItem Text="Renee Lovitt" Value="19"></asp:ListItem>
                         <asp:ListItem Text="Brandy Mahan" Value="37"></asp:ListItem>                        							
 						<asp:ListItem Text="Hannah Mendelsohn" Value="11"></asp:ListItem>  
-                        <asp:ListItem Text="Lisa Pavlovsky" Value="33"></asp:ListItem>	
-                        <asp:ListItem Text="Ricci Postan " Value="36"></asp:ListItem>	
+                        <asp:ListItem Text="Ricci Postan" Value="36"></asp:ListItem>	
 						<asp:ListItem Text="Alyssa Russell" Value="13"></asp:ListItem>	
 						<asp:ListItem Text="Harriet Schiftan" Value="26"></asp:ListItem>	                                              
 						<asp:ListItem Text="Judy Shapiro" Value="7"></asp:ListItem>  
                         <asp:ListItem Text="Brenda Silvers" Value="34"></asp:ListItem>	
                         <asp:ListItem Text="Judith Stander" Value="8"></asp:ListItem>                             
-                        <asp:ListItem Text="Sally Stein " Value="30"></asp:ListItem>	                                           
-                        <asp:ListItem Text="Samantha Tanenbaum" Value="4"></asp:ListItem>                        
-						<asp:ListItem Text="Jake Velleman" Value="24"></asp:ListItem>                        
-						<asp:ListItem Text="Sarah Klein Wagner" Value="22"></asp:ListItem>                        
-						<asp:ListItem Text="Rebecca Weiner" Value="21"></asp:ListItem>													                        
+                        <asp:ListItem Text="Sally Stein" Value="30"></asp:ListItem>	                                           
+                        <asp:ListItem Text="Samantha Tanenbaum" Value="4"></asp:ListItem>                        										                        
 						<asp:ListItem Text="Ellen Weismar" Value="23"></asp:ListItem>
 						<asp:ListItem Text="Rachel White" Value="9"></asp:ListItem>	
                         <asp:ListItem Text="Claire Wintrop" Value="5"></asp:ListItem>

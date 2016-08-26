@@ -31,7 +31,9 @@
                     </ul>
 		        </p>                
 		        <p>
-		            Children have been creating lifelong memories and friendships at B'nai B'rith Perlman Camp for 60 years! Nestled in the Pocono Mountains on 350 magnificent acres, Perlman Camp provides exceptional childcare, engaging Jewish programming, and an outstanding all-around camp program. Campers ages 7-17 come to Perlman Camp to experience our tight-knit family atmosphere and incredible camp community.
+		            Children have been creating lifelong memories and friendships at B'nai B'rith Perlman Camp for 60 years! 
+                    Nestled in the Pocono Mountains on 350 magnificent acres, Perlman Camp provides exceptional childcare, engaging Jewish programming, 
+                    and an outstanding all-around camp program. Campers ages 7-17 come to Perlman Camp to experience our tight-knit family atmosphere and incredible camp community.
 		        </p>
 			</td>
         </tr>

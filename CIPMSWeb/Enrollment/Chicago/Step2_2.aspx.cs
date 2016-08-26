@@ -73,7 +73,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 		}
 		Session["FJCID"] = hdnFJCID.Value;
 
-		// Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page
+		// Chicago coupon for JewishCampers - Other option, then we route to Chicago Coupon page OR Coupon Holding page if the program is not ON yet
 		if (ddlJewishDaySchool.SelectedValue == "3")
 		{
             // 2014-10-10 Enable Chicaog coupon for in winter every year after PJ Lottery is closed below by commenting the code below, usually this happens end of year or early new year

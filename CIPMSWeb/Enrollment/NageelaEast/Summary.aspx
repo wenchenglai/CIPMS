@@ -29,16 +29,21 @@
                     </ul>
 		        </p>                
 		        <p>
-                    At Camp Nageela, children not only make great friends, they develop critical skills needed to navigate lasting relationships. Judaism has much to teach us about relationships, and our staff model responsible, caring and compassionate relationships with our campers.
+                    At Camp Nageela, children not only make great friends, they develop critical skills needed to navigate lasting relationships. 
+                    Judaism has much to teach us about relationships, and our staff model responsible, caring and compassionate relationships with our campers.
 		        </p>
                 <p>
-                    We believe that Judaism asks of us to live our lives to the fullest. In fact, Nageela means rejoice, and that is the spirit of our camp. Our sports are challenging, our activities are creative, our specialties are life enhancing and our Jewish pride is contagious. Our campus is new and full of amenities. Our staff is chosen for their positive and growth oriented attitudes. Our campers love to have fun and appreciate meaningful experiences. Add it all up and you have 4 weeks of exhilaration that will last a lifetime.
+                    We believe that Judaism asks of us to live our lives to the fullest. In fact, Nageela means rejoice, and that is the spirit of our camp. 
+                    Our sports are challenging, our activities are creative, our specialties are life enhancing and our Jewish pride is contagious. 
+                    Our campus is new and full of amenities. Our staff is chosen for their positive and growth oriented attitudes. 
+                    Our campers love to have fun and appreciate meaningful experiences. Add it all up and you have 4 weeks of exhilaration that will last a lifetime.
                 </p>
                 <p>
                     Now that we told you our philosophy, please see our website for how we put it into action. <a href="http://www.Campnageela.org" target="_blank">Campnageela.org</a>.                
                 </p>
                 <p>
-If you are interested in learning more about our camps and other available grants, and our many and varied year-round programs, please contact Rabbi David Shenker at (516) 374-1528 Ext 103 or rds@campnageela.org.                 
+If you are interested in learning more about our camps and other available grants, and our many and varied year-round programs, 
+                    please contact Rabbi David Shenker at (516) 374-1528 Ext 103 or rds@campnageela.org.                 
 
                 </p>
 			</td>

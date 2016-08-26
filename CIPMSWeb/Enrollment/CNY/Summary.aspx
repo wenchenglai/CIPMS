@@ -12,27 +12,24 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The Foundation for Jewish Camp continues to partner with the Jewish Federation of CNY. We offer funding to children in our community 
-                    who wish to attend Jewish overnight camp for the first-time.
-                </p>
-                <p>
-                    To determine if you are eligible for a One Happy Camper grant please read below. 
-                    If you believe that your camper meets the criteria please proceed with the application by clicking the “Next” button below.
+                    The Foundation for Jewish Camp continues to partner with the Jewish Federation of CNY. We may be able to offer funding to children in our community who wish to attend Jewish overnight camp.
                 </p>
 				<p>
-				    The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 1-12 (after camp).</li>
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
-				</p> 
+				</p>
+                <p>
+                    If you believe that your camper meets the criteria please proceed with the application by clicking the "Next" button below. 
+                </p>
                 <p>
                     Funds that are awarded will be paid directly to the camp.
                 </p>  
 				<p>
-                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> 
+                    <span style="color:red; font-weight:bold">Attention Jewish Day School families in Central New York:  </span> 
                     If your child is currently enrolled in a Jewish day school, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org.
 				</p>
                 <p>

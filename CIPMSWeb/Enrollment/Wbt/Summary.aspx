@@ -25,11 +25,18 @@
                     </ul>
 				</p>                
 				<p>
-The day your family becomes a part of Wilshire Boulevard Temple Camps is the beginning of a lifelong connection to our extraordinary community. Campers step off the bus among the spectacular hills and canyons of the Malibu coast and are immediately embraced by our camp family. In this matchless setting, they are offered a wealth of programming options—top-notch sports, theatre, music, dance, swimming, arts and crafts, social, spiritual and educational activities, all designed to create a magical environment in which campers can stretch their limits, build meaningful relationships, develop a profound connection to Judaism and have the time of their lives.
+                    The day your family becomes a part of Wilshire Boulevard Temple Camps is the beginning of a lifelong connection to our extraordinary community. 
+                    Campers step off the bus among the spectacular hills and canyons of the Malibu coast and are immediately embraced by our camp family. 
+                    In this matchless setting, they are offered a wealth of programming options—top-notch sports, theatre, music, dance, swimming, arts and crafts, 
+                    social, spiritual and educational activities, all designed to create a magical environment in which campers can stretch their limits, build meaningful 
+                    relationships, develop a profound connection to Judaism and have the time of their lives.
 
 				</p>
                 <p>
-                    The experience is nothing short of transformative. We have more than 60 years' worth of evidence to prove it. Many of our staff grew up at Camp, and we are all deeply committed to your child's experience and inclusion in our community. We also bring in staff from Israel to expand our perspectives and enhance our culture. Each of us understands the privilege and responsibility of being a positive Jewish role model.
+                    The experience is nothing short of transformative. We have more than 60 years' worth of evidence to prove it. 
+                    Many of our staff grew up at Camp, and we are all deeply committed to your child's experience and inclusion in our community. 
+                    We also bring in staff from Israel to expand our perspectives and enhance our culture. Each of us understands the privilege and responsibility of 
+                    being a positive Jewish role model.
                 </p>
                 <p>
 If you would like to learn more about our camps, in addition to other scholarship opportunities, visit us online at wbtcamps.org, or contact our Registrar, Janine Regal (213) 835-2128.

@@ -13,13 +13,17 @@
 		<tr>
 			<td colspan="2">
                 <p>
-                    The Foundation for Jewish Camp, in partnership with the Jewish Federation of Nashville and Middle Tennessee, offers funding to children in our community who wish to attend Jewish overnight camp for the first time.
+                    The Foundation for Jewish Camp, in partnership with the Jewish Federation of Nashville and Middle Tennessee, 
+                    offers funding to children in our community who wish to attend Jewish overnight camp for the first time.
                 </p>
                 <p>
-                    To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the next button below.
+                    To determine if you are eligible for a One Happy Camper grant please read below. 
+                    If you believe that your camper meets the criteria please proceed with the application by clicking the next button below.
                 </p>
                 <p>
-                    The Jewish Federation of Nashville and Middle Tennessee One Happy Camper Program provide grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp, and in effect, giving them $1,000 off their camp fee to try a Jewish one.
+                    The Jewish Federation of Nashville and Middle Tennessee One Happy Camper Program provide grants to encourage children to attend overnight Jewish camp for the first-time. 
+                    It is not a scholarship fund and is not needs-based. Our goal is to engage families who are considering sending their children to camp, and in effect, 
+                    giving them $1,000 off their camp fee to try a Jewish one.
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -31,7 +35,8 @@
                     </ul>
 				</p> 
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, 
+                    children who attend Jewish day school or yeshiva are not eligible for this incentive program.
                 </p>
                 <p>
                     If your child is not eligible and/or you are interested in learning about financial-needs based grants or other needs based funding options please visit 

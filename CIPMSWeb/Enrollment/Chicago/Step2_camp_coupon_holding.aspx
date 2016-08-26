@@ -2,14 +2,18 @@
 <%@ MasterType VirtualPath="~/Common.master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="Content" Runat="Server">
     <div class="QuestionText">
-        <p>
-            It appears that you are not eligible for the One Happy Camper first time incentive grant. 
-            However you may be eligible for a Camp Coupon, a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system.        </p>
-        <p>
-            The Camp Coupon program application will launch in January 2016.
+        <p class="headertext">
+            It appears that you are not eligible for the One Happy Camper first time incentive grant.
         </p>
         <p>
-            To be notified when the application launches, please contact JUF at JewishCamp@juf.org.  Be sure to include your name, email address, age of your child and name of the school they attend.
+             
+            However you may be eligible for a Camp Coupon, a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system.        </p>
+        <p>
+            The Camp Coupon program application will launch in January 2017.
+        </p>
+        <p>
+            To be notified when the application launches, please contact JUF at JewishCamp@juf.org.  Be sure to include your name, email address, 
+            age of your child and name of the school they attend.
         </p>
     </div>
 

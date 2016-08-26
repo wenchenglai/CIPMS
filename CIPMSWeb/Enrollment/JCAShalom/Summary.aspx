@@ -25,16 +25,24 @@
                     </ul>
 		        </p>                
 		        <p>
-		            If you are interested in learning more about our camps and other available grants, please visit us at: <a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. Or call our registrar at (818) 889-5500 ext. 102.
+		            If you are interested in learning more about our camps and other available grants, 
+                    please visit us at: <a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. Or call our registrar at (818) 889-5500 ext. 102.
 		        </p>
                 <p>
-                    For over 60 years, Camp JCA Shalom has been the “Camp for All Seasons.” Winter, Spring, Summer and Fall, thousands of campers and staff experience the magic of Camp JCA Shalom. Camp’s vision of Tikkun Olam - creating a better world is fulfilled through a positive Jewish living experience in the natural setting of the Shalom Institute. In our warm and supportive environment, campers experience living, learning and playing in a group setting that encourages personal growth and self-discovery.
+                    For over 60 years, Camp JCA Shalom has been the “Camp for All Seasons.” Winter, Spring, Summer and Fall, 
+                    thousands of campers and staff experience the magic of Camp JCA Shalom. Camp’s vision of Tikkun Olam - 
+                    creating a better world is fulfilled through a positive Jewish living experience in the natural setting of the Shalom Institute. 
+                    In our warm and supportive environment, campers experience living, learning and playing in a group setting that encourages personal growth and self-discovery.
                 </p>
                 <p>
-                    Campers also have fun! They participate in a variety of programs and activities daily, they make new and lasting friendships, and develop a wealth of new skills and interests. Our campers go home with a lifetime of cherished memories, new skills, and a positive self-image. It is truly an unforgettable experience for all!
+                    Campers also have fun! They participate in a variety of programs and activities daily, they make new and lasting friendships, and develop 
+                    a wealth of new skills and interests. Our campers go home with a lifetime of cherished memories, new skills, and a positive self-image. 
+                    It is truly an unforgettable experience for all!
                 </p>
                 <p>
-                    <span style="font-weight: bold;">Summers are for kids!</span><br /><br /> Something special happens when children spend a few weeks away from home at Camp JCA Shalom. Every child feels a part of a very special family. Learning to share, making decisions, and experiencing independence are all part of a magical Camp JCA Shalom summer.
+                    <span style="font-weight: bold;">Summers are for kids!</span><br /><br /> 
+                    Something special happens when children spend a few weeks away from home at Camp JCA Shalom. Every child feels a part of a very special family. 
+                    Learning to share, making decisions, and experiencing independence are all part of a magical Camp JCA Shalom summer.
                 </p>
                 <p>
                     	We offer a two week session for children entering grades 2-8, three-week sessions for children entering grades 5-8, 

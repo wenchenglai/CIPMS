@@ -19,7 +19,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-				    Camp Inc. is proud to partner with the Foundation for Jewish Camp and offer One Happy Camper incentive grants to campers anywhere in North America. 
+				    Camp Inc. Business Academy is proud to partner with the Foundation for Jewish Camp and offer One Happy Camper incentive grants to campers anywhere in North America. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -30,13 +30,14 @@
                     </ul>
 				</p>   
                 <p>
-                    Camp Inc. is a Jewish overnight camp in Steamboat Springs, CO where 6th-12th graders from around the world join together to explore business and entrepreneurship. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on experiences, interactions with professional business mentors, and exciting company tours. Under the direction of Camp Inc.'s business specialists, campers pick a track and focus their time on either: coding, finance, marketing & design, or startups to ultimately become leaders and innovators in business, philanthropy, and the Jewish community.
+                    Camp Inc. Business Academy. is a Jewish overnight camp in Steamboat Springs, CO where 6th-12th graders from around the world join together to explore business, entrepreneurship and technology. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on experiences, interactions with professional business mentors, and exciting company tours. Under the direction of Camp Inc.'s business specialists, campers pick a track and focus their time on either: coding, marketing & design, or startups to ultimately become leaders and innovators in business, philanthropy, and the Jewish community. 
                 </p> 
                 <p>
-                    Camp Inc. offers (3) sessions for entering 6th through 12th grade campers.
+                    Camp Inc. offers sessions for entering 6th through 12th grade campers. 
                 </p>
                 <p>
-                    If you are interested in learning more about Camp Inc. and other discounts and scholarships, please visit us at: <a href="http://www.CampInc.com" target="_blank">www.CampInc.com</a> or call 303-500-3020.
+                    If you are interested in learning more about Camp Inc. and other discounts and scholarships, please visit us at: 
+                    <a href="http://www.CampInc.com" target="_blank">www.CampInc.com</a> or call 303-500-3020.
                 </p>           
             </td>
         </tr>  
