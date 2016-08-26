@@ -4,7 +4,7 @@
   <table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
     <tr>
       <td colspan="2">
-        <img src="../../images/PalmSprings.jpg" style="height:100px; width:300px" alt=""  />
+        <img src="logo.jpg" alt=""  />
       </td>
     </tr>
     <tr>
