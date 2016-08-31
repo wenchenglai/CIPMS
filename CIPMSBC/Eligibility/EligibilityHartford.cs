@@ -98,7 +98,7 @@ namespace CIPMSBC.Eligibility
                         iStatusValue = (int)AllowDaySchool(FJCID);
                         if (iStatusValue == (int)StatusInfo.SystemInEligible)
                         {
-                            if (specialCode == "PJGTC2016")
+                            if (specialCode == "PJGTC2017")
                                 iStatusValue = (int)StatusInfo.EligiblePJLottery;
                         }
                     }

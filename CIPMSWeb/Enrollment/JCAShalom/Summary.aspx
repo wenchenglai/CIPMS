@@ -45,10 +45,8 @@
                     Learning to share, making decisions, and experiencing independence are all part of a magical Camp JCA Shalom summer.
                 </p>
                 <p>
-                    	We offer a two week session for children entering grades 2-8, three-week sessions for children entering grades 5-8, 
-						a one week end-of-the summer “bonus” session for children entering grades 2-8, special one-week mini-camps for 
-						children entering grades 2-6, and a variety of programs for teens entering grades 9-12. Check out our schedule, 
-						programs, and teen programs at <a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. 
+                    We offer a two week session for children entering grades 2-8, three-week sessions for children entering grades 5-8, special one-week mini-camps for children entering grades 2-6, and a variety of programs for teens entering grades 9-12. Check out our schedule, programs, and teen programs at
+                     <a href="http://www.campjcashalom.com" target="_blank">www.campjcashalom.com</a>. 
                 </p>
 			</td>
         </tr>

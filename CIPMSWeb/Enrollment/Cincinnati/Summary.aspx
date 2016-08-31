@@ -6,10 +6,10 @@
         <tr>
             <td>
                 <p>
-                    Cincinnati residents may be eligible for overnight Jewish camping grants of up to $2800 over the course of two years through the Cincy Journeys Grant program funded by The Jewish Foundation of Cincinnati and administered by the Jewish Federation of Cincinnati. 
+                    Cincinnati residents may be eligible for up to $2800 for two years for overnight Jewish camping grants through the Cincy Journeys Grant program, funded by The Jewish Foundation of Cincinnati and administered by the Jewish Federation of Cincinnati.
                 </p>
                 <p>
-                    To learn more about the program and for an application form please visit the website <a href="http://www.cincyjourneys.org" target="_blank">www.cincyjourneys.org</a> or contact Karyn Zimerman at kzimerman@jfedcin.org or 513-985-1534. 
+                    To learn more about the program and to apply visit www.cincyjourneys.org or contact Karyn Zimerman at kzimerman@jfedcin.org or 513-985-1534.
                 </p>
             </td>
         </tr>        

@@ -10,14 +10,15 @@
 			<td>
 				<p><strong>Good news! You may be eligible for a One Happy Camper grant.</strong></p>    
 				<p>
-					a.	To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants are now open to Montreal children attending both Jewish and non-Jewish day schools!
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants are now open to Montreal children attending both Jewish and non-Jewish day schools!
 				</p>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
 				<p>
-                    Federation CJA's Generations Fund Camp Initiative, One Happy Camper program, funded by the Schwartz and Segel families and the Foundation for Jewish Camp, is offering a one-time grant of up to $1,000 to eligible Montreal children.
+                    Federation CJA's Generations Fund Camp Initiative, One Happy Camper program, 
+                    funded by generous donors families and the Foundation for Jewish Camp, is offering a one-time grant of up to $1,000 to eligible Montreal children.
 				</p>
 				<p>
 					The following outlines the eligibility criteria for this program:

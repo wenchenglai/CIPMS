@@ -121,7 +121,8 @@
                         <asp:ListItem Text="Alyssa Amabile" Value="38"></asp:ListItem>	                        
 						<asp:ListItem Text="Rochelle Baltuch" Value="6"></asp:ListItem>                                                
 						<asp:ListItem Text="Sue Bendalin" Value="15"></asp:ListItem>		                                                                      
-                        <asp:ListItem Text="Dirk Bird" Value="12"></asp:ListItem>                                            
+                        <asp:ListItem Text="Dirk Bird" Value="12"></asp:ListItem>   
+                        <asp:ListItem Text="Diana Diner" Value="40"></asp:ListItem>                                            
                         <asp:ListItem Text="Nancy Frankel" Value="27"></asp:ListItem>    
                         <asp:ListItem Text="Taryn Goodman-Omran" Value="39"></asp:ListItem>                                             
                         <asp:ListItem Text="Sharon Gray" Value="32"></asp:ListItem>                        

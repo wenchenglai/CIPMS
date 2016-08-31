@@ -19,7 +19,7 @@ public class SessionSpecialCode
             return "";
     }
 
-    // Get the PJGTC2016 code from session variable
+    // Get the PJGTC20xx code from session variable
     public static string GetPJLotterySpecialCode()
     {
         var code = GetSpecialCode();

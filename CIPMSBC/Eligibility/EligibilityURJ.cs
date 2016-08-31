@@ -93,7 +93,7 @@ namespace CIPMSBC.Eligibility
 
                     if (JewishSchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2016")
+                        if (specialCode == "PJGTC2017")
                             iStatusValue = (int)StatusInfo.SystemInEligible;
                         else
                             iStatusValue = (int)AllowDaySchool(FJCID);

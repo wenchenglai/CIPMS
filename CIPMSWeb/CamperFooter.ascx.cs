@@ -123,7 +123,7 @@ public partial class CamperFooter : System.Web.UI.UserControl
                         if (strFedId == "10")
                         {
                             // The Partnership for Jewish Learning and Life (Greater MetroWest NJ)
-                            lblFederationName.Text = "The Partnership for Jewish Learning <br /> and Life (Greater MetroWest NJ)";
+                            //lblFederationName.Text = "The Partnership for Jewish Learning <br /> and Life (Greater MetroWest NJ)";
                         }
                         else if (strFedId == "69")
                         {

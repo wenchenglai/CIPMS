@@ -52,7 +52,7 @@ public partial class Enrollment_Washington_Summary : System.Web.UI.Page
                         tblRegular.Visible = true;
                         Session["isGrantAvailable"] = true;
                     }
-                    else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2016")
+                    else if (SessionSpecialCode.GetPJLotterySpecialCode() == "PJGTC2017")
                     {
                         tblDisable.Visible = false;
                         tblRegular.Visible = false;

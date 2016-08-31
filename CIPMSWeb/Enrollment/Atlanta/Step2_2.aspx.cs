@@ -300,7 +300,11 @@ public partial class HartfordPage2 : System.Web.UI.Page
 				{
 					rdoFirstTimerYes.Checked = true;
 				}
-				else
+                else if (dr["OptionID"].ToString() == "3")
+                {
+                    rdoFirstTimerNo11days.Checked = true;
+                }
+                else
 				{
 					rdoFirstTimerNo.Checked = true;
 				}
@@ -414,7 +418,7 @@ public partial class HartfordPage2 : System.Web.UI.Page
 
 		//for question 3
 		strQID = hdnQ3Id.Value;
-		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : rdoFirstTimerNo11days.Checked ? "3" : "") + strFSeparator + strQSeparator;
 
 		//Grandfaother question
 		strQID = "1066";
