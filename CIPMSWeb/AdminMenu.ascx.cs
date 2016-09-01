@@ -71,12 +71,11 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
                 //if (System.Configuration.ConfigurationManager.AppSettings["AllowMassUpdate"].Split(',').Any(id => id == fedId))
                 //    lnkBulkStatusUpdate.Visible = true;
-
-                var allowedFeds = new List<string>() { "5", "6", "9", "10", "11", "23", "24", "35", "36", "42", "43", "45", "54", "55", "61", "62", "63", "67", "69", "70", "71", "72", "73", "80", "83", "89", "93", "98", "103", "106", "107", "108", "111", "112", "114", "115", "116", "118", "119", "120", "121", "122", "123", "124", "125", "126", "131", "132", "133", "134", "135", "136", "137", "139", "140", "143", "144", "145", "146", "147", "148", "149", "150", "151" };
+                var allowedFeds = new List<string>(ConfigurationManager.AppSettings["AllowMassUpdate"].Split(','));
                 if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
 
-                var fjcFundingFeds = new List<string>() {"2", "10", "59", "61", "63", "69", "85", "98", "99", "100", "101", "102", "107", "108", "112", "113", "114", "121", "131" };
+                var fjcFundingFeds = new List<string>(ConfigurationManager.AppSettings["SelfPaymentProcessing"].Split(','));
                 if (fjcFundingFeds.Exists(x => x == fedId))
                     divSelfFunding.Visible = false;
 
