@@ -28,7 +28,7 @@
 			    </p>
                 <p>
                     The Ramah One Happy Camper Program, sponsored by the National Ramah Commission, Foundation for Jewish Camp, 
-                    and Camp Ramah Poconos awards incentive grants up to $1,000 to first time campers.
+                    and Camp Ramah in California, awards incentive grants up to $1,000 to first time campers.
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this One Happy Camper program:

@@ -20,7 +20,7 @@
                 <ul style="font-weight: bold">
                     <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                     <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                    <li>First-time campers must be entering grades 1-12 (after camp).</li>
+                    <li>First-time campers must be entering grades 4-11 (after camp).</li>
                 </ul>
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, 
