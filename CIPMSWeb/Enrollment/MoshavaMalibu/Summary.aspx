@@ -32,17 +32,14 @@ This incentive cannot be combined with other discounts or promotions offered by 
 
                 </p> 
                 <p>
-Moshava California is a Modern Orthodox and religious Zionist overnight camp for coed children entering grades 3 through 10. 
-                    As a proud member of Bnei Akiva's Camp Moshava family, our mission is to inspire and empower Jewish youth with a deep commitment to our 
-                    people, Am Yisrael, our land, Eretz Yisrael, and our Torah, Torat Yisrael.                 </p>
-                <p>
-In a warm, caring and safe environment, we offer a rich program of sports, arts, swimming and nature infused with Jewish identity development and learning. 
-                    This will be our 2nd summer at our permanent home in Running Springs, located on 78 beautiful acres in the mountains of San Bernardino County, less than 2 hours from Los Angeles.
+                    Moshava California is a Modern Orthodox and religious Zionist coed overnight camp for children entering grades 3 through 10. As a proud member of Bnei Akiva's Camp Moshava family, our mission is to inspire and empower Jewish youth with a deep commitment to our people, Am Yisrael; our land, Eretz Yisrael; and our Torah, Torat Yisrael. 
                 </p>
                 <p>
-                    If you are interested in learning more about our camp, please visit us at: 
-                    <a href="http://www.moshavaCalifornia.org" target="_blank">www.moshavaCalifornia.org</a> or send us an email 
-                    at <a href="mailto:info@moshavaCalifornia.org">info@moshavaCalifornia.org</a>.  You may also call us at (855) MOSHAVA.
+                    In a warm, caring, and safe environment, we offer a rich program of sports, arts, swimming, and nature infused with Jewish identity development and learning. Our home is located in Running Springs, California, on 78 beautiful acres in the mountains of San Bernardino County, less than 2 hours from Los Angeles. 
+                </p>
+                <p>
+                    To learn more about our camp, please visit our website: 
+                    <a href="http://www.moshavaCalifornia.org" target="_blank">www.moshavaCalifornia.org</a>, or contact our office by emailing to office@moshavacalifornia.org. You may also call us at (855) MOSHAVA.
                 </p>        
             </td>
         </tr>    

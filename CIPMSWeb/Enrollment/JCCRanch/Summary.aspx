@@ -4,7 +4,7 @@
 	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
-                <img src="../../images/JCC_Ranch_logo.jpeg" />
+                <img src="logo.png" />
             </td>
             <td>
                 <p>

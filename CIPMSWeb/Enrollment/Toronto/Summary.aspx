@@ -14,10 +14,10 @@
                     Good news! You may be eligible for an incentive grant of up to $1,000.
                 </p>
                 <p>
-                    Thank you for choosing Jewish overnight camp and helping us to be One Happy Camper closer to achieving our goal. UJA’s Silber Family Centre for Jewish Camping is committed to promoting the importance of Jewish Camping in our community. Through our partnership with Foundation for Jewish Camp, OHC Toronto is an outreach initiative for families who might otherwise choose to send their campers to a non-Jewish/private overnight camp.                    
+                    Thank you for choosing Jewish overnight camp and helping us to be One Happy Camper closer to achieving our goal. UJA’s Silber Family Centre for Jewish Camping is committed to promoting the importance of Jewish Camping in our community. Through our partnership with Foundation for Jewish Camp, OHC Toronto is an outreach initiative for families who might otherwise choose to send their campers to a non-Jewish/private overnight camp. 
                 </p>
                 <p>
-                    Along with our partner camps, UJA Federation of Greater Toronto is proud to offer the One Happy Camper incentive grant to all campers who meet the following criteria.                     
+                    Along with our partner camps, UJA Federation of Greater Toronto is proud to offer the One Happy Camper incentive grant to all campers who meet the following criteria. 
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:

@@ -33,8 +33,7 @@ The One Happy Camper program sponsored by the Neubauer Family Foundation, the Je
                 </p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
-                    please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, 
-                    or contact your camp, or contact the Jewish Federation of Greater Philadelphia's Shannon Greenstein at sgreenstein@jfgp.org or 215-832-0530.
+                    please visit <a href="https://www.jewishphilly.org/programs-services/jewish-camping/camp-scholarships" target="_blank">https://www.jewishphilly.org/programs-services/jewish-camping/camp-scholarships</a>.
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

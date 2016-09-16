@@ -231,7 +231,7 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="chkAgreement" runat="server" CssClass="QuestionText"
-                                    Text="<span class='red-text'><strong>VERIFICATION STATEMENT: </strong></span>I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp. By accepting this grant, I acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor.<span class='red-text'><strong>(REQUIRED TO CHECK)</strong></span>" />
+                                    Text="<span class='red-text'><strong>VERIFICATION STATEMENT: </strong></span>I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp). By accepting this grant, I acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor.<span class='red-text'><strong>(REQUIRED TO CHECK)</strong></span>" />
                             </td>
                         </tr>
                     </table>

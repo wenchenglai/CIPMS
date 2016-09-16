@@ -30,7 +30,7 @@
                     </ul>
 				</p>   
                 <p>
-                    Camp Inc. Business Academy. is a Jewish overnight camp in Steamboat Springs, CO where 6th-12th graders from around the world join together to explore business, entrepreneurship and technology. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through hands-on experiences, interactions with professional business mentors, and exciting company tours. Under the direction of Camp Inc.'s business specialists, campers pick a track and focus their time on either: coding, marketing & design, or startups to ultimately become leaders and innovators in business, philanthropy, and the Jewish community. 
+                    Camp Inc. Business Academy. is a Jewish overnight camp in Steamboat Springs, CO where 6th-12th graders from around the world join together to explore business, entrepreneurship and technology. Campers choose a track to focus on from either CEO/CFO (leadership and finance), CTO (coding and technology), or CMO (marketing and design). They spend part of their day developing skills in their core track, and part of the day coming together to launch a startup in teams of 3-5 campers. Camp Inc. campers develop community, confidence, leadership, and Jewish identity through these hands-on experiences, interactions with professional business mentors, exciting company tours, and daily recreation in rock climbing, boating, swimming, hiking, gaga, volleyball, arts and crafts, music and more.
                 </p> 
                 <p>
                     Camp Inc. offers sessions for entering 6th through 12th grade campers. 

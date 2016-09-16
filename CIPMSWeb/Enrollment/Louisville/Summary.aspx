@@ -41,7 +41,7 @@
                     contact your camp, or the contact person listed at the bottom of this page.                     
                 </p>
                 <p>
-                    If you need additional assistance, please contact Mike Steklof at 502-238-2774 or msteklof@jewishlouisville.org.
+                    If you need additional assistance, please contact Betsy J. Schwartz at 502-238-2708 or BSchwartz@jewishlouisville.org.
                 </p>
 			</td>
         </tr>        
