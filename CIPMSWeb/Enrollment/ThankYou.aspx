@@ -14,8 +14,8 @@
                                     <br /><br />
                                     <asp:Label ID="lblCouponText" runat="server" Visible="false" Text="Please note, Camp Coupons is a program of the Jewish United Fund of Chicago and administered through the One Happy Camper registration system." />
 							    </p> 
-							    <p runat="server" id="pTempleIsrael" class="text-align:justify;" visible="false">
-							    <!--Temple Israel is awarding an additional $250 to their members! Therefore, the camper appears to be eligible for a $1250 grant!-->
+							    <p runat="server" id="pToronto" class="text-align:justify;" visible="false">
+							        Please contact your camp for any questions regarding registration or tuition.
 							    </p>                                                                     
 							    <asp:Label ID="Label2" runat="server" CssClass="lblPopup1">
 								    <p style="text-align:justify">
@@ -214,8 +214,7 @@
                 <b>Based on your answers, and pending further review by your One Happy Camper administrator, your camper may be eligible for an incentive grant.</b>
             </p>
             <p class="QuestionText" style="text-align:justify">
-                Please note that if your camper meets all the eligibility requirements EXCEPT for the minimum session requirement, we will RESERVE a One Happy Camper incentive grant for your camper.  Should your camper choose to extended his/her camp session to meet the 3+ week requirement, the camp will notify us of this extension.  At that time, we will activate the grant towards your camper’s first-time Jewish overnight camp experience.
-                If at a later date we find evidence of falsified information, we reserve the right to rescind this award.
+                Please note that if your camper meets all the eligibility requirements EXCEPT for the minimum session requirement, we will RESERVE a One Happy Camper incentive grant for your camper. Should your camper choose to extended his/her camp session to meet the 19+ day requirement, the camp will notify us of this extension. At that time, we will activate the grant towards your camper’s first-time Jewish overnight camp experience. If at a later date we find evidence of falsified information, we reserve the right to rescind this award.
             </p>
 			<p style="text-align:justify;">
 				<span style="color:red; font-weight:bold;">Your application has now been submitted and any changes or edits can only be made by your One Happy Camper administrator.</span>

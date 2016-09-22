@@ -150,7 +150,7 @@
         <tr id="6a">
             <td valign="top"><span class="InfoText">*</span>8a</td>
             <td valign="top" style="padding-bottom:20px;">
-                <div>Please select the secondary school:</div>
+                <div>Please select the congregational or religious school:</div>
                 <div>
                     <asp:DropDownList ID="ddlSecondarySchool" CssClass="dropdown" Width="300px" runat="server" onChange="PageValidator.OnSecondarySchoolDropDownChange(this);">
                         <asp:ListItem Value="-- Select --"></asp:ListItem>

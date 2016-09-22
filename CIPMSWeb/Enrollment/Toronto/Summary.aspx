@@ -11,33 +11,31 @@
         <tr>
             <td>
                 <p>
-                    Good news! You may be eligible for an incentive grant of up to $1,000.
-                </p>
-                <p>
-                    Thank you for choosing Jewish overnight camp and helping us to be One Happy Camper closer to achieving our goal. UJA’s Silber Family Centre for Jewish Camping is committed to promoting the importance of Jewish Camping in our community. Through our partnership with Foundation for Jewish Camp, OHC Toronto is an outreach initiative for families who might otherwise choose to send their campers to a non-Jewish/private overnight camp. 
-                </p>
-                <p>
-                    Along with our partner camps, UJA Federation of Greater Toronto is proud to offer the One Happy Camper incentive grant to all campers who meet the following criteria. 
+                    UJA’s Silber Family Centre for Jewish Camping promotes the importance of Jewish Camping as a key ingredient in building strong Jewish identities amongst our community’s youth. Through our partnership with the Foundation for Jewish Camp and over a dozen local camps, the One Happy Camper program helps families choose to enroll their children in Jewish overnight camps. 
                 </p>
 				<p>
-				    The following outlines the eligibility criteria for this program:
+				    In order to be eligible for a Toronto One Happy Camper Grant, a camper must
                     <ul style="font-weight: bold">
-                        <li>Currently residing in the Greater Toronto Area (GTA).</li>
-                        <li>First time camper must be entering grades 1-12 (after camp).</li>
-                        <li>Enrolled with one of the OHC Toronto partner camps.</li>
-                        <li>$1,000 incentive grants awarded to first-time campers attending camp for at least 19+ consecutive days.</li>
-                        <li>Siblings of campers who (previously) received a $1,000 grant are eligible to receive a $500 incentive grant when they attend camp for the first time for at least 19+ consecutive days.</li>
+                        <li>Currently residing in the Greater Toronto Area (GTA);</li>
+                        <li>Be entering grades 1-12 in September after camp;</li>
+                        <li>Attend one of the OHC Toronto partner camps for a session of at least 19 consecutive days.</li>
+                    </ul>
+				</p> 
+				<p>
+				    One Happy Camper offers a grant of:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 for the first child in a family to attend Jewish overnight camp (for 19+ days);</li>
+                        <li>$500 for siblings of campers who received a $1,000 grant.</li>
                     </ul>
 				</p> 
                 <p>
-                    Campers enrolled in a 'Taste of Camp' session (less than 19 days, with the option to extend to an eligible session) can have a grant reserved by proceeding with this application. 
-
+                    Campers enrolled in a 'Taste of Camp' session (fewer than 19 days, with the option to extend to an eligible session) can have a grant reserved by completing this application before beginning the ‘Taste of’ session.
                 </p>
                 <p>
-                    Grants will be awarded on a first-come, first-serve basis. If you are not eligible for this program and/or you have questions about the One Happy Camper Toronto program, please contact your camp and/or Ricci Postan at UJA's Silber Family Centre for Jewish Camping at OHCToronto@ujafed.org.
+                    Grants will be awarded on a first-come, first-serve basis. If you have questions about the One Happy Camper program please contact your camp who would be happy to answer questions. 
                 </p>  
                 <p>
-                    If you have determined that your camper is eligible, based on the criteria above, proceed by clicking on the "Next" button. 
+                    If you have determined that your camper is eligible, based on the criteria above, proceed by clicking on the "Next" button.
                 </p>            
             </td>
         </tr>            
