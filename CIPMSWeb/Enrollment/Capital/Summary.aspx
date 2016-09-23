@@ -25,12 +25,13 @@
                     </ul>
 		        </p>                
 		        <p>
-		            If you are unsure of your eligibility, please contact our Camp Team at info@capitalcamps.org or 301-468-2267. 
+		            If you are unsure of your eligibility, please contact us at info@capitalcamps.org or 301-468-2267. 
 		        </p>
                 <p>
 Capital Camps is the Jewish Community Overnight Camp of the Mid-Atlantic region. We have provided quality Jewish camping in a warm nurturing environment for 29 years. 
                     We are located just over one hour from both Washington DC and Baltimore. 
-                    Capital Camps is for campers entering grades 3 through 10. Options include a 2-week ¡§introductory¡¨ program for grades 3-5. We also offer a fully-mainstreamed Special Needs program. Financial aid is also available.
+                    Capital Camps is for campers entering grades 3 through 10. Options include a 2-week introductory program for grades 3-5. We also offer a 
+                    fully-mainstreamed special needs program. Financial aid is also available.
                 </p>
                 <p>
 Our facilities and include cabins with bathrooms, aquatics complex (heated with two 40ft water flumes, beach entry and more), arts and theatre building, ropes challenge course 
