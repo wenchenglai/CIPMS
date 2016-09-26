@@ -74,7 +74,7 @@ public partial class Home : System.Web.UI.Page
 		{
 			if (strEmail != "wenchenglai@gmail.com" && strEmail != "staci@jewishcamp.org" && strEmail != "rebeccak@jewishcamp.org" && strEmail != "s.myerklein@gmail.com" && strEmail != "Tamar@jewishcamp.org")
 			{
-				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Oct 20th, 2015.";
+				lblErr.Text = "The registration system is closed for testing until 11 AM EST on Tuesday, Sept 26th, 2016.";
 				return;
 			}
 		}
