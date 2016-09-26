@@ -31,7 +31,7 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
+            StatusBasedOnSchool(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 return true;
@@ -112,35 +112,44 @@ namespace CIPMSBC.Eligibility
             return iStatusValue;
         }
 
-        private int StatusBasedOnSchool(string FJCID, int StatusValue, out bool PendingSchool)
+        private void StatusBasedOnSchool(string FJCID, out int StatusValue, string specialCode = "None")
         {
-            PendingSchool = false;
-            return (int)StatusInfo.SystemEligible;
-            //var oCA = new CamperApplication();
-            //var dsSchoolOption = oCA.getCamperAnswers(FJCID, "1", "1", "7,10");
-            //int iStatusValue = (int)StatusInfo.SystemInEligible;
-            //PendingSchool = false;
+            CamperApplication oCA = new CamperApplication();
+            DataSet dsJewishSchool;
+            dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");
+            DataRow drJewishSchool;
+            int JewishSchoolOption = 0;
 
-            //if (dsSchoolOption.Tables[0].Rows.Count > 0)
-            //{
-            //    var schoolTypeId = dsSchoolOption.Tables[0].Select("QuestionID = 7")[0]["OptionID"].ToString();
-            //    var campId = dsSchoolOption.Tables[0].Select("QuestionID = 10")[0]["Answer"].ToString();
-            //    string last3digits = campId.Substring(campId.Length - 3);
+            if (dsJewishSchool.Tables[0].Rows.Count > 0)
+            {
+                drJewishSchool = dsJewishSchool.Tables[0].Rows[0];
+                if (!string.IsNullOrEmpty(drJewishSchool["OptionID"].ToString()))
+                {
+                    JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
 
-            //    if (schoolTypeId == "4")
-            //    {
-            //        if (last3digits == "082")
-            //        {
-            //            iStatusValue = (int)StatusInfo.SystemEligible;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        iStatusValue = (int)StatusInfo.SystemEligible;
-            //    }
-            //}
-
-            //return iStatusValue;
+                    if (JewishSchoolOption == 4)
+                    {
+                        StatusValue = (int)AllowDaySchool(FJCID);
+                        if (StatusValue == (int)StatusInfo.SystemInEligible)
+                        {
+                            if (specialCode == "PJGTC2017")
+                                StatusValue = (int)StatusInfo.EligiblePJLottery;
+                        }
+                    }
+                    else
+                    {
+                        StatusValue = (int)StatusInfo.SystemEligible;
+                    }
+                }
+                else
+                {
+                    StatusValue = (int)StatusInfo.SystemInEligible;
+                }
+            }
+            else
+            {
+                StatusValue = (int)StatusInfo.SystemInEligible;
+            }
         }
 
         public override bool checkEligibility(string FJCID, out int StatusValue)
@@ -162,7 +171,7 @@ namespace CIPMSBC.Eligibility
                 return true;
             }
 
-            StatusValue = StatusBasedOnSchool(FJCID, StatusValue, out PendingSchool);
+            StatusBasedOnSchool(FJCID, out StatusValue);
             if (StatusValue == Convert.ToInt32(StatusInfo.SystemInEligible))
             {
                 oCA.UpdateAmount(FJCID, 0.00, 0, "");

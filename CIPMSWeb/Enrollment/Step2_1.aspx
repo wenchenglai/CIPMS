@@ -146,7 +146,7 @@
                         <asp:ListItem Text="Samantha Tanenbaum" Value="4"></asp:ListItem>                        										                        
 						<asp:ListItem Text="Ellen Weismer" Value="23"></asp:ListItem>
 						<asp:ListItem Text="Rachel White" Value="9"></asp:ListItem>	
-                        <asp:ListItem Text="Claire Wintrop" Value="5"></asp:ListItem>
+                        <asp:ListItem Text="Claire Winthrop" Value="5"></asp:ListItem>
 						<asp:ListItem Text="Helen Wolf" Value="10"></asp:ListItem>													
 						<asp:ListItem Text="Don't know/Not sure" Value="2"></asp:ListItem>																																										
 						<asp:ListItem Text="Other" Value="1"></asp:ListItem>							
