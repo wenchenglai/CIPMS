@@ -169,11 +169,11 @@ public partial class Step1 : System.Web.UI.Page
         // When a program is closed, it could be
         // 1.  The program is closed for good, like the whole year and won't come back online at all
         // 2.  The program is closed becuase it's not ready, but will open during the year when it's ready - typically we'll redirect them to camper holding page
-		// There are currently two places that could route to Camper Holding Page.  
-		// 1. When the CIPM is shut-down, typically from August to September
-		// 2. When CIPMS is open for registration, typically in mid-October
-		// The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
-		if (ZipCodeHasClosedProgram())
+        // There are currently two places that could route to Camper Holding Page.  
+        // 1. When the CIPM is shut-down, typically from August to September
+        // 2. When CIPMS is open for registration, typically in mid-October
+        // The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
+        if (ZipCodeHasClosedProgram())
 		{
 			// if the code executes to this point, it means the system is open for registration, but this particular zip/associated fed is still closed
 			// 2014-02-7 Add new logic that if this user applies the Direct Pass for PJL, then instead of going to the camper holding page, we go to PJL
@@ -187,9 +187,33 @@ public partial class Step1 : System.Web.UI.Page
 					passFlag = true;
 				}
 			}
-			
-			if (!passFlag && Master.UserId == "0" && Master.CamperUserId == "0")
-				Response.Redirect("~/CamperHolding.aspx");
+
+            if (!passFlag && Master.UserId == "0" && Master.CamperUserId == "0")
+            {
+                DataSet myFed = objGeneral.GetFederationForZipCode(txtZipCode.Text.Trim());
+
+                if (myFed.Tables[0].Rows.Count > 0)
+                {
+                    DataRow dr = myFed.Tables[0].Rows[0];
+                    string myFedId = dr["Federation"].ToString();
+                    string isActive = dr["isActive"].ToString();
+
+                    if (isActive == "False")
+                    {
+                        if (myFedId == "32" || myFedId == "98")
+                        {
+                            Response.Redirect("~/CamperHoldingSimple.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+                        }
+                    }
+                }
+
+                Response.Redirect("~/Enrollment/Step1_NL.aspx");
+            }
+				
 		}
 
 		if (!bPerformUpdate)
@@ -259,7 +283,8 @@ public partial class Step1 : System.Web.UI.Page
 			{
                 fedCount = 1;
 			}
-		}
+
+        }
 		else
 		{
 			dsFed = objGeneral.GetFederationForZipCode(Info.ZipCode);
@@ -271,7 +296,7 @@ public partial class Step1 : System.Web.UI.Page
 					Session["FedId"] = dsFed.Tables[0].Rows[0][0];
 				}
 			}
-		}
+        }
 
         if (fedCount > 1)
 	    {

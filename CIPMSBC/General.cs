@@ -1394,6 +1394,8 @@ namespace CIPMSBC
             return e.ToString();
         }
 
+        // 2016-09-27 Basically this function will return true ONLY if the zip code
+        // is national zip code OR this zip code has community AND this community is Active
         public Boolean ValidateZipCode(string ZipCode,string DisabledFed)
         {
             DataSet dsFederation = new DataSet();
@@ -1404,11 +1406,19 @@ namespace CIPMSBC
             {
                 dr = dsFederation.Tables[0].Rows[0];
                 string strFedId = dr["Federation"].ToString();
+                //string isActive = dr["isActive"].ToString();
+
+                //if (isActive == "False")
+                //{
+                //    return false;
+                //}
+
                 string[] DisabledFeds = DisabledFed.Split(',');
                 for (int i = 0; i < DisabledFeds.Length; i++)
                 {
                     if (DisabledFeds[i] == strFedId)
                     {
+                        // this zip code has a fed associated with, AND is OPEN, so we return true
                         return true;
 
                     }
@@ -1416,9 +1426,11 @@ namespace CIPMSBC
             }
             else
             {
+                // this zip code has no federation associated, so we return true
                 return true;
             }
 
+            // this zip code has a fed asscoiated with, and has is NOT OPEN, so we return false
             return false;
         }
 
