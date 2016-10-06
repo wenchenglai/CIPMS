@@ -14,7 +14,7 @@
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>
 			<td>
-				<img src="../../images/CampCharles.JPG" />
+				<img src="logo.jpg" />
 			</td>
 			<td>
 				<asp:Label ID="Label3" CssClass="SummaryHeading" runat="server">

@@ -180,6 +180,7 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         else if (isActive == "")
             lblStatus.Text = "No Program";
 
+
         var isGrantAvailable = fed["isGrantAvailable"];
         if (isGrantAvailable == "True")
             lblAvail.Text = "Grants Available";
@@ -193,13 +194,37 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         else if (isGrantAvailable == "")
             lblAvail.Text = "Offline, contact community directly";
 
+        if (fedId == 89 || fedId == 72 || fedId == 9)
+        {
+            lblSibling.Text = "Yes";
+        }
+        else
+        {
+            lblSibling.Text = "No";
+        }
+
+        if (fedId == 59 || fedId == 69 || fedId == 89)
+        {
+            lblCanadianCamps.Text = "Yes";
+        }
+        else
+        {
+            lblCanadianCamps.Text = "No";
+        }
+
+
         var isOnlineProcessing = fed["isOnlineProcessing"];
         if (isOnlineProcessing == "True")
             lblGeneralProcessing.Text = "Reg System";
         else if (isOnlineProcessing == "False")
+        {
             lblGeneralProcessing.Text = "Offline, contact community directly";
+            pnlEligibility.Visible = false;
+        }
         else if (isOnlineProcessing == "")
             lblGeneralProcessing.Text = "N/A";
+
+
 
         var isJDSAvailable = fed["isJDSAvailable"];
         if (isJDSAvailable == "True")
@@ -247,7 +272,10 @@ public partial class Administration_ProgramFinder : System.Web.UI.Page
         else
             divEli2.Visible = true;
 
-        pnlEligibility.Visible = true;
+        if (ds.Tables[0].Rows.Count == 0)
+            pnlEligibility.Visible = false;
+        else
+            pnlEligibility.Visible = true;
     }
 
 }

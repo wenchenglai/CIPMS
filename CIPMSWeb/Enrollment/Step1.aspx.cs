@@ -173,7 +173,8 @@ public partial class Step1 : System.Web.UI.Page
         // 1. When the CIPM is shut-down, typically from August to September
         // 2. When CIPMS is open for registration, typically in mid-October
         // The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
-        if (ZipCodeHasClosedProgram())
+        bool zipCodeHasClosedFed = ZipCodeHasClosedProgram();
+        if (zipCodeHasClosedFed)
 		{
 			// if the code executes to this point, it means the system is open for registration, but this particular zip/associated fed is still closed
 			// 2014-02-7 Add new logic that if this user applies the Direct Pass for PJL, then instead of going to the camper holding page, we go to PJL
@@ -206,12 +207,12 @@ public partial class Step1 : System.Web.UI.Page
                         }
                         else
                         {
-                            Response.Redirect("~/Enrollment/Step1_NL.aspx");
+                            //Response.Redirect("~/Enrollment/Step1_NL.aspx");
                         }
                     }
                 }
 
-                Response.Redirect("~/Enrollment/Step1_NL.aspx");
+                //Response.Redirect("~/Enrollment/Step1_NL.aspx");
             }
 				
 		}
@@ -311,7 +312,7 @@ public partial class Step1 : System.Web.UI.Page
 
         string strNextURL = "";
 
-        if (fedCount == 1)
+        if (fedCount == 1 && !zipCodeHasClosedFed)
 		{
 			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 			NewCamper(Info);
@@ -329,7 +330,7 @@ public partial class Step1 : System.Web.UI.Page
 				strFedId = pjlId;
 			}
 		}
-		else if (strNextURL.Trim() == "")
+		else
 		{
             // when the zip code has no any program associated with, and has no PJL special code, we come here e.g. 48105
 			strNextURL = strNationalURL;
