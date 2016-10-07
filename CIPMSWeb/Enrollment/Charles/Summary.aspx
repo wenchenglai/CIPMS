@@ -3,13 +3,35 @@
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
 	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
-			<td>
+            <td colspan="2">
+                <img src="logo.jpg" alt="" />
+            </td>
+        </tr>
+        <tr>
+			<td colspan="2">
                 <p>
-                    Thank you for your interest in the Camp Daisy and Harry Stein's One Happy Camper Program. For more information on how to apply, 
-                    please visit <a href="http://campstein.org/about-camp/for-first-timers/" target="_blank">http://campstein.org/about-camp/for-first-timers</a> or contact Brian Mitchell at campdirector@cbiaz.org or (480) 951-0323.
+					Good news! You may be eligible for a One Happy Camper grant.
+				</p>
+                <p>
+					The Foundation for Jewish Camp, in partnership with Camp Daisy and Harry Stein offers an incentive program that is open to campers who live anywhere in North America!
+				</p>
+		        <p>
+			        The following outlines the eligibility criteria for this program:
+                    <ul style="font-weight: bold">
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                    </ul>
+		        </p>                
+		        <p>
+		            If you are interested in learning more about our camps and other available grants, please email camp@cbiaz.org or call (480) 951-0323. 
+		        </p>
+                <p>
+                    Camp Stein has been the premier Jewish summer camp in the Southwestern United States for over 40 magical summers.  Located in the Prescott National Forest, and owned and operated by Congregation Beth Israel in Scottsdale, AZ, campers are able to experience living Judaism, a Summer of Fun, and a Lifetime of memories.
                 </p>
+
 			</td>
-		</tr>        
+        </tr>    
 	</table>
 	<table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0">
 		<tr>
@@ -44,9 +66,9 @@
 								<asp:Button ID="btnSaveandExit" CausesValidation="false" runat="server" Text="Save & Continue Later" CssClass="submitbtn1" />
 								</td>
 							<td align="right">
-                                <div style="visibility:collapse">
-                                    <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " Visible="false" CssClass="submitbtn" OnClick="btnNext_Click" />
-                                </div>
+
+                                    <asp:Button ID="btnNext" CausesValidation="false" runat="server" Text="Next >> " CssClass="submitbtn" OnClick="btnNext_Click" />
+
 								
 							</td>                            
 						</tr>
