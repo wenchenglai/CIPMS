@@ -30,7 +30,7 @@
 
                 <ul style="font-weight: bold; list-style-type: disc">
                     <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
-                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 11-18 consecutive days.</li>
+                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 11-18 consecutive days.<span style="color:red">(If you are attending Camp Judaea’s Taste of Session you are eligible for a $700 grant)</span></li>
                     <li>$500 grant awarded to second-time campers attending a Jewish overnight camp for 19+ consecutive days (for those that make under $160,000 a year)</li>
                     <li>$350 grant awarded to second-time campers attending a Jewish overnight camp for 11-18 consecutive days (for those that make under $160,000 a year)</li>
                     <li>Eligible campers must be entering grades 1-12 (after camp).</li>
