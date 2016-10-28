@@ -23,15 +23,18 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 2-12 (after camp).</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp's website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attended Jewish day school or Yeshiva in the academic year before camp or who will attend in the academic year following camp are not eligible for this grant program.                 
+                    This program is an outreach initiative for children who are not currently receiving an immersive, 
+                    daily Jewish experience. As such, children who attended Jewish day school or Yeshiva in the 
+                    academic year before camp or who will attend in the academic year following camp are not eligible for this grant program.                 
                 </p>
                 <p>
-                    If your child is not eligible and/or you are interested in learning about needs-based grants or other camper funding opportunities, contact Camp JORI, greater Rhode Island’s overnight Jewish camp, at aaron@campjori.com or visit 
+                    If your child is not eligible and/or you are interested in learning about needs-based grants or other camper funding opportunities, 
+                    contact Camp JORI, greater Rhode Island’s overnight Jewish camp, at aaron@campjori.com or visit 
                     <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>.
                 </p>
                 <p>

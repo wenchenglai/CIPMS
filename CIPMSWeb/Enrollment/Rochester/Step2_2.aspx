@@ -27,7 +27,7 @@
             </tr>
             <tr id="1a">
                 <td valign="top"><span class="InfoText">*</span>1a</td>
-                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2014)? 
+                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2016)? 
                 <div id="divGrandfatherRule" runat="server">
                     <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
                     <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />

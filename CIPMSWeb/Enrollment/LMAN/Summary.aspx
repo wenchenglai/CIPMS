@@ -29,13 +29,15 @@
                     </ul>
 		        </p>                
 		        <p>
-		            <span style="font-weight: bold; color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> If the camper currently attends Jewish day school, please DO NOT continue with this application and instead, be in touch with the camp directly: 718-436-8255 x107.
+		            <span style="font-weight: bold; color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> If the camper currently attends Jewish day school, 
+                    please DO NOT continue with this application and instead, be in touch with the camp directly: 718-436-8255 x107.
 		        </p>
                 <p>
                     Camp L’man Achai is a Jewish overnight camp that combines an enriched Jewish atmosphere with the best recreation programs. Our camp’s breathtaking panoramic view of the Pepacton Reservoir Valley and the surrounding mountains offers an opportune oasis for children to experience the warmth and beauty of their heritage in a safe, friendly, and warm environment. CLA is about making people feel welcome and at home in a traditional Jewish setting. It strives to let every camper take part in traditions they might not practice outside of camp and give them an opportunity to build meaningful and lifelong friendships, enjoy outdoor adventure and deepen their love of Judaism. We pride ourselves with A Heritage of Happy Campers.
                 </p>
                 <p>
-                    If you are interested in learning more about our camp and available grants, please visit us at: <a href="http://www.camplmanachai.com" target="_blank">www.camplmanachai.com</a> or give us a call at 718-436-8255 x107. 
+                    If you are interested in learning more about our camp and available grants, please visit us at: 
+                    <a href="http://www.camplmanachai.com" target="_blank">www.camplmanachai.com</a> or give us a call at 718-436-8255 x107. 
                 </p>
 			</td>
         </tr> 

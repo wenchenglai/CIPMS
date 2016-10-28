@@ -16,7 +16,7 @@
 		<tr>
 			<td colspan="2">
 				<p>
-                    At this time, Camp Ramah Darom is not providing One Happy Camper incentive grants for summer 2016. First-time camper families needing financial assistance may contact Holly Barlow, (Hfortson@ramahdarom.org), to explore applying for financial aid from Ramah Darom.
+                    At this time, Camp Ramah Darom is not providing One Happy Camper incentive grants for summer 2017. First-time camper families needing financial assistance may contact Holly Barlow, (Hfortson@ramahdarom.org), to explore applying for financial aid from Ramah Darom.
 				</p>
 			</td>
 		</tr>  

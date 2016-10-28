@@ -26,7 +26,10 @@
                     </ul>
 		        </p>                
 		        <p>
-		            Camp Zeke is the first Jewish overnight camp where 7 to 17 year-olds celebrate healthy living while eating local, organic foods and cooking kosher, gourmet meals. In addition to traditional sports, campers choose from alternative fitness activities like dance, krav maga, running, strength training, yoga, and sailing. We also offer a culinary arts program in which kids can throw on an apron and cook with a professional chef. To learn more, visit www.campzeke.org or email questions@campzeke.org! 
+		            Camp Zeke is the first Jewish overnight camp where 7 to 17 year-olds celebrate healthy living while eating local, organic foods and cooking kosher, 
+                    gourmet meals. In addition to traditional sports, campers choose from alternative fitness activities like dance, krav maga, running, strength training, yoga, 
+                    and sailing. We also offer a culinary arts program in which kids can throw on an apron and cook with a professional chef. To learn more, 
+                    visit www.campzeke.org or email questions@campzeke.org! 
 		        </p>
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page.

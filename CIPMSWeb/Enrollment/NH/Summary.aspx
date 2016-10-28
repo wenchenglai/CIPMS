@@ -29,9 +29,7 @@
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>   
-                <p>
-                    <span style="color:red">* Note: Families residing in towns served by the Seacoast UJA are not eligible for a Jewish Federation of NH grant.</span>
-                </p>
+
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
                 </p> 

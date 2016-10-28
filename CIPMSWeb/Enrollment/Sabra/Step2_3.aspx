@@ -60,15 +60,9 @@
                 <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please select the name of the session that the camper will be attending this summer.</asp:Label><br />
-                        <asp:DropDownList ID="ddlCampSession"  runat="server" CssClass="dropdown">
-                            <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>
-                            <asp:ListItem Text="Session 1" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Session 2" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Session 1 and 2" Value="3"></asp:ListItem>
-                        
-                        </asp:DropDownList>
-                    </asp:Panel>
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown".</asp:Label><br />
+                          <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
+                    </asp:Panel>                    
                 </td>
             </tr>
             <tr>

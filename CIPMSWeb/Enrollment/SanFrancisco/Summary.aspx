@@ -36,13 +36,15 @@
                         <li>Not previously attended Jewish overnight camp for more than 5 days.</li>
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
-				</p>   
+				</p>
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-                    As such, children who attend Jewish day school or Yeshiva are not eligible for the program. If your child is not eligible
-                     and/or you are interested in learning about financial need-based grants or other camper funding opportunities 
-                    please visit <a href="http://www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants" target="_blank">www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants</a>, 
-                    contact your camp directly, or contact your community professional listed at the bottom of this page.              
+                    <span style="color:red; font-weight:bold" >Attention Jewish day school families: </span>
+                    Children currently enrolled in a Jewish day school are now eligible for the San Francisco One Happy Camper program. There are a limited number of grants available and they are first-come, first-serve. Please continue with this application by clicking NEXT.
+                </p>  
+                <p>
+                    If your child is not eligible and/or you are interested in learning about financial need-based grants or other camper funding opportunities please visit
+                     <a href="http://www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants" target="_blank">www.jewishfed.org/how-we-help/scholarships/overnight-camp-scholarships-and-grants</a>, 
+                     or contact your community professional listed at the bottom of this page.              
                 </p>
 			</td>
 		</tr>		

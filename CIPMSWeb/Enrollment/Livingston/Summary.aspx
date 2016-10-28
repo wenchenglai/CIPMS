@@ -30,7 +30,12 @@
                     </ul>
 		        </p>                
 		        <p>
-                    Camp Livingston has been serving campers from all over for 95 years. Campers enjoy sports, arts, aquatics, ropes courses, rock climbing, nature, Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. We provide a safe and nurturing environment where campers gain self-esteem, confidence, and form lasting friendships with their cabin and unit friends, all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.
+                    Camp Livingston has been serving campers from all over for 95 years. Campers enjoy sports, arts, aquatics, ropes courses, rock 
+                    climbing, nature, Judaics and much more. Campers can choose 1, 2, 4, 6 or 8 week session lengths. Teen wilderness trips and Israel trips available. 
+                    We provide a safe and nurturing environment where campers gain self-esteem, confidence, and form lasting friendships with their cabin and unit friends, 
+                    all within a fun and exciting Jewish atmosphere. Campers return year after year because Livingston offers activities and a feeling of kinship that 
+                    are difficult to find anywhere else. Within this unique environment, campers come to know and love our Jewish heritage through the singing of 
+                    Hebrew songs, experiencing cultural arts, observing Kashrut and celebrating a meaningful Shabbat as a camp community and family.
 		        </p>
                 <p>
                     If you are interested in learning more about our camps and available grants, please visit our website at <a href="http://www.camplivingston.com" target="_blank">www.camplivingston.com</a>.

@@ -86,7 +86,6 @@ public partial class Common : System.Web.UI.MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        
         string strFilePath = Request.Path.ToUpper();
         string strAdminUserId = "", strCamperLoginId = "";
         string strSSL = ConfigurationManager.AppSettings["SSLFlag"].ToUpper();

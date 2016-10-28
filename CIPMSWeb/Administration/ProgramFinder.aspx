@@ -32,6 +32,8 @@
                         <li><strong>General Processing:</strong> <asp:Label runat="server" ID="lblGeneralProcessing"></asp:Label></li>
                         <li><br /><strong>Offers grants for JDS kids:</strong> <asp:Label runat="server" ID="lblJDS"></asp:Label></li>
                         <li><strong>JDS Processing:</strong> <asp:Label runat="server" ID="lblJDSProcessing"></asp:Label></li>
+                        <li><strong>$500 Sibling Grant:</strong> <asp:Label runat="server" ID="lblSibling"></asp:Label></li>
+                        <li><strong>Canadian Camps Only:</strong> <asp:Label runat="server" ID="lblCanadianCamps"></asp:Label></li>
                     </ul>
                 </asp:Panel>
                 <asp:Panel runat="server" ID="pnlEligibility" Visible="false">

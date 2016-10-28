@@ -91,7 +91,7 @@ namespace CIPMSBC.Eligibility
                     SchoolOption = Convert.ToInt32(drSchoolOption["OptionID"]);
                     if (SchoolOption == 4)
                     {
-                        if (specialCode == "PJGTC2016")
+                        if (specialCode == "PJGTC2017")
                             iStatusValue = (int)StatusInfo.SystemInEligible;
                         else
                             iStatusValue = (int)AllowDaySchool(FJCID);

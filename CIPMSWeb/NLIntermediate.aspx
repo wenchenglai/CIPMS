@@ -10,7 +10,7 @@
             <tr>    
               <td>
                 <asp:Label ID="Label15" runat="server" Font-Bold="true" CssClass="infotext3" > 
-                  Please contact the camp professional listed at the bottom of this page for more information on how to apply for this grant.        
+                  Your camp's One Happy Camper Application is not yet available for summer 2017. Please call the camp professional listed at the bottom of this page for more information.        
                 </asp:Label>
               </td>
             </tr>

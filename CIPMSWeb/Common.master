@@ -156,8 +156,7 @@
                     for more information.
                 </span>
                 <span id="noCampRegistrationMsg" class="lblPopup2">
-				    You can save your work and continue later after you have registered for camp by logging
-                    back onto OneHappyCamper.org using the same log-in email you used to start this session. 
+				    In order to complete the One Happy Camper application you must already be registered at camp. If you have not yet registered at camp, please click “Save and Continue Later”.  You will be able to access and complete your application by logging back onto OneHappyCamper.org using the same log-in email you used to start this session. 
                 </span>
                 <span id="PJLJewishDaySchoolMessage" class="infotext3" style="font-weight:bold">
 				    <font color="red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</font> 

@@ -4,7 +4,7 @@
 	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
             <td>
-                <img src="logo.jpg" />
+                <img src="logo.png" />
             </td>
             <td>
                 <p>
@@ -26,12 +26,12 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>First time camper must be entering grades 2-12 (after camp).</li>
                         <li>Campers who attend public or private school (including Jewish day school) are eligible.</li>
                     </ul>
 		        </p>                
 		        <p>
-		            Children have been creating lifelong memories and friendships at B'nai B'rith Perlman Camp for 60 years! Nestled in the Pocono Mountains on 350 magnificent acres, Perlman Camp provides exceptional childcare, engaging Jewish programming, and an outstanding all-around camp program. Campers ages 7-17 come to Perlman Camp to experience our tight-knit family atmosphere and incredible camp community.
+		            For more than 60 years, Perlman Camp has been changing the lives of our campers and staff for the better. Our intentional approach to child care, programming, and Jewish life ensures that your child will have the best possible Jewish summer camp experience. Perlman’s veteran staff work intimately with parents and campers to meet the unique needs of your child. When your child attends Perlman Camp, your entire family becomes part of our community. At Perlman Camp, your child will learn, explore, and challenge themselves through world-class, choice-based programming. Our exceptional counselors and supervisors are there for support and encouragement every step of the way. The lessons your child brings home from camp will last a lifetime, building strengths that set them up for success later in life.
 		        </p>
 			</td>
         </tr>

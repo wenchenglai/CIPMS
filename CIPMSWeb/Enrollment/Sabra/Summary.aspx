@@ -32,13 +32,15 @@
                     </ul>
 		        </p>                
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, 
+                    daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
                 </p>
                 <p>
                     Camp Sabra is a place where your child can develop a joyous Jewish identity in a unique and personal way. Located in the beautiful Lake of the Ozarks, Sabra boasts 3.5 miles of private shoreline and over 200 acres of undeveloped forest. We offer a place for our Jewish children to create their own Jewish community and to make lifelong connections with Jews from all over the country and the world. Sabra is a place for your child to learn new skills. We offer waterskiing, wakeboarding, tubing, sailing, kayaking, water sliding, swimming in a pool and lake, land sports, extensive challenge ropes course activities, climbing wall, arts and crafts, drama, camping trips out of camp, nature, camp crafts - all flavored with Judaism. From celebrating Shabbat as a community, to dining together in our kosher facility, our Sabra campers live in a fun, friend-filled Jewish community during their Sabra experience. A summer of fun, a lifetime of memories. It will be magic!
                 </p>
                 <p>
-                    If you are interesting in learning more about Camp Sabra, visit our website at <a href="http://www.campsabra.com" target="_blank">www.campsabra.com</a> or call us at 314-442-3151. 
+                    If you are interesting in learning more about Camp Sabra, visit our website at <a href="http://www.campsabra.com" target="_blank">www.campsabra.com</a> 
+                    or call us at 314-442-3151. 
                 </p>
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page.

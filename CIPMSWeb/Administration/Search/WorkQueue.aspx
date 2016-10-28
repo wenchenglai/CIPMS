@@ -10,8 +10,9 @@
     <tr>
       <td>
           <p>
-                Welcome to One Happy Camper 2016.  Please remember to review applications thoroughly and contact us with any questions. 
-              If you would like to make changes to your application please fill out this <a href="https://docs.google.com/forms/d/1yygKMK-CRZi_F_WzeLKb1aojcbWglFD_2npi32pDGxU/viewform" target="_blank">form</a> and the OHC Team will be in contact with you within two business days.
+                Welcome to One Happy Camper 2017.  Please remember to review applications thoroughly and contact us with any questions. 
+              If you would like to make changes to your application please fill out this
+               <a href="https://docs.google.com/forms/d/1yygKMK-CRZi_F_WzeLKb1aojcbWglFD_2npi32pDGxU/viewform" target="_blank">form</a> and the OHC Team will be in contact with you within two business days.
           </p>
 
       </td>

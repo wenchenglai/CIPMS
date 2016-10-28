@@ -7,7 +7,7 @@
                 <img src="logo.gif" width="290" /></td>
             <td>
                 <p>
-                    Great news!  The Foundation for Jewish Camp, in partnership with the Jewish Federation of Greater Houston offers funding to children in our community who wish to attended Jewish overnight camp for the first-time.
+                    Great news! The Foundation for Jewish Camp, in partnership with the Jewish Federation of Greater Houston offers funding to children in our community who wish to attend a Jewish overnight camp for the first-time.
                 </p>
                 <p>
                     To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the next button below. 
@@ -17,7 +17,7 @@
         <tr>
             <td colspan="2">
                 <p>
-                    The Jewish Federation of Greater Houston’s One Happy Camper Program provides grants to encourage children to attend overnight Jewish camp for the first-time.  It is not a scholarship fund and is not needs-based.  Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one.
+                    The Jewish Federation of Greater Houston’s One Happy Camper Program provides grants to encourage children to attend overnight Jewish camp for the first-time. It is not a scholarship fund and is not need-based. Our goal is to engage families who are considering sending their children to camp and, in effect, to give them up to $1,000 off their camp fee to try a Jewish one.
                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -30,7 +30,7 @@
 				</p> 
                 <p>
                     <span style="font-weight:bold;">Note:</span> 
-                    If your child is not eligible and/or you are interested in learning about financial-needs based grants or other camper funding opportunities, please contact The Jewish Federation of Greater Houston at pwalden@houstonjewish.org or 713-729-7000 ext. 309.
+                    If your child is not eligible and/or you are interested in learning about financial need-based grants or other camper funding opportunities, please contact The Jewish Federation of Greater Houston at pwalden@houstonjewish.org or 713-729-7000 ext. 309.
                 </p>         
             </td>
         </tr>

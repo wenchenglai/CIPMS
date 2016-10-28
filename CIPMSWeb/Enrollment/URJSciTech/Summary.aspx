@@ -20,14 +20,16 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First-time campers must be entering grades 5-12 (after camp).</li>
+                        <li>First-time campers must be entering grades 5-10 (after camp).</li>
                     </ul>
 				</p> 
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
+                    As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
                 </p>
                 <p>
-                    If your child is not eligible and/or is interested in learning about financial-needs based grants or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your local Jewish federation, camp or congregation.                     
+                    If your child is not eligible and/or is interested in learning about financial-needs based grants or other camper funding opportunities please visit 
+                    <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your local Jewish federation, camp or congregation.                     
                 </p>
                 <p>
                       The Union for Reform Judaism (URJ) is proud to operate a wide variety of camps and programs which provide a year-round, engaging Jewish environment for Pre-K to Post College students.  These programs include regional and specialty summer camps, local year-round activities for teens in grades 6-12 (NFTY), immersive summer and year-round Israel programs and social justice/volunteer experiences in Central America, Israel and beyond (Mitzvah Corps). To learn more and get involved, please visit 

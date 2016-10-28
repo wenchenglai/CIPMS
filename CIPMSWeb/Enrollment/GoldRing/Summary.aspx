@@ -17,14 +17,14 @@
 		<tr>
 			<td colspan="2">
 				<p>
-					This wonderful program, established by JEF in 1999, has been funded by the Goldring Family Foundation since 2001. In 2010, over 75 children received incentive grants to attend Jewish not-for-profit sleep-away camps. Over 750 children have benefited from this program since its inception. The Goldring Family Foundation wants to make this lifetime experience available to every Jewish child. Each of your children is eligible for a one-time-only incentive grant of up to $1,000* to attend a non-profit Jewish summer camp.
+                    This wonderful program, established by JEF in 1999, has been funded by the Goldring Family Foundation since 2001. Since the program’s inception, almost 1,300 children have received incentive grants to attend Jewish not-for-profit sleep-away camps. The Goldring Family Foundation wants to make this lifetime experience available to every Jewish child. Each of your children is eligible for a one-time-only incentive grant of up to $1,000* to attend a non-profit Jewish summer camp.
 				</p>
 				<p>
 					To meet the criteria for JEF funding, children must be:
 					<ul>
 						<li>First-time campers at a non-profit Jewish sleep-away camp. If your child’s camp is not on the approved list, it must provide JEF with proof of its non-profit status.</li>
 						<li>Currently in grades 1 through 9</li>
-						<li>Residents of <strong>Louisiana, Mississippi, Alabama or northwest Florida (Panhandle)</strong>. Grants are not based on financial need. Both parents need not be Jewish. Temple or synagogue affiliation is not required.</li>
+						<li>Residents of <strong>Louisiana, Mississippi, Alabama or northwest Florida Panhandle</strong>. Grants are not based on financial need. Both parents need not be Jewish. Temple or synagogue affiliation is not required.</li>
 					</ul>
 				</p>                
 				<p>
@@ -32,7 +32,9 @@
 				    (Please note you will leave this website)
 				</p>
 				<p>
-					While the Foundation for Jewish Camp (FJC) does not administer this program, we salute the work of the Goldring Family Foundation and the Jewish Endowment Foundation of Louisiana. Typically, first-time campers who receive a grant from the Goldring Family Foundation are not also eligible to get a grant from a One Happy Camper program. If you feel that you do not qualify for the Golding Family Foundation program please click 
+					While the Foundation for Jewish Camp (FJC) does not administer this program, we salute the work of the Goldring Family Foundation and the Jewish Endowment Foundation of Louisiana. 
+                    Typically, first-time campers who receive a grant from the Goldring Family Foundation are not also eligible to get a grant from a One Happy Camper program. 
+                    If you feel that you do not qualify for the Golding Family Foundation program please click 
                     <asp:LinkButton ID="LinkButton1" runat="server" OnClick="goldringcontinue_Click" Text="CONTINUE" Font-Bold="True" ></asp:LinkButton> 
                     to complete your One Happy Camper application.
 				</p>

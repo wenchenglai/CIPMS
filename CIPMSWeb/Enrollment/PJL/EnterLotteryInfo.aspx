@@ -7,7 +7,9 @@
             Congratulations, you’ve been entered in the PJ Goes to Camp One Happy Camper lottery for campers currently enrolled in Jewish day school.
         </p>
         <p>
-            The lottery will be drawn the week of November 10th.  If selected you will notified via the email address that you used to complete this application with instructions on how to proceed. If you are NOT selected, you will receive an email notifying you about next steps and other opportunities.
+            The lottery will be drawn the week of November 14th.  
+            If selected you will notified via the email address that you used to complete this application with instructions on how to proceed. 
+            If you are NOT selected, you will receive an email notifying you about next steps and other opportunities.
         </p>
         <p>
            If you have any questions about the lottery process, please contact PJ Goes to Camp at PJGTC@HGF.ORG.

@@ -69,8 +69,6 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 divPPIReport.Visible = false;
                 lnkStatsReport.Visible = false;
 
-                //if (System.Configuration.ConfigurationManager.AppSettings["AllowMassUpdate"].Split(',').Any(id => id == fedId))
-                //    lnkBulkStatusUpdate.Visible = true;
                 var allowedFeds = new List<string>(ConfigurationManager.AppSettings["AllowMassUpdate"].Split(','));
                 if (allowedFeds.Exists(x => x == fedId))
                     lnkBulkStatusUpdate.Visible = true;
@@ -78,8 +76,6 @@ public partial class AdminMenu : System.Web.UI.UserControl
                 var fjcFundingFeds = new List<string>(ConfigurationManager.AppSettings["SelfPaymentProcessing"].Split(','));
                 if (fjcFundingFeds.Exists(x => x == fedId))
                     divSelfFunding.Visible = false;
-
-
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing

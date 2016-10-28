@@ -30,13 +30,16 @@
                     </ul>
 		        </p>                
 		        <p>
-                    Camp Nageela Midwest is a Jewish Residential camp in Marshall, Indiana. Camp Nageela campers quickly become part of the warm Camp Nageela community.   Our campus boasts a heated outdoor pool, low & high ropes challenge courses complete with a five-story climbing wall and zip line. The arts center will delight the creative, while our professional sports fields, state-of-the-art gym, tennis courts and six outdoor covered basketball courts are sure to impress the most competitive sports enthusiast. Warm, caring, and professional staff are at the core of Nageela, ensuring safe unforgettable summers year after year. 
+                    Camp Nageela Midwest is a Jewish Residential camp in Marshall, Indiana. Camp Nageela campers quickly become part of the warm Camp Nageela community.   
+                    Our campus boasts a heated outdoor pool, low & high ropes challenge courses complete with a five-story climbing wall and zip line. The arts center will delight the 
+                    creative, while our professional sports fields, state-of-the-art gym, tennis courts and six outdoor covered basketball courts are sure to 
+                    impress the most competitive sports enthusiast. Warm, caring, and professional staff are at the core of Nageela, ensuring safe unforgettable summers year after year. 
 		        </p>
                 <p>
                     Camp Nageela Midwest is accredited by the American Camping Association. 
                 </p>
                 <p>
-                    For more information, check out our website @ www.campnageelamidwest.org
+                    For more information, check out our website @ <a href="http://www.campnageelamidwest.org" target="_blank">www.campnageelamidwest.org</a>.
                 </p>
 			</td>
         </tr>

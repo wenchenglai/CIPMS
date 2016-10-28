@@ -16,7 +16,8 @@
 		<tr>
 			<td colspan="2">
 				<p>
-                    1st year incentive grants are available for summer 2016. Please contact Ken Milgram, KMilgram@campramahne.org or (781) 702-5290, for further information and to confirm eligibility.  
+                    1st year incentive grants are available for summer 2017.  
+                    Please contact Ken Milgram, KMilgram@campramahne.org or (781) 702-5290, for further information and to confirm eligibility.  
 
 				</p>
 			</td>

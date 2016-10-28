@@ -35,7 +35,8 @@
                     Habonim Dror campers become legendary Israeli dancers and revel in singing Israeli songs from every generation. We have creative Shabbat observances, conversational Hebrew and delicious kosher meals (supplemented by camper-grown food from each camp's organic gardens). Habonim Dror campers are known for their daily avodah (work periods) in their organic gardens and in other camp maintenance chores and they enjoy such traditional camp activities such as swimming, ultimate, basketball, hiking, drama, climbing and ropes course.
                 </p>     
                 <p>
-                    Campers may attend 7 regional camps spread across North America. Habonim Dror is the Zionist Youth Movement and its campers come from all parts of the Jewish community - Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated. 
+                    Campers may attend 7 regional camps spread across North America. Habonim Dror is the Zionist Youth Movement and its campers come from all parts of the Jewish community - 
+                    Conservative, Reform, Reconstructionist, Jewish Renewal, secular, Chabad, modern Orthodox and unaffiliated. 
                 </p>       
                 <p>
                     If you need additional assistance, please call the camp professional listed at the bottom of this page. 

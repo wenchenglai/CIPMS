@@ -231,7 +231,7 @@
                             </td>
                             <td>
                                 <asp:CheckBox ID="chkAgreement" runat="server" CssClass="QuestionText"
-                                    Text="<span class='red-text'><strong>VERIFICATION STATEMENT: </strong></span>I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp. By accepting this grant, I acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor.<span class='red-text'><strong>(REQUIRED TO CHECK)</strong></span>" />
+                                    Text="<span class='red-text'><strong>VERIFICATION STATEMENT: </strong></span>I certify that all information in this application is accurate and complete and that I am applying for and receiving only one One Happy Camper grant that the Foundation for Jewish Camp (FJC) is sponsoring/co-sponsoring (this includes PJ Goes to Camp). By accepting this grant, I acknowledge that I may be contacted by FJC and/or my local One Happy Camper sponsor.<span class='red-text'><strong>(REQUIRED TO CHECK)</strong></span>" />
                             </td>
                         </tr>
                     </table>
@@ -240,24 +240,7 @@
                         ClientValidationFunction="CheckCertify_OtherInfo"></asp:CustomValidator>
                 </td>
             </tr>
-            <tr>
-                <td valign="top">
-                    <asp:Label ID="Label3" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
-                <td valign="top">
-                    <asp:Label ID="Label10" runat="server" CssClass="QuestionText">Invite a friend to this site: </asp:Label><br />
-                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Type in your friends email address</asp:Label>
-                    <asp:TextBox ID="txtFriendsEmail" runat="server" CssClass="txtbox"></asp:TextBox>
-                    <asp:Button ID="btnInviteMoreFriends" ValidationGroup="FriendInvite" Text="Invite another friend" runat="server" CssClass="submitbtn1" /><br />
-                    <asp:RequiredFieldValidator ID="reqvalZipCode" ValidationGroup="FriendInvite" runat="server"
-                        ControlToValidate="txtFriendsEmail" Display="None" ErrorMessage="Please type in your Friend's email address"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ValidationGroup="FriendInvite" ID="regExpEmail" runat="server"
-                        ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
-                        Display="None" ErrorMessage="Please enter a valid Email"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ValidationGroup="OtherValidation" ID="regEmail" runat="server"
-                        ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
-                        Display="None" ErrorMessage="Please enter a valid Email" />
-                </td>
-            </tr>
+
             <tr>
                 <td colspan="2" align="center">
                     <asp:Panel ID="div_dtlist" runat="server">
@@ -290,6 +273,24 @@
                             </ItemTemplate>
                         </asp:DataList>
                     </asp:Panel>
+                </td>
+            </tr>
+            <tr>
+                <td valign="top">
+                    <asp:Label ID="Label3" runat="server" Text="" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top">
+                    <asp:Label ID="Label10" runat="server" CssClass="QuestionText">Invite a friend to this site: </asp:Label><br />
+                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Type in your friends email address</asp:Label>
+                    <asp:TextBox ID="txtFriendsEmail" runat="server" CssClass="txtbox"></asp:TextBox>
+                    <asp:Button ID="btnInviteMoreFriends" ValidationGroup="FriendInvite" Text="Invite another friend" runat="server" CssClass="submitbtn1" /><br />
+                    <asp:RequiredFieldValidator ID="reqvalZipCode" ValidationGroup="FriendInvite" runat="server"
+                        ControlToValidate="txtFriendsEmail" Display="None" ErrorMessage="Please type in your Friend's email address"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ValidationGroup="FriendInvite" ID="regExpEmail" runat="server"
+                        ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
+                        Display="None" ErrorMessage="Please enter a valid Email"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ValidationGroup="OtherValidation" ID="regEmail" runat="server"
+                        ControlToValidate="txtFriendsEmail" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$"
+                        Display="None" ErrorMessage="Please enter a valid Email" />
                 </td>
             </tr>
             <!-- Admin Panel-->
@@ -344,6 +345,7 @@
                     </table>
                 </td>
             </tr>
+
         </table>
     </asp:Panel>    
     <asp:Panel ID="Panel2" runat="server">

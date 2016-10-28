@@ -38,6 +38,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
                 strStatus == StatusInfo.EligibleNoCamp ||
                 strStatus == StatusInfo.EligiblePendingSchool ||
                 strStatus == StatusInfo.PendingSchoolAndCamp ||
+                strStatus == StatusInfo.EligiblePendingRegistrationCamp ||
                 strStatus == StatusInfo.EligibleByStaff ||
                 strStatus == StatusInfo.EligibleCampCoupon) //20- eligiblenoschoolnocamp
             {
@@ -226,6 +227,17 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             {
                 pnlStatus1A.Visible = true;
             }
+
+            // 2016-09-21 Toronto has one more sentence on eligible app
+            if (fedId == "89")
+            {
+                pToronto.Visible = true;
+            }
+            else
+            {
+                pToronto.Visible = false;
+            }
+
             pnlStatus1B.Visible = false;
             pnlStatus1F.Visible = false;
         }

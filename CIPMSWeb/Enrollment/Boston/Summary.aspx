@@ -16,7 +16,8 @@
         <tr>
 			<td colspan="2">
 				<p>
-					The Boston One Happy Camper program, sponsored by the Combined Jewish Philanthropies of Greater Boston and the Foundation for Jewish Camp, provides financial incentives to first-time campers to attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
+					The Boston One Happy Camper program, sponsored by the Combined Jewish Philanthropies of Greater Boston and the Foundation for Jewish Camp, 
+                    provides financial incentives to first-time campers to attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -32,7 +33,7 @@
                     <ul style="font-weight: bold">
                         <li>If you are a member of any of the synagogues listed below, please contact your congregation liaison to inform them that you are applying for
                          a One Happy Camper grant and continue to fill out the following application.</li>
-                        <li>If you are not a member of any of the congregations, listed below please begin the application.</li>
+                        <li>If you are not a member of any of the congregations listed below, please begin the application.</li>
                     </ul>
                 </p>
                 <p>
@@ -67,6 +68,7 @@
                     EtzChaim (Franklin) <br />
                     Temple Beth Emunah (Brockton)<br />
                     Temple Sinai (Brookline)<br />
+                    Temple Reyim (Newton)<br />
                 </p>            
             </td>
         </tr>        

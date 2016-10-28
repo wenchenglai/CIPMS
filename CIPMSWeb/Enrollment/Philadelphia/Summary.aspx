@@ -16,22 +16,24 @@
         <tr>
 			<td colspan="2">
                 <p>
-                    The One Happy Camper program sponsored by the Neubauer Family Foundation, the Jewish Federation of Greater Philadelphia and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days.
-                </p>
+The One Happy Camper program sponsored by the Neubauer Family Foundation, the Jewish Federation of Greater Philadelphia and the Foundation for Jewish Camp, provides financial incentives of up to $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 12 consecutive days.                 </p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
                     <ul style="font-weight: bold">
-                        <li>First time attending camp for 19 or more consecutive days.</li>
-                        <li>First time camper must be entering grades 1-11 (after camp).</li>
+                        <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
+                        <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
+                        <li>First time camper must be entering grades 1-12 (after camp).</li>
+                        <li>If camper attended camp in the summer of 2016 for 12-18 days as a first time camper s/he is still eligible for the grant if attending camp in 2017 for 19 or more consecutive days.</li>
                         <li>Live in Bucks, Chester, Delaware, Montgomery or Philadelphia counties.</li>
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website  (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
-                        <li>This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.</li>
                     </ul>
 				</p>
                 <p>
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.
+                </p>
+                <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
-                    please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, 
-                    or contact your camp, or contact the Jewish Federation of Greater Philadelphia's Shannon Greenstein at sgreenstein@jfgp.org or 215-832-0530.
+                    please visit <a href="https://www.jewishphilly.org/programs-services/jewish-camping/camp-scholarships" target="_blank">https://www.jewishphilly.org/programs-services/jewish-camping/camp-scholarships</a>.
                 </p>
                 <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.

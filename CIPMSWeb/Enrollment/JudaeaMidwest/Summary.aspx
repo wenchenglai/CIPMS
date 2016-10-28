@@ -37,7 +37,7 @@
                     If you are interested in learning more about our camps and available grants, please visit the camp websites by clicking on the camp names below:
                 </p>
                 <p>
-                    <b><a href="http://www.cyjmid.org" target="_blank">Camp Young Judaea Midwest</a></b>  (Waupaca,Wisconsin)<br />
+                    <b><a href="http://www.cyjmid.org" target="_blank">Camp Young Judaea Midwest</a></b>  (Waupaca, Wisconsin)<br />
                     <b><a href="http://www.cyjtexas.org" target="_blank">Camp Young Judaea Texas</a></b>  (Wimberley, TX)<br />
                     <b><a href="http://www.campjudaea.org" target="_blank">Camp Judaea</a></b> (Hendersonville, North Carolina)<br />
                     <b><a href="http://www.cyjsproutlake.org" target="_blank">Camp Young Judaea Sprout Lake</a></b> (Verbank, New York)<br />

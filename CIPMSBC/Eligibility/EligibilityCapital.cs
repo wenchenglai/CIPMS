@@ -76,7 +76,7 @@ namespace CIPMSBC.Eligibility
             return iStatusValue;
         }
 
-        private void StatusBasedOnSchool(string FJCID, out int StatusValue)
+        private void StatusBasedOnSchool(string FJCID, out int StatusValue, string specialCode = "None")
         {
             CamperApplication oCA = new CamperApplication();
             DataSet dsJewishSchool;
@@ -91,14 +91,19 @@ namespace CIPMSBC.Eligibility
                 {
                     JewishSchoolOption = Convert.ToInt32(drJewishSchool["OptionID"]);
 
-                    //if (JewishSchoolOption == 4)
-                    //{
-                        //StatusValue = (int)StatusInfo.SystemInEligible;
-                    //}
-                    //else
-                    //{
+                    if (JewishSchoolOption == 4)
+                    {
+                        StatusValue = (int)AllowDaySchool(FJCID);
+                        if (StatusValue == (int)StatusInfo.SystemInEligible)
+                        {
+                            if (specialCode == "PJGTC2017")
+                                StatusValue = (int)StatusInfo.EligiblePJLottery;
+                        }
+                    }
+                    else
+                    {
                         StatusValue = (int)StatusInfo.SystemEligible;
-                    //}
+                    }
                 }
                 else
                 {

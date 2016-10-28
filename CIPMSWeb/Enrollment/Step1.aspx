@@ -66,16 +66,20 @@
 
 </script>
     
-    <div id="popupContact" class="text" style="overflow: auto; padding:10px; height:180px;">
-		An access code is only required for the following reasons:
+    <div id="popupContact" class="text" style="overflow: auto; padding:10px; width:450px; height:220px;">
+		Most applications do not require an access code.  An access code is only required for the following reasons:
         <ul style="list-style: disc outside none;">
             <li style="">
-                You are a PJ library member and have received a PJ library access code.  To learn more about the PJ Goes to Camp One Happy Camper program and how to apply for an access code, click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.
+                You are a PJ library member and have received a PJ library access code. To learn more about the PJ Goes to Camp One Happy Camper program and how to apply for an access code, click <a href="http://pjlibrary.org/about-pj-library/pj-goes-to-camp.aspx" target="_blank">here</a>.
             </li>
             <li>
-                An OHC partner has provided you with a code with specific instruction to enter it here, in order to access the application. 
+                An OHC partner has provided you with a code with specific instructions to use it to access the application. 
             </li>
         </ul>
+        <p>
+            If you were not given a code, please press “Next” and continue with the application.
+        </p>
+        
 		<a href="Javascript:disablePopup();" style="float:right">Close</a>
     </div>
     
@@ -242,13 +246,10 @@
             </tr>
             <tr>
                 <td>
-                    <asp:Label ID="lblStarGender" CssClass="InfoText" runat="server" Text="*"></asp:Label><asp:Label
-                        ID="Label22" CssClass="text" runat="server" Text="Camper Gender"></asp:Label></td>
+                   <asp:Label ID="Label22" CssClass="text" runat="server" Text="Camper Gender"></asp:Label></td>
                 <td>
-                    <asp:DropDownList ID="ddlGender" runat="server" Width="126px" CssClass="txtbox">
-                    </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorGender" runat="server" ControlToValidate="ddlGender"
-                        InitialValue="0" Display="None" ErrorMessage="Please select the Gender"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtGender" runat="server" Width="126px" CssClass="txtbox" />
+
                 </td>
             </tr>
             <tr>
@@ -283,7 +284,7 @@
 
                     <asp:TextBox ID="txtSplCode" runat="server" Width="100px" CssClass="txtbox" AutoPostBack="true" AutoCompleteType="Disabled" />
                     &nbsp;&nbsp;
-                    <asp:LinkButton ID="hylLearnMore" runat="server" Text="Learn More" />
+                    <asp:LinkButton ID="hylLearnMore" runat="server" Text="Do I Need a Code?" />
                     <br />
                     <asp:Label ID="lblMsg" runat="server" ForeColor="Red" Text="INVALID CODE" Visible="false" />
 				</td>

@@ -75,7 +75,7 @@
 
     <script type="text/javascript" language="javascript">
         function windowopener(){
-        	window.open('Jewish Federation Los Angeles  Release 2016 (Summer Camp).doc', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
+        	window.open('Jewish Federation Los Angeles  Release 2017 (Summer Camp).pdf', 'LACIPRelease2009', 'titlebar=no,width=650,height=450,left=250,top=150');           
         }
     </script>
 
@@ -195,9 +195,9 @@
                 <td colspan="2">
 					<asp:Label ID="lblChkText" CssClass="headertext1" runat="server">
 						<p style="text-align:justify">
-                            I have read the Jewish Federation of Greater Los Angeles release form for the One Happy Camper Program 2016. By filling in this box, 
+                            I have read the Jewish Federation of Greater Los Angeles release form for the One Happy Camper Program 2017. By filling in this box, 
                             I acknowledge agreement with the aforementioned release form. Furthermore, 
-                            the box I fill in represents my signature on all signature lines in the One Happy Camper Program 2016 release.
+                            the box I fill in represents my signature on all signature lines in the One Happy Camper Program 2017 release.
                         </p>
                     </asp:Label>
 					<asp:CustomValidator Enabled="false" ID="CusVal2" ErrorMessage="testing" CssClass="InfoText"

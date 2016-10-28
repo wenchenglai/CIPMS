@@ -12,13 +12,18 @@
         <tr>
 			<td colspan="2">
                 <p>
-                    The Kansas City One Happy Camper Program, sponsored by The Jewish Federation of Greater Kansas City and the Foundation for Jewish Camp and generously funded by The Lowenstein Brothers Foundation of The Jewish Community Foundation, provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 consecutive days. Eligible campers must attend a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>)and be entering grades 2-12 (after camp). 
+                    The Kansas City First Time Camper Program, sponsored by The Jewish Federation of Greater Kansas City and generously funded by 
+                    The Lowenstein Brothers Foundation of The Jewish Community Foundation, provides financial incentives of $1,000 to first-time campers who attend 
+                    a nonprofit Jewish overnight summer camp for at least 19 consecutive days and $750 for sessions of shorter duration. 
+                    Eligible campers must attend a camp listed on the Foundation for Jewish Camp’s website 
+                    (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>)
+                    and be entering grades 2-12 (after camp). 
                 </p>
                 <p>
                     The program is available to the first ten first-time campers who apply. 
                 </p>
                 <p>
-                    To learn more about the Jewish Federation's First Time Campers fund contact Alan Edelman at (913) 327-8104 or alane@jewishkc.org
+                    To learn more about the Jewish Federation's First Time Campers fund contact Amy Ravis Furey at (913) 327-8100 or ARavisFurey@jewishkc.org.
                 </p>
 			</td>
         </tr>

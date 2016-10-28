@@ -280,7 +280,7 @@ public partial class Step2_URJ_2 : System.Web.UI.Page
                     txtSchoolName.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            else if (qID == QuestionId.GrandfatherPolicySessionLength)
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;

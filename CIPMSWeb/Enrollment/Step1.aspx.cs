@@ -57,20 +57,6 @@ public partial class Step1 : System.Web.UI.Page
 		CamperAppl = new CamperApplication();
 		objGeneral = new General();
 
-		//if (Session["CampYear"] == null)
-		//{
-		//    var _objGen = new General();
-		//    DataSet dsCampYear = _objGen.GetCurrentYear();
-		//    if (dsCampYear.Tables[0].Rows.Count > 0)
-		//    {
-		//        Session["CampYear"] = dsCampYear.Tables[0].Rows[0]["CampYear"].ToString();
-		//    }
-		//    else
-		//    {
-		//        Session["CampYear"] = Application["CampYear"].ToString();
-		//    }
-		//}
-
 		var strPrevPage = Request.QueryString["check"];
 
 		if (!Page.IsPostBack)
@@ -130,29 +116,6 @@ public partial class Step1 : System.Web.UI.Page
 					Response.Redirect("Step2_1.aspx");
 				}
 
-				//if ((Session["CampID"] != null && Session["CampID"].ToString() != "") || (Session["FedId"] != null && Session["FedId"].ToString() != ""))
-				//{
-				//    if (Session["CampID"].ToString() == "3037")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1027", "1027", "N");
-				//    else if (Session["CampID"].ToString() == "3079")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1028", "1028", "N");
-				//    else if (Session["CampID"].ToString() == "3078")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1029", "1029", "N");
-				//    else if (Session["CampID"].ToString() == "3009")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1030", "1030", "N");
-				//    else if (Session["FedId"].ToString() == "49")
-				//        dsSplCode = CamperAppl.getCamperAnswers(Session["FJCID"].ToString(), "1031", "1031", "N");
-
-				//    if (dsSplCode.Tables.Count > 0)
-				//    {
-				//        if (dsSplCode.Tables[0].Rows.Count > 0)
-				//        {
-				//            txtSplCode.Text = dsSplCode.Tables[0].Rows[0][3].ToString();
-				//            txtSplCode.Enabled = false;
-				//        }
-				//    }
-				//}
-
 				string dallasCode = CamperAppl.validateFJCID(hdnFJCID.Value);
 				if (dallasCode != null)
 				{
@@ -165,21 +128,11 @@ public partial class Step1 : System.Web.UI.Page
 			else  //new user insert
 			{
 				hdnPerformAction.Value = "INSERT";
-				getGenders(string.Empty, string.Empty);
 				get_CountryStates(int.Parse(ddlCountry.SelectedValue));
 			}
 
 			PopulateStateCityForZIP(false);
 			txtAge.Attributes.Add("readonly", "readonly");
-
-			//dsPJLCodes = objGeneral.GetPJLCodes(Session["CampYear"] != null ? Session["CampYear"].ToString() : DBNull.Value.ToString());
-
-			//for (int i = 0; i < dsPJLCodes.Tables[0].Rows.Count; i++)
-			//{
-			//    hdnPJLCodes.Value = hdnPJLCodes.Value + "," + dsPJLCodes.Tables[0].Rows[i][0].ToString();
-			//}
-
-			//hdnPJLCodes.Value.TrimStart(',');
 		}
 
 		if (strPrevPage == "popup")
@@ -216,11 +169,12 @@ public partial class Step1 : System.Web.UI.Page
         // When a program is closed, it could be
         // 1.  The program is closed for good, like the whole year and won't come back online at all
         // 2.  The program is closed becuase it's not ready, but will open during the year when it's ready - typically we'll redirect them to camper holding page
-		// There are currently two places that could route to Camper Holding Page.  
-		// 1. When the CIPM is shut-down, typically from August to September
-		// 2. When CIPMS is open for registration, typically in mid-October
-		// The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
-		if (ZipCodeHasClosedProgram())
+        // There are currently two places that could route to Camper Holding Page.  
+        // 1. When the CIPM is shut-down, typically from August to September
+        // 2. When CIPMS is open for registration, typically in mid-October
+        // The code below fulfill scenario 2 above, for which we still want potentinal campers' data before we tell them the camps are still closed
+        bool zipCodeHasClosedFed = ZipCodeHasClosedProgram();
+        if (zipCodeHasClosedFed)
 		{
 			// if the code executes to this point, it means the system is open for registration, but this particular zip/associated fed is still closed
 			// 2014-02-7 Add new logic that if this user applies the Direct Pass for PJL, then instead of going to the camper holding page, we go to PJL
@@ -234,9 +188,33 @@ public partial class Step1 : System.Web.UI.Page
 					passFlag = true;
 				}
 			}
-			
-			if (!passFlag && Master.UserId == "0" && Master.CamperUserId == "0")
-				Response.Redirect("~/CamperHolding.aspx");
+
+            if (!passFlag && Master.UserId == "0" && Master.CamperUserId == "0")
+            {
+                DataSet myFed = objGeneral.GetFederationForZipCode(txtZipCode.Text.Trim());
+
+                if (myFed.Tables[0].Rows.Count > 0)
+                {
+                    DataRow dr = myFed.Tables[0].Rows[0];
+                    string myFedId = dr["Federation"].ToString();
+                    string isActive = dr["isActive"].ToString();
+
+                    if (isActive == "False")
+                    {
+                        if (myFedId == "32" || myFedId == "98")
+                        {
+                            Response.Redirect("~/CamperHoldingSimple.aspx");
+                        }
+                        else
+                        {
+                            //Response.Redirect("~/Enrollment/Step1_NL.aspx");
+                        }
+                    }
+                }
+
+                //Response.Redirect("~/Enrollment/Step1_NL.aspx");
+            }
+				
 		}
 
 		if (!bPerformUpdate)
@@ -306,7 +284,8 @@ public partial class Step1 : System.Web.UI.Page
 			{
                 fedCount = 1;
 			}
-		}
+
+        }
 		else
 		{
 			dsFed = objGeneral.GetFederationForZipCode(Info.ZipCode);
@@ -318,7 +297,7 @@ public partial class Step1 : System.Web.UI.Page
 					Session["FedId"] = dsFed.Tables[0].Rows[0][0];
 				}
 			}
-		}
+        }
 
         if (fedCount > 1)
 	    {
@@ -333,7 +312,7 @@ public partial class Step1 : System.Web.UI.Page
 
         string strNextURL = "";
 
-        if (fedCount == 1)
+        if (fedCount == 1 && !zipCodeHasClosedFed)
 		{
 			DataSet dsCamper = _objCamperDet.getReturningCamperDetails(Info.FirstName, Info.LastName, Info.DateofBirth);
 			NewCamper(Info);
@@ -351,7 +330,7 @@ public partial class Step1 : System.Web.UI.Page
 				strFedId = pjlId;
 			}
 		}
-		else if (strNextURL.Trim() == "")
+		else
 		{
             // when the zip code has no any program associated with, and has no PJL special code, we come here e.g. 48105
 			strNextURL = strNationalURL;
@@ -1027,86 +1006,6 @@ public partial class Step1 : System.Web.UI.Page
 		return false;
 	}
 
-	private void getGenders(string strFJCID, string Gender)
-	{
-		DataSet dtGenders;
-		dtGenders = CamperAppl.get_Genders();
-		ddlGender.DataSource = dtGenders;
-		ddlGender.DataTextField = "Description";
-		ddlGender.DataValueField = "ID";
-		ddlGender.DataBind();
-
-		MasterPage x = Page.Master; ;
-
-		if (Session["CamperLoginID"] == null)//admin user
-		{
-			if (Gender.Equals(string.Empty)) //gender was not selected
-			{
-				ddlGender.Items.Insert(0, new ListItem("", "-1"));
-				lblStarGender.Text = "&nbsp;&nbsp;";
-			}
-			else //gender was selected
-			{
-				ddlGender.Items.Insert(0, new ListItem("", "-1"));
-				ddlGender.SelectedValue = Gender;
-				lblStarGender.Text = "&nbsp;&nbsp;";
-			}
-		}
-		else // camper
-		{
-			if (string.IsNullOrEmpty(strFJCID)) //new camper
-			{
-				ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-				lblStarGender.Text = "*";
-			}
-			else if (Gender.Equals(string.Empty)) //gender was not selected
-			{
-				CamperApplication objCamperAppl = new CamperApplication();
-				DataSet dsApplSubmitInfo = objCamperAppl.GetApplicationSubmittedInfo(strFJCID);
-
-				if (dsApplSubmitInfo.Tables[0].Rows.Count > 0)
-				{
-					DataRow dr = dsApplSubmitInfo.Tables[0].Rows[0];
-
-					//get submitted date
-					string strSubmittedDate = string.Empty; ;
-					if (!dr["SUBMITTEDDATE"].Equals(DBNull.Value))
-						strSubmittedDate = dr["SUBMITTEDDATE"].ToString();
-
-					//to get the modified by user6
-					int iModifiedBy;
-					string CamperUserId = ConfigurationManager.AppSettings["CamperModifiedBy"].ToString();
-					iModifiedBy = Convert.ToInt32(CamperUserId);
-
-					if (!dr["MODIFIEDUSER"].Equals(DBNull.Value))
-						iModifiedBy = Convert.ToInt32(dr["MODIFIEDUSER"]);
-
-					//if true, Camper Application has been submitted (or) the Application has been modified by a Admin
-					if (!string.IsNullOrEmpty(strSubmittedDate) || (iModifiedBy != Convert.ToInt32(CamperUserId) && iModifiedBy > 0))
-					{
-						ddlGender.Items.Insert(0, new ListItem("", "-1"));
-						lblStarGender.Text = "&nbsp;&nbsp;";
-					}
-					else
-					{
-						ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-						lblStarGender.Text = "*";
-					}
-				}
-				else //should not happen
-				{
-					ddlGender.Items.Insert(0, new ListItem("-- Select --", "0"));
-					lblStarGender.Text = "*";
-				}
-			}
-			else //gender was selected
-			{
-				ddlGender.SelectedValue = Gender;
-				lblStarGender.Text = "*";
-			}
-		}
-	}
-
 	void PopulateStateCityForZIP(Boolean PopulateCity)
 	{
 		string strZip, strCountry;
@@ -1294,17 +1193,6 @@ public partial class Step1 : System.Web.UI.Page
 		Administration objAdmin = new Administration();
 		Action = hdnPerformAction.Value;
 
-		//*********************************
-		//for backward comarability purpose
-		//*********************************
-		if (UInfo.Gender != null)
-		{
-			if (Convert.ToInt32(UInfo.Gender) <= 0)
-				UInfo.Gender = null;
-		}
-		else
-			UInfo.Gender = null;
-
 		if (UInfo.CMART_MiiP_ReferalCode == string.Empty)
 			UInfo.CMART_MiiP_ReferalCode = null;
 
@@ -1407,7 +1295,7 @@ public partial class Step1 : System.Web.UI.Page
 		UserInfo.Comments = txtComments.Text.Trim();
 		UserInfo.ModifiedBy = Master.UserId;
 		UserInfo.FJCID = hdnFJCID.Value;
-		UserInfo.Gender = ddlGender.SelectedValue;
+        UserInfo.Gender = txtGender.Text;
 
 		//AG 10/15/2009
 		UserInfo.HomePhone = txtHomePhone1.Text;
@@ -1476,6 +1364,7 @@ public partial class Step1 : System.Web.UI.Page
 				//txtEmail.Text = UserInfo.PersonalEmail;
 				txtDOB.Text = strDOB;
 				txtAge.Text = strAge;
+                txtGender.Text = UserInfo.Gender;
 				if (!(UserInfo.CMART_MiiP_ReferalCode).Equals(string.Empty))
 					txtSplCode.Text = UserInfo.CMART_MiiP_ReferalCode;
 				if (!(UserInfo.PJLCode).Equals(string.Empty))
@@ -1495,9 +1384,6 @@ public partial class Step1 : System.Web.UI.Page
 
 				//populate city combo and select the value
 				getCities(UserInfo.ZipCode, UserInfo.City);
-
-				getGenders(strFJCID, UserInfo.Gender);
-
 				SetCountryValidationRules(UserInfo.Country);
 			}
 		}

@@ -18,7 +18,8 @@
         <tr>
 			<td colspan="2">
 				<p>
-				    The Camp Mountain Chai - One Happy Camper Program, sponsored in partnership between Camp Mountain Chai and the Foundation for Jewish Camp provides a one-time financial incentive of up to $1000 for first-time campers who attend Camp Mountain Chai.
+				    The Camp Mountain Chai - One Happy Camper Program, sponsored in partnership between Camp Mountain Chai 
+                    and the Foundation for Jewish Camp provides a one-time financial incentive of up to $1000 for first-time campers who attend Camp Mountain Chai.
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -29,13 +30,20 @@
                     </ul>
 				</p>   
                 <p>
-                    Camp Mountain Chai expands and enriches Jewish identity by establishing an atmosphere of knowledge and love for Jewish culture, traditions and religion. Through sports, arts, outdoor adventure and aquatics, campers build life-long friendships, independence and self-worth. We provide a unique summer experience with an emphasis on excellence. Judaism is woven into the fabric of Camp Mountain Chai life as we appreciate the importance of connecting our campers to their rich Jewish heritage while understanding our collective responsibility to make the world a better place. We are proud of our well-rounded program which combines required cabin and elective activities with extensive outdoor opportunities.
+                    Camp Mountain Chai expands and enriches Jewish identity by establishing an atmosphere of knowledge and love for Jewish culture, traditions and religion. 
+                    Through sports, arts, outdoor adventure and aquatics, campers build life-long friendships, independence and self-worth. We provide a unique summer experience 
+                    with an emphasis on excellence. Judaism is woven into the fabric of Camp Mountain Chai life as we appreciate the importance of connecting our campers to their 
+                    rich Jewish heritage while understanding our collective responsibility to make the world a better place. We are proud of our well-rounded program which combines 
+                    required cabin and elective activities with extensive outdoor opportunities.
                 </p> 
                 <p>
-                    With warm days and cool nights, the weather in the San Bernardino National Forest is ideal for summer activities. Your child can comfortably participate in all our outdoor activities, and the fresh mountain air and low humidity enhance indoor activities such as cabin life, theater, creative arts and dining.
+                    With warm days and cool nights, the weather in the San Bernardino National Forest is ideal for summer activities. 
+                    Your child can comfortably participate in all our outdoor activities, and the fresh mountain air and low humidity enhance indoor activities such as cabin life, 
+                    theater, creative arts and dining.
                 </p>
                 <p>
-                    If you are interested in learning more about Camp Mountain Chai and available grants, please visit us at: <a href="http://www.campmountainchai.com" target="_blank">www.campmountainchai.com</a> or call our office at 858-499-1330.
+                    If you are interested in learning more about Camp Mountain Chai and available grants, please visit us at: 
+                    <a href="http://www.campmountainchai.com" target="_blank">www.campmountainchai.com</a> or call our office at 858-499-1330.
                 </p>           
             </td>
         </tr>  

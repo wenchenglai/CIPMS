@@ -14,16 +14,6 @@ public partial class CamperOptions : System.Web.UI.Page
         //Populate DataGrid
         if (!IsPostBack)
         {
-            DataSet dsCampYear= objGeneral.GetCurrentYear();
-            if (dsCampYear.Tables[0].Rows.Count > 0)
-            {
-                Session["CampYear"] = dsCampYear.Tables[0].Rows[0]["CampYear"].ToString();
-            }
-            else
-            {
-                //Session["CampYear"] = DateTime.Now.Year;
-                Session["CampYear"] = Application["CampYear"].ToString();
-            }
             Session["FedId"] = null;
             PopulateGrid();
         }

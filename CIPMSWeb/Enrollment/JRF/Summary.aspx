@@ -29,7 +29,11 @@
                     </ul>
 		        </p>                
                 <p>
-                    Camp JRF fills the summer with fun, friendships, and Jewish living. Our summer camp is a joyful, creative, and inclusive Reconstructionist community. Campers swim, play soccer, basketball, baseball, volleyball, and other sports. They sing and explore other arts. They learn from visiting artists, scholars, and rabbis, as well from talented specialists and dedicated college-age counselors. Our campers make lasting friendships, experience a safe and fun summer, explore Jewish tradition, forge their own Jewish identity, and participate in creating a Jewish culture in which our values are lived each day.
+                    Camp JRF fills the summer with fun, friendships, and Jewish living. Our summer camp is a joyful, creative, and inclusive Reconstructionist community. 
+                    Campers swim, play soccer, basketball, baseball, volleyball, and other sports. 
+                    They sing and explore other arts. They learn from visiting artists, scholars, and rabbis, as well from talented specialists and dedicated college-age counselors. 
+                    Our campers make lasting friendships, experience a safe and fun summer, explore Jewish tradition, forge their own Jewish identity, 
+                    and participate in creating a Jewish culture in which our values are lived each day.
                 </p>
                 <p>
                     If you are interested in learning more about our camp, please visit us at: <a href="http://www.campjrf.org" target="_blank">www.campjrf.org</a>.

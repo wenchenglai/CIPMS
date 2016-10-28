@@ -18,7 +18,9 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The Camp Poyntelle Lewis Village One Happy Camper program, sponsored by CPLV, the UJA Federation of New York and the Foundation for Jewish Camp provides financial incentives to first-time campers who attend first session, second session, or the full summer. 				    
+                    The Camp Poyntelle Lewis Village One Happy Camper program, sponsored by CPLV, 
+                    the UJA Federation of New York and the Foundation for Jewish Camp provides financial incentives to first-time campers who attend first session, 
+                    second session, or the full summer. 				    
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:

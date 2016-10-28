@@ -31,7 +31,7 @@
 				</p> 
                 <p>
                     <span style="color:red; font-weight:bold">Attention Jewish day school families</span>:  
-                    If the camper currently attends Jewish day school, please do not proceed with this application and instead, please call Inna Kolesnikova-Shmukler at 317-715-9264.
+                    If the camper currently attends Jewish day school, please do not proceed with this application and instead, please call Pamela Eicher at 317-715-6981.
                 </p>  
                 <p>
                     Multiple children from a single family are eligible to receive separate grants and will be considered separate grantees. At least one parent/guardian must be a member in good standing and contribute to the Jewish Federation of Greater Indianapolis in the year the grant is awarded. If you do not think you are eligible for this program, but are interested in other camp scholarship opportunities, please visit www.JewishCamp.org/Scholarships or contact the Federation directly.

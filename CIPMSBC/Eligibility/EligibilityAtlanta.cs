@@ -98,7 +98,7 @@ namespace CIPMSBC.Eligibility
                         iStatusValue = (int)AllowDaySchool(FJCID);
                         if (iStatusValue == (int)StatusInfo.SystemInEligible)
                         {
-                            if (specialCode == "PJGTC2016")
+                            if (specialCode == "PJGTC2017")
                                 iStatusValue = (int)StatusInfo.EligiblePJLottery;
                         }
                     }
@@ -232,7 +232,9 @@ namespace CIPMSBC.Eligibility
                         if (dr["OptionID"].Equals(DBNull.Value))
                             continue;
 
-                        if (dr["OptionID"].ToString() == "1")
+                        // 2016-08-30 additional option follow the same rule as first timer
+                        // 3.	No, but I attended camp for the first time for 11 days in summer 2016
+                        if (dr["OptionID"].ToString() == "1"  || dr["OptionID"].ToString() == "3")
                         {
                             q1 = "yes";
                         }
@@ -278,7 +280,7 @@ namespace CIPMSBC.Eligibility
                         {
                             if (daysInCamp >= 19)
                                 Amount = 500;
-                            else if (daysInCamp >= 12)
+                            else if (daysInCamp >= 11)
                                 Amount = 350;
                             else
                                 Amount = 0;

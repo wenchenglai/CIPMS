@@ -25,14 +25,21 @@
                     <ul style="font-weight: bold">
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
-                        <li>First time camper must be entering grades 2-12 (after camp).</li>
+                        <li>First time camper must be entering grades 2-10 (after camp).</li>
                     </ul>
 		        </p>                
 		        <p>
-		            Camp Avoda aims to maintain Jewish spirituality infused in day to day living at camp throughout the summer. We have Friday night and Saturday morning services at our outdoor Chapel Site, we wear kipot to all meals, keep Shabbat programming separate from the rest of the week, and end each Saturday with Havdallah. Our goal is to provide campers with cultural reminders that fit the overall camp culture and are in line with our camp’s mission of fostering values of teamwork, leadership, self-confidence and respect for one another based on shared experiences that value our Jewish culture and traditions. Being brought up at Camp Avoda lends itself to maintaining and fostering Jewish identity as boys grow up to become men and leaders.
+		            Camp Avoda aims to maintain Jewish spirituality infused in day to day living at camp throughout the summer. 
+                    We have Friday night and Saturday morning services at our outdoor Chapel Site, we wear kipot to all meals, 
+                    keep Shabbat programming separate from the rest of the week, and end each Saturday with Havdallah. 
+                    Our goal is to provide campers with cultural reminders that fit the overall camp culture and are in line with our camp’s mission of fostering values of teamwork, 
+                    leadership, self-confidence and respect for one another based on shared experiences that value our Jewish culture and traditions. 
+                    Being brought up at Camp Avoda lends itself to maintaining and fostering Jewish identity as boys grow up to become men and leaders.
 		        </p>
                 <p>
-                    We are a non-profit resident camp for Jewish boys ages 7 through 15 in Middleboro, MA. Our program includes: Sports, Swimming and Boating, Arts, Judaica, Ropes Course & Climbing Wall, Field Trips, Evening Activities, Overnight Camp-outs, Color War, Intercamp teams, Intracamp competition, and more!
+                    We are a non-profit resident camp for Jewish boys ages 7 through 15 in Middleboro, MA. Our program includes: Sports, 
+                    Swimming and Boating, Arts, Judaica, Ropes Course & Climbing Wall, Field Trips, Evening Activities, Overnight Camp-outs, Color War, 
+                    Intercamp teams, Intracamp competition, and more!
                 </p>
                 <p>
                     If you are interested in learning more about our camp and available grants, please visit us at: 
