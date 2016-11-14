@@ -75,7 +75,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
 
                 var fjcFundingFeds = new List<string>(ConfigurationManager.AppSettings["SelfPaymentProcessing"].Split(','));
                 if (fjcFundingFeds.Exists(x => x == fedId))
-                    divSelfFunding.Visible = false;
+                    divSelfFunding.Visible = true;
             }
 
 			// 2013-01-03 Temporarily allow Philly and Boston admin to do payment processing

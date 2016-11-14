@@ -69,7 +69,7 @@
                             <asp:LinkButton ID="lnkPayment" runat="server" Text="Payment - FJC" CausesValidation="false"
                                 OnClick="lnkPayment_Click" />
                         </div>
-                        <div id="divSelfFunding" runat="server">
+                        <div id="divSelfFunding" runat="server" visible="false">
                             <asp:HyperLink ID="hylSelfFunding" runat="server" Text="Payment - Self Funding" Target="_blank"></asp:HyperLink>
                         </div>
                     </td>
