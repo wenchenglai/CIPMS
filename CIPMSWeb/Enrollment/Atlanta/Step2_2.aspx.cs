@@ -420,11 +420,11 @@ public partial class HartfordPage2 : System.Web.UI.Page
 		strQID = hdnQ3Id.Value;
 		strTablevalues += strQID + strFSeparator + (rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : rdoFirstTimerNo11days.Checked ? "3" : "") + strFSeparator + strQSeparator;
 
-		//Grandfaother question
+		//2nd Year Grant question
 		strQID = "1066";
 		strTablevalues += strQID + strFSeparator + (rdoLastYearYes.Checked ? "1" : rdoLastYearNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-		//Grandfaother question
+		//2nd Year Grant Income question
 		strQID = "1067";
 		strTablevalues += strQID + strFSeparator + (rdoYes160.Checked ? "1" : rdoNo160.Checked ? "2" : "") + strFSeparator + strQSeparator;
 

@@ -20,17 +20,26 @@
                 <td valign="top"><span class="InfoText">*</span>1</td>
                 <td valign="top">Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 12 consecutive days or longer?
                 <div>
-                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" />
-                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="RadiobuttonQ3" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
+                    <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="RadiobuttonQ3" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnFirstTimerChange(this);" />
                 </div>
                 </td>
             </tr>
-            <tr id="1a">
+            <tr id="1b">
                 <td valign="top"><span class="InfoText">*</span>1a</td>
-                <td valign="top">How long did your camper attend non-profit Jewish overnight camp last summer (2016)? 
+                <td valign="top">Did your camper receive a One Happy Camper last year through the Farash Institute for Jewish Education? 
                 <div id="divGrandfatherRule" runat="server">
-                    <asp:RadioButton ID="rdoDays12" value="1" GroupName="radiodays" runat="server" Text="12-18 days" CssClass="QuestionText" />
-                    <asp:RadioButton ID="rdoDays19" value="2" GroupName="radiodays" runat="server" Text="19+ days" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoLastYearYes" value="1" GroupName="radiodays" runat="server" Text="Yes" CssClass="QuestionText" onclick="PageValidator.OnLastYearChange(this);" />
+                    <asp:RadioButton ID="rdoLastYearNo" value="2" GroupName="radiodays" runat="server" Text="No" CssClass="QuestionText" onclick="PageValidator.OnLastYearChange(this);" />
+                </div>
+                </td>
+            </tr>
+            <tr id="1c">
+                <td valign="top"><span class="InfoText">*</span>1b</td>
+                <td valign="top">Is your combined gross household income $100,000 or less? 
+                <div>
+                    <asp:RadioButton ID="rdoYes160" value="1" GroupName="rdo160" runat="server" Text="Yes" CssClass="QuestionText" />
+                    <asp:RadioButton ID="rdoNo160" value="2" GroupName="rdo160" runat="server" Text="No" CssClass="QuestionText" />
                 </div>
                 </td>
             </tr>
