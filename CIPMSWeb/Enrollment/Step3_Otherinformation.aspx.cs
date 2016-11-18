@@ -786,8 +786,11 @@ public partial class Questionaire_Step3_Otherinformation : System.Web.UI.Page
                         {
                             int federationID = Convert.ToInt32(Session["FedId"].ToString());
                             dsSynagogues = objGeneral.GetSynagogueByID(dsAnswers.Tables[0].Rows[i][3].ToString(), federationID);
-                            txtSynagogue.Text = dsSynagogues.Tables[0].Rows[0][1].ToString();
-                            txtSynagogue.Enabled = false;
+                            if (dsSynagogues.Tables[0].Rows.Count > 0)
+                            {
+                                txtSynagogue.Text = dsSynagogues.Tables[0].Rows[0][1].ToString();
+                                txtSynagogue.Enabled = false;
+                            }
                         }
                     }
 
