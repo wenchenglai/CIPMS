@@ -21,6 +21,7 @@ public partial class Step2_Columbus_3 : Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        CheckForRedirect();
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         //ddlState.SelectedIndexChanged += new EventHandler(ddlState_SelectedIndexChanged);
@@ -28,6 +29,14 @@ public partial class Step2_Columbus_3 : Page
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
+    }
+
+    void CheckForRedirect()
+    {
+        if (PageUtility.RedirectToNL((int)FederationEnum.RhodeIsland, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)

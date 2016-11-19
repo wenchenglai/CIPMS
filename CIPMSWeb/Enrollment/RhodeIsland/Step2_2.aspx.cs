@@ -17,12 +17,21 @@ public partial class Step2_Memphis_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
+        CheckForRedirect();
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
         btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
+    }
+
+    void CheckForRedirect()
+    {
+        if (PageUtility.RedirectToNL((int)FederationEnum.RhodeIsland, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        {
+            Response.Redirect("~/NLIntermediate.aspx");
+        }
     }
 
     protected void Page_Load(object sender, EventArgs e)
