@@ -104,6 +104,20 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
                 {
                     iStatus = (int)StatusInfo.SystemEligible;
                 }
+
+                if (iStatus == (int)StatusInfo.SystemEligible)
+                {
+                    if (rdoFirstTimerNo.Checked)
+                    {
+                        if (rdoLastYearNo.Checked)
+                            iStatus = (int)StatusInfo.SystemInEligible;
+                        else if (rdoLastYearYes.Checked)
+                        {
+                            if (rdoNo160.Checked)
+                                iStatus = (int)StatusInfo.SystemInEligible;
+                        }
+                    }
+                }
             }
             Session["STATUS"] = iStatus.ToString();
         }
@@ -310,7 +324,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     void PopulateAnswers()
     {
-        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1063");
+        DataSet dsAnswers = CamperAppl.getCamperAnswers(hdnFJCIDStep2_2.Value, "", "", "3,6,7,8,30,31,1063,1066,1067");
 
         foreach (DataRow dr in dsAnswers.Tables[0].Rows)
         {
@@ -406,16 +420,36 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
                     txtOtherJCC.Text = dr["Answer"].ToString();
                 }
             }
-            else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            else if (qID == QuestionId.Q1066_2ndYear) // Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta?
             {
                 if (dr["OptionID"].Equals(DBNull.Value))
                     continue;
 
                 if (dr["OptionID"].ToString() == "1")
-                    rdoDays12.Checked = true;
+                    rdoLastYearYes.Checked = true;
                 else
-                    rdoDays19.Checked = true;
+                    rdoLastYearNo.Checked = true;
             }
+            else if (qID == QuestionId.Q1067_IncomeUnder) // Is your combined gross household income $160,000 or less?
+            {
+                if (dr["OptionID"].Equals(DBNull.Value))
+                    continue;
+
+                if (dr["OptionID"].ToString() == "1")
+                    rdoYes160.Checked = true;
+                else
+                    rdoNo160.Checked = true;
+            }
+            //else if (qID == QuestionId.GrandfatherPolicySessionLength) // If a professional or fellow congregant is selected, offer this list as a check all that apply
+            //{
+            //    if (dr["OptionID"].Equals(DBNull.Value))
+            //        continue;
+
+            //    if (dr["OptionID"].ToString() == "1")
+            //        rdoDays12.Checked = true;
+            //    else
+            //        rdoDays19.Checked = true;
+            //}
 
 
         }
@@ -435,9 +469,17 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
         strQId = ((int)QuestionId.FirstTime).ToString();
         strTablevalues += strQId + strFSeparator + Convert.ToString(rdoFirstTimerYes.Checked ? "1" : rdoFirstTimerNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
-        //Grandfaother question
-        strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
-        strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
+        //2nd Year Grant question
+        strQId = "1066";
+        strTablevalues += strQId + strFSeparator + (rdoLastYearYes.Checked ? "1" : rdoLastYearNo.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        //2nd Year Grant Income question
+        strQId = "1067";
+        strTablevalues += strQId + strFSeparator + (rdoYes160.Checked ? "1" : rdoNo160.Checked ? "2" : "") + strFSeparator + strQSeparator;
+
+        ////Grandfaother question
+        //strQId = ((int)QuestionId.GrandfatherPolicySessionLength).ToString();
+        //strTablevalues += strQId + strFSeparator + (rdoDays12.Checked ? "1" : rdoDays19.Checked ? "2" : "") + strFSeparator + strQSeparator;
 
         //for question Grade
         strQId = ((int)QuestionId.Grade).ToString();

@@ -58,5 +58,7 @@ public enum QuestionId
     Q1068_AttendSecondarySchool = 1068,
     Q1032_SiblingAttended = 1032,
     Q1033_SiblingFirstName = 1033,
-    Q1034_SiblingLastName = 1034
+    Q1034_SiblingLastName = 1034,
+    Q1066_2ndYear = 1066,
+    Q1067_IncomeUnder = 1067
 }
