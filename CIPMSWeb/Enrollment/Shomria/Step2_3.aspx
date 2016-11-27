@@ -1,7 +1,6 @@
-<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Chi_3" Title="Camper Enrollment Step 2" %>
+<%@ Page Language="C#" ValidateRequest="false" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Step2_3.aspx.cs" Inherits="Step2_Nageela_3" Title="Camper Enrollment Step 2" %>
 <%@ MasterType VirtualPath="~/Common.master" %>
 <%@ Register Src="~/Enrollment/RegisterControls.ascx" TagName="RegControls" TagPrefix="uc1" %>
-
 <asp:Content ID="ContentStep2_CN_1" ContentPlaceHolderID="Content" Runat="Server">
     
     
@@ -20,23 +19,23 @@
         </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="5" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label6" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label14" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
-                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for Camp Shomria yet?</asp:Label><br />
+                    <asp:Label ID="Label15" runat="server" CssClass="QuestionText">Has the camper registered for Camp Inc. yet?</asp:Label><br />
                     <asp:Label ID="Label24" runat="server" CssClass="QuestionText">
                         <p style="text-align:justify">
-                          The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                                       
-                   <uc1:RegControls ID="RegControls1" runat="server" />
-                  <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist" /><br />
-                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist" /><br />                    
-                    --%>
-                    <%--<asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
+                           The camper must be registered at a non-profit Jewish overnight summer camp in order to be considered for this grant.  If you have not done so, please contact the camp of your choice to register for camp.  For further assistance, please contact your local program administrator listed at the bottom of this page.  Need help finding a <a href="http://www.JewishCamp.org/camps" id="A2" runat="server" target="_blank">camp</a>?</p></asp:Label>                     
+                    <uc1:RegControls ID="RegControls1" runat="server" />  
+<%--                   <asp:RadioButton GroupName="RadioButtonQ7" value="2" Text="Yes, I have registered for camp (and have either been accepted, my child is on the waiting list, or I do not know the status of my camp application)" ID="RadioButtonQ7Option2" runat="server" CssClass="mylist1" /><br />
+                    <asp:RadioButton GroupName="RadioButtonQ7" value="1" Text="No, I have not yet registered for camp" ID="RadioButtonQ7Option1" runat="server" CssClass="mylist1" /><br />                    --%>
+                    
+                   <%-- <asp:RadioButton GroupName="RadioButtonQ7" value="3" Text="I have registered for camp, but I am on the waiting list" ID="RadioButtonQ7Option3" runat="server" CssClass="QuestionText" /><br />
                     <asp:RadioButton GroupName="RadioButtonQ7" value="4" Text="I  have registered for camp, but I do not know the status of my application" ID="RadioButtonQ7Option4" runat="server" CssClass="QuestionText" />--%>
                 </td>
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="6" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label7" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label18" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top" colspan="2">
                     <asp:Panel ID="PnlQ8"  Enabled="false" runat="server" width="100%">
                         <asp:Label ID="Label19" runat="server" CssClass="QuestionText">Select the camp that the camper wishes to attend this summer:</asp:Label><br />
@@ -52,25 +51,25 @@
                 </td>
                 <td>
                     <asp:Panel ID="PnlQ8_2_2" Enabled="false" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlCamp"  Enabled="false" runat="server" CssClass="dropdown" AutoPostBack="true">
+                        <asp:DropDownList ID="ddlCamp"  Enabled="false" runat="server" CssClass="dropdown">
                         </asp:DropDownList>
                     </asp:Panel>
                 </td>
             </tr>
             <tr>
-                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="7" CssClass="QuestionText"></asp:Label></td>
+                <td valign="top"><asp:Label ID="Label9" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label22" runat="server" Text="9" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
                     <asp:Panel ID="PnlQ9" runat="server" width="100%">
-                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Please write the name(s) of the session(s) that the camper will be attending this summer. If you do not know the name of the session, write "unknown".</asp:Label><br />
-                          <asp:TextBox ID="txtCampSession" runat="server" CssClass="txtbox" MaxLength="100"></asp:TextBox>
+                        <asp:Label ID="Label23" runat="server" CssClass="QuestionText">Which session will the camper be attending (if unknown, write unknown):</asp:Label><br />
+                        <asp:TextBox ID="txtCampSession" runat="server" CssClass="textbox"></asp:TextBox>
                     </asp:Panel>
                 </td>
             </tr>
             <tr>
                 <td valign="top">
-                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="8" CssClass="QuestionText"></asp:Label></td>
+                    <asp:Label ID="Label8" Text="*" runat="server" CssClass="InfoText" /><asp:Label ID="Label25" runat="server" Text="10" CssClass="QuestionText"></asp:Label></td>
                 <td valign="top"  colspan="2">
-                     <asp:Panel ID="PnlQ10" runat="server" Width="100%">
+                    <asp:Panel ID="PnlQ10" runat="server" Width="100%">
                         <p class="InfoText">
 					        In order to be eligible for an incentive grant, the camper must attend camp for at least 12 consecutive days. 
                         </p>
@@ -154,7 +153,11 @@
                      </table>
                 </td>
             </tr>
-            
+            <tr>
+                <td colspan="2">
+                    <asp:Label runat="server" ID="lblMsg" CssClass="QuestionText" ForeColor="Red"></asp:Label>
+                </td>
+            </tr>            
         </table>
     </asp:Panel>
      <asp:Panel ID="Panel1" runat="server" Visible="false" width="100%">

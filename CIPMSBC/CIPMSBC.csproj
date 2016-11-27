@@ -168,7 +168,6 @@
     <Compile Include="Eligibility\EligibilityRamah.cs" />
     <Compile Include="Eligibility\EligibilitySanFrancisco.cs" />
     <Compile Include="Eligibility\EligibilitySeattle.cs" />
-    <Compile Include="Eligibility\EligibilityShomria.cs" />
     <Compile Include="Eligibility\EligibilitySolomonSchechter.cs" />
     <Compile Include="Eligibility\EligibilitySpostsAcadamy.cs" />
     <Compile Include="Eligibility\EligibilityStLouis.cs" />

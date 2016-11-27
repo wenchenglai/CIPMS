@@ -1,32 +1,27 @@
 using System;
 using System.Data;
 using System.Configuration;
-using System.Collections;
-using System.Web;
-using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
 using CIPMSBC;
 using CIPMSBC.Eligibility;
 
-public partial class Step2_Chi_3 : Page
+public partial class Step2_Nageela_3 : Page
 {
     private CamperApplication CamperAppl;
     private General objGeneral;
     private Boolean bPerformUpdate;
-    private RadioButton RadioButtonQ7Option1;
+    private RadioButton RadioButtonQ7Option1; // Rajesh
     private RadioButton RadioButtonQ7Option2;
+
     protected void Page_Init(object sender, EventArgs e)
     {
         btnChkEligibility.Click += new EventHandler(btnChkEligibility_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
         btnSaveandExit.Click += new EventHandler(btnSaveandExit_Click);
-        btnReturnAdmin.Click += new EventHandler(btnReturnAdmin_Click);
+        btnReturnAdmin.Click+=new EventHandler(btnReturnAdmin_Click);
         CusValComments.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
         CusValComments1.ServerValidate += new ServerValidateEventHandler(CusValComments_ServerValidate);
-        //ddlCampSession.SelectedIndexChanged += new EventHandler(ddlCampSession_SelectedIndexChanged);
     }
 
     void btnReturnAdmin_Click(object sender, EventArgs e)
@@ -38,6 +33,8 @@ public partial class Step2_Chi_3 : Page
             {
                 strRedirURL = ConfigurationManager.AppSettings["AdminRedirURL"].ToString();
                 InsertCamperAnswers();
+                //Session["FJCID"] = null;
+                //Session["ZIPCODE"] = null;
                 Response.Redirect(strRedirURL);
             }
         }
@@ -51,11 +48,14 @@ public partial class Step2_Chi_3 : Page
     {
         try
         {
-            RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1");
-            RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
             CamperAppl = new CamperApplication();
             objGeneral = new General();
-            imgbtnCalStartDt.Attributes.Add("onclick", "return ShowCalendar('" + txtStartDate.ClientID + "');");
+
+            RadioButtonQ7Option1 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option1"); // <!-- Rajesh -->
+            RadioButtonQ7Option2 = (RadioButton)RegControls1.FindControl("RadioButtonQ7Option2");
+
+
+            imgbtnCalStartDt.Attributes.Add("onclick","return ShowCalendar('" + txtStartDate.ClientID + "');");
             imgbtnCalEndDt.Attributes.Add("onclick", "return ShowCalendar('" + txtEndDate.ClientID + "');");
             if (Session["STATUS"] != null)
             {
@@ -71,25 +71,19 @@ public partial class Step2_Chi_3 : Page
             }
             if (!(Page.IsPostBack))
             {
-                if (Session["FedId"] != null)
-                {
-                    getCamps(Session["FedId"].ToString(),Master.CampYear); // to get all camps referred to this federation
-                }
-                else
-                    getCamps("0",Master.CampYear);//to get all the camps and fill in                
-
+                getCamps("0", Master.CampYear); //to get all the camps and fill in
                 //to get the FJCID which is stored in session
                 if (Session["FJCID"] != null)
                 {
                     hdnFJCIDStep2_3.Value = (string)Session["FJCID"];
                     getCamperAnswers();
                     //Session["FJCID"] = null;
+                   
+
                 }
             }
             RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
             RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:popupCall(this,'noCampRegistrationMsg','',true);");
-            //RadioButtonQ7Option1.Attributes.Add("onclick", "JavaScript:popupCall('noCampRegistrationMsg');");
-            //RadioButtonQ7Option2.Attributes.Add("onclick", "JavaScript:disablePopup();");
             //RadioButtonQ7Option3.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
             //RadioButtonQ7Option4.Attributes.Add("onclick", "windowBnaiopen(this,'PnlQ8','PnlQ9','PnlQ10');");
             //to enable / disable the panel states based on the radio button selected
@@ -115,12 +109,17 @@ public partial class Step2_Chi_3 : Page
             if (Page.IsValid)
             {
                 string strRedirURL;
+                //strRedirURL = ConfigurationManager.AppSettings["SaveExitRedirURL"].ToString();
                 strRedirURL = Master.SaveandExitURL;
                 if (!objGeneral.IsApplicationReadOnly(hdnFJCIDStep2_3.Value, Master.CamperUserId))
                 {
                     InsertCamperAnswers();
                 }
-
+                //Session["FJCID"] = null;
+                //Session["ZIPCODE"] = null;
+                //Session["STATUS"] = null;
+                //Session.Abandon();
+              //  Response.Redirect(strRedirURL);
                 if (Master.IsCamperUser == "Yes")
                 {
 
@@ -237,7 +236,7 @@ public partial class Step2_Chi_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Shomria);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Zeke);
         try
         {
             if (Page.IsValid)
@@ -247,6 +246,14 @@ public partial class Step2_Chi_3 : Page
                 strModifiedBy = Master.UserId;
                 if (!isReadOnly)
                 {
+                    var startDate = Convert.ToDateTime(txtStartDate.Text);
+                    var endDate = Convert.ToDateTime(txtEndDate.Text);
+
+                    if (startDate > endDate)
+                    {
+                        lblMsg.Text = "Error: Start date must be earlier than end date.";
+                        return;
+                    }
                     InsertCamperAnswers();
                 }
                 iCampId = Convert.ToInt32(ddlCamp.SelectedValue);
@@ -329,7 +336,7 @@ public partial class Step2_Chi_3 : Page
 
         if (strFJCID != "" && strCamperAnswers != "" && strModifiedBy != "" && bPerformUpdate)
             RowsAffected = CamperAppl.InsertCamperAnswers(strFJCID, strCamperAnswers, strModifiedBy, strComments);
-
+        
     }
 
     //to get the camper answers from the database
@@ -342,9 +349,9 @@ public partial class Step2_Chi_3 : Page
         RadioButton rb;
         string strFilter;
 
-
+        
         strFJCID = hdnFJCIDStep2_3.Value;
-        if (!strFJCID.Equals(string.Empty))
+        if (! strFJCID.Equals(string.Empty))
         {
             dsAnswers = CamperAppl.getCamperAnswers(strFJCID, "9", "12", "N");
             if (dsAnswers.Tables[0].Rows.Count > 0) //if there are records for the current FJCID
@@ -355,7 +362,7 @@ public partial class Step2_Chi_3 : Page
                 {
                     strFilter = "QuestionId = '" + i.ToString() + "'";
                     iCount = dsAnswers.Tables[0].Rows.Count;
-
+                    
                     switch (i)
                     {
                         case 9:  //assigning the answer for question 9
@@ -369,16 +376,14 @@ public partial class Step2_Chi_3 : Page
                             }
                             break;
                         case 10:// assigning the answer for question 10
-                            foreach (DataRow dr in dv.Table.Select(strFilter))
+                           foreach (DataRow dr in dv.Table.Select(strFilter))
                             {
                                 if (!dr["OptionID"].Equals(DBNull.Value))
                                 {
                                     switch (dr["OptionID"].ToString())
                                     {
-                                        case "2": //for camp
+                                            case "2": //for camp
                                             ddlCamp.SelectedValue = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
-                                            if (ddlCamp.SelectedValue != "0")
-                                                getCampSessions(ddlCamp.SelectedValue); //to get the campsessions for selected camp and fill in
                                             break;
                                     }
                                 }
@@ -389,8 +394,8 @@ public partial class Step2_Chi_3 : Page
                             {
                                 if (!dr["Answer"].Equals(DBNull.Value))
                                 {
-                                    txtCampSession.Text = dr["Answer"].ToString();
-                                }
+                                    txtCampSession.Text= dr["Answer"].ToString();
+                                } 
                             }
                             break;
                         case 12: // assigning the answer for question 12
@@ -404,7 +409,7 @@ public partial class Step2_Chi_3 : Page
                                             txtStartDate.Text = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
                                             break;
                                         case "2": //for End Date
-                                           txtEndDate.Text = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
+                                            txtEndDate.Text = dr["Answer"].Equals(DBNull.Value) ? "" : dr["Answer"].ToString();
                                             break;
                                     }
                                 }
@@ -414,67 +419,58 @@ public partial class Step2_Chi_3 : Page
                 }
             }
         } //end if for null check of fjcid
-
+    
     }
 
-
+   
     //to enable or disable the question panels based on the radio button selected
     protected void SetPanelStates()
     {
         if (RadioButtonQ7Option1.Checked == true)
         {
+            //PnlQ8.Enabled = false;
+            //PnlQ8_2_1.Enabled = false;
+            //PnlQ8_2_2.Enabled = false;
+            //ddlCamp.SelectedIndex = 0;
             PnlQ9.Enabled = false;
-            txtCampSession.Text ="";
+            txtCampSession.Text = string.Empty;
+            //txtCampSession.Text = "";
             PnlQ10.Enabled = false;
             txtStartDate.Text = "";
             txtEndDate.Text = "";
         }
         else
         {
+            //PnlQ8.Enabled = true;
+            //PnlQ8_2_1.Enabled = true;
+            //PnlQ8_2_2.Enabled = true;
             PnlQ9.Enabled = true;
             PnlQ10.Enabled = true;
         }
     }
 
-    //to get the camps based on the federation
-    //if federation is not available then all the camps are populated
-    private void getCamps(string fedId,string CampYear)
+    //to get the camps based on the state selected
+    //if state is not selected then all the camps are populated
+    private void getCamps(string StateId,string CampYear)
     {
-        DataSet dsCamps;
+       DataSet dsCamps;
 
-        if (fedId == "0")
-        {
-            dsCamps = objGeneral.get_AllCamps(CampYear);
-        }
-        else
-        {
-            dsCamps = objGeneral.GetFedCamps(fedId,CampYear);
-        }
+       //if (StateId == "0")
+       // {
+        dsCamps = objGeneral.get_AllCamps(CampYear);
+        //}
+        //else
+        //{
+        //    dsCamps = objGeneral.get_CampsForState(StateId);
+        //}
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
-        ddlCamp.DataValueField = "CampID";
+        ddlCamp.DataValueField = "ID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-
+       
     }
-
-    //to get the campsession based on the camp    
-    private void getCampSessions(string campID)
-    {
-        DataSet dsCampSessions;
-
-        //if (campID != "0")
-        //{
-        //    dsCampSessions = objGeneral.GetCampSessionsForCamp(Int32.Parse(campID));
-        //    ddlCampSession.DataSource = dsCampSessions;
-        //    ddlCampSession.DataTextField = "Name";
-        //    ddlCampSession.DataValueField = "ID";
-        //    ddlCampSession.DataBind();
-        //}
-        //ddlCampSession.Items.Insert(0, new ListItem("-- Select --", "0"));
-    }
-
 
     private string ConstructCamperAnswers()
     {
@@ -483,19 +479,19 @@ public partial class Step2_Chi_3 : Page
         string strFSeparator;
         string strQSeparator;
         string strRadioOption;
-        string strCamp, strCampSession, strStartDate, strEndDate; //-1 for Camper (User id will be passed for Admin user)
+        string  strCamp, strCampSession, strStartDate, strEndDate; //-1 for Camper (User id will be passed for Admin user)
 
         //to get the Question separator from Web.config
         strQSeparator = ConfigurationManager.AppSettings["QuestionSeparator"].ToString();
         //to get the Field separator from Web.config
         strFSeparator = ConfigurationManager.AppSettings["FieldSeparator"].ToString();
-
+        
         //for question 7
         strRadioOption = Convert.ToString(RadioButtonQ7Option1.Checked ? "1" : RadioButtonQ7Option2.Checked ? "2" : "");
         strCamp = ddlCamp.SelectedValue;
-        strCampSession =txtCampSession.Text;
-        strStartDate = txtStartDate.Text;
-        strEndDate = txtEndDate.Text;
+        strCampSession = txtCampSession.Text;
+        strStartDate = txtStartDate.Text.Trim();
+        strEndDate = txtEndDate.Text.Trim();
 
         strQuestionId = hdnQ7Id.Value;
         strTablevalues += strQuestionId + strFSeparator + strRadioOption + strFSeparator + strQSeparator;
@@ -545,25 +541,6 @@ public partial class Step2_Chi_3 : Page
         }
     }
 
-    //void ddlCampSession_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    DataSet dsCampSessions;
-    //    if (ddlCampSession.SelectedValue != "0")
-    //    {
-    //        dsCampSessions = objGeneral.GetCampSessionDetail(Int32.Parse(ddlCampSession.SelectedValue));
-    //        if (dsCampSessions.Tables[0].Rows.Count > 0)
-    //        {
-    //            DataRow dr = dsCampSessions.Tables[0].Rows[0];
-    //            txtStartDate.Text = DateTime.Parse(dr["StartDate"].ToString()).ToShortDateString();
-    //            txtEndDate.Text = DateTime.Parse(dr["EndDate"].ToString()).ToShortDateString();
-    //        }
-    //    }
-    //    else
-    //    {
-    //        txtStartDate.Text = txtEndDate.Text = string.Empty;
-    //    }
-    //}
-
     protected void imgbtnCalStartDt_Click(object sender, ImageClickEventArgs e)
     {
         int iDisplayYear = 0;
@@ -592,7 +569,7 @@ public partial class Step2_Chi_3 : Page
     protected void calStartDt_SelectionChanged(object sender, EventArgs e)
     {
         txtStartDate.Text = calStartDt.SelectedDate.ToString("MM/dd/yyyy");
-        pnlCalStartDt.Visible = false;
+        pnlCalStartDt.Visible = false;        
     }
 
     protected void calEndDt_SelectionChanged(object sender, EventArgs e)

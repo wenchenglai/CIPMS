@@ -230,9 +230,6 @@ namespace CIPMSBC.Eligibility
 				case FederationEnum.Colorado:
 					elig = new EligibilityColorado(fed);
 					break;
-				case FederationEnum.Shomria:
-					elig = new EligibilityShomria(fed);
-					break;
 				case FederationEnum.PalmSprings:
 					elig = new EligibilityPalmSprings(fed);
 					break;
