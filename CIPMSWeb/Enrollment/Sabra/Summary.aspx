@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_Sabra_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-  <table id="tblRegister" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+  <table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
     <tr>
         <td>
             <img src="../../images/camp-sabra.gif" width="206px" height="209px"/>
@@ -48,14 +48,14 @@
 			</td>
         </tr>
 </table>
-<table id="tblNoRegister" visible="false" runat="server" width="100%" cellpadding="5" cellspacing="0">
+<table id="tblDisable" visible="false" runat="server" width="100%" cellpadding="5" cellspacing="0">
     <tr>
       <td>
         <img id="Img1" src="../../images/camp-sabra.gif" alt="" width="206px" height="209px" />
       </td>  
       <td>
         <asp:Label ID="lblRamahCal" runat="server" CssClass="infotext3" >
-          Please contact Bebe Morgan at bebe@campsabra.com or (314) 442-3151 for information on how to proceed with the application. Be sure to click save and continue before closing your browser.
+          The Camp Sabra One Happy Camper program is now closed for summer 2017. For more information, contact Camp Sabra directly.
         </asp:Label>        
       </td>
     </tr>

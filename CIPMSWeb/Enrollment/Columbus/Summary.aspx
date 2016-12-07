@@ -31,10 +31,6 @@
                         <li>Attending one of the 155+ non-profit, Jewish, overnight camps listed on the Foundation for Jewish Camp’s website (<a href="http://www.OneHappyCamper.org/FindaCamp" target="_blank">www.OneHappyCamper.org/FindaCamp</a>).</li>
                     </ul>
 				</p>                
-				<p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-                    As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
-				</p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 
                     please visit:<a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or contact your camp or the Jewish Federation of Columbus directly.                     
