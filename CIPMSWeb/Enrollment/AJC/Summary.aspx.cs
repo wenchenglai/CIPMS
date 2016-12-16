@@ -5,7 +5,7 @@ public partial class Enrollment_Calgary_Summary : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Response.Redirect("../step1_nl.aspx");
     }
 
     protected void btnReturnAdmin_Click(object sender, EventArgs e)
