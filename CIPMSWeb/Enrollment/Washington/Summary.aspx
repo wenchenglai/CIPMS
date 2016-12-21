@@ -63,32 +63,17 @@
             </td>
         </tr>
     </table>
-    <table id="tblDisable" runat="server"  width="100%" cellpadding="5" cellspacing="0">
+    <table id="tblDisable" runat="server"  width="100%" cellpadding="5" cellspacing="0" class="infotext3">
         <tr>
             <td>
-				<img id="Img1" src="logo.jpg" alt="" height="100" width="320" />
-            </td>
-            <td>
-
+				<img id="logo" src="logo.jpg" alt="" />
             </td>
         </tr>
         <tr>
-			<td colspan="2">
-                <asp:Label ID="Label2" runat="server" CssClass="infotext3">
-                    <p style="text-align:justify">
-                        Thank you for applying for the One Happy Camper program through The Jewish Federation of Greater Washington.  As a community, we allocated over $45,000 for this program.  As of now, all the incentives have been given out to other families.  Below is a list of other forms of support for parents who would like to send their children to camp: 
-												
-					</p>
-                    <ul style="list-style-type:decimal">
-                        <li>Visit <a href="http://www.jewishcamp.org/camper-scholarships" target="_blank">www.jewishcamp.org/camper-scholarships</a> and search for potential scholarships</li>
-                        <li>Contact your camp of choice directly to determine if they are offering scholarships</li>
-                        <li>If your child is enrolled in PJ Library, please visit the PJ Goes to Camp website for directions on how to apply for a PJ Goes To Camp Incentive <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> </li>
-                        <li>Often local congregations offer scholarships for campers so consider speaking with a local rabbi.</li>
-                    </ul>
+			<td>
                     <p>
-                        Please be in touch with Steffanie Jackson steffanie.jackson@shalomdc.org with additional questions.
-                    </p>
-				</asp:Label>			
+                        The Jewish Federation of Greater Washington’s One Happy Camper program is no longer accepting OHC grant applications for Summer 2017. For more information please contact Steffanie Jackson at Steffanie.Jackson@ShalomDC.org.
+                    </p>		
 			</td>
         </tr>
     </table>
