@@ -10,7 +10,7 @@ public partial class Enrollment_Memphis_Summary : System.Web.UI.Page
         if (!IsPostBack)
         {
             // Two possible scenarios - either the regular summary page, or then camp is full, show the close message
-            int FedID = Convert.ToInt32(FederationEnum.Broward);
+            int FedID = Convert.ToInt32(FederationEnum.Phoenix);
             var FED_ID = FedID.ToString();
             bool isDisabled = ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(x => x == FED_ID);
 

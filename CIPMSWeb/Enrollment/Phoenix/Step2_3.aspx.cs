@@ -16,7 +16,7 @@ public partial class Step2_Columbus_3 : Page
     private RadioButton RadioButtonQ7Option2;
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (PageUtility.RedirectToNL((int)FederationEnum.Broward, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        if (PageUtility.RedirectToNL((int)FederationEnum.Phoenix, Session["isGrantAvailable"] != null, Master.isAdminUser))
         {
             Response.Redirect("~/NLIntermediate.aspx");
         }
@@ -241,7 +241,7 @@ public partial class Step2_Columbus_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Broward);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Phoenix);
         try
         {
             if (Page.IsValid)

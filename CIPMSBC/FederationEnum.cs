@@ -139,7 +139,8 @@ namespace CIPMSBC
         URJJosephEisner = 148,
         URJGreeneFamily = 149,
         URJ6PointsSportsNorthCarolina = 150,
-        URJ6PointsSportsCalifornia = 151
+        URJ6PointsSportsCalifornia = 151,
+        Phoenix = 153
 	}
 
     ///// <summary>

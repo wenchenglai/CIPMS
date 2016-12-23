@@ -15,7 +15,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (PageUtility.RedirectToNL((int)FederationEnum.Broward, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        if (PageUtility.RedirectToNL((int)FederationEnum.Phoenix, Session["isGrantAvailable"] != null, Master.isAdminUser))
         {
             Response.Redirect("~/NLIntermediate.aspx");
         }
@@ -93,7 +93,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
             }
             else
             {
-                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Broward);
+                var objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Phoenix);
                 EligibilityBase.EligibilityResult result = objEligibility.checkEligibilityforStep2(strFJCID, out iStatus, SessionSpecialCode.GetPJLotterySpecialCode());
 
                 if (result.SchoolType == StatusInfo.EligiblePJLottery)
