@@ -237,7 +237,7 @@ public partial class Step2_Chi_3 : Page
     {
         int iStatus, iCampId;
         string strModifiedBy, strFJCID, strComments;
-        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.Shomria);
+        EligibilityBase objEligibility = EligibilityFactory.GetEligibility(FederationEnum.JRF);
         try
         {
             if (Page.IsValid)
