@@ -27,6 +27,7 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 2-11 (after camp).</li>
+                        <li>Siblings of campers who previously received the One Happy Camper Grant are eligible to receive $500, if they are attending camp for the first time for 12+ days.</li>
                     </ul>
 				</p>   
                 <p>
