@@ -27,16 +27,14 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>2</td>
             <td valign="top">
-    			Did the camper’s sibling previously receive an incentive grant through the Chicago One Happy Camper Program?
+    			Did the camper’s sibling previously receive an incentive grant through the San Diego One Happy Camper Program?
                 <asp:RadioButtonList ID="rdolistSiblingAttended" runat="server" CssClass="QuestionText" onclick="PageValidator.OnSiblingRadioChanged(this);" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Yes" Value="1"></asp:ListItem>
                     <asp:ListItem Text="No" Value="2"></asp:ListItem>
                     <asp:ListItem Text="Not Sure" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
                 <span id="siblingContact" style="color:red;">
-                    Please contact Rachel White at <a href='mailto:RachelWhite@juf.org'>RachelWhite@juf.org</a> or 312-357-4995. <br />
-                    Siblings of second-time campers who previously/currently received a $1,000 grant are eligible <br />
-                    to receive $500 when they attend camp for the first time for at least 19 consecutive days.
+
                 </span>
             </td>
         </tr>

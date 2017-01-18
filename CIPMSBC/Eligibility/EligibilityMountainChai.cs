@@ -192,6 +192,30 @@ namespace CIPMSBC.Eligibility
             if (daysInCamp > 0)
             {
                 Amount = getCamperGrant(FJCID, daysInCamp, out StatusValue);
+
+                if (Amount > 0)
+                {
+                    // 2015 Kibbutz Bob Waldorf or Camp Gesher is always $250
+                    if (Amount != 250)
+                    {
+                        double originalAmount = Amount;
+                        // 2013-07-23 copied Chicago Sibling Rule - if this camper has sibling attended before, no matter how many days
+                        // of camping, the amount is only 500.
+                        Amount = 500;
+                        DataSet dsSchoolOption = oCA.getCamperAnswers(FJCID, "1032", "1032", "N");
+                        if (dsSchoolOption.Tables[0].Rows.Count > 0)
+                        {
+                            DataRow drSchoolOption = dsSchoolOption.Tables[0].Rows[0];
+                            if (!string.IsNullOrEmpty(drSchoolOption["OptionID"].ToString()))
+                            {
+                                if ("2" == drSchoolOption["OptionID"].ToString())
+                                {
+                                    Amount = originalAmount;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else
             {
