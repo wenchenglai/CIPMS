@@ -30,7 +30,10 @@ public partial class Step2_Memphis_2 : System.Web.UI.Page
     {
         if (PageUtility.RedirectToNL((int)FederationEnum.RhodeIsland, Session["isGrantAvailable"] != null, Master.isAdminUser))
         {
-            Response.Redirect("~/NLIntermediate.aspx");
+            if (Session["SpecialCodeValue"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
         }
     }
 
