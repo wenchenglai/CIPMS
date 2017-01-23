@@ -46,8 +46,9 @@
             <td>
                 <img src="logo.jpg" />
             </td>
+            </tr><tr>
             <td>
-The Madison One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
+The Jewish Federation of Madison One Happy Camper program is now closed for summer 2017 For more information, please contact Ellen Weismer at program@jewishmadison.org.  To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
 			</td>
         </tr>
     </table> 
