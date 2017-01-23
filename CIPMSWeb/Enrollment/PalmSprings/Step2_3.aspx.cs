@@ -434,11 +434,8 @@ public partial class Step2_Adamah_3 : Page
     //if state is not selected then all the camps are populated
     private void getCamps(string StateId)
     {
-        DataSet dsCamps;
-
-       
-        dsCamps = objGeneral.get_AllCamps(Master.CampYear);
-        
+        //DataSet dsCamps = objGeneral.get_AllCamps(Master.CampYear);
+        var dsCamps = objGeneral.GetFedCamps((int)FederationEnum.PalmSprings, Master.CampYear, false);
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
