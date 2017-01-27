@@ -17,7 +17,8 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top" style="padding-bottom:20px;">
-                Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 19+ consecutive days? (If your child is enrolled in a "Taste of Camp" session for their first-time camp experience, please select "No" and continue to question 1A)
+                Will this be the camper's first-time attending a nonprofit Jewish overnight camp for 18+ consecutive days? 
+                (If your child is enrolled in a "Taste of Camp" session for their first-time camp experience, please select "No" and continue to question 1A)
                 <div>
                     <asp:RadioButton ID="rdoFirstTimerYes" value="1" runat="server" GroupName="FirstTimeCamperGroup" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
                     <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="FirstTimeCamperGroup" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
