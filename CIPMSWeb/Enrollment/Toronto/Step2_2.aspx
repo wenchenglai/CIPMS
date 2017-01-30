@@ -28,7 +28,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1a</td>
             <td valign="top" style="padding-bottom:20px;">
-                Is the first-time camper attending a "Taste of Camp" session (less than 19 days, with the option to extend to an eligible session)?
+                Is the first-time camper attending a "Taste of Camp" session (less than 18 days, with the option to extend to an eligible session)?
                 <div id="divTaste" runat="server">
                     <asp:RadioButton ID="rdoTasteOfCampYes" value="1" runat="server" GroupName="TasteGroup" Text="Yes" />
                     <asp:RadioButton ID="rdoTasteOfCampNo" value="2" GroupName="TasteGroup" runat="server" Text="No" />
