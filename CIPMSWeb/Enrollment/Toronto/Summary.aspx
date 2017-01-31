@@ -18,18 +18,18 @@
                     <ul style="font-weight: bold">
                         <li>Currently residing in the Greater Toronto Area (GTA);</li>
                         <li>Be entering grades 1-12 in September after camp;</li>
-                        <li>Attend one of the OHC Toronto partner camps for a session of at least 19 consecutive days.</li>
+                        <li>Attend one of the OHC Toronto partner camps for a session of at least 18 consecutive days.</li>
                     </ul>
 				</p> 
 				<p>
 				    One Happy Camper offers a grant of:
                     <ul style="font-weight: bold">
-                        <li>$1,000 for the first child in a family to attend Jewish overnight camp (for 19+ days);</li>
+                        <li>$1,000 for the first child in a family to attend Jewish overnight camp (for 18+ days);</li>
                         <li>$500 for siblings of campers who received a $1,000 grant.</li>
                     </ul>
 				</p> 
                 <p>
-                    Campers enrolled in a 'Taste of Camp' session (fewer than 19 days, with the option to extend to an eligible session) can have a grant reserved by completing this application before beginning the ‘Taste of’ session.
+                    Campers enrolled in a 'Taste of Camp' session (fewer than 18 days, with the option to extend to an eligible session) can have a grant reserved by completing this application before beginning the ‘Taste of’ session.
                 </p>
                 <p>
                     Grants will be awarded on a first-come, first-serve basis. If you have questions about the One Happy Camper program please contact your camp who would be happy to answer questions. 

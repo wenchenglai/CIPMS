@@ -35,7 +35,10 @@ public partial class Step2_Columbus_3 : Page
     {
         if (PageUtility.RedirectToNL((int)FederationEnum.RhodeIsland, Session["isGrantAvailable"] != null, Master.isAdminUser))
         {
-            Response.Redirect("~/NLIntermediate.aspx");
+            if (Session["SpecialCodeValue"] == null)
+            {
+                Response.Redirect("~/NLIntermediate.aspx");
+            }
         }
     }
 
