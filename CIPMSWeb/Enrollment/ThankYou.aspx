@@ -214,7 +214,7 @@
                 <b>Based on your answers, and pending further review by your One Happy Camper administrator, your camper may be eligible for an incentive grant.</b>
             </p>
             <p class="QuestionText" style="text-align:justify">
-                Please note that if your camper meets all the eligibility requirements EXCEPT for the minimum session requirement, we will RESERVE a One Happy Camper incentive grant for your camper. Should your camper choose to extended his/her camp session to meet the 19+ day requirement, the camp will notify us of this extension. At that time, we will activate the grant towards your camper’s first-time Jewish overnight camp experience. If at a later date we find evidence of falsified information, we reserve the right to rescind this award.
+                Please note that if your camper meets all the eligibility requirements EXCEPT for the minimum session requirement, we will RESERVE a One Happy Camper incentive grant for your camper. Should your camper choose to extended his/her camp session to meet the 18+ day requirement, the camp will notify us of this extension. At that time, we will activate the grant towards your camper’s first-time Jewish overnight camp experience. If at a later date we find evidence of falsified information, we reserve the right to rescind this award.
             </p>
 			<p style="text-align:justify;">
 				<span style="color:red; font-weight:bold;">Your application has now been submitted and any changes or edits can only be made by your One Happy Camper administrator.</span>
