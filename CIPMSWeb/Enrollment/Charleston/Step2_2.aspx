@@ -67,7 +67,7 @@
                             If "Other": <asp:TextBox ID="txtOtherSynagogue" runat="server" MaxLength="200" Width="160px" CssClass="txtbox" />
                         </div> 
                     </div>
-                    <div id="pnlJCC" class="questionrows" runat="server" Width="100%">
+                    <div id="pnlJCC" class="questionrows" runat="server" Width="100%" visible="false">
                         <div class="column1" style="float:left; width: 100px;">
                             <input type="checkbox" value="3" runat="server" id="chkJCC" onclick="SJValidator.OnJCCChekboxChange(this);" />&nbsp;<span>JCC</span>
                         </div>
