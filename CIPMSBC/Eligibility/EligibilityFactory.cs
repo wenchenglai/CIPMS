@@ -293,7 +293,13 @@ namespace CIPMSBC.Eligibility
                 case FederationEnum.HabonimTavor:
                     elig = new EligibilityHabonimTavor(fed);
                     break;
-			}
+                case FederationEnum.Phoenix:
+                    elig = new EligibilityPhoenix(fed);
+                    break;
+                case FederationEnum.Charleston:
+                    elig = new EligibilityCharleston(fed);
+                    break;
+            }
 			return elig;
 		}
 

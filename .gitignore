@@ -226,3 +226,4 @@ pip-log.txt
 .mr.developer.cfg
 *.webinfo
 CIPMSWeb/vwd.webinfo
+*.webinfo
