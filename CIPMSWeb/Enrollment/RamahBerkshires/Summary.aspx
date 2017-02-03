@@ -50,16 +50,19 @@
     </table>
     
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3">
-        <tr>
-            <td>
-                <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />    
-            </td>
-            <td>
-                <p>
-                    The  Ramah Berkshires One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
-                </p>
-			</td>
-        </tr>
+
+            <tr>
+                <td>
+                    <img id="logo" src="../../images/Ramah_Logo.jpg" alt="" height="65" width="250" />  
+                </td>
+                  
+            </tr>
+            <tr>
+                <td>
+                    The Camp Ramah in the Berkshires One Happy Camper program is now closed for summer 2017. For more information, please contact Adina Rothman arothman@ramahberkshires.org.
+                </td>
+			</tr>
+
     </table>   
 
     <asp:Panel ID="Panel1" runat="server">
