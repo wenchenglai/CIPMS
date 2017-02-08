@@ -41,7 +41,7 @@
                 <asp:Label ID="PROGRAMBLURB2" runat="server" CssClass="QuestionText">
                     <p style="text-align:justify">
                         This program is an outreach initiative for children who are not currently receiving an immersive, 
-                        daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible 
+                        daily Jewish experience. As such, children who attend Jewish Day School or yeshiva are not eligible 
                         for this incentive program. 
                         <b>All applications must be received at JFFS by June 1, 2011.</b> 
                         
@@ -57,7 +57,7 @@
                         Foundation for Jewish Camp's website <a href="http://www.jewishcamp.org" target="_blank">(www.jewishcamp.org)</a>. If you are in grades 10-11, please 
                         call the Federation before applying for the incentive grant This program is an outreach initiative for children who 
                         are not currently receiving an immersive, daily Jewish experience. As such, children 
-                        who attend Jewish day school or yeshiva are not eligible for this incentive program. If you 
+                        who attend Jewish Day School or yeshiva are not eligible for this incentive program. If you 
                         believe you are ineligible for this program, but would like to know about other camp support 
                         opportunities, visit <a href="http://www.JewishOrangeCounty.org/Passport" target="_blank">www.JewishOrangeCounty.org/Passport</a>.</p></asp:Label></td></tr>        --%>
         <tr>

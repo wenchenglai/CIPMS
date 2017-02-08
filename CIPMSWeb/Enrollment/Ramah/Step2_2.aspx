@@ -91,7 +91,7 @@
                     <asp:Label ID="Label11" runat="server" CssClass="QuestionText">What kind of school does the camper <u><b>CURRENTLY</b></u> attend?</asp:Label><br />
                     <asp:RadioButtonList AutoPostBack="true" CssClass="QuestionText" ID="RadioBtnQ9" runat="server" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Public" Value="2" />
-                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Jewish Day School" Value="4" />
                     <asp:ListItem Text="Private (secular) School" Value="1" />
                     <asp:ListItem Text="Home School" Value="3" />
                     </asp:RadioButtonList>

@@ -15,7 +15,7 @@
                   <p style="text-align:justify"><b>The Arkansas One Happy Camper program, administered by the Jewish Federation of Arkansas and and funded by the Foundation for Jewish Camp, provides financial incentives of $1,000 to first-time campers who attend a nonprofit Jewish overnight summer camp for at least 19 days. Eligible campers must be entering grades 2-10 (after camp) and attending a camp listed on the Foundation for Jewish Camp’s website (<a href="http://www.jewishcamp.org" target="_blank">www.jewishcamp.org</a>).</b></p>
                   
                   <p style="text-align:justify;">
-                  This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program. If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit the Jewish Federation website 
+                  This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or Yeshiva are not eligible for this incentive program. If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit the Jewish Federation website 
                   <a href="http://www.jewisharkansas.org" target="_blank">(www.jewisharkansas.org)</a> and <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> about possibilities.
                   </p>
             </asp:Label></td>

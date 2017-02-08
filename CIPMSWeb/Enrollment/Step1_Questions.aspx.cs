@@ -1225,7 +1225,7 @@ public partial class Step1_Questions : System.Web.UI.Page
             }
             else
             {
-                // jewish day school
+                // Jewish Day School
 
                 if (IsNotBadSchool(strSchool))
                 {

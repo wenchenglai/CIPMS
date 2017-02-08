@@ -74,12 +74,12 @@
         // Jewish Day School 
         if ($('#ctl00_Content_rdoSchoolType_1').is(':checked')) {
             if ($('#ctl00_Content_ddlJewishDaySchool>option:selected').val() === "0") {
-                errorMsg.innerHTML += "<ul><li>Please answer question No. 6 - select one Jewish day school.</li></ul>";
+                errorMsg.innerHTML += "<ul><li>Please answer question No. 6 - select one Jewish Day School.</li></ul>";
             }
 
             if ($('#ctl00_Content_ddlJewishDaySchool>option:selected').text().toLowerCase() === SJValidator.OtherOption) {
                 if ($('#ctl00_Content_txtJewishSchool').val() === "") {
-                    errorMsg.innerHTML += "<ul><li>Please answer question No. 6 - enter the Jewish day school name.</li></ul>";
+                    errorMsg.innerHTML += "<ul><li>Please answer question No. 6 - enter the Jewish Day School name.</li></ul>";
                 }
             }
         }

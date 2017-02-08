@@ -210,7 +210,7 @@ namespace CIPMSBC.Eligibility
         private int StatusBasedOnSchool(string FJCID, bool EligibleNoCamp, int statusValue)
         {
             //What kind of the school the camper go to
-            //Jewish day school ineligible
+            //Jewish Day School ineligible
             int StatusValue = statusValue;
             int JewishSchool = 0, TimeInCamp = 0;
             DataSet dsJewishSchool,dsTimeInCamp;

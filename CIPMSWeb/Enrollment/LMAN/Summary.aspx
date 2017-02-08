@@ -29,7 +29,7 @@
                     </ul>
 		        </p>                
 		        <p>
-		            <span style="font-weight: bold; color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> If the camper currently attends Jewish day school, 
+		            <span style="font-weight: bold; color:red">ATTENTION Jewish Day School FAMILIES:</span> If the camper currently attends Jewish Day School, 
                     please DO NOT continue with this application and instead, be in touch with the camp directly: 718-436-8255 x107.
 		        </p>
                 <p>

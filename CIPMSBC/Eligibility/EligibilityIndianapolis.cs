@@ -348,7 +348,7 @@ namespace CIPMSBC.Eligibility
             //oCA.UpdateAmount(FJCID, Amount, 0, "");
 
             ////What kind of the school the camper go to
-            ////If Jewish day school is selected then a dropdown with 2 day school 
+            ////If Jewish Day School is selected then a dropdown with 2 day school 
 
             //DataSet dsSchoolOption;
             //dsSchoolOption = oCA.getCamperAnswers(FJCID, "1", "1", "7,17");

@@ -30,9 +30,9 @@
                     </ul>
 				</p>   
                 <p>
-                    <span style="font-weight: bold; color: red;">Attention Jewish day school families:</span> 
+                    <span style="font-weight: bold; color: red;">Attention Jewish Day School families:</span> 
                     The mission of the OHC program is exclusively an outreach initiative for children who are 
-                    not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are 
+                    not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School are 
                     not eligible for the OHC matching program, but they may be eligible for funds made directly available by the Jewish Federation. 
                     Campers in this category should not apply through the FJC website, but rather contact the Jewish Federation of Greater El Paso directly.                 
                 </p> 

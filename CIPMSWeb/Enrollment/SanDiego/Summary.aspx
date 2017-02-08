@@ -34,7 +34,7 @@
                     </ul>
 				</p>                
 				<p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or Yeshiva are not eligible for this program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or Yeshiva are not eligible for this program.
 				</p>
                 <p>
                     <span style="font-weight: bold;">Who is a First Time Camper?</span> First time campers are defined as any camper who is attending nonprofit Jewish overnight camp for the first time for 2 consecutive weeks (12 days) or longer. If the camper has previously attended a Jewish overnight camp for less than 2 weeks (12 days) he/she is still eligible.                   

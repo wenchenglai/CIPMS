@@ -18,7 +18,7 @@
         </tr>
         <tr>
           <td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                <p style="text-align:justify"><b>The Camp B地ai Brith of Ottawa One Happy Camper program, sponsored by Camp B地ai Brith of Ottawa and the Foundation for Jewish Camp provides grants of $1000 to first-time campers who attend Camp B'nai Brith of Ottawa for a minimum session of 19 consecutive days. Eligible campers must have completed grade 1 before camp begins and not be attending a Jewish day school at that time. If you are interested in learning more about Camp B'nai Brith of Ottawa, please visit us at   
+                <p style="text-align:justify"><b>The Camp B地ai Brith of Ottawa One Happy Camper program, sponsored by Camp B地ai Brith of Ottawa and the Foundation for Jewish Camp provides grants of $1000 to first-time campers who attend Camp B'nai Brith of Ottawa for a minimum session of 19 consecutive days. Eligible campers must have completed grade 1 before camp begins and not be attending a Jewish Day School at that time. If you are interested in learning more about Camp B'nai Brith of Ottawa, please visit us at   
                 <a href="http://www.cbbottawa.com" target="_blank">www.cbbottawa.com</a>.</b>
                 </p>
             </asp:Label></td>

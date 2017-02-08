@@ -173,30 +173,35 @@ public partial class HartfordPage2 : System.Web.UI.Page
                 {
                     iStatus = (int)StatusInfo.SystemInEligible;
                 }
-                else if (rdoNo160.Checked)
+                //else if (rdoNo160.Checked)
+                //{
+                //    // 2015-01-07 If Income is not less thant $160K, we make them ineligible.
+                //    iStatus = (int)StatusInfo.SystemInEligible;
+                //}
+                //else
+                //{
+                //    iStatus = (int) StatusInfo.SystemEligible;
+                //}
+
+                if (rdoFirstTimerNo.Checked || rdoFirstTimerNo11days.Checked)
                 {
-                    // 2015-01-07 If Income is not less thant $160K, we make them ineligible.
                     iStatus = (int)StatusInfo.SystemInEligible;
                 }
-                else
-                {
-                    iStatus = (int) StatusInfo.SystemEligible;
-                }
 
-                if (iStatus == (int)StatusInfo.SystemEligible)
-                {
-                    if (rdoFirstTimerNo.Checked)
-                    {
-                        if (rdoLastYearNo.Checked)
-                            iStatus = (int)StatusInfo.SystemInEligible;
-                        else if (rdoLastYearYes.Checked)
-                        {
-                            if (rdoNo160.Checked)
-                                iStatus = (int)StatusInfo.SystemInEligible;
-                        }
-                    }
-                }
-			}
+                //if (iStatus == (int)StatusInfo.SystemEligible)
+                //{
+                //    if (rdoFirstTimerNo.Checked)
+                //    {
+                //        if (rdoLastYearNo.Checked)
+                //            iStatus = (int)StatusInfo.SystemInEligible;
+                //        else if (rdoLastYearYes.Checked)
+                //        {
+                //            if (rdoNo160.Checked)
+                //                iStatus = (int)StatusInfo.SystemInEligible;
+                //        }
+                //    }
+                //}
+            }
 			Session["STATUS"] = iStatus.ToString();
 		}
 		Session["FJCID"] = hdnFJCIDStep2_2.Value;

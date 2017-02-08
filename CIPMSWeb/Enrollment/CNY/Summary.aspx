@@ -30,7 +30,7 @@
                 </p>  
 				<p>
                     <span style="color:red; font-weight:bold">Attention Jewish Day School families in Central New York:  </span> 
-                    If your child is currently enrolled in a Jewish day school, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org.
+                    If your child is currently enrolled in a Jewish Day School, please do NOT proceed with this application and instead contact Judith Stander at jstander@jewishfederationcny.org.
 				</p>
                 <p>
                     If your child is not eligible for this particular program and you are interested in learning about financial-needs based grants or other camper funding opportunities 

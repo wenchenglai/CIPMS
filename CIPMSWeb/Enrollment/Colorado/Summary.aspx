@@ -31,7 +31,7 @@
 				</p>   
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, 
-                    children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
+                    children who attend Jewish Day School or yeshiva are not eligible for this incentive program.                    
                 </p>
                 <p>
                     In Colorado, JCC Ranch Camp, Ramah of the Rockies, and Shwayder Camp provide needs-based scholarship and we encourage you to speak directly with the camps 

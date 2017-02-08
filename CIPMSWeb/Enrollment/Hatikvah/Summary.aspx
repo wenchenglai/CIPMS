@@ -31,7 +31,7 @@
                     </ul>
 				</p>   
                 <p>
-                    <span style="font-weight: bold; color: red;">Attention Jewish day school families:</span> If you are currently enrolled in Jewish day school or yeshiva, please contact the Camp Hatikvah office directly to learn about incentive grant opportunities. Please do not proceed with this application.
+                    <span style="font-weight: bold; color: red;">Attention Jewish Day School families:</span> If you are currently enrolled in Jewish Day School or yeshiva, please contact the Camp Hatikvah office directly to learn about incentive grant opportunities. Please do not proceed with this application.
                 </p> 
                 <p>
                     Camp Hatikvah is located in sunny Oyama, B.C. on beautiful Lake Kalamalka. Camp Hatikvah is the largest Jewish camp in Western Canada, is affiliated with the Young Judaea Youth Movement, and consistently operates at full capacity each summer. It not only attracts campers from the Vancouver Lower Mainland and other parts of British Columbia, but also from Alberta, Ontario, Washington, California, Oregon and even as far as Mexico and Switzerland. Approximately 400 Jewish children attend Camp Hatikvah each summer. Camp Hatikvah specializes in incorporating a traditional Jewish environment while offering the best in watersport activities; swimming, waterskiing, wake boarding, canoeing, kayaking, sailing and much more!

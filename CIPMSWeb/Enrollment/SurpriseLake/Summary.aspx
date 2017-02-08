@@ -43,7 +43,7 @@
          <tr>
           <td colspan="2"><asp:Label ID="Label5" CssClass="infotext3" runat="server">
                 <p style="text-align:justify">
-                 <font style="color:Red">If you are currently enrolled in Jewish day school or yeshiva, please contact the Surprise Lake Camp office directly to learn about incentive grant opportunities. Please do not proceed with this application. 
+                 <font style="color:Red">If you are currently enrolled in Jewish Day School or yeshiva, please contact the Surprise Lake Camp office directly to learn about incentive grant opportunities. Please do not proceed with this application. 
                  </font></p>
             </asp:Label></td>
         </tr>

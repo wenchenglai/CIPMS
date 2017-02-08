@@ -30,9 +30,8 @@
                     </ul>
 				</p> 
                 <p>
-                    <span style="color:red;">Attention Jewish day school families:</span> 
-                    Children currently enrolled in a Jewish day school are eligible for the Portland One Happy Camper program. Please continue with this application by clicking NEXT. Applications for Jewish day school students must be submitted by May 1 of each year.
-
+                    <span style="color:red;">Attention Jewish Day School families:</span> 
+                    Currently there is a wait list for camp incentive grants for Jewish Day School campers. Please send an email to Rachel Halupowski (rachel@jewishportland.org) indicating your interest and you will be added to the list. Funding decisions will be made in late May of 2017. Federation will do its best to provide a grant.
                 </p>  
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit 

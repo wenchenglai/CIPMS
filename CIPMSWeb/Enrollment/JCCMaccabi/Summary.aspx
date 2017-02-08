@@ -23,7 +23,7 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 4-11 (after camp).</li>
-                        <li>Children currently enrolled in a Jewish day school <span style="text-decoration: underline">are</span> eligible for the JCC Maccabi Sports Camp One Happy Camper program.</li>
+                        <li>Children currently enrolled in a Jewish Day School <span style="text-decoration: underline">are</span> eligible for the JCC Maccabi Sports Camp One Happy Camper program.</li>
                     </ul>
 		        </p>                
 		        <p>

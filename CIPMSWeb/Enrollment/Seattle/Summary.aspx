@@ -29,7 +29,7 @@
                     </ul>
 				</p> 
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or yeshiva are not eligible for this incentive program.
                 </p>
                 <p>
                     JFGS continues to offer its Jewish overnight camp needs-based scholarship program. Information about this program can be 

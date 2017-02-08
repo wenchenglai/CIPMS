@@ -30,7 +30,7 @@
         <tr>
           <td colspan="2"><asp:Label ID="Label3" CssClass="infotext3" runat="server">
                 <p style="text-align:justify">       
-        As the Campership Incentive Program is intended by the Foundation for Jewish Camp to be an outreach initiative, campers who attend Jewish day school are not eligible for the program.  The incentive program is aimed at increasing attendance at nonprofit Jewish overnight camp by Jewish children who might otherwise select a secular summer experience. The program is not to be looked upon as financial assistance, but as an incentive to choose the richness and warmth of a summer at Jewish overnight camp.
+        As the Campership Incentive Program is intended by the Foundation for Jewish Camp to be an outreach initiative, campers who attend Jewish Day School are not eligible for the program.  The incentive program is aimed at increasing attendance at nonprofit Jewish overnight camp by Jewish children who might otherwise select a secular summer experience. The program is not to be looked upon as financial assistance, but as an incentive to choose the richness and warmth of a summer at Jewish overnight camp.
                 </p>
             </asp:Label></td>
         </tr> 

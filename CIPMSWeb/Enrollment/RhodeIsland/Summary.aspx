@@ -16,7 +16,7 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    The Rhode Island One Happy Camper program, sponsored by the Jewish Alliance of Greater Rhode Island and the Foundation for Jewish Camp, is offering funding to non-Jewish day school, first-time campers who attend a non-profit Jewish overnight summer camp for at least 12 consecutive days. 
+                    The Rhode Island One Happy Camper program, sponsored by the Jewish Alliance of Greater Rhode Island and the Foundation for Jewish Camp, is offering funding to non-Jewish Day School, first-time campers who attend a non-profit Jewish overnight summer camp for at least 12 consecutive days. 
 				</p>
 				<p>
 				    The following outlines the eligibility criteria for this program:
@@ -29,7 +29,7 @@
 				</p>   
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, 
-                    daily Jewish experience. As such, children who attended Jewish day school or Yeshiva in the 
+                    daily Jewish experience. As such, children who attended Jewish Day School or Yeshiva in the 
                     academic year before camp or who will attend in the academic year following camp are not eligible for this grant program.                 
                 </p>
                 <p>

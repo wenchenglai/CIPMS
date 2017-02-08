@@ -356,7 +356,7 @@ public partial class Administration_Search_CamperSummary : System.Web.UI.Page
         }
         else if (schooltype == "4")
         {
-            lblSchoolType.Text = "Jewish day School";
+            lblSchoolType.Text = "Jewish Day School";
         }
         if (dsCamprDetails.Tables[1].Rows.Count > 0)
         {

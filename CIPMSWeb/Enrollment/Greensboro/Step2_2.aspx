@@ -118,7 +118,7 @@
                 <td valign="top" style="padding-bottom: 20px;">What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList ID="rdoSchoolType" onclick="PageValidator.OnSchoolDropDownChange(this);" runat="server" RepeatDirection="Horizontal" CssClass="QuestionText">
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Jewish Day School" Value="4"></asp:ListItem>
                     <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>
@@ -127,7 +127,7 @@
             <tr>
                 <td valign="top"><span class="InfoText">*</span>5</td>
                 <td valign="top">
-                    <asp:Label ID="Label22" runat="server" CssClass="QuestionText">Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u> attends: </asp:Label><br />
+                    <asp:Label ID="Label22" runat="server" CssClass="QuestionText">Please select the Jewish Day School that the camper <u><b>CURRENTLY</b></u> attends: </asp:Label><br />
                     <asp:DropDownList ID="ddlQ10" runat="server" onclick="PageValidator.OnJewishSchoolDropDownChange(this);" CssClass="dropdown">
                         <asp:ListItem Text="-- Select --" Value="0"></asp:ListItem>
                         <asp:ListItem Text="B’nai Shalom" Value="1"></asp:ListItem>
@@ -140,7 +140,7 @@
             <tr>
                 <td valign="top"></td>
                 <td valign="top">
-                    Please enter the name of the Jewish day school that the camper <u><b>CURRENTLY</b></u> attends:
+                    Please enter the name of the Jewish Day School that the camper <u><b>CURRENTLY</b></u> attends:
                     <asp:TextBox ID="txtJewishSchool" runat="server" CssClass="txtbox" />
                 </td>
             </tr>

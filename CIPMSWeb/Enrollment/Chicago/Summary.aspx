@@ -32,7 +32,7 @@
                     </ul>
 				</p>                
 				<p>
-                    This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. As such, children who attend Orthodox Jewish day school are generally not eligible for this incentive program, although exceptions do exist.
+                    This program is an outreach initiative for families who might otherwise choose to send their children to a non-Jewish overnight camp. As such, children who attend Orthodox Jewish Day School are generally not eligible for this incentive program, although exceptions do exist.
 				</p>
                 <p>
                     <span style="font-weight: bold; color:red;">Students at Orthodox Day Schools </span>

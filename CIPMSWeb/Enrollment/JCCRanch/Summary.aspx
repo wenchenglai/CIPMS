@@ -31,7 +31,7 @@
 				</p>   
                 <p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-                    As such, children who attend Jewish day school or yeshiva should contact us at 303-316-6384 for additional scholarship and grant opportunities.
+                    As such, children who attend Jewish Day School or yeshiva should contact us at 303-316-6384 for additional scholarship and grant opportunities.
                 </p> 
                 <p>
                     Since 1953, the Ranch Camp has served thousands of campers. The camp, which is owned and operated by the Robert E. Loup Jewish Community Center in Denver, 

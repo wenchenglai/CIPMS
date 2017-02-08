@@ -38,8 +38,8 @@
                     </ul>
 				</p>
                 <p>
-                    <span style="color:red; font-weight:bold" >Attention Jewish day school families: </span>
-                    Children currently enrolled in a Jewish day school are now eligible for the San Francisco One Happy Camper program. There are a limited number of grants available and they are first-come, first-serve. Please continue with this application by clicking NEXT.
+                    <span style="color:red; font-weight:bold" >Attention Jewish Day School families: </span>
+                    Children currently enrolled in a Jewish Day School are now eligible for the San Francisco One Happy Camper program. There are a limited number of grants available and they are first-come, first-serve. Please continue with this application by clicking NEXT.
                 </p>  
                 <p>
                     If your child is not eligible and/or you are interested in learning about financial need-based grants or other camper funding opportunities please visit

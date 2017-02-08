@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <td colspan="2"><asp:Label ID="Label1" CssClass="infotext3" runat="server">
-                  <p style="text-align:justify">If the camper currently attends Jewish day school, please DO NOT proceed with this application and instead, call Lajla LeBlanc at 781-244-5544 (<a href="mailto:lajla@nsteeninitiative.org" target="_blank">lajla@nsteeninitiative.org</a>) as there are separate funds available for day school campers.</p>          
+                  <p style="text-align:justify">If the camper currently attends Jewish Day School, please DO NOT proceed with this application and instead, call Lajla LeBlanc at 781-244-5544 (<a href="mailto:lajla@nsteeninitiative.org" target="_blank">lajla@nsteeninitiative.org</a>) as there are separate funds available for day school campers.</p>          
             </asp:Label></td>
         </tr>
         <tr>

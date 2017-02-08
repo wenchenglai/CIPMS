@@ -111,7 +111,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             }
             else
             {
-                strHTMLContent.Append("<tr width='100%'><td ><b>Jewish Day School : </b></td><td ><span style='color: Red;'>Children currently attending a Jewish day school or Yeshiva are not eligible.</span></td></tr>");
+                strHTMLContent.Append("<tr width='100%'><td ><b>Jewish Day School : </b></td><td ><span style='color: Red;'>Children currently attending a Jewish Day School or Yeshiva are not eligible.</span></td></tr>");
 
             }
 

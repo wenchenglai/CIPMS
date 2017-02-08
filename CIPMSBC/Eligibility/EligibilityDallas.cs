@@ -337,7 +337,7 @@ namespace CIPMSBC.Eligibility
 
             ////******************************************************************
             ////What kind of the school the camper go to
-            ////If Jewish day school is selected then a dropdown with 2 day school 
+            ////If Jewish Day School is selected then a dropdown with 2 day school 
             ////******************************************************************
 
             //DataSet dsSchoolOption;

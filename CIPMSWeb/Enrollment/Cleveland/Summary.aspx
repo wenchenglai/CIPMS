@@ -14,8 +14,8 @@
         <tr>
 			<td colspan="2">
 				<p>
-                    <span style="color:red; font-weight:bold">Attention Jewish day school families:  </span> <span style="font-weight:bold">
-                            If the camper currently attends Jewish day school, please do NOT proceed with this application and instead click    
+                    <span style="color:red; font-weight:bold">Attention Jewish Day School families:  </span> <span style="font-weight:bold">
+                            If the camper currently attends Jewish Day School, please do NOT proceed with this application and instead click    
                             </span><a href="https://goi.jecc.org/CampForm.aspx" target="_blank">here</a>.
 				</p>
                 <p>

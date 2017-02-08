@@ -10,7 +10,7 @@
 			<td>
 				<p><strong>Good news! You may be eligible for a One Happy Camper grant.</strong></p>    
 				<p>
-					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants are now open to Montreal children attending both Jewish and non-Jewish day schools!
+					To determine if you are eligible continue reading and if your camper meets the eligibility criteria, please proceed by clicking the "next" button below. One Happy Camper grants are now open to Montreal children attending both Jewish and non-Jewish Day Schools!
 				</p>
 			</td>
 		</tr>
@@ -28,7 +28,7 @@
 						<li>First time camper must be entering grades 1-11 (after camp).</li>
 						<li>Attending an eligible non-profit Jewish overnight camp in Canada.</li>
                         <li>Before your child can qualify for a grant, s/he must first be enrolled at an eligible camp.</li>
-                        <li>One Happy Camper for Jewish day school students is currently open only to campers registered at the following camps: Camp B’nai Brith Montreal, 
+                        <li>One Happy Camper for Jewish Day School students is currently open only to campers registered at the following camps: Camp B’nai Brith Montreal, 
                             Harry Bronfman Y Country Camp, Camp Kinneret-Biluim, and Camp Massad.</li>
                         <li>This is not a scholarship program. Grants are not based on financial need.</li>
 					</ul>

@@ -24,7 +24,7 @@
                         <li>First-time campers must be entering grades 4-11 (after camp).</li>
                     </ul>
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.                    
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or yeshiva are not eligible for this incentive program.                    
                 </p>
                 <p>
                     If your child is not eligible and/or is interested in learning about financial-needs based grants or other camper funding opportunities please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, or contact your local Jewish federation, camp or congregation.                     

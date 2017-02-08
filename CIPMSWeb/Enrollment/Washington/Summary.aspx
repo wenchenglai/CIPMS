@@ -50,7 +50,7 @@
                     <li>First-time campers must be entering grades 1-12 (after camp).</li>
                 </ul>             
 		        <p>
-		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+		            This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or yeshiva are not eligible for this incentive program.
 		        </p>
                 <p>
                     <u>Note:</u> 
@@ -85,7 +85,7 @@
                 </td>
             </tr>
         <tr>
-            <td valign="top">1. Does the camper attend Jewish day school?
+            <td valign="top">1. Does the camper attend Jewish Day School?
                 <div>
                     <asp:RadioButton ID="rdoYes" value="1" runat="server" GroupName="g" Text="Yes" CssClass="QuestionText" />
                     <asp:RadioButton ID="rdoNo" value="2" GroupName="g" runat="server" Text="No" CssClass="QuestionText" />

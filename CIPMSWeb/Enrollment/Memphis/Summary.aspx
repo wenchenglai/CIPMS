@@ -36,7 +36,7 @@
 				<asp:Label ID="Label2" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
 						This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-						As such, children who attend Jewish day school or Yeshiva are not eligible for this incentive program. 
+						As such, children who attend Jewish Day School or Yeshiva are not eligible for this incentive program. 
 						If you do not think that you are eligible for this program, and/or are interested in learning about camp scholarship opportunities, 
 						please visit <a href="http://www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a> or 
 						contact the Jewish Foundation of Memphis directly at 901-374-0400.</p>            

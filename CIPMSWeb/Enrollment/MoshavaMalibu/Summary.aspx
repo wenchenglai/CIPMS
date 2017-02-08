@@ -28,7 +28,7 @@ The Foundation for Jewish Camp, in partnership with Moshava California, offers i
 				</p>   
                 <p>
 This incentive cannot be combined with other discounts or promotions offered by Moshava California. 
-                    It is only available to children who do not attend Jewish day school. These funds are limited and may run out at any time without notice. 
+                    It is only available to children who do not attend Jewish Day School. These funds are limited and may run out at any time without notice. 
 
                 </p> 
                 <p>

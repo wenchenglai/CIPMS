@@ -31,7 +31,7 @@
 				</p>                
 				<p>
                     This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. 
-                    As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    As such, children who attend Jewish Day School or yeshiva are not eligible for this incentive program.
 				</p>
                 <p>
                     If you do not think that you are eligible for this program, but are interested in learning about camp scholarship opportunities, 

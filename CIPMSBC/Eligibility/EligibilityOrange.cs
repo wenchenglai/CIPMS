@@ -177,7 +177,7 @@ namespace CIPMSBC.Eligibility
 
 
             ////What kind of the school the camper go to
-            ////Jewish day school ineligible
+            ////Jewish Day School ineligible
 
             //DataSet dsJewishSchool;
             //dsJewishSchool = oCA.getCamperAnswers(FJCID, "7", "7", "N");

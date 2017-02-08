@@ -352,7 +352,7 @@ public partial class Step2_Chicago_2 : System.Web.UI.Page
 					txtSchoolName.Text = dr["Answer"].ToString();
 				}
 			}
-			else if (qID == 17) // Select the Jewish day school
+			else if (qID == 17) // Select the Jewish Day School
 			{
 				if (!dr["OptionID"].Equals(DBNull.Value))
 				{

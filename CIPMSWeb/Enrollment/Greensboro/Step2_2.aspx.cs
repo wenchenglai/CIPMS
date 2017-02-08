@@ -430,7 +430,7 @@ public partial class Step2_GreensBoro_2 : System.Web.UI.Page
             strTablevalues += strQId + strFSeparator + rdoSchoolType.SelectedValue + strFSeparator + rdoSchoolType.SelectedItem.Text + strQSeparator;
         }
 
-        //for Jewish Day school selected
+        //for Jewish Day School selected
         strQId = ((int)QuestionId.SelectJewishDaySchool).ToString();
         strTablevalues += strQId + strFSeparator + ddlQ10.SelectedValue + strFSeparator + txtJewishSchool.Text.Trim() +strQSeparator;
 

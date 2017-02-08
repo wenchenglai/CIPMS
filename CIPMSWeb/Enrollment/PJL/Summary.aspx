@@ -23,7 +23,7 @@
                     first-time campers at participating nonprofit Jewish overnight camps. Complete PJ Goes to Camp program rules can be found on the PJ Goes to Camp web page <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a>. 
 				</p>                
 				<p>
-				    <span style="font-weight: bold; color:red;">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> 
+				    <span style="font-weight: bold; color:red;">ATTENTION Jewish Day School FAMILIES:</span> 
                     All Summer 2017 PJ Goes To Camp Incentive Grants for students currently enrolled in day school will be distributed through a lottery that will take place on November 14, 2016. 
                     Please send all inquiries to pjgtc@hgf.org. See <a href="http://www.pjlibrary.org/pjgtc" target="_blank">www.pjlibrary.org/pjgtc</a> for full details and eligibility. 
 				</p>
@@ -114,7 +114,7 @@
 				</p>
                  <p style="text-align:justify">
 					Our waiting list for Jewish Day School Families is now CLOSED.  
-					We do not anticipate any additional funding for grants to Jewish day school children for the 2014 Camp Session. 
+					We do not anticipate any additional funding for grants to Jewish Day School children for the 2014 Camp Session. 
 				</p>					
                 <p style="text-align:justify">
 					If your child does not go to camp this summer and you would like to be notified of opening times of the 

@@ -24,7 +24,7 @@
                     </ul>
 				</p> 
                 <p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school or yeshiva are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School or yeshiva are not eligible for this incentive program.
                 </p>
                 <p>
                     To learn more about these URJ camps, please visit the camp websites by clicking on the camp names below. If you are ready to continue your application, please press the “next” button. 

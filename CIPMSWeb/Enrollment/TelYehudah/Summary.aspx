@@ -28,7 +28,7 @@
                     </ul>
 				</p>   
                 <p>
-                    <strong><u>Note:</u></strong> Teens who currently attend a Jewish day school or Yeshiva are eligible for program.
+                    <strong><u>Note:</u></strong> Teens who currently attend a Jewish Day School or Yeshiva are eligible for program.
                 </p> 
                 <p>
                     <strong>Havurah at Camp Tel Yehudah</strong> is a program for teens from the Russian-speaking Jewish (RSJ) community of North America. It offers participants a unique opportunity to spend the summer with other teens from a similar background to their own and learn about their commonalities; simultaneously it offers a welcoming approach to the diverse Jewish community of North America where they discover similarities as well. The Havurah model is distinctive in its ability to create an open and safe dialogue between the RSJ community and the broader American Jewish community. Havurah is a three and a half week immersive Jewish experience which balances friendship, community, connection to Israel, and [Russian]-Jewish heritage on a daily basis.

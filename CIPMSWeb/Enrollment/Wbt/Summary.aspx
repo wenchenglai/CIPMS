@@ -21,7 +21,7 @@
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 3-10 (after camp).</li>
                         <li>Camper must not have attended a Jewish overnight camp for 12 or more days</li>
-                        <li>Campers enrolled in Jewish day schools are eligible</li>
+                        <li>Campers enrolled in Jewish Day Schools are eligible</li>
                     </ul>
 				</p>                
 				<p>

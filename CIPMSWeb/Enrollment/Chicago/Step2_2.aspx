@@ -64,7 +64,7 @@
                 What kind of school does the camper <u><b>CURRENTLY</b></u> attend?<br />
                 <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="PageValidator.OnSchoolDropDownChange(this);">
                     <asp:ListItem Text="Public" Value="2" />
-                    <asp:ListItem Text="Jewish day School" Value="4" />
+                    <asp:ListItem Text="Jewish Day School" Value="4" />
                     <asp:ListItem Text="Private (secular) School" Value="1" />
                     <asp:ListItem Text="Home School" Value="3" />
                 </asp:RadioButtonList>
@@ -73,7 +73,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>6</td>
             <td valign="top">
-                Please select the Jewish day school that the camper <u><b>CURRENTLY</b></u>attends:<br />
+                Please select the Jewish Day School that the camper <u><b>CURRENTLY</b></u>attends:<br />
                 <asp:DropDownList ID="ddlJewishDaySchool" runat="server" CssClass="dropdown" onclick="PageValidator.OnJDSchoolDropDownChange(this);">
                     <asp:ListItem Text="-- Select --" Value="0" />                            
                     <asp:ListItem Text="Bernard Zell Anshe Emet Day School" Value="4" />
@@ -90,7 +90,7 @@
 				
 			</td>  
 			<td valign="top" >
-					If other, enter the name of the Jewish day school the camper currently attends: 
+					If other, enter the name of the Jewish Day School the camper currently attends: 
 					<asp:TextBox ID="txtJewishSchool" runat="server" CssClass="txtbox" />
             </td>
         </tr> 

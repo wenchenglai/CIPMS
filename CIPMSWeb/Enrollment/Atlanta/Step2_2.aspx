@@ -17,7 +17,7 @@
         <tr>
             <td valign="top"><span class="InfoText">*</span>1</td>
             <td valign="top">
-                Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 11 consecutive days or longer? (If you are attending Camp Judaea’s Taste of Session please select “Yes?to this question)
+                Will this be the camper’s first-time attending a nonprofit Jewish overnight camp for 11 consecutive days or longer? (If you are attending Camp Judaea’s Taste of Session please select "Yes" to this question)
                 <div>
                     <asp:RadioButton ID="rdoFirstTimerYes" value="1" GroupName="rdoFirstTimer" runat="server" Text="Yes" onclick="PageValidator.OnFirstTimerChange(this);" />
                     <asp:RadioButton ID="rdoFirstTimerNo" value="2" GroupName="rdoFirstTimer" runat="server" Text="No" onclick="PageValidator.OnFirstTimerChange(this);" />
@@ -31,7 +31,7 @@
                 </div>
             </td>
         </tr>
-        <tr id="1b">
+        <tr id="Old1b" runat="server" visible="false">
             <td valign="top"><span class="InfoText">*</span>1a</td>
             <td valign="top">Did your camper receive a One Happy Camper last year through the Jewish Federation of Greater Atlanta? 
             <div>
@@ -40,7 +40,7 @@
             </div>
             </td>
         </tr>
-        <tr id="1c">
+        <tr id="Old1c" runat="server" visible="false">
             <td valign="top"><span class="InfoText">*</span>1b</td>
             <td valign="top">Is your combined gross household income $160,000 or less? 
             <div>
@@ -64,7 +64,7 @@
                 What kind of school does the camper <b><u>CURRENTLY</u></b> attend?
                 <asp:RadioButtonList CssClass="QuestionText" ID="rdoSchoolType" runat="server" RepeatDirection="Horizontal" onclick="SchoolValidator.OnSchoolDropDownChange(this);" >
                     <asp:ListItem Text="Public" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Jewish day School" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Jewish Day School" Value="4"></asp:ListItem>
                     <asp:ListItem Text="Private (secular) School" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Home School" Value="3"></asp:ListItem>
                 </asp:RadioButtonList>

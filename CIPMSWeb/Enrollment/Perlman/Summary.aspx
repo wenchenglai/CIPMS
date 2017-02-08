@@ -27,7 +27,7 @@
                         <li>$1,000 grants awarded to first-time campers attending camp for 19 or more consecutive days.</li>
                         <li>$700 grants awarded to first-time campers attending camp for 12-18 consecutive days.</li>
                         <li>First time camper must be entering grades 2-12 (after camp).</li>
-                        <li>Campers who attend public or private school (including Jewish day school) are eligible.</li>
+                        <li>Campers who attend public or private school (including Jewish Day School) are eligible.</li>
                     </ul>
 		        </p>                
 		        <p>

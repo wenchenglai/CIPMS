@@ -29,7 +29,7 @@
                     </ul>
 				</p>                
 				<p>
-                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish day school are not eligible for this incentive program.
+                    This program is an outreach initiative for children who are not currently receiving an immersive, daily Jewish experience. As such, children who attend Jewish Day School are not eligible for this incentive program.
 				</p>
                 <p>
                     If your child is not eligible and/or are interested in learning about financial need-based grants or other camper funding opportunities please visit <a href="www.JewishCamp.org/Scholarships" target="_blank">www.JewishCamp.org/Scholarships</a>, contact your camp, reach out to your synagogue (if you belong to one) or contact Tziporah Altman-Shafer at tziporaha@milwaukeejewish.org.                    

@@ -31,8 +31,8 @@
 		            This grant is NOT NEED BASED. Where need is demonstrated, this grant may be combined with other tuition incentives and scholarship. 
 		        </p>
                 <p>
-                    <span style="font-weight: bold; color:red">ATTENTION JEWISH DAY SCHOOL FAMILIES:</span> 
-                    If the camper currently attends Jewish day school, please do NOT continue with this application and instead, contact the camp directly at 973-287-7264.
+                    <span style="font-weight: bold; color:red">ATTENTION Jewish Day School FAMILIES:</span> 
+                    If the camper currently attends Jewish Day School, please do NOT continue with this application and instead, contact the camp directly at 973-287-7264.
                 </p>
                 <p>
                     At Camp Louemma we offer an exciting and dynamic program with a wide variety of elective and scheduled activities. Our incredibly friendly, nurturing and talented staff members give each camper the opportunity to explore his or her interests, enhance existing talents and learn new skills. Whether it’s on our athletic fields, tennis or basketball courts, private lake, swimming pool, at our theatre, mini golf course; atop our climbing tower and zip line, ropes courses, or at arts & crafts/ceramics, the game room, bake shop, or radio station, our instructors focus on each camper’s personal achievement while offering encouragement at the same time.

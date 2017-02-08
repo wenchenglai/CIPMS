@@ -43,7 +43,7 @@ To determine if you are eligible continue reading and if your camper meets the e
         <tr>
           <td colspan="2"><asp:Label ID="Label5" CssClass="infotext3" runat="server">
                 <p style="text-align:justify" >
-        If you are currently enrolled in a Jewish day school please do not continue with this application, rather contact Camp Laurelwood directly at (203) 421-3736 or director@camplaurelwood.org.</p>
+        If you are currently enrolled in a Jewish Day School please do not continue with this application, rather contact Camp Laurelwood directly at (203) 421-3736 or director@camplaurelwood.org.</p>
             </asp:Label></td>
         </tr>
         <tr>

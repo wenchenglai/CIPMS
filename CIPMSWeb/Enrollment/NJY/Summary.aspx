@@ -42,7 +42,7 @@
 							<td colspan="2">
 								<asp:Label ID="Label17" runat="server" CssClass="infotext3">
 									<p style="text-align:justify;color:Red">
-										If you are currently enrolled in Jewish day school or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
+										If you are currently enrolled in Jewish Day School or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
 									</p>
 								</asp:Label>
 							</td>
@@ -81,7 +81,7 @@
 							<td colspan="2">
 								<asp:Label ID="Label6" runat="server" CssClass="infotext3">
 									<p style="text-align:justify;color:Red">
-										If you are currently enrolled in Jewish day school or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
+										If you are currently enrolled in Jewish Day School or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
 									</p>
 								</asp:Label>
 							</td>
@@ -124,7 +124,7 @@
 							<td colspan="2">
 								<asp:Label ID="Label11" runat="server" CssClass="infotext3">
 									<p style="text-align:justify;color:Red">
-										If you are currently enrolled in Jewish day school or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
+										If you are currently enrolled in Jewish Day School or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
 									</p>
 								</asp:Label>
 							</td>
@@ -170,7 +170,7 @@
 							<td colspan="2">
 								<asp:Label ID="lblLable3" runat="server" CssClass="infotext3">
 									<p style="text-align:justify;color:Red">
-										If you are currently enrolled in Jewish day school or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
+										If you are currently enrolled in Jewish Day School or yeshiva, please contact New Jersey Y Camps directly to learn about incentive grant opportunities.  Please do not proceed with this application.
 									</p>
 								</asp:Label>
 							</td>

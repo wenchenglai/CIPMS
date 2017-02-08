@@ -24,19 +24,24 @@
                 <p>
                     To determine if you are eligible for a One Happy Camper grant please read below. If you believe that your camper meets the criteria please proceed with the application by clicking the "next" button below.
                 </p>
+                <p>
+                    <strong><span style="color:red">Please note:</span> All funding for Day School Families has been allocated.</strong>
+                </p>
 		        <p>
 			        The following outlines the eligibility criteria for this One Happy Camper program:
                 </p>
 
                 <ul style="font-weight: bold; list-style-type: disc">
                     <li>$1,000 grants awarded to first-time campers attending a Jewish overnight camp for 19 or more consecutive days.</li>
-                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 11-18 consecutive days.<span style="color:red">(If you are attending Camp Judaea’s Taste of Session you are eligible for a $700 grant)</span></li>
-                    <li>$500 grant awarded to second-time campers attending a Jewish overnight camp for 19+ consecutive days (for those that make under $160,000 a year)</li>
-                    <li>$350 grant awarded to second-time campers attending a Jewish overnight camp for 11-18 consecutive days (for those that make under $160,000 a year)</li>
+                    <li>$700 grants awarded to first-time campers attending a Jewish overnight camp for 11-18 consecutive days.
+                        <span style="color:red">(If you are attending Camp Judaea’s Taste of Session you are eligible for a $700 grant)</span></li>
                     <li>Eligible campers must be entering grades 1-12 (after camp).</li>
                     <li>Attend one of the 155+ non-profit, Jewish, overnight summer camps listed on the Foundation for Jewish Camp's website (<a href="http://www.JewishCamp.org/Find-Camp" target="_blank">www.JewishCamp.org/Find-Camp</a>).</li>
                 </ul>
-		                  
+		       <p>
+                   <strong><span style="color:red">Second Year Campers:</span></strong> there is currently a waitlist for second year camper grants.  
+                   Please contact Samantha Tanenbaum at stanenbaum@jewishatlanta.org for more information.
+		       </p>
                <p>
                     If you need additional assistance, please call your community professional listed at the bottom of this page.
                 </p>

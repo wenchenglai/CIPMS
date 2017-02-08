@@ -25,7 +25,7 @@
         </tr>
         <tr>
           <td colspan="2"><asp:Label ID="Label3" CssClass="infotext3" runat="server">
-                  <p style="text-align:justify">Multiple children from a single family are eligible to receive separate grants and will be considered separate grantees. The One Happy Camper program is an outreach initiative for children who do not currently receive an immersive, daily Jewish experience. As such, Jewish day school students are not eligible for this incentive program. If you do not think you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit the Foundation for Jewish Camp website noted above, or your camp.</p>            
+                  <p style="text-align:justify">Multiple children from a single family are eligible to receive separate grants and will be considered separate grantees. The One Happy Camper program is an outreach initiative for children who do not currently receive an immersive, daily Jewish experience. As such, Jewish Day School students are not eligible for this incentive program. If you do not think you are eligible for this program, but are interested in learning about camp scholarship opportunities, please visit the Foundation for Jewish Camp website noted above, or your camp.</p>            
             </asp:Label></td>
         </tr> 
         <tr>

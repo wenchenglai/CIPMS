@@ -26,7 +26,7 @@
                 permanent resident of New York City, Long Island, or Westchester. </p>                
                 <p style="text-align:justify"><b>Campership seeks to provide children who do not have an 
                 immersive Jewish experience a chance to strengthen and build their Jewish identity, 
-                and therefore children who attend Jewish day school or Yeshiva are not eligible.</b></p>
+                and therefore children who attend Jewish Day School or Yeshiva are not eligible.</b></p>
                 <p style="text-align:justify"><b>In order to apply, campers will need to meet with a local synagogue or JCC to obtain a referral 
                 code</b> (a complete list of synagogues and JCC’s can be found at <a href="http://www.ujafedny.org" target= "_blank" >www.ujafedny.org</a> ). 
                 If you do not think you qualify for Campership, please visit <a href="http://www.JewishCamp.org/Scholarships" target= "_blank" >www.JewishCamp.org/Scholarships</a> 
