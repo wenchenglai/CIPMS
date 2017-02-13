@@ -446,21 +446,14 @@ public partial class Step2_Chi_3 : Page
     {
         DataSet dsCamps;
 
-        if (fedId == "0")
-        {
-            dsCamps = objGeneral.get_AllCamps(CampYear);
-        }
-        else
-        {
-            dsCamps = objGeneral.GetFedCamps(fedId,CampYear);
-        }
+        dsCamps = objGeneral.get_AllCamps(Master.CampYear);
+
 
         ddlCamp.DataSource = dsCamps;
         ddlCamp.DataTextField = "Camp";
-        ddlCamp.DataValueField = "CampID";
+        ddlCamp.DataValueField = "ID";
         ddlCamp.DataBind();
         ddlCamp.Items.Insert(0, new ListItem("-- Select --", "0"));
-        ddlCamp.Items[1].Selected = true;
 
     }
 

@@ -50,8 +50,8 @@
                     </asp:Panel>
                 </td>
                 <td>
-                    <asp:Panel ID="PnlQ8_2_2" Enabled="false" runat="server" width="100%">
-                        <asp:DropDownList ID="ddlCamp"  Enabled="false" runat="server" CssClass="dropdown" AutoPostBack="false">
+                    <asp:Panel ID="PnlQ8_2_2" Enabled="true" runat="server" width="100%">
+                        <asp:DropDownList ID="ddlCamp"  Enabled="true" runat="server" CssClass="dropdown" AutoPostBack="false">
                         </asp:DropDownList>
                     </asp:Panel>
                 </td>
