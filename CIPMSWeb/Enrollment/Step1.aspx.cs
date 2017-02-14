@@ -330,7 +330,19 @@ public partial class Step1 : System.Web.UI.Page
 				strFedId = pjlId;
 			}
 		}
-		else
+        else if (txtSplCode.Text != string.Empty && Convert.ToInt32(Session["codeValue"]) == 11)
+        {
+            // 2017-02-08 Oshman Family is like PJ, special code will route directly if no community program applies
+            strNextURL = strNationalURL;
+            if (!redirectionLogic.BeenToPJL)
+            {
+                string fid = ((int)FederationEnum.Oshman).ToString();
+                strNextURL = "~/Enrollment/Oshman/Summary.aspx";
+                Session["FedId"] = fid;
+                strFedId = fid;
+            }
+        }
+        else
 		{
             // when the zip code has no any program associated with, and has no PJL special code, we come here e.g. 48105
 			strNextURL = strNationalURL;
@@ -1880,7 +1892,12 @@ public partial class Step1 : System.Web.UI.Page
 			Session["codeValue"] = 1;
 			Session["SpecialCodeValue"] = currentCode;
 		}
-		else if (currentCode.ToUpper().Contains("NLP"))//NL code
+        else if (currentCode.ToUpper().Contains("2017PA"))//PJLCode
+        {
+            Session["codeValue"] = 11;
+            Session["SpecialCodeValue"] = currentCode;
+        }
+        else if (currentCode.ToUpper().Contains("NLP"))//NL code
 		{
 			Session["codeValue"] = CodeNLP;
 		}
