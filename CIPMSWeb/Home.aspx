@@ -224,148 +224,181 @@ var rlArgs = {"script":"tosrus","selector":"lightbox","customEvents":"","activeG
 
 
   <!-- //////////////////////////////// BEGIN CONTENT HERE //////////////////////////////// -->
-                                    <form id="formLogin" runat="server" style="display:block">
-                                        <div id="Div1">
+        <form id="formLogin" class="wForm" runat="server" style="display:block">
+ 
+            <div class="content_head" id="ohc_apply3">
+                <h1 class="sifr">Let's Get Started</h1>
+            </div>
 
-                                            <!-- .content_head -->
-                                            <div class="content_head" id="ohc_apply3">
-                                                <h1 class="sifr">Let's Get Started</h1>
-                                            </div>
-                                            <!-- /.content_head -->
-                                            <!-- .content_belly -->
-                                            <div class="content_belly clear">
+            <div class="content_belly clear">
 
-                                                <!-- .block -->
-                                                <div class="block">
+                <!-- .block -->
+                <div class="block">
 
-                                                    <div id="main" class="shadow">
-                                                        <div id="subcontent">
+                    <div id="main" class="shadow">
+                        <div id="subcontent">
 
-                                                            <script language="javascript" type="text/javascript">
-                                                                function RemovePasswordValidation() {
-                                                                    var PasswordValidator = document.getElementById('<%=rfvPwd.ClientID %>');
-                                                                    alert(PasswordValidator.id)
+                            <script language="javascript" type="text/javascript">
+                                function RemovePasswordValidation() {
+                                    var PasswordValidator = document.getElementById('<%=rfvPwd.ClientID %>');
+                                    alert(PasswordValidator.id)
 
-                                                                }
-                                                            </script>
+                                }
+                            </script>
 
-                                                            <div id="application_col1">
-                                                                <h4 style="font-weight:normal; margin-top:0em;">
-                                                                    Tips before you begin:
-                                                                </h4>
-                                                                <ol class="olBullets">
-                                                                    <li>
-                                                                        Be sure you have carefully reviewed the <a class="aColor" href="http://www.jewishcamp.org/one-happy-camper/eligibility"
-                                                                                                                    target="_blank">eligibility</a> criteria.
-                                                                    </li>
-                                                                    <li>
-                                                                        Have your camp and session information readily available as you will need both to
-                                                                        complete your application.
-                                                                    </li>
-                                                                    <li>
-                                                                        Need help selecting a camp? <a class="aColor" href="http://www.jewishcamp.org/find-camp"
-                                                                                                        target="_blank">Find a camp</a> that's right for you.
-                                                                    </li>
-                                                                </ol>
-                                                                <p class="pTips">
-                                                                    Russian-speakers please call:<br />
-                                                                    646-278-4572 for assistance in Russian.
-                                                                </p>
-                                                            </div>
-                                                            <div id="application_col2">
+                            <div id="application_col1">
+                                <h4 style="font-weight:normal; margin-top:0em;">
+                                    Tips before you begin:
+                                </h4>
+                                <ol class="olBullets">
+                                    <li>
+                                        Be sure you have carefully reviewed the <a class="aColor" href="http://www.jewishcamp.org/one-happy-camper/eligibility"
+                                                                                    target="_blank">eligibility</a> criteria.
+                                    </li>
+                                    <li>
+                                        Have your camp and session information readily available as you will need both to
+                                        complete your application.
+                                    </li>
+                                    <li>
+                                        Need help selecting a camp? <a class="aColor" href="http://www.jewishcamp.org/find-camp"
+                                                                        target="_blank">Find a camp</a> that's right for you.
+                                    </li>
+                                </ol>
+                                <p class="pTips">
+                                    Russian-speakers please call:<br />
+                                    646-278-4572 for assistance in Russian.
+                                </p>
+                            </div>
+                            <div id="application_col2">
 
-                                                                <p>
-                                                                    <asp:Label ID="lblErr" runat="server" CssClass="InfoText" />
-                                                                    <asp:ValidationSummary ID="vldsumErr1" runat="server" CssClass="vldsumErr"></asp:ValidationSummary>
-                                                                </p>
-                                                                <asp:Label ID="lblUAT" runat="server" ForeColor="Red" Font-Size="Large" Text="CAMPER UAT" Visible="false"></asp:Label>
-                                                                <p style="width:500px">New to One Happy Camper? Create an Account:</p>
-                                                                <asp:Panel runat="server" DefaultButton="btnSubmit1" ID="pnlRegistration">
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:54px">Enter  Email: </span>
-                                                                        <asp:TextBox ID="txtEmail1" runat="server" CssClass="txtEmail1" Width="150px" MaxLength="150" />
-                                                                        <asp:RequiredFieldValidator ID="rfvEmailNew" runat="server" ControlToValidate="txtEmail1" Display="None" ErrorMessage="Please enter Email ID" />
-                                                                        <asp:RegularExpressionValidator ID="revEmailNew" runat="server" ControlToValidate="txtEmail1" Display="None" ErrorMessage="Please enter a valid e-mail ID" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
-                                                                    </div>
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:35px">Confirm  Email:</span>
-                                                                            <asp:TextBox ID="txtCfrmEmail" runat="server" CssClass="txtbox1" Width="150px" MaxLength="150" />
-                                                                            <asp:RequiredFieldValidator ID="rfvCfrmEmail" runat="server" ControlToValidate="txtCfrmEmail" Display="None" ErrorMessage="Please enter confirm Email ID" />
-                                                                            <asp:RegularExpressionValidator ID="revCfrmEmail" runat="server" ControlToValidate="txtCfrmEmail" Display="None" ErrorMessage="Please enter a valid e-mail ID" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
-                                                                            <asp:CompareValidator ID="cmprEmail" runat="server" ErrorMessage="Please confirm Email ID" ControlToValidate="txtCfrmEmail" ControlToCompare="txtEmail1" Display="None" />
+                                <p>
+                                    <asp:Label ID="lblErr" runat="server" CssClass="InfoText" />
+                                    <asp:ValidationSummary ID="vldsumErr1" runat="server" CssClass="vldsumErr"></asp:ValidationSummary>
+                                </p>
+                                <asp:Label ID="lblUAT" runat="server" ForeColor="Red" Font-Size="Large" Text="CAMPER UAT" Visible="false"></asp:Label>
+                                <p style="width:500px">New to One Happy Camper? Create an Account:</p>
+                                <table style="border-spacing: 5px;">
+                                    <tr style="padding:5px" >
+                                        <td style="padding:5px"><span >Enter  Email: </span></td>
+                                        <td>
+                                            <asp:TextBox ID="txtEmail1" runat="server" CssClass="txtEmail1" Width="200" MaxLength="250" />
+                                            <asp:RequiredFieldValidator ID="rfvEmailNew" runat="server" ControlToValidate="txtEmail1" Display="None" ErrorMessage="Please enter Email ID" />
+                                            <asp:RegularExpressionValidator ID="revEmailNew" runat="server" ControlToValidate="txtEmail1" Display="None" ErrorMessage="Please enter a valid e-mail ID" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
+                                   
+                                        </td>
+                                    </tr>
+                                    <tr style="padding:5px">
+                                        <td style="padding:5px"><span >Confirm  Email:</span></td>
+                                        <td>
+                                             <asp:TextBox ID="txtCfrmEmail" runat="server" CssClass="txtbox1" Width="200" MaxLength="150" />
+                                            <asp:RequiredFieldValidator ID="rfvCfrmEmail" runat="server" ControlToValidate="txtCfrmEmail" Display="None" ErrorMessage="Please enter confirm Email ID" />
+                                            <asp:RegularExpressionValidator ID="revCfrmEmail" runat="server" ControlToValidate="txtCfrmEmail" Display="None" ErrorMessage="Please enter a valid e-mail ID" ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
+                                            <asp:CompareValidator ID="cmprEmail" runat="server" ErrorMessage="Please confirm Email ID" ControlToValidate="txtCfrmEmail" ControlToCompare="txtEmail1" Display="None" />
                                                                 
-                                                                    </div>
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:14px">Create Password:</span>
-<asp:TextBox ID="txtPwd1" runat="server" TextMode="Password" CssClass="txtPwd" Width="150px" MaxLength="50" />
-                                                                            <asp:RequiredFieldValidator ID="rfvPwd1" runat="server" ControlToValidate="txtPwd1" Display="None" ErrorMessage="Please enter Password" />
+
+                                        </td>
+                                    </tr>
+
+                                    <tr style="padding:5px">
+                                        <td style="padding:5px"><span >Create Password:</span></td>
+                                        <td>
+
+                                                 <asp:TextBox ID="txtPwd1" runat="server" TextMode="Password" CssClass="txtPwd" Width="200" MaxLength="50" />
+                                            <asp:RequiredFieldValidator ID="rfvPwd1" runat="server" ControlToValidate="txtPwd1" Display="None" ErrorMessage="Please enter Password" />
                                                                    
-                                                                    </div>
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:3px">Confirm Password:</span>
-  
-                                                                            <asp:TextBox ID="txtPwd2" runat="server" TextMode="Password" CssClass="txtPwd" Width="150px" MaxLength="50" />
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPwd2" Display="None" ErrorMessage="Please confirm password" />
-                                                                            <asp:CompareValidator ID="adf" runat="server" ControlToCompare="txtPwd1" ControlToValidate="txtPwd2" Display="None" ErrorMessage="Passwords don't match" />
+                                        </td>
+                                    </tr>
+
+                                    <tr style="padding:5px">
+                                        <td style="padding:5px"><span style="margin-right:3px">Confirm Password:</span></td>
+                                        <td>
+                                              <asp:TextBox ID="txtPwd2" runat="server" TextMode="Password" CssClass="txtPwd" Width="200" MaxLength="50" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtPwd2" Display="None" ErrorMessage="Please confirm password" />
+                                            <asp:CompareValidator ID="adf" runat="server" ControlToCompare="txtPwd1" ControlToValidate="txtPwd2" Display="None" ErrorMessage="Passwords don't match" />
                                                                 
-                                                                    </div>
-                                                                    <div>
-                                                                        <asp:Button ID="btnSubmit1" runat="server" Text="Register>>" Width="100px" OnClick="btnSubmit1_Click" />
-                                                                    </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="padding:5px"><asp:Button ID="btnSubmit1" runat="server" Text="Register>>" Width="100px" OnClick="btnSubmit1_Click" /></td>
+                                        <td>
 
 
-                                                                </asp:Panel>
-                                                                <p>
-                                                                    <asp:ValidationSummary ValidationGroup="Submit" ID="vldsumErr" runat="server" CssClass="vldsumErr" />
-                                                                    <asp:ValidationSummary ValidationGroup="forgot" ID="ValidationSummary1" runat="server" CssClass="vldsumErr" />
-                                                                </p>
-                                                                <p>Already have an account? Sign in:</p>
-                                                                <asp:Panel runat="server" DefaultButton="btnSubmit" ID="pnlLogin">
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:34px">Email:</span>
-                                                                            <asp:TextBox MaxLength="150" ID="Email" runat="server" CssClass="txtbox1" />
-                                                                            <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvEmail" runat="server" ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
-                                                                            <asp:RegularExpressionValidator ValidationGroup="Submit" ID="revEmail" runat="server"
-                                                                                                            ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
-                                                                                                            ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
-                                                                            <asp:RequiredFieldValidator ValidationGroup="forgot" ID="rfvEmail1" runat="server"
-                                                                                                        ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
-                                                                            <asp:RegularExpressionValidator ValidationGroup="forgot" ID="revEmail1" runat="server"
-                                                                                                            ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
-                                                                                                            ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
+                                        </td>
+                                    </tr>
+                                </table>
 
-                                                                    </div>
-                                                                    <div style="margin-bottom:5px;">
-                                                                        <span style="margin-right:3px">Password:</span>
+     
 
-                                                                            <asp:TextBox TextMode="Password" MaxLength="50" ID="Password" runat="server" CssClass="txtbox1" />
-                                                                            <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvPwd" runat="server" ControlToValidate="Password" Display="None" ErrorMessage="Please enter Password" />
+
+
+                                <p>
+                                    <asp:ValidationSummary ValidationGroup="Submit" ID="vldsumErr" runat="server" CssClass="vldsumErr" />
+                                    <asp:ValidationSummary ValidationGroup="forgot" ID="ValidationSummary1" runat="server" CssClass="vldsumErr" />
+                                </p>
+                                <p>Already have an account? Sign in:</p>
+                                    <table>
+                                        <tr>
+                                            <td style="padding:5px">
+                                                <span style="margin-right:34px">Email:</span>
+                                            </td>
+                                            <td>
+                                                      <asp:TextBox MaxLength="150" ID="Email" runat="server" CssClass="txtbox1" />
+                                            <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvEmail" runat="server" ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
+                                            <asp:RegularExpressionValidator ValidationGroup="Submit" ID="revEmail" runat="server"
+                                                                            ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
+                                                                            ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
+                                            <asp:RequiredFieldValidator ValidationGroup="forgot" ID="rfvEmail1" runat="server"
+                                                                        ControlToValidate="Email" Display="None" ErrorMessage="Please enter Email ID" />
+                                            <asp:RegularExpressionValidator ValidationGroup="forgot" ID="revEmail1" runat="server"
+                                                                            ControlToValidate="Email" Display="None" ErrorMessage="Please enter a valid e-mail ID"
+                                                                            ValidationExpression="^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$" />
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:5px">
+                                                <span style="margin-right:3px">Password:</span>
+                                            </td>
+                                            <td>
+                                                
+                                            <asp:TextBox TextMode="Password" MaxLength="50" ID="Password" runat="server" CssClass="txtbox1" />
+                                            <asp:RequiredFieldValidator ValidationGroup="Submit" ID="rfvPwd" runat="server" ControlToValidate="Password" Display="None" ErrorMessage="Please enter Password" />
                          
-                                                                    </div>
-                                                                    <div>
-                                                                         <asp:Button Text="Login >>" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" />
-                                                                            <asp:LinkButton Text="Forgot Password >>" ID="btnForgot" runat="server" OnClick="btnForgot_Click" CssClass="forgotButton" ValidationGroup="forgot" />
-                                                                       
-                                                                    </div>
+                                            </td>
+                                        </tr>
 
-                                                                </asp:Panel>
-                                                                <input type="hidden" runat="server" id="hdnRedirectURL" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        <tr>
+                                            <td style="padding:5px">
+                                                                   <asp:Button Text="Login >>" ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" />
+                                            
+                                                                     
+                                            </td>
+                                            <td>
+                                                <asp:LinkButton Text="Forgot Password >>" ID="btnForgot" runat="server" OnClick="btnForgot_Click" CssClass="forgotButton" ValidationGroup="forgot" />
+                                            </td>
+                                        </tr>
+                                    </table>
 
 
-                                                </div>
-                                                <!-- /.block -->
 
-                                            </div>
-                                            <!-- /.content_belly -->
+                                <input type="hidden" runat="server" id="hdnRedirectURL" />
+                            </div>
+                        </div>
+                    </div>
 
-                                        </div>
-                                        <!-- /#content_main -->
 
-                                    </form>
-                                    <!-- //////////////////////////////// END CONTENT HERE //////////////////////////////// -->
+                </div>
+                <!-- /.block -->
+
+            </div>
+
+
+
+        </form>
+  <!-- //////////////////////////////// END CONTENT HERE //////////////////////////////// -->
 
 				</main><!--/.entry-->
 			</div>
