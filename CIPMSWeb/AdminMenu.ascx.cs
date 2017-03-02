@@ -41,8 +41,8 @@ public partial class AdminMenu : System.Web.UI.UserControl
 			}
 			else
 			{
-				hylCIPRS.NavigateUrl = "https://www.onehappycamper.org/CIPRS/Default.aspx";
-                hylSelfFunding.NavigateUrl = "https://www.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
+				hylCIPRS.NavigateUrl = "http://app.onehappycamper.org/CIPRS/Default.aspx";
+                hylSelfFunding.NavigateUrl = "http://app.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
 			}
 
             var oCam = new CamperApplication();

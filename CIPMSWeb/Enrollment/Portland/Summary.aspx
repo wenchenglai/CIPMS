@@ -53,7 +53,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Portland One Happy Camper program has a limited number of grants for summer  2016. For more information please contact Rachel Halupowski at rachel@jewishportland.org.
+						The Jewish Federation of Greater Portland One Happy Camper program is has a limited number of grants available for summer  2017. For more information please contact Rachel Halupowski at rachel@jewishportland.org.
 					</p>
 				</asp:Label>
 			</td>
