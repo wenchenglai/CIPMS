@@ -1,7 +1,7 @@
 <%@ Page Language="C#" MasterPageFile="~/Common.master" AutoEventWireup="true" CodeFile="Summary.aspx.cs" Inherits="Enrollment_JCC_Summary" %>
 
 <asp:Content ID="National_summary" ContentPlaceHolderID="Content" Runat="Server">
-	<table width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
+	<table id="tblRegular" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
 		<tr>
 			<td>
                 <img src="logo.png" />
@@ -49,6 +49,22 @@
             </td>
         </tr>   
     </table>
+
+	<table id="tblDisable" runat="server" width="100%"  cellpadding="5" cellspacing="0">
+		<tr>
+			<td>
+                <img src="logo.png" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="infotext3">
+					The JCC Ranch Camp One Happy Camper program is now closed for summer 2017. For more information, please contact Gina McReynolds atgmcreynolds@jccdenver.org.
+				</p>
+            </td>
+        </tr>
+	</table>
+
     <asp:Panel ID="Panel1" runat="server">
         <table width="100%" cellpadding="1" cellspacing="0" border="0">            
             <tr>
