@@ -59,7 +59,11 @@ public partial class Home : System.Web.UI.Page
                 {
                     hdnRedirectURL.Value = Request.QueryString["RedirectURL"].ToString();
                 }
-                else
+            if (Request.QueryString["errorMsg"] != null)
+            {
+                lblErr.Text = "UserID already exists, please use the returning user login below.";
+            }
+            else
                     hdnRedirectURL.Value = string.Empty;
 
             FormsAuthentication.SignOut();
@@ -155,7 +159,8 @@ public partial class Home : System.Web.UI.Page
 
         if (CamperCredentials.Tables[0].Rows.Count > 0)
         {
-            lblErr.Text = "UserID already exists";
+            //lblErr.Text = "UserID already exists, please use the returning user login below.";
+            Response.Redirect("~/Home.aspx?errorMsg=t#error");
         }
         else
         {

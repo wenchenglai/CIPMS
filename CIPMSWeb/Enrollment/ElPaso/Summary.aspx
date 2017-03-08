@@ -48,10 +48,11 @@
 			<td>
 				<img src="../../images/El Paso.jpg" width="280" alt=""  />
 			</td>
+</tr><tr>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-The program is now closed.	Please click “Next” to see if you are eligible for a different One Happy Camper program
+The Jewish Federation of Greater El Paso One Happy Camper program is now closed for summer 2017. For more information, please contact Sue Bendalin at sbendalin@jfedelpaso.org.  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

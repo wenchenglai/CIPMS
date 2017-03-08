@@ -47,10 +47,12 @@
         <tr>
             <td>
                 <img src="../../images/bima-large.jpg" /></td>
+        </tr>
+        <tr>
             <td>
 				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-                    The BIMA/Genesis at Brandeis University One Happy Camper program is now closed for the summer of 2016. For more information, please contact Michael Golitsyn at golitsyn@brandeis.edu.
+The BIMA and Genesis at Brandeis University One Happy Camper program is now closed for summer 2017. For more information, please contact Rabbi Charlie Schwartz        cschwartz@brandeis.edu.
 					</p>  
                 </asp:Label>
             </td>
