@@ -41,8 +41,8 @@ public partial class AdminMenu : System.Web.UI.UserControl
 			}
 			else
 			{
-				hylCIPRS.NavigateUrl = "http://app.onehappycamper.org/CIPRS/Default.aspx";
-                hylSelfFunding.NavigateUrl = "http://app.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
+				hylCIPRS.NavigateUrl = "https://app.onehappycamper.org/CIPRS/Default.aspx";
+                hylSelfFunding.NavigateUrl = "https://app.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
 			}
 
             var oCam = new CamperApplication();
@@ -74,7 +74,7 @@ public partial class AdminMenu : System.Web.UI.UserControl
                     lnkBulkStatusUpdate.Visible = true;
 
                 var fjcFundingFeds = new List<string>(ConfigurationManager.AppSettings["SelfPaymentProcessing"].Split(','));
-                if (fjcFundingFeds.Exists(x => x == fedId))
+                if (!fjcFundingFeds.Exists(x => x == fedId))
                     divSelfFunding.Visible = true;
             }
 

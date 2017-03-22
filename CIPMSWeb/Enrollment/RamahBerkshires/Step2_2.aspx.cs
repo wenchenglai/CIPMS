@@ -14,8 +14,8 @@ public partial class Step2_Ramah_2 : System.Web.UI.Page
     
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.RamahBerkshires).ToString()))
-            Response.Redirect("~/NLIntermediate.aspx");
+        //if (ConfigurationManager.AppSettings["DisableOnSummaryPageFederations"].Split(',').Any(id => id == ((int)FederationEnum.RamahBerkshires).ToString()))
+        //    Response.Redirect("~/NLIntermediate.aspx");
 
         btnNext.Click += new EventHandler(btnNext_Click);
         btnPrevious.Click += new EventHandler(btnPrevious_Click);
