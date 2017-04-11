@@ -44,10 +44,11 @@
 			<td>
                 <img id="Img1" src="logo.jpg" />
             </td>
+            </tr><tr>
             <td>                  
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p>
-						The Heart of NJ One Happy Camper program is now closed for summer 2016. For more information, please contact Sheree Boone at ShereeB@jewishheartnj.org.
+						The Jewish Federation in the Heart of New Jersey One Happy Camper program is now closed for summer 2017. For more information or to be put on a waitlist, please contact Laura Safran at lauras@jewishheartnj.org .  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
  
                     </p>
                 </asp:Label>
