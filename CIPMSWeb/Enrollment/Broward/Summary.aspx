@@ -60,7 +60,7 @@ If you are interested in learning about additional financial resources for camp,
 			<td colspan="2">
 				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-                        The Jewish Federation of Broward County One Happy Camper program is now closed for the summer of 2016. For more information, please contact Rochelle Baltuch at rbaltuch@aol.com. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+                        The Jewish Federation of Broward County One Happy Camper program is now closed for summer 2017. For more information please contact the Rochelle Baltuch at  camp@orloffcaje.org. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
 					</p>            
 				</asp:Label>
 			</td>

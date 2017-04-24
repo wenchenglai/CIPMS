@@ -141,6 +141,7 @@ namespace CIPMSBC
         URJ6PointsSportsNorthCarolina = 150,
         URJ6PointsSportsCalifornia = 151,
         Phoenix = 153,
+        SanAntonio = 154,
         Charleston = 155,
         Oshman = 156
 	}

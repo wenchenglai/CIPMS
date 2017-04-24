@@ -360,6 +360,7 @@ public partial class Enrollment_ThankYou : System.Web.UI.Page
             camperAppl.UpdateFederationId(Session["FJCID"].ToString(), "0");
             redirectionLogic.NextFederationId = 0;
             Session["FedId"] = null;
+            Session["codeValue"] = null;
             Response.Redirect("Step1_NL.aspx");
 
         }

@@ -15,7 +15,7 @@ public partial class Step2_Chi_2 : System.Web.UI.Page
 
     protected void Page_Init(object sender, EventArgs e)
     {
-        if (PageUtility.RedirectToNL((int)FederationEnum.Broward, Session["isGrantAvailable"] != null, Master.isAdminUser))
+        if (PageUtility.RedirectToNL((int)FederationEnum.SanAntonio, Session["isGrantAvailable"] != null, Master.isAdminUser))
         {
             Response.Redirect("~/NLIntermediate.aspx");
         }
