@@ -51,6 +51,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
+						The JEWISHcolorado One Happy Camper program is now closed for summer 2017. For more information, please contact Debi Crawley at  dcrawley@jewishcolorado.org. To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
 						<br /><br />
 						
 					</p>
