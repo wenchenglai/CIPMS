@@ -51,7 +51,6 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Jewish Community Foundation of Colorado One Happy Camper program is now closed for the summer of 2016. For more information, please contact the professional listed at the bottom of the screen.
 						<br /><br />
 						
 					</p>
