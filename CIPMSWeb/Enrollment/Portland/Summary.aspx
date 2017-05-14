@@ -50,11 +50,19 @@
 			<td>
 				<img src="logo.png" width="380" alt=""  />
 			</td>
+</tr>
+<tr>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-						The Jewish Federation of Greater Portland One Happy Camper program is has a limited number of grants available for summer  2017. For more information please contact Rachel Halupowski at rachel@jewishportland.org.
+						The Jewish Federation of Greater Portland One Happy Camper program is closed for summer 2017.
+
+For more information please contact Rachel Halupowski at rachel@jewishportland.org.
+
 					</p>
+<p>
+Please click the "next" button to see if other grants are available.
+</p>
 				</asp:Label>
 			</td>
 		</tr>
