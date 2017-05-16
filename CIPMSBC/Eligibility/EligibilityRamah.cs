@@ -142,21 +142,13 @@ namespace CIPMSBC.Eligibility
             int grade = Convert.ToInt32(dsAnswers.Tables[0].Select("QuestionID = 6")[0]["Answer"]);
             string last3Digits = campId.Substring(campId.Length - 3);
 
-            int iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible); ;
+            int iStatusValue = Convert.ToInt32(StatusInfo.SystemInEligible);
 
-            if (last3Digits == "079") // California
+            var objGeneral = new General();
+            if (objGeneral.GetEligiblityForGrades(FJCID, grade.ToString()) == "1")
             {
-                if (grade > 2 && grade < 11)
-                    iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-            }
-            else
-            {
-                var objGeneral = new General();
-                if (objGeneral.GetEligiblityForGrades(FJCID, grade.ToString()) == "1")
-                {
-                    iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
-                }                
-            }
+                iStatusValue = Convert.ToInt32(StatusInfo.SystemEligible);
+            }                
  
             return iStatusValue;
         }
