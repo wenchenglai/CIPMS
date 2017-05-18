@@ -54,10 +54,11 @@
 			<td>
 				<img src="logo.jpg" width="380" alt=""  />
 			</td>
+</tr><tr>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-                        The Atlanta One Happy Camper program is has a limited number of grants for summer  2016. For more information please contact Samantha Tanenbaum at stanenbaum@jewishatlanta.org
+                        The Jewish Federation of Greater Atlanta One Happy Camper program is has a limited number of grants available for summer  2017. For more information please contact Samantha Tanenbaum  at stanenbaum@jewishatlanta.org.
 					</p>
 				</asp:Label>
 			</td>
