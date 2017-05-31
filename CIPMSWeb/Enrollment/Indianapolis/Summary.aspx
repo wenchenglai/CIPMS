@@ -47,10 +47,12 @@
             <td>
                 <img id="Img1" src="../../images/Indianapolis.jpg" />
             </td>
+</tr>
+<tr>
             <td>
                 <asp:Label ID="Label9" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-The Indianapolis One Happy Camper program is now closed for summer 2016. For more information, please contact Inna Kolesnikova-Shmukler at ikolesnikova@jfgi.org.
+The Jewish Federation of Greater Indianapolis One Happy Camper program is now closed for summer 2017. For more information, please contact Pamela Eicher at peicher@jfgi.org.  To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
                     </p>
                 </asp:Label>
 			</td>

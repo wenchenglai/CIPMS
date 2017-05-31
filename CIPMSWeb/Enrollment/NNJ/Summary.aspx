@@ -57,8 +57,7 @@
 				<asp:Label ID="Label4" runat="server" CssClass="infotext3">
 					<p style="text-align:justify">
 
-The Northern New Jersey One Happy Camper program is now closed for summer 2016. For more information, please contact DianaD@jfnnj.org. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
-
+The  Jewish Federation of Northern New Jersey One Happy Camper program is now closed for summer 2017 and is no longer accepting grant applications. For more information, please contact Sarah David at SarahD@jfnnj.org.  To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen. Keep the logo as is.
 
 					</p>
 				</asp:Label>

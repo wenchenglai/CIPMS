@@ -50,11 +50,12 @@
         <tr>
             <td>
                 <img id="Img1" src="../../images/NewHampshire_Logo.jpg" alt = "" /></td>
+</tr>
+<tr>
             <td>                
                 <asp:Label ID="Label4" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-					The New Hampshire One Happy Camper program is now closed for summer 2016. For information please contact Nancy Frankel at corkyatcf@aol.com.<br />
-To see if your camp sponsors a One Happy Camper grant, please click next.
+					The Jewish Federation of New Hampshire One Happy Camper program is has a limited number of grants available for summer  2017. For more information please contact Nancy Frankel at corkyatcf@aol.com.
                     </p>
 				</asp:Label>
 			</td>
