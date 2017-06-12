@@ -141,7 +141,7 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
             strHTMLContent.Append("<tr ><td ><b>Minimum Length of Stay at Camp to be Eligible:</b></td><td><span style='color: Red;'>At least ____ consecutive days.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;First-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Grant Amount for &quot;Second-Time&quot; Campers:</b></td><td><span style='color: Red;'>$_____ for ____ consecutive days</span><br /><br /><span style='color: Red;'>$_____ for ____ consecutive days</span></td></tr>");
-            strHTMLContent.Append("<tr ><td ><b>Eligible Camps:</b></td><td><span style='color: Red;'>All camps FJC supports as listed on <a href='http://www.OneHappyCamper.org/FindaCamp'>http://www.OneHappyCamper.org/FindaCamp</a>. See list on accompanying spread sheet.  (Tab = Camps)</span></td></tr>");
+            strHTMLContent.Append("<tr ><td ><b>Eligible Camps:</b></td><td><span style='color: Red;'>All camps FJC supports as listed on <a href='http://www.jewishcamp.org/one-happy-camper/find-a-camp/'>http://www.jewishcamp.org/one-happy-camper/find-a-camp/</a>. See list on accompanying spread sheet.  (Tab = Camps)</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Exceptions:</b></td><td><span style='color: Red;'>Review the list of exceptions on the attached word document.</span></td></tr>");
             strHTMLContent.Append("<tr ><td ><b>Eligible Zip Codes:</b></td><td><span style='color: Red;'>Review the list of zip codes on the accompanying spread sheet.</span></td></tr>");
 
@@ -170,13 +170,13 @@ public partial class Administration_ProgramProfileInformationReport : System.Web
 			strHTMLContent.Append("</table>");
         }
 
-	    string header = @"<html><body><h1 align='Center'style='font-family: verdana; font-size:16;color: black'><u>One Happy Camper Program Profile Report</u></h1>
+	    string header = @"<html><body><h1 align='Center'style='font-family: verdana; font-size:16;color: black'><u>One Happy Camper Application Review Form</u></h1>
                         <h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + FederationName;
         header += "</h4><h4 align='Center'style='font-family: verdana; font-size:16;color: black'>" + DateTime.Now.ToShortDateString() + "</h4>";
 
 		string instruction = @"<div><strong>Instructions: <br /><br />The information below (and on the accompanying spread sheet) is how your 
-One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2017 campaign 
-and submit prior to July 22<sup>nd</sup>, 2016.  Revisions received prior to July 22<sup>nd</sup> will be ready to be launched the week of September 26<sup>th</sup>, 2016.
+One Happy Camper application is currently configured.  Please use these documents to communicate any changes to your application for the 2018 campaign 
+and submit prior to August 9<sup>nd</sup>, 2017.  Revisions received prior to August 9<sup>nd</sup> will be ready to be launched the week of October 16<sup>th</sup>, 2017.
 <br /><br /><ul><li>Please make any edits in <span style='color: Red;'>RED</span></li>
 <li>Submit form to Staci at <a href='mailto:staci@JewishCamp.org'>Staci@JewishCamp.org</a></li></ul><br />
 <u>Please confirm the following:</u></strong><br /><br />

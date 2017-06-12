@@ -124,7 +124,8 @@
 
                     </p>
                     <p class="QuestionText">Please use the calendar icon to select dates or input dates as MM/DD/YYYY.</p>
-                    <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;<asp:TextBox ID="txtStartDate" runat="server" CssClass="txtbox1" MaxLength="10" />
+                    <asp:Label ID="Label27" runat="server" CssClass="QuestionText">Start Date</asp:Label>&nbsp;&nbsp;
+                    <asp:TextBox ID="txtStartDate" onkeypress="return false;" runat="server" CssClass="txtbox1" MaxLength="10" />
                     <asp:ImageButton ID="imgbtnCalStartDt" runat="server" CausesValidation="false" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalStartDt_Click" />
                     <asp:Panel ID="pnlCalStartDt" runat="server" Visible="false">
                         <asp:Calendar ID="calStartDt" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4"
@@ -142,7 +143,7 @@
                     </asp:Panel>
                     &nbsp;&nbsp;
                     <asp:Label ID="Label28" runat="server" CssClass="QuestionText">End Date</asp:Label>&nbsp;&nbsp;
-                    <asp:TextBox ID="txtEndDate" runat="server" CssClass="txtbox1" MaxLength="10" />
+                    <asp:TextBox ID="txtEndDate" onkeypress="return false;" runat="server" CssClass="txtbox1" MaxLength="10" />
                     <asp:ImageButton ID="imgbtnCalEndDt" CausesValidation="false" runat="server" ImageUrl="~/images/calendar.gif" OnClick="imgbtnCalEndDt_Click" />
                     <asp:Panel ID="pnlCalEndDt" runat="server" Visible="false">
                         <asp:Calendar ID="calEndDt" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4"
