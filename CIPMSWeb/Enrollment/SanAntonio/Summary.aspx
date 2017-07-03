@@ -36,17 +36,14 @@
     <table id="tblDisable" runat="server" width="100%" cellpadding="5" cellspacing="0" class="infotext3" style="text-align:justify">
         <tr>
             <td>
-                <img src="logo.png" alt="logo" />
+                <img src="logo.jpg" alt="logo" />
             </td>
-            <td>
-
-			</td>
         </tr>
         <tr>
-			<td colspan="2">
+			<td>
 				<asp:Label ID="Label6" CssClass="infotext3" runat="server">
 					<p style="text-align:justify">
-                        The Jewish Federation of Broward County One Happy Camper program is now closed for the summer of 2016. For more information, please contact Rochelle Baltuch at rbaltuch@aol.com. To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+                        The Jewish Federation of San Antonio One Happy Camper program is now closed for summer 2017. For more information, please contact Lauren Abraham at abrahaml@jfsatx.org.  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
 					</p>            
 				</asp:Label>
 			</td>

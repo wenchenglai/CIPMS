@@ -45,10 +45,12 @@
 			<td>
 				<img src="../../images/Seattle.gif" width="280" alt=""  />
 			</td>
+</tr>
+<tr>
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-The Seattle One Happy Camper program is now closed for summer 2016. For more information, please contact taryno@jewishinseattle.org.  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+The ­­­­Jewish Federation of Greater Seattle’s  One Happy Camper program is now closed for summer 2017. For more information, please contact Taryn Goodman-Omran.  To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>
