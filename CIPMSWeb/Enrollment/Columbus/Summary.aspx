@@ -50,7 +50,7 @@
             <td>
                 <asp:Label ID="Label3" runat="server" CssClass="infotext3">
                     <p style="text-align:justify">
-						The Jewish Federation of Columbus One Happy Camper program is now closed for summer 2017. For more information or to be put on a waitlist, please contact Alyssa Russell at arussell@tcjf.org.  To see if your camp sponsors the One Happy Camper program please click the “next” button at the bottom of the screen.
+                        The Jewish Federation of Columbus One Happy Camper program is now closed for summer 2017. For more information, please contact  Alyssa Russell at arussell@tcjf.org. To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>
