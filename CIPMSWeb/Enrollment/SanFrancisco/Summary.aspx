@@ -60,7 +60,7 @@
 			<td>
 				<asp:Label ID="Label5" CssClass="infotext3" runat="server">
 					<p style="text-align:justify"> 
-                        The San Francisco  One Happy Camper program is has a limited number of grants for summer 2016. For more information please contact Galya Segal at galyas@sfjcf.org.
+                        The Jewish Community Federation of San Francisco, the Peninsula, Marin and Sonoma Counties One Happy Camper program is now closed for summer 2017. For more information, please contact Aiko-Sophie Morrissette-Ezaki at Aiko-SophieM@sfjcf.org. To see if your camp sponsors the One Happy Camper program please click the "next" button at the bottom of the screen.
 					</p>
 				</asp:Label>
 			</td>

@@ -25,12 +25,10 @@
                             <td>
                                 <asp:Label ID="Label1" CssClass="QuestionText" runat="server">
                                     <p style="text-align: justify">
-                                        <b>Welcome!  Thank you for your interest in the Foundation for Jewish Camp’s One Happy Camper program. </b>
+                                        <b>Welcome! Thank you for your interest in the Foundation for Jewish Camp’s One Happy Camper program.</b>
                                     </p>
                                      <p style="text-align: justify; font=Verdana">
-                                        <b>If you are seeing this message, your One Happy Camper application is not yet available for summer 2017.  
-                                            Applications will start being available the week of September 26, 2016.  Fill in your information below and you will 
-                                            be contacted once there is a program open that may be right for you.</b>
+                                        <b>If you are seeing this message, your One Happy Camper application is not yet available for summer 2018. Applications will start being available the week of October 16, 2017. Fill in your information below and you will be contacted once there is a program open that may be right for you.</b>
                                     </p>
                                     <br />
                                 </asp:Label>
