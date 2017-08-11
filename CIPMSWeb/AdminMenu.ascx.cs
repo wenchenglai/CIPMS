@@ -33,16 +33,17 @@ public partial class AdminMenu : System.Web.UI.UserControl
         {
 			string localIP = Dns.GetHostAddresses(Request.Url.Host)[0].ToString();
             string prodIP = ConfigurationManager.AppSettings["ProductionServerIP"];
+            string fqdn = ConfigurationManager.AppSettings["FQDN"];
 
-			if ( localIP != prodIP )
+            if ( localIP != prodIP )
 			{
                 hylCIPRS.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/Default.aspx", localIP);
                 hylSelfFunding.NavigateUrl = string.Format("http://uat.onehappycamper.org/CIPRS/PaymentProcessing.aspx", localIP);
 			}
 			else
 			{
-				hylCIPRS.NavigateUrl = "https://app.onehappycamper.org/CIPRS/Default.aspx";
-                hylSelfFunding.NavigateUrl = "https://app.onehappycamper.org/CIPRS/PaymentProcessing.aspx";
+				hylCIPRS.NavigateUrl = fqdn + "/CIPRS/Default.aspx";
+                hylSelfFunding.NavigateUrl = fqdn + "/CIPRS/PaymentProcessing.aspx";
 			}
 
             var oCam = new CamperApplication();

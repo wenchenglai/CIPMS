@@ -22,7 +22,7 @@ public partial class Home : System.Web.UI.Page
             bool allowForTesting = ConfigurationManager.AppSettings["TestingModeIPs"].Split(',').Any(x => x == clientIp);
 
             if (!allowForTesting)
-                Response.Redirect("~/CamperHolding.aspx");        
+                Response.Redirect(ConfigurationManager.AppSettings["CamperHoldingPageUrl"]);        
         }
 
         //Just incase the user did not hit the logout button.
